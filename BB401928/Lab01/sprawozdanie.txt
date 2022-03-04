@@ -13,3 +13,6 @@ Sprawdza status plików
 
 4. git commit -m 
 Tworzenie tak zwanego punktu zapisu, który potem można wrzucić na repozytorium
+
+5. git push --set-upstream origin BB401928 
+Polecenie wypycha na repozytorium zmiany, zaś flaga --set-upstream origin BB401928 mówi, że wypychamy na brancha, którego jeszcze nie ma
