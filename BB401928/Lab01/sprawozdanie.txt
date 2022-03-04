@@ -1,0 +1,18 @@
+Sprawozdanie lab01 
+---
+
+1. git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+Aby popbrać repozytorium użyłem polecenie git clone <adres>, wykorzystałem do tego adres po ssh, ponieważ używam weryfikacji dwuetapowej na githubie.
+
+2. git checkout -b BB401928 ( u mnie na zrzucie ekranu będzie gh -b, ale to przez aliasy, które mam porobione )
+git checkout z flagą -b przełącza nas na nowo utworzony branch w tym przypadku to inicjały+indeks
+
+
+
+
+ 
+
+
+
+
+
