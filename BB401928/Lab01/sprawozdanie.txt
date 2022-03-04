@@ -8,11 +8,8 @@ Aby popbrać repozytorium użyłem polecenie git clone <adres>, wykorzystałem d
 git checkout z flagą -b przełącza nas na nowo utworzony branch w tym przypadku to inicjały+indeks
 
 
+3. git status
+Sprawdza status plików
 
-
- 
-
-
-
-
-
+4. git commit -m 
+Tworzenie tak zwanego punktu zapisu, który potem można wrzucić na repozytorium
