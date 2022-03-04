@@ -7,7 +7,7 @@ Uwaga: Zwróć uwagę by w komentarzu do commita zawrzeć czytelną informację 
 Zadania do wykonania:
 1. Zainstalowanie dowolnego klienta git oferującego terminal git'owy.
 
-2. Uruchomienie terminala/konsoli i wykonanie operacji "git clone" na repozytorium: https://github.com/InzynieriaOprogramowaniaAGH/MIFT2021.git .
+2. Uruchomienie terminala/konsoli i wykonanie operacji "git clone" na repozytorium: https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S .
 - Wykonaj zrzut ekranu z tego punktu i zapisz.
 
 3. Otwarcie i zapoznanie się z dokumentem na pierwsze ćwiczenia laboratoryjne, które znajduje się w lokalizacji "<repo>/Lab instructions/Lab 01 - Git.txt"
