@@ -1,0 +1,11 @@
+Sprawozdanie Piotr Apriasz
+Lab1
+
+Zad 2. 
+Sklonowanie repozytorium za pomocą komendy git clone [adres zdalnego repozytorium]
+Polecenie clone kopiuje rezpoytorium zdalne tworząc jego kopie lokalnie
+na komputerze i ustawia automatycznie odpowiadające repozytorium lokalnemu
+repozytorium zdalne
+
+zad3.
+Utworzenie pliku sprawozdanie za pomocą polecenia New-Item
