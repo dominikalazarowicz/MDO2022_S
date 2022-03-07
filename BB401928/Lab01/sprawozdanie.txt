@@ -16,3 +16,6 @@ Tworzenie tak zwanego punktu zapisu, który potem można wrzucić na repozytoriu
 
 5. git push --set-upstream origin BB401928 
 Polecenie wypycha na repozytorium zmiany, zaś flaga --set-upstream origin BB401928 mówi, że wypychamy na brancha, którego jeszcze nie ma
+
+6. git add . 
+dodaje wszystkie pliki znajdujące się w aktualnej ścieżce do "kolejki" do następnego commita 
