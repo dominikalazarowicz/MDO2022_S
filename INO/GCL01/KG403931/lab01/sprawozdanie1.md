@@ -22,3 +22,4 @@ probujemy domergeowac nasze zmiany do brancha grupy, nie mamy do tego uprawnien 
     mozna dociagnac zmieny `git pull`
     lokalnie mergeujemy `git merge KG403931`
     probujemy wypchac `git push` <- tu dostaemy odmowe, brak uprawnien
+te aktualizacje aktualizacji mozna robic w nieskocznonosc wiec ta jest ostantia
