@@ -16,7 +16,7 @@ Następnie generuję nowy klucz SSH:
 $ ssh-keygen -t ed25519 -C "kale2134+1@gmail.com" -f key_pass
 ```
 
-![image-20220307193434742](.\image-20220307193434742.png)
+![image-20220307193434742](./image-20220307193434742.png)
 
 Następnie podaję hasło i tworzę jeszcze jeden klucz SSH:
 
@@ -26,7 +26,7 @@ $ ssh-keygen -t ecdsa -C "kale2134+1@gmail.com" -f key
 
 Już wcześniej miałem skonfigurowane klucze dla konta:
 
-![image-20220307193640539](.\image-20220307193640539.png)
+![image-20220307193640539](./image-20220307193640539.png)
 
 Gdybym nie miał należałoby dodać prywatny klucz SSH do `ssh-agent`:
 
@@ -36,11 +36,11 @@ $ ssh-add key
 
 Oraz dodać klucz publiczny do ustawień GitHuba:
 
-![image-20220307191429276](.\image-20220307191429276.png)
+![image-20220307191429276](./image-20220307191429276.png)
 
 Git na komputerze również mam skonfigurowany:
 
-![image-20220307193156377](.\image-20220307193156377.png)
+![image-20220307193156377](./image-20220307193156377.png)
 
 Chcąc sklonować repozytorium za pomocą SSH używam komendy:
 
@@ -75,7 +75,7 @@ $ mkdir KS404423
 
 Utworzony plik:
 
-![image-20220307192550704](.\image-20220307192550704.png)
+![image-20220307192550704](./image-20220307192550704.png)
 
 W swoim katalogu tworzę sprawozdanie.
 
@@ -85,7 +85,7 @@ Dodaję utworzone rzeczy do zmian:
 $ git add .
 ```
 
-![image-20220307192709069](.\image-20220307192709069.png)
+![image-20220307192709069](./image-20220307192709069.png)
 
 Tworzę commit z wiadomością:
 
@@ -93,7 +93,7 @@ Tworzę commit z wiadomością:
 $ git commit -m "Grupa 02"
 ```
 
-![image-20220307192758851](.\image-20220307192758851.png)
+![image-20220307192758851](./image-20220307192758851.png)
 
 Wysyłam zmiany do zdalnego źródła, tworząc utworzoną lokalnie gałąź na serwerze:
 
