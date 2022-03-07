@@ -17,4 +17,8 @@ potem robimy sobie operacje rozne tam na plikach,
     - wrzucamy na gore `git push`
     - ja pozwolilem mu ustawic upstreama 
     nie robilem skrinow na biezaco, z zalozeniem ze zrobie je na koniec jak juz ogarne wszystkie problemy z tym co tam zrobilem zle, ale na sam koniec virtualbox raczyl sie wykoleic, wiec mam tylko skriny z ostatecznych poprawek, w kazdym razie udalo sie wgrac zmiany
-
+probujemy domergeowac nasze zmiany do brancha grupy, nie mamy do tego uprawnien wiec nie przepuszcza dalej
+    przelaczamy sie na grupe `git checkout INO-GCL01`
+    mozna dociagnac zmieny `git pull`
+    lokalnie mergeujemy `git merge KG403931`
+    probujemy wypchac `git push` <- tu dostaemy odmowe, brak uprawnien
