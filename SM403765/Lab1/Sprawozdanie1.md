@@ -23,5 +23,15 @@
 
 ![3.3](./3.3.png)
 
+6. Rozpocznij pracę na nowej gałęzi
+
+![6](./6.png)
+
+![6.1](./6.1.png)
+
+
+Pull request
+
+![6.2](./6.2.png)
 
 
