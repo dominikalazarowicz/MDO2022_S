@@ -65,7 +65,7 @@ Rozpoczęto pracę na gałęzi:
 
 - wysłano zmiany do zdalnego źródła,
 
-obraz 11
+![obraz 11](./z6_4.PNG)
 
 - podjęto próbę wciągnięcia gałęzi do gałęzi grupowej
 
