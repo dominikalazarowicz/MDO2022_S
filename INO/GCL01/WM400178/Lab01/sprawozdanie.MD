@@ -1,6 +1,6 @@
 #Sprawozdanie - lab1
 1. Zacząłem od pobrania repozytorium przez https:
-   ![Alt text](eval.PNG?raw=true)
+    ![Alt text](eval.PNG?raw=true)
 2. Utworzyłem dwa klucze prywatne, w tym jeden z hasłem
    ![Alt text](generowanie-klucza-ssh-bez-hasla.PNG?raw=true)
    ![Alt text](generowanie-klucza-ssh-Z-haslem.PNG?raw=tru)
@@ -24,4 +24,4 @@ i nie mam loga)
 11. Spróbowałem zrobić git merge na parent branchu, jednak się nie udało:
     ![Alt text](fail.PNG?raw=tru)
 12. Po zaktualizowaniu sprawozdania wystawiam pull requesta:
-13. 
+    ![Alt text](request.PNG?raw=tru)
