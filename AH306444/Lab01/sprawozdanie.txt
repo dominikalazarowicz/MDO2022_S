@@ -1,0 +1,16 @@
+1.Zainstalowanie klienta git:
+sudo apt install git
+
+2. Sklonowanie repozytorium:
+git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S
+
+3.Stworzenie pliku sprawozdanie.txt:
+cat>sprawozdanie.txt
+
+4. Dodanie brancha :
+git branch AH306444	
+
+5.Przełączenie się na stworzonego brancha:
+git checkout AH306444
+
+(punkt 4 i 5 można wykonać przy pomocy jednego polecenia git checkout -b AH306444)
