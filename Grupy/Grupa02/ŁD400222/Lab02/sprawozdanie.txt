@@ -28,4 +28,15 @@ git push --follow-tags
 3 Utworzenie nowego brancha krótko żyjącego
 git checkout -b Grupa02-ŁD400222_Lab02
 
+4 Hook
 
+commit-msg.
+#!/bin/sh
+
+COMMIT=`cat $1`
+REGEX="^ŁD400222"
+echo $COMMIT
+if ! [[ $COMMIT =~ $REGEX ]]; then
+    echo '# Commit message should start with ŁD400222'
+    exit 1;
+fi
