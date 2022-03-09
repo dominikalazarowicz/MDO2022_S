@@ -24,3 +24,8 @@ git tag -a ŁD400222_Lab02_zad2.1 -m "Łukasz Dyrlaga, Lab 02 chyba działa"
 wypchnięcie tej zmiany na serwer
 git push --follow-tags
 
+
+3 Utworzenie nowego brancha krótko żyjącego
+git checkout -b Grupa02-ŁD400222_Lab02
+
+
