@@ -1,0 +1,8 @@
+1. 	wygenerowanie klucza ssh za pomocą polecenia:  ssh-keygen -t rsa -b 4096 -C "czesak@student.agh.edu.pl"
+	manualne uruchomienie klienta: eval "$(ssh-agent -s)"	
+	dodanie ssh do ssh-agent: ssh-add ~/.ssh/id_rsa
+	dodanie ssh do githuba
+	zmiana sposobu logowania na ssh: git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+	wyświetlenie połączenia: git remote -v
+	
+	
