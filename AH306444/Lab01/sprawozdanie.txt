@@ -14,3 +14,15 @@ git branch AH306444
 git checkout AH306444
 
 (punkt 4 i 5 można wykonać przy pomocy jednego polecenia git checkout -b AH306444)
+
+6.Sprawdzono status:
+git status
+
+7. Dodano ledzenie na pliki:
+git add .
+
+8. Dodano commita:
+git commit -m "message"
+
+9. Przeniesienie znmian na zdalne repozytorium:
+git push origin AH306444 (W przypadku gdy pushujemy pierwszy raz wykorzystujemy git push --set-upstream origin AH306444)
