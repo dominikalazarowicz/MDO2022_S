@@ -5,16 +5,16 @@
 2. utworzenie lokalnego branch'a o nazwie AF400832
 	git checkout -b AF400832
 
-3. utworzenie folderu AF400832/Lab01 i pliku sprawozdanie.txt w folderze AF303741/Lab01/sprawozdanie.txt
-	mkdir AF400832
-	cd AF400832
+3. utworzenie folderu AF400832/Lab01 i pliku sprawozdanie.txt w folderze Lab01
+	mkdir AF400832/Lab01
+	cd AF400832/Lab01
 	touch sprawozdanie.txt
 
-4. git status
-	sprawdzenie statusu modyfikowanych/utworzonych/usuniętych plików
+4. sprawdzenie statusu modyfikowanych/utworzonych/usuniętych plików 
+	git status
 	
-5. git add .
-	dodanie modyfikowanych plików do śledzenia
+5. dodanie modyfikowanych plików do śledzenia
+	git add .
 	
-6. git commit -m "[AF303741] Init commit"
-	utworzenie commita z śledzonych plików	
+6. utworzenie commita z śledzonych plików
+	git commit -m "[AF400832] Init commit"	
