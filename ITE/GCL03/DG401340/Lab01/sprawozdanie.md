@@ -45,4 +45,14 @@ Kolejno wykonane polecenia:
 `mkdir DG401340`  
 `cd DG401340`  
 `mkdir Lab01/`  
-
+Zawartość katalogu po skopiowaniu plików:  
+![](2022-03-10-22-57-31.png)  
+Dodatnie zmian:  
+![](2022-03-10-23-05-45.png)  
+Utworzenie commita i wysłanie zmian do zdalnego źródła:  
+![](2022-03-10-23-07-55.png)
+Próba wciągnięcia swojej gałęzi do gałęzi grupowej:  
+![](2022-03-10-23-24-46.png)  
+Branche nie zostały złączone:  
+![](2022-03-10-23-27-18.png)  
+## 7. Sprawozdane zostało zaktualizowane i wstawiłem pull request do gałęzi grupowej.
