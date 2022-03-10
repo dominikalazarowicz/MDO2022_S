@@ -38,10 +38,16 @@
 
 # Wnioski:
 
-<p><strong>git clone</strong> służy do klonowania repozytorium na lokalny komputer.</p>
-<p><strong>git branch</strong> służy do wyświetlenia nazwy gałęźi, na której aktualnie się znajdujemy.</p>
-<p><strong>git status</strong> sprawdzenie statusu plików w repozytorium.</p>
-<p><strong>git checkout</strong> służy do zmiany brancha. Flaga -b 'nazwa' pozwala utworzyćnowego brancha i od razu przejść do niego.</p>
-<p><strong>git add</strong> służy do dodawnie wszystkich plików nowych, zmodyfikowanych, ale nie usuniętych.</p>
-<p><strong>git commit</strong> tworzy nowy commit, który zawiera całą zawartość ostatniego commita. Flaga -m "Wiadomość" dodaje komentarz do commita.</p>
-<p><strong>git push</strong> służy do wysłania zmian do zdalnego repozytorium.</p>
+**git clone** służy do klonowania repozytorium na lokalny komputer.
+
+**git branch** służy do wyświetlenia nazwy gałęźi, na której aktualnie się znajdujemy.
+
+**git status** sprawdzenie statusu plików w repozytorium.
+
+**git checkout** służy do zmiany brancha. Flaga -b 'nazwa' pozwala utworzyćnowego brancha i od razu przejść do niego.
+
+**git add** służy do dodawnie wszystkich plików nowych, zmodyfikowanych, ale nie usuniętych.
+
+**git commit** tworzy nowy commit, który zawiera całą zawartość ostatniego commita. Flaga **-m "comment"** dodaje komentarz do commita.
+
+**git push** służy do wysłania zmian do zdalnego repozytorium.
