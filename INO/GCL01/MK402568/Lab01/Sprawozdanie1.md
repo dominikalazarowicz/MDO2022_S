@@ -21,12 +21,15 @@
 5. Gdy byłem już na odpowiednim  branchu utowrzyłem nową gałąź o nazwie MK402568, skorzystałem z polecenia *git checkout -b MK402568*. 
 ## Rozpocznij pracę na nowej gałęzi.
 ![](4%7C5.BranchChangingAndAdding.png)
+
 6. Pracując już na nowej gałęzi, zacząłem tworzyć odpowiednie pliki oraz nimi "zarządzać".
 - Utworzyłem folder "MK402568" a w nim folder w którym umieszczone zostały materiały "Lab01", korzystałem z polecenia *mkdir*.
 ![](6.1CreatingDirectory.png)
 - Do folderu skopiowałem screenshoty oraz sprawozdanie w formacie *markdown*.
 - Aby wysłać dodane pliki do zdalnego źródła, początkowo rozpocząłem ich śledznie korzystając z komendy *git add .*, kropka powoduje wykonanie czynności na wszystkich plikach, następnie aby zatwierdzić zmiany które są w "poczekalni" utworzyłem commita, użyłem komendy  *git commit -m* -m umożliwia nam dodanie wiadomości. Ostatecznie korzystając z polecenia *git push* umieszczam zmiany na zdalnym repozytorium.
 ![](6.3%7C4AddandCommit.png) ![](6.5Push.png)
+- Przełączając sie w pierwszej kolejności na gałąź grupową, następnie wykonałem instrukcje *git merge MK402568* w celu próby wciągnięcia utworzonej przeze mnie gałęzi do gałęzi grupowej. 
+![](6.6MergePart1.png) ![](6.6MergePart2.png)
 ## Wystaw Pull Request do gałęzi grupowej
 7. Po wykonaniu zadań wystawiłem pull requesta do grupowego brancha.
 ![](7.PullRequest.png)
