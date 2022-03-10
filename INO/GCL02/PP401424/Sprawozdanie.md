@@ -1,23 +1,23 @@
 # Sprawozdanie 1
 ### 07.03.2022r.
 
-System kontroli wersji Git oraz narzÄ™dzie sÅ‚uÅ¼Ä…ce do obsÅ‚ugi kluczy SSH jest domyÅ›lnie instalowane przy instalacji systemu linux Ubuntu server, dlatego nie byÅ‚o koniecznoÅ›ci instalowania ich manualnie.
+System kontroli wersji Git oraz narzêdzie s³u¿¹ce do obs³ugi kluczy SSH jest domyœlnie instalowane przy instalacji systemu linux Ubuntu server, dlatego nie by³o koniecznoœci instalowania ich manualnie.
 
 ![git-install](./git-install.png)
 
-KlonujÄ™ repozytorium za pomocÄ… protokoÅ‚u **HTTPS**.
+Klonujê repozytorium za pomoc¹ protoko³u **HTTPS**.
 
 ![clone-HTTPS](./clone-HTTPS.png)
 
-GenerujÄ™ nowy klucz **SSH**.
+Generujê nowy klucz **SSH**.
 
 ![ssh-key1](./ssh-key1.png)
 
-Sprawdzam klucz publiczny oraz sprawdzam jego poprawnoÅ›Ä‡ poprzez wygenerowanie go za pomocÄ… klucza prywatnego.
+Sprawdzam klucz publiczny oraz sprawdzam jego poprawnoœæ poprzez wygenerowanie go za pomoc¹ klucza prywatnego.
 
 ![ssh-key2](./ssh-key2.png)
 
-NastÄ™pnie generujÄ™ drugi klucz i sprawdzam go w ten sam sposÃ³b. Obydwa klucze zostaÅ‚y zabezpieczone hasÅ‚em.
+Nastêpnie generujê drugi klucz i sprawdzam go w ten sam sposób. Obydwa klucze zosta³y zabezpieczone has³em.
 
 ![ssh-key3](./ssh-key3.png)
 
@@ -33,28 +33,34 @@ Ponadto dodaje klucz prywatny do **`ssh-agent`**
 
 ![ssh-agent](./ssh-agent.png)
 
-NarzÄ™dzie **Git** mam juÅ¼ skonfigurowane.
+Narzêdzie **Git** mam ju¿ skonfigurowane.
 
 ![git-config](./git-config.png)
 
-Klonuje repozytorium za pomocÄ… **SSH**. Operacja siÄ™ udaÅ‚a co Å›wiadczy o poprawnym wygenerowaniu i dodaniu kluczy.
+Klonuje repozytorium za pomoc¹ **SSH**. Operacja siê uda³a co œwiadczy o poprawnym wygenerowaniu i dodaniu kluczy.
 
 ![clone-ssh](./clone-ssh.png)
 
-PrzeÅ‚Ä…czam siÄ™ na gaÅ‚Ä…Åº **`main`**.
+Prze³¹czam siê na ga³¹Ÿ **`main`**.
 
 ![main](./main.png)
 
-NastÄ™pnie przeÅ‚Ä…czam siÄ™ na gaÅ‚Ä…Åº mojej grupy **`INO-GCL02`**.
+Nastêpnie prze³¹czam siê na ga³¹Ÿ mojej grupy **`INO-GCL02`**.
 
 ![gcl02](./gcl02.png)
 
-TworzÄ™ gaÅ‚Ä…Åº **`PP401424`**, ktÃ³ra wychodzi od gaÅ‚Ä™zi grupy, oraz tworzÄ™ odpowiedni katalog.
+Tworzê ga³¹Ÿ **`PP401424`**, która wychodzi od ga³êzi grupy, oraz tworzê odpowiedni katalog.
 
 ![mkdir](./mkdir.png)
 
-Dodaje sprawozdanie oraz zatwierdzam zmiany za pomocÄ… `git add .`
+Dodaje sprawozdanie oraz zatwierdzam zmiany za pomoc¹ `git add .`
 
-TworzÄ™ commit z komentarzem.
+![git-add](./git-add.png)
 
-WysyÅ‚am zmiany do zdalnego repozytorium.
+Tworzê commit z komentarzem.
+
+![git-commit](./git-commit.png)
+
+Wysy³am zmiany do zdalnego repozytorium.
+
+![git-push](./git-push.png)
