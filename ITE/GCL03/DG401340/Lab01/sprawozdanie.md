@@ -1,6 +1,6 @@
 ## 1. Zainstaluj klienta Git i obsługę kluczy SSH
 Instalacja git: `sudo pacman -S git`  
-Aktualna wersja git jest aktualna, więc nie nadpisuję tej wersji.
+Aktualna wersja git jest aktualna, więc nie nadpisuję tej wersji.  
 ![](2022-03-10-21-05-02.png)
 
 Sprawdzenie aktualnej wersji git: `git --version`  
@@ -19,7 +19,7 @@ Utworzenie klucza: `ssh-keygen -t ed25519 -f my_key`
 ![](2022-03-10-21-54-11.png)
 ![](2022-03-10-21-55-53.png)
 - Skonfiguruj klucz SSH jako metodę dostępu do GitHuba.  
-Dodanie klucza do agenta ssh: `ssh-add my_key`
+Dodanie klucza do agenta ssh: `ssh-add my_key`  
 ![](2022-03-10-22-26-01.png)  
 Po przejściu do ustawień konta, dodałem nowy klucz ssh: 
 ![](2022-03-10-22-04-01.png)  
@@ -34,7 +34,7 @@ Sprawdzenie na jakiej gałęzi się znajduję przy użyciu polecenia `git branch
 ![](2022-03-10-22-38-02.png)  
 ## 5. Utwórz gałąź o nazwie "inicjały & nr indeksu" np. KD232144. Miej na uwadze, że odgałęziasz się od brancha grupy!  
 Utworzenie nowej gałęzi z inicjałami i indeksem: `git checkout -b DG401340`  
-![](2022-03-10-22-44-25.png)
+![](2022-03-10-22-44-25.png)  
 Sprawdzenie aktualnego brancha poleceniem: `git branch`  
 ![](2022-03-10-22-46-18.png)  
 ## 6. Rozpocznij pracę na nowej gałęzi  
@@ -50,7 +50,7 @@ Zawartość katalogu po skopiowaniu plików:
 Dodatnie zmian:  
 ![](2022-03-10-23-05-45.png)  
 Utworzenie commita i wysłanie zmian do zdalnego źródła:  
-![](2022-03-10-23-07-55.png)
+![](2022-03-10-23-07-55.png)  
 Próba wciągnięcia swojej gałęzi do gałęzi grupowej:  
 ![](2022-03-10-23-24-46.png)  
 Branche nie zostały złączone:  
