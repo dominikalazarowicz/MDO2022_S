@@ -84,5 +84,15 @@ $ mkdir Lab01
 ```
 ![mkdir](./mkdir.png)
 
+Dodałam sprawozdanie oraz zatwierdziłam zmiany za pomocą `git add .`.
 
+![git_add](./git_add.png)
+
+Stworzyłam commit z komentarzem.
+
+![git_commit](./git_commit.png)
+
+Wysłałam zmiany do zdalnego repozytorium za pomocą `git push`.
+
+![git_push](./git_push.png)
 
