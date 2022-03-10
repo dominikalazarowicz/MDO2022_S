@@ -33,13 +33,13 @@
     8. W nowym katalogu utwrzyłem sprawozdanie i wrzuciłem zrzuty ekranu
     9. Utworzyłem sprawozdanie w powyższym katalogu
 
-![Dodanie plików do katalogu](./9.png)
+![Dodanie plików do katalogu](./10.png)
 
-    10. Wyślij zmiany do zdalnego źródła
+    10. Wysłałem zmiany do zdalnego źródła
 
 ![Wysłanie zmian](./12.png)
 
-    11. Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
+    11. Spróbowałem wciągnąć swoją gałąź do gałęzi grupowej
 
 ![Dodanie plików do katalogu](./13.png)
 ![Dodanie plików do katalogu](./14.png)
