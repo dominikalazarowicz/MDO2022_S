@@ -36,5 +36,10 @@
 ![Dodanie plików do katalogu](./9.png)
 
     10. Wyślij zmiany do zdalnego źródła
+
+![Wysłanie zmian](./12.png)
+
     11. Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
-    12. Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
+
+![Dodanie plików do katalogu](./13.png)
+![Dodanie plików do katalogu](./14.png)
