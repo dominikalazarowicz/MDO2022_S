@@ -69,8 +69,8 @@ Rozpoczęto pracę na gałęzi:
 
 - podjęto próbę wciągnięcia gałęzi do gałęzi grupowej
 
-obraz 12
+![obraz 12](./z7.png)
 
 ## Zadanie 7
 
-Wystawiono pull request do gałęzi grupowej.
+Wystawiono pull request do gałęzi grupowej (widoczne na ostatnim zrzucie).
