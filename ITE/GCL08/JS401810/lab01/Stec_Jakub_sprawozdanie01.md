@@ -42,10 +42,10 @@ Wykonanie laboratoirum:
 9. na zakończenie wystawiłem Pull Request do gałęzi grupowej
 
 # PODSUMOWANIE
-* git clone					                    Sklonowanie repozytorium - pobranie do repozytorium lokalnego
-* git branch nazwa 				                Utworzenie nowej gałęzi
-* git checkout nazwa				            Przełączenie na podanego brancha
-* git add plik					                Dodanie pliku do repozytorium	
-* git commit -m komentarz				        Wykonanie commita do remota. Odnośnik -m umożliwia dodanie komentarza	
-* git push --set-upstream origin JS401810		Wysłanie zmian na remota. Stworzona zostanie nowa gałąź.
+* git clone - 				                          Sklonowanie repozytorium - pobranie do repozytorium lokalnego
+* git branch nazwa - 				                    Wyświetlenie nazwy gałęzi na której sie znajdujemy
+* git checkout nazwa - 				                  Przełączenie na podanego brancha
+* git add plik - 					                      Dodanie pliku do repozytorium	
+* git commit -m komentarz - 				            Wykonanie commita do remota. Odnośnik -m umożliwia dodanie komentarza	
+* git push --set-upstream origin JS401810 - 		Wysłanie zmian na remota. Stworzona zostanie nowa gałąź.
 
