@@ -1,0 +1,10 @@
+git checkout Ob402983
+	checkout - zmiana brancha
+ssh-keygen -t rsa -b 4096 -C "iza.bubula2012@gmail.com"
+	generowanie klucza ssh
+start-ssh-agent.cmd
+	odpalanie agenta, dodawanie klucza ssh
+git remote -v
+	wyswietlanie linku do repo
+git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+	zmiana origina
