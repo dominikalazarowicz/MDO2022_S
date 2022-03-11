@@ -15,6 +15,21 @@ Klonowanie repozytorium
 ``git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git ``
 
 3.
+Tworzenie brancha
+``git checkout -b MS400537``
+
+Tworzenie sprawozdania
+``touch sprawozdanie.md``
+
+Dodawanie plikow do commita
+``git add .``
+
+Tworzenie commita
+``git commit -m "message"``
+
 
 ![Pierwszy commit](Screenshot from 2022-03-11 17-22-45.png)
 
+4. 
+
+![Drugi commit](Screenshot from 2022-03-11 17-22-45.png)
