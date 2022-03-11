@@ -41,3 +41,29 @@ Klucz został wygenerowany zgodnie z dokumentacją github.
 
 
 ![Struktura plików](./9.jpg)
+
+# 7. Dodanie plików ze sprawozdaniem 
+
+![Dodanie plików](./10.jpg)
+
+# 8. Sprawdzenie struktury plików
+
+![plików](./11.jpg)
+
+# 9. Wysyłanie zmian do zdalnego źródła
+
+1. git add *
+
+![plików](./12.jpg)
+
+2. git commit
+
+![plików](./13.jpg)
+
+3. git push
+
+![plików](./14.jpg)
+
+# 9. Aktualizacja sprawozdania o krok 6.7
+
+![plików](./15.jpg)
