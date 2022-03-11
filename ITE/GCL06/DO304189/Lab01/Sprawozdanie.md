@@ -41,6 +41,10 @@ W ramach zajęć zrealizowano następujące kroki:
 - Praca nad sprawozdaniem z zajęć - dodawanie kolejnych commitów za pośrednictwem komend `git add .` oraz `git commit -m "nazwa commitu"`;
     ![img](lab1-666_edit.png)
     ![img](lab1-9_edit.png)
+    ![img](lab1-11_edit.png)
+    ![img](lab1-12_edit.png)
 7. Zaktualizowanie wprowadzonych zmian poleceniami kolejno `git pull` oraz `git push --set-upstream origin DO304189`;
+    ![img](lab1_13_edit.png)
+    ![img](lab1-14_edit.png)
 ## Wnioski
 Środowisko GitHub ma specyficzną budowę, na którą składają się gałęzie - gałąź główna, *main*, oraz wychodząca od niej dowolna ilość pozostałych gałęzi. Nowe gałęzie może tworzyć każdy użytkownik, któremu został udzielony dostęp do danego repozytorium. Mimo że korzystanie z serwera GitHub może wydawać się pozornie skomplikowane, warto je opanować - poszczególne gałęzie pozwalają na uporządkowaną pracę nad wieloma elementami danego projektu jednocześnie, w tym również przez wielu użytkowników, ponieważ, z racji operowania w osobnej "odnodze" repozytorium, zostaje wyeliminowania możliwość przeszkadzania we wzajemnej pracy. Ponadto, dzięki możliwości dodawania tzw. commitów, czyli wgrywania do repozytorium postępu pracy, można śledzić jej postęp u poszczególnych użytkowników, a także zostawiać pozostałym osobom informację o zmianach wprowadzonych przez samego siebie.
