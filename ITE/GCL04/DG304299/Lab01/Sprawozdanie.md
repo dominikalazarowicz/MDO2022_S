@@ -13,7 +13,7 @@
 ## 2. Sklonowanie repozytorium za pomocą HTTPS
   > git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
 
-  ![img](screen2.png)
+  ![img](screen2.1.png)
 
 ## 3. Sklonowanie repozytorium za pomocą protokołu SSH
   > git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
@@ -41,6 +41,37 @@
 
 
   ![img](screen5.png)
+
+## 6. Tworzenie sprawozdania, dodanie zrzutów ekranu, commit
+
+  - Dodanie zmiam do stage i podgląd
+
+    > git add .
+
+    > git status
+
+    ![img](screen6.png)
+
+  - Commit
+
+    > git commit -m "Create report"
+
+    ![img](screen7.png)
+
+  ## 6. Wrzucenie zmian na zdalnego brancha
+ 
+  > git push --set-upstream origin DG304299
+
+  ![img](screen8.png)
+
+  ## 7. Zaktualizowanie sprawozdania
+
+
+  
+
+
+
+  
 
   
 
