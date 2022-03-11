@@ -33,3 +33,7 @@ Tworzenie commita
 4. 
 
 ![Drugi commit](Screenshot from 2022-03-11 17-22-45.png)
+
+5.
+
+![Trzeci commit](Screenshot from 2022-03-11 17-32-45.png)
