@@ -29,3 +29,8 @@ Tworzę branch TL402856:
 ![8b6abfd23588311f3ecf74402899ec99.png](_resources/8b6abfd23588311f3ecf74402899ec99.png)
 Tworzę katalog o tej samej nazwie, oraz katalog lab_1:
 ![fe246f1f0def0381d044e485f7046b43.png](_resources/fe246f1f0def0381d044e485f7046b43.png)
+W nowym katalogu dodałem pliki ze sprawozdaniem: ![344cd68101baf41243a06a0b6ec92794.png](_resources/344cd68101baf41243a06a0b6ec92794.png)
+Pushnąłem zmiany na branch, oraz stworzyłem pull request na branch grupy laboratoryjnej:
+![b447bca7605404bfe2983a4912297b9b.png](_resources/b447bca7605404bfe2983a4912297b9b.png)
+
+(Możliwe, że ścieżki do plików po drugim commicie się zmienią, bo używam programu, który generuje je automatycznie.)
