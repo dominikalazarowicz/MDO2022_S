@@ -14,3 +14,6 @@ git add . - dodanie plików do indeksu repozytorium
 git commit -m "Tytuł" - utworzenie nowego commita
 
 git push origin JB404156 - wysłanie zmian na serwer
+
+
+Ostatni zrzut ekranu dla git pusha został wykonany na linuksie, gdyż na windowsie pojawiły się problemy
