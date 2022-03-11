@@ -1,0 +1,21 @@
+Sprawozdanie lab01 
+---
+
+1. git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+Aby popbrać repozytorium użyłem polecenie git clone <adres>, wykorzystałem do tego adres po ssh, ponieważ używam weryfikacji dwuetapowej na githubie.
+
+2. git checkout -b BB401928 ( u mnie na zrzucie ekranu będzie gh -b, ale to przez aliasy, które mam porobione )
+git checkout z flagą -b przełącza nas na nowo utworzony branch w tym przypadku to inicjały+indeks
+
+
+3. git status
+Sprawdza status plików
+
+4. git commit -m 
+Tworzenie tak zwanego punktu zapisu, który potem można wrzucić na repozytorium
+
+5. git push --set-upstream origin BB401928 
+Polecenie wypycha na repozytorium zmiany, zaś flaga --set-upstream origin BB401928 mówi, że wypychamy na brancha, którego jeszcze nie ma
+
+6. git add . 
+dodaje wszystkie pliki znajdujące się w aktualnej ścieżce do "kolejki" do następnego commita 
