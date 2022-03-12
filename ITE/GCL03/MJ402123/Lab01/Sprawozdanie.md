@@ -12,51 +12,49 @@ Zadania, które wykonałem:
 
      * Sprawdzenie wersji gita
 
-     ![Image](git_ver.jpg "wersja_git")
+     ![Image](git_ver.JPG "wersja_git")
      
      * Instalacja ssh
      
-     ![Image](inst_ssh.jpg "instalacja_ssh")
+     ![Image](inst_ssh.JPG "instalacja_ssh")
 
      * Sprawdzenie stanu ssh
      
-     ![Image](status_ssh.jpg "sprawdzenie statusu ssh")
+     ![Image](status_ssh.JPG "sprawdzenie statusu ssh")
 
      * Sprawdzenie polaczenia ssh przez cmd
      
-     ![Image](ssh_połacz_cmd.jpg "cmd")
+     ![Image](ssh_połacz_cmd.JPG "cmd")
 
   2. Wygeneruj klucze, skonfiguruj klucz SSH jako metodę dostępu do GitHuba oraz sklonuj repozytorium:
      * Wygenerowanie kluczy
      
-     ![Image](wygen_kluczy.jpg "wygenerowanie kluczy")
+     ![Image](wygen_kluczy.JPG "wygenerowanie kluczy")
 
      * Skonfigurowanie klucza SSH jako metodę dostępu do GitHuba
 
-     ![Image](polaczenie_z_github.jpg "klucz ssh na gitcie (połączony)")
+     ![Image](polaczenie_z_github.JPG "klucz ssh na gitcie (połączony)")
 
      * Sklonowanie repozytorium
 
-     ![Image](scr_enty.jpg "sklonowanie repo")
+     ![Image](scr_enty.JPG "sklonowanie repo")
 
-  3. Przełącz się na gałąź main, a potem na gałąź swojej grupy,
-Utwórz gałąź o nazwie MJ402123.
-Rozpocznij pracę na nowej gałęzi.
+  3. Przełącz się na gałąź main, a potem na gałąź swojej grupy,Utwórz gałąź o nazwie MJ402123.Rozpocznij pracę na nowej gałęzi.
      
      * Przełączenie się na gałąź main, a później na gałąż GCL03 oraz utworzenie gałęzi o nazwie MJ402123
    
-     ![Image](sprawko_z_galezia_1.jpg "Przelaczenie na main...")
+     ![Image](sprawko_z_galezia_1.JPG "Przelaczenie na main...")
 
      * Stworzenie odpowiednich katalogów
    
-     ![Image](commit.jpg "praca na gałęzi")
+     ![Image](commit.JPG "praca na gałęzi")
 
      * Commit
      
-     ![Image](commit2.jpg "Commit")
+     ![Image](commit2.JPG "Commit")
        
      * push
      
-     ![Image](commit3.jpg "push")
+     ![Image](commit3.JPG "push")
 
 
