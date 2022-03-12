@@ -6,16 +6,16 @@ Wykonanie laboratorium:
 - sklonowanie repozytorium za pomocą HTTPS
 ![clone](./clone-hhtps.png)
 - utworzenie dwóch kluczy SSH
-z hasłem
+- z hasłem
 ![ssh-pass](./ssh-pass.png)
-bez hasła
+- bez hasła
 ![ssh-no-pass](./ssh-no-pass.png)
 - klucze na githubie
 ![ssh-git](./git-keys.png)
 - polecenie eval do używania ssh
 ![eval](./eval.png)
 - sklonowanie repozytorium za pomocą SSH
-![clone-ssh](./clone.png)
+![clone-ssh](./clone-ssh.png)
 - przełączenie się na maina, na gałąź swojej grupy i utworzenie własnej (-b od razu się na nią przełączyłem)
 ![git-checkout](./git-checkout.png)
 - utworzenie nowych folderów oraz utworzenie commita i wysłanie zmian
