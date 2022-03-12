@@ -36,4 +36,5 @@ W tym celu wykorzystałem polecenie ssh-keygen podając również swój mail z g
 Operacja nie powiodła się, poniewaz branch grupowy jest na remote branchem typu protected co powoduję, że przy takiej operacji nastepuje odmowa bezpośredniego merga.
   ![Alt text](./mergeFail.png)
 13. Dokonczyłem sprawozdanie i utworzyłem pull requesta.
+  ![Alt text](./sprawozdanieFinalPush.png)
   ![Alt text](./pullRequest.png)
