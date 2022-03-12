@@ -26,4 +26,12 @@ Poprzednio usunąłem repozytorium sklonowane poprzez HTTPS (rm -r)
 ![Przełączenie się na gałąź ITE-GCL03 wykorzystując git checkout](Obraz7.jpg)
 ## 5. Utworzenie własnej gałęzi o nazwie "inicjały & nr indeksu"
 ![Utworzenie własnej gałęzi przy pomocy git checkout -b](Obraz8.jpg)
-
+## 6. Dodanie plików do katalogu
+![Dodanie plików do katalogu Lab1](Obraz9.jpg)
+## 7. Dodanie i wysłanie zmian
+![Dodanie zmian](Obraz10_2.jpg)
+![Wysłanie zmian](Obraz10.jpg)
+![](Obraz11.jpg)
+## 8. Próba wciągnięcia gałęzi do gałęzi grupowej
+![Nieudana próba wciągnięcia gałęzi](Obraz12.jpg)
+## 9. Aktualizacja sprawozdania
