@@ -30,6 +30,10 @@ Kroki przestawione w postaci zrzutów ekranu:
 
   ![title](branch.png)
 
+* Wysłanie zmian do zdalnego repozytorium
+
+  ![title](push.png)
+
 Historia poleceń
 
   ![title](history.png)
