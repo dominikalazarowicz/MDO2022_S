@@ -5,7 +5,7 @@ Połączyłem się przez ssh z moją maszyną wirtualną
 ![](polaczenie.png)
 
 
-Wygenerowałem klucze ECDSA
+Wygenerowałem klucze ECDSA <br />
 ![](ecdsa.png)
 
 
@@ -25,7 +25,7 @@ Do tranferu plików(screenów) poprzez protokół ssh wykorzystałem program Mob
 ![](term.png)
 
 
-Zmieniłem brancha za pomocą git checkout, za pomocą "git add ." dodałem wszystkie zmienione pliki do commita, żeby następnie 
+Zmieniłem brancha za pomocą git checkout, za pomocą "git add ." dodałem wszystkie zmienione pliki do commita, żeby następnie <br />
 za pomocą git commit stworzyć gotowego do wypchnięcia commita
 ![](commit.png)
 
