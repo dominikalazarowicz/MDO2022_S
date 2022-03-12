@@ -110,12 +110,29 @@
 * Wyślij zmiany do zdalnego źródła
 * Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
 * Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
-## Zainstalowałem i skonfigurowałem serwer ftp na maszynie wirtualnej, a następnie połączyłem się z nią z wykorzytsaniem programu Filezilla
-![Tekst Alternatywny](./zrzut_ekranu_28.png "zrzut_ekranu_29")
-
+## Zainstalowałem i skonfigurowałem serwer ftp na maszynie wirtualnej, a następnie połączyłem się z nią z wykorzytsaniem programu Filezilla.
+![Tekst Alternatywny](./zrzut_ekranu_29.png "zrzut_ekranu_29")
+## Przesłałem pierwszą wersję sprawozdania wraz z zrzutami ekranu.
+![Tekst Alternatywny](./zrzut_ekranu_30.png "zrzut_ekranu_30")
+## Wysłałem zmiany do zdalnego źródła:
+### Wykonane kroki
+* kamil@kamil-VB:~/Pulpit/DevOps_Laby/MDO2022_S/ITE/GCL03/KK401258/Lab01$ git add -A
+* kamil@kamil-VB:~/Pulpit/DevOps_Laby/MDO2022_S/ITE/GCL03/KK401258/Lab01$ git status
+* kamil@kamil-VB:~/Pulpit/DevOps_Laby/MDO2022_S/ITE/GCL03/KK401258/Lab01$ git commit -m "KK401258 - dodanie sprawozdania w wersji 1"
+![Tekst Alternatywny](./zrzut_ekranu_31.png "zrzut_ekranu_31")
+![Tekst Alternatywny](./zrzut_ekranu_32.png "zrzut_ekranu_32")
+### Następnie próbowałem dokonać push z poziomu cmd, lecz nie powiodło się to i nie znalazłem rozwiązania (generowałem również ponownie nowy klucz)
+![Tekst Alternatywny](./zrzut_ekranu_33.png "zrzut_ekranu_33")
+### pusha dokonałem z poziomu maszyny wirtualnej
+* kamil@kamil-VB:~/Pulpit/DevOps_Laby/MDO2022_S/ITE/GCL03/KK401258/Lab01$ git push --set-upstream origin KK401258
+![Tekst Alternatywny](./zrzut_ekranu_34.png "zrzut_ekranu_34")
+## Próbowałem wyciągnąć swoją gałąź KK401258 do gałęzi grupowej ITE-GCL03 - nie powiodło się, branche nie zosatły złączone
+* kamil@kamil-VB:~/Pulpit/DevOps_Laby/MDO2022_S/ITE/GCL03/KK401258/Lab01$ git merge KK401258
+![Tekst Alternatywny](./zrzut_ekranu_35.png "zrzut_ekranu_35")
+![Tekst Alternatywny](./zrzut_ekranu_36.png "zrzut_ekranu_36")
 
 # Ad 7) Wystaw Pull Request do gałęzi grupowej
-
+## Po zapisaniu sprawozdania wystawiłem Pull Request
 # Ad 8) Zgłoś zadanie (Teams assignment - jeżeli dostępne)
 
 
