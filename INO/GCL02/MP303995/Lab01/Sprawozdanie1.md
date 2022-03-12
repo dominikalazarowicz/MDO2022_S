@@ -30,3 +30,10 @@ W tym celu wykorzystałem polecenie ssh-keygen podając również swój mail z g
    ![Alt text](./gitcheckouts.png)
 10. Utworzyłem swoją gałąź zgodnie z przedstawioną w instrukcji konwencją, na którą odrazu się przełączyłem (checkout -b).  Po czym przeszedłem w odpowiednie miejsce w katalogiach i utworzyłem swó folder na sprawozdanie i pliik, które w nim umieściłem
    ![Alt text](./newbranch_dir.png)
+11. Dodałem aktualny stan sprawozdania wraz ze wszystkimi zrzutami ekranu, które wykonałem, a następnie utworzyłem commita i wypchnąłem zmiany do zdalnego repozytorium.
+  ![Alt text](./gitpushToOrigin.png)
+12. Spróbowałem wciągnąc swoją gałąź do gałęzi grupowej. W tym celu spróbowąłem zmergowania swojego brancha z branchem grupy korzystając z polecenia git merge.
+Operacja nie powiodła się, poniewaz branch grupowy jest na remote branchem typu protected co powoduję, że przy takiej operacji nastepuje odmowa bezpośredniego merga.
+  ![Alt text](./mergeFail.png)
+13. Dokonczyłem sprawozdanie i utworzyłem pull requesta.
+  ![Alt text](./pullRequest.png)
