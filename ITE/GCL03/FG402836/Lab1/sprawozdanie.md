@@ -8,7 +8,7 @@ Filip Górnicki gr III DevOps
 ### Zainstalowałem Gita oraz SSH-Server
 ## 2. Sklonowanie repozytorium przy pomocy HTTPS
 ![Operacja git clone](Obraz2.jpg)
-###Wykonując operację git clone, sklonowałem repozytorium 
+### Wykonując operację git clone, sklonowałem repozytorium 
 ## 3. Wygenerowanie klucza SSH, dodanie go jako metodę dostępu do GitHuba oraz sklonowanie repozytorium przy pomocy SSH
 ### a. Generowanie klucza i dodanie go do agenta SSH
 ![Generowanie klucza](Obraz3.jpg)
