@@ -39,4 +39,5 @@ Filip Górnicki gr III DevOps
 ## 8. Próba wciągnięcia gałęzi do gałęzi grupowej
 ![Nieudana próba wciągnięcia gałęzi](Obraz12.JPG)
 ### Nie udało się wciągnąc gałęzi do gałęzi grupowej
+![Nieudana próba wciągnięcia gałęzi](Obraz13.JPG)
 ## 9. Aktualizacja sprawozdania
