@@ -8,7 +8,7 @@ Zadania, które wykonałem:
   1. Zainstaluj klienta Git i obsługę kluczy SSH:
      * Instalacja gita na Linuxie
    
-     ![Image](inst_git.jpg "instalacja_git")
+     ![Image](inst_git.JPG "instalacja_git")
 
      * Sprawdzenie wersji gita
 
