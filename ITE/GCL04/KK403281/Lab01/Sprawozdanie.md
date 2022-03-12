@@ -1,6 +1,6 @@
-#Sprawozdanie z Lab01
+<h1>Sprawozdanie z Lab01</h1>
 
-###Konrad Krzempek
+<h3>Konrad Krzempek</h3>
 
 grupa lab 4
 
