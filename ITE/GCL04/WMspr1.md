@@ -6,7 +6,7 @@ Nawiązałem połączenie z serwerem ssh
 
 
 Skopiowałem ręcznie publiczny klucz z ukrytego folderu /ssh i dodałem go do githuba
-Wygenerowałem klucze ECDSA <br />
+ <br />Wygenerowałem klucze ECDSA <br />
 ![](key.png)
 
 
