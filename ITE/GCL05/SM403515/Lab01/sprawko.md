@@ -43,3 +43,12 @@ touch sprawko.md
 ```
 
 ![This is an image](newdirandfile.png)
+
+### Wysłanie wszystkiego do zdalnego repozytorium
+
+```
+git commit -m "First part of Lab"
+git push origin SM403515
+```
+
+![This is an image](updatecommit.png)
