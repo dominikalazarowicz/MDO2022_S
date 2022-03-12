@@ -1,11 +1,12 @@
 # Wiktor Mikłasz, grupa 4, 12.03.2022
 
 
-Wygenerowałem klucze ECDSA <br />
+Nawiązałem połączenie z serwerem ssh
 ![](ecdsa.png)
 
 
 Skopiowałem ręcznie publiczny klucz z ukrytego folderu /ssh i dodałem go do githuba
+Wygenerowałem klucze ECDSA <br />
 ![](key.png)
 
 
