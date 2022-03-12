@@ -34,3 +34,5 @@ do gałęźi grupowej
 ![](GITmerge.png)  
 Niestety jak widać nie udało się to  
 ![](Gitnieudane.png)  
+Na koniec wykonałem Pull Request  
+![](PullRequest.png)
