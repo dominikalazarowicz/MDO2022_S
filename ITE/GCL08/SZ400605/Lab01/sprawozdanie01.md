@@ -28,3 +28,7 @@ W trakcie zajęć nie wykorzystuje maszyny wirtualnej dlatego ten punkt został 
 
 ![Commit](./commit.png)
 ![Push](./push.png)
+
+## 8. Wcgianięcie swojej gałęzi do gałęzi grupowej
+
+![Pull](./pull.png)
