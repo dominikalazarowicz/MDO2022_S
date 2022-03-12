@@ -1,10 +1,6 @@
 # Wiktor Mikłasz, grupa 4, 12.03.2022
 
 
-Połączyłem się przez ssh z moją maszyną wirtualną
-![](polaczenie.png)
-
-
 Wygenerowałem klucze ECDSA <br />
 ![](ecdsa.png)
 
