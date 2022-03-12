@@ -23,3 +23,8 @@ W trakcie zajęć nie wykorzystuje maszyny wirtualnej dlatego ten punkt został 
 ## 6. Rozpoczęcie pracy na gałęzi
 
 ![Work](./folder_creation.png)
+
+## 7. Commit i push na repozytorium
+
+![Commit](./commit.png)
+![Push](./push.png)
