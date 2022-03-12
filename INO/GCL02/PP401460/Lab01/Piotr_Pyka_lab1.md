@@ -33,7 +33,15 @@ Przełączono się na gałąź main, a potem na gałąź INO-GCL02
 Stworzono nowy branch o nazwie PP401460
 ![](nowy_branch.png)
 
-Następnie utworzono katalog PP401460 a w nim katalog Lab01
+Utworzono katalog PP401460 a w nim katalog Lab01
 ![](./katalog_PP401460.png)
 ![](./katalog_lab1.png)
 
+Dodano screeny oraz plik sprawozdania
+![](./git_add.png)
+
+Stworzono commita
+![](./git_commit.png)
+
+Wysłano zmiany do zdalnego źródła
+![](./git_push.png)
