@@ -29,7 +29,7 @@ eval "$(ssh-agent -s)"
 ssh-add key_2
 ```
 ![#4](./screenshots/4.jpg)
-![#6](./screenshots/6.png)
+![#6](./screenshots/6.PNG)
 
 Poniższymi poleceniami przełączono się na branch **main** i gałąź grupy, tj. **ITE-GCL05**
 ```git
