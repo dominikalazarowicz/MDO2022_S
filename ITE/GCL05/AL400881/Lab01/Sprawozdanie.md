@@ -37,4 +37,20 @@ git checkout main
 git checkout ITE_GCL05
 ```
 
-Będąc w odpowiedniej gałęzi utworzono nowy katalog o nazwie składającej się z inicjałów i numeru indeksu. W nim utworzono plik ze sprawozdaniem o nazwie **Sprawozdanie** i wydzielono nowy folder do przechowywania screenshotów. 
+Będąc w odpowiedniej gałęzi utworzono nowy katalog w folderze **ITE/GCL05** o nazwie składającej się z inicjałów i numeru indeksu. W nim utworzono plik ze sprawozdaniem o nazwie **Sprawozdanie** i wydzielono nowy folder do przechowywania screenshotów. Kolejny etap zakładał wysłanie plików do zdalnego źródła.
+```
+git add .
+git commit -m "text"
+git push --set-upstream origin AL400881
+```
+![#12](screenshots/12.png)
+
+Następnie spróbowano wciągnąć własną gałąź do gałęzi grupowej:
+```
+git checkout ITE-GCL05
+git merge AL400881
+git add .
+git push
+```
+... co skutkowało następującym wydrukiem:
+![#13](screenshots/13.png)
