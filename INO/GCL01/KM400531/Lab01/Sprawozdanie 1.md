@@ -1,6 +1,6 @@
-#Krzysztof Maurek#
-##Inżynieria Obliczeniowa, gr. 1##
-###Sprawozdanie 1###
+# Krzysztof Maurek #
+## Inżynieria Obliczeniowa, gr. 1 ##
+### Sprawozdanie 1 ###
 Na początku zainstalowałem klienta GIT. Przy dzisiejszym zadaniu używam wersji na system Windows
 lecz od kolejnych zajęć planuje działać na systemie Linux. Sprawdzam wersję zainstalowanego GITa
 za pomocą komendy git --version  
@@ -10,7 +10,7 @@ Następnie sklonowałem repozytorium za pomocą HTTPS
 W kolejnym kroku wygenerowałem dwa klucze SSH z czego jeden jest zabezpieczony hasłem  
 ![](SSHgen.png)  
 Aby można było z nich korzystać na GitHubie, dodałem je w ustawieniach  
-![](GitSSH.png)
+![](GitSSH.png)  
 Następnie uruchomiłem ssh-agent i dodałem do niego moje utworzone klucze. Pozwoli mi to na połącznie się przez
 SSH z GitHubem i skopiowanie poprzez SSH repozytorium.  
 ![](SSHagent.png)  
