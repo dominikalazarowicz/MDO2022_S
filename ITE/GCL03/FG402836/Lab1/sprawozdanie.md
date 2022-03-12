@@ -27,11 +27,11 @@ Poprzednio usunąłem repozytorium sklonowane poprzez HTTPS (rm -r)
 ## 5. Utworzenie własnej gałęzi o nazwie "inicjały & nr indeksu"
 ![Utworzenie własnej gałęzi przy pomocy git checkout -b](Obraz8.jpg)
 ## 6. Dodanie plików do katalogu
-![Dodanie plików do katalogu Lab1](Obraz9.jpg)
+![Dodanie plików do katalogu Lab1](Obraz9.JPG)
 ## 7. Dodanie i wysłanie zmian
-![Dodanie zmian](Obraz10_2.jpg)
-![Wysłanie zmian](Obraz10.jpg)
-![](Obraz11.jpg)
+![Dodanie zmian](Obraz10_2.JPG)
+![Wysłanie zmian](Obraz10.JPG)
+![](Obraz11.JPG)
 ## 8. Próba wciągnięcia gałęzi do gałęzi grupowej
-![Nieudana próba wciągnięcia gałęzi](Obraz12.jpg)
+![Nieudana próba wciągnięcia gałęzi](Obraz12.JPG)
 ## 9. Aktualizacja sprawozdania
