@@ -8,10 +8,10 @@ Wykonanie laboratorium:
 
 ![clone](./clone-hhtps.png)
 - utworzenie dwóch kluczy SSH
-- hasłem
+* z hasłem
 
 ![ssh-pass](./ssh-pass.png)
--bez hasła
+* bez hasła
 
 ![ssh-no-pass](./ssh-no-pass.png)
 - klucze na githubie
