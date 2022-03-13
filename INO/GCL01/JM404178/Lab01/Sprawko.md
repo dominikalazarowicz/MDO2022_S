@@ -7,12 +7,14 @@
 
 Do zainstalowania klienta Git uzylem komendy: sudo apt-get install git oraz utworzylem config za pomoca komendy git config.
 Obsluga kluczy SSH byla juz zainstalowana.
+
 2. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S za pomocą HTTPS
 
 Do sklonowania repozytorium uzylem komendy: 
 ```
 git clone <link do repozytorium> <gdzie zapisac> 
 ```
+
 3. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
    - Utwórz dwa klucze SSH, inne niż RSA, w tym co najmniej jeden zabezpieczony hasłem
 
