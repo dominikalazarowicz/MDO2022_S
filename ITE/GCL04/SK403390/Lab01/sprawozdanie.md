@@ -36,3 +36,10 @@ Data: 13.03.2022
 # Utworzenie katalogów i pliku ze sprawozdaniem
 ![mkdir](mkdir.png)
 
+# Wysłanie sprawozdania do zdalnego źródła
+## Git add
+![git add](gitAdd.png)
+## Git commit
+![git commit](gitCommit.png)
+## Git push
+![git push](gitPush.png)
