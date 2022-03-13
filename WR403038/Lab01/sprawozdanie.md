@@ -7,4 +7,13 @@ Sprawozdanie LAB01 Weronika Rusinek 403038
 3. Przełączanie między gałęziami: git checkout main, git checkout ITE-GCL07
 4. Tworzenie nowej gałęzi: git branch WR40303
 ![plot](./DEVOPS1_screenshots/Branch+sprawozdanie.png)
+5. 
+  - tworzenie nowego katalogu: mkdir
+  - dodawanie sprawozdania: touch
+  - Sprawdzenie statusu, śledzenie plików: git status, git add . 
+  - Tworzenie commita: git commit -m "nazwa commita"
+  -  Wyciąganie brancha: gitt push orign WR403038
+![plot](./DEVOPS1_screenshots/add_status.png)
+![plot](./DEVOPS1_screenshots/Commit_push.png)
+6. Pull Request
 
