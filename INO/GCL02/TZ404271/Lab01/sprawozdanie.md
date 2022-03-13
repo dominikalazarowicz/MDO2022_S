@@ -37,5 +37,11 @@ git config --global user.name "ziobrowskyy"
 
 ![Pierwszy commit](./SS/first-commit.png)
 
+### 5. Wykonanie pull requesta zmian
+- należało zrobić push brancha. Pojawił się komunikat, że nie ma w remote repozytorium brancha o takiej nazwie, więc należało go utworzyć poprzez `git push --set-upstream origin TZ404271`
 
-![](./SS/.png)
+![Pierwszy push z błędem](./SS/git-push-1.png)
+![Drugi push z set-upstream origin](./SS/git-push.png)
+
+- nastepnie za pomocą przeglądarki utworzono pull request
+![Pull request](./SS/pull-request.png)
