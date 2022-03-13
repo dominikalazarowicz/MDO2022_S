@@ -14,3 +14,7 @@
 4. Rozpocząłem pracę na nowej gałęzi DG306441, oraz utworzyłem nowe katalogi oraz umieściłem w katalogi Lab01 plik sprawozdania oraz zrzuty ekranu.
 ![Screenshot 7](Screenshot_8)
 ![Screenshot 8](Screenshot_9)
+5. Dodałem pliki do zdalnego repozytorium.
+![Screenshot 9](Screenshot_10)
+![Screenshot 10](Screenshot_11)
+
