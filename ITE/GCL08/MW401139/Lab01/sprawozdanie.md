@@ -1,6 +1,6 @@
 # Michał Wojdyła 401139
 
- #instalacje gita oraz obsługę kluczy ssh pominięto, gdyż git był już używany urządzeniu
+# instalacje gita oraz obsługę kluczy ssh pominięto, gdyż git był już używany urządzeniu
 
  Sklonowanie repozytorium
 
