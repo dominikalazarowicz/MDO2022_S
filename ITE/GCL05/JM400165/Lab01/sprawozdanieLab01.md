@@ -13,7 +13,7 @@ W tym celu użyto polecenia:
 
 ssh-keygen -t ed25519 -C "tutaj_E-mail"
 
-![](./screeny/SCR08.png)
+![](./screeny/SCR08.PNG)
 
 Potem uruchomiony został agent SSH, do którego dodano klucze
 
@@ -42,7 +42,7 @@ git push --set-upstream origin JM400165
 
 Wynikiem czego, było:
 
-![](./screeny/SCR09.png)
+![](./screeny/SCR09.PNG)
 
 Kolejnym krokiem było sprawdzenie, czy można wyciągnąć własną gałęź do gałęzi grupowej.
 Okazało się, że nie można, skutkowało to następującym błędem:
