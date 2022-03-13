@@ -33,3 +33,11 @@
 
 ## Aby ułatwić pracę i przesłanie screenshotów do sprawozdania skonfigurowano połączenie menedżera plików WinSCP z maszyną wirtualną
 ![winSCP](setup_winSCP.jpg)
+
+## Przesłano przy pomocy menedżera sprawozdanie na maszynę wirtualną wraz ze screenshotami oraz zcommitowano zmiany
+![sprawko](commit_sprawozdanie.jpg)
+
+## 7. Wystawiono pull requesta do grupowego brancha
+![sprawko](pull_request.jpg)
+
+### Po wystawieniu pull requesta dodano do niego dodatkowy przedstawiający ten właśnie krok
