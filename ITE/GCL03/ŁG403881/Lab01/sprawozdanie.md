@@ -58,3 +58,9 @@
 
     - ![commit](./14.png)
 
+8. git push
+
+    - ![push](./15.png)
+
+9. Pokazanie wysłanego pull requesta
+    - ![pull request](./16.png)
