@@ -16,6 +16,8 @@
 ![](github.png)
 * Dodanie klucza do SSH  
 ![](add.png)
+* Test połączenia
+![](test.png)
 * Klonowanie repozytorium za pomocą SSH  
 ![](ssh.png)
 ### 4. Przełączanie się między gałęziami
@@ -30,3 +32,8 @@
 ![](catalog.png)
 * Utworzenie podkatalogu **Lab01**  
 ![](under.png)
+* Dodanie pliku ze sprawozdaniem oraz zrzuty ekranu  
+![](add2.png)
+* Wysłanie zmian  
+![](commit.png)  
+![](push.png)
