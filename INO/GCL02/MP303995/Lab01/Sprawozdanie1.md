@@ -20,7 +20,7 @@ W tym celu wykorzystałem polecenie ssh-keygen podając również swój mail z g
 6. Dodanie kluczy na Githubie:
 ![github_keys](./ssh-github.png)
 
-7. Aby móc używać ssh przez moje konto wykorzystałem polecenie "eval":
+7. Aby móc używać ssh przez moje konto wykorzystałem polecenie ```ssh-add <klucz>```, za pomocą którego dodałem wygenerowany wcześniej klucz do ssh-agent:
    ![Alt text](./eval.png)
    
 ## Praca z repozytorium
