@@ -14,8 +14,9 @@
     ![screen_03_2](./screen_03_02_1.png)
     ![screen_03_2](./screen_03_02_2.png)
     + Sklonowanie repo przey użyciu ssh\
-    ![screen_03_3](./screen_003.png)
-4. 5. Przejście do odpowiedniego brancha i utworzenie własnego\
+    ![screen_03_3](./screen_03_03.png)
+4. Zrobione w pkt5
+5. Przejście do odpowiedniego brancha i utworzenie własnego\
     ![screen_05](./screen_05.png)
 6. Przejście do odpowiedniej ścieżki i utworzenie pliku sprawozdania\
     ![screen_06](./screen_06.png)
