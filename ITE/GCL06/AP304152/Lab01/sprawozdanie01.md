@@ -58,3 +58,7 @@
 -Wciągnięcie utworzonej gałęźi do gałęzi grupowej:
 
 ![Obraz](12.png)
+
+-Utworzenie nowego pull request:
+
+![Obraz](13.png)
