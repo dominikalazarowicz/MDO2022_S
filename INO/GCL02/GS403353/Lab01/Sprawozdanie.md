@@ -16,7 +16,7 @@
 ![](github.png)
 * Dodanie klucza do SSH  
 ![](add.png)
-* Test połączenia
+* Test połączenia  
 ![](test.png)
 * Klonowanie repozytorium za pomocą SSH  
 ![](ssh.png)
