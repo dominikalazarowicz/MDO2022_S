@@ -49,3 +49,12 @@
 5. Sprawdzenie struktury plików
 
     - ![Sprawdzenie](./12.png)
+
+6. git add *
+
+    - ![add](./13.png)
+
+7. git commit
+
+    - ![commit](./14.png)
+
