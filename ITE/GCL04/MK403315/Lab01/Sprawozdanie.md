@@ -34,14 +34,41 @@
 
 ### Historia terminalu
 ```
- 1731  ls
- 1732  .code
- 1733  code .
- 1734  ls
- 1735  cleat
- 1736  clear
- 1737  ls
- 1738  ls -al
- 1739  history
+ 1740  git
+ 1741  ssh
+ 1742  ssh-keygen -t ed25519 -C "mati.kwiecien@gmail.com"
+ 1743  eval "$(ssh-agent -s)"
+ 1744  ssh-add ~/.ssh/id_ed25519
+ 1745  cd pull/
+ 1746  ls
+ 1747  git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+ 1748  ls
+ 1749  cd MDO2022_S/
+ 1750  ls
+ 1751  git checkout main 
+ 1752  git branch 
+ 1753  ls
+ 1754  git checkout -b MK403315 origin/ITE-GCL04
+ 1755  ls
+ 1756  cd ITE/
+ 1757  ls
+ 1758  cd GCL04/
+ 1759  ls
+ 1760  mkdir MK403315
+ 1761  ls
+ 1762  cd MK403315/
+ 1763  ls
+ 1764  mkdir Lab01
+ 1765  ls
+ 1766  cd Lab01/
+ 1767  git status
+ 1768  git add .
+ 1769  git commit -m "pierwszy commit"
+ 1770* 
+ 1771  git add .
+ 1772  git commit -m "pierwszy commit"
+ 1773  git add .
+ 1774  git commit -m "final commit"
+ 1775  history
 
 ```
