@@ -18,5 +18,9 @@
 4. Zrobione w pkt5
 5. Przejście do odpowiedniego brancha i utworzenie własnego\
     ![screen_05](./screen_05.png)
-6. Przejście do odpowiedniej ścieżki i utworzenie pliku sprawozdania\
+6.  + Przejście do odpowiedniej ścieżki i utworzenie pliku sprawozdania\
     ![screen_06](./screen_06.png)
+    + Merge \
+    ![screen_06](./screen_06_01.png)
+    + Próba wypchnięcia swoich zmian\
+    ![screen_06](./screen_06_02.png)
