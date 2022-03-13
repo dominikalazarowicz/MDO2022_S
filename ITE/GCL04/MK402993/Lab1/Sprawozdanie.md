@@ -1,10 +1,12 @@
-# Sprawozdanie 1
-## Lab 1
+# Sprawozdanie DevOps lab1
+## Michał Krzemień
+### Informatyka Techniczna 
+#### Grupa laboratoryjna 4.
 
 W celu wykonania zadania skorzystano z maszyny wirtualnej z systemem Ubuntu 20.04.4 live server z wcześniej zainstalowanym serwerem ssh. 
 
 ![serverSSH](images/serverSSH.png)
-
+![ssh_connection](images/ssh_server_connection.png)
 
 1. Połączono się z serwerem ssh z maszyny hosta poprzez wykorzystanie narzędzia ssh z poziomu terminala Windows PowerShell. Połączenie zostało zrealizowane poprzez forward portu 22 z maszyny gościa.
 
@@ -44,4 +46,14 @@ W celu wykonania zadania skorzystano z maszyny wirtualnej z systemem Ubuntu 20.0
 
 ![dir_create](images/dir_create.png)
 
-10. 
+10. Częściową wersję sprawozdania przesłano na serwer ssh przy pomocy oprogramowania FileZilla. 
+
+11. Wprowadzone zmiany na gałęzi dodano poleceniem `git add .`, a następnie utworzono commita przy pomocy komendy `git commit -m`. Zmiany zostały wysłane do zdalnego źródła poleceniem `git push --set-upstream`.
+
+![first_push](images/first_push.png)
+
+12. Wykonano próbę połączenia utworzonej gałęzi MK402993 z gałęzią grupową. Na poziomie lokalnym próba zakończyła się powodzeniem, ale przy próbie wysłania zmian do źródła próba została odrzucona ze względu na to, że gałąź grupowa jest gałęzią chronioną.
+
+![git_merge_failed](images/git_merge_failed.png)
+
+13. Zaktualizowano sprawozdanie, przesłano je do repozytorium i wystawiono pull request'a.
