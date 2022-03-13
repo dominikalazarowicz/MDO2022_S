@@ -2,13 +2,13 @@
 
 ##Niestety zapomniałem zescreenować pierwsze dwa i część trzeciego punktu w trakcie robienia, więc musiałem korzystać z historii terminala (polecenie history)
 
-1. Instalacja gita na VM (ssh był już zainstalowany)\n 
+1. Instalacja gita na VM (ssh był już zainstalowany)\
     ![screen_01](./screen_01_01.png)
     
-2. Sklonowanie repo za pomocą https\n
+2. Sklonowanie repo za pomocą https\
     ![screen_02](./screen_02.png)
 3. 
-    + Utworzenie klucza ssh \n
+    + Utworzenie klucza ssh \
     ![screen_03_1](./screen_03_01.png)
     + Skonfigurowanie klucza ssh jako metodę dostępu do GitHuba
     ![screen_03_2](./screen_03_02_1.png)
