@@ -58,6 +58,6 @@ chmod +x commit-msg
 
 (Podpunkt 5)
 
-Wykonano pull rquest do brancha macierzystego Grupa2
+Zrobione merge do  Grupa2
 
 
