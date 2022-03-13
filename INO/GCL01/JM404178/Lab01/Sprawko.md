@@ -57,7 +57,9 @@ Tutaj uzylem sklonowanego repozytorium do utworzenia folderu.
 ![Sprawko](https://cdn.discordapp.com/attachments/952649149004783761/952649221503332352/3.png)
 
    - Dodaj zrzuty ekranu (jako inline)
+   
 Done
+
    - Wyślij zmiany do zdalnego źródła
    - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
    - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
