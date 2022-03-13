@@ -64,7 +64,7 @@ Celem laboratorium byo wprowadzenie do obsugi serwisu GitHub zbudowanie gałęzi
 
   ![img](Lab_01.png)
 
-  9. Stworzenie pliku sprawozdanie.md poleceniem `code sprawozdanie.md` w ktorym zostanie umieszczone sproawozdanie z wykonanego cwiczenia 
+  9. Stworzenie pliku sprawozdanie.md w aplikacji Visual Studio Code poleceniem `code sprawozdanie.md` w ktorym zostanie umieszczone sproawozdanie z wykonanego cwiczenia 
 
   ![img](Plik_sprawozdanie.png)
 
