@@ -2,7 +2,7 @@
 
 ## Cel ćwiczeń laboratoryjnych:
 
-    Celem ćwiczeń było zapoznanie się z podstawową obsługą i działaniem środowiska GitHub. Utworzenie własnej gałęzi w repozytorium i połączenie się z nią za pomocą SSH.
+Celem ćwiczeń było zapoznanie się z podstawową obsługą i działaniem środowiska GitHub. Utworzenie własnej gałęzi w repozytorium i połączenie się z nią za pomocą SSH.
 
 ## Wykonanie ćwiczenia:
 
@@ -14,11 +14,11 @@
 
  * Sprawdzenie czy poprawnie zainstalowano Git'a za pomocą polecenia `git --version` :
 
-     ![img](DevOps_lab1_ss2.png)
+    ![img](DevOps_lab1_ss2.png)
 
  * Instalacja SSH poleceniem `sudo apt-get install openssh-server` :
 
-     ![img](DevOps_lab1_ss3.png)
+    ![img](DevOps_lab1_ss3.png)
 
 
 2. Sklonowanie repozytorium za pomocą HTTPS komendą `git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S` :
