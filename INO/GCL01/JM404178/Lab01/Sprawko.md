@@ -45,11 +45,17 @@ Do utworzenia nowej galezi uzywamy komendy git checkout, lecz w tym przypadku uz
 6. Rozpocznij pracę na nowej gałęzi
    - W katalogu właściwym dla grupy utwórz nowy katalog, także o nazwie "inicjały & nr indeksu" np. ```KD232144```
 Tutaj uzylem sklonowanego repozytorium do utworzenia folderu.
+
 ![JM404178](https://cdn.discordapp.com/attachments/952649149004783761/952649222098935828/1.png)
+
    - W nim także utwórz katalog: Lab01
+   
 ![Lab01](https://cdn.discordapp.com/attachments/952649149004783761/952649221885005854/2.png)
+
    - W nowym katalogu dodaj plik ze sprawozdaniem
+   
 ![Sprawko](https://cdn.discordapp.com/attachments/952649149004783761/952649221503332352/3.png)
+
    - Dodaj zrzuty ekranu (jako inline)
 Done
    - Wyślij zmiany do zdalnego źródła
