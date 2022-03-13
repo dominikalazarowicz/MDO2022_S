@@ -10,14 +10,9 @@
 
 ![Screen 2](screenshots/ssh_key.png)
 
-## Utworzenie klucza algorytmem ED25519
-
-![Screen 3](screenshots/Screenshot_20220309_210926.png)
-
-
 ## Utworzenie własnego branch'a
 
-![Screen 5](screenshots/branch_change.png_)
+![Screen 5](screenshots/branch_change.png)
 
 ## Utworzenie odpowiedniej struktury folderów
 
