@@ -76,9 +76,9 @@
 
         git merge MC402449
 
-        git push**
+        git push
 
     ![](11.png)
-    
+
     ![](12.png)
 
