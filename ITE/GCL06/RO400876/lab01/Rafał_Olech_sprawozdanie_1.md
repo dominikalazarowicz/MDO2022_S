@@ -79,8 +79,20 @@
     ![img](DevOps_lab1_ss19.png)
 
  * Tworzenie sprawozdania w aplikacji Visual Studio Code.
- 
-    
+
+ * Dodanie commitu za pomocą komend `git add .` oraz `git commit -m "Rafal Olech - sprawozdanie lab01"` :
+
+    ![img](DevOps_lab1_ss20.png)
+
+ * Zaktualizowanie zmian korzystając z poleceń `git pull` oraz `git push` :
+
+    ![img](DevOps_lab1_ss21.png)
+
+ * Wykonanie Pull Request swojej gałęzi do gałęzi grupowej.
+
+
+
+
 
 
 
