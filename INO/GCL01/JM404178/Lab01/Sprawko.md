@@ -67,5 +67,6 @@ Done
    Nieudana proba mergowania.
 
 ![Merge attempt](https://cdn.discordapp.com/attachments/952649149004783761/952653039037218896/4.png)
+
 7. Wystaw Pull Request do gałęzi grupowej
 8. Zgłoś zadanie (Teams assignment - jeżeli dostępne)
