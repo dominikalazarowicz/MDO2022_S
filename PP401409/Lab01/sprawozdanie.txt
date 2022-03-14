@@ -24,7 +24,7 @@ Sprawdzenie statusu plików
 4. git commit -m"Twoja wiadomosc"
 Tworzenie zapisu do lokalnego repozytorium, flaga -m sluzy do nazwania commita
 
-5. git push --set-upstream origin BB401928 
+5. git push --set-upstream origin PP401409
 Polecenie wypycha na repozytorium zmiany,
 
 flaga --set-upstream origin PP401409 
