@@ -33,7 +33,7 @@
     
     ![3_klon](./img/zad3.klon.png)
         
-        ![3_github](./img/3_github.png)
+    ![3_github](./img/3_github.png)
 
 
 
