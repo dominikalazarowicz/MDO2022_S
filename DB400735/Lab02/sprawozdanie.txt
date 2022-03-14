@@ -25,3 +25,19 @@ Sprawozdanie LAB02
    Utworzylem nowa branch poleceniem:
    	git checkout -b Grupa01-DB400735_Lab02
    Umiescilem pliki w folderze Lab02
+4. Stworzylem git hooka ktory weryfikuje czy commit zaczyna sie od DB400735 w tym celu:
+   utworzylem plik commit-msg w katalogu .git/hooks/,
+   nadalem mu odpowiednie uprawnienia poleceniem:
+   	chmod +x commit-msg
+   kod githooka:
+   
+#!/bin/bash
+name='DB400735*'
+msg="Incorrect commit message!!"
+if ! grep -iqE "$name" "$1"; then
+	echo "$msg"
+	exit 1
+fi
+echo "Correct commit message."
+
+
