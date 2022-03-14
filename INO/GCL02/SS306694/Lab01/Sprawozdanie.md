@@ -14,3 +14,8 @@
 ![](4.png)
 * Pracowano na utworzonej nowej gałęzi
 ![](5.png)
+* Dodano commit i wysłano zmiany do zdalnego źródła
+![](6.png) 
+![](7.png)
+* Utworzono PR
+![](8.png)
