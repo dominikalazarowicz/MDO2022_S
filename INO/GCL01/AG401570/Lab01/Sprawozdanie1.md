@@ -9,7 +9,7 @@
 ![gitSSH](gitSSH.png)
 
 [2] Sklonowano repozytorium za pomocą HTTPS.
-
+```bash
 		$ git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
 ```
 
