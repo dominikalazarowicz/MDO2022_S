@@ -17,7 +17,7 @@
 	- cd ../..
 	- git add .
 	- git commit -m "Polecenie"
-	
+	- git push --set-upstream origin DK306669
 
 	
 
