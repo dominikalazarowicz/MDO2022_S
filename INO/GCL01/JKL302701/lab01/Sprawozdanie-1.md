@@ -3,22 +3,27 @@
  `sudo apt-get install git`
    instalacja gita.
 
+
 ![git install](./git install.PNG)
 
 
 
 `git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git ` 
- Klonuje repozytorium za pomocą protokołu HTTPS
+Klonuje repozytorium za pomocą protokołu HTTPS
 ![HTTPS clone](./HTTPS clone.PNG)
 
 `ssh-keygen -t ed25519 -C "jan.krol.legowski@gmail.com" ` 
 Generuje nowy klucz SSH
+
+
 ![ssh-key](./ssh-key.PNG)
+
 
 
 `eval "$(ssh-agent -s)"`
 `ssh-add ~/.ssh/id_ed25519`
 Dodaje klucz prywatny do ssh agent
+
 ![ssh agent](./ssh agent.PNG)
 
 
@@ -33,6 +38,7 @@ Ustawienie nazwy oraz adresu email
 
 `git checkout main` 
 Przełączam się na gałąź main
+
 ![branch-main](./branch-main.PNG)
 
 Za pomocą  komendy `cd` przechodzę do swojej  grupy
