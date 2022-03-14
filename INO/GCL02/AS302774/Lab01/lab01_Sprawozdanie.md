@@ -16,7 +16,7 @@
 2. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S za pomocą HTTPS
     - Klonowanie repozytoriumn jest potrzebne w celu dokonywania w nim własnych zmian. W celu sklonowania repozytorium za pomocą HTTPS, skopiowany został link z GitHuba zaznaczając wcześniej opcję HTTPS. Mając w schowku odpowiedni adres repozytorium wykonano komendę <git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git>
     
-            ![zad2](./img/zad2.png)
+        ![zad2](./img/zad2.png)
 
 
 3. Upewnij się w kwestii dostępu do repozytorium jako uczestnik i sklonuj je za pomocą utworzonego klucza SSH
@@ -31,7 +31,7 @@
    - Sklonuj repozytorium z wykorzystaniem protokołu SSH
          -  Chcąc analogicznie do zadania 2 skopiować repozytorium napotkamy się na problem istniejącego juz repozytorium. Aby wykonać zadanie nalezało wejść do MD02022_S komendą <cd MD02022_S>. Będąc w odpowiednium katalogu, sprawdzone jakim sposobem zostało sklonowane repozytorium - <git remote -v>.Zmienienie HTTPS na SSH wykonano komendą <git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git>. 
     
-        ![3_klon](./img/3_klon.png)
+    ![3_klon](./img/3_klon.png)
         
         ![3_github](./img/3_github.png)
 
@@ -65,14 +65,14 @@
 
         - Żeby wysłać zmiany do zdalnego źródła, naley najpierw śledzić odpowiednie pliki. Pliki mozna zaznaczyć do sledzenia za pomocą komendy <git add .>. Gdy git obserwuje juz dany plik czy folder, status elementów mozna sprawdzić uzywając komendy <git status>, która informuje jakie pliki są śledzone oraz czy w tych plikach wystąpiły zmiany po ostatnim przesłaniu. W celu wysłania zmian plików śledzonych do zdalnego źródła wykonujemy komendę <git commit>. Kolejnym krokiem było wysłanie sprawozdania wykonująąc polecejnie <git push --set-upstream origin AS302774>. 
 
-                ![zad6_2](./img/zad6_2.png)
+    ![zad6_2](./img/zad6_2.png)
 
 
    - Spróbuj wciągnąć swoją gałąź do gałęzi grupowej
 
     -  zeby przejsc do gałęzi main aby wciągnąć swoją gałąź do gałęzi grupowej nalezało wceśniej zatwierdzić wszystkie zmiany w śledzonych plikach. Gdy na liście oczekujących plików nie było juz nic, zmieniono gałąź na gałąź main a następnie na gałąź grupy do której ostatecznie miała być zaciągnięta moja gałąź. Zaciągnięta została moja gałąź na gałąź grupy za pomocą komend <git checkout INO-GCL02> a następnie <git merge AS302774>. Z uwagi na to iz branch grupowy jest zabezpieczony, nie mozna bezposrednio zmergowac galezi, komunikat o zabezpieczonej gaałezi wyświetla się po  pushowaniu. 
     
-                ![zad6_3](./img/zad6_3.png)
+    ![zad6_3](./img/zad6_3.png)
 
 
    - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyślij aktualizację do zdalnego źródła (na swojej gałęzi)
