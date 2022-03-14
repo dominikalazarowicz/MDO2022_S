@@ -75,3 +75,6 @@ Wysłano zmiany do zdalnego źródła.
 ```
 
 ![send](send.png)
+
+Następnie spróbowano wyciągnąć swoją gałąź do gałęzi grupowej.
+![merge](merge.png)
