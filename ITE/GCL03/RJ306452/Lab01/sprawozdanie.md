@@ -37,5 +37,7 @@ Zrzut ekranu:
 ![](./15.png)
 7. Wypchnięcie commit'a.  
 ![](./16.png)
-8. Pull request.  
+8. Poprawa struktury katalogów.  
 ![](./17.png)
+9. Pull request.  
+![](./18.png)
