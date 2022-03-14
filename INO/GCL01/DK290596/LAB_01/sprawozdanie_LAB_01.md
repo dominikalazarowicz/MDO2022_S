@@ -62,3 +62,4 @@ Dla zadania piatego nalezalo utworzyc wlasna galaz od galezi grupowej o odpowied
 ### Zadanie6.
 
 Z racji ze wszystkie zadania byly robione po kolei a dopeiro na koniec pisane sprawozdanie to po utworzeniu wlasnej galezi w zadniu piatym w folderze grupowym zostaly utworzone odpowiednie foldery, a w folderze doecelowym umieszczone dotychczas zrobione zrzuty. Kolejno zostaly one zakomitowane by w momencie pisania sprawozdania przeklejac sobie juz linki od zrzutow. 
+Po tej operacji przeslalem sprawozdanie do repozytorium zdalnego by zobaczyc czy formatowanie dziala. Ponizej znajduje sie zrzut pokazujacy jak dodawac pliki do sledzenia przy uzyciu polecenia **git add -A**, -A jest uzywane z racji by wszystkie sie dodaly. Komitowanie odbywa sie za przy pomocy polecenia **git commit -m** a w cudzyslowie zaweirami informacje do komita. Ponizej zrzut to przedstawiajacy. 
