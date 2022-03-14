@@ -15,5 +15,16 @@ Sprawozdanie LAB01 Weronika Rusinek 403038
   -  Wyciąganie brancha: gitt push orign WR403038
 ![plot](./DEVOPS1_screenshots/add_status.png)
 ![plot](./DEVOPS1_screenshots/Commit_push.png)
+--------------- POPRAWKI KATALOGÓW -----------------------
+Poprawki wykonano przy użyciu WSL, a nie tak jak poprzednio maszyny wirtualnej 
+1. Wyszukanie poprzednio stworzonej gałęzi i zaimportowanie jej
+![plot](./DEVOPS1_screenshots/edit.png)
+2. Przeniesienie plików do odpowiedniego katalogu
+![plot](./DEVOPS1_screenshots/move.png)
+3. Commit poprawy katalogów: 
+![plot](./DEVOPS1_screenshots/commit_poprawa.png)
+4.Wyczyszczenie i commit dla poprzedniej lokalizacji plików
+![plot](./DEVOPS1_screenshots/fix.png)
+![plot](./DEVOPS1_screenshots/commit_fix.png)
 6. Pull Request
 
