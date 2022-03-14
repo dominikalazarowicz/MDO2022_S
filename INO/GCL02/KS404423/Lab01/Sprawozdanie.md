@@ -196,3 +196,23 @@ $ sudo docker run --interactive --tty ubuntu sh
 Wartości te są takie same jak wartości WSL Ubuntu:
 
 ![image-20220314215432636](./image-20220314215432636.png)
+
+
+
+Następnie utworzono konto na [Docker Hub](https://hub.docker.com/):
+
+<img src="C:\Users\kale2\OneDrive\Dokumenty\MDO2022_S\INO\GCL02\KS404423\Lab01\image-20220314220757722.png" alt="image-20220314220757722" style="zoom:67%;" />
+
+<img src="C:\Users\kale2\OneDrive\Dokumenty\MDO2022_S\INO\GCL02\KS404423\Lab01\image-20220314220843278.png" alt="image-20220314220843278" style="zoom:67%;" />
+
+Wybrano odpowiedni plan:
+
+<img src="C:\Users\kale2\OneDrive\Dokumenty\MDO2022_S\INO\GCL02\KS404423\Lab01\image-20220314220913465.png" alt="image-20220314220913465" style="zoom: 67%;" />
+
+Potwierdzono wiadomość na mailu:
+
+<img src="C:\Users\kale2\OneDrive\Dokumenty\MDO2022_S\INO\GCL02\KS404423\Lab01\image-20220314221052571.png" alt="image-20220314221052571" style="zoom:67%;" />
+
+Gotowe:
+
+![image-20220314221106289](C:\Users\kale2\OneDrive\Dokumenty\MDO2022_S\INO\GCL02\KS404423\Lab01\image-20220314221106289.png)
