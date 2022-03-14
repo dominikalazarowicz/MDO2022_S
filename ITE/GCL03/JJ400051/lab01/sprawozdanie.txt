@@ -1,0 +1,5 @@
+1. Sklonowano repozytorium poleceniem "git clone 'adres'"
+2.Utworzono nowy branch w lokalnym repozytorium o nazwie JJ400051, poleceniem "git branch -b JJ400051". W nim powstał podfolder "lab01", w którym umieszczono wszystkie pliki wymagane do zaliczenia laboratorium. Dodano je do repozytorium poleceniem "git add sprawozdanie.txt" i wykonano commit poleceniem "git committ -m "Dodanie sprawozdania" ". 
+3. Poleceniem "git push --set-upstream origin JJ400051" zmiany wprowadzone w repozytoium zostały wysłane do githuba.
+
+
