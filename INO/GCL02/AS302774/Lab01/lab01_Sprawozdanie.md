@@ -6,7 +6,7 @@
 1. Zainstaluj klienta Git i obsługę kluczy SSH 
     - Z uwagi na potrzebę wcześniejszego korystania z GitHuba, git zostal zainstalowany na komputerze przed labolatoriami. Instalacja została wykonana za pomocą homebrew, natomiast w celu sprawdzenia, czy faktycznie git jest poprawnie zainstalowany, wywołano komendę <git --version>, która wskazała wersję 2.33.1.
 
-    ![image-zaad0_gitversion](./img/zad0_giversion.png)
+    ![image-zaad0_gitversion](./img/zad0_gitversion.png)
 
     - Kolejnym krokiem było włączenie obsługi kluczy SSH i wygenerowaanie klucza prywatnego i publicznego. Ten krok wykonywany jest do ułatwienia sobie pracy w przyszłości, a mianowicie do zapobiegania wielokrotnego pytania o haslo, czy loginu do konta. Za pomocą <git ssh-keygen> zostały stworzone dwa klucze prywatny i publiczny. Klucz publiczny został dodany na GitHuba pod nazwą public. W tym kroku, zadnemu z kluczy nie nadano hasła, klucze były typu RSA i nazywają się keys oraz keys.pub.
 
