@@ -23,4 +23,5 @@ probujemy domergeowac nasze zmiany do brancha grupy, nie mamy do tego uprawnien 
     lokalnie mergeujemy `git merge KG403931`  
     probujemy wypchac `git push` <- tu dostaemy odmowe, brak uprawnien  
 te aktualizacje aktualizacji mozna robic w nieskocznonosc wiec ta jest ostantia  
-zapomniaelm ze markdown wymaga dwoch spacji zeby zrobic \n to jednak final2.0lastnew________
+zapomniaelm ze markdown wymaga dwoch spacji zeby zrobic nową linię  
+i tam modyfikacja żeby jednak pamiętać później o markowaniu screenów do sprawozdania 👍
