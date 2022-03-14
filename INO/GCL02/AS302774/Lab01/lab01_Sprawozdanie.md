@@ -31,7 +31,7 @@
    - Sklonuj repozytorium z wykorzystaniem protokołu SSH
          -  Chcąc analogicznie do zadania 2 skopiować repozytorium napotkamy się na problem istniejącego juz repozytorium. Aby wykonać zadanie nalezało wejść do MD02022_S komendą <cd MD02022_S>. Będąc w odpowiednium katalogu, sprawdzone jakim sposobem zostało sklonowane repozytorium - <git remote -v>.Zmienienie HTTPS na SSH wykonano komendą <git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git>. 
     
-    ![3_klon](./img/3_klon.png)
+    ![3_klon](./img/zad3.klon.png)
         
         ![3_github](./img/3_github.png)
 
