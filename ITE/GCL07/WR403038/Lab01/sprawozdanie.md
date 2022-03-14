@@ -18,13 +18,13 @@ Sprawozdanie LAB01 Weronika Rusinek 403038
 --------------- POPRAWKI KATALOGÓW -----------------------
 Poprawki wykonano przy użyciu WSL, a nie tak jak poprzednio maszyny wirtualnej 
 1. Wyszukanie poprzednio stworzonej gałęzi i zaimportowanie jej
-![plot](./DEVOPS1_screenshots/edit.png)
+![plot](./DEVOPS1_screenshots/edit.PNG)
 2. Przeniesienie plików do odpowiedniego katalogu
-![plot](./DEVOPS1_screenshots/move.png)
+![plot](./DEVOPS1_screenshots/move.PNG)
 3. Commit poprawy katalogów: 
-![plot](./DEVOPS1_screenshots/commit_poprawa.png)
+![plot](./DEVOPS1_screenshots/commit_poprawa.PNG)
 4.Wyczyszczenie i commit dla poprzedniej lokalizacji plików
-![plot](./DEVOPS1_screenshots/fix.png)
-![plot](./DEVOPS1_screenshots/commit_fix.png)
+![plot](./DEVOPS1_screenshots/fix.PNG)
+![plot](./DEVOPS1_screenshots/commit_fix.PNG)
 6. Pull Request
 
