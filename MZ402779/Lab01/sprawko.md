@@ -27,3 +27,7 @@ Michał Zając - sprawozdanie DevOps z lab_01
 > W swoim osobistym branchu stworzyłem nowy folder o takiej samej nazwie jak mój branch, a w nim został stworzony folder Lab_01. Dodatkowo w tym folderze stworzyłem sprawko oraz folder na screenshoty:
 
 ![plot](./screeny/stworzenie_sprawka.png)
+
+> Utworzono pull requesta:
+
+![plot](./screeny/pull_request.png)
