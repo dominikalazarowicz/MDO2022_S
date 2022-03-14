@@ -6,4 +6,4 @@ Konfiguracja srodowiska git
 ## Przebieg cwiczenia
 1. Zainstalowano klienta git
 2. nastepnie sklonowanie repopzytorium za pomoca SSH
-![Screenshot](ssh_connect.jpg)
+![Screenshot](ssh_connect.png)
