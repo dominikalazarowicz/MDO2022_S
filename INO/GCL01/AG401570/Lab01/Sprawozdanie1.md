@@ -24,7 +24,7 @@
 
 Wygenerowano również klucz SSH zabezpieczony hasłem
 ```bash
-		$ ssh-keygen -t ecdsa -f kluczyk2.id -C annagodek@student.agh.edu.pl
+		$ ssh-keygen -t ed25519 -C annagodek@student.agh.edu.pl
 ```
 
 ![passwordKey](passwordKey.png)
