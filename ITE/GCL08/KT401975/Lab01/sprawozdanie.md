@@ -23,3 +23,8 @@ Przebieg ćwiczenia:
 
 ## 6.	Utworzenie katalogu Lab01:
 ![screen5](im/Picture_5.png)
+
+## 7.	Pull request
+![screen6](im/Picture_6.png)
+![screen6](im/Picture_7.png)
+![screen6](im/Picture_8.png)
