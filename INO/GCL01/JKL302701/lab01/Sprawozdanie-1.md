@@ -2,13 +2,13 @@
 
  `sudo apt-get install git`
  instalacja gita 
- ![git install](./git install.PNG)
+ ![git_install](./git_install.PNG)
 
 
 `git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git `
 Klonuje repozytorium
 
-![HTTPS clone](./HTTPS clone.PNG)
+![HTTPS_clone](./HTTPS_clone.PNG)
 
 
 `ssh-keygen -t ed25519 -C "jan.krol.legowski@gmail.com" ` 
@@ -23,7 +23,7 @@ Generuje nowy klucz SSH
 `ssh-add ~/.ssh/id_ed25519`
 Dodaje klucz prywatny do ssh agent
 
-![ssh agent](./ssh agent.PNG)
+![ssh_agent](./ssh_agent.PNG)
 
 
 `git config --global user.email "jan.krol.legowski@gmail.com" `
@@ -31,7 +31,7 @@ Dodaje klucz prywatny do ssh agent
 Ustawienie nazwy oraz adresu email
 
 
-![git config](./git config.PNG)
+![git_config](./git_config.PNG)
 
 
 
@@ -44,7 +44,7 @@ Za pomocą  komendy `cd` przechodzę do swojej  grupy
 
 `git checkout INO-GCL01` 
  Przełączam się na gałąź swojej grupy
- ![INO-GCL01](./INO-GCL01 branch.PNG)
+ ![INO-GCL01_branch](./INO-GCL01_branch.PNG)
 
 `git checkout -b JKL302701` 
 Tworzę nową gałąź
