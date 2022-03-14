@@ -2,20 +2,30 @@
 
 - Instalacja git i obsługi kluczy SSH.
 - Sklonowanie repozytorium za pomocą HTTPS.
-![](/home/izabela/Desktop/ssy/Screenshot from 2022-03-14 01-08-02.png) 
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20clone%20https.png)
+
 - Utworzenie dwóch kluczy SSH w tym jeden zabezpieczony hasłem.
-![](/home/izabela/Desktop/ssy/Screenshot from 2022-03-14 01-02-52.png) 
-![](/home/izabela/Desktop/ssy/Screenshot from 2022-03-14 01-02-54.png) 
-![](/home/izabela/Desktop/ssy/Screenshot from 2022-03-14 01-02-56.png) 
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/gen%20klucz.png) 
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/gen%20klucz%20bez%20hasla.png) 
 - Konfiguracja klucza SSH jako metody dostępu do GitHuba.
-![](/home/izabela/Pictures/Screenshot from 2022-03-14 02-15-36.png) 
+
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/dodanie%20kluczy%20github.png) 
+- Dodanie kluczy do agenta ssh.
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/ssh%20agent.png)
+- Sklonowanie repozytorium za pomocą SSH.
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20clone%20ssh.png)
+- Konfiguracja Git email/name.
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20config%20email.png)
 - Przełączenie się na gałąź main, a potem na gałąź swojej grupy.
 - Utworzenie naszej gałęzi.
 - Rozpoczęcie pracy na nowej gałęzi.
-![](/home/izabela/Desktop/ssy/Screenshot from 2022-03-14 01-23-23.png) 
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20branch.png)
+
 -  Utworzenie nowego katalogu o naszej nazwie w katalogu właściwym grupy, a w nim podkatalogu Lab01 oraz dodanie pliku ze sprawozdaniem.
-![](/home/izabela/Desktop/ssy/Screenshot from 2022-03-14 01-26-16.png) 
-![](/home/izabela/Pictures/Screenshot from 2022-03-14 02-18-57.png) 
+
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/mkdir%20iw40.png) 
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/touch%20sprawozdanie.png) 
 - Dodanie zrzutow ekranu do katalogu.
 - Wysłanie zmian do zdalnego źródła.
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20push.png)
 - Wyciągnięcie naszej gałęzi do gałęzi grupowej.
