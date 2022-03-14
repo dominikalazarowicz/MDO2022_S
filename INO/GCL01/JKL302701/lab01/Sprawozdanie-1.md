@@ -1,32 +1,42 @@
-﻿# Sprawozdanie 1 
+# Sprawozdanie 1 
 
  `sudo apt-get install git`
    instalacja gita.
 
+![git install](./git_install.png)
+
+
+
 `git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git ` 
  Klonuje repozytorium za pomocą protokołu HTTPS
+![HTTPS clone](./HTTPS clone.png)
 
 `ssh-keygen -t ed25519 -C "jan.krol.legowski@gmail.com" ` 
 Generuje nowy klucz SSH
+![ssh-key](./ssh-key.png)
 
 
 `eval "$(ssh-agent -s)"`
 `ssh-add ~/.ssh/id_ed25519`
 Dodaje klucz prywatny do ssh agent
+![ssh agent](./ssh agent.png)
 
 
 `git config --global user.email "jan.krol.legowski@gmail.com" `
 `git config --global user.name "PanJanke"` 
 Ustawienie nazwy oraz adresu email
+![git config](./git config.png)
 
 
 `git checkout main` 
 Przełączam się na gałąź main
+![branch-main](./branch-main.png)
 
 Za pomocą  komendy `cd` przechodzę do swojej  grupy
 
 `git checkout INO-GCL01` 
  Przełączam się na gałąź swojej grupy
+ ![INO-GCL01](./INO-GCL01.png)
 
 `git checkout -b JKL302701` 
 Tworzę nową gałąź
@@ -38,9 +48,21 @@ Do katalogu dodaje pliki następnie zatwierdzam zmiany przy użyciu `git add .`
 
 `git commit -m "lab1"` 
 Tworzę commit z komentarzem
+![commit](./commit.png)
 
 `git push --set-upstream origin JKL302701`
 Wysyłam zmiany 
+![git_push](./git_push.png)
+
+
+
+
+
+
+
+
+
+
 
 
 
