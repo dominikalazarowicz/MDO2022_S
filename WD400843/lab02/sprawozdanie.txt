@@ -1,0 +1,16 @@
+Sprawozdanie Lab02
+
+1. Generowanie klucza ssh: ssh-keygen -t rsa -b 4096 -C "mail"
+
+   Dodanie działającego agenta SSH do obsługi klucza SSH:
+   eval 'ssh-agent-s'
+   ssh-add ~/.ssh/id_rsa
+
+   Zarejestrowanie klucza po stronie servera: 
+   skopiowanie klucza: clip < ~/.ssh/id_rsa.pub
+   
+   Poinformowanie gita o zmianie sposobu logowania: 
+   zmiana połączenia na SSH: git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+   wyświetlenie połączenia: git remote -v
+
+2.Nadanie tag'a na ostatni aktualny commit: git tag -a WD400843_Lab02 -m "Wioletta Drag, Lab 02 wszystko działa, 10/10 proszę"
