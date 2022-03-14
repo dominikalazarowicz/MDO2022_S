@@ -6,13 +6,13 @@ Konfiguracja srodowiska git
 ## Przebieg cwiczenia
 1. Zainstalowano klienta git
 2. Stworzono i skonfigurowano klucze ssh
-![Screenshot](klucz_git_tworzenie.png)
-![Screenshot](klucz_git.png)
+![Screenshot](Screenshots/klucz_git_tworzenie.png)
+![Screenshot](Screenshots/klucz_git.png)
 3. Nastepnie sklonowano repopzytorium za pomoca SSH
-![Screenshot](ssh_connect.png)
+![Screenshot](Screenshots/ssh_connect.png)
 4. Przelaczono sie na odpowiednia galaz (main) a nastepnie stowrzono wlasna galaz
-![Screenshot](branch.png)
+![Screenshot](Screenshots/branch.png)
 5. Rozpoczeto prace na branchu, stworzono commit i dodano go do repo
-![Screenshot](commit_push.png)
+![Screenshot](Screenshots/commit_push.png)
 6. Wciagnieto galaz do galezi grupowej
-![Screeenshot](pull_origin.png)
+![Screeenshot](Screenshots/pull_origin.png)
