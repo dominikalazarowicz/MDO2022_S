@@ -2,7 +2,8 @@
 # Kamil Pazgan Inżynieria Obliczeniowa GCL02
 ## Zainstaluj klienta Git i obsługę kluczy SSH.
 1. W pierwszej kolejnosci pobralem i zainstalowalem klienta Git na maszyne wirtualna, z ktorej korzystam (Ubuntu).
-![](1.1.png)![](1.2.png)
+![](1.1.png)
+![](1.2.png)
 ## Sklonuj repozytorium 
 2. Nastepnie sklonowalem repozytorium za pomoca protokolu HTTPS.
 ![](2.png)
@@ -25,7 +26,7 @@
 - Zaczalem od utworzenia folderu *KP404025* oraz *Lab1* gdzie umiescilem screeny i sprawozdanie
 ![](6.1.png)
 - Nastepnie dodalem zmiany do obszaru pomostowego za pomoaca *git add .* oraz aby zatwierdzic wykonalem polecenie *git commit -m*. Dalej wyslalem zmiany za pomoca *git push* 
-![](6.2.png)![](6.2.png)![](6.3.png)
+![](6.2.png)![](6.3.png)
 - Ostania rzecza byla proba wciagniecia swojej galezi do galezi grupowej. Na galezi grupowej wykonałem polecenie *git merge KP404025*.
 ![](6.4.png)![](6.5.png)
 - Zaktualizowalem sprawozdanie i zrzuty i wyslalem aktualizacje
