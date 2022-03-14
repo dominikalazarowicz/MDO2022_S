@@ -3,7 +3,7 @@
  `sudo apt-get install git`
    instalacja gita.
 
-![git install](./git_install.PNG)
+![git install](./git install.PNG)
 
 
 
@@ -25,7 +25,10 @@ Dodaje klucz prywatny do ssh agent
 `git config --global user.email "jan.krol.legowski@gmail.com" `
 `git config --global user.name "PanJanke"` 
 Ustawienie nazwy oraz adresu email
+
+
 ![git config](./git config.PNG)
+
 
 
 `git checkout main` 
@@ -36,7 +39,7 @@ Za pomocą  komendy `cd` przechodzę do swojej  grupy
 
 `git checkout INO-GCL01` 
  Przełączam się na gałąź swojej grupy
- ![INO-GCL01](./INO-GCL01.PNG)
+ ![INO-GCL01](./INO-GCL01 branch.PNG)
 
 `git checkout -b JKL302701` 
 Tworzę nową gałąź
@@ -48,7 +51,10 @@ Do katalogu dodaje pliki następnie zatwierdzam zmiany przy użyciu `git add .`
 
 `git commit -m "lab1"` 
 Tworzę commit z komentarzem
+
+
 ![commit](./commit.PNG)
+
 
 `git push --set-upstream origin JKL302701`
 Wysyłam zmiany 
