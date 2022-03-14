@@ -1,16 +1,15 @@
 # Sprawozdanie 1 
 
  `sudo apt-get install git`
-   instalacja gita.
+ instalacja gita 
+ ![git install](./git install.PNG)
 
 
-![git install](./git install.PNG)
+`git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git `
+Klonuje repozytorium
 
-
-
-`git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git ` 
-Klonuje repozytorium za pomocą protokołu HTTPS
 ![HTTPS clone](./HTTPS clone.PNG)
+
 
 `ssh-keygen -t ed25519 -C "jan.krol.legowski@gmail.com" ` 
 Generuje nowy klucz SSH
