@@ -11,8 +11,10 @@
 ![Image](04.png)
 5. Utworzenie pliku ```Sprawozdanie.md``` i dodanie go do poczekalni
 ![Image](05.png)
-6. git commit
+6. git commit 
 ![Image](06.png)
+7. git push     
+![Image](07.png)
 
 
 
