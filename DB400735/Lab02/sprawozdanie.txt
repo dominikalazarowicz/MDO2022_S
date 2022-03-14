@@ -1,0 +1,27 @@
+Dominik Budzowski
+
+Sprawozdanie LAB02
+
+1. Zmienilem sposob logowania do repozytorium z HTTPS na bezpiecznijszy przy uyciu klucza SSH.
+   Potrzebowalem klucza SSH ktorego w git bashu wygenerowalem poleceniem:
+   	ssh-keygen -t rsa -b 4096 -C "dodomax7979@gmail.com"
+   Nastepnie dodalem agenta SSH do obslugi klucza SSH poleceniem:
+   	eval "$(ssh-agent -s)"
+   Dodalem moj SSH prywatny klucz do agenta poleceniem:
+   	ssh-add ~/.ssh/id_rsa
+   Nastepnie dodalem publiczny klucz SSH do mojego konta na GitHub.
+   Poinformowalem Git'a o zmianie sposobu logowania poleceniem:
+   	git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+   Na koniec wyswietlilem czy zmiana sie powioddla (teraz zaczyna sie od git@) poleceniem:
+   	git remote -v
+2. Nadalem "Tag" na aktualnego commita poleceniem:
+  	git tag -a DB400735_Lab02 -m "Dominik Budzowski, Lab 02"
+3. W celu utworzenia nowej konfiguracji folderow najpierw przelaczylem sie na mastera poleceniem:
+	git checkout master
+   Nastepnie zaktualizowalem repozytorium poleceniem:
+   	git pull
+   Nastepnie przelaczylem sie na branch Grupa1 poleceniem:
+   	git checkout Grupa1
+   Utworzylem nowa branch poleceniem:
+   	git checkout -b Grupa01-DB400735_Lab02
+   Umiescilem pliki w folderze Lab02
