@@ -2,6 +2,8 @@
 
  `sudo apt-get install git`
  instalacja gita 
+ 
+ 
  ![git_install](./git_install.PNG)
 
 
@@ -44,7 +46,10 @@ Za pomocą  komendy `cd` przechodzę do swojej  grupy
 
 `git checkout INO-GCL01` 
  Przełączam się na gałąź swojej grupy
+ 
+ 
  ![INO-GCL01_branch](./INO-GCL01_branch.PNG)
+ 
 
 `git checkout -b JKL302701` 
 Tworzę nową gałąź
