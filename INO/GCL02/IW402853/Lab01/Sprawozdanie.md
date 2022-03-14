@@ -11,10 +11,12 @@
 
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/dodanie%20kluczy%20github.png) 
 - Dodanie kluczy do agenta ssh.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/ssh%20agent.png)
 - Sklonowanie repozytorium za pomocą SSH.
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20clone%20ssh.png)
 - Konfiguracja Git email/name.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/6a8524a1f63fc065dc6c89f88d6b16673313bc15/INO/GCL02/IW402853/Lab01/git%20config%20email.png)
 - Przełączenie się na gałąź main, a potem na gałąź swojej grupy.
 - Utworzenie naszej gałęzi.
