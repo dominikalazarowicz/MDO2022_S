@@ -63,3 +63,11 @@ Dla zadania piatego nalezalo utworzyc wlasna galaz od galezi grupowej o odpowied
 
 Z racji ze wszystkie zadania byly robione po kolei a dopeiro na koniec pisane sprawozdanie to po utworzeniu wlasnej galezi w zadniu piatym w folderze grupowym zostaly utworzone odpowiednie foldery, a w folderze doecelowym umieszczone dotychczas zrobione zrzuty. Kolejno zostaly one zakomitowane by w momencie pisania sprawozdania przeklejac sobie juz linki od zrzutow. 
 Po tej operacji przeslalem sprawozdanie do repozytorium zdalnego by zobaczyc czy formatowanie dziala. Ponizej znajduje sie zrzut pokazujacy jak dodawac pliki do sledzenia przy uzyciu polecenia **git add -A**, -A jest uzywane z racji by wszystkie sie dodaly. Komitowanie odbywa sie za przy pomocy polecenia **git commit -m** a w cudzyslowie zaweirami informacje do komita. Ponizej zrzut to przedstawiajacy. 
+
+![git push](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_01/zad6.png)
+
+Na zakonczenie nalezalo dokonac proby dociagniecia wlasnej galezi do galezi grupowej. Dokonuje sie tego poprzez przelaczenie na galaz grupowa i wykonanie polecenia **git merge DK290596**, DK290596 z racji ze taka byla moja galaz. Operacja sie nie powowiodla bo galaz grupowa jest chroniona.
+
+![Git Merge part_1](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_01/zad6_merge_my_branch_1.png)
+
+![Git Merge part_2](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_01/zad6_merge_my_branch_2.png)
