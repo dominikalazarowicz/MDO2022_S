@@ -40,4 +40,16 @@ if ! grep -iqE "$name" "$1"; then
 fi
 echo "Correct commit message."
 
-
+5. W celu dolaczenia swoich zmian
+   Przelaczylem sie na branch'a grupy poleceniem:
+   	git checkout Grupa1
+   z margowalem brancha grupy z moim branchem poleceniem:
+   	git merge Grupa01-DB400735_Lab02
+   Usunolem swojego brancha poleceniem:
+   	git branch -d Grupa01-DB400735_Lab02
+   Zaktualizowalem i zacommitowalem branch grupowy poleceniami:
+   	git pull
+   	git commit -m "DB400735 LAB02 pkt5 git pull after changes"
+   Wykonalem polecenie:
+   	git push --set-upstream origin Grupa1
+   Wykonalem pull requesta.
