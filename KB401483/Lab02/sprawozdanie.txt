@@ -1,7 +1,22 @@
 Sprawozdanie 02
 
-1.
-2.
+1.Klucz SSH i połączenie SSH zamiast HTTPS
+
+  1.1 ssh-keygen -t rsa -b 4096 -C "email" : generowanie klucza SSH dla podanego maila
+
+  1.2 eval "$(ssh-agent -s)" : uruchomienie agenta 
+
+  1.3 ssh-add ~.ssh/id_rsa : dodanie klucza do agenta 
+
+  1.4 git remote -v : pokazuje sposób połączenia po SSH
+      git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git : zmiana połączenia na SSH
+
+
+2.  git tag -a nazwa -m "komentarz" : tworzenie taga, -a utworzy niepodpisany obiekt tagu, -m pozwoli dodać do taga wiadomość
+
+  2.1 git push --follow-tags : wypychanie odpowiednich tagów z adnotacjami podczas wypychania gałęzi
+
+
 3.
 4.
 5.
