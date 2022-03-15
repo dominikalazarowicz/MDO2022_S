@@ -6,7 +6,7 @@
 3. Dodano klucz SSH do GitHub <br>
 ![git-key](git_key.png)
 4. Sklonowano repozytorium za pomocą klucza SSH <br>
-![clone_ssh](sh_clone.png)
+![clone_ssh](ssh_clone.png)
 5. Przejście do własnego brancha <br>
 ![branches](branches.png)
 6. Utworzenie odpowiednich katalogów <br>
