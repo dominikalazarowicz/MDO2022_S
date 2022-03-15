@@ -56,3 +56,5 @@ przyłączenie do brancha, na którym obecnie jesteśmy zmian wprowadzonych na b
 
 git push origin Grupa2
 wypchnięcie zmian na remote repository na branch Grupa2
+
+git branch -d Grupa02-ŁD400222_Lab02 zamknięcie brancha
