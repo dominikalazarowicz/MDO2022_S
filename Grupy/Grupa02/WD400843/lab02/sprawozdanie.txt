@@ -34,3 +34,9 @@ if ! grep -iqE "$commit" "$1" ; then
 	exit 1
 fi
 echo "Correct commit comment"
+
+5.Zmergowano swojego brancha osobistego z branchem grupowym:
+   przełączono się na brancha grupowego: git checkout Grupa2
+   scalono swojego brancha z branchem grupowym: git merge Grupa02-WD400843_Lab02
+
+   usunięcie swojego brancha osobistego: git branch -d Grupa02-WD400843_Lab02
