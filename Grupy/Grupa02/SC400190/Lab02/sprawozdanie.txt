@@ -1,0 +1,22 @@
+Sprawozdanie lab02
+
+zad.1 Dodanie klucza SSH i połączenie po SSh zamiast HTTPS
+
+
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com" 
+tworzenie nowego klucza SSH za pomocą podanego maila
+
+eval "$(ssh-agent -s)"
+uruchomienie agenta SSH do obsługi klucza SSH
+
+$ ssh-add ~/.ssh/id_rsa
+dodanie prywatnego klucza SSH do agenta SSH
+W kolejnym kroku, aby połaczenie zadziałało, dodałem publiczny klucz po stronie servera (na Github)
+
+"git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git"
+zmienienie sposobu logowania na połaczenie po SSH
+
+git remote -v
+wyświetlene sposobu w jaki jesteśmy połączeni z zdalnym repozytorium
+
+
