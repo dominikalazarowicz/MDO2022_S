@@ -1,3 +1,18 @@
+Polecenia git:
+
+git remote -v
+        Wyświetla skonfigurowane serwery git'a
+git remote set-url NAZWA ADRES
+        Konfiguruje serwer git'a
+
+git tag -a NAZWA -m KOMENTARZ
+        Tworzy nowy tag
+git push --follow-tags
+        Wysyła zmiany na zdalny serwer git razem z tagami
+
+git mv
+        Przenosi pliki
+
 Kod git hooka:
 
 #!/bin/bash
