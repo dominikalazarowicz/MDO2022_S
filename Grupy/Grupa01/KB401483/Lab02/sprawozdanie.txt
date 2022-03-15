@@ -1,5 +1,6 @@
 Sprawozdanie 02
 
+
 1.Klucz SSH i połączenie SSH zamiast HTTPS
 
   1.1 ssh-keygen -t rsa -b 4096 -C "email": generowanie klucza SSH dla podanego maila
@@ -23,5 +24,21 @@ Sprawozdanie 02
   
   3.2 git checkout -b Grupa01-KB401483_Lab02: tworzenie nowego brancha oddzielając go od swojego grupowego brancha
  
-4.
+
+4. GitHook skrypt weryfikujący, że każdy commit message zaczyna się od "inicjały + nr indexu".
+
+#!/bin/bash
+
+commit_mesage="KB401483"
+
+
+if ! grep -qE "$commit_mesage" "$1" ;then
+
+     echo "commit jest błędny, ponieważ nie zawiera KB401483"
+     exit 1
+fi
+     echo "commit jest poprawny"
+
+
+
 
