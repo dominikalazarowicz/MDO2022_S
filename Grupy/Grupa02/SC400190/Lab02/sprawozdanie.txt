@@ -35,5 +35,18 @@ zad.3
 git checkout -b Grupa02-SC400190_Lab02
 Utworzenie nowego brancha krótkożyjącego
 
+zad.4
+
+
+#!/bin/sh
+
+MSG=`cat $1`
+PREFIX="SC400190"
+if ! [[ $MSG == $PREFIX ]]; then
+    echo 'Commit message have to start with $PREFIX'
+    exit 1;
+fi
+
+
 
 
