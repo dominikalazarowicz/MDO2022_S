@@ -56,15 +56,15 @@ Do utworzenia nowej galezi uzywamy komendy git checkout, lecz w tym przypadku uz
 
 Tutaj uzylem sklonowanego repozytorium do utworzenia folderu.
 
-![JM404178](https://cdn.discordapp.com/attachments/952649149004783761/952649222098935828/1.png)
+![JM404178](https://i.imgur.com/T8D31un.png)
 
    - W nim także utwórz katalog: Lab01
    
-![Lab01](https://cdn.discordapp.com/attachments/952649149004783761/952649221885005854/2.png)
+![Lab01](https://i.imgur.com/xqd9ShL.png)
 
    - W nowym katalogu dodaj plik ze sprawozdaniem
    
-![Sprawko](https://cdn.discordapp.com/attachments/952649149004783761/952649221503332352/3.png)
+![Sprawko](https://i.imgur.com/pn32Cqd.png)
 
    - Dodaj zrzuty ekranu (jako inline)
    
@@ -76,7 +76,7 @@ Done
    
    Nieudana proba mergowania.
 
-![Merge attempt](https://cdn.discordapp.com/attachments/952649149004783761/952653039037218896/4.png)
+![Merge attempt](https://i.imgur.com/rkofOfb.png)
 
 7. Wystaw Pull Request do gałęzi grupowej
 8. Zgłoś zadanie (Teams assignment - jeżeli dostępne)
