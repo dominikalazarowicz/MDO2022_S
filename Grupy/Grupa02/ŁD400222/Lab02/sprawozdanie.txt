@@ -45,4 +45,14 @@ if ! [[ $COMMIT =~ $REGEX ]]; then
 fi
 
 
-5 merge 
+5 git checkout -b Grupa2
+przełączenie na nowy branch Grupa2
+
+git pull origin Grupa2 
+zaciągnięcie zmian z remote repository z brancha Grupa2
+
+git merge Grupa02-ŁD400222_Lab02
+przyłączenie do brancha, na którym obecnie jesteśmy zmian wprowadzonych na branchu Grupa02-ŁD400222_Lab02
+
+git push origin Grupa2
+wypchnięcie zmian na remote repository na branch Grupa2
