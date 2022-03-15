@@ -20,3 +20,20 @@ git remote -v
 wyświetlene sposobu w jaki jesteśmy połączeni z zdalnym repozytorium
 
 
+zad.2 Nadanie taga na commita
+
+
+git tag -a SC400190_Lab01 -m"Szymon Cygan, Lab 01 wszystko działa, 10/10 proszę"
+tworzy nowy tag o podanej nazwie i z daną wiadomością
+
+git push --follow-tags origin SC400190 
+wypycha tagi do remotea 
+
+
+zad.3 
+
+git checkout -b Grupa02-SC400190_Lab02
+Utworzenie nowego brancha krótkożyjącego
+
+
+
