@@ -11,4 +11,7 @@
 ![branches](/home/bartek/Obrazy/branches.png)
 6. Utworzenie odpowiednich katalogów
 ![directories](/home/bartek/Obrazy/dirs.png)
-7. 
+7. Wysłanie commita
+![commit1](commit1.png)
+8. Wykonanie pusha
+![push](push.png)
