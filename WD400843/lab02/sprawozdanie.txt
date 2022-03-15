@@ -14,3 +14,4 @@ Sprawozdanie Lab02
    wyświetlenie połączenia: git remote -v
 
 2.Nadanie tag'a na ostatni aktualny commit: git tag -a WD400843_Lab02 -m "Wioletta Drag, Lab 02 wszystko działa, 10/10 proszę"
+  Wypchnięcie tag-u na repozytorium: git push --follow-tags 
