@@ -35,7 +35,7 @@ zad.3
 git checkout -b Grupa02-SC400190_Lab02
 Utworzenie nowego brancha krótkożyjącego
 
-zad.4
+zad.4 napisanie hooka
 
 
 #!/bin/sh
