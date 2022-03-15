@@ -39,5 +39,7 @@
 
 ![zdjecie9](https://user-images.githubusercontent.com/72964757/158423949-ef04d557-1514-4663-8348-e541d4f097b3.jpg)
 
+9. Pushowanie do zdalnego repo
 
+![zdjecie10](https://user-images.githubusercontent.com/72964757/158424337-706534dc-72a4-4a93-8c86-45d095134485.jpg)
 
