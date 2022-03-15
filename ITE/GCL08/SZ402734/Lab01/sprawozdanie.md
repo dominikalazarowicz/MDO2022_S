@@ -18,16 +18,18 @@ Konfiguracja klucza ssh oraz git w wersji terminalowej, stworzenie brancha oraz 
 ![Screenshot](zmiana_galezi.png)
 ![Screenshot](stworzenie_folder.png)
 6. Dodanie do katalogu naszych zmian oraz sprawozdania
+![Screenshot](push.png)
+![Screenshot](push_2.png)
 
 ### Wnioski
 
 Uzyte komendy:
-	sudo apt install git - instalacja pakietu git na linuxie
-	git --version - sprawdzenie wersji gita oraz czy istnieje
-	git clone - klon repozytorium do lokalnego
-	git branch - sprawdzanie na jakim branchu sie znajdujemy
-	git checkout name - zmiana brancha, flaga -b powoduje 			     dodanie nowego
-	git add name - dodanie pliku do repozytoruum
-	git commit -m -stworzenie commita flaga -m pozwala nam na 			       umieszczeni ekomentarza
-	git push --set-upstream origin name - wyslanie zmian do 						       repozytorium
+	sudo apt install git - instalacja pakietu git na linuxie<br />
+	git --version - sprawdzenie wersji gita oraz czy istnieje<br />
+	git clone - klon repozytorium do lokalnego<br />
+	git branch - sprawdzanie na jakim branchu sie znajdujemy<br />
+	git checkout name - zmiana brancha, flaga -b powoduje <br />			     dodanie nowego<br />
+	git add name - dodanie pliku do repozytoruum<br />
+	git commit -m -stworzenie commita flaga -m pozwala nam na 			       umieszczeni ekomentarza<br />
+	git push --set-upstream origin name - wyslanie zmian do 						       repozytorium<br />
 
