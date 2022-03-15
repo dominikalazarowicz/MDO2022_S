@@ -48,5 +48,13 @@ if ! [[ $MSG == $PREFIX ]]; then
 fi
 
 
+zad.5 zrobienie merga z brancha sobistego do grupowego
+
+
+git merge Grupa02-SC400190_Lab02 
+scalenie brancha podanego w argumencie
+
+git branch -d Grupa02-SC400190_Lab02
+usunięcie brancha podanego w argumencie
 
 
