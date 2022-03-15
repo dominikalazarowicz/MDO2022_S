@@ -10,8 +10,11 @@ git tag -a NAZWA -m KOMENTARZ
 git push --follow-tags
         Wysyła zmiany na zdalny serwer git razem z tagami
 
-git mv
+git mv FROM TO
         Przenosi pliki
+
+git merge NAZWA_BRANCHA
+        Scala gałęzie
 
 Kod git hooka:
 
