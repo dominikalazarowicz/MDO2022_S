@@ -1,0 +1,7 @@
+Marcin Dadura
+Lab02
+#################
+
+1. Utworzono klucz SSH 
+2. Ustawiono taga commita za pomoca komendy git tag -a
+3. Wrzucono zmiane za pomoca komendy git push --follow-tags
