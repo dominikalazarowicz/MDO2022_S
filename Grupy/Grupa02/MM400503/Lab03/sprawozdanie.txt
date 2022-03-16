@@ -1,0 +1,2 @@
+1. Utworzyłem branch poleceniem "git checkout -b 'Grupa02-MM400503_Lab03' będąc na branchu grupowym.
+2. Dodałem git hooka z poprzednich zajęć do folderu z poprzednich zajęć i zrobiłem commita poleceniami "git add .", "git commit -m '...'".
