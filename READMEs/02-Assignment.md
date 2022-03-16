@@ -9,7 +9,7 @@
   - listing historii poleceń (cmd/bash/PowerShell)
 - Sprawozdanie z zadania powinno umożliwiać odtworzenie wykonanych kroków w wykorzystaniem opisu, poleceń i zrzutów
 
-- Sprawozdanie proszę umieścić w następującej ścieżce: ```<kierunek>/<grupa>/<inicjały><numerIndeksu>/Lab01/Sprawozdanie.md```, w formacie Markdown
+- Sprawozdanie proszę umieścić w następującej ścieżce: ```<kierunek>/<grupa>/<inicjały><numerIndeksu>/Lab02/Sprawozdanie.md```, w formacie Markdown
 
 ## Zadania do wykonania
 1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami
