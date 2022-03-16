@@ -11,3 +11,6 @@ Konfiguracja git
 ![Screenshot](pics/gitclone.png)
 4. Stworzono swoj branch, przelaczono sie na niego, utworzono odpowiedni folder
 ![Screenshot](pics/gitpushsprawozdanie.png)
+5. Po wykonanej pracy na branchu utworzono pull reuqest   
+![Screenshot](pics/pr.png)
+
