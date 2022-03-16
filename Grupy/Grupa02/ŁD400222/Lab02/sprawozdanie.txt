@@ -12,6 +12,9 @@ ssh-add ~/.ssh/id_rsa
 dodanie pliku z kluczem ssh do ssh-agent'a, dzięki temu nie musimy cały czas podawać naszego klucza
 
 
+clip < ~/.ssh/id_rsa.pub
+skopiowanie klucza do schowka i dodanie go w ustawieniach githube'a
+
 poinformowanie o zmianie sposobu logowania
 git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
 
@@ -25,7 +28,7 @@ wypchnięcie tej zmiany na serwer
 git push --follow-tags
 
 
-3 Utworzenie nowego brancha krótko żyjącego
+3 Utworzenie nowego brancha krótko-żyjącego
 git checkout -b Grupa02-ŁD400222_Lab02
 
 4 Hook
@@ -40,3 +43,18 @@ if ! [[ $COMMIT =~ $REGEX ]]; then
     echo '# Commit message should start with ŁD400222'
     exit 1;
 fi
+
+
+5 git checkout -b Grupa2
+przełączenie na nowy branch Grupa2
+
+git pull origin Grupa2 
+zaciągnięcie zmian z remote repository z brancha Grupa2
+
+git merge Grupa02-ŁD400222_Lab02
+przyłączenie do brancha, na którym obecnie jesteśmy zmian wprowadzonych na branchu Grupa02-ŁD400222_Lab02
+
+git push origin Grupa2
+wypchnięcie zmian na remote repository na branch Grupa2
+
+git branch -d Grupa02-ŁD400222_Lab02 zamknięcie brancha
