@@ -13,3 +13,5 @@
 ![](Zrzut ekranu z 2022-03-11 19-42-24.png)
 * Push do repozytorium 
 ![](Zrzut ekranu z 2022-03-16 00-51-35.png)
+* Aktualizacja Sprawozdanie.md oraz dodanie screenshotów
+![](Zrzut ekranu z 2022-03-16 01-30-40.png)
