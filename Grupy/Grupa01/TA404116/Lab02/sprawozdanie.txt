@@ -7,3 +7,17 @@
 
 ➜  ~ git tag -a nazwa-taga -m "tresc-wiadomosci"
     ^ - dodaj tag na aktualnego commita
+
+➜  ~ chmod +x commit-msg 
+    ^ - nadanie uprawnien do wykonywania skryptu
+
+/////
+#!/bin/bash
+
+ID="TA404116"
+
+if ! [[ $(cat $1) == $ID*]] ;then
+    echo "Nazwa commita musi zawierac $ID"
+    exit 1
+fi
+////
