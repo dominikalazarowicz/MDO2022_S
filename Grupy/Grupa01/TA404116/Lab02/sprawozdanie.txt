@@ -1,0 +1,9 @@
+➜  ~ ls -al ~/.ssh
+    ^ - sprawdz czy posiadasz istniejace klucze ssh
+➜  ~ eval "$(ssh-agent -s)"
+    ^ - zacznij dzialanie ssh-agent w tle
+➜  ~ ssh-add ~/.ssh/id_ed25519
+    ^ - dodaj klucz do ssh-agent
+
+➜  ~ git tag -a nazwa-taga -m "tresc-wiadomosci"
+    ^ - dodaj tag na aktualnego commita
