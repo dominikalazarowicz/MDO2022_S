@@ -28,3 +28,10 @@ uruchomienie komendy update'ującej liste pakietów apt
 
 * RUN apt-get -y install git
 uruchomienie komendy pobierającej gita
+
+6 docker image build --tag git-image .
+Zbudowanie obrazu dockera na podstawie pliku Dockerfile znajdującego się w obecnym katalogu
+
+
+docker run -dit 97aaf
+uruchomienie w tle kontenera zawiarającego zbudowany wcześniej obraz dockera
