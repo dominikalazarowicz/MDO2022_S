@@ -1,0 +1,7 @@
+#!/bin/sh
+
+if [[ $1 != JF400643* ]]
+then
+    echo Nazwa commita nie zaczyna sie od JF400643!
+    exit 1
+fi
