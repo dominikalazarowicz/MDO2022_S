@@ -1,0 +1,4 @@
+1 git checkout -b Grupa02-LD400222_Lab03
+Utworzenie brancha osobistego Grupa02-LD400222_Lab03 i przełączenie się na niego 
+
+2 
