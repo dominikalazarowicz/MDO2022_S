@@ -11,12 +11,13 @@
 ➜  ~ chmod +x commit-msg 
     ^ - nadanie uprawnien do wykonywania skryptu
 
+git hook:
 /////
 #!/bin/bash
 
 ID="TA404116"
 
-if ! [[ $(cat $1) == $ID*]] ;then
+if ! [[ $(cat $1) == $ID* ]] ;then
     echo "Nazwa commita musi zawierac $ID"
     exit 1
 fi
