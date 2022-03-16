@@ -8,3 +8,10 @@ Utworzenie nowego brancha krótkożyjącego
 mkdir Lab03
 utworzenie nowego katalogu do lab03
 
+
+zad.2 Dodanie hooka napisanego na poprzednich zadaniach do osobnegho folderu
+
+zad.3 zainastlowanie Docker'a
+
+zad.4 Zarejestrowanie konta w Docker HUB
+
