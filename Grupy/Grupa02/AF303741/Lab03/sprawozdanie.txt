@@ -1,0 +1,11 @@
+1. Utworzono nowego brancha tymczasowego
+    git checkout -b Grupa02-AF303741_Lab03
+
+2. Przeniesiono git hook'a z poprzednich zajęć do folderu 
+    MDO2022_S/Grupy/Grupa2/AF303741/Lab02/hooks
+    
+3. Zainstalowano Docker'a
+
+4. Zarejestrowano się w Docker Hub
+
+5. Utworzono Dockerfile i umieszono na branchu
