@@ -12,3 +12,5 @@
 ### 4. Operacje na repozytorium
 ![](./5.png)
 
+### 5. Wypchnięcie zmian do nowej gałęzi na gitcie
+![](./6.png)
