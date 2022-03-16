@@ -9,7 +9,7 @@ eval "$(ssh-agent -s)"
 uruchomnie ssh-agent'a 
 
 ssh-add ~/.ssh/id_rsa
-dodanie pliku z kluczem ssh do ssh-agent'a, dzięki temu nie musimy cały czas podawać naszego klucza
+dodanie pliku z kluczem ssh do ssh-agent'a, dzięki temu nie musimy cały czas podawać naszego  klucza
 
 
 clip < ~/.ssh/id_rsa.pub
