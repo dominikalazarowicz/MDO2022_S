@@ -51,6 +51,7 @@ fi
 zad.5 zrobienie merga z brancha sobistego do grupowego
 
 
+
 git merge Grupa02-SC400190_Lab02 
 scalenie brancha podanego w argumencie
 
