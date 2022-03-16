@@ -1,0 +1,9 @@
+Sprawozdanie Lab03
+
+zad.1 Stworzenie brancha osobistego od brancha grupowego
+
+git checkout -b Grupa02-SC400190_Lab03
+Utworzenie nowego brancha krótkożyjącego
+
+mkdir Lab03
+utworzenie nowego katalogu do lab03
