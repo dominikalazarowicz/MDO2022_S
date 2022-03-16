@@ -12,5 +12,16 @@
 3. 	1. Uporządkowanie struktury folderów, stworzenie Grupy/Grupa02. Przeniesienie folderu AC403771
 	2. Utworzenie nowego brancha: git checkout -b Grupa02-AC403771_Lab02
 
+4. 	napisanie hook'a:
+
+#!/bin/bash
+
+inicjaly="AC403771"
+
+if ! [[ $(cat $1) == $inicjaly* ]] ; then
+        echo "rozpocznij commit od podania inicjalow!"
+        exit 1
+fi
+echo "komentarz commita prawidlowy :)"
 
 	
