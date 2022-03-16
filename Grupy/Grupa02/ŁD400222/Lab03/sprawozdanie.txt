@@ -35,3 +35,8 @@ Zbudowanie obrazu dockera na podstawie pliku Dockerfile znajdującego się w obe
 
 docker run -dit 97aaf
 uruchomienie w tle kontenera zawiarającego zbudowany wcześniej obraz dockera
+
+
+docker exec 410 git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
+zklonowanie repozytorium gita do kontenera
+
