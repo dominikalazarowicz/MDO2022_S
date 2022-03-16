@@ -7,3 +7,4 @@ Utworzenie nowego brancha krótkożyjącego
 
 mkdir Lab03
 utworzenie nowego katalogu do lab03
+
