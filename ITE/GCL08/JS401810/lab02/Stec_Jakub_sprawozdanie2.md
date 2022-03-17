@@ -1,6 +1,5 @@
 # Metodyki devops - git hooks, ssh, docker
 
-
 ## Wykonanie laboratorium:
 
 
@@ -12,39 +11,35 @@
 
       ![x](./hooks.png)
 
-    Tworzę skrypt, którego zadaniem jest sprawdzanie tytułu commita. Wykorzystałem do tego hook commit-msg. Jest on wykonywany w trakcie tworzenia wiadomości commita. W argumencie ```$1``` znajduje się treść wiadomości. W skrypcie poprzez funkcję test porównuję wartość zmiennej i sprawdzam czy zawiera ona wartosć ```PW404121``` będąca konkatenacją inicjału oraz numeru indeksu. W zależności od uzyskanego wyniku wyświetlam odpowiednią informację.
+    Tworzę skrypt w pythonie, którego zadaniem jest sprawdzanie tytułu commita. Wykorzystałem do tego hook commit-msg. Jest on wykonywany w trakcie tworzenia wiadomości commita. Sprawdzany jest przesyłany tytuł commita. Dodatkowo również wprowadzona została funkcjonalność, która sprawdza czy w treści commita pada numer labu, dla danego zadania.
 
-      ```bash
-      echo -e "\nTesting commit message..."
+    **TESTOWANIE**
+        
+       ![x](./hook1.png)  
 
-      if test $(cat $1) = PW404121
-      then
-        echo -e "${GREENBOLD}Commit message is equal PW404121 ${NORMAL}\n"
-      else
-        echo -e "${REDBOLD}Commit message is NOT equal PW404121 ${NORMAL}\n"
-        exit 1
-      fi
-      ``` 
+      ![x](./hook2.png)
 
-      W kolejnym skrypcie, w którym należy sprawdzić treść commita postepuję podobnie. Tym razem poprzez ```git deff``` z przełącznikiem ```cached``` sprawdzam czy w przygotowanych do zcommitowania zmianach zawiera się wartość ```/Lab02/```. W wyniku takiego działania commit zostanie zaakceptowany gdy zostaną dokonane zmiany w katalogu aktualnych laboratoriów. Tym razem modyfikowany był hook ```pre-commit```, który jest wykonywany przed utworzeniem wiadomości.
+**2. Umieszczam hook w postaci inline, aby dało się go przejrzeć**
+    ```#!/usr/bin/python3 
+import sys 
 
-      ```bash
-      echo -e "\nTesting commit content..."
+msg=sys.argv[1] 
+fileName=open(msg,'r') 
+message=fileName.read() 
 
-      if git diff --cached | grep "/Lab02/"
-      then
-        echo -e  "${GREENBOLD}Commit contain current laboratory number - 02 ${NORMAL}\n"
-      else
-        echo -e "${REDBOLD}Commit does NOT contain current laboratory number - 02 ${NORMAL}\n"
-        exit 1
-      fi
-      ``` 
+msg1=message.split('\n')[0] 
+msg2=message.split('\n')[2] 
 
-      ![x](./hook1.png)
-
-**2. Umieść hook w sprawozdaniu w taki sposób, aby dało się go przejrzeć**
-
-  Hooki zostaly umieszczone w katalogu ```/Lab02/```, ich treści znajdują się też inline w sprawozdaniu powyżej
+if msg1 != "JS401810": 
+    print("Your commit ID is not correct") 
+    exit(1) 
+if not (msg2.find("02") != -1): 
+     print("You are in a wrong path") 
+     exit(1) 
+else: print("Alles gut und klar") 
+exit(0)```
+    
+  
 
 **3. Rozpocznij przygotowanie środowiska Dockerowego**
     * **Zapewnienie dostępu do wirtualnej maszyny przez zdalny terminal, wykorzystując SSH**
@@ -67,7 +62,7 @@
 
    * **wykaż, że środowisko dockerowe jest uruchomione i działa (z definicji - systemctl status docker):**
 
-        ![x](./docker_ver.png)
+       ![x](./docker_ver.png)
   
       * **wykaż działanie z sposób praktyczny (z własności):**
       * **pobierz obraz dystrybucji linuksowej i uruchom go**
@@ -89,5 +84,5 @@ Zakładam konto z podstawowym personalnym planem.
 
   ![Email confirmation](./dockerhub1.png)
 
-  ![Docker profile](./img/dockerhub2.png)
+  ![Docker profile](./dockerhub2.png)
 
