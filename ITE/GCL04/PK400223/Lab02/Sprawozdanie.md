@@ -1,44 +1,43 @@
-# Zajêcia 01 - Grupa 4
-### Przemys³aw Kudriawcew 
+# Zajêcia 02
+### Przemys³aw Kudriawcew
 ---
 ## Zadania do wykonania
-1. Zainstaluj klienta Git i obs³ugê kluczy SSH
- - ![image](screens/1.PNG "instalation")
-2. Sklonuj repozytorium https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S za pomoc¹ HTTPS
- - ```git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git```
- - ![image](./screens/2.PNG "https gh")
-3. Upewnij siê w kwestii dostêpu do repozytorium jako uczestnik i sklonuj je za pomoc¹ utworzonego klucza SSH
-   - Utwórz dwa klucze SSH, inne ni¿ RSA, w tym co najmniej jeden zabezpieczony has³em
-   - ```ssh-keygen -t ed25519```
-   - ![image](screens/3.PNG "key1")
-   - Skonfiguruj klucz SSH jako metodê dostêpu do GitHuba
-   - ![image](screens/4.PNG "key2")
-   - Sklonuj repozytorium z wykorzystaniem protoko³u SSH
-   - ```git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git```
-   - ![image](screens/5.PNG "key3")
-4. Prze³¹cz siê na ga³¹Ÿ ```main```, a potem na ga³¹Ÿ swojej grupy (pilnuj ga³êzi i katalogu!) 
- - ```git checkout main```
- - ```git checkout ITE-GCL04```
- - ![image](screens/6.PNG "mainbranch")
-5. Utwórz ga³¹Ÿ o nazwie "inicja³y & nr indeksu" np. ```KD232144```. Miej na uwadze, ¿e odga³êziasz siê od brancha grupy!
- - ```git checkout -b PK400223```
- - ![image](screens/7.PNG "PK400223")
-6. Rozpocznij pracê na nowej ga³êzi
-   - W katalogu w³aœciwym dla grupy utwórz nowy katalog, tak¿e o nazwie "inicja³y & nr indeksu" np. ```KD232144```
-   - ```mkdir PK400223```
-   - W nim tak¿e utwórz katalog: Lab01
-   - ```mkdir PK400223/Lab01```
-   - W nowym katalogu dodaj plik ze sprawozdaniem
-   - ```touch PK400223/Lab01/Sprawozdanie.md```
-   - ![image](screens/8.PNG "folderstructure")
-   - Dodaj zrzuty ekranu (jako inline)
-   - Wyœlij zmiany do zdalnego Ÿród³a
-   - ```git add .```
-   - ```git commit -m 'message'```
-   - ``` git push --set-upstream origin PK400223 ```
-   - ![image](screens/9.PNG "push")
-   - Spróbuj wci¹gn¹æ swoj¹ ga³¹Ÿ do ga³êzi grupowej
-   - ![image](screens/10.PNG "PR")
-   - Zaktualizuj sprawozdanie i zrzuty o ten krok i wyœlij aktualizacjê do zdalnego Ÿród³a (na swojej ga³êzi)
-7. Wystaw Pull Request do ga³êzi grupowej
-8. Zg³oœ zadanie (Teams assignment - je¿eli dostêpne)
+1. Przygotuj git hook, który rozwi¹¿e najczêstsze problemy z commitami
+* hook sprawdzaj¹cy, czy tytu³ commita nazywa siê ```<inicja³y><numer indeksu>```
+* hook sprawdzaj¹cy, czy w treœci commita pada numer labu, w³aœciwy dla zadania
+- ![image](screens/1.PNG "hook")
+2. Umieœæ hook w sprawozdaniu w taki sposób, aby da³o siê go przejrzeæ
+W pliku commit-msg zamieszczono poni¿szy skrypt
+``` #!/usr/bin/env bash```
+```INPUT_FILE=$1```
+```START_LINE=`head -n1 $INPUT_FILE` ```
+```PATTERN="^(PK400223)"```
+```PATTERN2=".*(Lab)[0-9][0-9]*."```
+```if ! [[ "$START_LINE" =~ $PATTERN ]]; then```
+  ```echo "Bad commit title, see example: 400223: message"```
+  ```exit 1```
+```fi```
+```while IFS= read -r line```
+```do```	
+	```if [[ $line =~ $PATTERN2 ]]; then```
+		```exit 0```
+	```fi```
+```done < <(sed 1d $INPUT_FILE)```
+```echo "Bad commit message, needs to contain Lab0X or LabXX number according to actual lab number"```
+```exit 1 ```
+3. Rozpocznij przygotowanie œrodowiska Dockerowego
+    * zapewnij dostêp do maszyny wirtualnej przez zdalny terminal (nie "przez okienko")
+    * - ![image](screens/2.PNG "ssh")
+    * je¿eli nie jest stosowane VM (np. WSL, Mac, natywny linux), wyka¿ ten fakt **dok³adnie**
+    * zainstaluj œrodowisko dockerowe w stosowanym systemie operacyjnym
+4. Dzia³anie œrodowiska
+    * wyka¿, ¿e œrodowisko dockerowe jest uruchomione i dzia³a (z definicji)
+    * - ![image](screens/3.PNG "dockerd")
+    * wyka¿ dzia³anie z sposób praktyczny (z w³asnoœci):
+      * pobierz obraz dystrybucji linuksowej i uruchom go
+      * - ![image](screens/4.PNG "pull")
+      * wyœwietl jego numer wersji
+      * - ![image](screens/5.PNG "image")
+5. Za³ó¿ konto na Docker Hub
+- ![image](screens/6.PNG "dhub")
+-  ![image](screens/7.PNG "dhub")
