@@ -44,3 +44,8 @@ W tym punkcie przełączyłem się przy pomocy 'git checkout ITE-GCL03' na gał�
 
 Następnie przy pomocy git checkout -b "SG401600" utworzyłem i przeniosłem się do swojej gałęzi i po wykonaniu git add * wykonałem commit za pomocą komendy git commit -m "komentarz" i spushowałem poprzez komendę git push origin SG401600
 ### tutaj powinien być screen komend, które użyłem w tym podpunkcie, ale po wykonaniu pushu (przed wykonaniem SS) przypadkowo zamknąłem terminal i jedynie widzę komendy, a nie informacje, które dostawałem po wykonaniu tych komend
+
+
+
+5. Wykonanie pull request-a na GitHub-ie
+![SS zaraz przed pull request-em na GitHub-ie](Zdjecia/10.png)
