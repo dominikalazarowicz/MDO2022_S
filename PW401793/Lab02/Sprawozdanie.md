@@ -1,22 +1,31 @@
-# Lab 01 - Paweł Waresiak
+# Lab 02 - Paweł Waresiak
 
-### Pobranie repo poprzez HTTPS
-![Pull HTTPS](./screenshots/https.png)
+### Utworzenie git hook'a sprawdzającego commity
+![Git hook](./screenshots/hook.png)
 
-### Utworzenie klucza algorytmem ED25519
-![Key 1](./screenshots/k1.png)
+### Sprawdzenie czy git hook działa
 
-### Utworzenie klucza algorytmem DSA
-![Key 2](./screenshots/k2.png)
+## Zły commit msg i body
+![Wrong commit](./screenshots/wrong-commit.png)
+## Próba commitu
+![Check-wrong-commit](./screenshots/check-wrong-commit.png)
+## Dobry commit
+![Good commit](./screenshots/good-commit.png)
+## Próba nr 2
+![Check good commit](./screenshots/check-good-commit.png)
 
-### Dodany klucz do konta na GH
-![GH ssh key](./screenshots/ssh_key.png)
+### Połączenie się z maszyną po SSH przez Putty 
+![Putty](./screenshots/putty.png)
 
-### Pobranie repo po ssh
-![Pull ssh](./screenshots/ssh.png)
+### Zainstalowanie dockera
+![Docker version](./screenshots/docker-ver.png)
+![Docker systemctl](./screenshots/systemctl-docker.png)
 
-### Utworzenie nowego brancha :joy:
-![Create new branch](./screenshots/branch.png)
+### Uruchomienie obrazu Ubuntu
+![Run ubuntu in docker](./screenshots/run-ubuntu.png)
 
-### Utworzenie struktury katalogówi :punch:
-![Create directory structure](./screenshots/folders.png)
+### Wersja Ubuntu
+![Wersja Ubuntu](./screenshots/docker-show-ver.png)
+
+### Konto na Docker Hub
+![Docker Hub](./screenshots/hub.png)
