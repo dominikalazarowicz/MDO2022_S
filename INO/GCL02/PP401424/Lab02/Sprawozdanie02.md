@@ -1,7 +1,7 @@
 # Sprawozdanie 02
 ### 14.03.2022
 ---
-**Podpunkt 1 i 2**
+## **Podpunkt 1 i 2**
 
 Najpierw przechodzê do ukrytego katalogu `.git`, a nastêpnie do podkatalogu `hooks`
 
@@ -37,7 +37,7 @@ I to samo lecz tym razem dla poprawnych wartoœci
 
 ---
 
-**Podpunkt 3**
+## **Podpunkt 3**
 
 W celu wykazania pracy poprzez ssh sprawdzam status OpenSSH servera poprzez
 
@@ -103,6 +103,10 @@ Na koniec zainstalowa³em **Docker Engine**
 
 ![img16](./s16.png)
 
+---
+
+## **Podpunkt 4**
+
 Uruchamiam œrodowisko dockera
 
 ```shell
@@ -124,3 +128,13 @@ Sprawdzono pobran¹ wersjê obrazu Ubuntu
 ![img20](./s20.png)
 
 ![img21](./s21.png)
+
+---
+
+## **Podpunkt 5**
+
+Za³o¿y³em konto w serwisie **Docker Hub**
+
+![img22](./s22.png)
+
+![img23](./s23.png)
