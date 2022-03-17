@@ -41,7 +41,9 @@ exit(0)
 
 **3. Rozpocznij przygotowanie środowiska Dockerowego**
     * **Zapewnienie dostępu do wirtualnej maszyny przez zdalny terminal, wykorzystując SSH**
-     ![x](./sshd_status.png)
+  
+  
+    ![x](./sshd_status.png)
 
     ![x](./ifconfig.png)
 
@@ -53,7 +55,8 @@ exit(0)
 
         
    * **środowisko dockerowe miałem zainstalowane już przed laboratorium**
-    ![x](./docker_ver.png)
+  
+  ![x](./docker_ver.png)
     
 
 **4. Działanie środowiska**
