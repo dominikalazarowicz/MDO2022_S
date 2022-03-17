@@ -41,7 +41,7 @@ exit(0)
 ```
   
 **3. Rozpocznij przygotowanie środowiska Dockerowego**
-    * **Zapewnienie dostępu do wirtualnej maszyny przez zdalny terminal, wykorzystując SSH**
+    **Zapewnienie dostępu do wirtualnej maszyny przez zdalny terminal, wykorzystując SSH**
   
   
   ![x](./sshd_status.png)
@@ -80,12 +80,11 @@ exit(0)
   
   ![x](./docker1.png)
   
-        Na koniec wyświetlam numer wersji orbazu.
+Na koniec wyświetlam numer wersji orbazu.
+  
   ![x](./kontener.png)       
 
-**5. Załóż konto na Docker Hub**
-
-Zakładam konto z podstawowym personalnym planem.
+**5. Zakładam konto na Docker Hub**
 
   ![Email confirmation](./dockerhub1.png)
 
