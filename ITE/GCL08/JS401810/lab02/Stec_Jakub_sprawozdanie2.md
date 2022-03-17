@@ -20,7 +20,7 @@ Tworzę skrypt w pythonie, którego zadaniem jest sprawdzanie tytułu commita. W
 
 **2. Umieszczam hook w postaci inline, aby dało się go przejrzeć**
   
-#!/usr/bin/python3 
+```#!/usr/bin/python3 
 import sys 
 
 msg=sys.argv[1] 
@@ -38,20 +38,21 @@ if not (msg2.find("02") != -1):
      exit(1) 
 else: print("Alles gut und klar") 
 exit(0)
-
+```
+  
 **3. Rozpocznij przygotowanie środowiska Dockerowego**
     * **Zapewnienie dostępu do wirtualnej maszyny przez zdalny terminal, wykorzystując SSH**
   
   
-    ![x](./sshd_status.png)
-
-    ![x](./ifconfig.png)
-
-    ![x](./windows_ubuntu.png)
-
-    ![x](./przed_przeslaniem.png)
-
-    ![x](./po_przeslaniu.png)
+  ![x](./sshd_status.png)
+  
+  ![x](./ifconfig.png)
+  
+  ![x](./windows_ubuntu.png)
+  
+  ![x](./przed_przeslaniem.png)
+  
+  ![x](./po_przeslaniu.png)
 
         
    * **środowisko dockerowe miałem zainstalowane już przed laboratorium**
@@ -70,7 +71,8 @@ exit(0)
       * **wyświetl jego numer wersji**
 
         Najpierw spullowałem obraz Ubuntu:
-       ![x](./ubuntu_pull.png)
+       
+  ![x](./ubuntu_pull.png)
 
         Po pobraniu obrazu wykazuje jego działanie i uruchamiam poprzez ```docker run```.
        ![x](./images.png)
