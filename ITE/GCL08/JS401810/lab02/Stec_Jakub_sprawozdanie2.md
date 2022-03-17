@@ -11,9 +11,9 @@
 
       ![x](./hooks.png)
 
-    Tworzę skrypt w pythonie, którego zadaniem jest sprawdzanie tytułu commita. Wykorzystałem do tego hook commit-msg. Jest on wykonywany w trakcie tworzenia wiadomości commita. Sprawdzany jest przesyłany tytuł commita. Dodatkowo również wprowadzona została funkcjonalność, która sprawdza czy w treści commita pada numer labu, dla danego zadania.
+Tworzę skrypt w pythonie, którego zadaniem jest sprawdzanie tytułu commita. Wykorzystałem do tego hook commit-msg. Jest on wykonywany w trakcie tworzenia wiadomości commita. Sprawdzany jest przesyłany tytuł commita. Dodatkowo również wprowadzona została funkcjonalność, która sprawdza czy w treści commita pada numer labu, dla danego zadania.
 
-    **TESTOWANIE**
+     * **TESTOWANIE**
         
        ![x](./hook1.png)  
 
@@ -37,8 +37,8 @@ if not (msg2.find("02") != -1):
      print("You are in a wrong path") 
      exit(1) 
 else: print("Alles gut und klar") 
-exit(0)```
-    
+exit(0)
+```   
   
 
 **3. Rozpocznij przygotowanie środowiska Dockerowego**
