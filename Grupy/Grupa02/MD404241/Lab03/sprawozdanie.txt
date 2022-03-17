@@ -6,3 +6,4 @@
 6. Stworzono grupe dockera
 7. Stworzono docker build komenda docker build . -t devops
 8. Uruchomiono kontener komenda docker run -it devops bash
+9. Sklonowoano repozytorium na dockera i sprawdzono czy jest moj branch komendami git clone git checkout
