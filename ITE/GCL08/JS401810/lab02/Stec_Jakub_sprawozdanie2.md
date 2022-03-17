@@ -74,12 +74,14 @@ exit(0)
        
   ![x](./ubuntu_pull.png)
 
-        Po pobraniu obrazu wykazuje jego działanie i uruchamiam poprzez ```docker run```.
-       ![x](./images.png)
-       ![x](./docker1.png)
-
+   Po pobraniu obrazu wykazuje jego działanie i uruchamiam poprzez ```docker run```.
+   
+  ![x](./images.png)
+  
+  ![x](./docker1.png)
+  
         Na koniec wyświetlam numer wersji orbazu.
-       ![x](./kontener.png)       
+  ![x](./kontener.png)       
 
 **5. Załóż konto na Docker Hub**
 
