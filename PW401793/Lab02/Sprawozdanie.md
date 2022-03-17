@@ -1,8 +1,5 @@
 # Lab 02 - Paweł Waresiak
 
-### Utworzenie git hook'a sprawdzającego commity (modyfikacja commit-msg hook'a)
-![Git hook](./screenshots/hook.png)
-
 ### Sprawdzenie czy git hook działa
 
 #### Zły commit msg i body
