@@ -1,4 +1,4 @@
-git checkout Ob402983
+git checkout Ib402983
 	checkout - zmiana brancha
 ssh-keygen -t rsa -b 4096 -C "iza.bubula2012@gmail.com"
 	generowanie klucza ssh
