@@ -31,7 +31,7 @@ if [ "$CMT_TITLE" != "PW401793" ]; then
   STATUS=1
 fi
 
-echo $CMT_MSG | grep -q '02' || {
+echo $CMT_MSG | grep -q 'Lab 0[0-9]' || {
   echo "No lab number in commit message"
   STATUS=1
 } 
