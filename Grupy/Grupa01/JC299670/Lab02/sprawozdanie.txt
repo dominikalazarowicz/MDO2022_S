@@ -24,4 +24,11 @@ Znając treść zadania wiem, że wszyscy poprawnie uporządkują strukture proj
 
 musiałam utworzyć nowegy krótko żyjący branch, o którym jest mowa w ostatnim podpunkcie.
 
-4.as
+4.Następnie napisałam Git hook'a -czyli skrypt weryfikujący, czy mój każdy commit message zaczyna się od "JC299670". 
+ Umieściłam go we właściwym miejscu, tak by uruchamiał się za każdym razem kiedy robię commita oraz sprawdziłam jego działanie.
+
+5. Dołączyłam swoje zmiany 
+5.1 Zrobiłam merga ze swojego brancha osobistego do brancha grupowego.I nastęnie zamknęłam branch osobisty.
+5.2 Stwórzyłam nowego "Pull request" ze swojego brancha grupowego do mastera
+
+
