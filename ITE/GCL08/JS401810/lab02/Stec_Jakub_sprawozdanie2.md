@@ -13,13 +13,13 @@
 
 Tworzę skrypt w pythonie, którego zadaniem jest sprawdzanie tytułu commita. Wykorzystałem do tego hook commit-msg. Jest on wykonywany w trakcie tworzenia wiadomości commita. Sprawdzany jest przesyłany tytuł commita. Dodatkowo również wprowadzona została funkcjonalność, która sprawdza czy w treści commita pada numer labu, dla danego zadania.
 
-     * **TESTOWANIE**
-        
-       ![x](./hook1.png)  
-
-      ![x](./hook2.png)
+* **TESTOWANIE**
+       
+  ![x](./hook1.png)  
+  ![x](./hook2.png)
 
 **2. Umieszczam hook w postaci inline, aby dało się go przejrzeć**
+  
     ```#!/usr/bin/python3 
 import sys 
 
