@@ -20,7 +20,8 @@ Tworzę skrypt w pythonie, którego zadaniem jest sprawdzanie tytułu commita. W
 
 **2. Umieszczam hook w postaci inline, aby dało się go przejrzeć**
   
-```#!/usr/bin/python3 
+```
+#!/usr/bin/python3 
 import sys 
 
 msg=sys.argv[1] 
