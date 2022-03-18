@@ -8,7 +8,7 @@ Bartosz Lidwin
 - hook sprawdzający czy w treści jest numer laboratorium
 
 Skrypt zmieniający commit-msg:
-
+```bash
 #!/usr/bin/env bash
 
 INPUT\_FILE=$1
@@ -42,7 +42,7 @@ done \&lt; \&lt;(sed 1d $INPUT\_FILE)
 echo &quot;Bad commit message, commit needs to contain lab number&quot;
 
 exit 1
-
+```
 ![](./_dane/1.png)
 
 1. Przygotowanie środowiska Dockerowego
@@ -63,7 +63,8 @@ Zainstalowanie dockera i sprawdzenie poprawności działania hello wordem
 
 1. Pokazanie działania środowiska Dockerowego
 
-Wykazanie działania w sposób praktyczny czyli
+Wykazanie działania w sposób praktyczny czyli pobranie dystrybucji linux
+i wyświetlenie obrazu
 
 ![](./_dane/6.png)
 
