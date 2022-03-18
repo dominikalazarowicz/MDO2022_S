@@ -19,5 +19,12 @@ Sprawozdanie LAB03
 	FROM ubuntu:latest
 
 	RUN apt-get update
-	RUN apt install git
-
+	RUN apt install -y git
+   Zbudowalem obraz poleceniem:
+   	sudo docker build . -t "lab03_image"
+6. Uruchomilem kontener w trybie interaktywnym poleceniem:
+	sudo docker run -it 'lab03_image' bash
+   Pobralem repozytorium poleceniem:
+   	git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S
+   Sprawdzilem czy moge sie przelaczyc na moja branch poleceniem:
+   	git checkout Grupa01-DB400735_Lab03
