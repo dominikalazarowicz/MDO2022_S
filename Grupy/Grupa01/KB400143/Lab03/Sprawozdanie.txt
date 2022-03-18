@@ -1,0 +1,19 @@
+1. W pierwszym kroku zajęć stworzono nową branch zgodnie ze wzorem w instrukcji. Użyta komenda:
+git branch Grupa01-KB400143_Lab03
+
+2. Następnie utworzono folder Lab03, a w nim plik sprawozdanie. Po czym utworzono w nim folder hooks i tam wrzucono stworzonego przeze mnie na poprzenich zajęciach hooka.
+
+3.W kolejnej czesci zainstalowano dockera. Dodatkowo postanowilem przeniesc sie na wirtualna maszyne przez co zrzuty ekranu moga sie roznic w porownaniu do poprzednich. Komendy uzyte do instalacji na ubuncie:
+- sudo apt-get update - pobranie najnowszych aktualizacja systemu;
+- apt-get install docker-ce docker-ce-cli containerd.io - instalacja dockera;
+- whoami - sprawdzenie nazwy uzytkownika;
+- sudo usermod -aG docker kacper - dodanie uzytkownika do grupy docker;
+- restart maszyny;
+- docker run hello-world - sprawdzenie czy docker dziala.
+
+4.Po tym zarejestrowano konto w Docker HUB.
+
+5.Nastepnie utworzono plik Dockerfile z nastepujaca zawartoscia:
+FROM ubuntu:latest
+RUN apt-get update
+RUN apt install git
