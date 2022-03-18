@@ -1,0 +1,8 @@
+git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
+skopiowanie zdalnego repozytorium
+
+git checkout -b NB404005
+przeniesienie się na nowego brancha o nazwie NB404005
+
+git add -A
+dodanie wszytskich zmodyfikowanych plików w repo do commita
