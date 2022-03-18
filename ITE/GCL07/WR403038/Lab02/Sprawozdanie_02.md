@@ -19,7 +19,7 @@ if c1 != "WR403038":
   exit(1)                                                                                                            
  if not (c2.find("02") != -1):                                                                                                
 print("Check your current catalog!")                                                                                    
-exit(1)  
+  
                                                                                                                                                                                                                                   
 exit(0)   
 
