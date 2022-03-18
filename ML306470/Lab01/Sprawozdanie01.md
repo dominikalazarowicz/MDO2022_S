@@ -4,7 +4,7 @@ W celu wykonania tego podpunktu w terminalu użyłem komend: sudo apt
 install git, ssh-keygen -o, cat /home/maciek/.ssh/id\_rsa.pub po czym
 dodałem wyświetlony klucz publiczny do kluczy na moim koncie GitHub.
 
-![install git](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/ML306470/Lab01/PrintScreens/installGit.png?raw=true)
+![install git](PrintScreens/installGit.png?raw=true)
 
 2.  Sklonuj repozytorium
     <https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S> za pomocą
