@@ -1,3 +1,3 @@
 1. winget install "Docker Desktop" - Pobranie Docker Desktop za pomocą winget'a
-2. stworzenie pliku dockerfile - komendy można zobaczyć w samym pliku albo na screenie Dockerfile-screen
-
+2. stworzono plik Docker file, jego zawartosc mozna zobaczyc na screenie Dockerfile-screen lub w samym pliku.
+3 docker build -t docker-lab3 . - tworzy nowy obraz o nazwie docker-lab3 z pliku Dockerfile.
