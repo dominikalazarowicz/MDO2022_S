@@ -42,5 +42,10 @@ Po czym chciałem wrzucić zmiany na GitHuba poleceniem: git push --set-upstream
 
 ![git push](PrintScreens/gitPush.png?raw=true)
 
+Po przystąpieniu do grupy umieszczenie plików na zdalnym repozytorium powiodło się.
+
+![git push success](PrintScreens/gitPushSuccess.png?raw=true)
+
+
 7.  Wystaw Pull Request do gałęzi grupowej
 8.  Zgłoś zadanie (Teams assignment - jeżeli dostępne)
