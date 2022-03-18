@@ -2,4 +2,4 @@ FROM ubuntu:latest
 
 RUN apt-get update
 
-RUN apt install git  
+RUN apt install -y git  

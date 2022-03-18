@@ -16,4 +16,15 @@ git branch Grupa01-KB400143_Lab03
 5.Nastepnie utworzono plik Dockerfile z nastepujaca zawartoscia:
 FROM ubuntu:latest
 RUN apt-get update
-RUN apt install git
+RUN apt install -y git - '-y' w celu automatycznego potwierdzenia instalacji
+
+6.Po tym zrobiono commita i wrzucono zmiany na remote na swoja wlasna branch.
+
+7.W kolejnej czesci zbudowano dockera komenda:
+- docker build . -t 'kb400143_lab03' - '-t' dodaje nazwe obraz.
+Oraz uruchomiono konener z nazwa kb400143_lab03 komenda:
+- docker run -it 'kb400143_lab03' bash - '-it' odpala w trybie interaktywnym.
+
+8.Nastepnie skolnowano repozytorium na dockerze oraz przelaczono sie na swoja branch.
+
+9.Po tym wrzucono zmiany na remota, zmergowano ze swojej branchy na branch grupy, a nastepnie wykonano pull requesta do mastera.
