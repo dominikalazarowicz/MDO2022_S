@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 WORKDIR app
-COPY ~/.ssh/id_rsa_rp .
+COPY /home/suvres/.ssh/id_rsa_rp .
 RUN apk update; apk upgrade \
     apk install git; \
     eval "$(ssh-agent -s)"; \
