@@ -19,7 +19,7 @@ Jeżeli generujesz nowy klucz w pkt 1.1 to właśnie przed chwilą je podałeś.
 Uwaga: nigdy nie udostępniaj hasła do klucza publicznie!
 1.3 Działającego agenta SSH do obsługi klucza SSH.
 https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent
-1.4 Zarejestrowania klucza po stronie serwera.
+1.4 Zarejestrowania klucza publicznego po stronie serwera.
 https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/adding-a-new-ssh-key-to-your-github-account
 1.5 Trzeba poinformować Git'a o zmianie sposobu logowania.
 1.5.1 "git remote -v" powinien wyświetlić połącznie po https.
@@ -29,7 +29,7 @@ https://docs.github.com/en/github-ae@latest/github/authenticating-to-github/addi
 
 2. Nadaj "Tag" na aktualnego commita o nazwie: "twoje inicjały + nr indexu + nr zadania" wraz z komentarzem.
 Np.: git tag -a KM123456_Lab01 -m "Kazimierz Michalik, Lab 01 wszystko działa, 10/10 proszę"
-2.1 Wrzuć tą zmianę na swojego brancha na origin, a następnie remote/origin używając np.: git push --follow-tags
+2.1 Wrzuć tą zmianę na swojego brancha na lokalne repo, a następnie remote/origin używając np.: git push --follow-tags
 
 3. Uporządkowanie branch'y i folderów: pogrupowanie w grupy laboratoryjne.
 Aktualnie pracujemy w konfiguracji, która prezentuje się następująco:
