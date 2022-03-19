@@ -2,7 +2,7 @@
 
 ## Wykonanie laboratorium:
 
-**1. Git-hook
+**1. Git-hook**
 
 a) odnalezienie folderu z hookami, modyfikacja commit-msg.sample, nadanie mu odpowiednich uprawnień i usunięcie jego rozszerzenia
 
@@ -12,7 +12,7 @@ b) sprawdzenie poprawności działania
 
 ![test](./commit-msg2.png)
 
-**Kod Hooka napisanego w pythonie
+**Kod Hooka napisanego w pythonie**
 ```
 #!/usr/bin/python3.9
 import sys
@@ -33,7 +33,7 @@ else:
 	exit(0)
 ```
 
-**2. Środowisko dockerowe
+**2. Środowisko dockerowe**
 
 a) instalacje ssh
 
@@ -51,7 +51,7 @@ d) przesłanie pliku z Windowsa na Minta
 
 ![ssh-send](./ssh-send.png)
 
-**3. Docker
+**3. Docker**
 
 a) wersja dockera i uruchomienie usługi
 
