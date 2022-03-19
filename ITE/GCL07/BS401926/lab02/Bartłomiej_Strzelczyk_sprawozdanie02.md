@@ -1,6 +1,6 @@
-#Devops - Laboratorium nr 2
+# Devops - Laboratorium nr 2
 
-##Wykonanie laboratorium:
+## Wykonanie laboratorium:
 
 **1. Git-hook
 
