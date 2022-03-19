@@ -6,7 +6,7 @@
 
 a) odnalezienie folderu z hookami, modyfikacja commit-msg.sample, nadanie mu odpowiednich uprawnień i usunięcie jego rozszerzenia
 
-![hook](./commit-msg.pn)
+![hook](./commit-msg.png)
 
 b) sprawdzenie poprawności działania
 
