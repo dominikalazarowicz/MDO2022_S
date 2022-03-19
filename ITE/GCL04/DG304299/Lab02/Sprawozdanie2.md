@@ -1,73 +1,107 @@
 # Sprawozdanie Lab 1
+###  Daniel Gabryś
+#
 
-## 1. Githook sprawdzający, czy tytuł commita nazywa się DG304299 oraz czy w treści commita pada numer labu, właściwy dla zadania
 
+## 1. Githook sprawdzający, czy tytuł commita nazywa się DG304299 oraz czy w treści commita pada numer lab, właściwy dla zadania
+
+</br>
+
+### Stworzenie pliku commit-msg w katalogu .git/hooks/
+
+![img](screen1.png)
+
+![img](screen3.png)
 
 ```
-aaa
-as
+#!/bin/bash
+
+## Uwagi
+## w commit message Lab02 moze być cześcią inneggo podciągu znaków(byc częścią zdania)
+## Numer lab własciwy dla zadania = 2 (opcjonalnie dla innych zakomentowana formuła linia 16)
+
+id="DG304299"
+title=`head -n1 $1`
+
+if [[ "$title" != "$id" ]];
+then
+    echo Title is wrong
+    exit 1
+fi
+
+#if ! [[ $(grep -E -w -o "Lab0?[1-9]+" "$1" )  ]];
+if ! [[ $(grep -E -w -o "Lab0?2" "$1" )  ]];
+    then
+            echo  Message is wrong
+            exit 1
+fi
+
 ```
 
-  + sprawdzenie działania kluczy ssh poprzez próbę połączenia z github.com
-  > ssh git@github.com
+### Działanie dla źle zdefiniowanych commitów
+> git commit -m "test" -m "test"
 
-  ![img](screen1.png)
+> git commit -m "DG304299" -m "test"
 
-## 2. Sklonowanie repozytorium za pomocą HTTPS
-  > git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
+> git commit -m "LAb02" -m "test"
 
-  ![img](screen2.1.png)
 
-## 3. Sklonowanie repozytorium za pomocą protokołu SSH
-  > git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+  Działanie dla dobrze zdefiniowanych commitów
+> git commit -m "DG304299" -m "Lab2"
 
-  ![img](screen3.png)
+> git commit -m "DG304299" -m "Lab02 ala ma kota"
 
-## 4. Przełącz się na gałąź main, nastepnie na gałąź grupy
-> cd MDO2022_S  
-> git checkout main  
-> git checkout ITE-GCL04 
+  *Użyto ponizszego polecenia w celu wycofania ostatniego commita z zachowaniem stage
+  >git reset --soft HEAD~1
+
+   ![img](commits.png)
+  
+  </br>
+
+## 2 Konfiguracja środowiska dockerowego
+
+</br>
+
+Z powodu pracy na na natywnym linuksie pominięto dane kroki, docker został wcześniej zainstalowany
+
+>hostname
+
+>docker -v
 
   ![img](screen4.png)
 
-## 5. Utworzono gałąź o nazwie DG304299, katalog o tej samej nazwie oraz folder Lab01 wewnątrz
-- utworzenie nowej gałęzi
-  > git checkout -b DG304299 
-  > cd ITE/GCL04    
-  > mkdir DG304299    
-  > mkdir Lab01    
-  > cd DG304299/Lab01 
+## 4. Działanie środowiska
 
-- sprawdzamy aktualny branch
+</br>
 
-  > git branch
+Działający serwis docker
+>systemctl status docker 
+
+![img](screen6.png)
+
+Wykazanie praktyczne poprzez pobranie obrazu i uruchomienie kontenera (fedora)
+
+Pobrano obraz fedora
+>docker pull fedora
+
+Sprawdzono liste obrazów
+>docker images
+
+Uruchomienie kontenera
+>docker run --name fed -it fedora
+
+Wersja (polecenie podało jądro zewnętrzeno systemu)
+>uname -a
+
+![img](fedora.png)
+
+## 5. Utworzenie konta na serwisie Docker Hub
+
+![img](screen7.png)
 
 
-  ![img](screen5.png)
 
-## 6. Tworzenie sprawozdania, dodanie zrzutów ekranu, commit
-
-  - Dodanie zmiam do stage i podgląd
-
-    > git add .
-
-    > git status
-
-    ![img](screen6.png)
-
-  - Commit
-
-    > git commit -m "Create report"
-
-    ![img](screen7.png)
-
-  ## 6. Wrzucenie zmian na zdalnego brancha
- 
-  > git push --set-upstream origin DG304299
-
-  ![img](screen8.png)
-
-  ## 7. Zaktualizowanie sprawozdania
+  
 
 
   
