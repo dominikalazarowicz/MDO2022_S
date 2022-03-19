@@ -6,11 +6,11 @@
 
 a) odnalezienie folderu z hookami, modyfikacja commit-msg.sample, nadanie mu odpowiednich uprawnień i usunięcie jego rozszerzenia
 
-![hook]()./commit-msg.png
+![hook](./commit-msg.pn)
 
 b) sprawdzenie poprawności działania
 
-![test]()./commit-msg2.png
+![test](./commit-msg2.png)
 
 **Kod Hooka napisanego w pythonie
 ```
@@ -37,37 +37,37 @@ else:
 
 a) instalacje ssh
 
-![ssh-install]()./ssh-install.png
+![ssh-install](./ssh-install.png)
 
 b) zapewnienie dostępu do maszyny wirtualnej przez zdalny terminal
 
-![ssh-ctl]()./ctl.png
+![ssh-ctl](./ctl.png)
 
 c) połączenie się z Windowsa przez ssh z maszyną wirtualną
 
-![windows-ssh]()./windows-ssh.png
+![windows-ssh](./windows-ssh.png)
 
 d) przesłanie pliku z Windowsa na Minta
 
-![ssh-send]()./ssh-send.png
+![ssh-send](./ssh-send.png)
 
 **3. Docker
 
 a) wersja dockera i uruchomienie usługi
 
-![docker-version]()./docker-version.png
+![docker-version](./docker-version.png)
 
 b) spullowanie obrazu ubuntu 
 
-![docker-pull]()./docker-pull.png
+![docker-pull](./docker-pull.png)
 
 c) uruchomienie kontenera stworzonego poleceniem start oraz wyświetlenie wersji obrazu
 
-![docker-test]()./docker-test.png
+![docker-test](./docker-test.png)
 
 d) założenie konta na Docker Hub
 
-![docker-hub]()./docker-hub.png
+![docker-hub](./docker-hub.png)
 
 
 
