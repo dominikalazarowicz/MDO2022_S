@@ -1,0 +1,170 @@
+  500  cd home/
+  501  ls
+  502  cd mikolaj/
+  503  ls
+  504  cd devops/
+  505  ls
+  506  cd MDO2022_S/
+  507  ls -a
+  508  cd ./.git
+  509  ls
+  510  cd hooks/
+  511  ls
+  512  nano commit-msg.sample 
+  513  ls
+  514  ls | grep -i "commit*"
+  515  mv commit-msg.sample commit-msg
+  516  nano commit-msg.sample 
+  517  nano commit-msg
+  518  cd ..
+  519  cd..
+  520  cd ..
+  521  ls
+  522  cd ITE/
+  523  ls
+  524  cd GCL05/
+  525  ls
+  526  cd MM400112/
+  527  ls
+  528  git status
+  529  ls
+  530  mkdir Lab02
+  531  ls
+  532  cd Lab02/
+  533  touch test.txt
+  534  git add test.txt 
+  535  git commit -m "Niepoprawny commit"
+  536  git status
+  537  git commit -m "MM400112"
+  538  cd ..
+  539  cd ..
+  540  cd ..
+  541  cd ..
+  542  ls -a
+  543  cd ./.git
+  544  cd hooks/
+  545  ls
+  546  nano commit-msg 
+  547  ls
+  548  nano commit-msg 
+  549  cd ..
+  550  cd ..
+  551  cd ITE/
+  552  ls
+  553  cd GCL05/
+  554  ls
+  555  cd MM400112/
+  556  cd Lab02/
+  557  ls
+  558  git commit -m "MM400112"
+  559  cd MDO2022_S/
+  560  cd ..
+  561  cd ..
+  562  cd ..
+  563  cd ..
+  564  cd ./.git
+  565  cd hooks/
+  566  nano commit-msg 
+  567  cd ../..
+  568  ls
+  569  cd ITE/
+  570  ls
+  571  cd GCL05/
+  572  ls
+  573  cd MM400112/
+  574  ls
+  575  cd Lab02
+  576  ls
+  577  git commit -m "MM400112"
+  578  git status
+  579  cd ../../../..
+  580  cd ./.git/hooks/
+  581  ls
+  582  nano pre-commit.sample 
+  583  cd ../..
+  584  cd ITE/GCL05/MM400112/
+  585  ls
+  586  cd Lab02
+  587  ls
+  588  rm test.txt 
+  589  ls
+  590  git add
+  591  add ,
+  592  git add .
+  593  git commit -m "MM400112"
+  594  cd ../../..
+  595  cd ..
+  596  cd ./.git
+  597  ls
+  598  cd hooks/
+  599  ls
+  600  ls -l 
+  601  chmod 777 pre-commit
+  602  ls -l
+  603  cd ..
+  604  cd ..
+  605  cd ITE/GCL05/MM400112/Lab02
+  606  ls
+  607  touch test1.txt
+  608  git add .
+  609  git commit "MM400112"+Lab02
+  610  git commit "MM400112" + Lab02
+  611  git commit -m "MM400112" + Lab02
+  612  git commit -m "MM400112"+Lab02
+  613  touch test2.txt
+  614  git add .
+  615  git commit -m "MM400112"
+  616  cd ../../../..
+  617  cd ./.git/hooks/
+  618  ls
+  619  rm pre-commit
+  620  nano pre-commit.sample 
+  621  mv pre-commit.sample pre-commit
+  622  cd ../..
+  623  cd ITE/GCL05/MM400112/Lab02/
+  624  git status
+  625  ls
+  626  rm test1.txt test2.txt 
+  627  git add .
+  628  git commit -m "MM400112"
+  629  cd ../../../..
+  630  cd ./.git/hooks/
+  631  nano pre-commit 
+  632  ls
+  633  cd ../..
+  634  cd ITE/
+  635  ls
+  636  cd GCL05/MM400112/Lab02/
+  637  ls
+  638  git status
+  639  touch test1.txt
+  640  git add .
+  641  git commit -m "MM400112"
+  642  git rm test1.txt 
+  643  rm test1.txt 
+  644  touch Sprawozdanie02.md
+  645  git add .
+  646  git commit -m "MM400112"
+  647  ls
+  648  rm Sprawozdanie02.md 
+  649  sudo systemctl status ssh
+  650  cd ../../../../..
+  651  cd ../..
+  652  sudo systemctl status ssh
+  653  ls
+  654  cd mikolaj/
+  655  ls
+  656  cd devops/
+  657  ls
+  658  cd MDO2022_S/
+  659  ls
+  660  cd ITE/
+  661  ls
+  662  cd GCL05/
+  663  ls
+  664  cd MM400112/
+  665  ls
+  666  cd Lab02/
+  667  ls
+  668  touch historia_polecen.txt
+  669  history > historia_polecen.txt 
