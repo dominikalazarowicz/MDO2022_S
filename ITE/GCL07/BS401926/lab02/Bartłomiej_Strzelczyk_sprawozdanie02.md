@@ -65,7 +65,7 @@ c) uruchomienie kontenera stworzonego poleceniem start oraz wyświetlenie wersji
 
 ![docker-test](./docker-test.png)
 
-d) założenie konta na Docker Hub
+d) zalogowanie się na konto na Docker Hubie
 
 ![docker-hub](./docker-hub.png)
 
