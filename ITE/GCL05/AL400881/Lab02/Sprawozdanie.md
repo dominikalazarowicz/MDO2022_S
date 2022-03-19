@@ -75,11 +75,11 @@
 
     * wykaż działanie z sposób praktyczny (z własności):
       * pobierz obraz dystrybucji linuksowej i uruchom go 
-        ![Fedora image](./screenshots/fedora.png)      
-        ```
-        docker pull fedora
-	docker run -itd fedora
-        ```
+      ![Fedora image](./screenshots/fedora.png)	
+      ```
+      docker pull fedora
+      docker run -itd fedora
+      ```
 
       * wyświetl jego numer wersji
       Ponieważ nie sprecyzowano wesji obrazu, to pobrało najnowszą dostępną *latest*      
