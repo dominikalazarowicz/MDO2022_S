@@ -46,15 +46,16 @@
 
 3. Rozpocznij przygotowanie środowiska Dockerowego
     * zapewnij dostęp do maszyny wirtualnej przez zdalny terminal (nie "przez okienko")
-    Z powodu pracy na WSL pominięto ten krok.
-
-    Wykazanie, że WSL działa na tym samym hoście co Windows:
     
-    ![Hostname](./screenshots/hostname.png)
+    	Z powodu pracy na WSL pominięto ten krok.
 
-    Wspólne pliki między systemami:
+    	Wykazanie, że WSL działa na tym samym hoście co Windows:
     
-    ![Shared files](./screenshots/shared-files.png)
+    	![Hostname](./screenshots/hostname.png)
+
+    	Wspólne pliki między systemami:
+    
+    	![Shared files](./screenshots/shared-files.png)
 
     * zainstaluj środowisko dockerowe w stosowanym systemie operacyjnym
     ![Docker install](./screenshots/docker-install.png)
