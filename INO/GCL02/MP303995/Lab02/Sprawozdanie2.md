@@ -9,7 +9,7 @@
 * W argumencie $1 znajduje się treść commita. W skrypcie, wykorzystując funkcję test sprawdzam czy argument $1 zawiera wartość argumentu ```BRANCH_NAME``` będącego złączeniem mojego inicjału oraz numeru indeksu. W zależności od uzyskanego wyniku wyświetlam odpowiednią informację. Na końcu plik zapisuje pod własciową, domyślną nazwą (```commit-msg```)
 * W kolejnym kroku przystąpiłem do przetestowania działania. 
 * Pierwsza próba zakończyła się niepowodzeniem z następującym wynikiem:
-![CMsgFail](./ss/commitMsgFail.png)
+![CMsgFail](./ss/hookFail.png)
 * Wynik braku działania hooka został spowodowany faktem, iż tworząc nowy plik ```commit-msg``` domyślnie został on utworzony, jako plik niewykonywalny. Aby uczynić go plikiem wykonywalnym musiałem wykorzystać komendę ```chmod +x commit-msg```, co naprawiło problem.
  ![CMsgFix](./ss/commitMsgFix.png)
 * Wynik działania dla niepoprawnej treści commita
