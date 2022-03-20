@@ -1,5 +1,5 @@
-# Sprawozdanie - metody DevOps - lab02
-## Utworzenie git hook'a
+# Metodyki DevOps lab01 - sprawozdanie
+## 1. Utworzenie git hook'a
 Do realizacji zadania wykorzystano git hook'a o nazwie
 `prepare-commit-msg`. Jego zawartość przedstawia poniższy screen:
 
@@ -14,7 +14,9 @@ zostanie stosowana wiadomość, a operacja zostanie porzucona.
 
 ![bad_commit](./ss/3_prohibited_commit_example.png)
 
-## Przygotowanie środowiska Dockerowego
+## 2. Umieszczenie pliku git hook'a w folderze ze sprawozdaniem
+
+## 3. Przygotowanie środowiska Dockerowego
 Środowisko pracy zapewnia łączność z maszyną wirtualna poprzez `ssh`
 oraz `sftp`. Ponizszy zrzut ekranu przedstawia pomyślne połączenie się
 z maszyną wirtualna poprzez `ssh` oraz `sftp`.
@@ -23,13 +25,13 @@ z maszyną wirtualna poprzez `ssh` oraz `sftp`.
 
 ![sftp_connection](./ss/6_sftp_connection_from_w10.png)
 
-## Działanie środowiska
+## 4. Działanie środowiska
 Wykazanie ze Docker jest uruchomiony
 ![systemctl_docker](./ss/7_docker_status_checkout.png)
 
 Pobranie oraz uruchomienie obrazu z Ubuntu
 ![running_ubuntu_image](./ss/8_running_docker_image.png)
 
-## Utworzenie konta na DockerHub
+## 5. Utworzenie konta na DockerHub
 ![docker_accout](./ss/9_docker_account.png)
 
