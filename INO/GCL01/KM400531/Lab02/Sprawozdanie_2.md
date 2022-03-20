@@ -7,4 +7,9 @@ Edytowałem plik *commit-msg.sample* tak aby sprawdzał czy tytuł commita nazyw
 ![](commit_msg.png)  
 Poniżej wynik wprowadzenia złej nazwy commita  
 ![](wrong_commit.png)  
-
+A tak wygląda po wprowadzeniu dobrej nazwy commita  
+![](good_commit.png)  
+W kolejnym kroku stworzyłem plik, który sprawdza czy zmiany są robione w folderze dotyczącym aktualnych zajęć. Jego kod wygląda następująco  
+![](pre-commit.png)  
+Tak wygląda próba commita w złym folderze  
+![](wrong_commit.png)
