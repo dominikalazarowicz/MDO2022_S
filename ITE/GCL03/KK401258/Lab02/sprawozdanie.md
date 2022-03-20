@@ -33,6 +33,9 @@ ___
 	  exit 1
 	fi
 ---
+* Działanie hooka:
+
+![Image](./zrzut_ekranu_16.png "zrzut_ekranu_16")
 
 ### Ad 3) Rozpocznij przygotowanie środowiska Dockerowego
 
