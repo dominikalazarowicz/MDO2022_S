@@ -10,9 +10,9 @@
   * W celu "otwarcia się na świat" wirtualnej maszyny trzeba umożliwić jej pobranie własnego adresu z DHCP. W virtualboxie wystarczy zmienić tryb z `NAT` na `bridged`.
   ![./Zrzut ekranu 2022-03-20 130451.jpg]
   * Dla swojej wygody w przyszłości przydzieliłem też stały adres IP w serwerze DHCP.
-  ![./dhcp.png]
+  ![](./dhcp.png)
   * Ponadto większość dystrybucji instaluje się bez serwera SSH, więc trzeba go doinstalować `sudo apt install openssh-server`
-  ![./Zrzut ekranu 2022-03-14 172114.jpg]
+  ![](./Zrzut ekranu 2022-03-14 172114.jpg)
   * Instalujemy dockera, najpierw usuwając stare jego wersje `sudo apt-get remove docker docker-engine docker.io containerd runc`,
   `sudo apt-get update`,
   `sudo apt-get install ca-certificates curl gnupg lsb-release`,
@@ -22,16 +22,16 @@
   `sudo apt-get install docker-ce docker-ce-cli containerd.io`
   `sudo docker run hello-world`
   potem dla pewności prawidłowej instalacji uruchamiamy obraz "hello-world", który automatycznie dociąga się z repo.
-  ![./Zrzut ekranu 2022-03-20 132321.jpg]
-  ![./Zrzut ekranu 2022-03-20 132332.jpg]
-  ![./Zrzut ekranu 2022-03-20 132401.jpg]
+  ![](./Zrzut ekranu 2022-03-20 132321.jpg)
+  ![](./Zrzut ekranu 2022-03-20 132332.jpg)
+  ![](./Zrzut ekranu 2022-03-20 132401.jpg)
 4. 
   * Dociągamy sobie obraz fedory (bo host to debian). `docker pull fedora:latest`. Wchodzimy do kontenera (interaktywnie) `docker run fedora -it`
-  ![./Zrzut ekranu 2022-03-20 133644.jpg]
+  ![](./Zrzut ekranu 2022-03-20 133644.jpg)
   * Poza laboratorium: ustawiłem dockera, żeby działał bez sudo i żeby startował wraz z systemem.
-  ![./Zrzut ekranu 2022-03-20 133910.jpg]
+  ![](./Zrzut ekranu 2022-03-20 133910.jpg)
   * Jak sobie wejdziemy do kontenera to widać, że kernel to dalej debian, ale sam os to fedora.
-  ![./Zrzut ekranu 2022-03-20 134155.jpg]
+  ![](./Zrzut ekranu 2022-03-20 134155.jpg)
 5.
   * Już mam tam konto, ale nie pamiętam hasła, a docker nie raczy wysłać maila do resetu hasła, więc nie będzie skrina.
-  ![./Zrzut ekranu 2022-03-20 134726.jpg]
+  ![](./Zrzut ekranu 2022-03-20 134726.jpg)
