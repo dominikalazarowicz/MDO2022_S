@@ -1,6 +1,7 @@
 SPRAWOZDANIE 2
 
 1. Przygotowanie git hook'a:
+
 -utworzenie odpowiednich folderów:
 
 ![1a](https://user-images.githubusercontent.com/92218468/159165429-373a3582-b16e-4941-a849-ba332e334f7e.JPG)
