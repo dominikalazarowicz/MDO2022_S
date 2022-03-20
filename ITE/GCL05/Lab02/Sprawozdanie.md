@@ -37,5 +37,5 @@ exit 1
 
 >4. Wykaż, że środowisko dockerowe jest uruchomione i działa, wykaż działanie( pobierz obraz dystrybucji linuksowej i uruchom go), wyświelt numer wersji.
 ![Screen4](275897693_390513295809375_6462618868840290201_n.png)
-> 5. Załóż konto na Docker Hub.
+> 5. Załóż konto na Docker Hub
 ![Screen5](275853454_498645438480781_2875655412935737681_n.png)
