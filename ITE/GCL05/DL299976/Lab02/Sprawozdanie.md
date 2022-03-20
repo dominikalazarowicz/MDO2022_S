@@ -16,10 +16,13 @@ fi
 
 ```
 
-Testy skryptu 
-![alt text](lab02-6.png)
+Testy skryptu :
+
 ![alt text](lab02-7.png)
+
 ![alt text](lab02-8.png)
+
+![alt text](lab02-9.png)
 
 Następnie na maszynie wirualnej został zainstalowany docker.
 ![alt text](lab02-1.png)
