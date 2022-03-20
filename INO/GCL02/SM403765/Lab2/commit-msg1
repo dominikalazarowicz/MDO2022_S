@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if test $(cat $1) = SM403765
+then
+  echo "Correct commit"
+else
+  echo "Bad commit"
+  exit 1
+fi
