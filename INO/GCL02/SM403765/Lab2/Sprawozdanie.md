@@ -15,7 +15,7 @@ else
 fi
 ```
 
-![Branch w commicie](./commit branch.png)
+![Branch w commicie](./commit_branch.png)
 <figcaption align = "center">Zrzut 1. Sprawdzenie zawartości brancha w commicie</figcaption>
 
 
@@ -35,5 +35,5 @@ else
 fi
 ```
 
-![Lab nr w commicie](./commit lab nr.png)
+![Lab nr w commicie](./commit_lab_nr.png)
 <figcaption align = "center">Zrzut 2. Sprawdzenie zawartości numeru labów w commicie</figcaption>
