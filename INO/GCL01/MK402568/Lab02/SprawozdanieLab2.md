@@ -31,7 +31,8 @@ Kolejno przeprowadziłem testy:
 - hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania.
 
 Drugim etapem pracy z git hook'ami było zmodyfikowanie hook'a *pre-commit*, tym razem korzystając z funkcji ```git diff``` oraz przełącznika ```cached``` sprawdzane jest czy zmiany zatwierdzone do zacommitowania posiadają w swojej ścieżce \Lab02\ (numer obecnego laboratorium). Następnie za pomocą instrukcji warunkowych na wyjście wypisywana jest wiadomość zwrotna. 
-![](./screenshots/pre-commit.png)
+
+![](./screenshots/pre-commit2.png)
 
 Kolejno przeprowadziłem testy, w celu sprawdzenia poprawności utworzyłem w katalogu poprzedniego laboratorium plik tekstowy:
 + test pozytywny 
