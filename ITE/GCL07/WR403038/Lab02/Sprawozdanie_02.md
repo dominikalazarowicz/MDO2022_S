@@ -5,25 +5,25 @@ Sprawozdanie LAB02 Weronika Rusinek 403038
 ![plot](./commit.png)
 
 2. Hook: 
-...
-#!/usr/bin/python3 
-import sys                                                                                                              
-commit=sys.argv[1]
-fileName=open(commit,'r')  
-check=fileName.read() 
 
-c1=check.split('\n')[0]
-c2=check.split('\n')[2]      
-if c1 != "WR403038": 
+	#!/usr/bin/python3 
+	import sys                                                                                                              
+	commit=sys.argv[1]
+	fileName=open(commit,'r')  
+	check=fileName.read() 
+
+	c1=check.split('\n')[0]
+	c2=check.split('\n')[2]      
+	if c1 != "WR403038": 
 			print("Are you sure that your commit message contains your details?")                                                 
-  exit(1)                                                                                                            
- if not (c2.find("02") != -1):                                                                                                
-print("Check your current catalog!")                                                                                    
+ 	 exit(1)                                                                                                            
+	 if not (c2.find("02") != -1):                                                                                                
+	print("Check your current catalog!")                                                                                    
   
                                                                                                                                                                                                                                   
 exit(0)   
+:::
 
-...
 
 3. Przygotowanie środowiska dockerowego:
 
@@ -50,7 +50,7 @@ a) ubuntu stosowane na WSL:
 b) środowisko dockerowe - fedora:
 ![plot](./neofetch_fedora.png)
 
-![plot](./whoaami.png)
+![plot](./whoami.png)
 
 
 4. Założenie konta na DockerHub
