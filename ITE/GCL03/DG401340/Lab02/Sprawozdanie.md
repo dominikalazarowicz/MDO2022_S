@@ -50,7 +50,7 @@ Zrzut ekranu przedstawia pomyślnie połączenie się z maszyną wirtualną popr
 
 * zainstaluj środowisko dockerowe w stosowanym systemie operacyjnym  
 Instalacja dockera: ```sudo pacman -S docker```  
-![](install_docker.png) 
+![](install_docker.png)  
   Następnie należy włączyć dockera co robimy poleceniami ```sudo systemctl enable docker``` (włączenie, żeby docker uruchamiał się wraz ze startem systemu). ```sudo systemctl start docker``` (włączenie usługi). Możemy teraz sprawdzić, czy docker jest uruchomiony poleceniem: ```sudo systemctl status docker```.  
 ![](docker_start.png) 
 
@@ -65,7 +65,7 @@ Na zrzucie ekranu przedstawionym wyżej widać, że usługa jest uruchomiona i d
   Uruchomienie kontenera w sposób interaktywny: ```sudo docker run --name ubun -it ubuntu```  
   ![](docker_run.png)  
   * wyświetl jego numer wersji  
-  Sprawdzenie wersji, przy użyciu poleceni: ```uname -a``` oraz ```cat /etc/lsb-release```:  
+  Sprawdzenie wersji, przy użyciu poleceń: ```uname -a``` oraz ```cat /etc/lsb-release```:  
   ![](version.png)  
 
 ## 5. Załóż konto na Docker Hub
