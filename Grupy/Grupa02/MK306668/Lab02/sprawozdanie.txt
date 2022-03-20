@@ -1,3 +1,4 @@
 #dodac wykonywane operacje
 #1
 #2
+#3
