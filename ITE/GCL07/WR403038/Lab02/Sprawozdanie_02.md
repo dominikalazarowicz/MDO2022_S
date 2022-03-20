@@ -55,6 +55,6 @@ b) środowisko dockerowe - fedora:
 
 4. Założenie konta na DockerHub:
 
-![plot][./dockerhub.png]
+![plot](./dockerhub.png)
 
 
