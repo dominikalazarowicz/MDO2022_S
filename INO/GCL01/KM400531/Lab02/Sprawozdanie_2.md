@@ -13,3 +13,24 @@ W kolejnym kroku stworzyłem plik, który sprawdza czy zmiany są robione w fold
 ![](pre-commit.png)  
 Tak wygląda próba commita w złym folderze  
 ![](wrong_commit.png)
+A tak w dobrym  
+![](good_folder.png)
+Aby wykazać zainstalowy natywnie system Linux używam komendy pokazującej plik zawierający dane identyfikujące system operacyjny  
+![](ubuntu.png)  
+Dodatkowo sprawdzam jeszcze jedną informację, która pokazuje że jest to Linux postawiony natywnie. Po wpisaniu tej komendy na virtualnej maszynie pokazuje się informacja, iż jest to VirtualBox. W moim przypadku jak widać jest inaczej. Dzieje się tak ponieważ komenda dmidecode sprawdza jakie informacje są zawarte w BIOSie   
+1[](ubuntu2.png)  
+W kolejnym kroku zajmuje się instalacją dockera. Na początek aktualizuje paczki w systemie za pomocą komendy *sudo apt-get update*, a następnie instaluje dockera  
+![](install_docker.png)  
+Następnie za pomocą komendy *sudo service docker start* uruchamiam dockera  
+![](status_docker.png)  
+Aby wykazać działanie dockera uruchomiłem hello-world  
+![](hello_world.png)  
+Drugą opcją wykazania działania dockera jest pokazanie jego działającego procesu. Wyświetlam to za pomocą komendy *ps -ax |grep "docker"*. grep docker powoduje że wyświetlają się tylko procesy zawierajce w sobie frazę "docker"  
+![](docker_run.png)  
+Instaluje obraz linuxa w dockerze  
+![](docker.ubuntu.png)  
+Aby sprawdzić jaką dokładnie werjsę linuxa zainstalowałem muszę uruchomić konktener. Robię to dodając -it do komendy (i uruchamia kontener interaktywnie, t alokuje terminal w kontenerze)  
+![](docker_ubuntu_wersja.png)  
+Na koniec założyłem konto w serwisie DockerHUB  
+![](docker_hub.png)  
+
