@@ -7,70 +7,78 @@
 ### Przygotowanie git hooka, który sprawdza poprawność tytułu i treści wiadomości
 
 ```
-#!/bin/sh
+#!/usr/bin/env bash
 
-FILE=$1
+INPUT_FILE=$1
 
-START=`head -n1 $IN`
+START_LINE=`head -n1 $INPUT_FILE`
 
 TITLE_PATTERN="^(SM403515)"
 
-MESS_PATTERN=".*(LAB)[0-9][0-9]*."
+MSG_PATTERN=".*(LAB)[0-9][0-9]*."
 
-if ! [["$START"=~$TITLE_PATTERN]]; then
-	echo "Commit title must be yours student id"
-	exit 1
+if ! [[ "$START_LINE" =~ $TITLE_PATTERN ]]; then
+  echo "Wrong commit title"
+  exit 1
 fi
 
-while IFS=read -r msg_line
+while IFS= read -r line
 do
-	if [[$msg_line=~$MESS_PATTERN]]; then
+	if [[ $line =~ $MSG_PATTERN ]]; then
 		exit 0
 	fi
-done < <(sed 1d $FILE)
+done < <(sed 1d $INPUT_FILE)
 
-echo "Commit message does not contain laboratory id"
+echo "Wrong commit message"
 exit 1
 ```
 
-### Nadanie uprawnień dla git hooka
+Nadanie uprawnień dla git hooka
 
 ```
 chmod +x commit-msg
 ```
 
-### Przełączenie brancha na: main oraz grupowego
+Sprawdzenie działania hooka
 
 ```
-git checkout main
-git checkout ITE-GCL05
+git commit -m "*tutaj różne treści w zeleżności co chcę sprawdzić*"
 ```
 
-![This is an image](newbranch.png)
+![This is an image](gitcommittest.png)
 
-### Stworzenie i przełączenie na brancha prywatnego
+### Przygotowanie środowiska dockerowego
 
-```
-git checkout -b "SM403515"
-```
-
-![This is an image](mybranch.png)
-
-### Stworzenie swojego katalogu i pliku sprawozdania
+Wcześniej posiadałem zainstalowany Docker w swoim systemie
 
 ```
-mkdir SM403515
-mkdir Lab01
-touch sprawko.md
+sudo systemctl status docker
 ```
 
-![This is an image](newdirandfile.png)
+![This is an image](dockerstatus.png)
 
-### Wysłanie wszystkiego do zdalnego repozytorium
+### Pobranie i uruchomienie dockerowego obrazu w trybie interaktywnym
 
 ```
-git commit -m "First part of Lab"
-git push origin SM403515
+docker pull alpine
 ```
 
-![This is an image](updatecommit.png)
+![This is an image](dockerpull.png)
+
+```
+docker run -it alpine
+```
+
+![This is an image](dockerrun.png)
+
+W kontenerze Alpine'a
+
+```
+cat /etc/os-release
+```
+
+![This is an image](alpineversion.png)
+
+### Założenie konta na Docker Hub
+
+![This is an image](dockerhub.png)
