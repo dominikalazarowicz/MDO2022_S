@@ -44,3 +44,17 @@ git checkout -b DB306528**
 Na branchu utworzylem folder DB306528, w nim folder lab01, a następnie przeniosłem do niego odpowiednie pliki
 
 ![mkdir](09 mkdir.png)
+
+Tutaj zamieszczam zdjęcia z użycia komend użytych do wrzucenia commita z komentarzem:
+
+git add:
+
+![git add](10 git add.png)
+
+git commit:
+
+![git commit](11 git commit.png)
+
+git push:
+
+![git push](12 git push.png)
