@@ -5,7 +5,7 @@ Sprawozdanie LAB02 Weronika Rusinek 403038
 ![plot](./commit.png)
 
 2. Hook: 
-
+#
 	#!/usr/bin/python3 
 	import sys                                                                                                              
 	commit=sys.argv[1]
@@ -21,8 +21,8 @@ Sprawozdanie LAB02 Weronika Rusinek 403038
 	print("Check your current catalog!")                                                                                    
   
                                                                                                                                                                                                                                   
-exit(0)   
-:::
+	exit(0)   
+
 
 
 3. Przygotowanie środowiska dockerowego:
@@ -37,7 +37,7 @@ W Windows Terminal połączono się poprzez SSH:
 Połączenie wykonano także w programie FileZilla: 
 ![plot](./all.png)
 
-	- docker:
+- docker:
 Sprawdzenie statusu i praktyczne wykorzystanie dockera: pobranie i uruchomienie fedory
 
 ![plot](./docker1.png)
@@ -53,7 +53,7 @@ b) środowisko dockerowe - fedora:
 ![plot](./whoami.png)
 
 
-4. Założenie konta na DockerHub
+4. Założenie konta na DockerHub:
 
 ![plot][./dockerhub.png]
 
