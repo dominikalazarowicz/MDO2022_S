@@ -8,14 +8,14 @@ test -n "$(grep 'DG401340' ${1})" || {
         echo >&2 "ERROR: Commit title has to contain DG401340"
         exit -1
 }
-test -n "$(grep 'Lab02' ${2})" || {
+test -n "$(grep 'Lab02' ${1})" || {
         echo >&2 "ERROR: Commit message has to contain Lab02"
         exit -1
 }
 ```  
 Aby umożliwić naszemu skryptowi działanie musimy nadać mu odpowiednie uprawnienia co robimy poleceniem: ```chmod +x commit-msg```  
 Dzięki temu tworząc commita z tytułem bez DG401340, commit ten nie zostanie utworzony. Jeżeli commit nie będzie zawierał w treści Lab02 to też nie zostanie on utworzony. Prezentacja działania znajduje się na poniższym zrzucie ekranu:    
-![](2022-03-17-23-00-30.png)
+![](2022-03-20-12-34-20.png)  
 
 * hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania   
 Hook jest przedstawiony w poprzednim punkcie. 1 hook sprawdza obie te rzeczy.
