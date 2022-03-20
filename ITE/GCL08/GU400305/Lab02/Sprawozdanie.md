@@ -1,1 +1,0 @@
-## Sprawozdanie Lab02 GGabriela Urbaczyk gr8
