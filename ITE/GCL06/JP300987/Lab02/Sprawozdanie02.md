@@ -36,7 +36,7 @@ if ! [[ "$START" =~ "JP300987" ]]; then
 fi
   
 
-if ! [[ "$START" == *"Lab02"* ]]; then
+if ! [[ "$START" == \*"Lab02"\* ]]; then
   
   echo "Bad commit"
   
