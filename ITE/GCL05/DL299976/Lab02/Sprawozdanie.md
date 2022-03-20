@@ -15,6 +15,12 @@ if !([[ $1 =~ .*Lab[0-9][0-9]*. ]]); then
 fi
 
 ```
+
+Testy skryptu 
+![alt text](lab02-6.png)
+![alt text](lab02-7.png)
+![alt text](lab02-8.png)
+
 Następnie na maszynie wirualnej został zainstalowany docker.
 ![alt text](lab02-1.png)
 
