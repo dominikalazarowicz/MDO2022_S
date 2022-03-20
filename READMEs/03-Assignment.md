@@ -2,12 +2,14 @@
 ### 2022-03-21 -- 2022-03-25
 ---
 # Docker files, kontener jako definicja etapu
+
+## Format sprawozdania
 - Wykonaj opisane niżej kroki i dokumentuj ich wykonanie
 - Na dokumentację składają się następujące elementy:
   - plik tekstowy ze sprawozdaniem, zawierający opisy z każdego z punktów zadania
   - zrzuty ekranu przedstawiające wykonane kroki (oddzielny zrzut ekranu dla każdego kroku)
   - listing historii poleceń (cmd/bash/PowerShell)
-- Sprawozdanie z zadania powinno umożliwiać odtworzenie wykonanych kroków w wykorzystaniem opisu, poleceń i zrzutów
+- Sprawozdanie z zadania powinno umożliwiać **odtworzenie wykonanych kroków** z wykorzystaniem opisu, poleceń i zrzutów. Oznacza to, że sprawozdanie powinno zawierać opis czynności w odpowiedzi na (także zawarte) kroki z zadania. Przeczytanie dokumentu powinno umożliwiać zapoznanie się z procesem i jego celem bez konieczności otwierania treści zadania.
 
 - Sprawozdanie proszę umieścić w następującej ścieżce: ```<kierunek>/<grupa>/<inicjały><numerIndeksu>/Lab03/Sprawozdanie.md```, w formacie Markdown
 
