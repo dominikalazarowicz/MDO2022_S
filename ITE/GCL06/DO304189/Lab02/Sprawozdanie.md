@@ -2,6 +2,7 @@
 
 
 ## Cel ćwiczenia
+Celem laboratorium było
 
 ## Wykonanie
 
