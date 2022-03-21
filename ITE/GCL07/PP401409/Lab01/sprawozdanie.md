@@ -2,12 +2,15 @@ SPRAWOZDANIE Lab01
 
 0. ssh-keygen -o
 Utworzenie klucza ssh
+![plot](./Screenshot00 ssh keygen.png)
 
 1. git clone InzynieriaOprogramowaniaAGH/MDO2022_S
 Sklonowanie repozytorium, wykorzystałam do tego adres po ssh, ponieważ używam weryfikacji dwuetapowej na githubie.
+![plot](./Screenshot01 Git clone.png)
 
 2. git branch PP401409 oraz git checkout PP401409 
 Utworzenie a nastepnie przelaczenie sie na wlasny branch (inicjaly + numer indeksu)
+![plot](./Screenshot04 Nowy branch i commit.png)
 
 git branch
 Wyswietlenie wszystkich branchy
