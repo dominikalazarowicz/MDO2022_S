@@ -14,6 +14,7 @@ Teraz, aby commit przeszedl, musi on miec tytul: `<inicjały><numer indeksu>`, a
 ![commit](https://imgur.com/5mtZ6z7.jpg)
 
 **Testy**
+
 Poprawny commit:
 
 ![Good commit](https://imgur.com/WDDaOKU.jpg)
