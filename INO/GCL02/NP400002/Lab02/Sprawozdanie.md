@@ -28,17 +28,22 @@ if __name__ == '__main__':
 
 - W pliku *commit-msg* uruchomiono skrypt Python i w przypadku niepoprawnego kodu wyjścia pojawiał się kumunikat o aistniałym błędzie:
 ```bash
-    python INO/GCL02/NP400002/hook_script.py $1
-wynik = $?
-if [ wynik == 1 ];
+python INO/GCL02/NP400002/hook_script.py $1
+wynik=$?
+if [ $wynik = 1 ];
 then
 	echo >&2 Wrong commit title
 	exit 1
-if [ wynik == 2 ];
+fi
+if [ $wynik = 2 ];
 then
 	echo >&2 Wrong commit message
 	exit 1
+fi
 ```
+
+- Sprawdzono także poprawnośc działania utworzonego hooka
+![Działanie Hooka](./hook_is_working.png)
 
 ---
 ### 2. Przygotowanie środowiska Dockerowego
