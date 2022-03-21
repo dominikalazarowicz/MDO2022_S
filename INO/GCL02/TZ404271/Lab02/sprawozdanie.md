@@ -69,4 +69,13 @@ if __name__ == "__main__":
 * zainstlowano dockera za pomocą komendy `sudo apt install docker.io`. Następenie sprawdzono, czy program poprawnie się uruchamia.  
 ![Docker uruchamia się](./SS/docker-working.png)
 
+
+## 4. Działanie środowiska
+* w poprzednim punkcie wykazano działanie środowiska dockerowego
+* pobrao obraz Linuxa Ubuntu poprzez komendę `sudo docker pull ubuntu`
+![Pobranie obrazu ubuntu przez dockera](./SS/docker-pull.png)
+* nastepnie wyświetlono pobrane obrazy oraz uruchomiono jedne z nich
+![Uruchomnienie obrazu Ubuntu](./SS/docker-run-and-version.png)
+* z racji tego, że nie został on uruchomiony w trybie interaktywnym od razu po uruchomienieu kończy on swoją pracę
+
 ![](./SS/.png)
