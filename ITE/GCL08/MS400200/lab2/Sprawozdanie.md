@@ -10,7 +10,7 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
     - hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania
     - sprawdzono zawarość folderu ```.git\hooks```, zmieniono uprawnienia hooka ```commit-msg```
     - stworzono skrypt spełniający podane wymagania
-    ![1.png]
+    ![1.png](1.png)
     ```
     #!/usr/bin/python3
 
