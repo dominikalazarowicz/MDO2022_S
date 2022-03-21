@@ -1,6 +1,7 @@
 # Sprawozdanie 2 - Tomasz Ziobrowski
 
-## 1. 2. Przygotowanie git hooka oraz umieszczenie go w sprawozdaniu
+## 1. Przygotowanie git hooka oraz umieszczenie go w sprawozdaniu
+
 * Pierwszy krokiem było zlokalizowanie folderu `.git/hooks` w którym przechowywane są skrypty, które uruchamiane są podczas różnych faz/operacji git.
 * W tym folderu skopiowano plik `commit-msg.sample` i nadano nazwę `commit-msg`, w celu dalszej modyfikacji. Usunięcie prefiksu *sample* z nazwy pliku powoduje uruchomienie danego skrytpu.
 * Do skryptu dodano następujący kod:
@@ -46,3 +47,18 @@ if __name__ == "__main__":
     sys.exit(0)
 
 ```
+## 2. Hook w akcji
+
+* pierwszy commit, który utworzono został tak zformatowany, aby pomyślnie przeszedł test
+![Commit cmd](./SS/commit-working-1.png)
+
+* wpisując komendę `git log` mozna zobaczyć poprzednie commity, które zostały pomyślnie sprawdzone
+![Commit pomyslny](./SS/commit-working.png)
+
+* następnym krokiem była próba modyfikacja tego commita za pomocą `git commit --amend`, w celu sprawdzenia weryfikacji niepoprawnych danych commita. W tym celu zmieniono tytuł oraz zapisano.
+![Treść commita co nie powinien przejść](./SS/commit-not-working-1.png)
+* zgodnie z oczekiwaniami ten commit nie został przepuszczony dalej
+![Treść commita co nie powinien przejść](./SS/commit-not-working-2.png)
+
+
+![](./SS/.png)
