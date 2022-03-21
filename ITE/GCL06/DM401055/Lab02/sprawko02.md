@@ -37,7 +37,7 @@ def  main():
 if  __name__ =="__main__":
 	main()
 ```
-![code_image](14.png)
+![code_image](15.png)
  - Sprawdzono działanie hook'a dla przykładowych commitów
  ![](1.png)
  ![](2.png)
