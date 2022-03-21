@@ -21,12 +21,32 @@ Celem ćwiczeń było przygotowanie środowiska Dockerowego oraz zapoznanie się
 
 
 ```bash
+#!/bin/bash
 
+PARAMETER="$(cat $1)"
+ 
+if  [[ "$PARAMETER" != *"RO400876"* ]];
+then
+ echo "Name of commit is not correct."
+ exit 1
+else
+ echo "Name of commit is correct." 
+fi 
+
+
+if  [[ "$PARAMETER" != *"Lab02"* ]];
+then
+ echo "Lab number is not correct."
+ exit 1
+else
+ echo "Lab number is correct."
+ exit 0
+fi
 ```
 
  * Wpisanie niepoprawnej nazwy commita w celu sprawdzenia działania utworzonego hook'a:
 
- ![img](lab2_6.png)
+ ![img](hook_niepoprawna.PNG)
 
 
  * Wpisanie poprawnej nazwy commita w celu sprawdzenia działania utworzonego hook'a:
@@ -98,7 +118,7 @@ Celem ćwiczeń było przygotowanie środowiska Dockerowego oraz zapoznanie się
 
  ![img](dockerHub.PNG)
 
- bssdsdsdsdssxsxsxsxsxsssxsxsxsxxssxsxsxsxsxzszssxdcdcsxssddcdcdssxsxsxxsxsxszszsssdxsxxsxsxsxxsxssdcdcdxxsxssxscdxsxsxcdcxsxsxssxxdxdxdxszszsxssxssxsxxsxsxsxsxscddcdxsxsxsxsxsxsxsxsssxsxs
+ bssdsdsdsdssxsxsxsxsxsssxsxsxsxxssxsxsxsxsxzszssxdcdcsxssddcdcdssxsxsxxsxsxszszsssdxsxxsxsxsxxsxssdcdcdxxsxssxscdxsxsxcdcxsxsxssxxdxdxdxszszsxssxssxsxxsxsxsxsxscddcdxsxsxsxsxsxsxsxsssxsxssxsxs
 
 
 
