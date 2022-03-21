@@ -40,8 +40,8 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
 
 3. Rozpoczęto przygotowanie środowiska Dockerowego:
     - zapewniono dostęp przez SSH i wykazano ten fakt przesyłając plik tunelem:
-    ![ssh](ssh.png)
-    ![ssh2](ssh2.png)
+    ![ssh](ssh.PNG)
+    ![ssh2](ssh2.PNG)
 
 4. Działanie środowiska:
     - wersja oraz status Dockera:
@@ -54,6 +54,7 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
     ![name](name.PNG)
 
 5. Założono konto na Docker Hub:
+
     ![dockerhub](dockerhub.png)
 
 
