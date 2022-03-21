@@ -61,4 +61,12 @@ if __name__ == "__main__":
 ![Treść commita co nie powinien przejść](./SS/commit-not-working-2.png)
 
 
+## 3. Przygotowanie środowiska dockerowego
+* zapewniono dostep do maszyny wirtualnej za pomocą ssh, poprzez ustawienie forwardowania portu 22.
+![Forwardowanie portu 22](./SS/port-forward.png)
+* nastepneie sprawdzono, czy faktycznie można połączyć się z maszyną wirtualna za pomocą ssh, co okazało sie możliwe
+![VM access granted](./SS/console-access.png)
+* zainstlowano dockera za pomocą komendy `sudo apt install docker.io`. Następenie sprawdzono, czy program poprawnie się uruchamia.  
+![Docker uruchamia się](./SS/docker-working.png)
+
 ![](./SS/.png)
