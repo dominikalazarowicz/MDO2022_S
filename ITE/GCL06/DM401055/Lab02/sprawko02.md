@@ -39,23 +39,23 @@ if  __name__ =="__main__":
 ```
 ![code_image](/14.png)
  - Sprawdzono działanie hook'a dla przykładowych commitów
- ![](/1.png)
- ![](/2.png)
- ![](/3.png)
- ![](/4.png)
+ ![](1.png)
+ ![](2.png)
+ ![](3.png)
+ ![](4.png)
  
  - Po przetestowaniu poprawnego działania hook'a, odwrócono zmiany i scommitowano ponownie, aby stworzyć odpowiedni folder Lab02
- ![](/5.png)
- ![](/7.png)
- ![](/8.png)
- ![](/6.png)
+ ![](5.png)
+ ![](7.png)
+ ![](8.png)
+ ![](6.png)
  - Zainstalowano Dockera z repozytorium, według tutoriala zawartego w dokumentacji
- ![](/9.png)
+ ![](9.png)
  - Przetestowano jego działanie
- ![](/10.png)
- ![](/11.png)
+ ![](10.png)
+ ![](11.png)
  - Pobrano obraz dystrybucji ubuntu i przetestowano jego działanie
- ![](/14.png)
- ![](/12.png)
+ ![](14.png)
+ ![](12.png)
  - Założono konto na DockerHub
- ![](/13.png)
+ ![](13.png)
