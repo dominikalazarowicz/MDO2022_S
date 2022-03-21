@@ -114,7 +114,7 @@ fi
 
 
 
- 5. Założenie konta na Docker Hub:
+ 5. Założenie konta na Docker Hub :
 
  ![img](dockerHub.PNG)
 
