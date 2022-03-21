@@ -1,37 +1,54 @@
-# Sprawozdanie z Lab01
-### Wygenerowanie klucza ED25519 z passphrase
+# Sprawozdanie z Lab02
+### Hook sprawdzający poprawność commit-msg
 ```
-ssh-keygen -t ed25519
+Plik commit-msg
 ```
-![This is an image](klucz1.png)
+```bash
+#!/bin/bash
 
-### Wygenerowanie klucza ECDSA z passphrase
-```
-ssh-keygen -t ECDSA -C "Alkowskey@gmail.com"
-```
-![This is an image](klucz2.png)
+MSG="$1"
 
-### Klonowanie repo SSH
-```
-git clone git@github.com: Inzynieria0]programowaniaAGH/MD02022_S.git
-```
-![This is an image](ssh-clone.png)
+PREFIX="AK400982"
 
-### Przełączenie brancha na main
+TITLE=$(head -n 1 $MSG)
+if [ "$TITLE" != "$PREFIX" ]; then
+    echo "Title has to be: AK400982"
+    exit 1
+fi
+if ! grep -qE "lab0[0-9]" "$MSG";then
+    cat "$MSG"
+    echo "Your commit does not contain 'lab0x'"
+    exit 1
+fi
 ```
-git checkout main
-```
-![This is an image](git-checkout.png)
 
-### Stworzenie & przełączenie brancha
+### Wykazanie, że nie jest stosowany VM, oraz pokazanie wczesniej zainstalowanego dockera (miałem już na komputerze)
 ```
-git checkout -b AK400982
+hostname
 ```
-![This is an image](git-checkout--b.png)
+oraz
+```
+docker --version
+```
+![This is an image](screeny/hostname-zainstalowany-docker.png)
 
-### commit, oraz push na zdalne repo
+### Wykazanie dziłajacego dockera
 ```
-git commit -m "inserted pngs"
-git push origin AK400982
+sudo launchctl print system/com.docker.vmnetd
 ```
-![This is an image](commit-and-push.png)
+![This is an image](screeny/docker-status.png)
+
+### Pobranie dockerowej wersji ubuntu
+```
+docker pull ubuntu
+```
+![This is an image](screeny/docker-pull.png)
+
+### Wyświetlenie numeru wersji obrazu
+```
+docker images
+```
+![This is an image](screeny/docker-images.png)
+
+### Założone konto na hub.docker.com
+![This is an image](screeny/docker-hub-acc.png)
