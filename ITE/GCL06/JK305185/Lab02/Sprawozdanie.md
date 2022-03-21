@@ -2,7 +2,9 @@
 ### Jędrzej Kurzępa IT Gr06
 
 1. Wejście do ukrytego folderu .git zawierającego folder hooks. Następnie modyfikowany plik *commit-msg.sample* tj. skopowiono oraz zmodyfikowano zawartość, na koniec zapisano jako commit-msg. Do pliku commit.msg przypisano uprawnienia 744, aby mógł być plikiem wykonywalnym. 
-![1]()
+![trsc](10.png)
+![1](9.png)
+
 
 2. Podczas wykonywania zadań, nie wykorzystywano maszyn wirtualnych, a natywanie zaistalowanego systemu PopOS (bazującego na ubutnu). ![2](2.png)
 
