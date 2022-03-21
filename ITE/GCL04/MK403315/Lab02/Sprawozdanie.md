@@ -4,7 +4,7 @@
 
 1. By sprawdzić poprawność commitu odnaleziono folder **.git/hooks** oraz wprowadzono zmiany w pliku commmit-msg.sample, następnie plik zapisano bez końcówki .sample oraz nadano mu uprawnienia *chmod 774*
 
-![hook](hook.png)
+![hook](hook1.png)
 
 2. Pracowano na systemie operacyjnym Ubuntu gdzie zainstalowano już wcześniej Dockera. By udowodnić jego działanie pobrano do dockera obraz ubuntu.
 
@@ -17,6 +17,8 @@
 4. Założono konto na stronie dockerhub
 
 ![dockerhub](dockerhub.png)
+
+5. Na koniec przetestowano poprawne działanie hooke'a
 
 ### Historia terminalu
 ```
