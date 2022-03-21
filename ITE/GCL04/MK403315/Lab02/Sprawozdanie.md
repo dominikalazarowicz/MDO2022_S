@@ -20,6 +20,8 @@
 
 5. Na koniec przetestowano poprawne działanie hooke'a
 
+![test](test.png)
+
 ### Historia terminalu
 ```
  1862  nano commit-msg.sample
