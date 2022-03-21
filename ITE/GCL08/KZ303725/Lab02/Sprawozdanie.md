@@ -1,4 +1,4 @@
-# Lab02
+# Krystian Zapart - Lab02
 ## Stworzenie git hook'a dla commit-msg
 
 ```
@@ -21,24 +21,24 @@ echo $commit_message | grep -q 'Lab0[0-9]' ||
 } 
 ```
 
-##Sprawdzenie działania git hook'a
+# Sprawdzenie działania git hook'a
 
 ![hook_ckeck](./screenshots/hook_check.png)
 
-##Weryfikacja systemu 
+# Weryfikacja systemu 
 
 ![neofetch](./screenshots/neofetch.png)
 
-##Potwierdzenie obecności dockera
+# Potwierdzenie obecności dockera
 
 ![whitch_docker](./screenshots/whitch_docker.png)
 
 
-##Uruchomienie i historia kontenerów
+# Uruchomienie i historia kontenerów
 
 ![docker_check](./screenshots/docker_check.png)
 
-##Potwierdzenie konta Docker ID
+# Potwierdzenie konta Docker ID
 
 ![Docker_id](./screenshots/Docker_id.png)
 
