@@ -5,7 +5,7 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
 
 ## Przebieg
 
-**1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami:
+**1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami:**
     * hook sprawdzający, czy tytuł commita nazywa się ```<inicjały><numer indeksu>```
     * hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania
 
