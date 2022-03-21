@@ -98,6 +98,8 @@ Celem ćwiczeń było przygotowanie środowiska Dockerowego oraz zapoznanie się
 
  ![img](dockerHub.PNG)
 
+ bssdsdsdsdsxssxsxsxsxxsxssds
+
 
 
 
