@@ -12,7 +12,7 @@ SPRAWOZDANIE 2
 
 ![1c](https://user-images.githubusercontent.com/92218468/159165452-7a22f353-31b2-438b-96cf-9d5f441781bb.JPG)
 
-Aby hook działał należy usunąć rozszerzenie sample z pliku.
+Aby hook działał należy usunąć rozszerzenie .sample z pliku oraz użyć komendy chmod +x commit-msg.
 
 -przetestowanie działania:
 
@@ -120,7 +120,8 @@ cd Lab02
 
 touch Sprawozdanie02.md
 
-nano ~/MDO2022_S/.git/hooks/commit-msg
+nano ~/MDO2022_S/.git/hooks/commit-msg.sample
+chmod +x commit-msg
 
 
 Punkt 4:
