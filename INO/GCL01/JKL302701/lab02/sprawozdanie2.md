@@ -51,7 +51,7 @@ Za pomocą programu PuTTy łączę się z maszyną wirtualną
 
 ![img9](./9.PNG)
 
-![img12](./s12.png)
+![img12](./12.PNG)
 
  Aktualizuje listy paczek z repozytoriów
 
