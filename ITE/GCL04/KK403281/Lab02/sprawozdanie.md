@@ -23,36 +23,36 @@ f1
 
     2. Instalacja dockera
 
-![Image](instalacja.PNG "instalacja_doc")
+![Image](instalacja.png "instalacja_doc")
 
-![Image](instalacjaio.PNG "instalacja_io")
+![Image](instalacjaio.png "instalacja_io")
 
 
     3. Wersja dockera i uruchomienie hello world:
 
-![Image](wersja.PNG "docker_ver")
+![Image](wersja.png "docker_ver")
 
 
     4. Sprawdzenie statusu ssh:
 
-![Image](ssh.PNG "ssh")
+![Image](ssh.png "ssh")
 
 
     5. Połączenie z VM za pomocą cmd:
 
-![Image](vm.PNG "vm")
+![Image](vm.png "vm")
 
 
     6. Sprawdzenie statusu dockera:
 
-![Image](stat.PNG "docker_stat")
+![Image](stat.png "docker_stat")
 
 
     7. Pobranie i uruchomienie obrazu ubuntu:
 
-![Image](ubuntu.PNG "ubuntu")
+![Image](ubuntu.png "ubuntu")
 
 
     8. Utworzenie konta na docker hub
 
-![Image](hub.PNG "docker_hub")
+![Image](hub.png "docker_hub")
