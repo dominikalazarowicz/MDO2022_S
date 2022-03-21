@@ -8,9 +8,10 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
 1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami:
     - hook sprawdzający, czy tytuł commita nazywa się ```<inicjały><numer indeksu>```
     - hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania
-    - sprawdzono zawarość folderu ```.git\hooks```, zmieniono uprawnienia hooka ```commit-msg```
-    - stworzono skrypt spełniający podane wymagania
+    - sprawdzono zawarość folderu ```.git/hooks```, zmieniono uprawnienia hooka ```commit-msg```
     ![1.png](1.png)
+
+2. Stworzono skrypt sprawdzajacy podane wymagania
     ```
     #!/usr/bin/python3
 
@@ -34,5 +35,6 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
     else:
         exit(0)
     ```
+3.  
 
 
