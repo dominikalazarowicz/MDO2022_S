@@ -35,3 +35,6 @@ wypychamy na brancha, którego jeszcze nie ma
 
 6. git add . 
 Dodanie wszystkich plikow znajdujących się w aktualnej ścieżce do "kolejki" (do następnego commita) 
+
+7. pull request
+![plot](./Screenshot - pull request.png)
