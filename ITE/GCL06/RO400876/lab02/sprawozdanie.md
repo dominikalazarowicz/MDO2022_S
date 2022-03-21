@@ -51,7 +51,7 @@ fi
 
  * Wpisanie poprawnej nazwy commita w celu sprawdzenia działania utworzonego hook'a:
 
- ![img](lab2_7.png)
+ ![img](hook_poprawna.PNG)
 
 
 
@@ -118,7 +118,6 @@ fi
 
  ![img](dockerHub.PNG)
 
- bssdsdsdsdssxsxsxsxsxsssxsxsxsxxssxsxsxsxsxzszssxdcdcsxssddcdcdssxsxsxxsxsxszszsssdxsxxsxsxsxxsxssdcdcdxxsxssxscdxsxsxcdcxsxsxssxxdxdxdxszszsxssxssxsxxsxsxsxsxscddcdxsxsxsxsxsxsxsxsssxsxssxsxs
 
 
 
