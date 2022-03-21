@@ -121,7 +121,8 @@ cd Lab02
 touch Sprawozdanie02.md
 
 nano ~/MDO2022_S/.git/hooks/commit-msg.sample
-chmod +x commit-msg
+
+chmod +x ~/MDO2022_S/.git/hooks/commit-msg
 
 
 Punkt 4:
