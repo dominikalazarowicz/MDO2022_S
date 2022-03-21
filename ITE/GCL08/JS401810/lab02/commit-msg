@@ -1,0 +1,18 @@
+#!/usr/bin/python3 
+import sys 
+
+msg=sys.argv[1] 
+fileName=open(msg,'r') 
+message=fileName.read() 
+
+msg1=message.split('\n')[0] 
+msg2=message.split('\n')[2] 
+
+if msg1 != "JS401810": 
+    print("Your commit ID is not correct") 
+    exit(1) 
+if not (msg2.find("02") != -1): 
+     print("You are in a wrong path") 
+     exit(1) 
+else: print("Alles gut und klar") 
+exit(0)
