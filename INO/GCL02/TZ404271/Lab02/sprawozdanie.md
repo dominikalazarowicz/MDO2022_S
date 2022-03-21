@@ -78,4 +78,6 @@ if __name__ == "__main__":
 ![Uruchomnienie obrazu Ubuntu](./SS/docker-run-and-version.png)
 * z racji tego, że nie został on uruchomiony w trybie interaktywnym od razu po uruchomienieu kończy on swoją pracę
 
-![](./SS/.png)
+## 5. Konto na DockerHub
+* założono konto na stronie DockerHub
+![Konto na dockerhub](./SS/dockerhub-account.png)
