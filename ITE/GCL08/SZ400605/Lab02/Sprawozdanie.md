@@ -27,6 +27,7 @@ fi
 Aby hook mógł zadziałać musimy zmienić jego uprawnienia
 
 ![HookChmod](./hook_chmod.png)
+![HookTest](./hook_test.png)
 
 ## 2. Instalacja środowiska dockerowego
 
