@@ -5,13 +5,13 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
 
 ## Przebieg
 
-1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami:
+1. Przygotowano git hook, który rozwiąże najczęstsze problemy z commitami:
     - hook sprawdzający, czy tytuł commita nazywa się ```<inicjały><numer indeksu>```
     - hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania
     - sprawdzono zawarość folderu ```.git/hooks```, zmieniono uprawnienia hooka ```commit-msg```
-    ![1.png](1.png)
+    ![1](1.png)
 
-2. Stworzono skrypt sprawdzajacy podane wymagania
+2. Stworzono skrypt sprawdzający podane wymagania
     ```
     #!/usr/bin/python3
 
@@ -35,6 +35,26 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
     else:
         exit(0)
     ```
-3.  
+    - sprawdzono działanie powyższego skryptu:
+    ![test_commit](test_commit.png)
+
+3. Rozpoczęto przygotowanie środowiska Dockerowego:
+    - zapewniono dostęp przez SSH i wykazano ten fakt przesyłając plik tunelem:
+    ![ssh](ssh.png)
+    ![ssh2](ssh2.png)
+
+4. Działanie środowiska:
+    - wersja oraz status Dockera:
+    ![docker](docker.png)
+
+    - pull obrazu ubuntu oraz wylistowanie wykonanych operacji:
+    ![pull_ubuntu](pull_ubuntu.PNG)
+
+    - numer wersji obrazu:
+    ![name](name.PNG)
+
+5. Założono konto na Docker Hub:
+    ![dockerhub](dockerhub.png)
+
 
 
