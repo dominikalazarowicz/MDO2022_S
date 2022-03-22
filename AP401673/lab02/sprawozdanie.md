@@ -4,19 +4,25 @@
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/utworzenie%20commit-msg.png)
 
 2. Zawartość hooka w commit-msg
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/commit-msg.png)
 
 3. Testy hooka najpierw niepoprawne nazwy następnie poprawne które pozwalają na commita.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/hook.png)
 
 4. Połączenie maszyny wirtualnej po ssh wykonano za pomocą putty.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/ssh%20laczenie.png)
 
 5. Wykazanie, że docker działa na maszynie za pomocą statusu.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/docker%20dziala%20z%20definicji.png)
 
 6. Uruchomienie na dockerze ubuntu wyświetlono nazwe maszyny dla potwierdzenia.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/uruchomienie%20ubuntu%20z%20dockera.png)
 
 7. Utworzono konto na docker hubie.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/docker%20hub%20konto.png)
