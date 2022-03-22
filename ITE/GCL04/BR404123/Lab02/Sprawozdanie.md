@@ -19,18 +19,27 @@ then
 fi
 ```
 Zrzut ekranu przedstawiający zawartość pliku `commit-msg`:
+
 ![](2.png)
+
 Mając tak przygotowany hook przetestowano go pod kątem poprawności tworząc następujące commity:
 `git commit -m "test1"` - `niepoprawne`
 `git commit -m "BR404123"` - `niepoprawne`
 `git commit -m "BR404123 test2"` - `niepoprawne`
 `git commit -m "BR404123 LAB02 test3"`-`poprawne`
 `git commit -m "BR404123 LAB02"`-`poprawne`
+
 ![](1.png)
+
 - Właściwie cały czas pracuję na PuTTY. Na LAB01 wykorzystywałem to oprogramowanie do łączenia się z serwerem VPS `51.38.*.*`, na LAB02 do łączenia się do VM. Fakt ten "uwieczniono" na zrzucie ekranu:
+
 ![](3.png)
+
 - Przygotowując się do zajęć praktycznie od razu, intuicyjnie sprawdzając czy działa komenda `docker` zainstalowałem go przez co procesu instalacji nie dałem rady uchwycić. Zrobiłem to przy użyciu komendy `sudo apt install docker.io`.
 Działanie samego Dockera wykazano z definicji wyświetlając działający interfejs tego serwisu oraz wyświetlając jego interfejs sieciowy (IP: *172.17.0.1*).
+
 ![](4.png)
+
 - Na sam koniec utworzono konto w serwisie *Docker Hub* o nazwie copperv.
+
 ![](5.png)
