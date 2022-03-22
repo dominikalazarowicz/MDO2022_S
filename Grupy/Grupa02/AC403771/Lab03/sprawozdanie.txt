@@ -1,0 +1,2 @@
+1. Utworzenie nowego brancha:  git checkout -b Grupa02-AC403771_Lab03
+2. Dodanie git hooka:  cp commit-msg ../../Grupy/Grupa02/AC403771/Lab03/hooks
