@@ -1,0 +1,3 @@
+FROM ubuntu:latest
+CMD ["sudo", "apt", "update"]
+CMD ["sudo", "apt", "install", "git"]
