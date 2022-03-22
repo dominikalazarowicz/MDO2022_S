@@ -67,7 +67,7 @@ $ git add test.txt
 $ git commit -m "KS404423"
 ```
 
-![image-20220314212240759](./image-20220314212240759.png)
+![image-20220314212240759](Sprawozdanie.assets/image-20220314212240759.png)
 
 
 
@@ -79,13 +79,13 @@ $ git add test.txt
 $ git commit -m "KS404423" # albo git commit -m "Nieprawidłowa_wartość"
 ```
 
-![image-20220314211958441](./image-20220314211958441.png)
+![image-20220314211958441](Sprawozdanie.assets/image-20220314211958441.png)
 
 
 
 W dalszej kolejności zainstalowano środowisko dockerowe w WSL Ubuntu:
 
-![image-20220314212417214](./image-20220314212417214.png)
+![image-20220314212417214](Sprawozdanie.assets/image-20220314212417214.png)
 
 Najpierw zaktualizowano listy paczek z repozytoriów by uzyskać najnowsze wersje wykorzystując tutorial z [oficjalnej strony](https://docs.docker.com/engine/install/ubuntu/):
 
@@ -93,7 +93,7 @@ Najpierw zaktualizowano listy paczek z repozytoriów by uzyskać najnowsze wersj
 $ sudo apt-get update
 ```
 
-<img src="./image-20220314212911573.png" alt="image-20220314212911573" style="zoom:60%;" />
+<img src="Sprawozdanie.assets/image-20220314212911573.png" alt="image-20220314212911573" style="zoom:60%;" />
 
 Następnie doinstalowano szereg wymaganych dependencji:
 
@@ -105,7 +105,7 @@ $ sudo apt-get install \
 >     lsb-release
 ```
 
-<img src="./image-20220314212936225.png" alt="image-20220314212936225" style="zoom:67%;" />
+<img src="Sprawozdanie.assets/image-20220314212936225.png" alt="image-20220314212936225" style="zoom:67%;" />
 
 Dodano oficjalne klucze GPG Dockera:
 
@@ -113,7 +113,7 @@ Dodano oficjalne klucze GPG Dockera:
 $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 ```
 
-![image-20220314212952883](./image-20220314212952883.png)
+![image-20220314212952883](Sprawozdanie.assets/image-20220314212952883.png)
 
 Ustawiono repozytorium na **stable**:
 
@@ -123,7 +123,7 @@ $  echo \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 ```
 
-![image-20220314213009446](./image-20220314213009446.png)
+![image-20220314213009446](Sprawozdanie.assets/image-20220314213009446.png)
 
 I na końcu zainstalowano Docker Engine:
 
@@ -131,7 +131,7 @@ I na końcu zainstalowano Docker Engine:
 $ sudo apt-get install docker-ce docker-ce-cli containerd.io
 ```
 
-<img src="./image-20220314213044065.png" alt="image-20220314213044065" style="zoom:100%;" />
+<img src="Sprawozdanie.assets/image-20220314213044065.png" alt="image-20220314213044065" style="zoom:100%;" />
 
 
 
@@ -141,7 +141,7 @@ Na końcu uruchomiono środowisko dockerowe jest uruchomione:
 $ sudo service docker start
 ```
 
-![image-20220314213942568](./image-20220314213942568.png)
+![image-20220314213942568](Sprawozdanie.assets/image-20220314213942568.png)
 
 Sprawdzono czy działa:
 
@@ -149,13 +149,13 @@ Sprawdzono czy działa:
 $ sudo service docker status
 ```
 
-![image-20220314214018456](./image-20220314214018456.png)
+![image-20220314214018456](Sprawozdanie.assets/image-20220314214018456.png)
 
 ```shell
 $ ps -aux
 ```
 
-![image-20220314214140757](./image-20220314214140757.png)
+![image-20220314214140757](Sprawozdanie.assets/image-20220314214140757.png)
 
 Następnie uruchomiono obraz `hello-world`:
 
@@ -163,7 +163,7 @@ Następnie uruchomiono obraz `hello-world`:
 $ sudo docker run hello-world
 ```
 
-<img src="./image-20220314214306353.png" alt="image-20220314214306353" style="zoom:100%;" />
+<img src="Sprawozdanie.assets/image-20220314214306353.png" alt="image-20220314214306353" style="zoom:100%;" />
 
 Dalej pobrano i uruchomiono obraz dystrybucji linuksowej:
 
@@ -171,7 +171,7 @@ Dalej pobrano i uruchomiono obraz dystrybucji linuksowej:
 $ sudo docker run ubuntu
 ```
 
-![image-20220314214432006](./image-20220314214432006.png)
+![image-20220314214432006](Sprawozdanie.assets/image-20220314214432006.png)
 
 Sprawdzono pobraną wersję obrazu Ubuntu:
 
@@ -179,7 +179,7 @@ Sprawdzono pobraną wersję obrazu Ubuntu:
 $ sudo docker images
 ```
 
-![image-20220314214640884](./image-20220314214640884.png)
+![image-20220314214640884](Sprawozdanie.assets/image-20220314214640884.png)
 
 Tag opisany jest jako `latest`, dlatego konkretnej wersji Ubuntu poszukano po uruchomieniu kontenera z obrazu:
 
@@ -191,28 +191,28 @@ $ sudo docker run --interactive --tty ubuntu sh
 * `--tty` - alokuje pseudoterminal 
 * `sh` - pozwala na uruchomienie tego procesu w kontenerze
 
-![image-20220314214939360](./image-20220314214939360.png)
+![image-20220314214939360](Sprawozdanie.assets/image-20220314214939360.png)
 
 Wartości te są takie same jak wartości WSL Ubuntu:
 
-![image-20220314215432636](./image-20220314215432636.png)
+![image-20220314215432636](Sprawozdanie.assets/image-20220314215432636.png)
 
 
 
 Następnie utworzono konto na [Docker Hub](https://hub.docker.com/):
 
-<img src="./image-20220314220757722.png" alt="image-20220314220757722" style="zoom:67%;" />
+<img src="Sprawozdanie.assets/image-20220314220757722.png" alt="image-20220314220757722" style="zoom:67%;" />
 
-<img src="./image-20220314220843278.png" alt="image-20220314220843278" style="zoom:67%;" />
+<img src="Sprawozdanie.assets/image-20220314220843278.png" alt="image-20220314220843278" style="zoom:67%;" />
 
 Wybrano odpowiedni plan:
 
-<img src="./image-20220314220913465.png" alt="image-20220314220913465" style="zoom: 67%;" />
+<img src="Sprawozdanie.assets/image-20220314220913465.png" alt="image-20220314220913465" style="zoom: 67%;" />
 
 Potwierdzono wiadomość na mailu:
 
-<img src="./image-20220314221052571.png" alt="image-20220314221052571" style="zoom:67%;" />
+<img src="Sprawozdanie.assets/image-20220314221052571.png" alt="image-20220314221052571" style="zoom:67%;" />
 
 Gotowe:
 
-![image-20220314221106289](./image-20220314221106289.png)
+![image-20220314221106289](Sprawozdanie.assets/image-20220314221106289.png)
