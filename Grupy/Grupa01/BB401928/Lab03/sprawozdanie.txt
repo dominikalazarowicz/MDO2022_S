@@ -1,0 +1,17 @@
+# Sprawozdanie
+---
+
+1. git checkout Grupa01-BB401928_Lab03 Grupa1
+powoduje to przejście na nowego brancha wyprowadzonego z Grupa1
+
+2. ln -s [CEL] [NAZWA] ( poprzednie zajęcia ) 
+Dołączenie pliku do git hooks - jest to dowiązanie symboliczne
+
+3. https://docs.docker.com/engine/install/ubuntu/#install-from-a-package
+Instalacja dockera - wklejam tylko linka ponieważ mam już dockera na tym laptopie, zainstalowanego na potrzeby pracy
+
+4. rejestracja w hub.docker -> suvres (nazwa konta)
+
+5. vim Dockerfile
+Tworzenie dockerfile w edytorze vim
+
