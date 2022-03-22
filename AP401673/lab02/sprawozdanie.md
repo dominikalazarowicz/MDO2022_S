@@ -1,5 +1,6 @@
 # Sprawozdanie LAB02
 1. Utworzono plik commit-msg aby utworzyć w nim hooka
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AP401673/AP401673/lab02/utworzenie%20commit-msg.png)
 
 2. Zawartość hooka w commit-msg
