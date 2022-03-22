@@ -5,3 +5,9 @@
 	FROM ubuntu:latest
 	RUN apt-get -y update
 	RUN apt-get -y install git
+6. uruchomienie kontenera i ściagniecie na niego repo:
+	docker build -t "lab3" .
+	docker run -dit "58151491b800"
+	docker run -it lab3
+	git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S 	
+	git checkout Grupa02-AC403771_Lab03
