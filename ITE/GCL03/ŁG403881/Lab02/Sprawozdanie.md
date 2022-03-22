@@ -37,7 +37,7 @@ fi
 
 ![foto](./Screenshot_1.png)
 
-# 2. Instalacja SSH i działanie SSH 
+# 2. Instalacja SSH i działanie SSH:
 1. Połączenie się do wirtualnej maszyny Ubuntu z PuTTY.
     - Przejście krok po kroku za poradnikiem ze strony: [link](https://abodeqa.com/ssh-to-ubuntu-installed-on-virtualbox-putty-to-ubuntu/)
 2. Zrzuty ekranu potwierdzające połączenie się:
@@ -79,7 +79,7 @@ fi
 
 ![foto](./Screenshot_11.png)
 
-# 3. Utworzenie konta na dockerhub
+# 4. Utworzenie konta na dockerhub:
 
 ![foto](./Screenshot_12.png)
 
