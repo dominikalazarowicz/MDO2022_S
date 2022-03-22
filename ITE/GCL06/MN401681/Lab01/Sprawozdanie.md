@@ -53,4 +53,7 @@ git checkout -b MN401681:
 
 #### * Wysyłamy zmiany do zdalnego źródła oraz próbujemy pchnąć naszą gałąź do gałęzi grupowej:
 ![image](https://user-images.githubusercontent.com/75485199/158077907-85835850-ae40-4755-8464-b4d2835a01fa.png)
+----
+![image](https://user-images.githubusercontent.com/75485199/158078109-fe740cca-b579-4682-bd3f-a91fbaeb85b7.png)
+
 
