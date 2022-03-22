@@ -1,0 +1,11 @@
+version: "3.3"
+services:
+    building:
+        build:
+            context: building/
+        image: built_dc_ag
+    testing:
+        build:
+            context: testing/
+            args:
+                imagename: built_dc_ag
