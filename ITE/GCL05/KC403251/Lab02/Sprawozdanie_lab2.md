@@ -13,6 +13,8 @@ błędny commit message
 
 ![docker](./1b.png)
 
+![docker](./1c.png)
+
 
 2. Przygotowany git hook
 
@@ -45,13 +47,13 @@ exit 1
 
 4. Wykazanie działania środowiska dockerowego
 
-z definicji
-
 ![docker](./4a.png)
 
-z własności
-
 ![docker](./4.png)
+
+![docker](./6.png)
+
+![docker](./6b.png)
 
 
 5. Założenie konta na DockerHubie
