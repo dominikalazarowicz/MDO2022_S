@@ -87,7 +87,8 @@ root@66da68d71573:/#
 ### 3. Brakujące zależności
 
 W poszukiwaniu zależności udałem się na stronę microsoftu i próbowałem zainstalować pakiety. m.in:  libicu67
-Okazało się to wyzwaniem ponieważ nie ma go i nie możnabyło znaleść informacji jak zedytować sources.list
+Okazało się to wyzwaniem ponieważ nie ma go i nie możnabyło znaleść informacji jak zedytować sources.list.
+Z tego powodu instaluję libicu-dev (może on być powodem nadmiernego rozmiaru obrazu)
 ```bash
 root@66da68d71573:/# apt-get install -y libicu67
 Reading package lists... Done
