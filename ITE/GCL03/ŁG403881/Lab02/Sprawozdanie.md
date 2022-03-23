@@ -29,7 +29,8 @@ else
     exit -1
 fi
 ```
-    - Skrypt ten sprawdza, czy w przekazanych parametrach jest "ŁG403881" i "Lab02". Jeśli którekolwiek z nich nie istnieje - commit nie zostanie przekazany dalej.
+    - Skrypt ten sprawdza, czy w przekazanych parametrach jest "ŁG403881" i "Lab02".
+Jeśli którekolwiek z nich nie istnieje - commit nie zostanie przekazany dalej.
 - Zmieniono nazwę pliku z ```commit-msg.sample``` na ```commit-msg```. Dzięki temu skrypt się odpala.
 - zmieniono uprawnienia pliku ze skryptem za pomocą komendy ```sudo chmod +x commit-msg```. Dzięki temu skrypt działa poprawnie, gdyż nie ma problemu z jego egzekuzją.
 
@@ -42,11 +43,11 @@ fi
     - Przejście krok po kroku za poradnikiem ze strony: [link](https://abodeqa.com/ssh-to-ubuntu-installed-on-virtualbox-putty-to-ubuntu/)
 2. Zrzuty ekranu potwierdzające połączenie się:
     - zmiana karty sieciowej w Virual Box na "bridged":
-![foto](./Screenshot_3.png)
+    - ![foto](./Screenshot_3.png)
     - przepisanie do PuTTY adresu IP
-![foto](./Screenshot_1_5.png)
+    - ![foto](./Screenshot_1_5.png)
     - połączenie się:
-![foto](./Screenshot_2.png)
+    - ![foto](./Screenshot_2.png)
 
 # 3. Przygotowywanie Dockera:
 1. Instalacja:
