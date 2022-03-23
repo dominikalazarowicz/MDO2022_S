@@ -1,0 +1,3 @@
+docker login - zalogowanie do Docker Hub (potrzebne do pushowania)
+docker tag nazwaIstniejacegoObrazu nowaNazwaObrazu - zmiana nazwy Docker Image
+docker push nazwaUzytkownika/nazwaObrazu:nazwaTagu - wyslanie Docker Image do repozytorium na Docker Hub
