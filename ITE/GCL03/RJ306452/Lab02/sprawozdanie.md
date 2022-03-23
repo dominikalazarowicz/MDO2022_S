@@ -28,18 +28,17 @@ test -n "$(grep 'Lab02' ${1})" || {
 * zapewnij dostęp do maszyny wirtualnej przez zdalny terminal (nie "przez okienko")
 
 Skonfigurowano maszynę wirtualna tak aby działała w tej samej sieci (Wyłączenie NAT).  
-![](3.png)
+![](3.png)  
 Zainstalowanie OpenSSH.  
-![](4.png)
+![](4.png)  
 Sprawdzenie działania usługi sshd:  
-![](5.png)
+![](5.png)  
 Przypisanie maszynie wirtualnej stałego adresu IP. Od razu sprawdzono dostępność VM przy użyciu pinga.  
-![](6.png)
+![](6.png)  
 Aby umożliwić łączenie poprzez SSH z maszyną wirtualną, musimy odblokować port i uruchomić zaporę sieciową:  
-![](7.png) 
+![](7.png)  
 Sprawdzenie połączenia przy użyciu PuTTY:  
-![](8.png)
-
+![](8.png)  
 Z domyślnej konsolii Windowsa połączenie poprzez `ssh rj@10.0.0.100` również zadziałało bezproblemowo.
 
 * zainstaluj środowisko dockerowe w stosowanym systemie operacyjnym
