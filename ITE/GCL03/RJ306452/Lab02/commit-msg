@@ -1,0 +1,9 @@
+#!/bin/sh
+test -n "$(grep 'RJ306452' ${1})" || {
+        echo >&2 "Name must contain 'RJ306452' !"
+        exit -1
+}
+test -n "$(grep 'Lab02' ${1})" || {
+        echo >&2 "Name must contain 'Lab02' !"
+        exit -1
+}
