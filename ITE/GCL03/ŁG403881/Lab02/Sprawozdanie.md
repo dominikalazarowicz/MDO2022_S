@@ -29,7 +29,7 @@ else
     exit -1
 fi
 ```
-    - Skrypt ten sprawdza, czy w przekazanych parametrach jest "ŁG403881" i "Lab02".
+Skrypt ten sprawdza, czy w przekazanych parametrach jest "ŁG403881" i "Lab02".
 Jeśli którekolwiek z nich nie istnieje - commit nie zostanie przekazany dalej.
 - Zmieniono nazwę pliku z ```commit-msg.sample``` na ```commit-msg```. Dzięki temu skrypt się odpala.
 - zmieniono uprawnienia pliku ze skryptem za pomocą komendy ```sudo chmod +x commit-msg```. Dzięki temu skrypt działa poprawnie, gdyż nie ma problemu z jego egzekuzją.
