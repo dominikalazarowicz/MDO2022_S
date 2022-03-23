@@ -1,0 +1,12 @@
+Temat: Uruchamianie i bazowa konfiguracja kontenera. cz.2.
+
+1:
+git checkout -b Grupa02-MK306668_Lab04 - tworzymy nowego brancha krótkożyjącego
+
+1.1.1:
+docker login - logowanie do dockerhuba
+
+
+
+2:
+Wybrałem projekt: https://github.com/brandon1024/Java-Simple-Messenger
