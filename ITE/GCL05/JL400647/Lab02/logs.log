@@ -1,0 +1,137 @@
+195  cd ITE/
+  196  ls
+  197  cd GCL05/
+  198  ls
+  199  cd JL400647/
+  200  ls
+  201  mkdir Lab02
+  202  touch sprawozdanie.md
+  203  touch sprawozdanie.md Lab02
+  204  ls
+  205  mv sprawozdanie.md Lab02
+  206  ls
+  207  cd ..
+  208  ls
+  209  cd .git/
+  210  ls
+  211  cd hooks/
+  212  ls
+  213  nano commit-msg.sample 
+  214  ls
+  215  cd ..
+  216  git commit -m "test"
+  217  git add ITE/GCL05/JL400647/Lab02/
+  218  git commit -m "test"
+  219  cd .git/
+  220  ls
+  221  cd hooks/
+  222  ls
+  223  chmod +x commit-msg
+  224  cd ..
+  225  chmod +x commit-msg
+  226  git commit -m "test"
+  227  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  228  git commit -m "test"
+  229  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  230  git commit -m "test"
+  231  git commit -m "JL400647"
+  232  ls
+  233  cd Lab_instructions/
+  234  ls
+  235  cd ..
+  236  cd READMEs/
+  237  l
+  238  cd ..
+  239  cd MDO2022_S/
+  240  ls
+  241  cd ITE/GCL05/JL400647/
+  242  ls
+  243  find . -printf "%f\n"
+  244  ls
+  245  cd devops/
+  246  ls
+  247  cat komendy 
+  248  eval "$(ssh-agent -s)"
+  249  ssh-add klucz
+  250  ls
+  251  cd MDO2022_S/
+  252  ls
+  253  cd ITE/GCL05/JL400647/
+  254  find . -maxdepth 1 -printf "%f\n"
+  255  find . -maxdepth 1 -printf "%f\n" | cut -c-2
+  256  find . -maxdepth 1 -printf "%f\n" | cut find . -maxdepth 1 -printf "%f\n"
+  257  find . -maxdepth 1 -printf "%f\n"
+  258  cd ..
+  259  cd .
+  260  cd ..
+  261  ls
+  262  cd ..
+  263  cd .git/hooks/
+  264  ls
+  265  nano commit-msg
+  266  pwd
+  267  cd ../../ITE/GCL05/JL400647
+  268  pwd
+  269  cd /root/devops/MDO2022_S/.git/hooks
+  270  ls
+  271  nano commit-msg
+  272  cd ..
+  273  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  274  git commit -m "test"
+  275  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  276  git commit -m "test"
+  277  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  278  git commit -m "Lab01"
+  279  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  280  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  281  git commit -m "Lab01"
+  282  nano .git/hooks/pre-commit
+  283  cd .git/
+  284  cd hooks/
+  285  ls
+  286  nano commit-msg
+  287  cd ..
+  288  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  289  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  290  git commit -m "fsdfs"
+  291  nano .git/hooks/commit-msg
+  292  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  293  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  294  git commit -m "fsdfs"
+  295  nano .git/hooks/commit-msg
+  296  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  297  git commit -m "fsdfs"
+  298  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  299  git commit -m "fsdfs"
+  300  find /root/devops/MDO2022_S/ITE/GCL05/JL400647 -maxdepth 1 -printf "%f\n
+d
+.
+  301  find /root/devops/MDO2022_S/ITE/GCL05/JL400647 -maxdepth 1 -printf "%f\n"
+  302  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  303  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  304  git commit -m "fsdfs"
+  305  git commit -m "Lab01"
+  306  git commit -m "Lab02"
+  307  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  308  git commit -m "dasd"
+  309  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  310  git commit -m "dasd"
+  311  git commit -m "Lab02"
+  312  git commit -m "dasd"
+  313  git commit -m "Lab02"
+  314  git commit -m "dasd"
+  315  git commit -m "Lab02"
+  316  nano ITE/GCL05/JL400647/Lab02/sprawozdanie.md 
+  317  git add ITE/GCL05/JL400647/Lab02/sprawozdanie.md
+  318  git commit -m "fsdaf"
+  319  git commit -m "Lab02"
+  320  docker
+  321  sudo apt-get update
+  322  sudo apt-get install     ca-certificates     curl     gnupg     lsb-release
+  323  curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+  324  echo   "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+  325  docker pull fedora
+  326  docker run -itd fedora
+  327  docker images
+  328  history
