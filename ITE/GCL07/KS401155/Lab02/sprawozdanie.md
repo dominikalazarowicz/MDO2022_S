@@ -47,4 +47,4 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
 			exit(0)  
     ```
     - sprawdzono działanie powyższego skryptu:
-    ![test_commit](pics/commit-msg.png)
+    ![test_commit](pics/skrypt.png)
