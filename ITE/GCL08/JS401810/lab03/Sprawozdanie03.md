@@ -51,7 +51,7 @@ RUN cd cytoscape.js && npm i
 
   ![x](./dockerfile_build1.png)
 
-  ![x](./docker_build2.png.png) 
+  ![x](./docker_build2.png) 
 
   ![x](./dockerimages1.png) 
   
