@@ -51,3 +51,17 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
 3. Rozpoczęto przygotowanie środowiska Dockerowego:
     - zapewniono dostęp przez SSH:
     ![ssh](pics/ssh.png)
+    
+4. Działanie środowiska:
+    - wersja oraz status Dockera:
+    ![docker](pics/docker1.png)
+
+    - pull obrazu ubuntu oraz wylistowanie wykonanych operacji:
+    ![pull_ubuntu](pics/docker2.png)
+
+    - numer wersji obrazu:
+    ![wersja](pics/docker3.png)
+
+5. Założono konto na Docker Hub:
+
+    ![dockerhub](pics/docker4.png)
