@@ -29,4 +29,35 @@ exit 0;
 
 2. Przetestowano poprawne działanie hooka:
 
+![](screen/hook-test.png)
+
+# Środowisko dockerowe
+Wykorzystywanym systemem operacyjnym jest Ubuntu, zatem nie była wykorzystywana maszyna wirtualna.
+
+1. Instalacja dockera:
+$ sudo apt install docker.io
+
+![](screen/docker-install.png)
+
+2. Przetestowano poprawne działanie dockera 
+
+![](screen/docker-1.png)
+
+3. Uruchomiono przykładowy obraz "hello world"
+
+$ sudo docker run hello-world
+
+![](screen/hello-world.png)
+
+4. Pobrano obraz dystrybucji linuksowej i uruchomiono go:
+$ sudo docker pull ubuntu:latest
+$ sudo docker run -it ubuntu
+
+![](screen/docker-ubuntu.png)
+
+# Utworzenie konta na Docker Hub
+Utworzono konto na Docker Hub:
+![](screen/dockerhub.png)
+
+
 
