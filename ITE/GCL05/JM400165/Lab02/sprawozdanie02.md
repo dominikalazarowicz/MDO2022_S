@@ -70,65 +70,126 @@ Jak można zauważyć wersja pobranego ubuntu to "bionic-20220315"
 5. Polecenia użyte w terminalu:
 
 sudo apt-get update
+
 docker --version
+
 docker run -d -p 8080:8080 docker/getting-started
+
 sudo docker run -d -p 80:80 docker/getting-started
+
 docker images
+
 sudo docker images
+
 docker pull ubuntu:bionic-20220315
+
 sudo docker pull ubuntu:bionic-20220315
+
 sudo docker images
+
 cd MDO2022_S/.git/hooks
+
 ls
+
 cp commit-msg.sample commit-msg
+
 nano commit-msg
+
 cd ../..
+
 touch test
+
 git add .
+
 git commit -m "tersrr"
+
 git config --global user.email "jakub.michalik15@gmail.com"
+
 git config --global user.name "KubaMichalik"
+
 git commit -m "tersrr"
+
 nano commit-msg
+
 nano .git/hooks/commit-msg
+
 git commit -m "test"
+
 git commit -m "JM400165"
+
 nano .git/hooks/commit-msg
+
 git commit -m "test"
+
 chmod +x  .git/hooks/commit-msg
+
 git commit -m "test"
+
 chmod a+x .git/hooks/commit-msg
+
 git commit -m "test"
+
 git commit -m "JM400165 Lab02"
+
 nano .git/hooks/commit-msg
+
 git commit -m "JM400165"
+
 nano .git/hooks/commit-msg
+
 git commit -m "JM400165"
+
 nano .git/hooks/commit-msg
+
 git commit -m "JM400165"
+
 git commit -m "JM400165 Lab02"
+
 git commit -m "JM400165"
+
 nano .git/hooks/commit-msg
+
 ls
+
 rm test
+
 ls
+
 git branch
+
 git checkout JM400165
+
 git branch
+
 ls
+
 cd ITE/GCL05/JM400165
+
 ls
+
 mkdir Lab02
+
 cd Lab02
+
 mkdir screens
+
 touch sprawozdanie02.md
+
 git add .
+
 git status
+
 cd ../../../..
+
 git add .
+
 git status
+
 git commit -m "JM400165 Lab02"
+
 git push
+
+
 
 
 
