@@ -49,9 +49,9 @@ RUN git clone https://github.com/cytoscape/cytoscape.js.git
 RUN cd cytoscape.js && npm i
 ```
 
-  ![x](./docker_build.png)
+  ![x](./dockerfile_build1.png)
 
-  ![x](./dockerfile_build1.png) 
+  ![x](./docker_build2.png.png) 
 
   ![x](./dockerimages1.png) 
   
