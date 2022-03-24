@@ -7,12 +7,12 @@
 Hook sprawdza, czy tytuł commita ma taką samą nazwę jak branch, a także, czy w treści commita znajduje 
 się numer laboratorium.
 
-![](./screeny/hook.png)
+![](./screeny/hook.PNG)
 
 Działanie hook'a, które testowano w wirtualnej maszynie poprzez dodanie testowego pliku, oraz "exit 1" w pliku
 commit-msg:
 
-![](./screeny/screenHOOKS.png)
+![](./screeny/screenHOOKS.PNG)
 
 Jak widać, należy dokładnie podać inicjały wraz z numerem indeksu, oraz numer labolatorium.
 
@@ -38,9 +38,9 @@ echo "Success"
 Zapewniono dostęp do wirtualnej maszyny poprzez zdalny terminal, wcześniej zmieniając porty 
 w ustawieniach wirtualnej maszyny:
 
-![](./screeny/VM.png)
+![](./screeny/VM.PNG)
 
-![](./screeny/zdalny.png)
+![](./screeny/zdalny.PNG)
 
 Jak widać na powyższym screenie, dostęp został przyznany.
 
@@ -48,23 +48,23 @@ Jak widać na powyższym screenie, dostęp został przyznany.
 Środowisko dockerowe na maszynie wirtualnej oraz na systemie Windows zostało już wcześniej zainstalowane,
 więc wystarczyło ten fakt sprawdzić poleceniem "docker --version": 
 
-![](./screeny/s2.png)
+![](./screeny/s2.PNG)
 
-![](./screeny/dockerWin.png)
+![](./screeny/dockerWin.PNG)
 
 3.Następnie pobrano obraz, który był wyświetlony po zainstalowaniu Dockera na Windowsie:
 
-![](./screeny/im1.png)
+![](./screeny/im1.PNG)
 
 Oraz pobrano obraz dystrybucji linuksowej, w tym przypadku Ubuntu, oraz uruchomiono go:
 
-![](./screeny/im2.png)
+![](./screeny/im2.PNG)
 
 Jak można zauważyć wersja pobranego ubuntu to "bionic-20220315"
 
 4.Ostatnim krokiem było załozenie konta na DockerHub.
 
-![](./screeny/dockerHub.png)
+![](./screeny/dockerHub.PNG)
 
 
 5.Polecenia użyte w terminalu:
