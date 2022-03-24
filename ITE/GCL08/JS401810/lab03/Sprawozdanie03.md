@@ -49,7 +49,7 @@ RUN git clone https://github.com/cytoscape/cytoscape.js.git
 RUN cd cytoscape.js && npm i
 ```
 
-  ![x](./dockerfile_build1.png)
+  ![x](./docker_build.png)
 
   ![x](./dockerfile_build1.png) 
 
@@ -73,7 +73,7 @@ W obu przypadkach obrazy zbudowały się poprawnie, co pokazują powyższe zrzut
 * **Wykazanie poprawności działania kontenera**
 Utworzyłem kontener na podstawie wcześniej stworzonych obrazów, wszystko działa poprawnie.
 
- ![x](./container1.png)
+ ![x](./container.png)
 
  ![x](./container2.png)
 
