@@ -5,7 +5,7 @@
 Środowiskiem Makefile jest tu npm. 
  
  Link do repo:
- ```https://github.com/cytoscape/cytoscape.git```
+ ```https://github.com/expressjs/express.git```
 
 2. Sklonowanie repozytorium i jego zbudownie za pomocą npm.
 
