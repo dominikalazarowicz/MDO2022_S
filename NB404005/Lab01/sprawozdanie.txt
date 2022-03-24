@@ -4,7 +4,7 @@ git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S
 git checkout -b NB404005
     - przeniesienie się na nowego brancha o nazwie NB404005 
         
-git add -A
+git add -A 
     - dodanie wszystkich zmodyfikowanych plikow w repo do commita
 
 commit -m "lab1"
