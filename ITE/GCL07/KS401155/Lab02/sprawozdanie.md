@@ -50,4 +50,4 @@ Kontrolowanie zawartości commita, konfiguracja środowiska i testowanie działa
     ![test_commit](pics/skrypt.png)
 3. Rozpoczęto przygotowanie środowiska Dockerowego:
     - zapewniono dostęp przez SSH:
-    ![ssh](pics/ssh.PNG)
+    ![ssh](pics/ssh.png)
