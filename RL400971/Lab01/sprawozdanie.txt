@@ -1,0 +1,7 @@
+Sprawozdanie lab 01
+
+Użyto Git for Windows
+
+1.git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S
+
+2.git checkout -b RL400971
