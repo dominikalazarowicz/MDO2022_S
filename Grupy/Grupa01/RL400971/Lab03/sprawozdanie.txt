@@ -1,0 +1,19 @@
+1. Stworzyłam nowy brunch
+
+2. Dodałam hooka z poprzednich zajęć do folderu Lab02/hooks
+
+3. Zainstalowałam Dockera
+
+4. Zarejestrowałam się na Docker HUB
+
+5. Stworzyłam plik Dockerfile na bazie najnowszego ubuntu oraz upewniłam się że będzie miał doinstalowanego git'a
+FROM ubuntu:latest
+
+RUN apt-get update; apt-get install git -y
+
+6. Zbudowałam obraz dockera na podstawie tego pliku i uruchomiłam kontener po czym ściągnęłam na niego repozytorium
+docker image build --tag git-image .
+
+docker run -dit 5a61f
+
+docker exec eb0 git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
