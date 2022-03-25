@@ -1,0 +1,29 @@
+1. Wygenerowałam nowy klucz ssh i zmieniłam sposób logowania na git'cie
+ssh-keygen -t rsa -b 4096 -C "moj_adres_email" 
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
+git remote set-url origin git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+
+2. Dodałam tag na aktualnego commita
+git push --set-upstream origin RL400971
+git push --follow-tags
+
+3. Uporzątkowałam foldery
+git mv RL400971 Grupy/Grupa01/RL400971
+
+4. Napisałam hook'a do weryfikowania commit message
+#!/bin/bash
+
+pattern='RL400971'
+msg="Zacznij message od 'RL400971'"
+
+if ! grep "$pattern" "$1"
+then
+    echo "$msg"
+    exit 1
+fi
+echo "Ok"
+
+5. Dołączyłam swojego brancha do brancha grupowego 
+git checkout ITE-GCL05
+git merge Grupa05-RL400971-Lab02
