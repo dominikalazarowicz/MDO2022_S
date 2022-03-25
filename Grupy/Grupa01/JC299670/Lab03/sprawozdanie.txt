@@ -10,3 +10,6 @@ Integracja narzędzi walidacji i weryfikacja kodu z repozytorium.
 
 4. Zarejestrowałam sobie konto w Docker HUB (https://hub.docker.com/).
 
+5. Stwórzyłam plik Dockerfile i dodałam go do swojego brncha. 
+
+6. Uruchomiłam kontener i ściągnęłam na niego nasze repozytorium.
