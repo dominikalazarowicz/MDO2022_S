@@ -1,0 +1,7 @@
+Lab 1
+
+git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
+Pobiera repozytorium z serwera na komputer
+
+git checkout -b nazwa_brancha
+Tworzy nowy branch i zmienia obecny na podany
