@@ -5,6 +5,7 @@
 
 Treść utwozonego pliku:
 -------------------------
+```
 #!/bin/bash
 a=`head -n1 $1`
 b=`tail -n1 $1`
@@ -24,6 +25,7 @@ if ! [[ "$b" = $d ]]; then
     echo " expected: " $d
     exit 1
 fi
+```
 -------------------------
 
 Działanie
