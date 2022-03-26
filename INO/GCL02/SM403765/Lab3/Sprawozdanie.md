@@ -4,7 +4,7 @@ Oprogramowanie które wybrałem to projekt aplikacji webowej (nowa wersja) proje
 
 Część webowa projektu zarządza rolami, uprawnieniami w dostępie, spełnia funkcję promocji motocykla oraz kluczowa przedstawienie telemetrii motocykla.
 
-Kwestia licencji nie stanowi tu problemu, ponieważ jest główną odpowiedzialną osobą za projekt.
+Kwestia licencji nie stanowi tu problemu, ponieważ jestem główną odpowiedzialną osobą za projekt.
 
 Projekt jest hostowany na serwerze i posiada testy jednostkowe fontend, backend oraz test E2E na playwright. platforma arm clouda oferowała więcej zasobów aczkolwiek czasem jest to problematyczne.
 
@@ -36,7 +36,9 @@ WARNING: The requested image's platform (linux/amd64) does not match the detecte
 standard_init_linux.go:228: exec user process caused: exec format error
 ```
 
-Nie chciałem robic obrazów które mogą być emulowane aby nie tracić na wydajności dlatego postanowiłem zrobić obraz na natywnej architekturze: arm64
+Nie chciałem robić obrazów które mogą być emulowane aby nie tracić na wydajności dlatego postanowiłem zrobić obraz na natywnej architekturze: arm64
+
+Na wsl2 różnica miedzy emulowaną platformą a natywną była 10-krotna
 
 ### 2. Zainstalowanie sdk na kontenerze ubuntu
 
@@ -44,7 +46,7 @@ Po uruchomieniu kontenera w trybie interaktywnym i wykonaniu skryptów dostarczo
 
 Znalazłem adres do pobrania plików: https://dotnetcli.blob.core.windows.net/dotnet/Sdk/master/dotnet-sdk-latest-linux-arm64.tar.gz
 
-Następnie zaaktualizowałem menadźer pakietów aby zaindeksował paczki a nastepnie zainstalowałem curl a z przełącznikiem -y który zgadza się na instalację przez co nie powoduje to blokowania frontendu cli
+Następnie zaktualizowałem menadżer pakietów aby zindeksował paczki a następnie zainstalowałem curl a z przełącznikiem -y który zgadza się na instalację przez co nie powoduje to blokowania frontendu cli
 
 Potem pobrałem plik z paczką SDK
 
@@ -55,7 +57,7 @@ root@66da68d71573:/# apt-get install -y curl
 root@66da68d71573:/# curl -SL -o dotnet.tar.gz https://dotnetcli.blob.core.windows.net/dotnet/Sdk/master/dotnet-sdk-latest-linux-arm64.tar.gz
 ```
 
-Paczkę wypakowałem, przeniosłem z binariami do wspólnego katalogu linuxa oraz zrobiłem linka aby dotnet był dostępny globalnie ( w przeciwieństwie do poradnika microsoft o ręcznej instalacji, bez korzystania z .bashrc)
+Paczkę wypakowałem, przeniosłem z binariami do wspólnego katalogu linuxa oraz zrobiłem linka aby dotnet był dostępny globalnie ( w przeciwieństwie do poradnika microsoft o ręcznej instalacji. Bez korzystania z .bashrc)
 
 ```bash
 root@66da68d71573:/#  mkdir -p /usr/share/dotnet
@@ -87,7 +89,8 @@ root@66da68d71573:/#
 ### 3. Brakujące zależności
 
 W poszukiwaniu zależności udałem się na stronę microsoftu i próbowałem zainstalować pakiety. m.in:  libicu67
-Okazało się to wyzwaniem ponieważ nie ma go i nie możnabyło znaleść informacji jak zedytować sources.list
+Okazało się to wyzwaniem ponieważ nie ma go i nie można było znaleźć informacji jak edytować plik sources.list. Aczkolwiek spróbowałem z wersją dev co rozwiązało problem
+
 ```bash
 root@66da68d71573:/# apt-get install -y libicu67
 Reading package lists... Done
@@ -115,7 +118,7 @@ root@66da68d71573:/# apt-get install -y libicu-dev libc6 libgcc1 libgssapi-krb5-
 
 ### 4. Lokalizacja
 
-Podczas instalacji dependencji instalacja odbywała się w trybie blokującym oczekującym na wejście od uzytkownika co przeszkadza w automatyzacji procesu.
+Podczas instalacji dependencji instalacja odbywała się w trybie blokującym oczekującym na wejście od użytkownika co przeszkadza w automatyzacji procesu.
 
 ```bash
 Configuring tzdata
@@ -129,7 +132,7 @@ presenting a list of cities, representing the time zones in which they are locat
 Geographic area:
 ```
 
-Rozwiązaniem było wczęsniejsze ręczne skonfigurowanie lokalizacji:
+Rozwiązaniem było wcześniejsze ręczne skonfigurowanie lokalizacji:
 
 ```bash
 
@@ -153,7 +156,7 @@ Local time is now:      Tue Mar 22 19:32:56 CET 2022.
 Universal Time is now:  Tue Mar 22 18:32:56 UTC 2022.
 ```
 
-Po tym możnabyło bez blokowania zainstalować brakujące pakiety
+Po tym można było bez blokowania zainstalować brakujące pakiety
 
 ```bash
 root@66da68d71573:/# apt-get install -y libicu-dev libc6 libgcc1 libgssapi-krb5-2 libssl1.1 libstdc++6 zlib1g curl git
@@ -226,7 +229,7 @@ root@66da68d71573:/#
 
 ## DockerFile
 
-Mając ręcznie przeprowadzony proces budowania obrazu automatyzuję proces przez umieszczeni instruckji w dockerfile
+Mając ręcznie przeprowadzony proces budowania obrazu automatyzuję proces przez umieszczeni instrukcji w dockerfile
 
 ```dockerfile
 FROM ubuntu:latest
@@ -320,8 +323,8 @@ ubuntu               latest    e784f03641c9   4 days ago           65.6MB
 
 ## Klonowanie repo
 
-sklonowałem repozytorium aplikacji webowej
-uruchomiłem kontener montując w nim w ścieżce /app sklonowany folder repozytorium przełącznik -v. Skopiowałem folder to tymczasowego katalogu aby zmiany nie były dokonywane na hoście.
+Sklonowałem repozytorium aplikacji webowej
+uruchomiłem kontener montując w nim w ścieżce /app sklonowany folder repozytorium przełącznik -v. Skopiowałem folder to tymczasowego katalogu.
 
 
 ```bash
@@ -351,16 +354,13 @@ root@33ed5dc67514:/tmp/app# cd Panel.EmotoAgh.Backend
 root@33ed5dc67514:/tmp/app/Panel.EmotoAgh.Backend# ls
 Controllers                    Program.cs  Utils               appsettings.Development.json  bin  s
 Panel.EmotoAgh.Backend.csproj  Properties  WeatherForecast.cs  appsettings.json              obj
-root@33ed5dc67514:/tmp/app/Panel.EmotoAgh.Backend# ls
-Controllers                    Program.cs  Utils               appsettings.Development.json  bin  s
-Panel.EmotoAgh.Backend.csproj  Properties  WeatherForecast.cs  appsettings.json              obj
 root@33ed5dc67514:/tmp/app/Panel.EmotoAgh.Backend# dotnet build
 
 Welcome to .NET 6.0!
 ---------------------
 ```
 
-Na tym etapie pojawił się problem że pakiety nie są typu 6.0.3-preview (MS <3) dlatego ponowiłem cały proces budowania obrazu z stabliną wersją. Link na stronie posiada nie stabilne SDK dlatego korzystając z skryptów microsoftu do instalacji dotneta odszukałem ścieżkę nie zawierającą GUID a
+Na tym etapie pojawił się problem że pakiety w projekcie nie są typu 6.0.3-preview (MS 👌) dlatego ponowiłem cały proces budowania obrazu z stabilną wersją. Link na stronie posiada nie stabilne SDK dlatego korzystając z skryptów microsoftu do instalacji dotneta odszukałem ścieżkę nie zawierającą GUID a 😒
 
 Ponadto aby zmniejszyć rozmiar dodałem usuwanie pobranego archiwum, oraz pliku node install.
 
@@ -385,10 +385,6 @@ ubuntu@szymonvm:~$
 
 ## Ostateczny dockerfile
 
-```dockerfile
-RUN curl -SL -o dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/6.0.103/dotnet-sdk-6.0.103-linux-arm64.tar.gz
-
-```
 
 ```dockerfile
 FROM ubuntu:latest
@@ -588,6 +584,16 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: /app/Panel.EmotoAgh.Backend/
 
 ```
+
+## Przemyślenia o obrazach
+
+No podstawie rozmiarów, pipeline aplikacji mogę stwierdzić że obraz wersji deweloperskiej jest zasadny do używania w przypadku budowania aplikacji. Wtedy należy mieć zainstalowanego NodeJs i dotneta 6 SDK.
+
+W przypadku zaistnienia zmiany w pakietach projektu lub node js a, należało by tylko wtedy przebudować obraz który zawiera katalog node modules (i nugety), dominującą operacją będzie tutaj odczyt, niżeli aktualizacja node_modules a, co znacznie przypieszy testowanie przy wystawieniu Merge Requesta.
+
+Trzeci obraz który jest warty zainteresowania to taki który zawiera tylko dotnet 6 Runtime, znacznie zmniejszy to rozmiar obrazu. Do obrazu należy dostarczyć build produkcyjny który może być 1 plikiem bez runtime. Obraz ten może być używany do przeprowadzenia testów E2E oraz bezpośrednio wdrożony na produkcję (z zmianą zmiennych środowiskowych). Taki obraz byłby dużo lżejszy do zbudowania przez deweloperów w calu odtworzenia buga 
+
+
 
 
 # W sprawozdaniu dla ułatwienia czytelności umieszczam basha w md, natomiast zdjęcia i tak znajdują się w folderze obok sprawozdania
