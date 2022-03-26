@@ -1,0 +1,3 @@
+1. stworzenie nowego brancha git checkout -b Grupa02-AC403771_Lab04
+1.1 Zrobienie taga: 	$ docker tag lab3:latest annaczesak/ac403771
+Zrobienie pusha: 	$ docker push annaczesak/ac403771
