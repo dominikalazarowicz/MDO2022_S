@@ -1,0 +1,9 @@
+#!/bin/sh
+
+if (cat $1) | grep -Eq '(Lab2)'
+then
+  echo "Correct commit"
+else
+  echo "Bad commit"
+  exit 1
+fi
