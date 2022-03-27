@@ -72,7 +72,7 @@ W ramach zajęć zrealizowano następujące kroki:
 
 - Uruchomienie nowego obrazu poleceniem `sudo docker run -it --name nodrered_build nodered_build`;
 
-    ![img](docker_rn_run.png)
+    ![img](docker_nr_run.png)
 
 ## Wnioski
 Program Docker umożliwia stworzenie wyizolowanego środowiska - konteneru - bazującego na obrazie, który zawiera narzędzia niezbędne do uruchomienia aplikacji. Aplikacja nie zostaje jednak uruchomiona wraz z otwarciem kontenera - w danym przypadku włącza się Node.js, ponieważ na tym oprogramowaniu jest oparty jego obraz, wykonujący pracę.
