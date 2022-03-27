@@ -10,20 +10,28 @@
 
 - Stworzyłem 2 pliki Dockerfile: `Docker1`:
 
-![fota](docker1.png)
+![fota](Docker1.png)
 
 oraz `Docker2`:
 
-![fota](docker2.png)
+![fota](Docker2.png)
 
-- Użyłem polecenia `docker build -f docker1:latest . -f Docker1` aby odpalić kontener z załączeniem pierwszego pliku Dockerfile.
+- Użyłem polecenia `docker build -f docker1:latest . -f Docker1` aby stworzyć kontener z załączeniem pierwszego pliku Dockerfile.
 
 ![fota](dockerbuild1.png)
 
-![fota](images1)
+![fota](images1.png)
 
 - Aby wykazać poprawne zbudowanie programu, w kontenerze zainstalowałem irssi używając wczesniej zbudowanego repo:
 
 ![fota](historyirssi.png)
 
 ![fota](irssi.png)
+
+- następnie wykonałem `docker build -t docker2:latest . -f Docker2` aby z drugim Dockerfile stworzyć build z testami
+
+![fota](testy.png)
+
+![fota](images2.png)
+
+- Jak widać testy przeszły, jako że obraz ten zbudowany jest na podstawie poprzedniego, który działa wnioskuje że ten też musi śmigać aż miło.
