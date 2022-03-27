@@ -26,25 +26,25 @@ Puściłem testy
 
 Pobrałem obraz node
 
-![img5](./s5png)
+![img5](./s5.png)
 
 Powtarzam czynności z punktu pierwszego ale tym razem w kontenerze
 
 Wchodzę do kontenera i klonuje repo
 
-![img6](./s6png)
+![img6](./s6.png)
 
 Pobieram pakiety
 
-![img7](./s7png)
+![img7](./s7.png)
 
 Robie builda
 
-![img8](./s8png)
+![img8](./s8.png)
 
 Sprawdzam testy
 
-![img9](./s9png)
+![img9](./s9.png)
 
 ## **Dockerfile**
 
@@ -52,20 +52,20 @@ Aby zautomatyzować powyższe kroki tworzę dwa pliki dockerfile. Jeden z nich t
 
 Pliki dockerfile:
 
-![img10](./s10png)
+![img10](./s10.png)
 
 Odpalam pierwszego dockerfila
 
-![img11](./s11png)
+![img11](./s11.png)
 
-![img12](./s12png)
+![img12](./s12.png)
 
 Odpalam drugiego dockerfila
 
-![img13](./s13png)
+![img13](./s13.png)
 
 Tworze dodatkowy image do którego dodałem `npm run start` aby kontener nie zakańczał od razu swojej pracy. Dzięki tek komendzie hostuje on storne na localhost.
 
 Po wpisaniu `docker ps -a` widzimy go jako aktywny kontener
 
-![img14](./s14png)
+![img14](./s14.png)
