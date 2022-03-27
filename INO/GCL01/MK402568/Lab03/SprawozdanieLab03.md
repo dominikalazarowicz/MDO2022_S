@@ -110,7 +110,7 @@ Ponownie większość testów zakończyła się powodzeniem, problem pojawił si
 
 Tworze plik z rozszerzeniem dockerfile, jego modyfikacje przeprowadzam w Visual Studio Code, początkowo korzystając z *FROM* wybieram najnowszy obraz kontenera node ```node:latest```. W następnym kroku korzystam z polecenia ```git clone``` dzięki czemu klonuje repozytorium, poprzez *WORKDIR* ustawiam ścieżke roboczą a na końcu instaluje zależności ```npm install``` i wykonuje builda ```npm run build```.
 
-
+![](./red/firstDockerFile.png)
 
 - Kontener drugi ma bazować na pierwszym i wykonywać testy.
 
