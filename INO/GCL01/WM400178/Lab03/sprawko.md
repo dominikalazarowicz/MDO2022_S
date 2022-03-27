@@ -31,8 +31,8 @@ dociągać żadnych dependencji i mogę skupić się na najważniejszym aspekcie
    # ![Alt text](docker-build-tests.PNG?raw=true)
    # ![Alt text](docker-build-tests2.PNG?raw=true)
 8. Widzimy, że dockerfile wykonują poprawnie swoje działanie. Spróbujmy teraz to ostatecznie potwierdzić poprzez odpalenie aplikacji, tak aby na porcie 8080 wyświetlał się UI node.js.
-   ![Alt text](docker-run-build.PNG?raw=true)
+   # ![Alt text](docker-run-build.PNG?raw=true)
 9. Kontener teraz działa. Wchodzę do jego środka za pomocą aplikacji Docker Desktop for Windows (mógłbym także za pomocą konsoli, ale wolę korzystać z aplikacji) i wpisuje npm start.
-   ![Alt text](npm-start.PNG?raw=true)
+   # ![Alt text](npm-start.PNG?raw=true)
 10. Na porcie 8080 jest dostępny UI node.js:
 ![Alt text](nodejs-screen.PNG?raw=true)
