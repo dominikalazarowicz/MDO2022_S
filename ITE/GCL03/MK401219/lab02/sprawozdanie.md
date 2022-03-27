@@ -13,8 +13,11 @@ exit -1
 ```
 Żeby plik działał należało mu dodać odpowiednie uprawnienia komendą ```chmod 750 commit-msg```.
 
-Działanie git hook:
-...
+Działanie git hook: 
+
+
+![](hook.png)
+
 
 # 2. Umieść hook w sprawozdaniu w taki sposób aby dało się go przejrzeć.
 # 3. Rozpocznij przygotowanie środowiska dockerowego.
