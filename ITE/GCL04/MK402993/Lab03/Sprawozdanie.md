@@ -1,4 +1,4 @@
-# Sprawozdanie DevOps lab2
+# Sprawozdanie DevOps lab3
 ## Michał Krzemień
 ### Informatyka Techniczna 
 #### Grupa laboratoryjna 4.
