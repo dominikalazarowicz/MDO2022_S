@@ -42,7 +42,7 @@ Wybrany projekt spełnia wszystkie wymagania postawione w zadaniu: licencja, nar
 
 **- Kontener pierwszy ma przeprowadzać wszystkie kroki aż do bulida:**
 
-` RUN git clone  https://github.com/nodejs/nodejs.org
+`RUN git clone  https://github.com/nodejs/nodejs.org
 
 WORKDIR /nodejs.org/
 
@@ -50,15 +50,15 @@ RUN npm install
 
 RUN npm build
 
-#EXPOSE 8080 `
+#EXPOSE 8080`
 
 **- Kontener drugi bazuje na pierwszym i wykonuje testy:**
 
-` FROM nbuild:latest
+`FROM nbuild:latest
 
 WORKDIR /nodejs.org/
 
-RUN npm run build `
+RUN npm run build`
 
 # Punkt 3: Wykaż, że kontener wdraża się i pracuje poprawnie
 
