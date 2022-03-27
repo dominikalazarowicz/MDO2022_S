@@ -7,3 +7,23 @@
 ![fota](manualtest.png)
 
 ![fota](dockerhistory.png)
+
+- Stworzyłem 2 pliki Dockerfile: `Docker1`:
+
+![fota](docker1.png)
+
+oraz `Docker2`:
+
+![fota](docker2.png)
+
+- Użyłem polecenia `docker build -f docker1:latest . -f Docker1` aby odpalić kontener z załączeniem pierwszego pliku Dockerfile.
+
+![fota](dockerbuild1.png)
+
+![fota](images1)
+
+- Aby wykazać poprawne zbudowanie programu, w kontenerze zainstalowałem irssi używając wczesniej zbudowanego repo:
+
+![fota](historyirssi.png)
+
+![fota](irssi.png)
