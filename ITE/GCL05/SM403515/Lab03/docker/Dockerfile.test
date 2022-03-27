@@ -1,0 +1,3 @@
+FROM devops-golang-terraform:build
+
+RUN cd terraform-provider-azurerm && make test
