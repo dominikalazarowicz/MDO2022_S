@@ -41,6 +41,7 @@ Wybrany projekt spełnia wszystkie wymagania postawione w zadaniu: licencja, nar
 # Punkt 2: Stwórz dwa pliki Dockerfile automatyzujące kroki powyżej
 
 **- Kontener pierwszy ma przeprowadzać wszystkie kroki aż do bulida:**
+
 ` RUN git clone  https://github.com/nodejs/nodejs.org
 
 WORKDIR /nodejs.org/
@@ -53,11 +54,11 @@ RUN npm build
 
 **- Kontener drugi bazuje na pierwszym i wykonuje testy:**
 
-`FROM nbuild:latest
+` FROM nbuild:latest
 
 WORKDIR /nodejs.org/
 
-RUN npm run build`
+RUN npm run build `
 
 # Punkt 3: Wykaż, że kontener wdraża się i pracuje poprawnie
 
