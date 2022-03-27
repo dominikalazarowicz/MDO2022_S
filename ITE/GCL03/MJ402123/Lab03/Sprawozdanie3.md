@@ -21,7 +21,7 @@ Na początku komenda apt-get -y update
 
 Instalowanie gita:
 
-![Image](przed 3s.JPG "")
+![Image](przed_3s.JPG "")
 
 Instalowanie gcc:
 
@@ -45,7 +45,7 @@ Instalowanie mesona:
 
 Okazało się, że trzeba zainstalowałem jeszcze paru potrzebnych rzeczy:
 
-![Image](8s errory.JPG "")
+![Image](8s_errory.JPG "")
 
 Dlatego zainstalowałem jeszcze libglib2.0-dev:
 
