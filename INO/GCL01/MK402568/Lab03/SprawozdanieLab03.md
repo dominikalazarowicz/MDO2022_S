@@ -121,4 +121,36 @@ Utworzone pliki dockerfile kopiuje na maszyne wirtualną za pomocą serwera FTP 
 
 4. Wykaż, że kontener wdraża się i pracuje poprawnie. Pamiętaj o różnicy między obrazem a kontenerem. Co pracuje w takim kontenerze?
 
+Początkowo wykonywany jest dockerfile który wykonuje build, tak więc zadanie to wykonywane jest poprzez polecenie ```sudo docker build . -f firstDockerFile.dockerfile -t ndbuild```.Poprzez przełącznik ```-f``` odwołuje się do konkretnego pliku dockerfile, natomiast ```-t``` pozwala na ustalenie nazwy obrazu. Poniżej screenshoty potwierdzające powodzenie operacji.
+
+![](./red/firstDockerBuildPart1.png)
+
+![](./red/firstDockerBuildPart2.png)
+
+![](./red/firstDockerBuildPart3.png)
+
+Po przeprowadzeniu powyższych działań uruchomiłem drugi z plików dockerfile tym razem przeprowadzone zostają testy na utworzonym wcześniej obrazie. Polecenie analogiczne ze zmienionymi nazwami pliku oraz docelowego obrazu. Poniżej screeny potwierdzające operacje.
+
+![](./red/secondDockerFilepart1.png)
+
+![](./red/secondDockerFilepart2.png)
+
+
+Jak widzimy na ostatnim z powyższych screenów, żaden z testów nie zakończył się powodzeniem, co potwierdza że wcześniejsze kilka niepowodzeń testów były spowodowane wyłączenie delayem. 
+
+Pliki  dockerfile wykonały swoje zadanie w sposób prawidłowy, automatyzacja przebiegła pomyślnie. Powyższe operacje pozwalają użytkownikowi na przyśpieszenie pracy poprzez napisanie jednego pliku zarządzającego prace nad projektem.
+
+Dodatkowo wynik operacji poprzeć można poprzez komende ```sudo docker images```, screen poniżej:
+
+![](./red/images.png)
+
+Na koniec na poparcie, że wszystko przebiegło prawdiłowo korzystam z polecenia ```sudo docker run -it --name node-red node:latest i uruchamiam kontener z utworzonego obrazu. Jak widać uruchomiona została aplikacja Node.js v.17.
+
+![](./red/node-red.png)
+
+
+
+
+
+
 
