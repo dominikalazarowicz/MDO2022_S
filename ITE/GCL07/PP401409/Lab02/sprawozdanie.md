@@ -6,22 +6,38 @@ Patrycja Pstrąg 401409
 
 1. Przygotowanie git hooka sprawdzającego czy w tytule commita znajduje się PP401409, oraz czy w treści commita znajduje się numer laboratorium.
 
-![](Screenshot02png)
+![](Screenshot02.png)
 
 ```sh
-#!/bin/sh
-if [ "$(grep -E -w -o 'PP401409| wc -l)" != "1" ]
-then
-	echo Commit musi zawierac PP401409
-	return 1
+#!/bin/bash
+a=`head -n1 $1`
+b=`tail -n1 $1`
+i='PP401409'	
+nr_l='Lab02'
+
+if ! [[ "$a" = $i ]]; then
+    echo "BLAD TYTULU COMMITA"
+    echo "Wpisany tytul commita: " $a
+    echo "Wlasciwy tytul commita musi zawierac: " $i
+    exit 1
 fi
-if [ "$(grep -E -w -o 'Lab02' "$1" | wc -l)" != "1" ]
-then
-        echo Commit musi zawierac numer laboratorium Lab02
-	return 1
+
+if ! [[ "$b" = $nr_l ]]; then
+    echo "BLAD TRESCI COMMITA"
+    echo "Wpisana tresc commita:" $b 
+    echo "Wlasciwa tresc commita musi zawierac: " $nr_l
+    exit 1
 fi
-return 0
+
+echo "Commit zaakceptowany"
 ```
 
 3. Przykład działania
-a) 
+a) niewłaściwy tytuł commita
+![](Screenshot03.png)
+
+b) właściwy tytuł commita ale niewłaściwa treść commita
+![](Screenshot04.png)
+
+c) właściwy tytuł i treść
+![](Screenshot05.png)
