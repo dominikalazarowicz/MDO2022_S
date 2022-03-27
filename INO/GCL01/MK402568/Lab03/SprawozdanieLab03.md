@@ -39,7 +39,8 @@ Gdy wymagane zależności zostały doinstalowane a repozytorium sklonowane wykon
 ![](./red/build.png)
 
 - Uruchom testy jednostkowe dołączone do repozytorium.
-W kolejnym kroku wykonałem testy za pomocą polecenia ```sudo npm test```. Wyniki przedstawione w screenshotach są jedynie częścią całości, testów jest ponad 2000, tak więc umieściłem początek i konie oraz wybrany fragment ze środka.
+
+W kolejnym kroku wykonałem testy za pomocą polecenia ```sudo npm test```. Wyniki przedstawione w screenshotach są jedynie częścią całości, testów jest ponad 2000, tak więc umieściłem początek i koniec oraz wybrany fragment ze środka.
 
 *start*
 
@@ -53,7 +54,7 @@ W kolejnym kroku wykonałem testy za pomocą polecenia ```sudo npm test```. Wyni
 
 ![](./red/testEnd.png)
 
-Jak widać na ostatnim z powyższych screenów jeden z testów się nie powiódł, stwierdziłem jednak, że pozytywny rezultat około 2400 testów jak i cel laboratorium nie wymagają aby "usunąć" ten błąd.
+Jak widać na ostatnim z powyższych screenów jeden z testów się nie powiódł, stwierdziłem jednak, że pozytywny rezultat około 2400 testów jak i cel laboratorium nie wymagają aby "usunąć" ten błąd. Jest on spowodowany delayem. Tak więc całość tej części laboratorium powiodła się pomyślnie. 
 
 ### Przeprowadzenie buildu w kontenerze
 
@@ -109,7 +110,7 @@ Ponownie większość testów zakończyła się powodzeniem, problem pojawił si
 
 Tworze plik z rozszerzeniem dockerfile, jego modyfikacje przeprowadzam w Visual Studio Code, początkowo korzystając z *FROM* wybieram najnowszy obraz kontenera node ```node:latest```. W następnym kroku korzystam z polecenia ```git clone``` dzięki czemu klonuje repozytorium, poprzez *WORKDIR* ustawiam ścieżke roboczą a na końcu instaluje zależności ```npm install``` i wykonuje builda ```npm run build```.
 
-![](./red/firstDockerFile.png)
+
 
 - Kontener drugi ma bazować na pierwszym i wykonywać testy.
 
@@ -136,7 +137,7 @@ Po przeprowadzeniu powyższych działań uruchomiłem drugi z plików dockerfile
 ![](./red/secondDockerFilepart2.png)
 
 
-Jak widzimy na ostatnim z powyższych screenów, żaden z testów nie zakończył się powodzeniem, co potwierdza że wcześniejsze kilka niepowodzeń testów były spowodowane wyłączenie delayem. 
+Jak widzimy na ostatnim z powyższych screenów, żaden z testów nie zakończył się niepowodzeniem, co potwierdza że wcześniejsze kilka niepowodzeń testów były spowodowane wyłączenie delayem. 
 
 Pliki  dockerfile wykonały swoje zadanie w sposób prawidłowy, automatyzacja przebiegła pomyślnie. Powyższe operacje pozwalają użytkownikowi na przyśpieszenie pracy poprzez napisanie jednego pliku zarządzającego prace nad projektem.
 
@@ -147,7 +148,6 @@ Dodatkowo wynik operacji poprzeć można poprzez komende ```sudo docker images``
 Na koniec na poparcie, że wszystko przebiegło prawdiłowo korzystam z polecenia ```sudo docker run -it --name node-red node:latest i uruchamiam kontener z utworzonego obrazu. Jak widać uruchomiona została aplikacja Node.js v.17.
 
 ![](./red/node-red.png)
-
 
 
 
