@@ -16,20 +16,21 @@ i='PP401409'
 nr_l='Lab02'
 
 if ! [[ "$a" = $i ]]; then
-    echo "BLAD TYTULU COMMITA"
+    echo "ERROR"
     echo "Wpisany tytul commita: " $a
-    echo "Wlasciwy tytul commita musi zawierac: " $i
+    echo "Wlasciwy tytul commita to: " $i
     exit 1
 fi
 
 if ! [[ "$b" = $nr_l ]]; then
-    echo "BLAD TRESCI COMMITA"
-    echo "Wpisana tresc commita:" $b 
-    echo "Wlasciwa tresc commita musi zawierac: " $nr_l
+    echo "ERROR"
+    echo "Wpisana tresc commita: " $b 
+    echo "Wlasciwa tresc commita to: " $nr_l
     exit 1
 fi
 
-echo "Commit zaakceptowany"
+echo "Commit message OK!"
+exit 0
 ```
 
 3. Przykład działania
