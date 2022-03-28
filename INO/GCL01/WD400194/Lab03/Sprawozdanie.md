@@ -58,7 +58,7 @@ W następnym kroku przeszłam do wykonania kolejnego podpunktu, jakim było stwo
 
 ![screen14](./screen14.png)
 
-Zawartość pierwszego pliku Dockerfile `img1-build` (`tag1`) wygląda następująco:
+Zawartość pierwszego pliku Dockerfile `dockerfile1.dockerfile` wygląda następująco:
 
 ![screen15](./screen15.png)
 
@@ -74,13 +74,13 @@ $ sudo docker build . -f dockerfile1.dockerfile -t tag1
 
 ![screen18](./screen18.png)
 
-Plik Dockerfile działa poprawnie. Nazwa pliku `tag1` została przeze mnie zmieniona na `img1-build` (dlatego taka też widoczna jest na ostatnim screenie).
+Plik Dockerfile działa poprawnie. Nazwa obrazu `tag1` została przeze mnie zmieniona na `img1-build` (dlatego taka też widoczna jest na ostatnim screenie).
 
 Drugi z plików miał bazować na pierwszym oraz wykonywać testy.
 
 ![screen20](./screen20.png)
 
-Zawartość drugiego pliku Dockerfile `img2-tests` wygląda następująco:
+Zawartość drugiego pliku Dockerfile `dockerfile2.dockerfile` wygląda następująco:
 
 ![screen19](./screen19.png)
 
