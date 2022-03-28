@@ -24,7 +24,7 @@ e) uruchomienie buildu
 
 f) uruchomienie testów
 
-[npm-test](./npm-test.png)
+![npm-test](./npm-test.png)
 
 **2. Dockerfile** 
 
