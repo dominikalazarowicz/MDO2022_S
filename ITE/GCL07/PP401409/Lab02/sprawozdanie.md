@@ -6,7 +6,7 @@ Patrycja Pstrąg 401409
 ![PLOT](Screenshot01.png)
 
 2. Przygotowanie git hooka sprawdzającego czy w tytule commita znajduje się PP401409, oraz czy w treści commita znajduje się numer laboratorium.
-3. 
+
 ![](SCreenshot02.png)
 
 ```sh
