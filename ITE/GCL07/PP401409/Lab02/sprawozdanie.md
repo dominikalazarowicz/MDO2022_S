@@ -9,27 +9,17 @@ Patrycja Pstrąg 401409
 ![](Screenshot02.png)
 
 ```sh
-#!/bin/bash
-a=`head -n1 $1`
-b=`tail -n1 $1`
-i='PP401409'	
-nr_l='Lab02'
-
-if ! [[ "$a" = $i ]]; then
-    echo "ERROR"
-    echo "Wpisany tytul commita: " $a
-    echo "Wlasciwy tytul commita to: " $i
+#!/bin/sh
+if [ "$(grep -E -w -o 'PP401409' "$1" | wc -l)" != "1" ]
+then
+    echo INCORRECT_TITLE
     exit 1
 fi
-
-if ! [[ "$b" = $nr_l ]]; then
-    echo "ERROR"
-    echo "Wpisana tresc commita: " $b 
-    echo "Wlasciwa tresc commita to: " $nr_l
+if [ $(grep -E -w -o 'Lab[0-20]*' "$1" | wc -l) != "1" ]
+then
+    echo  INCORRECT_DESC
     exit 1
 fi
-
-echo "Commit message OK!"
 exit 0
 ```
 
