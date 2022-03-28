@@ -50,6 +50,26 @@ c) `sudo systemctl start sshd` uruchomienie ssh
 d) ponowne sprawdzenie statusu
 ![](Screenshot09.png)
 
+WYSTĄPIŁ BŁĄÐ PRZEZ FAKT, ŻE DO SIECI AKADEMIKOWEJ TRZEBA SIĘ LOGOWAĆ I MASZYNA WIRTUALNA NIE MIAŁA DOSTĘPU DO INTERNETU GDY SIEĆ BYŁA USTAWIONA NA BRIDGET
+
+5. Uruchomienie obrazu fedory w kontenerze
+
+`sudo docker image pull fedora`
+Pobranie obrazu fedory
+
+![](Screenshot10.png)
+
+` sudo docker run fedora`
+Uruchomienie obrazu fedory
+
+`sudo docker ps -a`
+
+`sudo docker images`
+![](Screenshot11.png)
+
+
+6. Założenie konta na Docker Hub
+![](Screenshot12.png)
 
 
 
