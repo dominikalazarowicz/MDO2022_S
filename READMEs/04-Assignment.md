@@ -21,7 +21,7 @@
 * Uruchom kontener, zainstaluj niezbędne wymagania wstępne (jeżeli istnieją), ale *bez gita*
 * Sklonuj repozytorium na wolumin wejściowy
 * Uruchom build w kontenerze
-* Zapisz powstałe/zbudowane pliki na kontenerze wyjściowym
+* Zapisz powstałe/zbudowane pliki na woluminie wyjściowym
 
 ### Eksponowanie portu
 * Uruchom wewnątrz kontenera serwer iperf (iperf3)
