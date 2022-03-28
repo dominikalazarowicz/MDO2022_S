@@ -2,10 +2,10 @@
 Patrycja Pstrąg 401409
 
 1. Wyświetlenie zawartości katalogu hooks
-![](Screenshot01.png)
+
+![PLOT](Screenshot01.png)
 
 2. Przygotowanie git hooka sprawdzającego czy w tytule commita znajduje się PP401409, oraz czy w treści commita znajduje się numer laboratorium.
-
 ![](Screenshot02.png)
 
 ```sh
@@ -31,23 +31,34 @@ b) właściwy tytuł commita ale niewłaściwa treść commita
 ![](Screenshot04.png)
 
 c) właściwy tytuł i treść
+
 ![](Screenshot05.png)
 
 3. Przygotowanie środowiska Dockerowego:
+
 `sudo dnf install docker` Instalacja dockera
+
 `docker --version` Sprawdzenie wersji dockera
+
 ![](Screenshot06.png)
+
 `systemctl status docker` Sprawdzenie czy docker jest uruchomiony
+
 ![](Screenshot07.png)
 
 `ifconfig` Wyświetlenie interfejsu sieciowego w celu nawiąznia połączenia z Windowsem
+
 ![](Screenshot08.png)
 
 4.Łączenie za pomocą ssh
 a) `sudo systemctl status sshd` sprawdzenie statusu ssh
+
 b) `sudo systemctl enable sshd`
+
 c) `sudo systemctl start sshd` uruchomienie ssh
+
 d) ponowne sprawdzenie statusu
+
 ![](Screenshot09.png)
 
 WYSTĄPIŁ BŁĄÐ PRZEZ FAKT, ŻE DO SIECI AKADEMIKOWEJ TRZEBA SIĘ LOGOWAĆ I MASZYNA WIRTUALNA NIE MIAŁA DOSTĘPU DO INTERNETU GDY SIEĆ BYŁA USTAWIONA NA BRIDGET
