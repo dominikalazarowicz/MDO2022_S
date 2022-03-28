@@ -24,13 +24,13 @@ exit 0
 ```
 
 Przykład działania
-a) niewłaściwy tytuł commita
+a) niewłaściwy tytuł commita - poprawione
 ![](Screenshot03.png)
 
-b) właściwy tytuł commita ale niewłaściwa treść commita
+b) właściwy tytuł commita ale niewłaściwa treść commita - poprawione
 ![](Screenshot04.png)
 
-c) właściwy tytuł i treść
+c) właściwy tytuł i treść - poprawione
 
 ![](Screenshot05.png)
 
