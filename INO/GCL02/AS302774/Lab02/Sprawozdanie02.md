@@ -8,7 +8,8 @@ Ze względu na problemy z dockerem postanowiłam zmienić SO na którym pracuję
 
 ## Opis zadań do wykonania
 ### 1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami
-	- Na samym początku znaleziono folder `.git` dzięki komendzie `ls -al`. W folderze `.git` znajduję się folder `hook`, do którego należało wejść w celu wykonania dalszych kroków. 
+
+Na samym początku znaleziono folder `.git` dzięki komendzie `ls -al`. W folderze `.git` znajduję się folder `hook`, do którego należało wejść w celu wykonania dalszych kroków. 
 
 	![01](./img/01.png)
 
