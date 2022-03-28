@@ -6,7 +6,8 @@ Patrycja Pstrąg 401409
 ![PLOT](Screenshot01.png)
 
 2. Przygotowanie git hooka sprawdzającego czy w tytule commita znajduje się PP401409, oraz czy w treści commita znajduje się numer laboratorium.
-![](Screenshot02.png)
+
+![](SCreenshot02.png)
 
 ```sh
 #!/bin/sh
@@ -76,10 +77,12 @@ Uruchomienie obrazu fedory
 `sudo docker ps -a`
 
 `sudo docker images`
+
 ![](Screenshot11.png)
 
 
 6. Założenie konta na Docker Hub
+
 ![](Screenshot12.png)
 
 
