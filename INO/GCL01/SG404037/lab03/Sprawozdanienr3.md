@@ -3,7 +3,7 @@
 	
 Przebieg laboratorium nr3:
 
-1.Wybrałam repozytorium z zajeć ( to jest irris )  i sklonowałam je :
+1.Wybrałam repozytorium nodejs/nodejs.org  i sklonowałam je :
  
  ![zdj1](zdj1.png)
  
