@@ -26,7 +26,7 @@
 ### Eksponowanie portu
 * Uruchom wewnątrz kontenera serwer iperf (iperf3)
 * Połącz się z nim z drugiego kontenera, zbadaj ruch
-* Połącz się spoza kontenera
+* Połącz się spoza kontenera (z hosta i spoza hosta)
 * Przedstaw przepustowość komunikacji lub problem z jej zmierzeniem (wyciągnij log z kontenera)
 
 ### Instancja Jenkins
