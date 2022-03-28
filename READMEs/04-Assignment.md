@@ -24,7 +24,7 @@
 * Zapisz powstałe/zbudowane pliki na kontenerze wyjściowym
 
 ### Eksponowanie portu
-* Uruchom wewnątrz kontenera serwer iperf
+* Uruchom wewnątrz kontenera serwer iperf (iperf3)
 * Połącz się z nim z drugiego kontenera, zbadaj ruch
 * Połącz się spoza kontenera
 * Przedstaw przepustowość komunikacji lub problem z jej zmierzeniem (wyciągnij log z kontenera)
