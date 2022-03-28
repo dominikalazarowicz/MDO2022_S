@@ -30,7 +30,8 @@ Na samym początku znaleziono folder `.git` dzięki komendzie `ls -al`. W folder
 
 
 ### 2. Umieść hook w sprawozdaniu w taki sposób, aby dało się go przejrzeć
-	- W celu tworzenia testów hooków, tworzono kolejne pliki, dodawano je do śledzenia i następnie commitowano. Po commicie wyskakiwał komunikat o tym, czy commit zakończyl się sukcesem czy porażką. 
+
+W celu tworzenia testów hooków, tworzono kolejne pliki, dodawano je do śledzenia i następnie commitowano. Po commicie wyskakiwał komunikat o tym, czy commit zakończyl się sukcesem czy porażką. 
 	-  TESTY HOOKów
 		- Poprawny commit-msg
 	
