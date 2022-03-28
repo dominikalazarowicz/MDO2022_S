@@ -2,12 +2,12 @@
 ## Gerard Skomin
 ### 1. Wybór oprogramowania na zajęcia
 * Wybranym oprogramowaniem na potrzeby zajęć jest program z repozytorium:  https://github.com/mevdschee/2048.c  
+![](repo.png)
 * Spełnia ono następujące wymagania:
   - dysponuje otwartą licencją
   - umieszczone jest wraz z potrzebnymi narzędziami **Makefile**
   - zawiera testy, które można uruchomić przy pomocy Makefile'a, które formułują jednoznaczny raport końcowy  
 * Oprogramowanie napisane jest głównie w języku C.  
-![](repo.png)
 ### 2. Test działania bezpośrednio na maszynie virtualnej
 * Klonowanie wybranego repozytorium  
 ![](clone.png)  
