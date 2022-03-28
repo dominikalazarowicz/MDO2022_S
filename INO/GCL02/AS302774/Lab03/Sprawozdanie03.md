@@ -104,4 +104,4 @@ Wszystkie kroki ponownie powtórzone zostały wykonane bezbłędnie, co prawda p
 
 
 
-![](./lab3/lastcreen.png)
+![](./lab3/lastscreen.png)
