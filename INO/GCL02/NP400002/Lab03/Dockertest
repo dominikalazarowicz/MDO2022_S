@@ -1,0 +1,6 @@
+FROM app
+
+WORKDIR "/testing-node-apps"
+
+#RUN npm run test:final --forceExit
+CMD ["npm", "run", "test:final", "--forceExit"]
