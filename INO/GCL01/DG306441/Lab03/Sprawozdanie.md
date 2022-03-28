@@ -6,7 +6,7 @@
 - zawiera Makefile;
 - zawiera testy.
 
-W tym przypadku wykorzystałem repozytorium [pod tym linkiem](https://github.com/alt-romes/programmer-calculator).
+W tym przypadku wykorzystałem repozytorium (pod tym linkiem)[https://github.com/alt-romes/programmer-calculator].
 
 !(Screenshot 1)[Screenshot_1.png]
 
