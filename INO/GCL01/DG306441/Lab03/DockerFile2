@@ -1,0 +1,3 @@
+FROM dgfirst:latest
+
+RUN bash ./run-tests.sh
