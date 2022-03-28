@@ -11,7 +11,7 @@ Ze względu na problemy z dockerem postanowiłam zmienić SO na którym pracuję
 
 Na samym początku znaleziono folder `.git` dzięki komendzie `ls -al`. W folderze `.git` znajduję się folder `hook`, do którego należało wejść w celu wykonania dalszych kroków. 
 
-	![01](INO/GCL02/AS302774/Lab02/img/01.PNG)
+![01](INO/GCL02/AS302774/Lab02/img/01.PNG)
 
 * hook sprawdzający, czy tytuł commita nazywa się ```<inicjały><numer indeksu>```
 	* W celu stworzenia hook'a sprawdzającego tytuł commita, należało, skopiować plik `commit-msg.sample` i zmienić jego nazwę za pomocą kodu `cp commit-msg.sample commit-msg`. Dzięki tym działaniom uzyskaliśmy plik, w którym należało napisać odpowiedni skrypt umożliwiający sprawdzanie tytułu commita. Edycja pliku wykonana została za pomocą komendy `nano commit-msg`. 
