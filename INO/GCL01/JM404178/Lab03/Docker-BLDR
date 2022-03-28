@@ -1,6 +1,6 @@
 FROM fedora:latest
 
-RUN yum -y install git gcc gcc-c++ make auomake wget meson ca-c* libgcrypt* glib2* utf8proc* openssl-devel ncurses*
+RUN yum -y install git gcc gcc-c++ make automake wget meson ca-c* libgcrypt* glib2* utf8proc* openssl-devel ncurses*
 
 RUN git clone https://github.com/irssi/irssi.git
 WORKDIR irssi
