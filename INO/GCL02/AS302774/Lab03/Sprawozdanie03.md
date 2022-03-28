@@ -103,4 +103,5 @@ Screeny świadczące o sprawdzeniu i poprawnym działania dockerfile.
 Wszystkie kroki ponownie powtórzone zostały wykonane bezbłędnie, co prawda pojawiły się w trakcie wykonywania tego labolatorium pewne problemy ale ostatecznie udało się wykazać porawność wykonania zadania dzięki komendzie `sudo docker ps -a`
 
 
+
 ![](./lab3/lastcreen.png)
