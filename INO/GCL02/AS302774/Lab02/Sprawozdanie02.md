@@ -35,18 +35,18 @@ W celu tworzenia testów hooków, tworzono kolejne pliki, dodawano je do śledze
 	-  TESTY HOOKów
 		- Poprawny commit-msg
 	
-	![goodcommitAS](./img/goodcommitAS.png)
+![goodcommitAS](./img/goodcommitAS.png)
 		- Poprawny pre-commit
 	
-	![prehookgood](./img/prehookgood.png)
+![prehookgood](./img/prehookgood.png)
 		- bledny pre-commit
 			- w katalogu Lab02 stworzono plik i mimo commitu z poprawną nazwą ("AS302774"), commit był błędny. Stało się tak ponieważ warunek  pre-commita nie został spełniony. 
 			
-	 ![badcommitprehook](./img/badcommitprehook.png)
+![badcommitprehook](./img/badcommitprehook.png)
 		- poprawny pre-commit i bledny commit-msg
 			- edytowano plik test2 istniejacy w katalogu Lab02; commit nadano z bledna wiadomością, ale plik znajduje się w Lab02, więc ścieżka zawierała numer labolatorium. 
 			
-	![badMSGgoodpre](./img/badMSGgoodpre.png)
+![badMSGgoodpre](./img/badMSGgoodpre.png)
 
 	
 ### 3. Rozpocznij przygotowanie środowiska Dockerowego
@@ -55,7 +55,9 @@ W celu tworzenia testów hooków, tworzono kolejne pliki, dodawano je do śledze
 	    * połączono się z z VM dzięki programie Putty 
 	   
 ![1](./img/1.png)
+
 ![2](./img/2.png)
+
 ![3](./img/3.png)
 
  * zainstaluj środowisko dockerowe w stosowanym systemie operacyjnym
