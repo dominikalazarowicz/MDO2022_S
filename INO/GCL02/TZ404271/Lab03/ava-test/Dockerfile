@@ -4,4 +4,3 @@ WORKDIR /ava
 
 #RUN npm run test
 CMD ["npm", "run", "test"]
-CMD ["exit"]
