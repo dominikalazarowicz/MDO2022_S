@@ -41,6 +41,7 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 ![Screenshot](build_file.png)<br />
 ![Screenshot](docker_build_start.png)<br />
 <br />
+### Testy
 9. Wykonanie testów.<br />
 ![Screenshot](test_file.png)<br />
 ![Screenshot](test_dockerfile_1.png)<br />
