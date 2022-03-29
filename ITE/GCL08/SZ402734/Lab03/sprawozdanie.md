@@ -29,9 +29,8 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 5. Pobranie obrazu node.<br />
 ![Screenshot](node.png)<br />
 
-6. Uruchomienie kontenera z obrazem node, podłączenie sie do niego za pomocą TTY, oraz sprawdzenie wymaganych aplikacji do zbudowania.<br />
-
 ###Sprawdzenie czy git i npm sa zainstalowane, skopiowanie projektu oraz zbudowanie.
+6. Uruchomienie kontenera z obrazem node, podłączenie sie do niego za pomocą TTY, oraz sprawdzenie wymaganych aplikacji do zbudowania.<br />
 
 ![Screenshot](instalacja.png)<br />
 
