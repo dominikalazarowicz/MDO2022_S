@@ -32,7 +32,7 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 6. Uruchomienie kontenera z obrazem node, podłączenie sie do niego za pomocą TTY, oraz sprawdzenie wymaganych aplikacji do zbudowania.<br />
 
 ###Sprawdzenie czy git i npm sa zainstalowane, skopiowanie projektu oraz zbudowanie.
-<br />
+
 ![Screenshot](instalacja.png)<br />
 
 7. Uruchomienie testów.<br />
@@ -42,16 +42,16 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 ![Screenshot](build_file.png)<br />
 ![Screenshot](docker_build_start.png)<br />
 <br />
-8. Wykonanie testów.<br />
+9. Wykonanie testów.<br />
 ![Screenshot](test_file.png)<br />
 ![Screenshot](test_dockerfile_1.png)<br />
 ![Screenshot](test_file_powodzenie.png)<br />
 ![Screenshot](succe.png)<br />
 
-9. Poprawność.<br />
+10. Poprawność.<br />
 ![Screenshot](poprawnosc.png)<br />
 
-10. Co pracuje w kontenerze utworoznym przez nas?.<br />
+11. Co pracuje w kontenerze utworoznym przez nas?.<br />
 W środowisku odizolowanym w kontenerze pracuje nasz program. Jest to sposób na odizolowanie od systemu, obraz jest podstawą do utworzenia kontenera.
 
 
