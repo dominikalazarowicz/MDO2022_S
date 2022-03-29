@@ -2,54 +2,56 @@
 
 ### Kroki zadania
 
-0. Maszyna na której wszystko jest wykonywane (ThinkPad x61 better).
-![Screenshot](1.png)
-1. Znalezienie projektu do wykonania laboratorium, środowisko Makefile w moim przypadku to npm.
+0. Maszyna na której wszystko jest wykonywane (ThinkPad x61 better).<br />
+![Screenshot](1.png)<br />
+1. Znalezienie projektu do wykonania laboratorium, środowisko Makefile w moim przypadku to npm.<br />
 
-Link: https://github.com/microsoft/TypeScript.git
+Link: https://github.com/microsoft/TypeScript.git<br />
 
-![Screenshot](2.png)
+![Screenshot](2.png)<br />
 
-2. Instalacja npm.
-![Screenshot](3.png)
+2. Instalacja npm.<br />
+![Screenshot](3.png)<br />
 
-3. Zbudowanie projektu za pomoca npm. 
-![Screenshot](4.png)
+3. Zbudowanie projektu za pomoca npm. <br />
+![Screenshot](4.png)<br />
 
-4. Testowanie
+4. Testowanie.<br />
 
 ### gulp tests - zbudowanie infrastruktury testów
-![Screenshot](5.png)
+<br />
+![Screenshot](5.png)<br />
 ### gulp runtests-parallel - uruchumoenie testów
-![Screenshot](test_1.png)
-![Screenshot](test_2.png)
+<br />
+![Screenshot](test_1.png)<br />
+![Screenshot](test_2.png)<br />
 
-5. Pobranie obrazu node.
-![Screenshot](node.png)
+5. Pobranie obrazu node.<br />
+![Screenshot](node.png)<br />
 
-6. Uruchomienie kontenera z obrazem node, podłączenie sie do niego za pomocą TTY, oraz sprawdzenie wymaganych aplikacji do zbudowania.
+6. Uruchomienie kontenera z obrazem node, podłączenie sie do niego za pomocą TTY, oraz sprawdzenie wymaganych aplikacji do zbudowania.<br />
 
 ###Sprawdzenie czy git i npm sa zainstalowane, skopiowanie projektu oraz zbudowanie.
+<br />
+![Screenshot](instalacja.png)<br />
 
-![Screenshot](instalacja.png)
+7. Uruchomienie testów.<br />
+![Screenshot](testy.png)<br />
 
-7. Uruchomienie testów
-![Screenshot](testy.png)
+8. Tworzenie Dockerfile az do builda.<br />
+![Screenshot](build_file.png)<br />
+![Screenshot](docker_build_start.png)<br />
+<br />
+8. Wykonanie testów.<br />
+![Screenshot](test_file.png)<br />
+![Screenshot](test_dockerfile_1.png)<br />
+![Screenshot](test_file_powodzenie.png)<br />
+![Screenshot](succe.png)<br />
 
-8. Tworzenie Dockerfile az do builda
-![Screenshot](build_file.png)
-![Screenshot](docker_build_start.png)
+9. Poprawność.<br />
+![Screenshot](poprawnosc.png)<br />
 
-8. Wykonanie testów
-![Screenshot](test_file.png)
-![Screenshot](test_dockerfile_1.png)
-![Screenshot](test_file_powodzenie.png)
-![Screenshot](succe.png)
-
-9. Poprawność
-![Screenshot](poprawnosc.png)
-
-10. Co pracuje w kontenerze utworoznym przez nas?
+10. Co pracuje w kontenerze utworoznym przez nas?.<br />
 W środowisku odizolowanym w kontenerze pracuje nasz program. Jest to sposób na odizolowanie od systemu, obraz jest podstawą do utworzenia kontenera.
 
 
