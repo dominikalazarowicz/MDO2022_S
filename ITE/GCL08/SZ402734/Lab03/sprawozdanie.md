@@ -40,19 +40,20 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 8. Tworzenie Dockerfile az do builda.<br />
 ![Screenshot](build_file.png)<br />
 ![Screenshot](docker_build_start.png)<br />
-<br />
-### Testy
-9. Wykonanie testów.<br />
-![Screenshot](test_file.png)<br />
-![Screenshot](test_dockerfile_1.png)<br />
-<br />
-10. Poprawność testów.<br />
-![Screenshot](test_file_powodzenie.png)<br />
-![Screenshot](succe.png)<br />
-<br />
-11. Poprawność.<br />
-![Screenshot](poprawnosc.png)<br />
 
+
+9. Wykonanie testów.
+![plot](./test_file.png)
+![plot](./test_dockerfile_1.png)
+
+10. Poprawność testów.
+![plot](./test_file_powodzenie.png)
+![plot](./succe.png)
+
+
+11. Poprawność.
+
+![plot](./poprawnosc.png)
 12. Co pracuje w kontenerze utworoznym przez nas?.<br />
 W środowisku odizolowanym w kontenerze pracuje nasz program. Jest to sposób na odizolowanie od systemu, obraz jest podstawą do utworzenia kontenera.
 
