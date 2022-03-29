@@ -82,7 +82,7 @@ $ sudo docker build . -f dockerfile1.dockerfile -t tag1
 
 Drugi z plików Dockerfile miał bazować na pierwszym oraz wykonywać testy.
 
-![screen14](./14.png)
+![screen14](./14.PNG)
 
 
 Buduję drugi docker o nazwie img2 :
