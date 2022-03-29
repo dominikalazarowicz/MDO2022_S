@@ -46,6 +46,8 @@ FROM 5a09bc57cc62
 CMD ["npm", "test"]
 ```
 3. Wyka¿, ¿e kontener wdra¿a siê i pracuje poprawnie. Pamiêtaj o ró¿nicy miêdzy obrazem a kontenerem. Co pracuje w takim kontenerze?
+
 ``` docker run #value of image id ```
+
 ![image](screens/10.PNG "runner")
 ![image](screens/11.PNG "runner")
