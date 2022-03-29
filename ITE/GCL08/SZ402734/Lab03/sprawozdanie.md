@@ -42,11 +42,11 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 ![Screenshot](build_file.png)<br />
 ![Screenshot](docker_build_start.png)<br />
 <br />
-9. Wykonanie testów.<br />
-![Screenshot](test_file.png)<br />
-![Screenshot](test_dockerfile_1.png)<br />
-![Screenshot](test_file_powodzenie.png)<br />
-![Screenshot](succe.png)<br />
+9. Wykonanie testów.
+![Screenshot](test_file.png)
+![Screenshot](test_dockerfile_1.png)
+![Screenshot](test_file_powodzenie.png)
+![Screenshot](succe.png)
 
 10. Poprawność.<br />
 ![Screenshot](poprawnosc.png)<br />
