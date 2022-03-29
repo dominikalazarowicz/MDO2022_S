@@ -47,3 +47,6 @@ WORKDIR "/calculator"
 RUN npm test
 ```
 ![docker_test](./screenshots/docker_test.png)
+
+
+W kontenerze stworzonym za pomocą naszego obrazu pracuje nasz program,który dzięki kontenerowi jest odizolowany od głównego systemu. 
