@@ -42,16 +42,18 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 ![Screenshot](build_file.png)<br />
 ![Screenshot](docker_build_start.png)<br />
 <br />
-9. Wykonanie testów.
-![Screenshot](test_file.png)
-![Screenshot](test_dockerfile_1.png)
-![Screenshot](test_file_powodzenie.png)
-![Screenshot](succe.png)
-
-10. Poprawność.<br />
+9. Wykonanie testów.<br />
+![Screenshot](test_file.png)<br />
+![Screenshot](test_dockerfile_1.png)<br />
+<br />
+10. Poprawność testów.<br />
+![Screenshot](test_file_powodzenie.png)<br />
+![Screenshot](succe.png)<br />
+<br />
+11. Poprawność.<br />
 ![Screenshot](poprawnosc.png)<br />
 
-11. Co pracuje w kontenerze utworoznym przez nas?.<br />
+12. Co pracuje w kontenerze utworoznym przez nas?.<br />
 W środowisku odizolowanym w kontenerze pracuje nasz program. Jest to sposób na odizolowanie od systemu, obraz jest podstawą do utworzenia kontenera.
 
 
