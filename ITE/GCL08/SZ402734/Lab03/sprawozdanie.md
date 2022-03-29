@@ -19,10 +19,10 @@ Link: https://github.com/microsoft/TypeScript.git<br />
 4. Testowanie.<br />
 
 ### gulp tests - zbudowanie infrastruktury testów
-<br />
 ![Screenshot](5.png)<br />
+
 ### gulp runtests-parallel - uruchumoenie testów
-<br />
+
 ![Screenshot](test_1.png)<br />
 ![Screenshot](test_2.png)<br />
 
