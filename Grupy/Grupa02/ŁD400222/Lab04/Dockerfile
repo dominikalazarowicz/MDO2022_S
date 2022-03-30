@@ -1,13 +1,15 @@
-FROM ubuntu:latest AS GIT
+FROM ubuntu:latest AS git
 RUN apt-get -y update
 RUN apt-get -y install git
+RUN git clone https://github.com/brandon1024/Java-Simple-Messenger.git
 
-[cmd] ["git clone https://github.com/wireapp/wire-webapp.git"]
 
-FROM npm:latest
+FROM git as java
+RUN apt-get -y update
+ARG DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Moscow
+RUN apt-get install -y tzdata
 
-FROM yarn:latest
 
-[cmd] ["yarn build:prod"]
-[cmd] ["cd server && yarn start:prod"]
-[cmd] ["yarn start"]
+FROM java as app
+RUN apt-get install -y default-jre && apt-get install -y default-jdk
