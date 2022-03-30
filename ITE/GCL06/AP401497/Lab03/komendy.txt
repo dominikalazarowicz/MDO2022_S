@@ -1,0 +1,6 @@
+docker run -it node:13 bash
+git clone https://github.com/dethcrypto/deth.git
+cd deth
+yarn
+yarn build
+yarn test
