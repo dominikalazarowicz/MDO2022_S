@@ -42,7 +42,7 @@ Najszybszą komunikację miała konfiguracja host-kontener, ale nieznacznie wię
 
 ### Instalacja Jenkins'a
 
-Ja już miałem zainstalowanego, pokazane tylko kontenery i działaja strona
+Ja już miałem zainstalowanego, pokazane tylko kontenery i strona logowania Jenkins'a
 
 ![kontenery](./screenshots/kontenery.png)
 ![jenkins](./screenshots/jenkins.png)
