@@ -1,16 +1,11 @@
 FROM node:latest
 
-WORKDIR /app
-COPY package.json /app
+RUN apt-get update
+RUN apt-get install -y git
 
-RUN curl https://sh.rustup.rs -sSf | bash -s -- -y
-RUN echo 'source $HOME/.cargo/env' >> $HOME/.bashrc
+RUN git clone https://github.com/deltachat/deltachat-desktop.git
 
-RUN npm install JodusNodus/react-qr-reader#pull/192/head
+WORKDIR /deltachat-desktop
 
 RUN npm install
-COPY . /app
-
-CMD npm run build
-
-EXPOSE 8080
+RUN npm run build
