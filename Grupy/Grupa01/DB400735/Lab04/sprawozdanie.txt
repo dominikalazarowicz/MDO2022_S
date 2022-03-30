@@ -54,9 +54,15 @@ Sprawozdanie LAB04
 	        depends_on:
 	            - buildsection
 	            
-6. Uzupelnilem pliki oraz wykonalem push'a poleceniem:
+6. Uzupelnilem pliki oraz dodalem pliki w katalogu do commita poleceniem:
+	git add .
+   Utworzylem commita poleceniem:
+   	git commit -m "DB400735 Lab04 pkt5"
+   Wykonalem push'a poleceniem:
 	git push --set-upstream origin Grupa01-DB400735_Lab04
    wykonalem pull requesta
+   
+   na zdjeciu '6' jest wszystko up-to-date poniewaz musialem powtorzyc polecenia
 
 	            
 	            
