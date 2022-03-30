@@ -19,3 +19,17 @@ Sprawozdanie 03
     Widok wszystkich obrazów najwyższego poziomu, ich repozytorium, tagi oraz rozmiar: docker images
 
 6. Uruchomienie kontenera, sklonowano repozytorium oraz upewniono się czy stworzony wcześniej branch istnieje.
+
+   
+   docker run -dit baefb3af763c   // uruchomienie kontenera z utworzonym obrazem 
+
+   winpty docker run -it devops-lab03-image //uruchomienie kontenera z powloką bash
+   
+   git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S 
+   
+   cd MDO2022_S/ 
+
+   git checkout Grupa01-KB401483_Lab03
+
+
+
