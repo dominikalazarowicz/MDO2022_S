@@ -23,21 +23,21 @@ Przeprowadzenie buildu repozytorium: https://github.com/opentracing/basictracer-
 ![6](screenshots/5.png)
 
 6. Stworzono Dockerfile ktory odpowiadal za build:
-![7](screenshots/6.png)
+![7](screenshots/6.PNG)
 
 7. Uruchomiono ```DockerBuild```:
-![8](screenshots/7.png)
+![8](screenshots/7.PNG)
 
 8. Stworzono Dockerfile ktory odpowiadal za testy:
-![9](screenshots/8.png)
+![9](screenshots/8.PNG)
 
 9. Uruchomiono ```DockerTest```:
-![10](screenshots/9.png)
+![10](screenshots/9.PNG)
 
 10. Sprawdzono poprawnosc dzialania powyzszych Dockerfile:
-![11](screenshots/10.png)
-![12](screenshots/11.png)
-![13](screenshots/12.png)
+![11](screenshots/10.PNG)
+![12](screenshots/11.PNG)
+![13](screenshots/12.PNG)
 
 
 ## Wnioski- Kontener a obraz
