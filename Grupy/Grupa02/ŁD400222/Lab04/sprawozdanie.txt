@@ -12,20 +12,45 @@ dockerfile:
 FROM ubuntu:latest AS git
 RUN apt-get -y update
 RUN apt-get -y install git
-RUN git clone https://github.com/brandon1024/Java-Simple-Messenger.git
-
+RUN git clone https://github.com/dave4097/messaging-app.git
 
 FROM git as java
 RUN apt-get -y update
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
 RUN apt-get install -y tzdata
-
-
-FROM java as app
 RUN apt-get install -y default-jre && apt-get install -y default-jdk
-RUN ./Java-Simple-Messenger/gradlew :server:run
+RUN apt-get install -y maven
 
-dockerfile wykorzystuje obraz systemy linux ubuntu, update'uje apt oraz klonuje repozytorium z aplikacją.
-Po pobraniu aplikacji ustawiana jest strefa czasowa, pobierane jest JRE oraz JDK oraz uruchamiany jest serwer aplikacji.
-Aplikacja napisana jest w Javie, budowana jest przy użyciu Gradle.
+FROM java as redis
+RUN apt-get install -y redis-server
+WORKDIR /messaging-app
+RUN mvn clean install
+ENTRYPOINT redis-server
+
+dockerfile wykorzystuje obraz systemu linux ubuntu, update'uje apt oraz klonuje repozytorium z aplikacją.
+Po pobraniu aplikacji ustawiana jest strefa czasowa, pobierane jest JRE oraz JDK, pobrany zostaje maven potrzebny do uruchomienia serwera.
+Na samym końcu pobrana zostaje baza danych redis, ustawiony zostaje katalog roboczy oraz budowana jest aplikacja. Entrypoint pozwala na uruchomienie bazy danych po włączeniu kontenera.
+
+
+
+4. docker build -t test-agent .
+
+dockerfile:
+
+FROM build-agent as build
+
+ENTRYPOINT mvn spring-boot:run
+ENTRYPOINT mvn test
+
+wykorzystuje poprzednio utworzony obraz, uruchamia serwer napisany przy użyciu Spring Boot'a poleceniem mvn spring-boot:run.
+Uruchomione zostają testy aplikacji, m.in wysłania złych oraz poprawnych wiadomości na serwer.
+
+
+5. docker-compose
+
+
+docker-compose up
+uruchomienie za pomocą docker-compose
+
+
