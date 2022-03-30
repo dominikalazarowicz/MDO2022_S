@@ -1,7 +1,9 @@
 # Sprawozdanie Lab03 Michał Szymański ITE-GCL08
 
+
 ## Cel ćwiczenia
 Przeprowadzenie buildu repozytorium: https://github.com/opentracing/basictracer-python.git z narzedziem make w kontenerze.
+
 
 ## Przebieg
 
@@ -19,3 +21,24 @@ Przeprowadzenie buildu repozytorium: https://github.com/opentracing/basictracer-
 
 5. Uruchomiono testy za pomoca targetu ```make test```:
 ![6](screenshots/5.png)
+
+6. Stworzono Dockerfile ktory odpowiadal za build:
+![7](screenshots/6.png)
+
+7. Uruchomiono ```DockerBuild```:
+![8](screenshots/7.png)
+
+8. Stworzono Dockerfile ktory odpowiadal za testy:
+![9](screenshots/8.png)
+
+9. Uruchomiono ```DockerTest```:
+![10](screenshots/9.png)
+
+10. Sprawdzono poprawnosc dzialania powyzszych Dockerfile:
+![11](screenshots/10.png)
+![12](screenshots/11.png)
+![13](screenshots/12.png)
+
+
+## Wnioski- Kontener a obraz
+Kontener umozliwia uruchomienie programu w odizolowanym od systemu srodowisku, obraz stanowi podstawe konteneryzacji.
