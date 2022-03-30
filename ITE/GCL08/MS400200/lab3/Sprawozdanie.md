@@ -28,7 +28,7 @@ Przeprowadzenie buildu repozytorium: https://github.com/opentracing/basictracer-
 7. Uruchomiono ```DockerBuild```:
 ![8](screenshots/7.PNG)
 
-8. Stworzono Dockerfile ktory odpowiadal za testy:
+8. Stworzono Dockerfile ktory odpowiadal za testy:<br/>
 ![9](screenshots/8.PNG)
 
 9. Uruchomiono ```DockerTest```:
