@@ -1,5 +1,7 @@
 SPRAWOZDANIE 3
 
+#
+
 1. Znalezienie repozytorium z kodem dowolnego oprogramowania, które spełnia wymagania wypunktowane w instrukcji:
 https://github.com/deltachat/deltachat-desktop.git
 
@@ -9,10 +11,10 @@ https://github.com/deltachat/deltachat-desktop.git
 
 ![2](https://user-images.githubusercontent.com/92218468/160833513-b24c8ed1-022c-45df-b1d4-934da803c914.JPG)
 
-
+#
 
 2. Przeprowadzenie buildu w kontenerze:
-3. 
+
 -wykonanie build oraz test wewnątrz kontenera:
 
 Stworzenie oraz uruchomienie kontenera komendą docker run -it --name JP --entrypoint /bin/sh node, następnie sklonowanie repozytorium przez HTTPS:
@@ -84,6 +86,41 @@ Uruchomienie nowego obrazu poleceniem docker run -it --name zadanie_build zadani
 
 ![12](https://user-images.githubusercontent.com/92218468/160833959-ea57fced-eec5-43a5-914d-864252c6fa20.JPG)
 
+#
+3. Zastosowane polecenia:
+
+git clone https://github.com/deltachat/deltachat-desktop.git
+
+docker run -it --name JP --entrypoint /bin/sh node
+
+W kontenerze:
+
+git clone https://github.com/deltachat/deltachat-desktop.git
+
+cd deltachat-dekstop
+
+npm install
+
+npm run build
+
+npm test
+
+Po wyjściu z kontenera:
+
+nano dockerfile_1
+
+docker build . -f dockerfile_1 -t zadanie_build
+
+nano dockerfile_2
+
+docker build . -f dockerfile_2 -t zadanie_test
+
+sudo docker images
+
+docker run -it --name zadanie_build zadanie_build
+
+
+#
 WNIOSKI:
 
 Zastosowanie plików Dockerfile pozwala na zautomatyzowane działania mające na celu np. utworzenie kontenera, w którym zostana zainicjowane wyselekcjonowane działania.
