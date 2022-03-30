@@ -14,5 +14,8 @@ Przeprowadzenie buildu repozytorium: https://github.com/opentracing/basictracer-
 3. Doinstalowano potrzebne narzedzia:
 ![4](screenshots/4.png)
 
-4. Uruchomiono program za pomoca targetu ```make bootstrap```:
+4. Zbudowano program za pomoca targetu ```make bootstrap```:
 ![5](screenshots/5.1.png)
+
+5. Uruchomiono testy za pomoca targetu ```make test```:
+![6](screenshots/5.png)
