@@ -1,0 +1,40 @@
+SPRAWOZDANIE Lab01
+
+0. ssh-keygen -o
+Utworzenie klucza ssh
+![plot](./Screenshot00 ssh keygen.png)
+
+1. git clone InzynieriaOprogramowaniaAGH/MDO2022_S
+Sklonowanie repozytorium, wykorzystałam do tego adres po ssh, ponieważ używam weryfikacji dwuetapowej na githubie.
+![plot](./Screenshot01 Git clone.png)
+
+2. git branch PP401409 oraz git checkout PP401409 
+Utworzenie a nastepnie przelaczenie sie na wlasny branch (inicjaly + numer indeksu)
+![plot](./Screenshot04 Nowy branch i commit.png)
+
+git branch
+Wyswietlenie wszystkich branchy
+
+mkdir PP401409 
+utworzenie nowego folderu
+
+cat > sprawozdanie.txt
+Utworzenie pliku tekstowego
+
+3. git status
+Sprawdzenie statusu plików
+
+4. git commit -m"Twoja wiadomosc"
+Tworzenie zapisu do lokalnego repozytorium, flaga -m sluzy do nazwania commita
+
+5. git push --set-upstream origin PP401409
+Polecenie wypycha na repozytorium zmiany,
+
+flaga --set-upstream origin PP401409 
+wypychamy na brancha, którego jeszcze nie ma
+
+6. git add . 
+Dodanie wszystkich plikow znajdujących się w aktualnej ścieżce do "kolejki" (do następnego commita) 
+
+7. pull request
+![plot](./Screenshot - pull request.png)
