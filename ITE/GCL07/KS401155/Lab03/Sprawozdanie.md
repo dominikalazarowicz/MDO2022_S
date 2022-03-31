@@ -34,7 +34,7 @@ Przeprowadzenie buildu repozytorium: https://github.com/fintoc-com/fintoc-python
 8. Uruchomiono ```DockerTest```:		
 ![10](pics/docker_test.png)
 
-10. Powstale obrazy:		
+10. Powstale obrazy: </br>
 ![11](pics/docker_images.png)
 
 
