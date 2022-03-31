@@ -1,0 +1,42 @@
+# Sprawozdanie Lab03 Kacper Sochacki ITE-GCL07
+
+
+## Cel ćwiczenia
+Przeprowadzenie buildu repozytorium: https://github.com/fintoc-com/fintoc-python.git z narzedziem make w kontenerze.
+
+
+## Przebieg
+
+1. Uruchomiono kontener:
+![1](pics/odpalenie1.png)
+
+2. Zainstalowano git i potrzebne narzedznia:		
+![2](pics/install git.png)
+
+3. Zbudowano za pomoca ```make build-env```:		
+![3](pics/build.png)
+
+4. Uruchomiono test za pomoca  ```make tests```:		
+![4](pics/test1.png)	
+![5](pics/test2.png)
+
+5. Stworzono Dockerfile odpowiadajacy za build:		
+![6](pics/docker build file.png)
+
+6. Stworzono Dockerfile ktory odpowiadal za testy:
+![7](pics/docker test file.png)
+
+7. Uruchomiono ```DockerBuild```:		
+![8](pics/docker build1.PNG)		
+![9](pics/docker build2.PNG)		
+
+
+8. Uruchomiono ```DockerTest```:		
+![10](pics/docker test.PNG)
+
+10. Powstale obrazy:		
+![11](pics/docker imagess.PNG)
+
+
+## Wnioski- Kontener a obraz
+Obraz jest to wzorzec na podstawie ktorego mozemy zrobic kontener.
