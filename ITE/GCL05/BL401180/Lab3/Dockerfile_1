@@ -1,0 +1,7 @@
+FROM alpine:latest
+RUN apk add git
+RUN git clone https://github.com/BartoszLidw/cosdodevopsa
+WORKDIR cosdodevopsa
+RUN apk add maven
+RUN apk add openjdk11
+RUN mvn compiler:compile 

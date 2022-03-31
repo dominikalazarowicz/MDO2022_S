@@ -1,0 +1,2 @@
+FROM cos_main:latest
+RUN mvn test
