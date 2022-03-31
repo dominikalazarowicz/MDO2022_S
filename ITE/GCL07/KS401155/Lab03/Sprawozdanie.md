@@ -13,7 +13,7 @@ Przeprowadzenie buildu repozytorium: https://github.com/fintoc-com/fintoc-python
 2. Zainstalowano git i potrzebne narzedznia:		
 ![2](pics/install_git.png)
 
-3. Zbudowano za pomoca ```make build-env```:		
+3. Zbudowano za pomoca ```make build-env```:						
 ![3](pics/build.png)
 
 4. Uruchomiono test za pomoca  ```make tests```:		
@@ -35,7 +35,7 @@ Przeprowadzenie buildu repozytorium: https://github.com/fintoc-com/fintoc-python
 ![10](pics/docker_test.png)
 
 10. Powstale obrazy:		
-![11](pics/docker_imagess.png)
+![11](pics/docker_images.png)
 
 
 ## Wnioski- Kontener a obraz
