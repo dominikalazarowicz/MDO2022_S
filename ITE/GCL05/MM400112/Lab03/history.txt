@@ -1,0 +1,87 @@
+  465  git clone git@github.com:spring-projects/spring-petclinic.git
+  466  ls
+  467  cd spring-petclinic/
+  468  sudo apt install maven
+  469  sudo apt install default-jdk
+  470  ./mvnw install -DskipTests
+  471  ./mvnw test
+  472  ls
+  473  cd ..
+  474  ls
+  475  touch dockerBuild
+  476  nano dockerBuild 
+  477  ls
+  478  cat dockerBuild 
+  479  ls
+  480  cd spring-petclinic/
+  481  docker run -it -–name lab3 openjdk:16-jdk-alpine sh
+  482  docker run -it --name lab3 openjdk:16-jdk-alpine sh
+  483  systemctl start docker
+  484  sudo dockerd
+  485  systemctl start docker
+  486  sudo usermod -aG docker mikolaj
+  487  systemctl start docker
+  488  sudo service docker start
+  489  docker run -it --name lab3 openjdk:16-jdk-alpine sh
+  490  service docker start
+  491  service docker status
+  492  ls
+  493  cd ..
+  494  ls
+  495  cd home/
+  496  ls
+  497  cd mikolaj/
+  498  ls
+  499  service docker status
+  500  service docker start
+  501  service docker start
+  502  service docker status
+  503  service docker status
+  504  service docker start
+  505  service docker status
+  506  ls
+  507  cd ..
+  508  ls
+  509  cd home/
+  510  ls
+  511  cd mikolaj/
+  512  ls
+  513  cd spring-petclinic/
+  514  ls
+  515  docker run -it –name test_lab3 openjdk:16-jdk-alpine sh
+  516  docker run -it –-name test_lab3 openjdk:16-jdk-alpine sh
+  517  docker run -it --name lab3 openjdk:16-jdk-alpine sh
+  518  service docker status
+  519  service docker status
+  520  service docker start
+  521  service docker start
+  522  service docker status
+  523  service docker start
+  524  sudo touch /etc/fstab
+  525  service docker start
+  526  service docker status
+  527  sudo update-alternatives --set iptables /usr/sbin/iptables-legacy
+  528  sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
+  529  service docker start
+  530  service docker status
+  531  docker run -it --name lab3 openjdk:16-jdk-alpine sh
+  532  ls
+  533  cd ..
+  534  cat dockerBuild 
+  535  docker build . -f dockerBuild -t lab3-petclinic
+  536  ls
+  537  nano dockerBuild 
+  538  docker build . -f dockerBuild -t lab3-petclinic
+  539  ls
+  540  touch dockerTest
+  541  nano dockerTest 
+  542  cat dockerTest 
+  543  docker build . -f dockerTest-t lab3-petclinic-test
+  544  docker build . -f dockerTest -t lab3-petclinic-test
+  545  Docker run -it –name pet-clinic-tested lab3-petclinic-test:latest
+  546  docker run -it –name pet-clinic-tested lab3-petclinic-test:latest
+  547  docker run -it --name pet-clinic-tested lab3-petclinic-test:latest
+  548  ls
+  549  cat history
+  550  history
+  551  history > history.txt
