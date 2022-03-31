@@ -16,5 +16,14 @@ RUN apt-get update
 
 RUN apt install -y git
 
+6.Uruchomiłam kontener:
+docker build . -t 'lab03_nb404005' 
+sudo docker run -it 'lab03_nb404005' bash
+
+Nastepnie sklonowałam repozytorium:
+git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S 
+   
+
+ 
 
 
