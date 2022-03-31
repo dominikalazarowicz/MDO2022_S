@@ -26,9 +26,11 @@ exit 0
 
 Przykład działania
 a) niewłaściwy tytuł commita - poprawione
+
 ![](Screenshot03.png)
 
 b) właściwy tytuł commita ale niewłaściwa treść commita - poprawione
+
 ![](Screenshot04.png)
 
 c) właściwy tytuł i treść - poprawione
@@ -52,6 +54,7 @@ c) właściwy tytuł i treść - poprawione
 ![](Screenshot08.png)
 
 4.Łączenie za pomocą ssh
+
 a) `sudo systemctl status sshd` sprawdzenie statusu ssh
 
 b) `sudo systemctl enable sshd`
@@ -72,13 +75,14 @@ Pobranie obrazu fedory
 ![](Screenshot10.png)
 
 ` sudo docker run fedora`
+
 Uruchomienie obrazu fedory
 
 `sudo docker ps -a`
 
 `sudo docker images`
 
-![](Screenshot11.png)
+![](Screenchot11.png)
 
 
 6. Założenie konta na Docker Hub
