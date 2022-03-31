@@ -27,15 +27,15 @@ Przeprowadzenie buildu repozytorium: https://github.com/fintoc-com/fintoc-python
 ![7](pics/docker test file.png)
 
 7. Uruchomiono ```DockerBuild```:		
-![8](pics/docker build1.PNG)		
-![9](pics/docker build2.PNG)		
+![8](pics/docker build1.png)		
+![9](pics/docker build2.png)		
 
 
 8. Uruchomiono ```DockerTest```:		
-![10](pics/docker test.PNG)
+![10](pics/docker test.png)
 
 10. Powstale obrazy:		
-![11](pics/docker imagess.PNG)
+![11](pics/docker imagess.png)
 
 
 ## Wnioski- Kontener a obraz
