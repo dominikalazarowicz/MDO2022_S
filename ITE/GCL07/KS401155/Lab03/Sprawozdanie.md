@@ -13,7 +13,7 @@ Przeprowadzenie buildu repozytorium: https://github.com/fintoc-com/fintoc-python
 2. Zainstalowano git i potrzebne narzedznia:		
 ![2](pics/install_git.png)
 
-3. Zbudowano za pomoca ```make build-env```:						
+3. Zbudowano za pomoca ```make build-env```: </br>
 ![3](pics/build.png)
 
 4. Uruchomiono test za pomoca  ```make tests```:		
