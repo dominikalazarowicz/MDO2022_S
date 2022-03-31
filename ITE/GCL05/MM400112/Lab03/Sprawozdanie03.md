@@ -1,4 +1,4 @@
-# Lab02
+# Lab03
 ## Mikołaj Migacz
 ### Wybór oprogramowania
 1. Wybrałem repozytorium `https://github.com/spring-projects/spring-petclinic`
