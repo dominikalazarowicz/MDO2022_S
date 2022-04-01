@@ -1,0 +1,1 @@
+1. Opublikowano obraz z poprzednich zajec w serwisie Docker Hub, obrazek Zad1_1.png
