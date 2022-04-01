@@ -1,0 +1,13 @@
+2.1 network - wyjasnienie
+
+2.2 druga komenda - wyjasnienie
+
+2.3 stworzono plik Dockerfile na wzór podanego w instrukcji Jenkinsa. Aby zadziałał należało zmienić wersję obrazu jenkinsa na latest.
+
+2.4 następnie zbudowano własny obraz i uruchoniono konterner również za pomocą podanej w instrukcji komendy. 
+	Połączył się on z utworzonymi w punkcie 2.2 woluminami, siecią utworzoną w punkcie 2.1 oraz zaczął nadawać Jenkinsa na porcie 8080.
+	
+
+
+
+4.1 pouruchomieniu kontenera zalogowano się do Jenkinsa przez przeglądarkę i zainstalowano zalecane wtyczki
