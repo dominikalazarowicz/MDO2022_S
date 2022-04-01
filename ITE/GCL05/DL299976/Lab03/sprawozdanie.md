@@ -7,8 +7,12 @@ Link - https://github.com/joshuarwynn/simple-node-app
 ## 2 - Zbudowanie aplikacji włączenie testów
 ![alt text](2.png)
 
+![alt text](4.png)
+
 ## 3 - Stworzenie plików dockerfile
 
+Uruchominie
+sudo docker build . -f dockerfile-build  -t dockerbuild
 ```
 FROM node
 RUN apt-get update -y
@@ -17,11 +21,13 @@ WORKDIR simple-node-app
 
 RUN npm install -g npm@8.6.0
 RUN npm install express
-RUN npm run build
+RUN npm start
 ```
 
+Uruchominie
+sudo docker build . -f dockerfile-tests -t dockertest
 ```
-FROM dockerfile-build:lastes
+FROM dockerbuild:lastes
 WORKDIR simple-node-app
 RUN npm test
 ```
@@ -29,3 +35,6 @@ RUN npm test
 ## 4 - Uruchomienie aplikacji w kontenerze
 ![alt text](3.png)
 
+Niestety napotkałam problemy podczas uruchamiania testów, których nie udało mi się rozwiącać.
+
+![alt text](5.png)
