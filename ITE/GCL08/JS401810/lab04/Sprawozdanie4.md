@@ -35,7 +35,7 @@
 
 **Część 2: Eksponowanie portu**
   
-* **Przed przystąpieniem do realizacji tej części laboratorium należy pamiętać, że operujemy na adresach ip kontenerów oraz hostóœ. Aby być w stanie wyciągnąć takowe adresy musimy każdorazowo zainstalować pamiętać o zupdateowaniu (polecenie "apt update"), instalacji w kontenerze pakietu net-tools (apt install net-tools) oraz instalacji i uruchomienia iperf3 <apt install iperf3> **
+* **Przed przystąpieniem do realizacji tej części laboratorium należy pamiętać, że operujemy na adresach ip kontenerów oraz hostóœ. Aby być w stanie wyciągnąć takowe adresy musimy każdorazowo zainstalować pamiętać o zupdateowaniu (polecenie "apt update"), instalacji w kontenerze pakietu net-tools (apt install net-tools) oraz instalacji i uruchomienia iperf3 <apt install iperf3>**
 
 * 1. Połączenie kontener-kontener i zbadanie ruchu. W nowym kontenerze także należało doinstalować iperf i uruchomić nasłuchiwanie za pomocą komendy "iperf3 -c <adres_ip> -t <czas_nasłuchiwania>", opcjonalnie można także dodać flagę -p, aby wskazać konkretny port.
 
