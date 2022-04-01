@@ -1,0 +1,4 @@
+FROM node
+RUN git clone https://github.com/squirrellyjs/squirrelly.git
+WORKDIR /squirrelly/
+RUN npm install && npm run build
