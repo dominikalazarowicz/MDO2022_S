@@ -1,6 +1,6 @@
-2.1 network - wyjasnienie
+2.1 network - stworzenie sieci o podanej nazwie (w moim przypadku "jenkins").
 
-2.2 druga komenda - wyjasnienie
+2.2 uruchomiono obraz docker:dind zgodnie z instrukcją. Stworzono woluminy i podłączono go do sieci stworzonej powyżej.
 
 2.3 stworzono plik Dockerfile na wzór podanego w instrukcji Jenkinsa. Aby zadziałał należało zmienić wersję obrazu jenkinsa na latest.
 
