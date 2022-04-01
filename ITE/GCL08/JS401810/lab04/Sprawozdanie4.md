@@ -70,7 +70,7 @@
 
  * **Na podstawie powyższych wartości szybkość widać, że najszybsze połączenie jest w relacji host-kontener. Wynika to z faktu ich bezpośredniego połączenia. Równie wysoką wartość szybkość osiąga także połączenie kontener-kontener, jest ona jednak o ok 5 Gbit/sec niższa. Najwolniej przebiega komunikacja spoza hosta. Tak niska szybkość jest wynikiem skomplikowanej trasy, którą musi przejść pakiet od momentu wysłania do odebrania.**
 
-**Część 2: Instalacja Jenkins'a**
+**Część 3: Instalacja Jenkins'a**
 * 1. Na początek tworzę sieć mostkowaną w dockerze oraz dwa woluminy. Następnie tworzę także kontener, w którym tworzę obraz docker:dind.
 
   ![x](./jenkinsDIND.png)
