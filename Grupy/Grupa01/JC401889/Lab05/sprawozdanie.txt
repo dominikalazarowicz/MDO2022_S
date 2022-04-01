@@ -7,7 +7,7 @@
 2.4 następnie zbudowano własny obraz i uruchoniono konterner również za pomocą podanej w instrukcji komendy. 
 	Połączył się on z utworzonymi w punkcie 2.2 woluminami, siecią utworzoną w punkcie 2.1 oraz zaczął nadawać Jenkinsa na porcie 8080.
 	
-
+3 wrzucono obraz na DockerHuba
 
 
 4.1 pouruchomieniu kontenera zalogowano się do Jenkinsa przez przeglądarkę i zainstalowano zalecane wtyczki
