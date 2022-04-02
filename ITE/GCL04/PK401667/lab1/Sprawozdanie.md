@@ -1,101 +1,69 @@
 # Sprawozdanie z laboratorium 1
 
 ## Tworzenie kluczy ssh: 
-1. Najpierw w folderze ~/.ssh utworzono pierwsza parę kluczy ssh z szyfrowaniem ecdsa-sk poleceniem:
+1. Najpierw w folderze ~/.ssh utworzono pierwsza parę kluczy ssh:
     
-        ssh-keygen -t ecdsa-sk -C "virez24@icloud.com"
+        ssh-keygen -t "git@github.pl"
     bez żadnego hasła 
 
-2. Następnie utworzono drugi klucz ssh z szyfrowaniem ecdsa poleceniem:
-
-
-        ssh-keygen -t ecdsa -C "virez24@icloud.com"
-
 </br>
 
 
- Poniżej zamieszczam zrzut ekranu z konsoli przedstawiający tworzenie drugiego klucza oraz zawartość folderu .ssh
+ Poniżej zamieszczam zrzut ekranu z kluczem publicznym ssh
 
- ![klucz ssh](ssh_key_terminal.png "Klucz ssh")
-
-</br>
-
-
- Zrzut ekranu z kluczy na github wraz z wydrukiem klucza publicznego  id_ed25519.pub w konsoli aby potwierdzić prawdziwość kluczy:
-
- ![klucze ssh](ssh_keys_github.png "Klucze ssh")
+ ![klucz ssh](ssh.png "Klucz ssh")
 
 </br>
 
 ## Pobranie repozytorium oraz stworzenie własnego brancha:
-
-Disclaimer: Niestety zamknąłem okno terminala więc zrzutu ekranu z komendami w terminalu nie bedzię.
 
 1. Pobranie repozytorium przy pomocy ssh przy uzyciu komendy:
 
         git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
     
 
-Ponizej zrzut ekranu z terminalu pokazujący, że pobranie przy pomocy ssh działa (stworzony został tymczasowy folder aby pokazać na screen'ie ponieważ zamknąłem terminal)
+Ponizej zrzut ekranu z terminalu pokazujący, że pobranie przy pomocy ssh działa
 
-</br>
+![Clone repo](clone.png "Repo clone")
 
-![Clone repo](clone_repo.png "Repo clone")
+2. Przejście poleceniem git checkout na gałąź główną a następnie na grupową, tak aby upewnić się, że jestem wstanie wykonać polecenia git-a
 
-2. Stworzenie własnego brancha odgałęziając branch ITE-GCL07 komendą:
+3. Stworzenie własnego brancha odgałęziając branch ITE-GCL07 komendą:
 
-        git checkout -b SK400601 origin/ITE-GCL07
+        git checkout -b PK401667 origin/ITE-GCL04
 
-3. Następnie przejscie do folder ITE/GCL07 i utworzenie w nim własnego folderu komendą:
+4. Następnie przejscie do folder ITE/GCL04 i utworzenie w nim własnego folderu komendą:
 
-        mkdir SK400601
-4. W folderz SK400601 otworzono folder Lab01 i w nim umieszono materiały do sprawozdania
+        mkdir PK401667
+5. W folderz PK401667 otworzono folder lab1 i w nim umieszono materiały do sprawozdania
 
-5. Następnie dodano zmiany oraz zcommitowano je poleceniami:
+6. Następnie dodano zmiany oraz zcommitowano je poleceniami:
 
         git add ../
         git commit -m "Initial commit"
 
-5. Na koniec push'nieto repo na własnego brancha poleceniem:
+7. Na koniec push'nieto repo na własnego brancha poleceniem:
 
         git push origin HEAD
 
-6. Po wykonaniu pierwszego push'u przystąpiono do wykonania sprawozdania.
-
-7. Dodałem przejście na maina ponieważ nie zauważyłem na samym początku tego polecenia:
+8. Po wykonaniu pierwszego push'u przystąpiono do wykonania sprawozdania.
 
 
-![repo branch main](checkout_main.png "Main")
-
-Polecenie użyte do zmiany na maina:
-
-
-         git checkout main
+![repo branch main](branch.png "Main")
 
 </br>
 
-8. Merge z gałezią grupy. Do wykonania niego wystarczyło się przełączyć na galąź grupy a potem użyć polecenia:
+9. Merge z gałezią grupy. Do wykonania niego wystarczyło się przełączyć na galąź grupy a potem użyć polecenia:
 
-        git merge SK400601
-
-Poniżej zrzut ekranu z terminalu:
-
-![merge](merge.png "merge")
-
-
-Ponieżej zrzut ekranu z terminalu z folderu z repozytorium pokazujący strukture folderów jak i branche:
-
-
-![repo branche](final_screen2.png "Repo branche")
+        git merge PK401667
+        
+ 
 
 </br>
 
-
+Niesty nie udało się wykonać innych zrzutów ekranu ponieważ system odmówił współpracy i wirtualna maszyna przestałą działać
 
 ## Wnioski:
 
-1. Przy tworzeniu kluczy ssh trzeba pamiętać o odpowiedniej nazwie czyli id_nazwa_szyfrowania np. id_rsa oraz o tym, że trzeba je umieścić w folderze ~/.ssh. W przypadku innej nazwy kluczy należy posługiwać się ssh agentem. Klucze publiczne kończą się rozszerzeniem .pub.
-
-2. Aby utworzyć brancha z innego remote brancha należy posłużyć się komendą git checkout -b nazwa_swoje_brancha origin/nazwa_brancha_którego_chcemy_rozgałęzić
-
-3. Do zmiany brancha zamiast checkout można posłużyć się komendą switch, która służy tylko do zmiany brancha. Natomiast checkout'em można posłużyć się w formie git restore poprzez git checkout -- <path_to_file>.  
+1. Git wydaje się być pomocnym nażędzieme, jednak wymaga on dużej ilości pracy aby się z nim połączyć tak aby działał w 100%.
+2. Linux Mint nie nadaje się do pracy ponieważ wyżuca dużo błędów i jest podatny na przestawanie działać trwale.
