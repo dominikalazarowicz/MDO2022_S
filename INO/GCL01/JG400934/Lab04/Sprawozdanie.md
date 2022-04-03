@@ -8,6 +8,10 @@ Zachowywanie stanu:
 
 Utworzenie woluminów:
 
+```
+docker volume create <nazwa_woluminu>
+```
+
 ![2](create%20volumes.png)
 
 
