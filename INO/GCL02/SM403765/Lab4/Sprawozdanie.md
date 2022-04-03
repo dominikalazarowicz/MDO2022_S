@@ -1,6 +1,6 @@
 # Zachowywanie stanu
 
-W celu skompilowania projektu w kontenerze skorystałem z obrazu deweloperskiego niezawierającego git-a. Zastosowane w nim przygotowane paczki mogą pozwalają na skompilowanie projektu
+W celu skompilowania projektu w kontenerze skorzystałem z obrazu deweloperskiego niezawierającego git-a. Zastosowane w nim przygotowane paczki mogą pozwalają na skompilowanie projektu
 
 ```dockerfile
 FROM ubuntu:latest
@@ -11,7 +11,7 @@ RUN ln -fs /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
 RUN apt-get install -y tzdata
 RUN dpkg-reconfigure --frontend noninteractive tzdata
 
-RUN apt-get install -y libicu-dev libc6 libgcc1 libgssapi-krb5-2 libssl1.1 libstdc++6 zlib1g curl git
+RUN apt-get install -y libicu-dev libc6 libgcc1 libgssapi-krb5-2 libssl1.1 libstdc++6 zlib1g curl
 
 RUN curl -SL -o dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/6.0.103/dotnet-sdk-6.0.103-linux-arm64.tar.gz
 RUN mkdir -p /usr/share/dotnet
@@ -69,10 +69,10 @@ root@szymonvm:/home/ubuntu#
 
 ```
 
-Aby przekazać nieulotne dane do kontenera można skorzystać z voluminów.
+Aby przekazać nieulotne dane do kontenera można skorzystać z woluminów.
 Z tego powodu tworzę dwa odpowiednie przestrzenie na pliki które są montowane w systemie w podanych lokalizacjach.
 
-Tak stworzone woluminy mogą być zamontowane w kontenerze który będzie dokonywaw zapisów.
+Tak stworzone woluminy mogą być zamontowane w kontenerze który będzie dokonywał zapisów.
 
 
 ```bash
@@ -111,8 +111,7 @@ root@szymonvm:/home/ubuntu# docker volume inspect out
 ]
 ```
 
-Na wolumin wejściowy zostanie sklonowane repozytorium porjektu. Korzysta on z kluczy shh i klienta gita zainstalowanego w systemi przez co unikam konieczności dodawania tego w kontenerze
-
+Na wolumin wejściowy zostanie sklonowane repozytorium projektu. Korzysta on z kluczy shh i klienta gita zainstalowanego w systemie przez co unikam konieczności dodawania tego w kontenerze
 
 
 ```bash
@@ -134,11 +133,11 @@ Ponadto montuje w kontenerze stworzone wolumniny
 - Wolumin ```in``` Punkt montowania /app
 - Wolumin ```out``` Punkt montowania /build
 
-Po wykonaniu tego mogę w kontenrze zobaczyć pliki projektu
+Po wykonaniu tego mogę w kontenerze zobaczyć pliki projektu
 
 ```bash
 
-root@szymonvm:/var/lib/docker/volumes/in/_data# sudo docker run -it --name kontener --mount source=in,target=/app --mount source=out,target=/build    devenv
+root@szymonvm:/var/lib/docker/volumes/in/_data# sudo docker run -it --name kontener --mount source=in,target=/app --mount source=out,target=/build devenv
 root@52f109e9e6ad:/# ls
 app  bin  boot  build  dev  etc  home  lib  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
 root@52f109e9e6ad:/# cd app
@@ -156,7 +155,7 @@ root@52f109e9e6ad:/app/web-app#
 
 ```
 
-Przeprowdzam standordową operację publikacji aplikacji a jako folder wyściowy wskazuję /build co jest woluminem wyjściowym
+Przeprowadzam standardową operację publikacji aplikacji a jako folder wyjściowy wskazuję /build co jest woluminem wyjściowym
 
 ```bash
 
@@ -264,8 +263,7 @@ Microsoft.AspNetCore.Authentication.OpenIdConnect.dll  Npgsql.dll
 ```
 
 Uruchomienie aplikacji.
-Na tym etapie uruchomiłem aplikację w systemie hosta natomiast można stworzyć kontener zawierający tylko środowisko uruchomieniowe dotnet 6, zamontować w nim wolumin ```out``` zawierający projekt dotneta i reacta
-
+Na tym etapie uruchomiłem aplikację w systemie hosta
 
 ```bash
 root@szymonvm:/var/lib/docker/volumes/out/_data# ./Panel.EmotoAgh.Backend  JWTAuthority=""  PostgreSqlConnectionString="localhost"
@@ -285,9 +283,54 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: /var/lib/docker/volumes/out/_data/
 ```
 
+
+# Zakres rozszerzony - Komunikacja
+
+Aktualnie posiadam środowisko deweloperskie którego obraz posiada rozmiar ok 1020 MB
+W nim na dysku wyjściowym została zbudowana aplikacja dlatego zbędnym jest dystrybuowanie tak dużego dysku, wystarczający jest sam runtime .net 6
+Który to można zbudować z dockerfile Microsoftu nawet (tym  razem) na arm64 
+Rozmiar takiego obrazu to już 222 MB
+
+```bash
+sudo docker build -t rntenv . -f aspnetrnt
+Sending build context to Docker daemon  873.4MB
+Step 1/6 : ARG REPO=mcr.microsoft.com/dotnet/runtime
+Step 2/6 : FROM arm64v8/buildpack-deps:bullseye-curl AS installer
+bullseye-curl: Pulling from arm64v8/buildpack-deps
+
+
+ ---> 0a26a2451bcd
+Successfully built 0a26a2451bcd
+Successfully tagged rntenv:latest
+
+```
+
+Do zbudowanego obrazu montuje wolumin ze zbudowaną aplikacją, udostępniam port jawnie określony 6000 i uruchamiam na kontenerze plik wykonywalny aplikacji. Wynikiem jego działania są np. informacje diagnostyczne w postaci JSONa
+
+
+```json
+
+ubuntu@szymonvm:~$ sudo docker run -it --name runtime -p 6000:6000 --mount source=out,target=/app rntenv /app/Panel.Emot
+oAgh.Backend JWTAuthority=""  PostgreSqlConnectionString="localhost" --urls=http://localhost:6000/
+{"EventId":0,"LogLevel":"Information","Category":"IdentityServer4.Startup","Message":"Starting IdentityServer4 version 4.1.2\u002B997a6cdd643e46cd5762b710c4ddc43574cbec2e","State":{"Message":"Starting IdentityServer4 version 4.1.2\u002B997a6cdd643e46cd5762b710c4ddc43574cbec2e","version":"4.1.2\u002B997a6cdd643e46cd5762b710c4ddc43574cbec2e","{OriginalFormat}":"Starting IdentityServer4 version {version}"}}
+{"EventId":0,"LogLevel":"Information","Category":"IdentityServer4.Startup","Message":"Using the default authentication scheme Bearer for IdentityServer","State":{"Message":"Using the default authentication scheme Bearer for IdentityServer","scheme":"Bearer","{OriginalFormat}":"Using the default authentication scheme {scheme} for IdentityServer"}}
+{"EventId":0,"LogLevel":"Information","Category":"IdentityServer4.Startup","Message":"Authentication scheme Bearer is configured for IdentityServer, but it is not a scheme that supports signin (like cookies). If you support interactive logins via the browser, then a cookie-based scheme should be used.","State":{"Message":"Authentication scheme Bearer is configured for IdentityServer, but it is not a scheme that supports signin (like cookies). If you support interactive logins via the browser, then a cookie-based scheme should be used.","scheme":"Bearer","{OriginalFormat}":"Authentication scheme {scheme} is configured for IdentityServer, but it is not a scheme that supports signin (like cookies). If you support interactive logins via the browser, then a cookie-based scheme should be used."}}
+{"EventId":60,"LogLevel":"Warning","Category":"Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository","Message":"Storing keys in a directory \u0027/root/.aspnet/DataProtection-Keys\u0027 that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.","State":{"Message":"Storing keys in a directory \u0027/root/.aspnet/DataProtection-Keys\u0027 that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed.","path":"/root/.aspnet/DataProtection-Keys","{OriginalFormat}":"Storing keys in a directory \u0027{path}\u0027 that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed."}}
+{"EventId":62,"LogLevel":"Information","Category":"Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager","Message":"User profile is available. Using \u0027/root/.aspnet/DataProtection-Keys\u0027 as key repository; keys will not be encrypted at rest.","State":{"Message":"User profile is available. Using \u0027/root/.aspnet/DataProtection-Keys\u0027 as key repository; keys will not be encrypted at rest.","FullName":"/root/.aspnet/DataProtection-Keys","{OriginalFormat}":"User profile is available. Using \u0027{FullName}\u0027 as key repository; keys will not be encrypted at rest."}}
+{"EventId":58,"LogLevel":"Information","Category":"Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager","Message":"Creating key {0f2e1e57-b640-465e-9522-7c8fb314db3c} with creation date 2022-04-03 18:30:20Z, activation date 2022-04-03 18:30:20Z, and expiration date 2022-07-02 18:30:20Z.","State":{"Message":"Creating key {0f2e1e57-b640-465e-9522-7c8fb314db3c} with creation date 2022-04-03 18:30:20Z, activation date 2022-04-03 18:30:20Z, and expiration date 2022-07-02 18:30:20Z.","KeyId":"0f2e1e57-b640-465e-9522-7c8fb314db3c","CreationDate":"04/03/2022 18:30:20 \u002B00:00","ActivationDate":"04/03/2022 18:30:20 \u002B00:00","ExpirationDate":"07/02/2022 18:30:20 \u002B00:00","{OriginalFormat}":"Creating key {KeyId:B} with creation date {CreationDate:u}, activation date {ActivationDate:u}, and expiration date {ExpirationDate:u}."}}
+{"EventId":35,"LogLevel":"Warning","Category":"Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager","Message":"No XML encryptor configured. Key {0f2e1e57-b640-465e-9522-7c8fb314db3c} may be persisted to storage in unencrypted form.","State":{"Message":"No XML encryptor configured. Key {0f2e1e57-b640-465e-9522-7c8fb314db3c} may be persisted to storage in unencrypted form.","KeyId":"0f2e1e57-b640-465e-9522-7c8fb314db3c","{OriginalFormat}":"No XML encryptor configured. Key {KeyId:B} may be persisted to storage in unencrypted form."}}
+{"EventId":39,"LogLevel":"Information","Category":"Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository","Message":"Writing data to file \u0027/root/.aspnet/DataProtection-Keys/key-0f2e1e57-b640-465e-9522-7c8fb314db3c.xml\u0027.","State":{"Message":"Writing data to file \u0027/root/.aspnet/DataProtection-Keys/key-0f2e1e57-b640-465e-9522-7c8fb314db3c.xml\u0027.","FileName":"/root/.aspnet/DataProtection-Keys/key-0f2e1e57-b640-465e-9522-7c8fb314db3c.xml","{OriginalFormat}":"Writing data to file \u0027{FileName}\u0027."}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.AspNetCore.Server.Kestrel","Message":"Unable to bind to http://localhost:6000 on the IPv6 loopback interface: \u0027Cannot assign requested address\u0027.","State":{"Message":"Unable to bind to http://localhost:6000 on the IPv6 loopback interface: \u0027Cannot assign requested address\u0027.","address":"http://localhost:6000","interfaceName":"IPv6 loopback","error":"Cannot assign requested address","{OriginalFormat}":"Unable to bind to {address} on the {interfaceName} interface: \u0027{error}\u0027."}}
+{"EventId":14,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Now listening on: http://localhost:6000","State":{"Message":"Now listening on: http://localhost:6000","address":"http://localhost:6000","{OriginalFormat}":"Now listening on: {address}"}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Application started. Press Ctrl\u002BC to shut down.","State":{"Message":"Application started. Press Ctrl\u002BC to shut down.","{OriginalFormat}":"Application started. Press Ctrl\u002BC to shut down."}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Hosting environment: Production","State":{"Message":"Hosting environment: Production","envName":"Production","{OriginalFormat}":"Hosting environment: {envName}"}}
+{"EventId":0,"LogLevel":"Information","Category":"Microsoft.Hosting.Lifetime","Message":"Content root path: /","State":{"Message":"Content root path: /","contentRoot":"/","{OriginalFormat}":"Content root path: {contentRoot}"}}
+
+```
+
 # Eksponowanie portu
 
-A celu sprawdzenia przepustowości sieci korzystam z narzędzie ipref w wersji 3.
+A celu sprawdzenia przepustowości sieci korzystam z narzędzia ipref w wersji 3.
 
 Całości tym razem dokonuje na komputerze stacjonarnym za pośrednictwem WSL2, i Docker Desktop
 
@@ -312,7 +355,7 @@ Aby zbadać ruch potrzebuję klienta, który również został uruchomiony w kon
 172.17.0.2
 ```
 
-Łączenie z serwerem, testowanie przepustowości
+## Łączenie z serwerem, testowanie przepustowości
 Klient:
 
 ```bash
@@ -363,7 +406,7 @@ Accepted connection from 172.17.0.3, port 35440
 
 
 
-Następnie dokonuję pomiarów przepustrowości między hostem (wsl2) a kontenerem
+## Następnie dokonuję pomiarów przepustowości między hostem (wsl2) a kontenerem
 
 Klient:
 ```bash
@@ -413,7 +456,7 @@ Accepted connection from 172.17.0.1, port 50494
 
 
 
-I ostatnii test bada przepustowość między laptopem w sieci LAN a komputerem stacjonarnym na którym jest uruchomiony serwer ipref w kontenerze
+## Ostatni test bada przepustowość między laptopem w sieci LAN a komputerem stacjonarnym na którym jest uruchomiony serwer ipref w kontenerze
 
 Klient:
 
@@ -449,3 +492,114 @@ Accepted connection from 172.17.0.1, port 50490
 
 Pojawia się tutaj ten sam problem z wz. z WSL. przepustowość jest podobna do 100mbs mimo iś na laptopie mam kartę WiFi 6 intela AX201, router w standardzie wifi 5, a switche w nim 1gbs podobnie jak w komputerze karta sieciowa
 
+# Jenkins
+
+Tworzenie sieci, kontenera
+
+```bash
+
+root@szymonvm:/home/ubuntu# docker network create jenkins
+72f840a17a5583cbc71e1a103402b4c3458de9aad845a6ab9ad6cda03bdec7b7
+root@szymonvm:/home/ubuntu# docker run \
+>   --name jenkins-docker \
+>   --rm \
+>   --detach \
+>   --privileged \
+>   --network jenkins \
+>   --network-alias docker \
+>   --env DOCKER_TLS_CERTDIR=/certs \
+>   --volume jenkins-docker-certs:/certs/client \
+>   --volume jenkins-data:/var/jenkins_home \
+>   --publish 2376:2376 \
+>   docker:dind \
+>   --storage-driver overlay2
+Unable to find image 'docker:dind' locally
+dind: Pulling from library/docker
+80fa7f07ec7b: Pull complete
+cab8992fcbba: Pull complete
+afedb10a1343: Pull complete
+71f3009765e8: Pull complete
+7ae115253e7c: Pull complete
+4eb3afcdfd64: Pull complete
+971d2cdfcd56: Pull complete
+d9d864000173: Pull complete
+9e9335a5b964: Pull complete
+c0095e6dad21: Pull complete
+e754d309d56b: Pull complete
+Digest: sha256:e816908591767e57b84fec6b5edb483cfdae5309c2446d2164c4a5bde44f26b4
+Status: Downloaded newer image for docker:dind
+8c6b3a0bd621f8a5112d77dda38b7da78c297583c9595541366b8e014a254c65
+root@szymonvm:/home/ubuntu#
+
+```
+
+Budowanie obrazu korzystającego z poprzedniego kontenera i zmieniającyh się dependencji zawartych w dockerfile
+
+```bash
+
+root@szymonvm:/home/ubuntu# docker build -t myjenkins-blueocean:2.332.1-1 . -f ./myjenkins-blueocean
+Sending build context to Docker daemon  873.4MB
+Step 1/8 : FROM jenkins/jenkins:2.332.1-jdk11
+2.332.1-jdk11: Pulling from jenkins/jenkins
+
+
+# ......................................
+
+Step 7/8 : USER jenkins
+ ---> Running in e9d9337caf6f
+Removing intermediate container e9d9337caf6f
+ ---> a9ff7d747908
+Step 8/8 : RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
+ ---> Running in 92377f676516
+Done
+Removing intermediate container 92377f676516
+ ---> 83882737278b
+Successfully built 83882737278b
+Successfully tagged myjenkins-blueocean:2.332.1-1
+root@szymonvm:/home/ubuntu#
+```
+
+Uruchomienie jenkinsa na porcie 8070.
+Port 8080 (na domenie) jest nie dostępny w sieci LAN (pseudo zabezspieczenia UPC)
+
+Zmiana portu na 8070
+
+```bash
+
+root@szymonvm:/home/ubuntu# docker run --name jenkins-blueocean --rm --detach \
+>   --network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+>   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+>   --publish 8070:8080 --publish 50000:50000 \
+>   --volume jenkins-data:/var/jenkins_home \
+>   --volume jenkins-docker-certs:/certs/client:ro \
+>   myjenkins-blueocean:2.332.1-1
+97372c43321c9e5cdbedc54cda8e2598fc4254744ec44e36cf74378cb2b18922
+```
+
+Do poprawnego działania potrzebowałem dodać reguły firewalla
+
+```bash
+
+root@szymonvm:/home/ubuntu# sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 8070 -j ACCEPT
+root@szymonvm:/home/ubuntu# sudo netfilter-persistent save
+run-parts: executing /usr/share/netfilter-persistent/plugins.d/15-ip4tables save
+run-parts: executing /usr/share/netfilter-persistent/plugins.d/25-ip6tables save
+
+```
+
+Po uruchomieniu i przejściu na stronę potrzebowałe odblokować Jenkinsa.
+Pobrałem hasło z basha kontenera
+
+```bash
+root@szymonvm:/home/ubuntu# docker exec -it jenkins-blueocean bash
+jenkins@e2c794708829:/$ cat /var/jenkins_home/secrets/initialAdminPassword
+
+```
+
+## Odblokowany jenkins
+
+![d](./unlocked_jenkins.png)
+
+## Strona powitalna 
+
+![d](./jenkins_welcome.png)
