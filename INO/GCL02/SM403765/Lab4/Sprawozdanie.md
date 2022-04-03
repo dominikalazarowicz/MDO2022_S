@@ -461,9 +461,26 @@ Accepted connection from 172.17.0.1, port 50494
 Klient:
 
 ```bash
+❯ .\iperf3.exe -c 192.168.1.2
+Connecting to host 192.168.1.2, port 5201
+[  4] local 192.168.1.6 port 50909 connected to 192.168.1.2 port 5201
+[ ID] Interval           Transfer     Bandwidth
+[  4]   0.00-1.01   sec  14.5 MBytes   121 Mbits/sec
+[  4]   1.01-2.00   sec  11.0 MBytes  92.9 Mbits/sec
+[  4]   2.00-3.01   sec  9.50 MBytes  79.4 Mbits/sec
+[  4]   3.01-4.00   sec  11.4 MBytes  95.7 Mbits/sec
+[  4]   4.00-5.01   sec  11.2 MBytes  94.0 Mbits/sec
+[  4]   5.01-6.00   sec  12.4 MBytes   104 Mbits/sec
+[  4]   6.00-7.01   sec  13.6 MBytes   113 Mbits/sec
+[  4]   7.01-8.00   sec  12.9 MBytes   109 Mbits/sec
+[  4]   8.00-9.01   sec  13.8 MBytes   114 Mbits/sec
+[  4]   9.01-10.00  sec  13.2 MBytes   112 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth
+[  4]   0.00-10.00  sec   124 MBytes   104 Mbits/sec                  sender
+[  4]   0.00-10.00  sec   123 MBytes   104 Mbits/sec                  receiver
 
-Laptop
-
+iperf Done.
 ```
 
 Wyniki po stronie serwera
