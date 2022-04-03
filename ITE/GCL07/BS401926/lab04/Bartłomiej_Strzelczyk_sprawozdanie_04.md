@@ -36,7 +36,7 @@ g) kopiowanie z woluminu wejściowego do wyjściowego
 
 h) sprawdzenie instnienia programu
 
-![inspect2](./inspect2.png)
+![inspect2](./inspect-2.png)
 
 ![ls-in-out](./ls-in-out.png)
 
