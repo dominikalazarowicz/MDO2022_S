@@ -3,8 +3,8 @@
 Jeśli chodzi o kontener podstawowy, to w przeciwieństwie do poprzednich zajęć, użyłem kontenera node:slim. tag slim oznacza, że jest do wersja z mniejszą ilością dependencji niż wersja latest oraz m.in nie poisiada ona gita. Dodatkowo, w trakcie wykonywania ćwiczenia, na zmiane posługiwałem się terminalem gitowym oraz cmd, poniewaz w niektórych przypadkach mój domyślny terminal (gitowy), wyrzucał dziwne błędy - m.in przy tworzeniu woluminów.
 1. Utworzenie woluminu wejścioweg i wyjściowego
     # ![Alt text](1-volumes-create.PNG?raw=true)
-2.Uruchomienie kontenera z node:slim z woluminami
-    # ![Alt text](1-node-slim-with-voluimes.PNG?raw=true)
+2. Uruchomienie kontenera z node:slim z woluminami
+   # ![Alt text](1-node-slim-with-voluimes.PNG?raw=true)
 3. Woluminy z poziomu kontenera:
     # ![Alt text](3-volumes-created-container.PNG?raw=true)
 4. Skopiowałem repozytorium nodejs.org do wolumina  wejściowego:
@@ -14,7 +14,7 @@ Jeśli chodzi o kontener podstawowy, to w przeciwieństwie do poprzednich zaję�
 6. Wykonałem npm ci i run build w kontenerze:
     ##![Alt text](6-npm-ci.PNG?raw=true)
     # ![Alt text](7-run-build.PNG?raw=true)
-8. Przekopiowałem wynik builda do wolumina wyjściowego:
+7. Przekopiowałem wynik builda do wolumina wyjściowego:
     # ![Alt text](8-cp.PNG?raw=true)
     # ![Alt text](9-local.PNG?raw=true)
 ## iperf3
