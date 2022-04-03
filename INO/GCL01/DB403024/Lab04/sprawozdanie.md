@@ -4,7 +4,7 @@
 
 ![fota](volumecreated.png)
 
-![fota](volumedocker/png)
+![fota](volumedocker.png)
 
 - uruchomilem kontener oraz zainstalowalem potrzebne dependency
 
@@ -22,7 +22,7 @@
 
 ![fota](iperf1.png)
 
-![fota](iperf.png)
+![fota](perf.png)
 
 Nie pobieralem loga z serwera, przepustowosci, gdyż widać ją
 na screenach:
