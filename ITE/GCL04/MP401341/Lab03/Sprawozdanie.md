@@ -19,6 +19,7 @@
 
 2. Kroki z punktu pierwszego powtórzono na kontenerze utworzonym na bazie obrazu debian:10, wymagana była instalacja pakietów git, make, gcc, python3
     1. Zaaktualizowano listę dostępnyc pakietów i zainstalowano wymagane pakiety. Sklonowano repozytorium z wykorzystaniem https, nastepnie zbudowano pakiet, prztestowano działanie i uruchomiono testy
+        > docker run -it debian:10
         > apt update  
         > apt install python3 gcc make git  
         > git clone https://github.com/lz4/lz4.git  
