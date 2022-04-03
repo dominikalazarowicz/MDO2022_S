@@ -7,7 +7,7 @@ Celem laboratorium była dalsza praca z kontenerami w środowisku Dockerowym ora
 ## Wykonanie
 W ramach zajęć zrealizowano następujące kroki:
 
-1. 
+1. Przygotowanie dwóch woluminów: wyjściowego i wejściowego;
 
 
 ## Wnioski
