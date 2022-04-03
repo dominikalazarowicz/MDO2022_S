@@ -18,10 +18,11 @@ Jeśli chodzi o kontener podstawowy, to w przeciwieństwie do poprzednich zaję�
     # ![Alt text](8-cp.PNG?raw=true)
     # ![Alt text](9-local.PNG?raw=true)
 ## iperf3
-Z tym zadaniem miałem niemały problem,nie udało mi się ukończyć całego zadania, ponieważ nie mogłem połączyć się do serwera z poza kontenera. 
-9. Uruchomienie serwera iperf3 w kontenerze:
+Z tym zadaniem miałem niemały problem,nie udało mi się ukończyć całego zadania, ponieważ nie mogłem połączyć się do serwera z poza kontenera.
+
+9. Uruchomienie serwera iperf3 w kontenerze 
     # ![Alt text](10-iperf.PNG?raw=true)
-10. potwierdzenie, że serwer nasłuchuje na tym porcie:
+10. potwierdzenie, że serwer nasłuchuje na tym porcie
     # ![Alt text](11-nasluchuje.PNG?raw=true)
 11. Połączyłem się z innego kontenera, dodałem flagę -c która określa, że jesteśmy klientem. Adres z flagi wziąłem bezsporednio z kontenera, według instrukcji z dockerhuba:
     # ![Alt text](12-connection.PNG?raw=true)
