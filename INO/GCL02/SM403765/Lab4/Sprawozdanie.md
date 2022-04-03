@@ -285,3 +285,167 @@ info: Microsoft.Hosting.Lifetime[0]
       Content root path: /var/lib/docker/volumes/out/_data/
 ```
 
+# Eksponowanie portu
+
+A celu sprawdzenia przepustowości sieci korzystam z narzędzie ipref w wersji 3.
+
+Całości tym razem dokonuje na komputerze stacjonarnym za pośrednictwem WSL2, i Docker Desktop
+
+Uruchamiam kontener w trybie interaktywnym z serwerem ipref-a z dostępnego obrazu oraz z opublikowanymi portami 5201
+```bash
+❯ docker run  -it --rm --name=iperf3-server -p 5201:5201 networkstatic/iperf3 -s
+Unable to find image 'networkstatic/iperf3:latest' locally
+latest: Pulling from networkstatic/iperf3
+5eb5b503b376: Pull complete
+2cdcfe59fc45: Pull complete
+Digest: sha256:e9bbc8312edff13e2ecccad0907db4b35119139e133719138108955cf07f0683
+Status: Downloaded newer image for networkstatic/iperf3:latest
+-----------------------------------------------------------
+Server listening on 5201
+-----------------------------------------------------------
+```
+
+Aby zbadać ruch potrzebuję klienta, który również został uruchomiony w kontenerze. W tym przypadku musiałem znać adres sieciowy serwera co zrobiłem poleceniem
+
+```bash
+❯ docker inspect --format "{{ .NetworkSettings.IPAddress }}" iperf3-server
+172.17.0.2
+```
+
+Łączenie z serwerem, testowanie przepustowości
+Klient:
+
+```bash
+❯ docker run  -it --rm networkstatic/iperf3 -c  172.17.0.2
+Connecting to host 172.17.0.2, port 5201
+[  5] local 172.17.0.3 port 35442 connected to 172.17.0.2 port 5201
+[ ID] Interval           Transfer     Bitrate         Retr  Cwnd
+[  5]   0.00-1.00   sec  2.17 GBytes  18.6 Gbits/sec  715    669 KBytes
+[  5]   1.00-2.00   sec  2.59 GBytes  22.3 Gbits/sec    2    803 KBytes
+[  5]   2.00-3.00   sec  2.39 GBytes  20.5 Gbits/sec    0    963 KBytes
+[  5]   3.00-4.00   sec  1.98 GBytes  17.0 Gbits/sec    1    976 KBytes
+[  5]   4.00-5.00   sec  2.29 GBytes  19.7 Gbits/sec    1   1020 KBytes
+[  5]   5.00-6.00   sec  2.34 GBytes  20.1 Gbits/sec    0   1.04 MBytes
+[  5]   6.00-7.00   sec  2.32 GBytes  19.9 Gbits/sec   17   1.04 MBytes
+[  5]   7.00-8.00   sec  2.26 GBytes  19.4 Gbits/sec  103   1.07 MBytes
+[  5]   8.00-9.00   sec  2.37 GBytes  20.4 Gbits/sec   48   1.13 MBytes
+[  5]   9.00-10.00  sec  2.34 GBytes  20.1 Gbits/sec    1   1.15 MBytes
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate         Retr
+[  5]   0.00-10.00  sec  23.1 GBytes  19.8 Gbits/sec  888             sender
+[  5]   0.00-10.00  sec  23.0 GBytes  19.8 Gbits/sec                  receiver
+
+iperf Done.
+```
+
+Wyniki po stronie serwera
+
+```bash
+Accepted connection from 172.17.0.3, port 35440
+[  5] local 172.17.0.2 port 5201 connected to 172.17.0.3 port 35442
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  2.17 GBytes  18.6 Gbits/sec
+[  5]   1.00-2.00   sec  2.59 GBytes  22.2 Gbits/sec
+[  5]   2.00-3.00   sec  2.38 GBytes  20.4 Gbits/sec
+[  5]   3.00-4.00   sec  1.98 GBytes  17.0 Gbits/sec
+[  5]   4.00-5.00   sec  2.29 GBytes  19.7 Gbits/sec
+[  5]   5.00-6.00   sec  2.35 GBytes  20.2 Gbits/sec
+[  5]   6.00-7.00   sec  2.31 GBytes  19.8 Gbits/sec
+[  5]   7.00-8.00   sec  2.26 GBytes  19.4 Gbits/sec
+[  5]   8.00-9.00   sec  2.38 GBytes  20.5 Gbits/sec
+[  5]   9.00-10.00  sec  2.34 GBytes  20.1 Gbits/sec
+[  5]  10.00-10.00  sec   128 KBytes  5.43 Gbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.00  sec  23.0 GBytes  19.8 Gbits/sec                  receiver
+
+```
+
+
+
+Następnie dokonuję pomiarów przepustrowości między hostem (wsl2) a kontenerem
+
+Klient:
+```bash
+
+❯ .\iperf3.exe -c 192.168.1.2
+Connecting to host 192.168.1.2, port 5201
+[  4] local 192.168.1.2 port 59036 connected to 192.168.1.2 port 5201
+[ ID] Interval           Transfer     Bandwidth
+[  4]   0.00-1.01   sec  41.8 MBytes   348 Mbits/sec
+[  4]   1.01-2.01   sec  32.1 MBytes   269 Mbits/sec
+[  4]   2.01-3.01   sec  30.0 MBytes   252 Mbits/sec
+[  4]   3.01-4.00   sec  28.0 MBytes   236 Mbits/sec
+[  4]   4.00-5.00   sec  32.0 MBytes   269 Mbits/sec
+[  4]   5.00-6.00   sec  28.6 MBytes   239 Mbits/sec
+[  4]   6.00-7.01   sec  35.4 MBytes   296 Mbits/sec
+[  4]   7.01-8.00   sec  36.0 MBytes   304 Mbits/sec
+[  4]   8.00-9.00   sec  38.6 MBytes   324 Mbits/sec
+[  4]   9.00-10.00  sec  37.2 MBytes   312 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bandwidth
+[  4]   0.00-10.00  sec   340 MBytes   285 Mbits/sec                  sender
+[  4]   0.00-10.00  sec   336 MBytes   282 Mbits/sec                  receiver
+
+iperf Done.
+```
+Wyniki po stronie serwera
+
+```bash
+Accepted connection from 172.17.0.1, port 50494
+[  5] local 172.17.0.2 port 5201 connected to 172.17.0.1 port 50496
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  38.0 MBytes   319 Mbits/sec
+[  5]   1.00-2.00   sec  32.2 MBytes   270 Mbits/sec
+[  5]   2.00-3.00   sec  30.7 MBytes   257 Mbits/sec
+[  5]   3.00-4.00   sec  28.1 MBytes   235 Mbits/sec
+[  5]   4.00-5.00   sec  31.6 MBytes   265 Mbits/sec
+[  5]   5.00-6.00   sec  28.9 MBytes   242 Mbits/sec
+[  5]   6.00-7.00   sec  34.8 MBytes   292 Mbits/sec
+[  5]   7.00-8.00   sec  36.7 MBytes   308 Mbits/sec
+[  5]   8.00-9.00   sec  38.6 MBytes   323 Mbits/sec
+[  5]   9.00-10.00  sec  36.6 MBytes   307 Mbits/sec
+[  5]  10.00-10.01  sec   160 KBytes   213 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.01  sec   336 MBytes   282 Mbits/sec                  receiver
+```
+
+
+
+I ostatnii test bada przepustowość między laptopem w sieci LAN a komputerem stacjonarnym na którym jest uruchomiony serwer ipref w kontenerze
+
+Klient:
+
+```bash
+
+Laptop
+
+```
+
+Wyniki po stronie serwera
+
+```bash
+
+Accepted connection from 172.17.0.1, port 50490
+[  5] local 172.17.0.2 port 5201 connected to 172.17.0.1 port 50492
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-1.00   sec  14.1 MBytes   118 Mbits/sec
+[  5]   1.00-2.00   sec  11.2 MBytes  93.8 Mbits/sec
+[  5]   2.00-3.00   sec  9.63 MBytes  80.7 Mbits/sec
+[  5]   3.00-4.00   sec  11.3 MBytes  94.7 Mbits/sec
+[  5]   4.00-5.00   sec  11.3 MBytes  94.7 Mbits/sec
+[  5]   5.00-6.00   sec  12.5 MBytes   105 Mbits/sec
+[  5]   6.00-7.00   sec  13.6 MBytes   114 Mbits/sec
+[  5]   7.00-8.00   sec  12.7 MBytes   107 Mbits/sec
+[  5]   8.00-9.00   sec  13.8 MBytes   115 Mbits/sec
+[  5]   9.00-10.00  sec  13.2 MBytes   111 Mbits/sec
+[  5]  10.00-10.01  sec   214 KBytes   118 Mbits/sec
+- - - - - - - - - - - - - - - - - - - - - - - - -
+[ ID] Interval           Transfer     Bitrate
+[  5]   0.00-10.01  sec   123 MBytes   103 Mbits/sec                  receiver
+
+```
+
+Pojawia się tutaj ten sam problem z wz. z WSL. przepustowość jest podobna do 100mbs mimo iś na laptopie mam kartę WiFi 6 intela AX201, router w standardzie wifi 5, a switche w nim 1gbs podobnie jak w komputerze karta sieciowa
+
