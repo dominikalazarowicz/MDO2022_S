@@ -1,0 +1,28 @@
+FROM ubuntu:latest
+
+RUN apt-get update
+
+RUN ln -fs /usr/share/zoneinfo/Europe/Warsaw /etc/localtime
+RUN apt-get install -y tzdata
+RUN dpkg-reconfigure --frontend noninteractive tzdata
+
+RUN apt-get install -y libicu-dev libc6 libgcc1 libgssapi-krb5-2 libssl1.1 libstdc++6 zlib1g curl git
+
+RUN curl -SL -o dotnet.tar.gz https://dotnetcli.azureedge.net/dotnet/Sdk/6.0.103/dotnet-sdk-6.0.103-linux-arm64.tar.gz
+RUN mkdir -p /usr/share/dotnet
+RUN tar -zxf dotnet.tar.gz -C /usr/share/dotnet
+RUN ln -s /usr/share/dotnet/dotnet /usr/bin/dotnet
+
+RUN rm dotnet.tar.gz
+
+RUN curl -sL https://deb.nodesource.com/setup_16.x -o /tmp/nodesource_setup.sh
+RUN bash /tmp/nodesource_setup.sh
+
+RUN apt install nodejs
+
+RUN rm /tmp/nodesource_setup.sh
+
+
+RUN dotnet --info
+RUN node -v
+RUN npm -v
