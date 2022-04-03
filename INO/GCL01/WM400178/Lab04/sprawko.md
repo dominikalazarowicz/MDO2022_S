@@ -12,7 +12,7 @@ Jeśli chodzi o kontener podstawowy, to w przeciwieństwie do poprzednich zaję�
 5. Potwierdzenie, ze repo znadjuje sie teraz w kontenerze i że nie ma gita:
     # ![Alt text](5-potw.PNG?raw=true)
 6. Wykonałem npm ci i run build w kontenerze:
-    ##![Alt text](6-npm-ci.PNG?raw=true)
+    # ![Alt text](6-npm-ci.PNG?raw=true)
     # ![Alt text](7-run-build.PNG?raw=true)
 7. Przekopiowałem wynik builda do wolumina wyjściowego:
     # ![Alt text](8-cp.PNG?raw=true)
