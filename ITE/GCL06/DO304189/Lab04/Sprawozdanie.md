@@ -1,4 +1,4 @@
-# Sprawozdanie z laboratorium 2
+# Sprawozdanie z laboratorium 4
 
 
 ## Cel ćwiczenia
