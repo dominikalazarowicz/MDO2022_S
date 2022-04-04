@@ -124,7 +124,7 @@ Poniżej przedstawiam logi umożliwiające analize przepustowości transferu, po
 
 Aby przeanalizować połączenia utworzyłem wykres przedstawiający ilość danych jaka została przesłana w czasie 15s dla każdego  z przypadków.
 
-![](./screenshots/wykres)
+![](./screenshots/wykres.png)
 
 Najlepszą przepustowością wykazało się połączenie host-kontener, nieco gorszym połączeniem okazało się być, połączenie kontener-kontener. Na koniec odnosząc się do połączenia z poza kontenera z urzązenia nie będącego hostem widać, że ten przypadek znacznie odstaje od pozostałych, zarówno transfer jak i bitrate są znacznie słabsze.
 
