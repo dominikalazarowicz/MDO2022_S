@@ -14,7 +14,7 @@
 - sprawdzam i widzę, że istnieją
 `docker volume ls`
 
-![](./img/Zrzut ekranu 2022-04-03 010533.png)
+![](INO/GCL02/AS302774/Lab04/img/Zrzut ekranu 2022-04-03 010533.png)
 
 ##### Uruchom kontener, zainstaluj niezbędne wymagania wstępne (jeżeli istnieją), ale *bez gita*
 - tworze nowy dockerfile i uruchamiam kontener bazowy
