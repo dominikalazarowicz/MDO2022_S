@@ -14,7 +14,7 @@ Doinstalowanie ncurses:
 $ sudo apt-get install libncurses5-dev libncursesw5-dev
 ```
 ![InstallNcurses](InstallNcurses.png) 
-Kompilacja kod i przeniesienie pliku wykonywalnego do katalogu osiągalnego przez $PATH:
+Kompilacja kodu i przeniesienie pliku wykonywalnego do katalogu osiągalnego przez $PATH:
 ```bash
 $ make
 $ sudo mv -i pcalc /usr/local/bin
@@ -30,7 +30,7 @@ $ ./run-tests.sh
 ```bash
 $ pcalc
 ```
-![pcalc](pcalc.png) 
+![pcalc1](pcalc1.png) 
 Uruchomiono dokera i sprawdzono dostępne obrazy:
 ![images](images.png) 
 
@@ -64,8 +64,8 @@ W drugim zadaniu należało stworzyć dwa pliki Dockerfile automatyzujące wcze�
 Pierwszy kontener przeprowadza wszystkie kroki aż do builda:
 ![dockerFile1](dockerFile1.png)
  
-FROM – wybranie konkretnego obrazu
-RUN – uruchomienie instalacji, klonowania repozytorium i builda
+FROM – wybranie konkretnego obrazu; 
+RUN – uruchomienie instalacji, klonowania repozytorium i builda; 
 WORKDIR – definiowanie katalogu roboczego kontenera
 Utworzono obraz z pliku dockerFile1:
 ```bash
