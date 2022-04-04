@@ -30,6 +30,3 @@ Sprawozdanie 03
    cd MDO2022_S/ 
 
    git checkout Grupa01-KB401483_Lab03
-
-
-
