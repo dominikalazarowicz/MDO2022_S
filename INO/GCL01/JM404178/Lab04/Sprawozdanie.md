@@ -63,11 +63,13 @@ Musialem za pomoca `su` wejsc jako root, aby moc przejsc za pomoca `cd /var/lib/
 
 ![image create](https://i.imgur.com/bi3Dzua.png)
 
-* Uruchomienie obrazu i ekran logowania Jenkinsa
+* Uruchomienie obrazu i ekran logowania Jenkinsa (haslo do logowania sciagniete z `docker logs`)
 
 ![run](https://i.imgur.com/zexXCXI.png)
 
 ![Jenkins login](https://i.imgur.com/ewnf4RG.png)
+
+![Jenkins welcome](https://i.imgur.com/02H3owt.png)
 
 
 
