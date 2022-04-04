@@ -1,0 +1,23 @@
+#!/usr/bin/python3
+# -*- coding: UTF-8 -*-
+
+
+import sys, re
+
+commit_msg_filepath = sys.argv[1]
+file = open(commit_msg_filepath, 'r')
+msg = file.readlines()
+file.close()
+
+title = re.compile("[A-Z]{2}[0-9]{6}\n")
+lab_name = re.compile("Lab[0-9]{2}")
+
+if not title.match(msg[0]):
+	print("Wrong commit name")
+	sys.exit(-1)
+
+if not lab_name.match("\n".join(msg[1:])):
+	print("Wrong lab name")
+	sys.exit(-1)
+	
+print("All good")
