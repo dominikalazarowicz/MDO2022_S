@@ -27,12 +27,12 @@
 3. Mając już bazę (kontener bez gita oraz dwa volumeny, uruchamiam kontener, podłączając niego oba volumenty za pomocą flagi -v podając nazwę mojego volumenu oraz miejsce gdzie chcę go zamontować ".._incontainer", oraz przechodzę do jego terminala z pomocą flagi -it)
 `docker run -it -v volume1:/volume1_incontainer -v volume2:/volume2_incontainer alpine:latest`
 
-![](./img/Zrzut ekranu 2022-04-03 012228.png)
+![](./img/3.png)
 
 ##### Sklonuj repozytorium na wolumin wejściowy
 1. musimy wiedziec jaka jest sciezka do naszego volumenu
 
-![](./img/3.png)
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/fb44a0bf5afff93185b4c43bdff649e3b00cf265/INO/GCL02/AS302774/Lab04/img/Zrzut%20ekranu%202022-04-03%20012711.png)
 
 oraz tam pobrac uzywajac naszego komputera dane repozytorium
 `docker volume inspect volume1`
@@ -98,7 +98,7 @@ Na zrzucie widzimy, że serwer słucha na porcie 5201.
 
 `sudo netstat -utnpa | grep LISTEN`
 
-![](./img/10.png)
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/fb44a0bf5afff93185b4c43bdff649e3b00cf265/INO/GCL02/AS302774/Lab04/img/Zrzut%20ekranu%202022-04-04%20195521.png)
 
 Następnie podłączam się do kontenera.
 Najpierw przypominam sobie IP dla dockera i uruchamieam kontener. 
@@ -106,9 +106,9 @@ Badanie ruchu przeprowadzałam dla czasu 30s.
 
 `docker run -it --rm networkstatic/iperf3 -c 172.17.0.2 --time 30`
 
-![](./img/Zrzut ekranu 2022-04-04 195808.png)
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/fb44a0bf5afff93185b4c43bdff649e3b00cf265/INO/GCL02/AS302774/Lab04/img/Zrzut%20ekranu%202022-04-04%20195902.png)
 
-![](./img/Zrzut ekranu 2022-04-04 195902.png)
+![](./img/10.png)
 
 
 ##### Połącz się spoza kontenera (z hosta i spoza hosta)
