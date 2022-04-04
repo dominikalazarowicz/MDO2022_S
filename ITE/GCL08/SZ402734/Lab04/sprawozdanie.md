@@ -51,8 +51,7 @@ Kontener nie publikuje portu 2000 do hosta, czyli nie nasluchuje w tym porcie. U
 ![7.2.1](./7.2.1.png)
 
 14. Zestawienie.
-    
-
+![zxc](./zxc.png)
 
 15. Stworzenie sieci mostkowej.
 ![1a](./1a.png)
