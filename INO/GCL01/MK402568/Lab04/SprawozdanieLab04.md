@@ -114,12 +114,19 @@ Poniżej przedstawiam logi umożliwiające analize przepustowości transferu, po
 
 ***HOST==>KONTENER***
 
-![](./screenshots/winContainer.png)
+![](./screenshots/hostUbuntuContainer.png)
 
 
 ***HOST ZEWN.==>KONTENER***
 
-![](./screenshots/hostContainer.png)
+![](./screenshots/windowsContainer.png)
+
+
+Aby przeanalizować połączenia utworzyłem wykres przedstawiający ilość danych jaka została przesłana w czasie 15s dla każdego  z przypadków.
+
+![](./screenshots/wykres)
+
+Najlepszą przepustowością wykazało się połączenie host-kontener, nieco gorszym połączeniem okazało się być, połączenie kontener-kontener. Na koniec odnosząc się do połączenia z poza kontenera z urzązenia nie będącego hostem widać, że ten przypadek znacznie odstaje od pozostałych, zarówno transfer jak i bitrate są znacznie słabsze.
 
 
 3. Instalacja Jenkins
@@ -146,6 +153,11 @@ Następny krok instalacji (```docker run \```), kopiuje szereg poleceń zgodnie 
 ![](./screenshots/dockerRunJenkins.png)
 
 Po zrealizowaniu poprzednich kroków przechodze do zbudowania nowego obrazu dockera korzystając z utworzonego przeze mnie pliku dockerfile, content, który został umieszczony w środku przekopiowałem z instrukcji instalacji. Do zbudowania obrazu użyłem komendy ```sudo docker build -t "nazwa obrazu" -f "nazwa pliku .dockerfile" .```
+
+***Zawartość pliku dockerfile***
+
+![](./screenshots/dockerFileContent.png)
+
 
 ***Początek***
 
