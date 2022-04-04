@@ -14,7 +14,7 @@
 - sprawdzam i widzę, że istnieją
 `docker volume ls`
 
-![](INO/GCL02/AS302774/Lab04/img/Zrzut ekranu 2022-04-03 010533.png)
+![](./img/jeden.png)
 
 ##### Uruchom kontener, zainstaluj niezbędne wymagania wstępne (jeżeli istnieją), ale *bez gita*
 - tworze nowy dockerfile i uruchamiam kontener bazowy
@@ -22,7 +22,7 @@
 `docker run -it alpine:latest`
 2. upewniam się, że dany kontener nie ma git'a 
 
-![](./img/Zrzut ekranu 2022-04-03 011031.png)
+![](./img/2.png)
 
 3. Mając już bazę (kontener bez gita oraz dwa volumeny, uruchamiam kontener, podłączając niego oba volumenty za pomocą flagi -v podając nazwę mojego volumenu oraz miejsce gdzie chcę go zamontować ".._incontainer", oraz przechodzę do jego terminala z pomocą flagi -it)
 `docker run -it -v volume1:/volume1_incontainer -v volume2:/volume2_incontainer alpine:latest`
@@ -32,7 +32,7 @@
 ##### Sklonuj repozytorium na wolumin wejściowy
 1. musimy wiedziec jaka jest sciezka do naszego volumenu
 
-![](./img/Zrzut ekranu 2022-04-03 012711.png)
+![](./img/3.png)
 
 oraz tam pobrac uzywajac naszego komputera dane repozytorium
 `docker volume inspect volume1`
@@ -49,7 +49,7 @@ Klonujemy repo:
 
 2. wlaczamy ponownie kontener i widzimy, 
 
-![](./img/Zrzut ekranu 2022-04-03 013543.png)
+![](./img/4.png)
 
 że mamy dostęp do repozytorium, mimo iż nie pobraliśmy go w kontenrze, a podaliśmy volumenem
 `docker run -it -v volume1:/volume1_incontainer -v volume2:/volume2_incontainer alpine:latest`
@@ -61,9 +61,9 @@ Klonujemy repo:
 
 Zbudowanie repozytorium w naszym obrazie bez gita:
 
-![](./img/Zrzut ekranu 2022-04-03 021221.png)
+![](./img/5.png)
 
-![](./img/Zrzut ekranu 2022-04-03 021509.png)
+![](./img/6.png)
 
 ##### Zapisz powstałe/zbudowane pliki na woluminie wyjściowym
 - Kopiujemy nasze repozytorium z naniesionymi zmianami do drugiego volumenu
@@ -72,7 +72,7 @@ Zbudowanie repozytorium w naszym obrazie bez gita:
 `ls volume2_incontainer/`
 `cp -R volume1_incontainer/* volume2_incontainer/`
 
-![](./img/Zrzut ekranu 2022-04-03 021913.png)
+![](./img/7.png)
 
 
 
@@ -84,12 +84,12 @@ Zbudowanie repozytorium w naszym obrazie bez gita:
 Z dokumentacji dowiaduje się, że port na któym będziemy oczekawiwać na ruch to 5201, więc za pomocą flagi -p wprost przekazuję żeby został opulikowany w moim komputerze
 `docker pull networkstatic/iperf3`
 
-![](./img/Zrzut ekranu 2022-04-04 151730.png)
+![](./img/8.png)
 
 oraz 
 `docker run  -it --rm --name=iperf3-server -p 5201:5201 networkstatic/iperf3 -s`
 
-![](./img/Zrzut ekranu 2022-04-04 151900.png)
+![](./img/9.png)
 
 Na zrzucie widzimy, że serwer słucha na porcie 5201.
 
@@ -98,7 +98,7 @@ Na zrzucie widzimy, że serwer słucha na porcie 5201.
 
 `sudo netstat -utnpa | grep LISTEN`
 
-![](./img/Zrzut ekranu 2022-04-04 195521.png)
+![](./img/10.png)
 
 Następnie podłączam się do kontenera.
 Najpierw przypominam sobie IP dla dockera i uruchamieam kontener. 
@@ -118,13 +118,14 @@ Mając już serwer iperf3 na windowsie, za pomocą komendy
 `iperf-3.1.3-win64>iperf3.exe -c 127.0.0.1 --time 30`
 połączono się z kontenerem na porcie 5201. 
 
-![](./img/Zrzut ekranu 2022-04-04 152504.png)
+![](./img/11.png)
 
-![](./img/Zrzut ekranu 2022-04-04 152557.png)
+![](./img/12.png)
 
 
 - podczas próby połączenia z hosta, wystąpiły pierwsze problemy z pamięcią. 
-![](./img/Zrzut ekranu 2022-04-04 153027.png)
+- 
+![](./img/13.png)
 
 Problem został rozwiązany na zajęciach dzięki odpowiedniemy ustawieniu partycji. 
 Partycja to rodzaj woluminu, partycja wydziela logiczny obszar dysku twardego i bez jej rozciągnięcia nie było możliwe zwiększenie pamięci przez same ustawienia dysku w Virtual Boxie. 
@@ -132,22 +133,22 @@ Partycja to rodzaj woluminu, partycja wydziela logiczny obszar dysku twardego i 
 - Po rozwiązaniu problemu z pamięcią, pobrano iperf3 i połączono się z hosta. 
 `sudo apt-get install iperf3`
 
-![](./img/Zrzut ekranu 2022-04-04 200101.png)
+![](./img/14.png)
 
 `sudo iperf -c 172.17.0.2 --time 30`
 
-![](./img/Zrzut ekranu 2022-04-04 200204.png)
+![](./img/15.png)
 
 Wyniki: 
 
-![](./img/Zrzut ekranu 2022-04-04 200228.png)
+![](./img/16.png)
 
 
 ##### Przedstaw przepustowość komunikacji lub problem z jej zmierzeniem (wyciągnij log z kontenera)
 
 `sudo docker logs ef2932c27bbb`
 
-![](./img/Zrzut ekranu 2022-04-04 200228.png)
+![](./img/logi.png)
 
 Z uwagi na to, że screeny są nieczytelne, to zrobiłam porównanie w tabeli. 
 
@@ -180,19 +181,19 @@ Z uwagi na to, że screeny są nieczytelne, to zrobiłam porównanie w tabeli.
   docker:dind \
   --storage-driver overlay2 `
 
-![](./img/Zrzut ekranu 2022-04-04 200807.png)
+![](./img/31.png)
 
 - W celu edycji obrazu stworzono dockerfile 
 `touch Dockerfile`
 
-![](./img/Zrzut ekranu 2022-04-04 212740.png)
+![](./img/32.png)
 
 oraz uruchamiam builda 
 `sudo docker build -t myjenkins-blueocean:2.332.1-1 . `
 
-![](./img/Zrzut ekranu 2022-04-04 214915.png)
+![](./img/33.png)
 
-![](./img/Zrzut ekranu 2022-04-04 215543.png)
+![](./img/34.png)
 
 - po zbudowaniu obrazu, uruchomiono obraz jako kontener 
 
@@ -212,7 +213,7 @@ docker run \
 
 I następnie sprawdziliśmy za pomoca `sudo docker ps`  czy jenkins działa.
 
-![](./img/Zrzut ekranu 2022-04-04 215729.png)
+![](./img/35.png)
 
 I działa!
 
@@ -221,15 +222,15 @@ I działa!
 
 - w przegladarce wpisano `localost:8080` 
 
-![](./img/Zrzut ekranu 2022-04-04 215841.png)
+![](./img/36.png)
 
-![](./img/Zrzut ekranu 2022-04-04 215923.png)
+![](./img/37.png)
 
 - w celu znalezienia hasła najpierw sprawdzono container ID a następnie odczytano to hasło i wprowadzono w odpowiednie miejsce w przeglądarce
 
-![](./img/Zrzut ekranu 2022-04-04 220058.png)
+![](./img/38.png)
 
-![](./img/Zrzut ekranu 2022-04-04 220141.png)
+![](./img/39.png)
 
 Po zakończeniu instaluje wszystkie sugerowane wtyczki i udowadniam, że kontenery działają poprawnie. 
 
