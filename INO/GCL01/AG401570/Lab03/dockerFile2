@@ -1,0 +1,2 @@
+FROM img1:latest
+RUN bash ./run-tests.sh
