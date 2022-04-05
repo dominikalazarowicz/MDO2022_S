@@ -1,0 +1,4 @@
+#previous image name
+FROM cytoscape:latest
+
+RUN cd cytoscape.js && npm test
