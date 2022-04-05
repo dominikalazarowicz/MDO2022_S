@@ -1,0 +1,1 @@
+docker exec -u 0 -it nazwaKontenera bash - uruchomienie dzialajacego kontenera w trybie interaktywnym, parametr "-it" odpowiada za interaktywnosc, a parametr "-u 0" za uruchomienie jako root
