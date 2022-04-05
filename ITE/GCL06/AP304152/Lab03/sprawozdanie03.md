@@ -34,13 +34,66 @@ Testy muszą jednoznacznie formułować swój raport końcowy (gdy są obecne, z
 ![Obraz](8.png)
 
 ## 3.Stworzenie dwóch plików Dockerfile automatyzujących powyższe wykonane kroki z uwzględnieniem poniższych kwestii:
-## - Kontener pierwszy ma przeprowadzać wszystkie kroki aż do builda
-## - Kontener drugi ma bazować na pierwszym i wykonywać testy
+### - Kontener pierwszy ma przeprowadzać wszystkie kroki aż do builda
+### - Kontener drugi ma bazować na pierwszym i wykonywać testy
 
-Kontener pierwszy wykorzystywany do przeprowadzenia wszystkich kroków aż do builda
-FROM node:latest
+- Kontener pierwszy wykorzystywany do przeprowadzenia wszystkich kroków aż do builda:
 
-#clone repo and build
-RUN apt update
-RUN git clone https://github.com/cytoscape/cytoscape.js.git
-RUN cd cytoscape.js && npm i
+
+`FROM node:latest`
+
+`#clone repo and build`
+
+`RUN apt update`
+
+`RUN git clone https://github.com/cytoscape/cytoscape.js.git`
+
+`RUN cd cytoscape.js && npm i`
+
+![Obraz](9.png)
+
+![Obraz](10.png)
+
+- Kontener drugi bazujący na pierwszym i wykonujący testy: 
+ 
+`previous image name`
+
+`FROM cytoscape:latest`
+
+`RUN cd cytoscape.js && npm test`
+
+![Obraz](11.png)
+
+![Obraz](12.png)
+
+- Uruchomienie nowego obrazu 
+
+![Obraz](13.png)
+
+## 4.Zastosowane polecenia
+
+docker pull node
+
+docker run -it --name AP --entrypoint /bin/sh node
+
+W kontenerze:
+
+git clone https://github.com/cytoscape/cytoscape.js.git
+
+npm i
+
+npm test
+
+Po wyjściu z kontenera:
+
+nano dockerfile_1
+
+docker build . -f dockerfile_1 -t cytoscape
+
+nano dockerfile_2
+
+docker build . -f dockerfile_2 -t cytoscape_test
+
+sudo docker images
+
+docker run -it --name cytoscape_test cytoscape_test
