@@ -23,10 +23,10 @@ Wykonanie ćwiczenia:
 ![Image](permision_denied.png "odmowa_dostepu")
 
     Udane sklonowanie z poziomu hosta po przejściu na roota:
-![Image](git_clone.PNG "_git_clone")
+![Image](git_clone.png "_git_clone")
 
     Sprawdzenie czy sklonowane repo pojawiło się na kontenerze w woluminie wejscie:
-![Image](wejscie_irssi.PNG "")
+![Image](wejscie_irssi.png "")
 
     Udany meson build, po zainstalowaniu wszystkich niezbędnych wymagań (tak jak w poprzednim ćwiczeniu ale bez gita)
 ![Image](mesonBuild.png "")
