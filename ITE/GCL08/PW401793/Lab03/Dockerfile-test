@@ -1,0 +1,3 @@
+FROM apollo-build
+
+RUN cd apollo-server && npm test
