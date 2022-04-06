@@ -1,54 +1,62 @@
-# Sprawozdanie z Lab02
-### Hook sprawdzający poprawność commit-msg
+# Sprawozdanie z Lab03
+### Pobranie bazowego obrazu
 ```
-Plik commit-msg
+docker pull node
 ```
-```bash
-#!/bin/bash
+![This is an image](ssy/docker-pull-node.png)
 
-MSG="$1"
+### Uruchomienie kontenera w trybie interaktywnym
+```
+docker run -it node /bin/bash
+```
+![This is an image](ssy/docker-run--it.png)
 
-PREFIX="AK400982"
+### Sklonowanie repo
+![This is an image](ssy/git-clone.png)
 
-TITLE=$(head -n 1 $MSG)
-if [ "$TITLE" != "$PREFIX" ]; then
-    echo "Title has to be: AK400982"
-    exit 1
-fi
-if ! grep -qE "lab0[0-9]" "$MSG";then
-    cat "$MSG"
-    echo "Your commit does not contain 'lab0x'"
-    exit 1
-fi
+### Build projektu
+```
+npm run build
+```
+![This is an image](ssy/npm-run-build.png)
+
+### Uruchomienie testów
+```
+npm run test
+```
+![This is an image](ssy/npm-run-test.png)
+
+### Build dockerfile
+
+```dockerfile
+FROM node
+RUN git clone https://github.com/stemmlerjs/simple-typescript-starter.git
+WORKDIR /simple-typescript-starter/
+RUN npm i && npm run build
 ```
 
-### Wykazanie, że nie jest stosowany VM, oraz pokazanie wczesniej zainstalowanego dockera (miałem już na komputerze)
-```
-hostname
-```
-oraz
-```
-docker --version
-```
-![This is an image](screeny/hostname-zainstalowany-docker.png)
+### Test dockerfile
 
-### Wykazanie dziłajacego dockera
+```dockerfile
+FROM starter:latest
+WORKDIR /simple-typescript-starter/
+RUN npm run test
 ```
-sudo launchctl print system/com.docker.vmnetd
-```
-![This is an image](screeny/docker-status.png)
 
-### Pobranie dockerowej wersji ubuntu
-```
-docker pull ubuntu
-```
-![This is an image](screeny/docker-pull.png)
+### Zbudowanie obrazów na podstawie obu plików
 
-### Wyświetlenie numeru wersji obrazu
-```
-docker images
-```
-![This is an image](screeny/docker-images.png)
+![This is an image](ssy/docker-build.png)
 
-### Założone konto na hub.docker.com
-![This is an image](screeny/docker-hub-acc.png)
+### Wykazanie, że kontener działa
+
+![This is an image](ssy/docker-run.png)
+
+#### Do wykazania tej części wykorzystałem trzeci dockerfile, który został zbudowany i uruchomiony
+
+```dockerfile
+FROM tester:latest
+WORKDIR /simple-typescript-starter/
+RUN npm run start
+```
+
+
