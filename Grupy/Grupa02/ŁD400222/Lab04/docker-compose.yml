@@ -12,8 +12,6 @@ services:
       dockerfile: Dockerfile
     image: build-agent
     container_name: msg_server
-      ports:
-      - "9000:8080"
     depends_on:
       - db
   test:
@@ -23,6 +21,6 @@ services:
     image: test-agent
     container_name: msg_client
     ports:
-      - "9000:8080"
+      - "8080:8080"
     depends_on:
       - msg_server
