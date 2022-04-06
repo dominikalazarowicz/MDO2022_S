@@ -21,6 +21,6 @@ services:
     image: test-agent
     container_name: msg_client
     ports:
-      - "8081:8080"
+      - "8080:8080"
     depends_on:
       - msg_server
