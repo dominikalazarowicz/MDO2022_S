@@ -6,29 +6,36 @@
 1. Stworzenie woluminów: wejściowego (v-in) i wyjściowego (v-out):
 
 `sudo docker volume create nazwa-woluminu`
+
 ![foto](./Screenshot_1.png)
 
 2. Stworzenie i odpalenie kontenera na bazie obrazu najnowszego ubuntu z podpiętymi woluminami:
 
 `sudo docker run -it --name ubi --mount source=in,target=/v-in --mount source=out,target=/v-out ubuntu`
+
 Dodatkowo zostały ponownie wykorzystane komendy instalacyjne (te same, co w laboratorium nr 3):
+
 ```
 apt-get -y update
 apt-get -y install sudo
 apt-get -y install wget
 apt-get -y install tzdata
 ```
+
 Oraz komendy zawarte pod linkiem: [Link](https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu#2004-)
+
 ![foto](./Screenshot_3.png)
 
 3. Sprawdzenie, czy woluminy są podpięte w drugim oknie PuTTY:
 
 `sudo docker inspect ubu`
+
 ![foto](./Screenshot_2.png)
 
 4. Przejście do katalogu */var/lib/docker/volumes/in/_data* i sklonowanie w tamtym miejscu repozytorium:
 
 `sudo git clone https://github.com/Niemans/DevOpsLab03`
+
 W przypadku braku możliwości dostania się do katalogu */var/lib/docker*, można:
 - wejść jako root (komenda *'su'* lub *'sudo su'*)
 - zmienić ustawienia katalogu *var/lib/docker*, by urzytkownicy też mogli wejsć (np. za pomocą komendy *'sudo chmod 755 /var/lib/docker'*)
@@ -53,16 +60,19 @@ W przypadku braku możliwości dostania się do katalogu */var/lib/docker*, moż
 1. Pobrać obraz ipers3.
 
 `sudo docker pull iperf3`
+
 ![foto](./Screenshot_9.png)
 
 2. Odpalenie kontenera z serwerem:
 
 `sudo docker run  -it --rm --name=iperf3-server -p 5201:5201 networkstatic/iperf3 -s`
+
 ![foto](./Screenshot_10.png)
 
 3. Sprawdzenie adresu IP serwera :
 
 "Networks" -> "IPAddress"
+
 ![foto](./Screenshot_11.png)
 
 4. Połączenie się z hostem (serwer na zrzutach ekranu jest górnym oknem):
@@ -86,6 +96,7 @@ W przypadku braku możliwości dostania się do katalogu */var/lib/docker*, moż
 2. Stworzenie sieci jenkinsa:
 
 `sudo docker network create jenkins`
+
 ![foto](./Screenshot_15.png)
 
 3. Pobranie i uruchomienie obrazu *dind*
@@ -105,6 +116,7 @@ sudo docker run \
   docker:dind \
   --storage-driver overlay2
 ```
+
 ![foto](./Screenshot_16.png)
 
 4. Stworzenie pliku *Dockerfile* dla Jenkkinsa:
@@ -127,12 +139,15 @@ RUN jenkins-plugin-cli --plugins "blueocean:1.25.3 docker-workflow:1.28"
 5. Stworzenie obrazu dzięki dockerfile'owi:
 
 `sudo docker build -t myjenkins-blueocean:2.332.2-1 .`
+
 ![foto](./Screenshot_17.png)
 
 6. Sprawdzenie obrazów:
 
 `sudo docker images`
+
 Obraz "myjenkins-blueocean" został stworzony.
+
 ![foto](./Screenshot_18.png)
 
 7. Odpalenie kontenera na podstawie dopiero co stworzonego obrazu:
@@ -152,6 +167,7 @@ docker run \
   --volume jenkins-docker-certs:/certs/client:ro \
   myjenkins-blueocean:2.332.2-1 
 ```
+
 ![foto](./Screenshot_19.png)
 
 8. Sprawdzenie wszystkich kontenerów:
