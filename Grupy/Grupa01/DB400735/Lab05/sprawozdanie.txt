@@ -62,7 +62,7 @@ Przenioslem się na Windowsa ponieważ wirtualna maszyna upadla..
    Utworzylem commita poleceniem:
    	git commit -m "DB400735 Lab05 pkt4"
    Wykonalem push'a poleceniem:
-	git push --set-upstream origin Grupa01-DB400735_Lab04
+	git push --set-upstream origin Grupa01-DB400735_Lab05
    wykonalem pull requesta
 
    
