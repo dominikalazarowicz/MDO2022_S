@@ -1,5 +1,6 @@
 FROM node:lts
 
+
 COPY waiter.sh waiter.sh
 WORKDIR /app
 CMD apt-get update; \
@@ -12,3 +13,16 @@ CMD apt-get update; \
  cd ./wire-desktop; \
  yarn; \
  yarn build:linux; \
+
+WORKDIR /app
+
+RUN apt update -y
+RUN apt install -y yarn git
+RUN apt-get install -y rpm
+
+RUN git clone https://github.com/wireapp/wire-desktop.git
+
+CMD git pull
+CMD yarn
+CMD yarn build:linux
+

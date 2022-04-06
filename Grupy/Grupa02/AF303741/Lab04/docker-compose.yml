@@ -15,4 +15,8 @@ services:
     working_dir: /app
     volumes:
       - ./.docker:/app
+
       - ./test_agent:/test
+
+      - ./test_agent:/test
+
