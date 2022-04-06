@@ -8,3 +8,5 @@ Zad 2
 Zad 3
     - Dodanie obrazu jenkins na DockerHub, zdj6.png, zdj7.png, zdj8.png
 
+Zad 4
+    - Uruchomiono Jenkins poprzez wpisane w wyszkiwarce 127.0.0.1:8080 oraz podanie hasla. Nastepnie utworzono nowy projekt i przeprowadzono na nim testy.
