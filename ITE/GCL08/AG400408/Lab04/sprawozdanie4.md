@@ -70,9 +70,13 @@ Następnie, utworzono połączenie kontener-host wewnętrzny. Wykorzystano w tym
 
 Uzyskano przepustowość **14.6** Gbits/s.
 
-Próby utworzenia połączenia kontener-host zewnętrzny zakończyły się niepowodzeniem. Prawdopodobnie wynikało to z potrzeby utworzenia sieci NAT, która umożliwiała wykonanie tunelowania (ze względu na konieczność pracy na sieci akademickiej). 
+Utworzono połączenie kontener-host zewnętrzny. Wykorzystano program iperf3 dla Windows. Należało dodać przekierowanie portu jako dodatkową regułę dla sieci NAT, utworzonej na potrzeby sieci akademickiej.
 
-Porównując uzyskane wartości przepustowości można zauważyć, że przepustowość kontener-host wewnętrzny było znacznie większa niż w przypadku połączenia kontener-kontener. 
+![obraz11](z2_3.png)
+
+Uzyskano przepustowość **752** Mbits/s.
+
+Porównując uzyskane wartości przepustowości można zauważyć, że przepustowość kontener-host wewnętrzny było znacznie większa niż w przypadku połączenia kontener-kontener. Najmniejszą przepustowość uzyskano w przypadku kontener-host zewnętrzny.
 
 ### Zadanie 3
 
