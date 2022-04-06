@@ -16,7 +16,7 @@ services:
       - db
   test:
     build:
-      context: /test
+      context: ./test
       dockerfile: Dockerfile
     image: test-agent
     container_name: msg_client
