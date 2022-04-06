@@ -2,9 +2,10 @@ version: "3.9"
 
 services:
   b-agent:
+    image: build-agent
     build: ./build_agent
   t-agent:
     build: ./test_agent
     depends_on:
-      - b_agent
+      - b-agent
 
