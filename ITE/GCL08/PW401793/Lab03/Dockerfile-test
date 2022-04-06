@@ -1,3 +1,3 @@
-FROM apollo-build
+FROM react-wordle
 
-RUN cd apollo-server && npm test
+RUN cd react-wordle && npm test

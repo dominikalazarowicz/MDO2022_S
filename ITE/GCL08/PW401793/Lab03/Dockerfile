@@ -3,6 +3,6 @@ FROM node:alpine
 WORKDIR app
 
 RUN apk update && apk add -u git
-RUN git clone https://github.com/apollographql/apollo-server.git
-RUN cd apollo-server && npm i
+RUN git clone https://github.com/cwackerfuss/react-wordle.git
+RUN cd react-wordle && npm i
 
