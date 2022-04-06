@@ -1,0 +1,491 @@
+  170  rm -rf ~/.ssh/id_ed25519
+  171  rm -rf ~/.ssh/id_ed25519.pub
+  172  ls -al ~/.ssh
+  173  rm -rf ~/.ssh/..
+  174  rm -rf ~/.ssh/*
+  175  ls
+  176  ls -al ~/.ssh
+  177  ls
+  178  cd MDO2022_S/
+  179  ls
+  180  rm -rf ~/.ssh
+  181  ls -al ~/.ssh
+  182  ssh-keygen -t ed25519 -C mig.mikolaj@gmail.com
+  183  eval "$(ssh-agent -s)"
+  184  ssh-add ~/.ssh/id_ed25519
+  185  cat ~/.ssh/id_ed25519.pub
+  186  ssh -T git@github.com
+  187  git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+  188  ls
+  189  rm -rf MDO2022_S/
+  190  cd ..
+  191  ls
+  192  rm -rf MDO2022_S/
+  193  git clone git@github.com:InzynieriaOprogramowaniaAGH/MDO2022_S.git
+  194  git checkout main
+  195  ls
+  196  cd MDO2022_S/
+  197  git checkout main
+  198  git checkout ITE-GCL05
+  199  git checkout -b MM400112
+  200  ls
+  201  cd ITE/
+  202  ls
+  203  cd GCL05/
+  204  ls
+  205  cd ..
+  206  cd ..
+  207  ls
+  208  cd ..
+  209  ls
+  210  cd MDO2022_S/
+  211  ls
+  212  ITE/
+  213  ls
+  214  cd ITE/
+  215  ls
+  216  cd GCL05/
+  217  ls
+  218  mkdir MM400112
+  219  ls
+  220  cd MM400112/
+  221  mkdir Lab01
+  222  ls
+  223  cd Lab01/
+  224  ls
+  225  cp /mnt/c/Users/Mikolaj/Desktop/sprawozdanie.md  .
+  226  ls
+  227  sudo cat spra
+  228  sudo cat sprawozdanie.md 
+  229  cp /mnt/c/Users/Mikolaj/Desktop/sprawozdanie.md  .
+  230  ls
+  231  rm -rf sprawozdanie.md 
+  232  ls
+  233  cp /mnt/c/Users/Mikolaj/Desktop/sprawozdanie.md  .
+  234  ls
+  235  git remote -v
+  236  git push origin MM400112
+  237  ls
+  238  git add *
+  239  git commit 
+  240  git push origin MM400112
+  241  ls
+  242  cd ..
+  243  cd ..
+  244  ls
+  245  git add *
+  246  git commit
+  247  git commit -m 'Lab01'
+  248  git push origin MM400112
+  249  ls
+  250  cd MM400112/
+  251  ls
+  252  cd Lab01/
+  253  ls
+  254  rm -rf sprawozdanie.md 
+  255  ls
+  256  cp /mnt/c/Users/Mikolaj/Desktop/sprawozdanie.md 
+  257  ls
+  258  cd ..
+  259  ls
+  260  cd ..
+  261  ls
+  262  cd ..
+  263  ls
+  264  cd ..
+  265  ls
+  266  git add *
+  267  git commit -m 'first commit'
+  268  git push origin MM400112
+  269  mkdir screenshots
+  270  ls
+  271  rm -rf screenshots/
+  272  ls
+  273  cd ..
+  274  ls
+  275  cd ho
+  276  cd home/
+  277  ls
+  278  cd mikolaj/
+  279  ls
+  280  devops
+  281  cd devops/
+  282  ls
+  283  cd MDO2022_S/
+  284  ls
+  285  cd ITE/
+  286  ls
+  287  cd GCL05/
+  288  ls
+  289  cd MM400112/
+  290  ls
+  291  cd Lab01/
+  292  ls
+  293  mkdir screenshots
+  294  ls
+  295  git checkout ITE-GCL05
+  296  git merge MM400112  297  git add .
+  298  git pusg
+  299  git push
+  300  ls
+  301  cd ..
+  302  ls
+  303  cd home/
+  304  ls
+  305  cd mikolaj/
+  306  ls
+  307  cd devops/
+  308  ls
+  309  cd MDO2022_S/
+  310  ls
+  311  cd ITE/
+  312  ls
+  313  cd GCL05/
+  314  ls
+  315  cd MM400112/
+  316  ls
+  317  cd Lab01/
+  318  ls
+  319  rm -rf screenshots/
+  320  ls
+  321  cp -r /mnt/c/Users/Mikolaj/Desktop/screenshots/ .
+  322  ls
+  323  cd s
+  324  cs screenshots/
+  325  ls
+  326  cd screenshots/
+  327  ls
+  328  cd ..
+  329  ls
+  330  rm -rf screenshots/
+  331  rm -rf sprawozdanie.md 
+  332  cp -r /mnt/c/Users/Mikolaj/Desktop/screenshots/ .
+  333  cp -r /mnt/c/Users/Mikolaj/Desktop/sprawozdanie.md .
+  334  git add *
+  335  git commit -m 'second commit'
+  336  git status
+  337  ls
+  338  git checkout MM400112
+  339  ls
+  340  cd ..
+  341  ls
+  342  cd L
+  343  cd Lab01/
+  344  ks
+  345  ls
+  346  rm -rf sprawozdanie.md 
+  347  cp -r /mnt/c/Users/Mikolaj/Desktop/sprawozdanie.md .
+  348  cp -r /mnt/c/Users/Mikolaj/Desktop/screenshots/ .
+  349  ls
+  350  git push origin MM400112
+  351  cd ..
+  352  git add *
+  353  git commit -m 'second commit'
+  354  git push origin MM400112
+  355  ;d
+  356  ls
+  357  cd ..
+  358  ls
+  359  la -a
+  360  ls -a
+  361  cd /
+  362  cd .profile
+  363  locate devops
+  364  ls
+  365  locate home
+  366  locate Download
+  367  locate Downloads
+  368  find
+  369  find ./home/mikolaj/devops/
+  370  find -name *.PNG
+  371  find ./home/ -name *.PNG
+  372  find ./home/ not -name *.PNG
+  373  mkdir Zadania
+  374  cd Zadania/
+  375  mkdir Zadanie-1
+  376  mkdir kat1/kat2/kat3
+  377  mkdirs kat1/kat2/kat3
+  378  mkdir --help
+  379  mkdir -p kat1/kat2/kat3
+  380  ls
+  381  rmdir --help
+  382  rmdir -p kat1/kat2/kat3
+  383  ls
+  384  ls
+  385  touch --help
+  386  touch plik1.txt plik2.txt plik3.txt plik4.txt p.py d.py t.py c.py
+  387  ls
+  388  cd Zadanie-1/
+  389  cp --help
+  390  cp ../*.py .
+  391  ls
+  392  cp --help
+  393  cp -r ../../Zadania/ ../../Zadania_kopia
+  394  ls
+  395  cd ..
+  396  ls
+  397  cd ..
+  398  ls
+  399  cd Zadania_kopia/
+  400  ls
+  401  man cp
+  402  man cp!
+  403  cp ma
+  404  cp man
+  405  man cp
+  406  cp --help
+  407  ls
+  408  cd ..
+  409  ;s
+  410  ls
+  411  cd Zadania_kopia/
+  412  ls
+  413  cd Zadanie-1/
+  414  ls
+  415  rm *
+  416  ls
+  417  cd ..
+  418  mv Zadanie-1/ Zadanie2
+  419  ls
+  420  mv Zadanie2 Zadanie-2
+  421  ls
+  422  cd Zadanie-2/
+  423  history > historia.txt
+  424  ls
+  425  cat historia.txt
+  426  clear
+  427  cd..
+  428  cd ..
+  429  ls
+  430  mv *[02468]* ./Zadanie-2/
+  431  mv -type f *[02468]* ./Zadanie-2/
+  432  mv /-type f *[02468]* ./Zadanie-2/
+  433  mv \-type f *[02468]* ./Zadanie-2/
+  434  mv | -type f *[02468]* ./Zadanie-2/
+  435  mv | grep -type f *[02468]* ./Zadanie-2/
+  436  find -type f *[02468]* ./Zadanie-2/
+  437  find -type f *[02468]* 
+  438  find -type f -name *[02468]* 
+  439  find -type f -name *[02468] 
+  440  find -type f -name [02468]* 
+  441  ls
+  442  mv *[02468]* Zadanie-2/
+  443  mv *[02468]*.py Zadanie-2/
+  444  mv *[02468].py Zadanie-2/
+  445  mv *[02468]*.py Zadanie-2/
+  446  /
+  447  cd /
+  448  cd home/
+  449  cd /
+  450  ls
+  451  cd home
+  452  ls
+  453  cd mikolaj/
+  454  ks
+  455  ls
+  456  cd devops/
+  457  ls
+  458  cd MDO2022_S/m
+  459  cd..
+  460  cd ..
+  461  cd ..
+  462  cd ..
+  463  ls
+  464  find Zadania
+  465  fine -iname Zadania
+  466  find -iname Zadania
+  467  cd /
+  468  ls
+  469  cd h
+  470  cd home/
+  471  ls
+  472  cd mikolaj/
+  473  ls
+  474  cd devops/
+  475  ls
+  476  cd MDO2022_S/
+  477  ls
+  478  cd ..
+  479  ls
+  480  cd..
+  481  cd ..
+  482  cd ..
+  483  ls
+  484  cd ..
+  485  ls
+  486  cd ..
+  487  ls
+  488  find -iname p.py
+  489  ls
+  490  cd root/
+  491  ls
+  49
+  501  ls
+  502  cd mikolaj/
+  503  ls
+  504  cd devops/
+  505  ls
+  506  cd MDO2022_S/
+  507  ls -a
+  508  cd ./.git
+  509  ls
+  510  cd hooks/
+  511  ls
+  512  nano commit-msg.sample 
+  513  ls
+  514  ls | grep -i "commit*"
+  515  mv commit-msg.sample commit-msg
+  516  nano commit-msg.sample 
+  517  nano commit-msg
+  518  cd ..
+  519  cd..
+  520  cd ..
+  521  ls
+  522  cd ITE/
+  523  ls
+  524  cd GCL05/
+  525  ls
+  526  cd MM400112/
+  527  ls
+  528  git status
+  529  ls
+  530  mkdir Lab02
+  531  ls
+  532  cd Lab02/
+  533  touch test.txt
+  534  git add test.txt 
+  535  git commit -m "Niepoprawny commit"
+  536  git status
+  537  git commit -m "MM400112"
+  538  cd ..
+  539  cd ..
+  540  cd ..
+  541  cd ..
+  542  ls -a
+  543  cd ./.git
+  544  cd hooks/
+  545  ls
+  546  nano commit-msg 
+  547  ls
+  548  nano commit-msg 
+  549  cd ..
+  550  cd ..
+  551  cd ITE/
+  552  ls
+  553  cd GCL05/
+  554  ls
+  555  cd MM400112/
+  556  cd Lab02/
+  557  ls
+  558  git commit -m "MM400112"
+  559  cd MDO2022_S/
+  560  cd ..
+  561  cd ..
+  562  cd ..
+  563  cd ..
+  564  cd ./.git
+  565  cd hooks/
+  566  nano commit-msg 
+  567  cd ../..
+  568  ls
+  569  cd ITE/
+  570  ls
+  571  cd GCL05/
+  572  ls
+  573  cd MM400112/
+  574  ls
+  575  cd Lab02
+  576  ls
+  577  git commit -m "MM400112"
+  578  git status
+  579  cd ../../../..
+  580  cd ./.git/hooks/
+  581  ls
+  582  nano pre-commit.sample 
+  583  cd ../..
+  584  cd ITE/GCL05/MM400112/
+  585  ls
+  586  cd Lab02
+  587  ls
+  588  rm test.txt 
+  589  ls
+  590  git add
+  591  add ,
+  592  git add .
+  593  git commit -m "MM400112"
+  594  cd ../../..
+  595  cd ..
+  596  cd ./.git
+  597  ls
+  598  cd hooks/
+  599  ls
+  600  ls -l 
+  601  chmod 777 pre-commit
+  602  ls -l
+  603  cd ..
+  604  cd ..
+  605  cd ITE/GCL05/MM400112/Lab02
+  606  ls
+  607  touch test1.txt
+  608  git add .
+  609  git commit "MM400112"+Lab02
+  610  git commit "MM400112" + Lab02
+  611  git commit -m "MM400112" + Lab02
+  612  git commit -m "MM400112"+Lab02
+  613  touch test2.txt
+  614  git add .
+  615  git commit -m "MM400112"
+  616  cd ../../../..
+  617  cd ./.git/hooks/
+  618  ls
+  619  rm pre-commit
+  620  nano pre-commit.sample 
+  621  mv pre-commit.sample pre-commit
+  622  cd ../..
+  623  cd ITE/GCL05/MM400112/Lab02/
+  624  git status
+  625  ls
+  626  rm test1.txt test2.txt 
+  627  git add .
+  628  git commit -m "MM400112"
+  629  cd ../../../..
+  630  cd ./.git/hooks/
+  631  nano pre-commit 
+  632  ls
+  633  cd ../..
+  634  cd ITE/
+  635  ls
+  636  cd GCL05/MM400112/Lab02/
+  637  ls
+  638  git status
+  639  touch test1.txt
+  640  git add .
+  641  git commit -m "MM400112"
+  642  git rm test1.txt 
+  643  rm test1.txt 
+  644  touch Sprawozdanie02.md
+  645  git add .
+  646  git commit -m "MM400112"
+  647  ls
+  648  rm Sprawozdanie02.md 
+  649  sudo systemctl status ssh
+  650  cd ../../../../..
+  651  cd ../..
+  652  sudo systemctl status ssh
+  653  ls
+  654  cd mikolaj/
+  655  ls
+  656  cd devops/
+  657  ls
+  658  cd MDO2022_S/
+  659  ls
+  660  cd ITE/
+  661  ls
+  662  cd GCL05/
+  663  ls
+  664  cd MM400112/
+  665  ls
+  666  cd Lab02/
+  667  ls
+  668  touch historia_polecen.txt
+  669  history > historia_polecen.txt 
