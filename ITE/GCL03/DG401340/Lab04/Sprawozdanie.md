@@ -1,27 +1,27 @@
 ## 1. Zachowywanie stanu  
 * Przygotuj woluminy wejściowy i wyjściowy, o dowolnych nazwach, i podłącz je do kontenera bazowego, z którego rozpoczynano poprzednio pracę  
 Utworzenie woluminów i ich wyświetlenie:  
-```console
+```
 sudo docker volume create in_volume
 sudo docker volume create out_volume
 sudo docker volume ls
 ```  
 ![](./screenshots/volumes_create.png)  
 Podłączenie ich do kontenera bazowego, z którego rozpoczynano poprzednio pracę (ubuntu):  
-```console
+```
 sudo docker run -it --name ubuntu --mount source=in_volume,target=/in --mount source=out_volume,target=/out ubuntu:jammy
 ```  
 ![](./screenshots/docker_mount_run.png)  
 * Uruchom kontener, zainstaluj niezbędne wymagania wstępne (jeżeli istnieją), ale bez gita  
 Kontener został uruchomiony interaktywnie w poprzednim punkcie. W celu zainstalowania niezbędnych wymagań należało użyć następujących poleceń:  
-```console
+```
 apt-get update
 apt-get install openjdk-17-jdk maven
 ```  
 ![](./screenshots/update_install.png)  
 * Sklonuj repozytorium na wolumin wejściowy  
 Aby sklonować repozytorium na wolumin wejściowy, musimy wyjść z kontenera do hosta lub połączyć się do hosta poprzez nowy terminal (bez wyłączania kontenera) i następnie z poziomu hosta sklonować repozytorium, ponieważ nasz kontener nie posiada zainstalowanego gita, a według polecenia nie możemy go doinstalować. Aby mieć dostęp do katalogu z woluminem należy użyć polecenia: ```sudo -s```, a następnie sklonować repozytorium poleceniem:  
-```console
+```
 git clone https://github.com/DiscordSRV/DiscordSRV.git /var/lib/docker/volumes/in_volume/_data/
 ```  
 ![](./screenshots/git_clone.png)  
@@ -29,7 +29,7 @@ Dowód prawidłowego sklonowania repozytorium do woluminu wejściowego:
 ![](./screenshots/git_success.png)  
 * Uruchom build w kontenerze  
 Należy wejść do katalogu in (nasz wolumin wejścowy) poleceniem ```cd in```, a następnie uruchomić następujące polecenie do zbudowania projektu:  
-```console
+```
 mvn clean package
 ```  
 ![](./screenshots/build_in_container.png)  
@@ -37,7 +37,7 @@ Budowanie przebiegło pomyślnie
 ![](./screenshots/build_success.png)  
 * Zapisz powstałe/zbudowane pliki na woluminie wyjściowym  
 Należy to zrobić następującym poleceniem (będąc w katalogu, w którym zbudowaliśmy projekt):  
-```console
+```
 cp -r target/ /out/
 ```   
 ![](./screenshots/cp.png)  
