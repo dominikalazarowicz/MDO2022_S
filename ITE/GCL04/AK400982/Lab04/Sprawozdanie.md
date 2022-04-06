@@ -1,54 +1,56 @@
-# Sprawozdanie z Lab02
-### Hook sprawdzający poprawność commit-msg
-```
-Plik commit-msg
-```
-```bash
-#!/bin/bash
+# Sprawozdanie z Lab04
+# Woluminy
+### Utworzenie i podłączenie woluminów (in, out)
+![](ssy/docker-volume-create.png)
+![](ssy/docker-run--it-mount.png)
 
-MSG="$1"
 
-PREFIX="AK400982"
+### Uruchomienie kontenera na bazie alpine z woluminem input
 
-TITLE=$(head -n 1 $MSG)
-if [ "$TITLE" != "$PREFIX" ]; then
-    echo "Title has to be: AK400982"
-    exit 1
-fi
-if ! grep -qE "lab0[0-9]" "$MSG";then
-    cat "$MSG"
-    echo "Your commit does not contain 'lab0x'"
-    exit 1
-fi
-```
+![](ssy/docker-run-alpine(clone).png)
 
-### Wykazanie, że nie jest stosowany VM, oraz pokazanie wczesniej zainstalowanego dockera (miałem już na komputerze)
-```
-hostname
-```
-oraz
-```
-docker --version
-```
-![This is an image](screeny/hostname-zainstalowany-docker.png)
+### sklonowanie repo do input przy użyciu kontenera z poprzednich zajęć
+![](ssy/git-clone-input.png)
 
-### Wykazanie dziłajacego dockera
-```
-sudo launchctl print system/com.docker.vmnetd
-```
-![This is an image](screeny/docker-status.png)
+### Budowanie aplikacji z poziomu buildera
+![](ssy/npm-i-npm-run-build.png)
 
-### Pobranie dockerowej wersji ubuntu
-```
-docker pull ubuntu
-```
-![This is an image](screeny/docker-pull.png)
+### Przeniesienie zbudowanego projektu do out
+![](ssy/cp-in-out.png)
 
-### Wyświetlenie numeru wersji obrazu
-```
-docker images
-```
-![This is an image](screeny/docker-images.png)
+# Porty
 
-### Założone konto na hub.docker.com
-![This is an image](screeny/docker-hub-acc.png)
+### Stworzenie kontenerów na bazie ubuntu (server i client)
+![](ssy/docker-run-ubuntu-iperf.png)
+
+### Odpalenie serwera w jednym z kontenerów
+![](ssy/iperf-server.png)
+
+### Odpalanie testu na kontenerze klienta
+![](ssy/iperf-client.png)
+
+### Nie udało mi sie uruchomić iperfa ze względu na ustawienia firmowe, których nie moge zmienić
+![](ssy/iperf-host-sec.png)
+
+# Jenkins
+
+### Utworzenie sieci jenkinsa
+![](ssy/docker-network-create-jenkins.png)
+
+### Utworzenie kontenera docker:dind
+![](ssy/dind-container.png)
+
+### Stworzonie dockerfile'a z dokumentacji Jenkinsa
+![](ssy/jenkins-dockerfile.png)
+
+### Zbudowanie obrazu z dockerfile'a wyżej
+![](ssy/jenkins-build.png)
+
+### Uruchomienie obrazu 
+![](ssy/jenkins-run.png)
+
+### Screen działającego kontenera
+![](ssy/working-container.png)
+
+### Udokumentowane okno logowania
+![](ssy/jenkins-login.png)
