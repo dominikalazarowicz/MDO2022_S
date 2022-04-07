@@ -113,5 +113,5 @@
     -   Działające kontenery <br/>
         ![Docker Containers](screenshots/jenkins-containers.png)
 
-    -   Panel użytkownika
+    -   Panel użytkownika <br/>
         ![Jenkins Panel](screenshots/jenkins-panel.png)
