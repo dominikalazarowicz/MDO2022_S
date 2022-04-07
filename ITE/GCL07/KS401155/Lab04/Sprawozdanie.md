@@ -83,9 +83,10 @@
 
 5. Uruchomiono kontener na powyzszym obrazie, nastepnie poleceniem ```docker logs [ID_KONTENERA]``` wyswietlono logi w celu uzyskania hasla do Jenkins:	</br>
     ![14](Screenshots/dockerdin1.png)
+    ![15](Screenshots/password.png)
 
 6. Zalogowano sie do Jenkins:
-    ![15](Screenshots/jenkinsdone.png)
+    ![16](Screenshots/jenkinsdone.png)
 
 
     
