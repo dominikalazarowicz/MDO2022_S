@@ -21,7 +21,7 @@
 ## Eksponowanie portu
 
 1. Zainstalowano narzedzie ```iperf3``` oraz pakiet ```net-tools```:
-   ![7](Screenshots/isntalcjaiperf.png)
+   ![7](Screenshots/iperf.png)
 
 2. Rozpoczeto nasluchiwanie na porcie ```2000``` i sprawdzono polaczenie host-kontener:
    ![8](Screenshots/hostKontener.png)
