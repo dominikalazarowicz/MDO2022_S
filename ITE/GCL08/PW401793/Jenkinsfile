@@ -6,7 +6,7 @@ pipeline {
             steps {
 		sh 'pwd;ls'
                 echo 'Installing bashtop'
-                dir("./MDO2022_S/ITE/GCL08/PW401793/Lab03") {
+                dir("./ITE/GCL08/PW401793/Lab03") {
                     sh 'docker build -t bashtop-build .'
                 }
             }
@@ -14,7 +14,7 @@ pipeline {
         stage('Test bashtop') {
             steps {
                 echo 'Testing bashtop'
-                dir("./MDO2022_S/ITE/GCL08/PW401793/Lab03") {
+                dir("./ITE/GCL08/PW401793/Lab03") {
                     sh 'docker build . -t bashtop-test -f Dockerfile-test'
                     sh 'docker run -t bashtop-test'
                 }
