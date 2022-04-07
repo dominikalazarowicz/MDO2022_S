@@ -70,11 +70,8 @@
 ![enter image description here](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AW400107/INO/GCL02/AW400107/Lab04/networkcreate.PNG?raw=true)
 
  - Uruchomienie obrazu DIND kontenera 
- 
 
-
-
-Utworzenie Dockerfile, `$ touch Dockerfile` uzupełnienie go kodem zgodnie z dokumentacją
+ - Utworzenie Dockerfile, `$ touch Dockerfile` uzupełnienie go kodem zgodnie z dokumentacją
 
 ```
 FROM jenkins/jenkins:2.332.2-jdk11
