@@ -1,0 +1,4 @@
+FROM fedora:34
+
+WORKDIR /in_vol
+CMD bash -c 'for i in {1..1000}; do echo $i | sha1sum; done > /tmp/file.txt && ./ag 234 /tmp/file.txt'

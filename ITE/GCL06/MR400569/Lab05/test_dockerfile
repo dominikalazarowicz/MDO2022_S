@@ -1,0 +1,4 @@
+FROM deps_ag
+
+WORKDIR /in_vol/the_silver_searcher/
+CMD make test
