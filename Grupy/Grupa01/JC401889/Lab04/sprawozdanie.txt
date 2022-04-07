@@ -1,7 +1,14 @@
-1 docker login - pozwala zalogować się na konto na dockerhubie
-1 docker tag docker-lab3 jjchmielewski/dev-ops:latest - dodaje do obrazu docker-lab3 tag o schemacie <username>/<repo-name>
-1 docker push jjchmielewski/dev-ops - robi pusha na repozytorium wszystkich obrazow z podanym tagiem
+1.1 docker login - pozwala zalogować się na konto na dockerhubie
+1.2 docker tag docker-lab3 jjchmielewski/dev-ops:latest - dodaje do obrazu docker-lab3 tag o schemacie <username>/<repo-name>
+1.3 docker push jjchmielewski/dev-ops - robi pusha na repozytorium wszystkich obrazow z podanym tagiem
 
-2 Wybrałem komunikator https://github.com/ramboxapp/community-edition
+2.0 Wybrałem komunikator https://github.com/wireapp/wire-desktop.git
+2.1 Zmieniłem komunikator na https://github.com/deltachat/deltachat-desktop.git Wire-desktop okazał się problematyczny w uruchomieniu - yarn stawiał czynny opór.
 
-3 
+3.1 Aby build agent zadziałał musiałem pobrać obraz nodejs, z jakiegoś powodu był problem z pobraniem go za pomocą apt.
+
+3.2 docker build -t lab04-build-agent . - tworzy obraz build agenta ktory wykorzystam do stworzenia test agenta.
+
+3.3 docker-compose build - buduje docker-compose'a
+
+3.4 docker-compose up - uruchamia stworzone obrazy

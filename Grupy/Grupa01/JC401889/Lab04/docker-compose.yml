@@ -2,15 +2,12 @@ version: "3.9"
 services:
   build_agent:
     build:
-      context: "./build agent"
-      dockerfile: "Dockerfile"
-    volumes:
-      - ./.docker:/app
+      context: "."
+      dockerfile: "./build agent/Dockerfile"
+    
 
   test_agent:
     build:
-      context: "./test agent"
-      dockerfile: "Dockerfile"
-    volumes:
-      - ./.docker:/app
-      - ./testagent:/test
+      context: "."
+      dockerfile: "./test agent/Dockerfile"
+    

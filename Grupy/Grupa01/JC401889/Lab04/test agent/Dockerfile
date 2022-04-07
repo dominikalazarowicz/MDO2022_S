@@ -1,9 +1,6 @@
-FROM node:latest
+FROM lab04-build-agent:latest
 
+WORKDIR deltachat-desktop
 
-RUN apt-get update
-CMD cd wire-desktop
-CMD yarn
-CMD cd wire-desktop \ yarn test
-
+CMD ["npm", "test"]
 
