@@ -1,0 +1,14 @@
+#!/bin/bash
+
+MESSAGE="$1"
+MESSAGE_START=$(head -n 1 $MESSAGE)
+NAME="WL401646"
+
+if [ "$MESSAGE_START" != "$NAME" ]; then
+    echo "Commit message has to start with: WL401646"
+    exit 1
+fi
+if ! grep -qE "lab[0-1][0-9]" "$MESSAGE"; then
+    echo "Commit message has to contain: 'labXX'"
+    exit 2
+fi
