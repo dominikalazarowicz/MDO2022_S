@@ -21,7 +21,7 @@
 ## Eksponowanie portu
 
 1. Zainstalowano narzedzie ```iperf3``` oraz pakiet ```net-tools```:
-   ![7](Screenshots/instalcjaiperf.png)
+   ![7](Screenshots/isntalcjaiperf.png)
 
 2. Rozpoczeto nasluchiwanie na porcie ```2000``` i sprawdzono polaczenie host-kontener:
    ![8](Screenshots/hostKontener.png)
@@ -81,7 +81,7 @@
 4. Zbudowano obraz na podstawie Dockerfile:
     ![13](Screenshots/dockerbuild.png)
 
-5. Uruchomiono kontener na powyzszym obrazie, nastepnie poleceniem ```docker logs [ID_KONTENERA]``` wyswietlono logi w celu uzyskania hasla do Jenkins:
+5. Uruchomiono kontener na powyzszym obrazie, nastepnie poleceniem ```docker logs [ID_KONTENERA]``` wyswietlono logi w celu uzyskania hasla do Jenkins:	</br>
     ![14](Screenshots/dockerdin1.png)
 
 6. Zalogowano sie do Jenkins:
