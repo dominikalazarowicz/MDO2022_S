@@ -1,8 +1,8 @@
-FROM node:lts-alpine3.15
+FROM ubuntu
 
 WORKDIR app
 
-RUN apk update && apk add -u git
-RUN git clone https://github.com/apollographql/apollo-server.git
-RUN cd apollo-server && npm i
+RUN apt update && apt install -y git && apt install make
+RUN git clone --recurse-submodules https://github.com/aristocratos/bashtop.git
+RUN cd bashtop && make install
 
