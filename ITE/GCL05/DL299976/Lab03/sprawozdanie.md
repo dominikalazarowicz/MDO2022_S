@@ -38,3 +38,31 @@ RUN npm test
 Niestety napotkałam problemy podczas uruchamiania testów, których nie udało mi się rozwiącać.
 
 ![alt text](5.png)
+
+# UPDATE
+
+Po przestudiowaniu dokumentacji node.js udało się rozwiązać problem.
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
+
+Plik dockerfile po zmianach.
+```
+RUN apt-get update -y
+Run git clone https://github.com/joshuarwynn/simple-node-app.git
+
+WORKDIR simple-node-app
+
+RUN npm install -g npm@8.6.0
+RUN npm install express
+COPY . .
+EXPOSE 8080
+
+CMD [ "node", "app.js" ]
+
+```
+Uruchomienie dockerfile z testami
+
+![alt text](6.png)
+
+Potwierdzenie działania
+
+![alt text](7.png)
