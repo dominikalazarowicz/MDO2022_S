@@ -1,0 +1,101 @@
+  366  sudo docker volume create input
+  367  sudo docker volume create --name output
+  368  sudo docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  369  sudo docker run -it --name BUILDER --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  370  exit
+  371  sudo apt install maven
+  372  sudo apt install default-jdk
+  373  docker run -it --name ip3_server alpine
+  374  sudo docker run -it --name ip3_server alpine
+  375  sudo docker network create jenkins
+  376  docker run --name JENKINS-docker --rm --detach --privileged --network jenkins --network-alias docker --env DOCKER_TLS_CERTDIR=/certs \ 
+  377  docker run --name JENKINS-docker --rm --detach --privileged --network jenkins --network-alias docker --env DOCKER_TLS_CERTDIR=/certs --volume jenkins-docker-certs:/certs/client --volume jenkins-data:/var/jenkins_home --publish 2376:2376 docker:dind --storage-driver overlay2
+  378  sudo docker run --name JENKINS-docker --rm --detach --privileged --network jenkins --network-alias docker --env DOCKER_TLS_CERTDIR=/certs --volume jenkins-docker-certs:/certs/client --volume jenkins-data:/var/jenkins_home --publish 2376:2376 docker:dind --storage-driver overlay2
+  379  ls
+  380  cd Desktop
+  381  ls
+  382  touch Dockerfile
+  383  nano Dockerfile
+  384  docker build -t Dockerfile
+  385  sudo docker build -t Dockerfile
+  386  nano Dockerfile
+  387  sudo docker build -t myjenkins-blueocean:2.332.2-1 .
+  388  docker run \
+  389  docker run --name jenkins-blueocean --rm --detach --network jenkins --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --publish 8080:8080 --publish 50000:50000 --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro myjenkins-blueocean:2.332.2-1
+  390  sudo docker run --name jenkins-blueocean --rm --detach --network jenkins --env DOCKER_HOST=tcp://docker:2376 --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 --publish 8080:8080 --publish 50000:50000 --volume jenkins-data:/var/jenkins_home --volume jenkins-docker-certs:/certs/client:ro myjenkins-blueocean:2.332.2-1
+  391  sudo docker container list
+  392  ls ..
+  393  cd ..
+  394  ls
+  395  cd /var/jenkins_home/secrets/initialAdminPassword
+  396  cd Desktop
+  397  ls
+  398  cat /var/jenkins_home/secrets/initialAdminPassword
+  399  docker exec f613 cat /var/jenkins_home/secrets/initialAdminPassword
+  400  sudo docker exec f613 cat /var/jenkins_home/secrets/initialAdminPassword
+  401  docker images
+  402  sudo docker images
+  403  sudo docker ps -a
+  404  sudo docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
+  405  exit
+  406  docker volume create input
+  407  sudo docker volume create input
+  408  sudo docker volume create --name output
+  409  sudo docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  410  sudo docker run -it --name build --mount 'source=input,destination=/input' alpine sh
+  411  sudo docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  412  docker images
+  413  sudo docker images
+  414  sudo docker run -it --name build --mount 'source=input,destination=/input' alpine sh
+  415  sudo docker run --help
+  416  sudo docker images
+  417  sudo docker run -it --name bld --mount 'source=input,destination=/input' alpine sh
+  418  sudo docker run -it --name build --mount 'source=input,destination=/input' alpine sh
+  419  sudo docker run -it --name builder --mount 'source=input,destination=/input' alpine sh
+  420  sudo docker run -it --name builder --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  421  docker images
+  422  sudo docker images
+  423  sudo docker rmi 0ac33e5f5afa
+  424  sudo docker stop 0ac33e5f5afa
+  425  sudo docker images
+  426  sudo docker rmi 0ac33e5f5afa
+  427  sudo docker rmi 050dccc0a394
+  428  sudo docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  429  sudo docker run -it --name BUILDER --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  430  ls
+  431  sudo docker run -it --name BUILDER --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  432  mv spring-petclinic /input
+  433  sudo mv spring-petclinic /input
+  434  docker ps -a
+  435  sudo docker ps -a
+  436  sudo docker start BUILDER
+  437  sudo docker start -a BUILDER
+  438  sudo docker volume ls
+  439  sudo docker stop BUILDER
+  440  sudo docker rm BUILDER
+  441  sudo docker ps -a
+  442  sudo docker stop builder
+  443  sudo docker stop bld
+  444  sudo docker stop build
+  445  sudo docker rm builder
+  446  sudo docker rm build
+  447  sudo docker rm bld
+  448  sudo docker ps -a
+  449  sudo docker volume ls
+  450  sudo docker run -it --name Builder --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-jdk-alpine sh
+  451  sudo docker volume ls
+  452  sudo docker volume rm
+  453  sudo docker volume rm VOLUME input output
+  454  sudo docker volume rm input output
+  455  sudo docker volume ls
+  456  sudo docker stop Builder
+  457  sudo docker stop copied
+  458  sudo docker rm copied
+  459  sudo docker rm Builder
+  460  sudo docker run -it --name Builder --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-jdk-alpine sh
+  461  iperf3 -c 172.17.0.4 -p 9000
+  462  sudo apt install iperf3
+  463  iperf3 -c 172.17.0.4 -p 9000
+  464  exit
+  465  cd Desktop 
+  466  history > CMDhistory.txt
