@@ -1,0 +1,7 @@
+1 docker login - pozwala zalogować się na konto na dockerhubie
+1 docker tag docker-lab3 jjchmielewski/dev-ops:latest - dodaje do obrazu docker-lab3 tag o schemacie <username>/<repo-name>
+1 docker push jjchmielewski/dev-ops - robi pusha na repozytorium wszystkich obrazow z podanym tagiem
+
+2 Wybrałem komunikator https://github.com/ramboxapp/community-edition
+
+3 
