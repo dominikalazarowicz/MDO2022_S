@@ -2,14 +2,9 @@ pipeline {
     agent any
 
     stages {
-        stage('Clone repo') {
-            steps {
-                echo 'Cloning repo'
-                sh 'ls MDO2022_S || git clone -b PW401793 https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
-            }
-        }
         stage('Build bashtop') {
             steps {
+		sh 'pwd;ls'
                 echo 'Installing bashtop'
                 dir("./MDO2022_S/ITE/GCL08/PW401793/Lab03") {
                     sh 'docker build -t bashtop-build .'
