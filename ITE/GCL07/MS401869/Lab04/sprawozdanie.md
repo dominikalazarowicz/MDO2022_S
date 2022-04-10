@@ -167,7 +167,7 @@ Komenda `iperf3`
 	
 	![](ss/10-network_inspect.png)
 	
-	Aby łatwiej zidentyfikować adresy contenerów można użyć `grep`
+	Aby łatwiej zidentyfikować adresy kontenerów można użyć `grep`
 
 		sudo docker inspect network mynet | grep IPv4Address
 
@@ -218,7 +218,7 @@ Komenda `iperf3`
 
 	![](ss/re3-docker_host_to_container_client.png)
 
-4. Między kontenerem, a hotem VM (windows)
+4. Test przepustowości między kontenerem, a hotem VM (windows)
 
 	Aby umożliwić połączenie klienta działającego na hoście maszyny 
 	wirtualnej (windows) należy ustawić port forwarding z `127.0.0.1:5201`
@@ -239,10 +239,14 @@ Komenda `iperf3`
 
 	![](ss/re4-server_container_logs.png)
 
-	Zrzut przdstawia uruchomienie kontenera, oraz logi po wykonaniu ww. zapytań
-	klienta
+	Zrzut przedstawia uruchomienie kontenera, oraz logi po wykonaniu ww. zapytań
+	klienta. Na jego podstawie można wnioskować, że:
 
-	Użyta komenda
+- Przepustowość kontener--kontener jest zbliżona do przepustowości
+	kontener--host docker'a
+- Przepustowość kontener--host VM jest znacznie mniejsza od
+	przepustowości kontener--kontener oraz kontener--host docker'a
+
 
 ### Instancja Jenkins
 
