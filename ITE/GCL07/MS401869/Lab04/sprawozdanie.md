@@ -1,10 +1,13 @@
 # metodyki DevOps sprawozdanie - lab04
 
 Uwaga
-- Poniższe sprawozdanie zawiera zrzuty ekranu na których powerline
-mylnie wskazuje na pracę na branchu `MS401869_lab3`. Barnch został
+- Poniższe sprawozdanie zawiera zrzuty ekranu, na których powerline
+mylnie wzkazuje na pracę na branchu `MS401869_lab3`. Barnch został
 zmieniony dopiero pod koniec pracy, dlatego należy to zigorować
 ## Zachowanie stanu
+Do realizacji tego podpunktu wykorzystano bibliotekę `sfml`.
+Celem jest budowa kodu źrółowego tej biblioteki z wykorzystaniem
+kontenerów docker'a.
 ### Przygotowanie obrazu do budowania
 
 Do budowy repozytorium został użyty obraz bazowy z poprzedinch laboratoriów
@@ -78,7 +81,7 @@ posiada domyślną nazwę
 - `-t` opcja pozwalająca na określenie nazwy obrazu. Użyta nazwa
 `app_tester` nie jest adekwatna i została użyta przez pomyłkę, jednak
 została zachowana, aby nie powtarzać całego procesu od nowa
-- `.` wskazuje na katalog `root` w którym powinny znajdować się pliki
+- `.` wskazuje na katalog `root`, w którym powinny znajdować się pliki
 dockerfile
 
 6. Zrzut ekranu przedstawia udaną budowę obrazu
@@ -113,7 +116,7 @@ Użyta komdenda
 	-v "$(pwd)/v_out:/home/build" \
 	-t app_tester
 
-- `-v` utworzenie volumenów dla folderu z kodem źródłowym oraz
+- `-v` utworzenie volumenów dla folderu z kodem źródłowym, oraz
 	buidem. Użyto `bind mount`
 
 	> Named volumes are great if we simply want to store data, as we don’t
@@ -141,9 +144,9 @@ Użyta komdenda
 Komenda `iperf3`
 - `-s` oznacza uruchomienie serwera `iperf3`
 - `-c` oznacza uruchomienie klienta `iperf3` po użyciu tej opcji należy
-	podać adres ip na którym pracuje serwer `iperf3`
+	podać adres ip, na którym pracuje serwer `iperf3`
 - `-t` opcja pozwalająca określić czas transferu danych w sekundach
-- `-p` opcja pozwalająca na określenie portu na którym pracuje serwer
+- `-p` opcja pozwalająca na określenie portu, na którym pracuje serwer
 
 1. Utworzenie nowej sieci
 
@@ -173,7 +176,7 @@ Komenda `iperf3`
 	
 		sudo docker run --network=mynet -p 5201:5201 -it ubu01 sh -c "iperf3 -s"
 
-- `--network` opcja pozwalająca na zdefiniowania w której sieci będzie
+- `--network` opcja pozwalająca na zdefiniowania, w której sieci będzie
 	pracował kontener. W tym przypadku kontener został podłączony do sieci
 	`mynet` utworzenej wcześniej
 - `-p` przekierowanie portów z `5201` kontenera na `5201` hosta
@@ -193,7 +196,7 @@ Komenda `iperf3`
 
 		sudo docker run --network=mynet -it ubu02 "bash"
 
-- `--network` opcja pozwalająca na zdefiniowania w której sieci będzie
+- `--network` opcja pozwalająca na zdefiniowania, w której sieci będzie
 	pracował kontener. W tym przypadku kontener został podłączony do sieci
 	`mynet` utworzenej wcześniej
 - `-it` opacja `-i` zachowuje standardowy strumień wejścia otwarty.
@@ -205,7 +208,7 @@ Komenda `iperf3`
 		iperf3 -c 172.19.0.2 -t 5 -p 5201
 
 	Należy pamiętać, że pracujemy we własno zdefiniowanej sieci `mynet`,
-	dlatego należy podać adres ip kontenera na którym pracuje serwer
+	dlatego należy podać adres ip kontenera, na którym pracuje serwer
 	właściwy dla tej sieci.
 	W celu pozyskania informacji o adresie ip kontenera z serwerem można
 	skorzystać z komendy `sudo docker network inspect mynet`
