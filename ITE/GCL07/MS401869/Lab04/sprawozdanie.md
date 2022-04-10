@@ -239,6 +239,12 @@ Komenda `iperf3`
 
 	![](ss/re4-server_container_logs.png)
 
+	| Typ połączenia          | Przepustowość |
+	|-------------------------|---------------|
+	| kontener--kontener      | 13.0  Gbytes  |
+	| kontener--host_docker'a | 15.4  Gbytes  |
+	| kontener--host_VM       | 367.0 Mbytes  |
+
 	Zrzut przedstawia uruchomienie kontenera, oraz logi po wykonaniu ww. zapytań
 	klienta. Na jego podstawie można wnioskować, że:
 
