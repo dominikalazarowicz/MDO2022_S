@@ -11,13 +11,16 @@ Do budowy repozytorium został użyty obraz bazowy z poprzedinch laboratoriów
 `gcc:latest`
 
 1. Początkowy stan kontenerów
-![](ss/1-containers_before_start.png)
+
+	![](ss/1-containers_before_start.png)
 
 2. Folder projektu przed uruchomieniem kontenera
-![](ss/1.5-working_directory_before_running_container.png)
+
+	![](ss/1.5-working_directory_before_running_container.png)
 
 3. Dockerfile do budowy obrazu
-![](ss/3-dockerfile.png)
+
+	![](ss/3-dockerfile.png)
 
 Powyższy dockerfile w formie tekstowej
 ```dockerfile
@@ -79,21 +82,26 @@ Użyta komenda
 	sudo docker build -f ./Dockerfile -t app_tester:latest .
 
 6. Zrzut ekranu przedstawia udaną budowę obrazu
-![](ss/5-successful_building.png)
+
+	![](ss/5-successful_building.png)
 
 7. Widok kontenerów po budowie obrazu
-![](ss/1-containers_after_building.png)
+
+	![](ss/1-containers_after_building.png)
 
 ### Uruchomienie obrazu
 
 1. Początek działania obrazu - konfiguracja cmake
-![](ss/6-running_the_image.png)
+
+	![](ss/6-running_the_image.png)
 
 2. Fragmęt budowy bibliotek sfml
-![](ss/7-running_the_image_make_stage.png)
+
+	![](ss/7-running_the_image_make_stage.png)
 
 3. Fragmęt przedstawiający pomyśle zakończenie budowy obrazu
-![](ss/8-running_the_image_success_frame.png)
+
+	![](ss/8-running_the_image_success_frame.png)
 
 - `-v` utworzenie volumenów dla folderu z kodem źródłowym oraz
 	buidem. Użyto `bind mount`
@@ -125,57 +133,6 @@ Użyta komdenda
 
 ## Eksportowanie portu
 
-Run container
-
-	sudo docker run -p 5201:5201 -it ubu01 "bash"
-
-Run `iperf3` server on the container
-
-	iperf3 -s
-
-Run `perf3` client in the host to test the connection
-
-	iperf3 -c 127.0.0.1 -t 30 -p 5201
-
-Check listening ports
-
-	sudo netstat -tunpa | grep LISTEN
-
-If you want connect to the server from host of VM forward port `5201`
-
-#### container - container connection
-As documentation says:
-
->If two containers are on the same network, they can talk to each other.
->If they aren’t, they can’t.
-
-Create new network
-
-	sudo docker network create mynet
-
-Check network addres as well as specific containers ip addresses
-
-	sudo docker network inspect mynet
-
-Run server's container, add `--network` option to add it to the network
-
-	sudo docker run --network=mynet -it ubu01 "bash"
-
-Start server on the server's container
-
-	iperf3 -s
-
-Run client's container, add `--network` option to add it to the network
-	
-	sudo docker run --network=mynet -it ubu02 "bash"
-
-Start iperf3 client on the client's container
-
-	iperf3 -c 172.19.0.2 -t 5 -p 5201
-
-**We can still connect to the server running on the container from container's
-host or VM host, but keep in mind to use appropirate ip address (`172.19.0.1` in
-this case)**
 
 ### Testowanie transferu danych
 
