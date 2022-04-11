@@ -101,6 +101,24 @@ Na poniższym zrzucie widać również informajcę Done mówiąca o tym, że bui
 
 ## Utworzenie plików dockerfile
 
+Zostały przygotowane dwa pliki Dockerfile.
+Pierwszyz nich odpowiadał za build i miał użyć obrazu ubuntu i na jego podstaiwe utowrzyć nowy obraz w którym już bedzie zbuowana aplikacja. Plic Dockerfile ma następującą postać
+![dockerfile_build](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_03/dockerfile.PNG)
+
+Poprawniść pliku została sprawdzona przez uruchomienie.
+![dockerfile_build_run](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_03/dockerfile_build_run.PNG)
+
+![dockerfile_buil_run_cd](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_03/docker_file_build_cd.PNG)
+
+Jak widać na powyższym zrzucie wszystko przebiegło pomyślnie i uzyskaliśmy nowy obraz ze zbydowaną aplikacją.
+
+Po tym został przygotowany drugi dockerfile do testów bazyjący na poprzednim kontenerze. Plik jest następującej postaci
+![dockerfile_test](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_03/dockerfile_test.PNG)
+
+Kolejny został on uruchomiony
+![dockerfile_test_run](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DK290596/INO/GCL01/DK290596/LAB_03/dockerfile_test_run.PNG)
+
+
 
 
 
