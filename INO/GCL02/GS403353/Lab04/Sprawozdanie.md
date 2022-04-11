@@ -36,7 +36,7 @@
   * Uruchomienie serwera: `sudo docker run -it --rm --name=iperf -p 5201:5201 clearlinux/iperf -s`  
   ![](iperf.png)  
 * Połączenie się z innego kontenera i badanie przepustowości  
-  * Sprawdzenie ip
+  * Sprawdzenie ip  
   ![](network.png)  
   * Sprawdzenie nasłuchiwania poleceniem `netstat -utnpa | grep LISTEN`  
   ![](listen.png)  
