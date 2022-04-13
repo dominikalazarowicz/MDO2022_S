@@ -6,6 +6,8 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
+    networks:
+      - jenkins
   msg_server:
     build:
       context: .
@@ -14,6 +16,8 @@ services:
     container_name: msg_server
     depends_on:
       - db
+    networks:
+      - jenkins    
   test:
     build:
       context: ./test
@@ -24,3 +28,5 @@ services:
       - "8080:8080"
     depends_on:
       - msg_server
+    networks:
+      - jenkins
