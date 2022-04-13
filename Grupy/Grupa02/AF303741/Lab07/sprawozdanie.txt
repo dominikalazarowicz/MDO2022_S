@@ -1,0 +1,1 @@
+1. Skopiowanie plikow Dockerfile, Jenkinsfile oraz docker-compose.yml z poprzednich laboratoriow, obrazek zdj1.png
