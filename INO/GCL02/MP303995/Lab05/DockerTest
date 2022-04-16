@@ -1,0 +1,3 @@
+FROM petclinic:latest
+WORKDIR /spring-petclinic/
+RUN ./mvnw test
