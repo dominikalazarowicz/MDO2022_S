@@ -1,0 +1,5 @@
+From bldr:latest
+
+WORKDIR build
+
+RUN meson test
