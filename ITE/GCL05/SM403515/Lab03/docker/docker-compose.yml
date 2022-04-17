@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+    app:
+        build: 
+            dockerfile: Dockerfile.build
+        container_name: compose-devops-app
+    test:
+        depends_on:
+            - compose-devops-app
+        restart: always
+        build: 
+          dockerfile: Dockerfile.test
+        container_name: compose-devops-test
