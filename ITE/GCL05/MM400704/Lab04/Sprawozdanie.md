@@ -1,6 +1,6 @@
 # Sprawozdanie 4
 
-# Michał Mendrek, grupa nr 5
+# Michał Mendrek, grupa nr 5 400704
 
 * Przygotowanie dwóch voluminów, wejściowego i wyjściowego oraz sprawdzenie poprawności ich połączenia
 
