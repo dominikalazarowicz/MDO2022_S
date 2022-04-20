@@ -5,14 +5,14 @@ pipeline {
     stage('Build') {
       steps {
         dir("Grupy/Grupa02/ŁD400222/Lab04") {
-          sh 'docker-compose start msg_server'
+          sh 'docker-compose run msg_server'
         }
       }
     }
     stage('Test') {
       steps {
          dir("Grupy/Grupa02/ŁD400222/Lab04") {
-          sh 'docker-compose start test'
+          sh 'docker-compose run test'
         }
       }
      }    
