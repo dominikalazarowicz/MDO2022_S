@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # SPRAWOZDANIE 03
 =======
 # Sprawozdanie z laboratorium 3
@@ -100,4 +100,4 @@ docker build . -f dockerfile_2 -t cytoscape_test
 sudo docker images
 
 docker run -it --name cytoscape_test cytoscape_test
->>>>>>> 9f0d7955e4f83aeb5d46048abbfc09dda08b3eb0
+
