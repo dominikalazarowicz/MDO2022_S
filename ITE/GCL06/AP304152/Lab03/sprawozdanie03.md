@@ -1,6 +1,6 @@
 
 # SPRAWOZDANIE 03
-=======
+
 # Sprawozdanie z laboratorium 3
 
 ## 1.Repozytorium z kodem oprogramowania:https://github.com/cytoscape/cytoscape.js?files=1, które:
