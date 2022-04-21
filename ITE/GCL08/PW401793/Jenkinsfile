@@ -4,7 +4,7 @@ pipeline {
     stages {
 	stage('Clone repo into vol') {
 	    steps {
-	        sh 'cd ~/ && git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
+	        sh 'cd ~/ && ls bashtop || git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
 	    }
 	}
         stage('Build') {
