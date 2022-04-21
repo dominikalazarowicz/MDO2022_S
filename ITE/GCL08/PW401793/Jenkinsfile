@@ -51,10 +51,11 @@ pipeline {
 			sh 'pwd'
 			sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
 			sh 'docker container rm publish || true'
-			sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/app --mount type=bind,source=/var/jenkins_home/workspace/artifacts,dst=,dst=/usr/local/copy ubuntu cp -R /usr/local/app /usr/local/copy'
-			sh 'ls /var/jenkins_home/workspace/artifacts'
+			sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/app --mount type=bind,source=/var/jenkins_home/workspace/artifacts,dst=,dst=/usr/local/copy ubuntu cp -R /usr/local/app/* /usr/local/copy'
+			sh 'ls /var/jenkins_home/workspace/artifacts/.'
 			sh "tar -zcvf bashtop-${params.VERSION} /var/jenkins_home/workspace/artifacts"
-			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
+			sh 'ls .'
+			archiveArtifacts artifacts: '*.tar.gz'
 		}
     }
 	}
