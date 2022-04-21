@@ -18,7 +18,7 @@ pipeline {
 			echo 'Installing bashtop'
 			dir("./ITE/GCL08/PW401793/Lab03") {
 				sh 'docker build -t bashtop-build .'
-				sh 'docker run --mount type=bind,source=~/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build bashtop-build "cd /app/bashtop && make install && cp -R /app/bashtop /app/build" 
+				sh 'docker run --mount type=bind,source=~/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build bashtop-build "cd /app/bashtop && make install && cp -R /app/bashtop /app/build"' 
          	}
 		}
 	}
