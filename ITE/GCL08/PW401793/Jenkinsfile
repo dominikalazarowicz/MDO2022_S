@@ -33,7 +33,7 @@ pipeline {
 	stage('Deploy') {
 		steps {
 			echo 'Deploying bashtop'
-			sh 'docker rm deploy || true'
+			sh 'docker rm -f deploy || true'
 			sh 'docker run -d --name deploy --mount type=volume,src="vol-out",dst=/usr/local/bin ubuntu /usr/local/bin/bashtop'
 			sh 'sleep 5; exit $(docker inspect deploy --format="{{.State.ExitCode}}")'
 			sh 'docker rm deploy'
