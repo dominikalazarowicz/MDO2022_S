@@ -4,11 +4,12 @@ pipeline {
 	stages {
 		stage('Clone repo into vol') {
 			steps {
-			sh 'docker volume create vol-in'
-			sh 'docker run -v vol-in:/data --name helper busybox true'
-			sh 'cd ~/ && ls bashtop || git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
-			sh 'docker cp ~/bashtop helper:/data'
-			sh 'docker rm helper'
+				sh 'docker volume create vol-in'
+				sh 'docker run -v vol-in:/data --name helper busybox true'
+				sh 'cd ~/ && ls bashtop || git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
+				sh 'docker cp ~/bashtop helper:/data'
+				sh 'docker rm helper'
+				sh 'ls /var/lib/docker/volumes/vol-in/_data'
 			}
 	}
   	stage('Build') {
