@@ -33,7 +33,7 @@ pipeline {
 	stage('Deploy') {
 		steps {
 			echo 'Deploying bashtop'
-			sh 'docker run --mount type=volume,src="vol-out",dst=/usr/local/bin/bashtop ubuntu ls /usr/local/bin/bashtop'
+			sh 'docker run --mount type=volume,src="vol-out",dst=/usr/local/bin ubuntu /usr/local/bin/bashtop'
 		}
 	}
 	}
