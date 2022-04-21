@@ -46,7 +46,7 @@ agent any
 	}
 	stage ('Publish') {
     	when {
-        	expression { params.PUBLISH == true }
+        	expression { params.PUBLISH }
         }
         steps {
         	echo "Publishing bashtop"
