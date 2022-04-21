@@ -48,6 +48,7 @@ agent any
         when { expression { return params.PROMOTE } }
 		steps {
         	echo "Publishing bashtop"
+			sh 'ls /var/lib/docker/volumes/'
 			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
 		}
     }
