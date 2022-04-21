@@ -4,7 +4,7 @@ pipeline {
 	stages {
 		stage('Clone repo into vol') {
 			steps {
-			sh 'docker create volume vol-in'
+			sh 'docker volume create vol-in'
 	    	sh 'cd /var/lib/docker/volumes/vol-in && ls bashtop || git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
 			}
 	}
