@@ -34,7 +34,7 @@ pipeline {
 		steps {
 			echo 'Deploying bashtop'
 			sh 'docker run -d --name deploy --mount type=volume,src="vol-out",dst=/usr/local/bin ubuntu /usr/local/bin/bashtop'
-			sh "sleep 5; docker inspect deploy --format='{{.State.ExitCode}}'
+			sh 'sleep 5; docker inspect deploy --format='{{.State.ExitCode}}'
 		}
 	}
 	}
