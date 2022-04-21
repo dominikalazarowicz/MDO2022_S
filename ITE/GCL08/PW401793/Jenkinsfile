@@ -24,12 +24,12 @@ pipeline {
     stage('Test') {
     	steps {
         	echo 'Testing bashtop'
-            	dir("./ITE/GCL08/PW401793/Lab03") {
-                	sh 'docker build . -t bashtop-test -f Dockerfile-test'
-                    sh 'docker run -t bashtop-test'
-                }
+            dir("./ITE/GCL08/PW401793") {
+                sh 'docker build . -t bashtop-test -f Dockerfile-test'
+                sh 'docker run --mount type=volume,src="vol-out",dst=/app/build bashtop-test bash -c "cd /app/build && sh test.sh"'
             }
         }
-    }
+	}
+	}
 }
 
