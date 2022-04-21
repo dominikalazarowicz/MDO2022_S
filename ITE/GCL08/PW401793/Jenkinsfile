@@ -2,16 +2,24 @@ pipeline {
     agent any
 
     stages {
-        stage('Build bashtop') {
-            steps {
-		sh 'pwd;ls'
-                echo 'Installing bashtop'
-                dir("./ITE/GCL08/PW401793/Lab03") {
-                    sh 'docker build -t bashtop-build .'
+	stage('Clone repo into vol') {
+	    steps {
+	        sh 'cd /var && git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
+	    }
+	}
+        stage('Build') {
+            agent {
+                docker {
+                  image 'ubuntu'
+                  args '--mount type=bind,source=/var/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build'
                 }
+            }  
+	    steps {
+                echo 'Installing bashtop'
+                sh 'cd bashtop && make install'
             }
         }
-        stage('Test bashtop') {
+        stage('Test') {
             steps {
                 echo 'Testing bashtop'
                 dir("./ITE/GCL08/PW401793/Lab03") {
