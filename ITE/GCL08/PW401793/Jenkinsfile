@@ -49,10 +49,10 @@ pipeline {
 		steps {
         	echo "Publishing bashtop"
 			sh 'pwd'
-			sh 'mkdir /home/jenkins/artifacts'
-			sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/bin --mount type=bind,source=/home/jenkins/artifacts,dst=,dst=/usr/local/bin ubuntu'
-			sh 'ls /home/jenkins/artifacts'
-			sh "tar -zcvf bashtop-${params.VERSION} /var/lib/docker/volumes/vol-out/_data/bashtop"
+			sh 'mkdir /var/jenkins_home/workspace/artifacts'
+			sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/bin --mount type=bind,source=/var/jenkins_home/workspace/artifacts,dst=,dst=/usr/local/bin ubuntu'
+			sh 'ls /var/jenkins_home/workspace/artifacts'
+			sh "tar -zcvf bashtop-${params.VERSION} /var/jenkins_home/workspace/artifacts"
 			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
 		}
     }
