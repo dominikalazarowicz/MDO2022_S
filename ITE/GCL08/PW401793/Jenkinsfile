@@ -1,5 +1,10 @@
 pipeline {
-	agent any
+	parameters { 
+		string(name: 'version', defaultValue: '1.0.0', description: '') 
+		booleanParam(name: 'promote', defaultValue: true, description: '')
+	}
+			
+agent any
 
 	stages {
 		stage('Clone repo into vol') {
