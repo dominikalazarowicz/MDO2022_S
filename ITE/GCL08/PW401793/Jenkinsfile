@@ -45,7 +45,7 @@ agent any
 		}
 	}
 	stage ('Publish') {
-        when { expression { return params.PUBLISH } }
+        when { expression { return params.PROMOTE } }
 		steps {
         	echo "Publishing bashtop"
 			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
