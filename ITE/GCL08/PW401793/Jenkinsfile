@@ -1,7 +1,7 @@
 pipeline {
 	parameters { 
-		string(name: 'version', defaultValue: '1.0.0', description: '') 
-		booleanParam(name: 'promote', defaultValue: true, description: '')
+		string(name: 'VERSION', defaultValue: '1.0.0', description: '') 
+		booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
 	}
 			
 agent any
@@ -44,12 +44,15 @@ agent any
 			sh 'docker rm -f deploy'
 		}
 	}
-	}
-
-	post {
-        always {
-            archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
+	stage ('Publish') {
+    	when {
+        	expression { params.PUBLISH == true }
+        }
+        steps {
+        	echo "Publishing bashtop"
+			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
         }
     }
+	}
 }
 
