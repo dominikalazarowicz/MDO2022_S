@@ -39,11 +39,12 @@ pipeline {
 			sh 'docker rm -f deploy'
 		}
 	}
+	}
+
 	post {
         always {
             archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data'
         }
     }
-	}
 }
 
