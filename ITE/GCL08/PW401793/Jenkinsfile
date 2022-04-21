@@ -8,12 +8,6 @@ pipeline {
 			}
 	}
   	stage('Build') {
-    	agent {
-        	docker {
-            	image 'ubuntu'
-                args '--mount type=bind,source=~/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build'
-            }
-        }	  
 	    steps {
 			echo 'Installing bashtop'
 			dir("./ITE/GCL08/PW401793") {
