@@ -4,14 +4,14 @@ pipeline {
     stages {
 	stage('Clone repo into vol') {
 	    steps {
-	        sh 'cd /var && git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
+	        sh 'cd ~/ && git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
 	    }
 	}
         stage('Build') {
             agent {
                 docker {
                   image 'ubuntu'
-                  args '--mount type=bind,source=/var/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build'
+                  args '--mount type=bind,source=~/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build'
                 }
             }  
 	    steps {
