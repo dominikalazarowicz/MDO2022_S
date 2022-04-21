@@ -4,7 +4,7 @@ pipeline {
 		booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
 	}
 			
-agent any
+	agent any
 
 	stages {
 		stage('Clone repo into vol') {
@@ -48,6 +48,7 @@ agent any
         when { expression { return params.PROMOTE } }
 		steps {
         	echo "Publishing bashtop"
+			sh 'ls /var/lib/docker/volumes/vol-out/_data/bashtop/.'
 			sh "tar -zcvf bashtop-${params.VERSION} /var/lib/docker/volumes/vol-out/_data/bashtop"
 			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
 		}
