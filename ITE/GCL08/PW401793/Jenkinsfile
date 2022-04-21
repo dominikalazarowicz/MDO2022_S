@@ -48,6 +48,7 @@ pipeline {
         when { expression { return params.PROMOTE } }
 		steps {
         	echo "Publishing bashtop"
+			sh 'mkdir -p /app/artifacts'
 			sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/bin --mount type=bind,source=/app/artifacts,dst=,dst=/usr/local/bin ubuntu'
 			sh 'ls /app/artifacts/.'
 			sh "tar -zcvf bashtop-${params.VERSION} /var/lib/docker/volumes/vol-out/_data/bashtop"
