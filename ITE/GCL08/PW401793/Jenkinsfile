@@ -45,11 +45,10 @@ agent any
 		}
 	}
 	stage ('Publish') {
-        steps {
-			if(params.PUBLISH) {
-        		echo "Publishing bashtop"
-				archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
-			}
+        when { expression { return params.PUBLISH } }
+		steps {
+        	echo "Publishing bashtop"
+			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
 		}
     }
 	}
