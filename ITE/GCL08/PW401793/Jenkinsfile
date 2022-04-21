@@ -25,8 +25,8 @@ pipeline {
     	steps {
         	echo 'Testing bashtop'
             dir("./ITE/GCL08/PW401793") {
-                sh 'docker build --no-cache=true . -t bashtop-test -f Dockerfile-test'
-                sh 'docker run --mount type=volume,src="vol-out",dst=/app/build bashtop-test bash -c "cd /app/build && ls ."'
+                sh 'docker build . -t bashtop-test -f Dockerfile-test'
+                sh 'docker run --mount type=volume,src="vol-out",dst=/app/build bashtop-test bash -c "cd /app/build/bashtop && sh test.sh"'
             }
         }
 	}
