@@ -39,6 +39,11 @@ pipeline {
 			sh 'docker rm -f deploy'
 		}
 	}
+	stage('Publish') {
+		steps {
+			archiveArtifacts artifacts: /var/lib/docker/volumes/vol-out/_data
+		}
+	}
 	}
 }
 
