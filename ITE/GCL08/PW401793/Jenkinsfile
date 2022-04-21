@@ -48,7 +48,7 @@ agent any
         when { expression { return params.PROMOTE } }
 		steps {
         	echo "Publishing bashtop"
-			sh 'tar -zcvf bashtop-${params.VERSION} /var/lib/docker/volumes/vol-out/_data/bashtop'
+			sh "tar -zcvf bashtop-${params.VERSION} /var/lib/docker/volumes/vol-out/_data/bashtop"
 			archiveArtifacts artifacts: '/var/lib/docker/volumes/vol-out/_data/*'
 		}
     }
