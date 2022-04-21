@@ -1,28 +1,33 @@
 pipeline {
-    agent any
+	agent any
 
-    stages {
-	stage('Clone repo into vol') {
-	    steps {
-	        sh 'cd ~/ && ls bashtop || git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
-	    }
+	stages {
+		stage('Clone repo into vol') {
+			steps {
+	    	sh 'cd ~/ && ls bashtop || git clone --recurse-submodules https://github.com/aristocratos/bashtop.git'
+			}
 	}
-        stage('Build') {
-            agent {
-                docker {
-                    image 'ubuntu'
-                    args '--mount type=bind,source=~/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build'
-                }
-            }  
-	    steps {
-                echo 'Installing bashtop'
+  	stage('Build') {
+    	agent {
+        	docker {
+            	image 'ubuntu'
+                args '--mount type=bind,source=~/bashtop,target=/app/bashtop --mount type=volume,src="vol-out",dst=/app/build'
             }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing bashtop'
-                dir("./ITE/GCL08/PW401793/Lab03") {
-                    sh 'docker build . -t bashtop-test -f Dockerfile-test'
+        }	  
+	    steps {
+			echo 'Installing bashtop'
+			dir("./ITE/GCL08/PW401793/Lab03") {
+				sh 'docker build -t bashtop-build .'
+				sh 'docker run --mount type=bind,source=~/bashtop,target=/app/bashtop \
+					--mount type=volume,src="vol-out",dst=/app/build bashtop-build "cd /app/bashtop && make install && cp -R /app/bashtop /app/build" 
+         	}
+		}
+	}
+    stage('Test') {
+    	steps {
+        	echo 'Testing bashtop'
+            	dir("./ITE/GCL08/PW401793/Lab03") {
+                	sh 'docker build . -t bashtop-test -f Dockerfile-test'
                     sh 'docker run -t bashtop-test'
                 }
             }
