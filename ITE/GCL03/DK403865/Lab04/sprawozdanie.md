@@ -50,7 +50,7 @@ Sprawdzono adres serwera
 
 ## Badanie łączności kontener-host
 
-![](images/container_host.png)
+![](images/container-host.png)
 
 ## Wyniki
 
