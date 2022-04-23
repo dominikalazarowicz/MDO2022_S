@@ -31,5 +31,20 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker run build-agent'
+                script {
+                    if (currentBuild.currentResult == 'SUCCESS') {
+                        sh 'echo "Deployed succesfully! <3" > deployResult.txt'
+                    }
+                    else {
+                        sh 'echo "Deploy failed! <3" > deployResult.txt'
+                    }
+                    archiveArtifacts artifacts: 'deployResult.txt'
+                }
+            }
+        }
     }
 }
