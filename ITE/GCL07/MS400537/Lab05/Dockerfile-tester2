@@ -1,0 +1,4 @@
+FROM builder
+WORKDIR dayjs
+RUN ls
+RUN npm run test

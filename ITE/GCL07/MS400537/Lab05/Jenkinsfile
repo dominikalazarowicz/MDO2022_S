@@ -1,0 +1,33 @@
+pipeline {
+	agent any
+  	stages {
+	    	stage("build") {
+	    	  	steps {
+	    	  		sh 'docker build -t builder . -f ITE/GCL07/MS400537/Lab05/Dockerfile-builder2'
+	    	  	}
+	    	}
+
+	    	stage("test") {
+				steps {
+					sh 'docker build -t tester . -f ITE/GCL07/MS400537/Lab05/Dockerfile-tester2'
+	      		}
+	      	}
+	      	stage("publish") {
+				steps {
+					sh 'mkdir -p `pwd`/artifact'
+				   sh 'docker build -t builder . -f ITE/GCL07/MS400537/Lab05/Dockerfile-builder2'
+				   sh 'docker run --name publisher --mount type=volume,src=build_volume,dst=/dayjs/build --mount type=bind,src=`pwd`/artifact,target=/opt/build builder /bin/bash -c "cp -r build /opt/build"'
+				   
+				   archiveArtifacts artifacts: 'artifact/build/*', onlyIfSuccessful: true, fingerprint: true
+				   
+			   }
+	      	}
+	      	stage("cleanup"){
+	      		steps{
+	      			sh 'docker rm publisher'
+	      		}
+	      	}
+  	}
+}
+
+

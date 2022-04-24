@@ -1,0 +1,3 @@
+FROM builder
+WORKDIR ant-design
+RUN npm run test
