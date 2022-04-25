@@ -19,5 +19,5 @@ Wszystkie testy niewymagające tego połączenia przechodzą.<br>
 ![docker-test](docker_test.PNG)
 ![efekty_tests](dockertest1.PNG)
 ![efekty2](dockertest2.PNG)
-## Co pracuje w kontenerze?
+#### Co pracuje w kontenerze?
 W kontenerze pracuje obraz odizolowany od macierzystego systemu.
