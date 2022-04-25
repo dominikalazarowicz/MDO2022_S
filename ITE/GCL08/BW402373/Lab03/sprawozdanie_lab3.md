@@ -1,6 +1,6 @@
 # Sprawozdanie - lab 3
 1. Pobrano obraz node.<br>
-![node_pull](pull_node.png)
+![node_pull](pull_node.PNG)
 2. Uruchomiono kontenera z node.<br>
 ![kontener](docker_run.png)
 3. Sklonowano repozytorium i zainstalowano npm.<br>
