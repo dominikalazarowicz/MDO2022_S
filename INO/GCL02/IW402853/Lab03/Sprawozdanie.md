@@ -1,4 +1,4 @@
-### Sprawozdanie Lab03
+### Sprawozdanie  Lab03
 
 1. Wykonanie kroków build i test wewnątrz wybranego kontenera bazowego.
 
