@@ -1,6 +1,5 @@
-# Sprawozdanie 4
+#Sprawozdanie 4
 Anna Godek
-
 **ZACHOWANIE STANU**
 1. Przygotowano woluminy wejściowy i wyjściowy o nazwach `volin` oraz `volout`. Wykorzystano komendę `sudo docker volume create`.
 ![volumeCreate](volumeCreate.png)
@@ -44,13 +43,13 @@ $ sudo docker inspect --format "{{ .NetworkSettings.IPAddress }}" iperf3-server
 ![IP](IP.png)
  
 4. Połączono się z serwerem z drugiego kontenera, którego działanie określono jako client.
-![client](client.png)
+![zKontenera](zKontenera.png)
  
 W celu połączenia się spoza kontenera (z i spoza hosta) najpierw zainstalowano iperf3.
 ```bash
 $ sudo docker inspect --format "{{ .NetworkSettings.IPAddress }}" iperf3-server
 ```
-![iperf3](iperf3.png)
+![iperf3install](iperf3install.png)
  
 Połączenie z hosta:
 ![zHosta](zHosta.png)
@@ -104,5 +103,4 @@ Aby odczytać hasło uruchomiono najpierw interaktywny terminal za pomocą `sudo
  
 ![jWorks](jWorks.png)
  
-
 
