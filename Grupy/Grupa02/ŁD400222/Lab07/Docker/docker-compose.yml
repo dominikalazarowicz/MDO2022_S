@@ -9,15 +9,15 @@ services:
   msg_server:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile_messanger_build
     image: build-agent
     container_name: msg_server
     depends_on:
       - db   
   test:
     build:
-      context: ./test
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: Dockerfile_messanger_test
     image: test-agent
     container_name: msg_client
     ports:
