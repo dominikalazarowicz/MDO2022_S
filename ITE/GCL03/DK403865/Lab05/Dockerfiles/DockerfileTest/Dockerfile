@@ -1,4 +1,4 @@
-FROM 40d09c8a8fae
+FROM dotnet_build_base:latest
 
 RUN echo 'Dockerfile test running �'
 
