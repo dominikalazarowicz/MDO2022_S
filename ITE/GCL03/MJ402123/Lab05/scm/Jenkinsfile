@@ -7,7 +7,7 @@ pipeline {
     stages {
         stage('build') {
 		options{
-		timeout(time: 1, unit: 'HOURS'
+		timeout(time: 1, unit: 'HOURS')
 }
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL03/MJ402123/Lab05/Docker-BLDR'
