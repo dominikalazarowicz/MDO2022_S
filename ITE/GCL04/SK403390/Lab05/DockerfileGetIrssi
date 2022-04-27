@@ -5,4 +5,5 @@ RUN apt install -y git
 
 RUN git clone https://github.com/irssi/irssi
 
+RUN ls
 RUN cp irssi wolWejsciowy
