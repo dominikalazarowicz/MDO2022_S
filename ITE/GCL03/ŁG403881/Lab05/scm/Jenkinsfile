@@ -2,7 +2,6 @@ pipeline {
     agent any
     stages {
         stage('Building') {
-            # building dockerfiles
             dir('.') {
                 sh 'docker build -t build:latest ../DockerBuild/ -f Dockerfile'
                 sh 'docker build -t test:latest ../DockTester/ -f Dockerfile'
