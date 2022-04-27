@@ -25,12 +25,8 @@ pipeline {
 		sh 'docker kill deployContainer2'
 		sh 'ls'
 		sh 'ls fe-text/*'
+		archiveArtifacts artifacts: 'fe-text/*', onlyIfSuccessful: true
 	    }
-	}
-    }
-    post {
-	always {
-	    archiveArtifacts artifacts: 'fe-text/*', fingerprint: true
 	}
     }
 }
