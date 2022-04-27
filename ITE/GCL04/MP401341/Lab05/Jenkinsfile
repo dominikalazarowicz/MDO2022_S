@@ -1,14 +1,24 @@
 pipeline {
 	agent any
   	stages {
+        stage("Clone"){
+            steps {
+              sh 'docker volume  create --name inputVol'
+              sh 'docker volume  create --name outputVol'
+              sh 'docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone'
+              sh 'docker run -v inputVol:/lz4 lz4clone'
+                }
+              }
         stage("Build") {
             steps {
                 sh 'docker build -t build . -f ITE/GCL04/MP401341/Lab05/DockerfileBuild'
+                sh 'docker run -v inputVol:/lz4 outputVol:/lz4pkg build'
             }
         }
         stage("Test") {
             steps {
-                sh 'docker build -t test . -f ITE/GCL04/MP401341/Lab05/DockerfileTest'
+                sh 'docker build -t test . -f ITE/GCL04/MP401341/Lab05/DockerfileTest --build-arg image=build'
+                sh 'docker run -v inputVol:/lz4 test'
             }
         }
         stage("Deploy") {
