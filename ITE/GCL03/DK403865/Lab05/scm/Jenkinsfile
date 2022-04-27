@@ -6,7 +6,7 @@ pipeline {
             steps {
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
-                sh 'pwd'
+                sh 'cd ITE/GCL03/DK403865/Lab05/Dockerfiles'
 		sh 'ls -a'
             }
         }
