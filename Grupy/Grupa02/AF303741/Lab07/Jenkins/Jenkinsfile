@@ -1,28 +1,33 @@
 pipeline {
     agent any
-    
-    options {
-        parallelsAlwaysFailFast()  // https://stackoverflow.com/q/54698697/4480139
-    }
-    
+
     stages {
-        stage('GIT') {
+        stage('Test') {
             steps {
-                git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
-            }
-        }
-        stage('DOCKER') {
-            steps {
-                dir('Grupy/Grupa02/AF303741/Lab04') {
+                git 'https://github.com/aleksanderfilek/wire-desktop-devops.git'
+                dir('Docker') {
                     sh 'docker-compose up'
                 }
             }
-        }
-    }
-   
-    post { 
-        always {
-          sh 'docker-compose down --remove-orphans'
+            post {
+                success {
+                    echo '------------Successful test------------'
+                    emailext attachLog: true,
+                    body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+                    recipientProviders: [developers(), requestor()],
+                    subject: "Success Jenkins Tests",
+                    to: 'filekaleksander@gmail.com'
+                }
+            
+                failure {
+                    echo '------------Failed test------------'
+                    emailext attachLog: true,
+                    body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+                    recipientProviders: [developers(), requestor()],
+                    subject: "Failed Jenkins Tests",
+                    to: 'filekaleksander@gmail.com'
+                }
+            }
         }
     }
 }

@@ -1,14 +1,11 @@
 FROM node:lts
 
-COPY waiter.sh waiter.sh
-WORKDIR /app
-CMD apt-get update; \
- apt-get upgrade -y; \
- apt-get install -y rpm; \
- git config http.sslVerify false; \
- /app; \
- export LINUX_TARGET=deb; \
- git clone https://github.com/wireapp/wire-desktop.git; \
- cd ./wire-desktop; \
- yarn; \
- yarn build:linux; \
+RUN apt-get -y update
+RUN apt-get -y upgrade
+RUN apt-get install -y rpm
+RUN git clone https://github.com/aleksanderfilek/wire-desktop-devops.git
+WORKDIR wire-desktop-devops
+RUN yarn
+RUN yarn build:linux
+RUN pwd
+
