@@ -1,0 +1,3 @@
+FROM debian:10
+WORKDIR lz4
+CMD ./bin/lz4 --help

@@ -3,4 +3,4 @@ FROM debian:10
 RUN apt update
 RUN apt install -y gcc make
 WORKDIR lz4
-CMD make install
+CMD make prefix= DESTDIR=/lz4pkg install

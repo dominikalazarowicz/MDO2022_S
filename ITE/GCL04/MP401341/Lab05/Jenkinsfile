@@ -7,6 +7,8 @@ pipeline {
   	stages {
         stage("Clone"){
             steps {
+              sh 'docker container prune -f'
+              sh 'docker volume prune -f'
               sh 'docker volume  create --name inputVol'
               sh 'docker volume  create --name outputVol'
               sh "docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone --build-arg BRANCH=${BRANCH}"
@@ -30,7 +32,8 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh 'echo WIP'
+                sh 'docker build -t deployment . -f ITE/GCL04/MP401341/Lab05/DockerfileDeploy'
+                sh 'docker run  -v outputVol:/lz4  deployment'
             }
         }
         stage("Publish") {
@@ -41,8 +44,7 @@ pipeline {
   	}
      post {
       always {
-        sh 'docker container prune -f'
-        sh 'docker volume prune -f'
+       sh 'echo WIP'
       }
       }
       
