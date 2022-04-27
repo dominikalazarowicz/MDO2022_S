@@ -8,7 +8,7 @@ pipeline {
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
 		sh 'cat ITE/GCL03/DK403865/Lab05/Dockerfiles/Dockerfile-build'
-                sh 'docker build - < /ITE/GCL03/DK403865/Lab05/Dockerfiles/Dockerfile-build'
+                sh 'docker build - < ITE/GCL03/DK403865/Lab05/Dockerfiles/Dockerfile-build'
             }
         }
 	stage('Test') {
