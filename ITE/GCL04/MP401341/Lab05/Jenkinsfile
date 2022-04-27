@@ -12,7 +12,7 @@ pipeline {
         stage("Build") {
             steps {
                 sh 'docker build -t build . -f ITE/GCL04/MP401341/Lab05/DockerfileBuild'
-                sh 'docker run -v inputVol:/lz4 outputVol:/lz4pkg build'
+                sh 'docker run -v inputVol:/lz4 -v outputVol:/lz4pkg build'
             }
         }
         stage("Test") {
@@ -32,5 +32,12 @@ pipeline {
             }
         }
   	}
+     post {
+      always {
+        sh 'docker container prune -f'
+        sh 'docker volume prune -f'
+      }
+      }
+      
 }
 
