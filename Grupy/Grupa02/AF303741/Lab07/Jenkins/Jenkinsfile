@@ -2,11 +2,36 @@ pipeline {
     agent any
 
     stages {
-        stage('Test') {
+        stage('Build') {
             steps {
                 git 'https://github.com/aleksanderfilek/wire-desktop-devops.git'
                 dir('Docker') {
-                    sh 'docker-compose up'
+                    sh 'docker-compose build build_agent'
+                }
+            }
+            post {
+                success {
+                    echo '------------Successful build------------'
+                    emailext attachLog: true,
+                    body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+                    recipientProviders: [developers(), requestor()],
+                    subject: "Successful Jenkins Build",
+                    to: 'filekaleksander@gmail.com'
+                }
+                failure {
+                    echo '------------Failed build------------'
+                    emailext attachLog: true,
+                    body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
+                    recipientProviders: [developers(), requestor()],
+                    subject: "Failed Jenkins Build",
+                    to: 'filekaleksander@gmail.com'
+                }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir('Docker') {
+                    sh 'docker-compose build test_agent'
                 }
             }
             post {
@@ -15,7 +40,7 @@ pipeline {
                     emailext attachLog: true,
                     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                     recipientProviders: [developers(), requestor()],
-                    subject: "Success Jenkins Tests",
+                    subject: "Successful Jenkins Test Stage",
                     to: 'filekaleksander@gmail.com'
                 }
             
@@ -24,7 +49,7 @@ pipeline {
                     emailext attachLog: true,
                     body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER}",
                     recipientProviders: [developers(), requestor()],
-                    subject: "Failed Jenkins Tests",
+                    subject: "Failed  Jenkins Test Stage",
                     to: 'filekaleksander@gmail.com'
                 }
             }
