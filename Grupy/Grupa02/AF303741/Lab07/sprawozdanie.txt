@@ -6,3 +6,7 @@
     zad3-jenkinsfile.png, zad3-buildRun.png, zad3_emails.png
 4. Dodano webook na push git'a , ktory automatycznie uruchamia jenkins Job
     zad4-job.png, zad4-ngrok.png, zad4-webhook.png
+5. Utworzenie kroku Deploy, ktory wrzuca obraz build_agent na DockerHub
+    zad5-deployStage.png, zad5-emails.png, zad5-jobRun.png
+
+W repozytorium zajec oraz repozytorium aplikacji znajduja sie wykorzystywane pliki: Dockerfile_build, Dockerfile_test, docker-compose.yml oraz Jenkinsfile
