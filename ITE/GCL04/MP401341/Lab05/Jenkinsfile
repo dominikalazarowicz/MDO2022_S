@@ -1,0 +1,26 @@
+pipeline {
+	agent any
+  	stages {
+        stage("Build") {
+            steps {
+                sh 'docker build -t build . -f ITE/GCL04/MP401341/Lab05/DockerfileBuild'
+            }
+        }
+        stage("Test") {
+            steps {
+                sh 'docker build -t test . -f ITE/GCL04/MP401341/Lab05/DockerfileTest'
+            }
+        }
+        stage("Deploy") {
+            steps {
+                sh 'echo WIP'
+            }
+        }
+        stage("Publish") {
+            steps {
+                sh 'echo WIP'
+            }
+        }
+  	}
+}
+
