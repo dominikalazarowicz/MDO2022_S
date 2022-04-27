@@ -10,7 +10,7 @@ pipeline {
 	}
 	stage('getIrssi') {
 	    steps {
-		sh 'docker build -t getirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileGetIrssi'
+		sh 'docker build --no-cache -t getirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileGetIrssi'
 		sh 'docker run --rm --mount source=wolWejsciowy,destination=/wolWejsciowy getirssi'
 	    }
 	}
