@@ -10,8 +10,8 @@ pipeline {
 	}
 	stage('getIrssi') {
 	    steps {
-		sh 'docker build -t getIrssi . -f ITE/GCL04/SK403390/Lab05/DockerfileGetIrssi'
-		sh 'docker run --rm getIrssi'
+		sh 'docker build -t getirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileGetIrssi'
+		sh 'docker run --rm getirssi'
 	    }
 	}
         stage('build') {
