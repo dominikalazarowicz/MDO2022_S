@@ -7,6 +7,7 @@ pipeline {
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
+		sh 'cat /etc/resolv.conf'
 		sh 'cd ITE/GCL03/DK403865/Lab05/Dockerfiles/DockerfileBuild ; docker build .'
             }
         }
