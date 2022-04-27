@@ -30,7 +30,7 @@ pipeline {
     }
     post {
 	always {
-	    archiveArtifacts artifacts: 'fe-text*', fingerprint: true
+	    archiveArtifacts artifacts: 'fe-text/*', fingerprint: true
 	}
     }
 }
