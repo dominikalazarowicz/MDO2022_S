@@ -28,4 +28,9 @@ pipeline {
 	    }
 	}
     }
+    post {
+	always {
+	    archiveArtifacts artifacts: 'fe-text', fingerprint: true
+	}
+    }
 }
