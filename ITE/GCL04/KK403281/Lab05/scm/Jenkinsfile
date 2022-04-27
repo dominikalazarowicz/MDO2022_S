@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/KK403281/Lab05/Docker-BLDR'
 		sh 'docker run buildirssi'
             }
         }
-        stage('Helloo') {
+        stage('Test') {
             steps {
                 sh 'docker build -t testirssi . -f ITE/GCL04/KK403281/Lab05/Docker-Tescik'
 		sh 'docker run testirssi'

@@ -1,4 +1,4 @@
-FROM bldr:latest
+FROM buildirssi:latest
 
 WORKDIR build
 
