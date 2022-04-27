@@ -4,14 +4,13 @@ pipeline {
     stages {
         stage('build') {
             steps {
-		cd ITE/GCL04/SK403390/Lab05
-                sh 'docker build -t buildirssi . -f DockerfileBuild'
+                sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
 		sh 'docker run buildirssi'
             }
         }
         stage('test') {
             steps {
-                sh 'docker build -t testirssi . -f DockerfileTest'
+                sh 'docker build -t testirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileTest'
 		sh 'docker run testirssi'
             }
         }
