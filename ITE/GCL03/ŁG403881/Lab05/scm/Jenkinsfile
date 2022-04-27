@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+    stages {
+        stage('Building') {
+            # building dockerfiles
+            dir('.') {
+                sh 'docker build -t build:latest ../DockerBuild/ -f Dockerfile'
+                sh 'docker build -t test:latest ../DockTester/ -f Dockerfile'
+		sh 'docker run --name Builder -it build'
+                sh 'docker run --name Tester -it test' 
+            }
+        }
+    }
+
