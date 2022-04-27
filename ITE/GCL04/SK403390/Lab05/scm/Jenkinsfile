@@ -24,7 +24,7 @@ pipeline {
 		sh 'docker cp fe-text deployContainer2:.'
 		sh 'docker kill deployContainer2'
 		sh 'ls'
-		sh 'ls fe-text'
+		sh 'ls fe-text/*'
 	    }
 	}
     }
