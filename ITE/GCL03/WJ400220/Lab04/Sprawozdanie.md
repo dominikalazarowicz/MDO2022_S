@@ -9,7 +9,7 @@ sudo docker volume create volume_in
 sudo docker volume create volume_out
 ```
 
-![image-20220403210451261](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403210451261.png)
+![image-20220403210451261](image-20220403210451261.png)
 
 Uruchomienie kontenera
 
@@ -17,13 +17,13 @@ Uruchomienie kontenera
 sudo docker run -it --name node_volume --mount source=volume_in,target=/volume_in --mount source=volume_out,target=/volume_out node-build
 ```
 
-![image-20220403212829282](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403212829282.png)
+![image-20220403212829282](image-20220403212829282.png)
 
-![image-20220403214942746](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403214942746.png)
+![image-20220403214942746](image-20220403214942746.png)
 
 Klonowanie repozytorium na wolumin wejściowy
 
-![image-20220403222931291](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403222931291.png)
+![image-20220403222931291](image-20220403222931291.png)
 
 Zapisanie plików builda na wolumenie wyjściowym 
 
@@ -31,7 +31,7 @@ Zapisanie plików builda na wolumenie wyjściowym
 npm --prefix ../../../volume_out/ build
 ```
 
-![image-20220403232022668](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403232022668.png)
+![image-20220403232022668](image-20220403232022668.png)
 
 * Eksponowanie portu
 
@@ -41,7 +41,7 @@ Pobranie obrazu iperf3
 sudo docker pull networkstatic/iperf3
 ```
 
-![image-20220403233911360](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403233911360.png)
+![image-20220403233911360](image-20220403233911360.png)
 
 Uruchomienie iperf3 (jako serwer - opcja -s) w kontenerze
 
@@ -49,7 +49,7 @@ Uruchomienie iperf3 (jako serwer - opcja -s) w kontenerze
 sudo docker run -it --name=iperf3-devops -p 5201:5201 networkstatic/iperf3 -s
 ```
 
-![image-20220403234849483](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403234849483.png)
+![image-20220403234849483](image-20220403234849483.png)
 
 Sprawdzenie adresu IP kontenera
 
@@ -57,7 +57,7 @@ Sprawdzenie adresu IP kontenera
 sudo docker inspect iperf3-devops
 ```
 
-![image-20220403235055513](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403235055513.png)
+![image-20220403235055513](image-20220403235055513.png)
 
 Połącznie się z drugiego kontenera do serwera, zbadanie ruchu
 
@@ -65,7 +65,7 @@ Połącznie się z drugiego kontenera do serwera, zbadanie ruchu
 sudo docker run -it --rm networkstatic/iperf3 -c 172.17.0.3
 ```
 
-![image-20220403235631079](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220403235631079.png)
+![image-20220403235631079](image-20220403235631079.png)
 
 Wynik - 33.9 Gbits/sec
 
@@ -75,13 +75,13 @@ Połączenie się z hosta
 iperf3 -c 172.17.0.3
 ```
 
-![image-20220404000330573](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404000330573.png)
+![image-20220404000330573](image-20220404000330573.png)
 
 Wynik - 41.2 Gbits/sec
 
 Połączenie poza hostem
 
-![image-20220404002243317](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404002243317.png)
+![image-20220404002243317](image-20220404002243317.png)
 
 Wynik - 347 Mbit/sec
 
@@ -93,7 +93,7 @@ Utworzenie sieci
 sudo docker network create jenkins
 ```
 
-![image-20220404011434067](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404011434067.png)
+![image-20220404011434067](image-20220404011434067.png)
 
 Instalacja Jenkinsa w kontenerze z wykorzystaniem DIND
 
@@ -108,7 +108,7 @@ docker run --name jenkins-docker --rm --detach \
 
 ```
 
-![image-20220404011717959](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404011717959.png)
+![image-20220404011717959](image-20220404011717959.png)
 
 Utworzenie dockerfile
 
@@ -133,7 +133,7 @@ Utworzenie obrazu
 docker build -t myjenkins-blueocean:2.332.1-1 .
 ```
 
-![image-20220404012659410](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404012659410.png)
+![image-20220404012659410](image-20220404012659410.png)
 
 Uruchomienie kontenera
 
@@ -147,10 +147,10 @@ docker run --name jenkins-blueocean --rm --detach \
   myjenkins-blueocean:2.332.1-1
 ```
 
-![image-20220404012805282](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404012805282.png)
+![image-20220404012805282](image-20220404012805282.png)
 
-![image-20220404013318425](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404013318425.png)
+![image-20220404013318425](image-20220404013318425.png)
 
 Poprawne działanie Jenkins
 
-![image-20220404013451867](C:\Users\mrwaj\AppData\Roaming\Typora\typora-user-images\image-20220404013451867.png)
+![image-20220404013451867](image-20220404013451867.png)
