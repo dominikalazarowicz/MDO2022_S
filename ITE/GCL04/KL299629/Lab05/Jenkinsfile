@@ -1,0 +1,12 @@
+pipeline {
+
+	agent any
+	
+	stages {
+		stage('Build') {
+			steps {
+				sh 'docker build -t app . -f ITE/GCL04/KL299629/Lab05/dockerfile-build'
+			}
+		}
+	}
+}
