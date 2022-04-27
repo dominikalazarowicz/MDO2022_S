@@ -9,8 +9,7 @@ pipeline {
         }
         stage('test') {
             steps {
-                sh 'ls'
-		sh 'ls ..'
+                sh 'ls ITE/GCL04/SK403390/Lab05'
             }
         }
     }
