@@ -7,8 +7,7 @@ pipeline {
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
-		sh 'docker build -t build:latest . -f ./ITE/GCL03/DK403865/Lab05/DockerfileBuild/'
-            }
+		sh 'cd ITE/GCL03/DK403865/Lab05/Dockerfiles/DockerfileBuild ; docker build -t build:latest .'            }
         }
 	stage('Test') {
             steps {
