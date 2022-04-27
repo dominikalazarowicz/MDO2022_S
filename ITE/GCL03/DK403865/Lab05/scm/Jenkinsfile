@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+                sh 'pwd'
+		sh 'ls -a'
+            }
+        }
+	stage('Test') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+
+    }
+}
