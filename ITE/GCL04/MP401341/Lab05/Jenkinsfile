@@ -38,7 +38,9 @@ pipeline {
         }
         stage("Publish") {
             steps {
-                sh 'echo WIP'
+                sh 'mkdir bin -p'
+                sh 'docker build -t publish . -f ITE/GCL04/MP401341/Lab05/DockerfilePublish'
+                sh 'docker run  -v /bin:/public -v outputVol:/build publish'
             }
         }
   	}

@@ -1,0 +1,3 @@
+
+FROM debian:10
+CMD cp ./build/bin/lz4 /public/lz4 
