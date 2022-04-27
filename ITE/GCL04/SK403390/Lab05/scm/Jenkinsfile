@@ -5,7 +5,11 @@ pipeline {
         stage('build') {
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
-		sh 'docker run buildirssi'
+		sh 'docker run -name buildContainer -dit --rm buildirssi'
+		sh 'mkdir data'
+		sh 'docker cp buildContainer/irssi/Build/src data'
+		sh 'ls'
+		sh 'ls data' 
             }
         }
         stage('test') {
