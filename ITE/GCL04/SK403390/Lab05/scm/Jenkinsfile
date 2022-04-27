@@ -22,6 +22,9 @@ pipeline {
 		sh 'docker run --name deployContainer -dit ubuntu'
 		sh 'docker cp fe-text deployContainer:.'
 		sh 'docker kill deployContainer'
+		sh 'ls'
+		sh 'ls fe-text'
+		sh fe-text/irssi > myIrssi
 	    }
 	}
     }
