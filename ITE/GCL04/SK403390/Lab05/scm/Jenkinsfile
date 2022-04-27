@@ -5,13 +5,13 @@ pipeline {
         stage('build') {
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
-		sh 'docker run --name ContainerTemp4 -dit --rm buildirssi'
-		sh 'mkdir tempData4'
-		sh 'docker cp ContainerTemp4:build/irssi/src data'
-		sh 'docker kill ContainerTemp4'
+		sh 'docker run --name ContainerTemp5 -dit --rm buildirssi'
+		sh 'mkdir tempData5'
+		sh 'docker cp ContainerTemp5:irssi/build/irssi/src tempData5'
+		sh 'docker kill ContainerTemp5'
 		sh 'ls'
-		sh 'ls tempData'
-		sh 'ls tempData/src'
+		sh 'ls tempData5'
+		sh 'ls tempData5/src'
             }
         }
         stage('test') {
