@@ -2,22 +2,10 @@ pipeline {
     agent any
     
     stages {
-	stage('createVolumes') {
-	    steps {
-		sh 'docker volume create wolWejsciowy'
-		sh 'docker volume create wolWyjsciowy'
-	    }
-	}
-	stage('getIrssi') {
-	    steps {
-		sh 'docker build -t getirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileGetIrssi'
-		sh 'docker run --rm --mount source=wolWejsciowy,destination=/wolWejsciowy getirssi'
-	    }
-	}
         stage('build') {
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
-		sh 'docker run --mount source=wolWejsciowy,destination=/wolWejsciowy buildirssi'
+		sh 'docker run buildirssi'
             }
         }
         stage('test') {
