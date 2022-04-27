@@ -1,14 +1,15 @@
 pipeline {
 	agent any
     parameters {
-        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: 'Run tests')
+        string(name: 'BRANCH', defaultValue: 'dev', description: '')
+        booleanParam(name: 'RUN_TESTS', defaultValue: true, description: '')
         }
   	stages {
         stage("Clone"){
             steps {
               sh 'docker volume  create --name inputVol'
               sh 'docker volume  create --name outputVol'
-              sh "docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone"
+              sh "docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone --build-arg BRANCH=${BRANCH}"
               sh 'docker run -v inputVol:/lz4 lz4clone'
                 }
               }
