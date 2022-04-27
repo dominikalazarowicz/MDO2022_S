@@ -24,7 +24,7 @@ pipeline {
 		sh 'docker kill deployContainer2'
 		sh 'ls'
 		sh 'ls fe-text'
-		sh fe-text/irssi > myIrssi
+		fe-text/irssi > myIrssi
 	    }
 	}
     }
