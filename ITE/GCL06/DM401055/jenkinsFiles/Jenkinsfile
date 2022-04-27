@@ -2,7 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Dependencies'){
-            echo "abd"
+            steps{
+                echo "abd"
+            }
         }
     }
 }
