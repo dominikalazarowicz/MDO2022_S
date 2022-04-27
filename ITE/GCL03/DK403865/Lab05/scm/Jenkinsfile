@@ -5,6 +5,7 @@ pipeline {
         stage('Build') {
             steps {
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+		sh 'git checkout DK403865'
                 sh 'pwd'
 		sh 'ls -a'
             }
