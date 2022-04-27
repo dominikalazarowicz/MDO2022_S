@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('build') {
             steps {
-		sh 'cd ITE/GCL04/SK403390/Lab05'
+		cd ITE/GCL04/SK403390/Lab05
                 sh 'docker build -t buildirssi . -f DockerfileBuild'
 		sh 'docker run buildirssi'
             }
