@@ -1,3 +1,16 @@
-echo 'Hello from test Jenkinsfile'
-sh 'ls ..'
-sh 'cat ../DockergileBuild'
+pipeline {
+    agent any
+    
+    stages {
+        stage('build') {
+            steps {
+                sh 'whoami'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'ls ..'
+            }
+        }
+    }
+}
