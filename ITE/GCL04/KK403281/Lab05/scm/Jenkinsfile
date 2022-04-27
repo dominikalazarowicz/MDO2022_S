@@ -5,7 +5,7 @@ pipeline {
         stage('Hello') {
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/KK403281/Lab05/Docker-BLDR'
-		sh 'docker run buildirssi
+		sh 'docker run buildirssi'
             }
         }
         stage('Helloo') {
