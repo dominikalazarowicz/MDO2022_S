@@ -1,0 +1,18 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                sh 'docker build -t buildirssi . -f ITE/GCL03/MJ402123/Lab05/Docker-BLDR'
+		sh 'docker run buildirssi'
+            }
+        }
+        stage('test') {
+            steps {
+                sh 'docker build -t testirssi . -f ITE/GCL03/MJ402123/Lab05/Docker-Testy'
+		sh 'docker run testirssi' 
+            }
+        }
+    }
+}
