@@ -5,12 +5,13 @@ pipeline {
         stage('build') {
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
-		sh 'docker run buildrssi'
+		sh 'docker run buildirssi'
             }
         }
         stage('test') {
             steps {
-                sh 'ls ITE/GCL04/SK403390/Lab05'
+                sh 'docker build -t testirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileTest'
+		sh 'docker run testirssi'
             }
         }
     }
