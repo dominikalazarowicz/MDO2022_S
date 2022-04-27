@@ -4,7 +4,8 @@ pipeline {
     stages {
         stage('build') {
             steps {
-                sh 'whoami'
+                sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
+		sh 'docker run buildrssi'
             }
         }
         stage('test') {
