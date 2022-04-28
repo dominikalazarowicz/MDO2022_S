@@ -2,7 +2,6 @@ FROM mcr.microsoft.com/dotnet/sdk:3.1
 
 RUN echo 'Dockerfile pulling repo to volume 🍉'
 
-RUN git clone https://github.com/Klatix/NumberGuesserOOP.git
+RUN pwd ; git clone https://github.com/Klatix/NumberGuesserOOP.git
 WORKDIR NumberGuesserOOP/BasicNumberGuesser
-RUN pwd
-RUN pwd ; dotnet build --output predeoploy_data/
+RUN dotnet build --output predeoploy_data/
