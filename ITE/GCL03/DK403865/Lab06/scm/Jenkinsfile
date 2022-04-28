@@ -14,6 +14,7 @@ pipeline {
             steps {
 		sh 'docker volume create predeploy_data'
 		sh 'cd ITE/GCL03/DK403865/Lab06/PullRepoToVolume ; docker build --rm .'
+		sh 'docker rm dotnet_deploy'
                 sh 'docker run --name dotnet_deploy --mount source=predeploy_data,target=/predeploy_data dotnet_deps:latest'
 		sh 'pwd'
             }
