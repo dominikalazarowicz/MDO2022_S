@@ -7,6 +7,15 @@ pipeline {
 			steps {
 				sh 'docker build -t app . -f ITE/GCL04/KL299629/Lab05/dockerfile-build'
 			}
+			post {
+				success {
+					mail to: 'kalach@student.agh.edu.pl', subject: "Success of building", body: "Success of building: ${BUILD_URL}"
+				}
+
+				failure {
+					mail to: 'kalach@student.agh.edu.pl', subject: "Failure of building", body: "Failure of building: ${BUILD_URL}"
+				}
+			}
 		}
 	}
 }
