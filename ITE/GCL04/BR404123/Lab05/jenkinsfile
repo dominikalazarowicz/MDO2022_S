@@ -15,20 +15,20 @@ pipeline {
             steps {
                 sh 'echo Uruchomiono Build'
                 sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
-                sh 'docker run lab05_builder -v input_v:/input_v -v output_v:/output_v'
+                sh 'docker run -v input_v:/input_v -v output_v:/output_v lab05_builder'
             }
         }
         stage('Test') {
             steps {
                 sh 'echo Uruchomiono Test'
                 sh 'docker build -t lab05_tester . -f ITE/GCL04/BR404123/Lab05/dockerfile_tester'
-                sh 'docker run lab05_tester -v input_v:/input_v'
+                sh 'docker run -v input_v:/input_v lab05_tester'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'echo Uruchomiono Deploy'
-                sh 'docker run lab05_deploy -v output_v:/output_v'
+                sh 'docker run -v output_v:/output_v lab05_deploy'
             }
         }
         stage('Publish') {
