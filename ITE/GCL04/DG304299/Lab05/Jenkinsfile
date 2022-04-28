@@ -12,5 +12,13 @@ pipeline
                sh 'docker build -t build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
             }
         }
+
+         stage('Test') 
+        {
+            steps 
+            {
+               sh 'docker build -t build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
+            }
+        }
     }
 }
