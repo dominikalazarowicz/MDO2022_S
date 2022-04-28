@@ -6,14 +6,19 @@ pipeline {
         }
     }
     stages {
-        stage('Build') {
+	stage('Build') {
             steps {
-                sh 'npm install'
-            }
+                script {
+                    git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+		    sh 'git checkout WJ400220'
+		    sh 'git pull origin'
+                    sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/build.dockerfile ; docker build -t build_node:latest .'
+                }
+           }
         }
         stage('Test') { 
             steps {
-                sh './jenkins/scripts/test.sh' 
+                sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/test.dockerfile ; docker build -t test_node:latest .' 
             }
         }
     }
