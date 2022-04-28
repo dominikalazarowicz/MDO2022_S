@@ -5,17 +5,23 @@ pipeline {
         booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
     }
     stages {
+    	stage('Prepare') {
+    	    steps {
+    	    	sh 'docker volume create --name input_v'
+    	    	sh 'docker volume create --name output_v'
+    	    }
+    	}
         stage('Build') {
             steps {
                 sh 'echo Uruchomiono Build'
-                sh 'docker build -t lab05_builder . -f dockerfile_builder'
+                sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
                 sh 'docker run --name lab05_builder --mount source=input_v,target=/input_v --mount source=output_v,target=/output_v'
             }
         }
         stage('Test') {
             steps {
                 sh 'echo Uruchomiono Test'
-                sh 'docker build -t lab05_tester . -f dockerfile_tester'
+                sh 'docker build -t lab05_tester . -f ITE/GCL04/BR404123/Lab05/dockerfile_tester'
                 sh 'docker run --name lab05_tester --mount source=input_v,target=/input_v'
             }
         }
