@@ -7,18 +7,20 @@ pipeline {
   	stages {
         stage("Clone"){
             steps {
+              sh 'mkdir artifacts/bin -p'
               sh 'docker container prune -f'
               sh 'docker volume prune -f'
-              sh 'docker volume  create --name inputVol'
-              sh 'docker volume  create --name outputVol'
+              sh 'docker volume  create --name repo_vol'
+              sh 'docker volume  create --name build_vol'
               sh "docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone --build-arg BRANCH=${BRANCH}"
-              sh 'docker run -v inputVol:/lz4 lz4clone'
+              sh 'docker run -v repo_vol:/lz4 lz4clone'
                 }
               }
         stage("Build") {
             steps {
                 sh 'docker build -t build . -f ITE/GCL04/MP401341/Lab05/DockerfileBuild'
-                sh 'docker run -v inputVol:/lz4 -v outputVol:/build build'
+                sh 'docker run --name build_container -v repo_vol:/lz4 -v build_vol:/build -v ${PWD}/artifacts/bin:/public build'
+                archiveArtifacts 'artifacts/**/*'
             }
         }
         stage("Test") {
@@ -27,26 +29,31 @@ pipeline {
             }
             steps {
                 sh 'docker build -t test . -f ITE/GCL04/MP401341/Lab05/DockerfileTest --build-arg image=build'
-                sh 'docker run -v inputVol:/lz4 test'
+                sh 'docker run --name test_container -v repo_vol:/lz4 test'
             }
         }
         stage("Deploy") {
             steps {
                 sh 'docker build -t deployment . -f ITE/GCL04/MP401341/Lab05/DockerfileDeploy'
-                sh 'docker run  -v outputVol:/build  deployment'
+                sh 'docker run  -v build_vol:/build  deployment'
             }
         }
         stage("Publish") {
             steps {
-                sh 'mkdir bin -p'
-                sh 'docker build -t publish . -f ITE/GCL04/MP401341/Lab05/DockerfilePublish'
-                sh 'docker run  -v $PWD/bin:/public -v outputVol:/build publish'
+            sh 'echo WIP'
             }
         }
   	}
      post {
       always {
-       sh 'echo WIP'
+        catchError {
+          sh 'docker container logs build_container > artifacts/build_logs.txt'
+            } 
+        catchError {
+        sh 'docker container logs test_container > artifacts/test_logs.txt'
+            } 
+        archiveArtifacts 'artifacts/*_logs.txt'
+        sh 'rm -rf artifacts'
       }
       }
       

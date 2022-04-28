@@ -1,2 +1,0 @@
-FROM debian:10
-CMD sh -c "cp /build/bin/lz4 /public/lz4"
