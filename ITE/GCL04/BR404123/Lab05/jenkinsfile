@@ -7,6 +7,7 @@ pipeline {
     stages {
     	stage('Prepare') {
     	    steps {
+    	    	sh 'mkdir art'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
     	    }
@@ -15,7 +16,7 @@ pipeline {
             steps {
                 sh 'echo Uruchomiono Build'
                 sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
-                sh 'docker run -v input_v:/input_v -v output_v:/output_v lab05_builder'
+                sh 'docker run -v input_v:/input_v -v output_v:/output_v lab05_builder -v ${PWD}/art:/art'
             }
         }
         stage('Test') {
@@ -38,8 +39,8 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                archiveArtifacts 'output_v/target/*with-dependencies.jar'
-                junit 'output_v/target/surefire-reports/*.xml'
+                archiveArtifacts artifacts: 'art/target/*with-dependencies.jar', fingerprint: true
+                junit 'art/target/surefire-reports/*.xml'
             }
         }
     }
