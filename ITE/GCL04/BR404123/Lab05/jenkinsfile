@@ -8,7 +8,7 @@ pipeline {
     	stage('Prepare') {
     	    steps {
             	sh 'echo Uruchomiono Prepare'
-    	    	sh 'mkdir artifact'
+    	    	sh 'mkdir artifact -p'
     	        sh 'chmod 777 -R artifact'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
@@ -41,8 +41,7 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                sh 'ls art'
-                sh 'echo ls art'
+                sh 'ls artifact'
                 archiveArtifacts artifacts: '*.jar', fingerprint: true
                 junit '*.xml'
             }
