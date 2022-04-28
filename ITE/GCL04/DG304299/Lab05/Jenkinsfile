@@ -17,6 +17,7 @@ pipeline
         {
             steps 
             {
+               sh 'docker images'
                sh 'docker build -t build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
             }
         }
