@@ -8,7 +8,8 @@ pipeline {
     	stage('Prepare') {
     	    steps {
             	sh 'echo Uruchomiono Prepare'
-    	    	sh 'mkdir artefakt'
+    	    	sh 'mkdir artifact'
+    	        sh 'chmod 777 -R artifact'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
     	    }
@@ -17,7 +18,7 @@ pipeline {
             steps {
                 sh 'echo Uruchomiono Build'
                 sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
-                sh 'docker run -v input_v:/input_v -v output_v:/output_v -v ${PWD}/artefakt:/artefakt lab05_builder'
+                sh 'docker run -v input_v:/input_v -v output_v:/output_v -v ${PWD}/artifact:/public lab05_builder'
             }
         }
         stage('Test') {
@@ -40,8 +41,8 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                sh 'ls artefakt'
-                sh 'echo ls artefakt'
+                sh 'ls artifact'
+                sh 'echo ls artifact'
                 archiveArtifacts artifacts: '*.jar', fingerprint: true
                 junit '*.xml'
             }
@@ -49,8 +50,8 @@ pipeline {
     }
     post {
     	always {
-    	    sh 'chmod 777 -R artefakt'
-    	    sh 'rm -rf artefakt'
+    	    sh 'chmod 777 -R artifact'
+    	    sh 'rm -rf artifact'
     	}
     }
 }
