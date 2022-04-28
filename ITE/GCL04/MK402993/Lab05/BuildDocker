@@ -1,0 +1,5 @@
+FROM envimage:latest
+
+WORKDIR /java-junit-sample/
+
+RUN mvn clean package -DSkipTests
