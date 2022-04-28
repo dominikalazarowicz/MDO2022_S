@@ -1,6 +1,4 @@
 # syntax=docker/dockerfile:1 
 FROM calculator-dependencies
 
-RUN echo 'DOCKER TEST'
-
 RUN npm test a 
