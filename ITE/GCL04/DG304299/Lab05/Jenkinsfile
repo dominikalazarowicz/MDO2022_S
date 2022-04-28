@@ -13,12 +13,5 @@ pipeline
                sh 'echo hello from jenkins'
             }
         }
-        stage('Test') 
-        {
-            steps 
-            {
-               
-            }
-        }
     }
 }
