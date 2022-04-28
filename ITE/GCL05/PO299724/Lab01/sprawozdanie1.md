@@ -11,7 +11,7 @@ ssh-keygen -t ed25519 -C "piotruplay@gmail.com"
 git checkout -b PO299724
 ![](5.png)
 
-#####Stworzenie pliku sprawozdanie1.md:
+##### Stworzenie pliku sprawozdanie1.md:
 cat>sprawozdanie1.md
 #####/fix - przenieesiono PO299724 wodpowiednie miejsce i zmergowano
 ![](6.png)
