@@ -7,6 +7,8 @@ pipeline {
     stages {
     	stage('Prepare') {
     	    steps {
+    	    	sh 'chmod 777 art'
+    	        sh 'rm -rf art'
     	    	sh 'mkdir art'
     	    	sh 'chmod 777 art'
     	    	sh 'docker volume create --name input_v'
