@@ -41,8 +41,8 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                sh 'ls artifact'
-                sh 'echo ls artifact'
+                sh 'ls art'
+                sh 'echo ls art'
                 archiveArtifacts artifacts: '*.jar', fingerprint: true
                 junit '*.xml'
             }
