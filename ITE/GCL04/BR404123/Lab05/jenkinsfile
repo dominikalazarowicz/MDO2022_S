@@ -39,8 +39,8 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                sh 'ls artefakt/target/'
-                sh 'echo ls artefakt/target/'
+                sh 'ls artefakt/'
+                sh 'echo ls artefakt/'
                 archiveArtifacts artifacts: 'artefakt/target/*with-dependencies.jar', fingerprint: true
                 junit 'artefakt/target/surefire-reports/*.xml'
             }
