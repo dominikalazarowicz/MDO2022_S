@@ -38,8 +38,8 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                archiveArtifacts artifacts: '**/output_v/target/*with-dependencies.jar', fingerprint: true
-                junit '**/output_v/target/surefire-reports/*.xml'
+                archiveArtifacts artifacts: '**/*with-dependencies.jar', fingerprint: true
+                junit '**/surefire-reports/*.xml'
             }
         }
     }
