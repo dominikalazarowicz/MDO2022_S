@@ -15,20 +15,20 @@ pipeline {
             steps {
                 sh 'echo Uruchomiono Build'
                 sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
-                sh 'docker run --name lab05_builder --mount source=input_v,target=/input_v --mount source=output_v,target=/output_v'
+                sh 'docker run lab05_builder --mount source=input_v,target=/input_v --mount source=output_v,target=/output_v'
             }
         }
         stage('Test') {
             steps {
                 sh 'echo Uruchomiono Test'
                 sh 'docker build -t lab05_tester . -f ITE/GCL04/BR404123/Lab05/dockerfile_tester'
-                sh 'docker run --name lab05_tester --mount source=input_v,target=/input_v'
+                sh 'docker run lab05_tester --mount source=input_v,target=/input_v'
             }
         }
         stage('Deploy') {
             steps {
                 sh 'echo Uruchomiono Deploy'
-                sh 'docker run --name lab05_deploy --mount source=output_v,target=/output_v maven:3.8.4-jdk-11'
+                sh 'docker run lab05_deploy --mount source=output_v,target=/output_v maven:3.8.4-jdk-11'
             }
         }
         stage('Publish') {
