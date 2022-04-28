@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+    parameters {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
+    }
+    stages {
+        stage('Build') {
+            steps {
+                sh 'echo Uruchomiono Build'
+                sh 'docker build -t lab05_builder . -f dockerfile_builder'
+                sh 'docker run --name lab05_builder --mount source=input_v,target=/input_v --mount source=output_v,target=/output_v'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'echo Uruchomiono Test'
+                sh 'docker build -t lab05_tester . -f dockerfile_tester'
+                sh 'docker run --name lab05_tester --mount source=input_v,target=/input_v'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'echo Uruchomiono Deploy'
+                sh 'docker run --name lab05_deploy --mount source=output_v,target=/output_v maven:3.8.4-jdk-11'
+            }
+        }
+        stage('Publish') {
+            when {
+                environment name: 'PROMOTE', value: "true"
+            }
+            steps {
+                sh 'echo Uruchomiono Publish'
+                archiveArtifacts artifacts: '**/target/*with-dependencies.jar', fingerprint: true
+                junit '**/target/surefire-reports/*.xml'
+            }
+        }
+    }
+}
