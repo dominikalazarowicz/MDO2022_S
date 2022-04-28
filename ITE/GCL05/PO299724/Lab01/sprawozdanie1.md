@@ -1,11 +1,17 @@
-2 - sklonowanie repozytorium
+##### Na początku zainstalowano GIT
+Sklonowano repozytorium za pomocą HTTPS
 git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git
-
-3 - utworzenie klucza SSH
+![](2.png)
+##### Utworzono klucze SSH - jeden chroniony hasłem a drugi nie, dodano je na GitHUB
 ssh-keygen -t ed25519 -C "piotruplay@gmail.com"
+![](3_1.png)![](3_2.png)
 
-5 - utworzenie gałęzi posiadającej w nazwie moje inicjały i numer indeksu
+
+##### utworzenie gałąź poiadającą  mmoje inicjały i numer indeksu oraz zawierającą odpowiednią treść
 git checkout -b PO299724
+![](5.png)
 
-6 - Stworzenie pliku sprawozdanie1.md:
+#####Stworzenie pliku sprawozdanie1.md:
 cat>sprawozdanie1.md
+#####/fix - przenieesiono PO299724 wodpowiednie miejsce i zmergowano
+![](6.png)
