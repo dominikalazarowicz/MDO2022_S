@@ -13,5 +13,5 @@ git checkout -b PO299724
 
 ##### Stworzenie pliku sprawozdanie1.md:
 cat>sprawozdanie1.md
-#####/fix - przenieesiono PO299724 wodpowiednie miejsce i zmergowano
+##### /fix - przeniesiono PO299724 w odpowiednie miejsce i zmergowano
 ![](6.png)
