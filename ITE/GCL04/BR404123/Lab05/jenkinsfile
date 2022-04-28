@@ -7,6 +7,7 @@ pipeline {
     stages {
     	stage('Prepare') {
     	    steps {
+            	sh 'echo Uruchomiono Prepare'
     	    	sh 'mkdir artefakt'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
@@ -49,9 +50,7 @@ pipeline {
     post {
     	always {
     	    sh 'chmod 777 -R artefakt'
-    	    sh 'chmod 777 -R art'
     	    sh 'rm -rf artefakt'
-    	    sh 'rm -rf art'
     	}
     }
 }
