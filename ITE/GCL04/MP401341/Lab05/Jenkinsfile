@@ -50,8 +50,12 @@ pipeline {
           sh 'docker container logs build_container > artifacts/build_logs.txt'
             } 
         catchError {
-        sh 'docker container logs test_container > artifacts/test_logs.txt'
-            } 
+          script{
+            if (env.RUN_TESTS == true){
+                sh 'docker container logs test_container > artifacts/test_logs.txt'
+            }
+            }
+          } 
         archiveArtifacts 'artifacts/*_logs.txt'
         sh 'rm -rf artifacts'
       }
