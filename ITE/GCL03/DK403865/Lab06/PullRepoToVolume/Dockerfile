@@ -4,5 +4,5 @@ RUN echo 'Dockerfile pulling repo to volume 🍉'
 
 RUN git clone https://github.com/Klatix/NumberGuesserOOP.git
 WORKDIR NumberGuesserOOP/BasicNumberGuesser
-RUN pwd ; cd ../.. ; pwd ; cd .. ; pwd
-RUN dotnet build --output predeoploy_data/
+RUN pwd
+RUN pwd ; dotnet build --output predeoploy_data/
