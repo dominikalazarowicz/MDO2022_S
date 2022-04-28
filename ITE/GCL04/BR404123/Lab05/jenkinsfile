@@ -16,7 +16,7 @@ pipeline {
             steps {
                 sh 'echo Uruchomiono Build'
                 sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
-                sh 'docker run -v input_v:/input_v -v output_v:/output_v lab05_builder -v ${PWD}/art:/art'
+                sh 'docker run -v input_v:/input_v -v output_v:/output_v -v ${PWD}/art:/art lab05_builder'
             }
         }
         stage('Test') {
