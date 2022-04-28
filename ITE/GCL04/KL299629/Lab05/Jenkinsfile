@@ -17,5 +17,18 @@ pipeline {
 				}
 			}
 		}
+		stage('Test') {
+			steps {
+				sh 'docker build -t test . -f ITE/GCL04/KL299629/Lab05/dockerfile-test'     
+			}
+         		post {
+				success {
+					mail to: 'kalach@student.agh.edu.pl', subject: "Success of test", body: "Success of test: ${BUILD_URL}"
+				}
+				failure {
+					mail to: 'kalach@student.agh.edu.pl', subject: "Failure of test", body: "Failure of test: ${BUILD_URL}"
+				}
+			}
+         }
 	}
 }
