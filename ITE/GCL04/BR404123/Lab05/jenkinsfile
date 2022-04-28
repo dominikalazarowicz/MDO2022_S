@@ -7,6 +7,7 @@ pipeline {
     stages {
     	stage('Prepare') {
     	    steps {
+    	        sh 'rm -rf art'
     	    	sh 'mkdir art'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
@@ -43,5 +44,10 @@ pipeline {
                 junit 'art/target/surefire-reports/*.xml'
             }
         }
+    }
+    post {
+    	always {
+    	    sh 'rm -rf art'
+    	}
     }
 }
