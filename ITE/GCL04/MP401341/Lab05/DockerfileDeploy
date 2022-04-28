@@ -1,3 +1,2 @@
 FROM debian:10
-WORKDIR lz4
-CMD ./bin/lz4 --help
+CMD sh -c "cp build/bin/lz4 lz4 && ./lz4 --help"

@@ -18,7 +18,7 @@ pipeline {
         stage("Build") {
             steps {
                 sh 'docker build -t build . -f ITE/GCL04/MP401341/Lab05/DockerfileBuild'
-                sh 'docker run -v inputVol:/lz4 -v outputVol:/lz4pkg build'
+                sh 'docker run -v inputVol:/lz4 -v outputVol:/build build'
             }
         }
         stage("Test") {
@@ -33,14 +33,14 @@ pipeline {
         stage("Deploy") {
             steps {
                 sh 'docker build -t deployment . -f ITE/GCL04/MP401341/Lab05/DockerfileDeploy'
-                sh 'docker run  -v outputVol:/lz4  deployment'
+                sh 'docker run  -v outputVol:/build  deployment'
             }
         }
         stage("Publish") {
             steps {
                 sh 'mkdir bin -p'
                 sh 'docker build -t publish . -f ITE/GCL04/MP401341/Lab05/DockerfilePublish'
-                sh 'docker run  -v /bin:/public -v outputVol:/build publish'
+                sh 'docker run  -v $PWD/bin:/public -v outputVol:/build publish'
             }
         }
   	}
