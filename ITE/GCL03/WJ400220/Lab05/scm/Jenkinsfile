@@ -7,13 +7,13 @@ pipeline {
                     git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		    sh 'git checkout WJ400220'
 		    sh 'git pull origin'
-                    sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/build.dockerfile ; docker build -t build_node:latest .'
+                    sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/build.dockerfile ; docker build --no-cache -t build_node:latest . -f ./build.dockerfile'
                 }
            }
         }
         stage('Test') { 
             steps {
-                sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/test.dockerfile ; docker build -t test_node:latest .' 
+                sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/test.dockerfile ; docker build --no-cache -t test_node:latest . -f ./test.dockerfile' 
             }
         }
     }
