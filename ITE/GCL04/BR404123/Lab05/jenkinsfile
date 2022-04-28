@@ -41,15 +41,17 @@ pipeline {
                 sh 'echo Uruchomiono Publish'
                 sh 'ls artefakt'
                 sh 'echo ls artefakt'
-                archiveArtifacts artifacts: 'art/target/*.jar', fingerprint: true
-                junit 'art/target/surefire-reports/*.xml'
+                archiveArtifacts artifacts: '*.jar', fingerprint: true
+                junit '*.xml'
             }
         }
     }
     post {
     	always {
     	    sh 'chmod 777 -R artefakt'
+    	    sh 'chmod 777 -R art'
     	    sh 'rm -rf artefakt'
+    	    sh 'rm -rf art'
     	}
     }
 }
