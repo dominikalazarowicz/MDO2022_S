@@ -3,4 +3,4 @@ FROM calculator-dependencies
 
 RUN echo 'DOCKER TEST'
 
-RUN npm test a -q
+RUN npm test a
