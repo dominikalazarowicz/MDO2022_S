@@ -3,6 +3,7 @@ pipeline {
 	stages {
 		stage('Test') {
 			steps {
+                sh 'ls'
                 sh 'cd MDO2022_S/Grupy/Grupa01/JC401889/Lab07/Docker'
                 sh 'docker-compose build'
 				sh 'docker-compose up'
