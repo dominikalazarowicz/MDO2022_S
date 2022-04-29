@@ -1,10 +1,12 @@
 pipeline {
-	agent any
+	agent {
+        
+    }
 	stages {
 		stage('Test') {
 			steps {
                 sh 'ls'
-                sh 'cd Grupy/Grupa01/JC401889/Lab07/Docker'
+                dir 'Grupy/Grupa01/JC401889/Lab07/Docker'
                 sh 'ls'
                 sh 'docker-compose build'
 				sh 'docker-compose up'
