@@ -6,6 +6,7 @@ pipeline {
                 sh 'ls'
                 dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
                     sh 'ls'
+                    sh 'docker-compose --version'
                     sh 'docker-compose build'
 				    sh 'docker-compose up'
                 }
