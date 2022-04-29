@@ -4,10 +4,11 @@ pipeline {
 		stage('Test') {
 			steps {
                 sh 'ls'
-                dir 'Grupy/Grupa01/JC401889/Lab07/Docker'
-                sh 'ls'
-                sh 'docker-compose build'
-				sh 'docker-compose up'
+                dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
+                    sh 'ls'
+                    sh 'docker-compose build'
+				    sh 'docker-compose up'
+                }
             }
             post {
                 failure {
