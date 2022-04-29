@@ -1,7 +1,10 @@
-FROM ubuntu:latest
+FROM node:lts
 
-RUN apt-get update
-RUN apt install -y git
-RUN git clone https://github.com/deltachat/deltachat-desktop.git
-WORKDIR berty-chat
-CMD ["npm", "test"]
+WORKDIR /app
+
+CMD apt update; apt upgrade -y; \
+     bash /test/check.sh; \
+     cd ./wire-desktop; \
+     yarn; \ 
+     yarn fix:other; \ 
+     yarn test:types && yarn lint && yarn prestart && yarn build:ts:tests && yarn test:react && yarn test:bin && yarn clear:coverage;
