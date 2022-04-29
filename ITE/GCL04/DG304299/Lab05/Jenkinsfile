@@ -9,7 +9,7 @@ pipeline
         {
             steps 
             {
-               sh 'docker build -t build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
+               sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
                
             }
         }
@@ -19,8 +19,7 @@ pipeline
             steps 
             {
                
-              sh 'docker build -t build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
-              sh 'docker images'
+              sh 'docker build -t test_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
             }
         }
 
@@ -28,6 +27,7 @@ pipeline
         {
             steps 
             {
+              sh 'docker images'
               sh 'docker build -t build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
             }
         }
