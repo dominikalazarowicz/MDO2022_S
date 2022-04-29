@@ -7,7 +7,7 @@ pipeline {
                 dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
                     sh 'ls'
                     sh 'docker-compose --version'
-				    sh 'docker-compose up'
+				    sh 'docker-compose up build_agent'
                 }
             }
             post {
