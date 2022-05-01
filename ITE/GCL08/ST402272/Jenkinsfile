@@ -8,6 +8,16 @@ pipeline {
     }
 
     stages {
+		stage('Clone repo into vol') {
+			steps {
+				sh 'docker volume create vol-in'
+				sh 'docker rm vol-out || true'
+				sh 'docker run -v vol-in:/data --name vol-out busybox true'
+				sh 'cd ~/ && ls vim || git clone https://github.com/vim/vim.git'
+				sh 'docker cp ~/vim vol-out:/data'
+				sh 'docker rm vol-out'
+			}
+        }
         stage('Build') {
             steps {
                 sh "apt update"
