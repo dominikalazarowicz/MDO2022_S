@@ -1,2 +1,3 @@
 FROM debian:10
-CMD sh -c "cp build/bin/lz4 lz4 && ./lz4 --help"
+RUN echo "Testing if compression is working properly" > original
+CMD sh -c "cp build/bin/lz4 lz4 && ./lz4 original compressed && ./lz4 -d compressed decompressed &&  diff original decompressed && echo Compression and decompression succesful"
