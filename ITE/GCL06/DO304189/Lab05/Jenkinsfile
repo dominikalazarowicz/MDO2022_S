@@ -1,0 +1,24 @@
+pipeline 
+{
+    agent any
+    stages
+     {
+        stage('Build') 
+        {
+            steps 
+            {
+               sh 'docker build . -f dockerfile_build -t nodered_build ./ITE/GCL06/DO304189/Lab05/dockerfile_build'
+               
+            }
+        }
+
+         stage('Test') 
+        {
+            steps 
+            {
+               
+              sh 'docker build . -f dockerfile_test -t nodered_test ./ITE/GCL06/DO304189/Lab05/dockerfile_test'
+            }
+        }
+    }
+}
