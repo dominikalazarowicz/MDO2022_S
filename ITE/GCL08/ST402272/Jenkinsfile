@@ -1,0 +1,25 @@
+pipeline {
+    agent {
+        docker {
+            image 'ubuntu'
+            args '-u root:sudo -v $HOME/workspace/test:/test'
+        }
+
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                sh "apt update"
+                sh "apt install -y git libtool-bin make libncurses-dev"
+                sh "git clone https://github.com/vim/vim.git || true"
+                sh "cd vim && make"
+            }
+        }
+        stage('Test') {
+            steps {
+                sh "cd vim && (make test || true)"
+            }
+        }
+    }
+}

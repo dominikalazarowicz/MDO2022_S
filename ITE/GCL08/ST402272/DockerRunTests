@@ -1,0 +1,3 @@
+FROM ubuntu0-build-vim:latest
+WORKDIR /vim/
+RUN make test
