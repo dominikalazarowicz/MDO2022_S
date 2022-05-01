@@ -7,7 +7,7 @@ pipeline
         {
             steps 
             {
-               sh 'docker build -t nodered_build -f ./ITE/GCL06/DO304189/Lab05/dockerfile_build'
+               sh 'docker build . -f ./ITE/GCL06/DO304189/Lab05/dockerfile_build -t nodered_build'
                
             }
         }
@@ -17,7 +17,7 @@ pipeline
             steps 
             {
                
-              sh 'docker build -t nodered_test -f ./ITE/GCL06/DO304189/Lab05/dockerfile_test'
+              sh 'docker build . -f ./ITE/GCL06/DO304189/Lab05/dockerfile_test -t nodered_test'
             }
         }
     }
