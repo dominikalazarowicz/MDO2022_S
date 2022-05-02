@@ -14,7 +14,7 @@ pipeline
                sh 'docker volume  create --name input_vol'
                sh 'docker volume  create --name out_vol'
                sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh 'docker run -v repo_vol:/app_build'
+               sh 'docker run -v input_vol:/app_build'
                
             }
         }
