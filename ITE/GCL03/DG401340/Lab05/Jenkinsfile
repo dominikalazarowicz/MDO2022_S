@@ -5,7 +5,7 @@ pipeline {
             defaultValue: false,
             description: "Promote to new version, when successful?")
         string(name: "version",
-            defaultValue: false,
+            defaultValue: "",
             description: "Type in verion number:")
     }
     stages {
@@ -35,17 +35,17 @@ pipeline {
         }
         stage("Publish") {
             steps {
-                if(${params.promote})
-                {
-                    sh "mkdir -p ${params.version}"
-                    sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                    sh "docker cp copy:/volume_out/*.jar ./${params.version}"
-                    sh "docker rm copy"
-                    archiveArtifacts artifacts: "${params.version}/*.jar"
-                }
-                else
-                {
-                    echo "Everything was successful, but not promoting to new version!"
+                script {
+                    if(${params.promote}) {
+                        sh "mkdir -p ${params.version}"
+                        sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
+                        sh "docker cp copy:/volume_out/*.jar ./${params.version}"
+                        sh "docker rm copy"
+                        archiveArtifacts artifacts: "${params.version}/*.jar"
+                    }
+                    else {
+                        echo "Everything was successful, but not promoting to new version!"
+                    }
                 }
             }
         }
