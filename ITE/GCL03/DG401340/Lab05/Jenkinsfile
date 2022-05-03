@@ -40,7 +40,7 @@ pipeline {
                         sh "mkdir ${params.version}"
                         sh "cd ${params.version}"
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out/*.jar ./"
+                        sh "docker cp copy:/volume_out ./"
                         sh "docker rm copy"
                         sh "ls -a"
                         archiveArtifacts artifacts: "./*.jar"
