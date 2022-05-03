@@ -48,7 +48,7 @@ pipeline {
             steps {
                 sh 'echo Uruchomiono Publish'
                 sh 'ls'
-                archiveArtifacts artifacts: '/var/lib/docker/volumes/output_v/_data/*.jar', fingerprint: true
+                archiveArtifacts artifacts: '/var/lib/docker/volumes/output_v/_data/target/*.jar', fingerprint: true
                 junit '*.xml'
             }
         }
