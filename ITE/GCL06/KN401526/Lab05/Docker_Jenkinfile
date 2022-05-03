@@ -20,3 +20,5 @@ pipeline
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
             }
         }
+      }
+}
