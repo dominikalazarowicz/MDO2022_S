@@ -12,6 +12,7 @@ pipeline {
     	    	sh 'ls'
     	    	sh 'pwd'
     	        sh 'chmod 777 -R artifact'
+		sh 'docker volume prune -f'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
     	    }
