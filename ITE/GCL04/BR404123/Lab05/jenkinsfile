@@ -63,7 +63,7 @@ pipeline {
                 sh 'ls'
             }
         }
-	stage('Test 2') {
+	stage('Deploy 2') {
 	    agent {
 		docker {
 		    image'lab05_deploy'
