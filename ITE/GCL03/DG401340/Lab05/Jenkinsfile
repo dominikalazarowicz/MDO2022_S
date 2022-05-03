@@ -36,12 +36,14 @@ pipeline {
         stage("Publish") {
             steps {
                 script {
-                    if(${params.promote}) {
-                        sh "mkdir -p ${params.version}"
+                    if(params.promote) {
+                        sh "mkdir ${params.version}"
+                        sh "cd ${params.version}"
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out/*.jar ./${params.version}"
+                        sh "docker cp copy:/volume_out/*.jar ./"
                         sh "docker rm copy"
-                        archiveArtifacts artifacts: "${params.version}/*.jar"
+                        sh "ls -a"
+                        archiveArtifacts artifacts: "./*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
