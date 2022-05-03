@@ -1,8 +1,8 @@
 FROM maven:3.8.4-jdk-11
 RUN git clone https://github.com/vtandonv/CalculatorUsingDevOps.git input_v
 
-WORKDIR input_v
-CMD mvn package
-CMD cp -r target/* /public
-CMD cp -r target /output_v/
-CMD chmod 777 -R /public
+WORKDIR public
+CMD mvn package /input_v/
+CMD cp -r /input_v/target /output_v/
+CMD cp -r /input_v/target .
+CMD chmod 777 -R .
