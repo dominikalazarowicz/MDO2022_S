@@ -91,7 +91,8 @@ pipeline {
                 sh 'ls'
 		sh 'echo ${VERSION}'
 		sh 'cp -r /output_v/ ./artifact/'
-		sh 'mv artifact/*jar-with-dependencies.jar artifact/calculator_${VERSION}.jar'
+		sh 'ls artifact'
+		sh 'mv artifact/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 artifact/calculator_${VERSION}.jar'
 		sh 'ls artifact'
                 archiveArtifacts artifacts: 'artifact/calculator_*.jar', fingerprint: true
             }
