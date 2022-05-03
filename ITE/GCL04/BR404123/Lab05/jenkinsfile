@@ -21,6 +21,7 @@ pipeline {
                 sh 'echo Uruchomiono Build'
                 sh 'docker build -t lab05_builder . -f ITE/GCL04/BR404123/Lab05/dockerfile_builder'
                 sh 'docker run -v input_v:/input_v -v output_v:/output_v -v ${PWD}/artifact:/public lab05_builder'
+                sh 'ls'
             }
         }
         stage('Test') {
@@ -28,6 +29,7 @@ pipeline {
                 sh 'echo Uruchomiono Test'
                 sh 'docker build -t lab05_tester . -f ITE/GCL04/BR404123/Lab05/dockerfile_tester'
                 sh 'docker run -v input_v:/input_v lab05_tester'
+                sh 'ls'
             }
         }
         stage('Deploy') {
@@ -35,6 +37,7 @@ pipeline {
                 sh 'echo Uruchomiono Deploy'
                 sh 'docker build -t lab05_deploy . -f ITE/GCL04/BR404123/Lab05/dockerfile_deploy'
                 sh 'docker run -v output_v:/output_v lab05_deploy'
+                sh 'ls'
             }
         }
         stage('Publish') {
@@ -43,7 +46,7 @@ pipeline {
             }
             steps {
                 sh 'echo Uruchomiono Publish'
-                sh 'ls artifact'
+                sh 'ls'
                 archiveArtifacts artifacts: '*.jar', fingerprint: true
                 junit '*.xml'
             }
@@ -51,6 +54,7 @@ pipeline {
     }
     post {
     	always {
+            sh 'ls'
     	    sh 'chmod 777 -R artifact'
     	    sh 'rm -rf artifact'
     	}
