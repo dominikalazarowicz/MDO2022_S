@@ -5,7 +5,7 @@ WORKDIR input_v
 CMD mvn package
 CMD ls
 CMD CD ..
-CMD mkdir public
-CMD cp -r input_v/target output_v
-CMD cp -r input_v/target public
-CMD chmod 777 -R public
+CMD mkdir artifact
+CMD cp -r input_v/target /output_v
+CMD cp -r input_v/target /artifact
+CMD chmod 777 -R /artifact
