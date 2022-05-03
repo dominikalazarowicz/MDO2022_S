@@ -34,7 +34,7 @@ pipeline {
 	    steps {
 		sh 'echo Uruchomiono Build 2'
 		sh 'cp -r /input_v/target/* /output_v/'
-		sh 'ls /output/'
+		sh 'ls /output_v/'
 	    }
 	}
         stage('Test 1') {
