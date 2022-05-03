@@ -5,5 +5,3 @@ WORKDIR input_v
 CMD mvn package
 CMD ls
 CMD cp -r target /output_v/
-CMD cp -r target/* /public
-CMD chmod 777 -R /public
