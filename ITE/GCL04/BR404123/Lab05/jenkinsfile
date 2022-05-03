@@ -8,8 +8,9 @@ pipeline {
     	stage('Prepare') {
     	    steps {
             	sh 'echo Uruchomiono Prepare'
-    	        sh 'rm -rf art'
     	    	sh 'mkdir artifact -p'
+    	    	sh 'ls'
+    	    	sh 'pwd'
     	        sh 'chmod 777 -R artifact'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
@@ -50,7 +51,6 @@ pipeline {
     }
     post {
     	always {
-    	    sh 'pwd'
     	    sh 'chmod 777 -R artifact'
     	    sh 'rm -rf artifact'
     	}
