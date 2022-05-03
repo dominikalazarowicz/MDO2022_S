@@ -93,8 +93,10 @@ pipeline {
 		sh 'echo ${VERSION}'
 		sh 'cp -r /output_v/ ./artifact/'
 		sh 'ls artifact'
-		sh 'mv artifact/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 artifact/calculator_${VERSION}.jar'
+		/*sh 'mv artifact/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 artifact/calculator_${VERSION}.jar'*/
 		sh 'ls artifact'
+		sh 'pwd'
+		sh 'rm -rf artifact'
                 archiveArtifacts artifacts: 'artifact/calculator_*.jar', fingerprint: true
             }
         }
@@ -103,6 +105,7 @@ pipeline {
     	always {
 	    sh 'echo Czyszchoch'
             sh 'ls artifact'
+	    sh 'pwd'
     	    sh 'chmod 777 -R artifact'
     	    sh 'rm -rf artifact'
     	}
