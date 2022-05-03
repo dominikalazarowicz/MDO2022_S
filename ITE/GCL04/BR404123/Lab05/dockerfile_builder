@@ -3,8 +3,6 @@ RUN git clone https://github.com/vtandonv/CalculatorUsingDevOps.git input_v
 
 WORKDIR input_v
 CMD mvn package
-CMD ls
+CMD cp -r target/* /public
 CMD cp -r target /output_v/
-CMD cp -r target /public/
-CMD ls /public
 CMD chmod 777 -R /public
