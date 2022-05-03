@@ -4,8 +4,4 @@ RUN git clone https://github.com/vtandonv/CalculatorUsingDevOps.git input_v
 WORKDIR input_v
 CMD mvn package
 CMD ls
-CMD CD ..
-CMD mkdir artifact
-CMD cp -r input_v/target /output_v
-CMD cp -r input_v/target /artifact
-CMD chmod 777 -R /artifact
+CMD cp -r target /output_v/
