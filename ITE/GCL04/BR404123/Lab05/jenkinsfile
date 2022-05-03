@@ -8,10 +8,10 @@ pipeline {
     	stage('Prepare') {
     	    steps {
             	sh 'echo Uruchomiono Prepare'
-    	    	sh 'mkdir artifact -p'
-    	    	sh 'ls artifact'
+    	    	sh 'mkdir publish -p'
+    	    	sh 'ls publish'
     	    	sh 'pwd'
-    	        sh 'chmod 777 -R artifact'
+    	        sh 'chmod 777 -R publish'
 		sh 'docker volume prune -f'
     	    	sh 'docker volume create --name input_v'
     	    	sh 'docker volume create --name output_v'
@@ -91,23 +91,23 @@ pipeline {
                 sh 'echo Uruchomiono Publish'
                 sh 'ls'
 		sh 'echo ${VERSION}'
-		sh 'cp -r /output_v/ ./artifact/'
-		sh 'ls artifact'
-		/*sh 'mv artifact/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 artifact/calculator_${VERSION}.jar'*/
-		sh 'ls artifact'
+		sh 'cp -r /output_v/ ./publish/'
+		sh 'ls publish'
+		/*sh 'mv publish/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 publish/calculator_${VERSION}.jar'*/
+		sh 'ls publish'
 		sh 'pwd'
-		sh 'rm -rf artifact'
-                archiveArtifacts artifacts: 'artifact/calculator_*.jar', fingerprint: true
+		sh 'rm -rf publish'
+                archiveArtifacts artifacts: 'publish/calculator_*.jar', fingerprint: true
             }
         }
     }
     post {
     	always {
 	    sh 'echo Czyszchoch'
-            sh 'ls artifact'
+            sh 'ls publish'
 	    sh 'pwd'
-    	    sh 'chmod 777 -R artifact'
-    	    sh 'rm -rf artifact'
+    	    sh 'chmod 777 -R publish'
+    	    sh 'rm -rf publish'
     	}
    }
 }
