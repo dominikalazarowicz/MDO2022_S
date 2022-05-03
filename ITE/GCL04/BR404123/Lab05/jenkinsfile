@@ -93,11 +93,11 @@ pipeline {
 		sh 'echo ${VERSION}'
 		sh 'cp -r /output_v/ ./publish/'
 		sh 'ls publish'
-		/*sh 'mv publish/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 publish/calculator_${VERSION}.jar'*/
+		sh 'mv publish/calculatorDevOps-1.0-SNAPSHOT-jar-with-dependencies.jar	 publish/calculator_${VERSION}.jar'
 		sh 'ls publish'
 		sh 'pwd'
-		sh 'rm -rf publish'
                 archiveArtifacts artifacts: 'publish/calculator_*.jar', fingerprint: true
+		sh 'rm -rf publish'
             }
         }
     }
