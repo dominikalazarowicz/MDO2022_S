@@ -49,8 +49,11 @@ pipeline {
     }
     post {
     	always {
+    	    sh 'pwd'
     	    sh 'chmod 777 -R artifact'
     	    sh 'rm -rf artifact'
+    	}
+   }
     	}
     }
 }
