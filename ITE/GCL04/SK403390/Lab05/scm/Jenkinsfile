@@ -22,6 +22,7 @@ pipeline {
 	    steps {
 		sh 'docker run --rm --name deployContainer2 -dit ubuntu'
 		sh 'docker cp fe-text deployContainer2:.'
+		sh 'docker container exec deployContainer2 sh -c 'cd fe-text;ls''
 		sh 'docker kill deployContainer2'
 		sh 'ls'
 		sh 'ls fe-text'
