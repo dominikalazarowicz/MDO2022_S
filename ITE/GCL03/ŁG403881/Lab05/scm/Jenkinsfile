@@ -4,7 +4,7 @@ pipeline {
         stage('Building') {
             agent any
             steps {
-                sh 'ping google.com'
+                sh 'apt-get update; apt-get install iputils-ping; ping google.com'
             }
         }
     }
