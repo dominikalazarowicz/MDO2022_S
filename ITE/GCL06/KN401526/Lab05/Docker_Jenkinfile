@@ -1,0 +1,24 @@
+pipeline 
+{
+    agent any
+    stages
+     {
+        stage('Build') 
+        {
+            steps 
+            {
+               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
+               
+            }
+        }
+
+         stage('Test') 
+        {
+            steps 
+            {
+               
+              sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
+            }
+        }
+      }
+}

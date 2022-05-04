@@ -1,0 +1,5 @@
+FROM kacper_build:latest
+
+WORKDIR mongo-express
+
+RUN npm test
