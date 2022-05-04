@@ -6,3 +6,4 @@ RUN DEBIAN_FRONTEND='noninteractive' apt-get install -y libglib2.0-dev libssl-de
 RUN git clone https://github.com/irssi/irssi.git
 WORKDIR irssi
 RUN meson setup build
+RUN ninja -C/irssi/build
