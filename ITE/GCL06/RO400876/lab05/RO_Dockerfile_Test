@@ -1,0 +1,3 @@
+FROM ro_build:latest
+WORKDIR json-server
+RUN npm test

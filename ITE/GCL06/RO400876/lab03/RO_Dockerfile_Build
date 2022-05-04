@@ -1,0 +1,6 @@
+FROM node:latest
+RUN git clone https://github.com/typicode/json-server.git
+WORKDIR json-server
+RUN npm update
+RUN npm install
+RUN npm run build
