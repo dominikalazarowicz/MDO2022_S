@@ -1,0 +1,161 @@
+  359  docker volume create input
+  360  docker volume create --name output
+  361  docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-alpine sh
+  362  docker ps
+  363  docker ps -a
+  364  docker start eada
+  365  docker start build
+  366  docker start -a build
+  367  docker ps -a
+  368  docker run -it --name clone --mount 'source=input,destination=/input' alpine sh
+  369  ls
+  370  docker ps -a
+  371  docker rm 3c eada
+  372  docker ps -a
+  373  docker rm eada
+  374  docker stop eada
+  375  docker rm eada
+  376  docker ps -a
+  377  docker volume ls
+  378  docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-jdk-alpine sh
+  379  docker run -it --name clone --mount 'source=input,destination=/input' alpine sh
+  380  docker run -it --name ip3-client alpine
+  381  docker run -it --name ip3-client alpine
+  382  docker ps -a
+  383  docker ip3-client
+  384  docker rm ip3-client
+  385  history
+  386  docker ps -a
+  387  docker stop 76f
+  388  docker rm 76f f2b
+  389  docker volumes ls
+  390  docker volume create input
+  391  docker volume create --name output
+  392  docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-jdk-alpine sh
+  393  docker run -it --name clone --mount 'source=input,destination=/input' alpine sh
+  394  docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-jdk-alpine sh
+  395  docker ps -a
+  396  docker start -a build
+  397  docker rm build
+  398  docker stop build
+  399  docker rm build
+  400  docker run -it --name build --mount 'source=input,destination=/input' --mount 'source=output,destination=/output' openjdk:16-jdk-alpine sh
+  401  ls /var/lib/docker/volumes/output/_data/
+  402  docker run -it --name ip3-server alpine
+  403  docker ps -a
+  404  docker rm ip3-server
+  405  docker run -it --name ip3-server alpine
+  406  docker ps -a
+  407  docker rm ip3-server
+  408  docker run -it --name ip3-server alpine
+  409  docker ps -a
+  410  docker rm ip3-server ip3-client
+  411  docker rm ip3-server ip3-client
+  412  docker run -it --name ip3-server alpine
+  413  docker network create jenkins
+  414  docker run --name jenkins-docker --rm --detach   --privileged --network jenkins --network-alias docker   --env DOCKER_TLS_CERTDIR=/certs   --volume jenkins-docker-certs:/certs/client   --volume jenkins-data:/var/jenkins_home   --publish 2376:2376   docker:dind --storage-driver overlay2
+  415  ls
+  416  cd ..
+  417  ls
+  418  cd home/
+  419  ls
+  420  cd mikolaj/
+  421  ls
+  422  cd devops/
+  423  ls
+  424  cd MDO2022_S/
+  425  ls
+  426  cd ITE/
+  427  ls
+  428  cd GCL05/
+  429  ls
+  430  cd MM400112/
+  431  ls
+  432  mkdir Lab04
+  433  cd Lab04
+  434  touch Dockerfile
+  435  nano Dockerfile
+  436  cat Dockerfile 
+  437  docker build -t myjenkins-blueocean:2.332.1-1 .
+  438  ls
+  439  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro \
+  440  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.2-1
+  441  ls
+  442  cd ,,
+  443  cd ..
+  444  ls
+  445  cd Lab04
+  446  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro \
+  447  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.2-1
+  448  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro \
+  449  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.2-1
+  450  docker run   --name jenkins-blueocean   --rm   --detach   --network jenkins   --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client   --env DOCKER_TLS_VERIFY=1   --publish 8080:8080   --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.2-1 
+  451  docker run   --name jenkins-blueocean   --rm   --detach   --network jenkins   --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client   --env DOCKER_TLS_VERIFY=1   --publish 8080:8080   --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.1-1 
+  452  docker container list
+  453  cat /var/jenkins_home/secrets/initialAdminPassword
+  454  journalctl -u jenkins.service.
+  455  ls /var/
+  456  ls -la /var/
+  457  docker pa
+  458  docker pa
+  459  docker ps
+  460  docker exec -it jenkins-blueocean sh
+  461  docker exec 97302d cat /var/jenkins_home/secrets/initialAdminPassword
+  462  docker ps
+  463  docker ps -a
+  464  docker ps -a
+  465  docker images
+  466  docker ps -a
+  467  docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
+  468  docker exec jenkins-blueocean cat /var/jenkins_home/secrets/initialAdminPassword
+  469  docker ps -a
+  470  ks
+  471  ls
+  472  cd ..
+  473  cd home/
+  474  ls
+  475  cd mikolaj/
+  476  ls
+  477  docker ps -a
+  478  docker images
+  479  docker network create jenkins
+  480  docker run --name jenkins-docker --rm --detach   --privileged --network jenkins --network-alias docker   --env DOCKER_TLS_CERTDIR=/certs   --volume jenkins-docker-certs:/certs/client   --volume jenkins-data:/var/jenkins_home   --publish 2376:2376   docker:dind --storage-driver overlay2
+  481  docker run --name jenkins-docker --rm --detach   --privileged --network jenkins --network-alias docker   --env DOCKER_TLS_CERTDIR=/certs   --volume jenkins-docker-certs:/certs/client   --volume jenkins-data:/var/jenkins_home   --publish 2376:2376   docker:dind --storage-driver overlay2
+  482  docker ps -a
+  483  docker rm b88
+  484  docker stop b88
+  485  docker rm b88
+  486  docker run --name jenkins-docker --rm --detach   --privileged --network jenkins --network-alias docker   --env DOCKER_TLS_CERTDIR=/certs   --volume jenkins-docker-certs:/certs/client   --volume jenkins-data:/var/jenkins_home   --publish 2376:2376   docker:dind --storage-driver overlay2
+  487  ls
+  488  touch Dockerfile
+  489  nano Dockerfile 
+  490  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.2-1
+  491  docker build -t myjenkins-blueocean:2.332.2-1 .
+  492  docker run --name jenkins-blueocean --rm --detach   --network jenkins --env DOCKER_HOST=tcp://docker:2376   --env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1   --publish 8080:8080 --publish 50000:50000   --volume jenkins-data:/var/jenkins_home   --volume jenkins-docker-certs:/certs/client:ro   myjenkins-blueocean:2.332.2-1
+  493  docker ps -a
+  494  docker exec f613 cat /var/jenkins_home/secrets/initialAdminPassword
+  495  docker ps -a
+  496  docker stop jenkins-blue
+  497  docker stop jenkins-blueocean
+  498  docker stop jenkins-docker
+  499  docker images
+  500  docker ps -a
+  501  ls
+  502  cd ..
+  503  ls
+  504  cd home/
+  505  ls
+  506  cd mikolaj/
+  507  ls
+  508  cd devops/
+  509  ls
+  510  cd MDO2022_S/
+  511  ls
+  512  cd ITE/
+  513  ls
+  514  cd GCL05/
+  515  ls
+  516  cd MM400112/
+  517  ls
+  518  cd Lab04/
+  519  history > history.txt
