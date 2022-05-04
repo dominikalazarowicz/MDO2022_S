@@ -7,6 +7,7 @@ pipeline {
 		stage('Prep') {
 			steps {
 					sh 'ls'
+					sh 'git checkout WM400039'
 					sh 'docker build -f MDO2022_S/ITE/GCL04/WM400039/lab5/build_dockerfile -t app_build:latest .'
 					sh 'docker run app_build'
 				} 
