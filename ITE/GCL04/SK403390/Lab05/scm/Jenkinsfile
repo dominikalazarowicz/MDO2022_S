@@ -35,7 +35,8 @@ pipeline {
 		sh 'docker container exec deployContainer2 sh -c "DEBIAN_FRONTEND="noninteractive" apt-get install -y libglib2.0"'
 		sh "docker container exec deployContainer2 sh -c 'apt-get install -y libutf8proc-dev'"
 		sh 'docker container exec deployContainer2 ls fe-text'
-		sh "docker container exec deployContainer2 sh -c './fe-text/irssi --version'"
+		sh "docker container exec deployContainer2 sh -c 'file .fe-text/irssi.p'
+		sh "docker container exec deployContainer2 sh -c './fe-text/irssi.p --version'"
 		sh 'docker kill deployContainer2'
 	    }
 	}
