@@ -4,10 +4,13 @@ pipeline {
 	npm_creds = credentials('npm-creds')
 } 
 	stages {
-		stage('Build') {
+		stage('Prep') {
 			steps {
-				sh 'docker build -f ./build_dockerfile -t app_build:latest .'
-				sh 'docker run app_build' 
+					sh 'git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S'
+					sh 'git checkout WM400039' 
+					sh 'docker build -f .MDO2022_S/ITE/GCL04/WM400039/lab5/build_dockerfile -t app_build:latest .'
+					sh 'docker run app_build'
+				} 
 			}
 		}
 	}
