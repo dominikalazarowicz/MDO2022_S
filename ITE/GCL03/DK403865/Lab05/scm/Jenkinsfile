@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+		sh 'git checkout DK403865'
+		sh 'git pull origin'
+		sh 'cd ITE/GCL03/DK403865/Lab05/Dockerfiles/DockerfileBuild ; docker build -t build_base:latest .'            
+	}
+        }
+	stage('Test') {
+            steps {
+                sh 'cd ITE/GCL03/DK403865/Lab05/Dockerfiles/DockerfileTest ; docker build -t test_base:latest .'  
+            }
+        }
+
+    }
+}

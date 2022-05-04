@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build-dotnet-deps-image') {
+            steps {
+		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+		sh 'git checkout DK403865'
+		sh 'git pull origin'
+		sh 'cd ITE/GCL03/DK403865/Lab06/DotnetDeps ; docker build -t dotnet_deps:latest .'            
+	}
+        }
+	stage('deploy') {
+            steps {
+		sh 'docker volume create predeploy_data'
+		sh 'cd ITE/GCL03/DK403865/Lab06/PullRepoToVolume ; docker build --rm .'
+		sh 'docker rm dotnet_deploy'
+                sh 'docker run --name dotnet_deploy --mount source=predeploy_data,target=/predeploy_data dotnet_deps:latest'
+		sh 'pwd'
+            }
+        }
+
+    }
+}
