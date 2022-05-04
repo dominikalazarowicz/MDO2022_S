@@ -14,8 +14,8 @@ network  --hostname=lab9.agh
 
 # plytka FULL jako URL/REPO uzywa "DVD", ale plytka NETINST od niedawna
 # ...nie uzywa *nic*. Podajemy recznie zatem.
-url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-29&arch=x86_64
-repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f29&arch=x86_64
+url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
+repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-$releasever&arch=x86_64
 
 %packages
 @^minimal-environment
