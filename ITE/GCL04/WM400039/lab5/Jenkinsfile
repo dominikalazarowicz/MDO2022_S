@@ -16,9 +16,8 @@ pipeline {
 		stage('Test') {
 			steps {
 			        dir('ITE/GCL04/WM400039/lab5')
-					{	
-						sh 'ls'
-						sh 'docker build -f/test_dockerfile -t app_test:latest .'
+					{
+						sh 'docker build -f ./test_dockerfile -t app_test:latest .'
 						sh 'docker run test_build'
 					}
 				}
