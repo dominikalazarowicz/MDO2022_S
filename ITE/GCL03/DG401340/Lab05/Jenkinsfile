@@ -37,10 +37,10 @@ pipeline {
                 script {
                     if(params.promote) {
                         sh "mkdir ${params.version}"
-                        sh "cd ${params.version}"
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out ./"
+                        sh "docker cp copy:/volume_out ./${params.version}"
                         sh "docker rm copy"
+                        sh "cd ${params.version}"
                         sh "ls -a"
                         archiveArtifacts artifacts: "./*.jar"
                     }
