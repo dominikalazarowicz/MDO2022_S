@@ -4,7 +4,7 @@ pipeline {
         stage('Building') {
             agent any
             steps {
-                sh 'ping google.com'
+                sh 'cd ./ITE/GCL03/ŁG403881/Lab05/scm/build; docker build -t build:latest . -f Dockerfile'
             }
         }
     }
