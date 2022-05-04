@@ -18,16 +18,8 @@ network  --hostname=lab9.agh
 
 %end
 
-# Run the Setup Agent on first boot
-firstboot --enable
-
-# Generated using Blivet version 3.4.3
-ignoredisk --only-use=sda
-# Partition clearing information
-clearpart --none --initlabel
-# Disk partitioning information
-part / --fstype="xfs" --ondisk=sda --size=15359
-part /boot --fstype="xfs" --ondisk=sda --size=1024
+clearpart --all
+autopart --type=lvm
 
 # System timezone
 timezone Europe/Warsaw --utc
