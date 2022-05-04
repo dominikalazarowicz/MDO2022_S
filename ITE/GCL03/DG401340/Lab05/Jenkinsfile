@@ -40,9 +40,8 @@ pipeline {
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
                         sh "docker cp copy:/volume_out ./${params.version}"
                         sh "docker rm copy"
-                        sh "cd ${params.version}"
                         sh "ls -a"
-                        archiveArtifacts artifacts: "./*.jar"
+                        archiveArtifacts artifacts: "./${params.version}/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
