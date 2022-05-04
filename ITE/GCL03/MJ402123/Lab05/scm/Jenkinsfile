@@ -10,10 +10,12 @@ pipeline {
 		timeout(time: 1, unit: 'HOURS')
 }
             steps {
+		sh 'docker kill kontener || true'
+		sleep 2
                 sh 'docker build -t buildirssi . -f ITE/GCL03/MJ402123/Lab05/Docker-BLDR'
 		sh 'docker run --name kontener -dit --rm buildirssi'
 		sh 'rm irssi || true'
-		sh 'docker cp kontener:irssi/build/src/irssi .'
+		sh 'docker cp kontener:irssi/build/src/fe-text/irssi .'
 		sh 'docker kill kontener'
             }
         }
