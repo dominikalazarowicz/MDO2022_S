@@ -1,20 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage('dotnet install'){
-            agent {
-                docker {
-                    image 'mcr.microsoft.com/dotnet/sdk:3.1'
-                }
-            }
-            steps {
-	        sh 'dotnet-install.sh'
-       	    }
-        }
         stage('Building') {
             agent any
             steps {
-                sh 'cd ./ITE/GCL03/ŁG403881/Lab05/scm/build/; docker build -t build:latest . -f Dockerfile'
+                sh 'ping google.com'
             }
         }
     }
