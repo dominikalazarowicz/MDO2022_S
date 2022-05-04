@@ -29,7 +29,13 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                echo "Deploying!"
+                script {
+                    FILE = sh(
+                        script: "grep -L \"sources\" /volume_out/DiscordSRV*" ,
+                        returnStdout: true
+                    ).trim()
+                }
+                sh "docker run --name deploy --rm --mount source=out,target=/volume_out openjdk:17 java ${FILE}"
             }
         }
         stage("Publish") {
