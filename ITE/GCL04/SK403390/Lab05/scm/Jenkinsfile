@@ -30,13 +30,14 @@ pipeline {
 	    steps {
 		sh 'docker ps -a'
 		sh "docker container kill deployContainer3 || true"
+		sleep 2
 		sh 'docker run --rm --name deployContainer3 -dit ubuntu'
 		sh 'docker cp fe-text deployContainer3:.'
 		sh 'docker container exec deployContainer3 sh -c "apt-get update"'
 		sh 'docker container exec deployContainer3 sh -c "DEBIAN_FRONTEND="noninteractive" apt-get install -y libglib2.0"'
 		sh "docker container exec deployContainer3 sh -c 'apt-get install -y libutf8proc-dev'"
 		sh 'docker container exec deployContainer3 ls -al fe-text'
-		sh "docker container exec deployContainer3 sh -c './fe-text/irssi.p --version'"
+		sh "docker container exec deployContainer3 sh -c './fe-text/irssi --version'"
 		sh "docker container kill deployContainer3"
 	    }
 	}
