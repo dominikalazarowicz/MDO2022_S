@@ -11,7 +11,10 @@ pipeline {
 }
             steps {
                 sh 'docker build -t buildirssi . -f ITE/GCL03/MJ402123/Lab05/Docker-BLDR'
-		sh 'docker run buildirssi'
+		sh 'docker run --name kontener -dit --rm buildirssi'
+		sh 'rm irssi || true'
+		sh 'docker cp kontener:irssi/build/src/irssi .'
+		sh 'docker kill kontener'
             }
         }
         stage('test') {
@@ -20,5 +23,21 @@ pipeline {
 		sh 'docker run testirssi' 
             }
         }
+	stage('deploy') {
+		steps{
+		sh 'docker run --rm --name deploykontener -dit ubuntu'
+		sh 'docker cp irssi deploykontener:.'
+		sh 'docker container exec deploykontener sh -c "apt-get update"'
+		sh 'docker container exec deploykontener sh -c "DEBIAN_FRONTEND="noninteractive" apt-get install -y libglib2.0"'
+		sh "docker container exec deploykontener sh -c 'apt-get install -y libutf8proc-dev'"
+		sh "docker container exec deploykontener sh -c './irssi --version'"
+		sh "docker container kill deploykontener"
+		}
+	}
+	stage('publish') {
+		steps {
+			archiveArtifacts artifacts: 'irssi'
+		}
+	}
     }
 }
