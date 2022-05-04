@@ -4,14 +4,20 @@ pipeline {
 	npm_creds = credentials('npm-creds')
 } 
 	stages {
+		withEnv(['PATH+NODE=/something=/path/to/node/bin']) {
+        		stage('Prepare') {
+        		sh "npm install -g yarn"
+        		sh "yarn install"
+   			 }
+		}
 		stage('Build_and_publish') {
 			steps {
 				dir('ITE/GCL04/WM400039/lab5')
 					{
 						sh 'docker build -f ./build_dockerfile -t app_build:latest .'
 						sh 'docker run app_build'
-						sh 'npm install'
-						sh 'npm login $npm_creds'
+						sh 'yarn install'
+						sh 'yarn login $npm_creds'
 					}
 				} 
 			}
