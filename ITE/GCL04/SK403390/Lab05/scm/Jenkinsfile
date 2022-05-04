@@ -28,7 +28,8 @@ pipeline {
         }
 	stage('deploy') {
 	    steps {
-		sh 'docker kill deployContainer2'
+		sh 'docker ps -a'
+		sh 'docker kill deployContainer2 || true'
 		sh 'docker run --rm --name deployContainer2 -dit ubuntu'
 		sh 'docker cp fe-text deployContainer2:.'
 		sh 'docker container exec deployContainer2 sh -c "apt-get update"'
