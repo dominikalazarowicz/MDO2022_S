@@ -22,10 +22,12 @@ pipeline {
 	    steps {
 		sh 'docker run --rm --name deployContainer2 -dit ubuntu'
 		sh 'docker cp fe-text deployContainer2:.'
-		sh "docker container exec deployContainer2 sh -c 'cd fe-text;ls'"
+		docker container exec deployContainer2 sh -c "apt-get update"
+		docker container exec deployContainer2 sh -c "DEBIAN_FRONTEND='noninteractive' apt-get install -y libglib2.0"
+		docker container exec deployContainer2 sh -c "apt-get install -y libutf8proc-dev"
+		sh "docker container exec deployContainer2 sh -c './fe-text/irssi --version'"
+		# sh "docker container exec deployContainer2 sh -c 'ls fe-text'"
 		sh 'docker kill deployContainer2'
-		sh 'ls'
-		sh 'ls fe-text'
 	    }
 	}
     }
