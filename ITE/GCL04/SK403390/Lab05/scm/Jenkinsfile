@@ -10,6 +10,7 @@ pipeline {
 		sh 'docker cp tempContainer:irssi/build/src/fe-text .'
 		sh 'docker kill tempContainer'
 		sh 'ls'
+		sh 'ls fe-text/irssi.p'
             }
         }
         stage('test') {
