@@ -6,7 +6,8 @@ pipeline {
 	stages {
 		stage('Build') {
 			steps {
-				sh 'docker run -f ./build_dockerfile'
+				sh 'docker build -f ./build_dockerfile -t app_build:latest'
+				sh 'docker run app_build' 
 			}
 		}
 	}
