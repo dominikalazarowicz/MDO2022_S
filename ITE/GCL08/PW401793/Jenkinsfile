@@ -52,7 +52,7 @@ pipeline {
 				sh 'rm -rf /var/jenkins_home/workspace/artifacts && mkdir /var/jenkins_home/workspace/artifacts'
 				sh 'docker container rm publish || true'
 				sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/app --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy ubuntu  bash -c "chmod -R 777 /usr/local/app && cp -R /usr/local/app/. /usr/local/copy"'
-				sh "tar -zcvf bashtop-${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts ."
+				sh "tar -zcvf bashtop-${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/artifacts ."
 				archiveArtifacts artifacts: "bashtop-${params.VERSION}.tar.xz"
 				sh 'docker rm -f publish'
 			}
