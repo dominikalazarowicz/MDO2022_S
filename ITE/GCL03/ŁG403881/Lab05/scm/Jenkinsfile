@@ -4,7 +4,7 @@ pipeline {
         stage('Building') {
             steps {
                     git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
-		    sh 'git checkout DK403865'
+		    sh 'git checkout ŁG403881'
 		    sh 'git pull origin'
                     sh 'cd ./ITE/GCL03/ŁG403881/Lab05/scm/; docker build -t build:latest build/'
             }
