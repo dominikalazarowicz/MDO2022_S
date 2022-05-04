@@ -4,7 +4,7 @@ pipeline {
         stage('Building') {
             steps {
                 dir('.') {
-                    sh 'cd ITE/GCL03/ŁG403881/Lab05/scm'
+                    sh 'ls'
                     sh 'docker build -t build:latest ./ITE/GCL03/ŁG403881/Lab05/scm/build/ -f ./ITE/Dockerfile'
                 }
             }
