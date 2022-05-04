@@ -7,6 +7,7 @@ pipeline {
                 sh 'docker build -t buildirssi . -f ITE/GCL04/SK403390/Lab05/DockerfileBuild'
 		sh 'docker run --name tempContainer -dit --rm buildirssi'
 		sh 'rm -r fe-text'
+		sh 'docker container exec tempContainer ls irssi/build/src/fe-text'
 		sh 'docker cp tempContainer:irssi/build/src/fe-text .'
 		sh 'docker kill tempContainer'
 		sh 'ls'
