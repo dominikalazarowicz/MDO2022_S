@@ -4,12 +4,6 @@ pipeline {
 	npm_creds = credentials('npm-creds')
 } 
 	stages {
-		withEnv(['PATH+NODE=/something=/path/to/node/bin']) {
-        		stage('Prepare') {
-        		sh "npm install -g yarn"
-        		sh "yarn install"
-   			 }
-		}
 		stage('Build_and_publish') {
 			steps {
 				dir('ITE/GCL04/WM400039/lab5')
