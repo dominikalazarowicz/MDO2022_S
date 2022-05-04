@@ -54,7 +54,7 @@ pipeline {
 				sh 'docker run -d --name publish --mount type=volume,src="vol-out",dst=/usr/local/app --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy ubuntu  bash -c "chmod -R 777 /usr/local/app && cp -R /usr/local/app/. /usr/local/copy"'
 				sh "tar -zcvf bashtop-${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts ."
 				archiveArtifacts artifacts: "bashtop-${params.VERSION}.tar.xz"
-				docker rm -f publish
+				sh 'docker rm -f publish'
 			}
 		}
 	}
