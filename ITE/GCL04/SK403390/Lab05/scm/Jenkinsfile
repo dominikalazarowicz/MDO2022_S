@@ -28,7 +28,7 @@ pipeline {
         }
 	stage('deploy') {
 	    steps {
-		sh 'docker kill deployContainer2 || true'
+		sh 'docker kill deployContainer2'
 		sh 'docker run --rm --name deployContainer2 -dit ubuntu'
 		sh 'docker cp fe-text deployContainer2:.'
 		sh 'docker container exec deployContainer2 sh -c "apt-get update"'
@@ -37,7 +37,6 @@ pipeline {
 		sh 'docker container exec deployContainer2 ls fe-text'
 		sh "docker container exec deployContainer2 sh -c 'file .fe-text/irssi.p'"
 		sh "docker container exec deployContainer2 sh -c './fe-text/irssi.p --version'"
-		sh 'docker kill deployContainer2'
 	    }
 	}
     }
