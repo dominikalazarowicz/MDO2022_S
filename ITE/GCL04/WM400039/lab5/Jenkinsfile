@@ -1,13 +1,11 @@
 pipeline {
 	agent any
 	environment {
-	//NPM_USR = credentials('jenkins-npm-usr')
-	//NPM_PSW = credentials('jenkins-npm-psw')
+	npm_creds = credentials('npm-creds')
 } 
 	stages {
 		stage('Build') {
 			steps {
-				sh "printenv"
 				sh 'docker run -f build_dockerfile'
 			}
 		}
