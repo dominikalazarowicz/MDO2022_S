@@ -27,6 +27,12 @@
 ### Instalacja nienadzorowana
 * Zlokalizuj plik odpowiedzi z instalacji
 * Dodaj do niego elementy odpowiedzialne za wszystkie potrzebne dependencje
+* Zdefiniuj repozytoria (co najmniej OS i aktualizacje, najlepiej też depednecje, optymalnie także repozytorium z własnym oprogramowaniem)
+```
+# Repo
+url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
+repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=x86_64
+```
 * Dodaj proces pobierania artefaktu (wybierz co najmniej jedno):
   * Jako czynność atomowa
   * Jako demon uruchamiany po starcie sieci @ boot
