@@ -1,21 +1,20 @@
-1.0 Wrzuciłem stworzony na poprzednich zajęciach obraz na dockerhub
-	1.1 docker login - pozwala zalogować się na konto na dockerhubie
-	1.2 docker tag docker-lab3 jjchmielewski/dev-ops:latest - dodaje do obrazu docker-lab3 tag o schemacie <username>/<repo-name>
-	1.3 docker push jjchmielewski/dev-ops - robi pusha na repozytorium wszystkich obrazow z podanym tagiem
+1. Największym problemem w całym zadaniu jak zawsze był docker. Po próbie stworzenia nowej aplikacji wróciłem do komunikatora z poprzednich zajęć.
 
-2.0 Wybrałem komunikator https://github.com/wireapp/wire-desktop.git
-	2.1 Zmieniłem komunikator na https://github.com/deltachat/deltachat-desktop.git Wire-desktop okazał się problematyczny w uruchomieniu - yarn stawiał czynny opór.
+Moje źródło prawdy zostało zawarte w folderach widocznych wyżej.
 
-3.0 W build agencie zkolonowałem repozytorium komunikatora następnie uruchomiłem program.
+2-3. Stworzenie sekcji z testowaniem i budowaniem okazało się dziecinnie proste. W zasdzie za pomocą 5 prostych komend i podstawowej znajomości
+komand linuxowego terminala dało się to zrobić w dość krótkim czasie. Największym problemem była nawigacja do odpowiedniego folderu.
+Z racji tego że nie dało się po prostu nawigować tam komendą terminala cd trzeba było użyć komendy dir będącej częścią jenkinsfile.
 
-	3.1 Aby build agent zadziałał musiałem pobrać obraz nodejs, z jakiegoś powodu był problem z pobraniem go za pomocą apt.
+4. Nie udało mi się wykonać 4 kroku.
 
-	3.2 docker build -t lab04-build-agent . - tworzy obraz build agenta ktory wykorzystam do stworzenia test agenta.
+5. Piąty krok był równie prosty jak drugi i trzeci. Wymagał on użycia zmiennych środowiskowych ale ich obsługa nie jest zbyt trudna i z pomocą poradnika na stronie jenkinsa dość szybko się z tym uporałem.
 
-4.0 W test agencie przeszedłem do folderu z komunikatorem i uruchomiłem test.
+6.1 Pipeline został zdefiniowany.
 
-5.0 W docker-compose.yml zdefiniowałem dwa serwisy: build_agent i test_agent podając każdemu drogę do ich Dockerfile'a.
+6.2 Pipeline nie jest automatycznie wyzwalany.
 
-	5.1 docker-compose build - buduje docker-compose'a.
+6.3 Pipeline przechodzi wszystkie etapy.
 
-	5.2 docker-compose up - uruchamia stworzone obrazy.
+6.4 Pipeline obsługuje błędy w każdym etapie.
+

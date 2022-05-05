@@ -21,9 +21,7 @@ pipeline {
                     dir('Grupy/Grupa01/JC401889/Lab07/Docker/deploy docker'){
                         sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
                         sh 'docker pull jjchmielewski/lab7:latest' 
-                        sh 'docker build -t lab7 .'
-                        sh 'docker run --detach lab7'
-                        sh 'docker logout'
+                        sh 'docker run --detach jjchmielewski/lab7:latest'
                     }
                 }
                 success {
@@ -48,8 +46,7 @@ pipeline {
                     dir('Grupy/Grupa01/JC401889/Lab07/Docker/deploy docker'){
                         sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
                         sh 'docker pull jjchmielewski/lab7:latest' 
-                        sh 'docker build -t lab7 .'
-                        sh 'docker run --detach lab7'
+                        sh 'docker run --detach jjchmielewski/lab7:latest'
                         sh 'docker logout'
                     }
                 }
@@ -71,11 +68,7 @@ pipeline {
                     sh 'docker tag build-agent:latest jjchmielewski/lab7'
                     sh 'docker push jjchmielewski/lab7'
 
-                    dir('Grupy/Grupa01/JC401889/Lab07/Docker/deploy docker'){  
-                        sh 'docker pull jjchmielewski/lab7:latest'                   
-                        sh 'docker build -t lab7 .'
-                        sh 'docker run --detach lab7'
-                    }
+                    sh 'docker run --detach jjchmielewski/lab7:latest'
 
                 }
             }
@@ -89,8 +82,7 @@ pipeline {
                     dir('Grupy/Grupa01/JC401889/Lab07/Docker/deploy docker'){
                         sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
                         sh 'docker pull jjchmielewski/lab7:latest' 
-                        sh 'docker build -t lab7 .'
-                        sh 'docker run --detach lab7'
+                        sh 'docker run --detach jjchmielewski/lab7:latest'
                         sh 'docker logout'
                     }
 
