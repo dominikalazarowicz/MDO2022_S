@@ -36,7 +36,7 @@ pipeline {
                 sh 'ls'
 
                 dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
-				    sh 'docker-compose up testagent'
+				    sh 'docker-compose up test_agent'
                 }
             }
             post {
