@@ -1,4 +1,4 @@
-FROM lab04-build-agent:latest
+FROM build-agent:latest
 
 WORKDIR deltachat-desktop
 
