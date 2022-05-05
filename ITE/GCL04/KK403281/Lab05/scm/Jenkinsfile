@@ -19,6 +19,8 @@ pipeline {
         }
 	stage('deploy'){
 	    steps {
+		sh "docker kill deployKontener || true"
+		sleep 2
 		sh 'docker run --rm --name deployKontener -dit ubuntu'
 		sh 'docker cp irssi deployKontener:.'
 		sh 'docker container exec deployKontener sh -c "apt-get update"'
