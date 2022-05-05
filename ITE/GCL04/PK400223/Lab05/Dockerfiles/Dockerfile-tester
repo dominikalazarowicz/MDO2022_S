@@ -1,2 +1,3 @@
 FROM devopsprojekt
+RUN ls -a
 RUN npm run test
