@@ -1,19 +1,33 @@
 pipeline {
 	agent any
 	stages {
-		stage('Test') {
+
+        stage('Build') {
 			steps {
-                sh 'ls'
-                dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
-                    sh 'ls'
-                    sh 'docker-compose --version'
+                
+               dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
 				    sh 'docker-compose up build_agent'
                 }
             }
             post {
                 failure {
+                    echo 'ERROR IN BUILDING'
+                }
+                success {
+                    echo 'SUCCESS IN BUILDING'
+                }
+            }
+        }
+
+		stage('Test') {
+			steps {
+                dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
+				    sh 'docker-compose up test_agent'
+                }
+            }
+            post {
+                failure {
                     echo 'ERROR IN TESTING'
-                    sh 'false'
                 }
                 success {
                     echo 'SUCCESS IN TESTING'
