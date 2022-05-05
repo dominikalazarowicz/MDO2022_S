@@ -37,5 +37,36 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+
+            environment:{
+                DOCKERHUB_CREDENTIALS = credentials("docker-hub-creds")
+            }
+
+			steps {
+
+                dir ('Grupy/Grupa01/JC401889/Lab07/Docker'){
+
+				    sh 'docker-compose up build_agent'
+
+				    sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                    sh 'docker tag build-agent:latest jjchmielewski/lab7'
+                    sh 'docker push jjchmielewski/lab7'
+
+                }
+            }
+            post {
+                always{
+                       sh 'docker logout'
+                }
+                failure {
+                    echo 'ERROR IN DEPLOYING'
+                }
+                success {
+                    echo 'SUCCESS IN DEPLOYING'
+                }
+            }
+        }
     }
 }
