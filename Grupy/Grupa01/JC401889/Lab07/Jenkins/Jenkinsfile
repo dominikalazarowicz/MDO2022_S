@@ -43,7 +43,7 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+        stage('Save') {
 
 			steps {
 
@@ -62,12 +62,35 @@ pipeline {
                        sh 'docker logout'
                 }
                 failure {
+                    echo 'ERROR IN SAVING'
+                }
+                success {
+                    echo 'SUCCESS IN SAVING'
+                }
+            }
+        }
+
+        stage('Deploy'){
+
+            steps{
+
+                sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                sh 'docker run --detach jjchmielewski/lab7:latest'
+
+            }
+
+            post {
+                always{
+                       sh 'docker logout'
+                }
+                failure {
                     echo 'ERROR IN DEPLOYING'
                 }
                 success {
                     echo 'SUCCESS IN DEPLOYING'
                 }
             }
+
         }
     }
 }
