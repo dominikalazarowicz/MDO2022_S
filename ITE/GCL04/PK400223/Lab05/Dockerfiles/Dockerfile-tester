@@ -1,0 +1,2 @@
+FROM devopsprojekt
+RUN npm run test
