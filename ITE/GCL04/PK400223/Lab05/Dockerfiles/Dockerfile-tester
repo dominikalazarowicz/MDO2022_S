@@ -1,3 +1,2 @@
 FROM devopsprojekt
-RUN npm run serve
 RUN npm run test
