@@ -28,6 +28,8 @@ pipeline {
         }
 	stage('deploy') {
 	    steps {
+		sh 'echo "Do uruchomienia programu wymagane jest zainstalowanie bibliotek libglib2.0 i libutf8proc-dev" > installationInfo'
+		sh 'cat installationInfo'
 		sh 'docker ps -a'
 		sh "docker container kill deployContainer3 || true"
 		sleep 2
