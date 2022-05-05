@@ -19,6 +19,7 @@ pipeline {
                     echo 'ERROR IN BUILDING'
 
                     sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                    sh 'docker pull jjchmielewski/lab7:latest'
                     sh 'docker run --detach jjchmielewski/lab7:latest'
                     sh 'docker logout'
                 }
@@ -42,6 +43,7 @@ pipeline {
                     echo 'ERROR IN TESTING'
 
                     sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                    sh 'docker pull jjchmielewski/lab7:latest'
                     sh 'docker run --detach jjchmielewski/lab7:latest'
                     sh 'docker logout'
                 }
@@ -73,6 +75,7 @@ pipeline {
                     echo 'ERROR IN DEPLOYING'
 
                     sh 'docker login -u $DOCKERHUB_CREDENTIALS_USR -p $DOCKERHUB_CREDENTIALS_PSW'
+                    sh 'docker pull jjchmielewski/lab7:latest'
                     sh 'docker run --detach jjchmielewski/lab7:latest'
                     sh 'docker logout'
 
