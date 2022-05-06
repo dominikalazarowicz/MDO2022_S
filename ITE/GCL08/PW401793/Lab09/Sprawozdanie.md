@@ -1,5 +1,6 @@
 # Lab 09 - Paweł Waresiak
 
+## Przygotowywanie systemu pod uruchomienie
 ### Instalacja fedory
 
 ![scr1](./screenshots/image1.png)
@@ -12,14 +13,14 @@ Po instalacji konfiguruję uprawnienia do folderu
 ![scr5](./screenshots/image3.png)  
 Url kierujące do folderu  
 ![scr6](./screenshots/image12.png)  
-Wyłączenie SELinux'a, aby nie dostawać 403  
+Wyłączenie SELinux'a 
 ![scr2143](./screenshots/image24.png)  
 
-### Przesyłanie programu na serwer  
+### Przesyłanie programu na serwer (pobranie artefaktu) 
 ![scr7](./screenshots/image18.png)  
 Następnie przeniosłem go do folderu hostowanego czyli /var/artifacts  
 
-### Instalacja drugiego serwera i pobranie aplikacji z serwera  
+### Instalacja drugiego serwera i pobranie artefaktu    
 Instalacja wget  
 ![scr8](./screenshots/image21.png)  
 Pobranie pliku z serwera  
@@ -30,11 +31,14 @@ Nadanie uprawień do wykonywania
 Sprawdzenie czy aplikacja działa  
 ![scr12](./screenshots/image16.png)  
 
+## Instalacja nienadzorowana  
 ### Instalacja z plikiem odpowiedzi hostowanym na serwerze http  
 ![scr13](./screenshots/image17.png)  
 ![scr14](./screenshots/image13.png)  
 Instalacja przebiegła pomyślnie  
 
+
+## Infrastructure as code  
 ### Zmodyfikowanie ISO o plik odpowiedzi  
 Zamontowanie ISO  
 ![scr15](./screenshots/image8.png)  
