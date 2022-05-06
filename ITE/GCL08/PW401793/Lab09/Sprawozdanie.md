@@ -27,6 +27,7 @@ Pobranie pliku z serwera
 ![scr9](./screenshots/image4.png)  
 Nadanie uprawień do wykonywania  
 ![scr10](./screenshots/image7.png)  
+Pobranie binarki z serwera http wget'em
 ![scr11](./screenshots/image4.png)  
 Sprawdzenie czy aplikacja działa  
 ![scr12](./screenshots/image16.png)  
