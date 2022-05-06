@@ -43,8 +43,10 @@ Instalacja przebiegła pomyślnie
 ### Zmodyfikowanie ISO o plik odpowiedzi  
 Zamontowanie ISO  
 ![scr15](./screenshots/image8.png)  
-Skopiowanie do folderu roboczego w celu uzyskania uprawnień do modyfikacji  
+Skopiowanie plików do folderu roboczego w celu uzyskania uprawnień do modyfikacji  
 ![scr16](./screenshots/image6.png)  
+Skopiowanie fedora-config.ks do ISO do folderu isolinux z nową nazwą ks.cfg  
+![scr22](./screenshots/image22.png)  
 Zmiana isolinux.cfg  
 ![scr17](./screenshots/image23.png)  
 Wypalenie ISO  
