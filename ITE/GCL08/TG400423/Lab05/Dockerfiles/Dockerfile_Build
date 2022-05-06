@@ -7,7 +7,6 @@ RUN echo 'Building dotnet build image'
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install wget
-RUN apt-get -y install git
 
 RUN wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 RUN dpkg -i packages-microsoft-prod.deb
