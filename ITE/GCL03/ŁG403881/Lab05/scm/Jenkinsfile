@@ -1,10 +1,11 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'node:16.13.1-alpine' }
+    }
     stages {
-        stage('Building') {
-            agent any
+        stage('Test') {
             steps {
-                sh 'cd ./ITE/GCL03/ŁG403881/Lab05/scm/build; docker build -t build:latest . -f Dockerfile'
+                sh 'node --version'
             }
         }
     }
