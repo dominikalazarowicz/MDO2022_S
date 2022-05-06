@@ -12,8 +12,8 @@
 Po instalacji konfiguruję uprawnienia do folderu  
 ![scr5](./screenshots/image3.png)  
 Url kierujące do folderu  
-![scr6](./screenshots/image12.png)  
-Wyłączenie SELinux'a 
+![scr6](./screenshots/image12.png)    
+Wyłączenie SELinux'a  
 ![scr2143](./screenshots/image24.png)  
 
 ### Przesyłanie programu na serwer (pobranie artefaktu) 
