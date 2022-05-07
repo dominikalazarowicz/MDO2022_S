@@ -53,6 +53,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying...'
+		sh 'docker rm -f deploybuffer || true'
                 sh 'docker run -dit --name deploybuffer --mount type=volume,src="volout",dst=/app/result ubuntu'
                 sh 'docker container exec deploybuffer sh -c "apt-get update"'
 		sh 'docker container exec deploybuffer sh -c "DEBIAN_FRONTEND="noninteractive" apt-get install -y libglib2.0"'
