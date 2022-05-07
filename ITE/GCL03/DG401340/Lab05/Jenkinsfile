@@ -32,7 +32,7 @@ pipeline {
             steps {
                 script {
                     FILE = sh(
-                        script: "grep -L \"sources\" /volume_out/DiscordSRV*" ,
+                        script: "grep -L \"sources\" /volume_out/DiscordSRV/*" ,
                         returnStdout: true
                     ).trim()
                 }
@@ -43,11 +43,11 @@ pipeline {
             steps {
                 script {
                     if(params.promote) {
-                        sh "mkdir ${params.version}"
+                        sh "rm -rf ./artifacts && mkdir artifacts"
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out ./${params.version}"
+                        sh "docker cp copy:/volume_out/*.jar ./artifacts "
                         sh "docker rm copy"
-                        archiveArtifacts artifacts: "/${params.version}/volume_out/*.jar"
+                        archiveArtifacts artifacts: "./artifacts/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
