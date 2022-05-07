@@ -1,3 +1,3 @@
 #syntax=docker.dockerfile:1
-FROM jenkinsbuild
+FROM docker1_build
 RUN npm test
