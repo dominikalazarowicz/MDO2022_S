@@ -1,7 +1,7 @@
 FROM rust:latest
 
-RUN mkdir repo
-WORKDIR repo
 RUN git clone https://github.com/solana-labs/example-helloworld.git
+WORKDIR  /example-helloworld/src/program-rust
+
 RUN cargo build
 
