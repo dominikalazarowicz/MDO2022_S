@@ -1,5 +1,4 @@
 FROM ubuntu:20.04
-USER root
 
 ARG DEBIAN_FRONTEND=noninteractive
 RUN echo 'Building dotnet build image'
