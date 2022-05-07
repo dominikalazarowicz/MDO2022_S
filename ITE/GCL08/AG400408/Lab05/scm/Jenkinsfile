@@ -58,7 +58,7 @@ pipeline {
                 sh 'docker container exec deploybuffer sh -c "apt-get update"'
 		sh 'docker container exec deploybuffer sh -c "DEBIAN_FRONTEND="noninteractive" apt-get install -y libglib2.0"'
 		sh "docker container exec deploybuffer sh -c 'apt-get install -y libutf8proc-dev'"
-		sh "docker container exec deploybuffer sh -c 'cd /app/result/irssi/build/src/fe-text && ls -l'"
+		sh "docker container exec deploybuffer sh -c 'cd /app/result/irssi/build/src/fe-text && ./irssi -v'"
 		sh "docker container kill deploybuffer"
 		sh 'docker rm -f deploybuffer'
             }
