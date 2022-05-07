@@ -78,7 +78,7 @@ pipeline {
             agent {
                 docker {
                     image 'test:latest'
-                    args '--mount source=in,target=/in -it -u root:root'
+                    args '--mount source=in,target=/in -u root:root'
                 }
             }
             steps {
