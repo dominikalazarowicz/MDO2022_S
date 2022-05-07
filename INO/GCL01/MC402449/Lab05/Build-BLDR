@@ -1,0 +1,7 @@
+FROM rust:latest
+
+RUN mkdir repo
+WORKDIR repo
+RUN git clone https://github.com/solana-labs/example-helloworld.git
+RUN cargo build
+
