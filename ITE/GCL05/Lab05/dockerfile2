@@ -1,0 +1,2 @@
+FROM dockerfile1:latest
+RUN cd cytoscape.js && npm test
