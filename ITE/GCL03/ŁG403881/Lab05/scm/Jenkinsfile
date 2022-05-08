@@ -80,17 +80,15 @@ pipeline {
                 //sh 'echo $?'
 
                 script{
-                    def result = sh (script: 'echo $?',returnStdout: true).trim();
-                    echo result
-                    if(result == "0")
+                    if(sh (script: 'echo $?',returnStdout: true).trim() == "0")
                     {
-                        echo "Succesful deploy"
+                        echo "deployment success"
                     }
                     else
                     {
-                        echo "Unsuccesful deploy"
+                        echo "Doployment failue"
                         currentBuild.result = 'ABORTED'
-                        error('Unsuccesful deploy…')
+                        error('Doployment failue')
                     }
                 }
             }
