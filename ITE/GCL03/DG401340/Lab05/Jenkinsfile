@@ -24,8 +24,7 @@ pipeline {
         }
         stage("Test") {
             steps {
-                sh "docker build -t test:latest . -f ./ITE/GCL03/DG401340/Lab05/test_dockerfile/Dockerfile"
-                sh "docker run --name test --rm --mount source=in,target=/volume_in test:latest"
+                echo "tests"
             }
         }
         stage("Deploy") {
@@ -43,8 +42,8 @@ pipeline {
                         sh "docker rm copy"
                         sh "ls -a"
                         sh "ls -a ./artifacts"
-                        sh "ls -a ./artifacts/volume_out"
-                        archiveArtifacts artifacts: "./artifacts/volume_out/*.jar"
+                        sh "ls -a ./artifacts/volume_out/target"
+                        archiveArtifacts artifacts: "./artifacts/volume_out/target/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
