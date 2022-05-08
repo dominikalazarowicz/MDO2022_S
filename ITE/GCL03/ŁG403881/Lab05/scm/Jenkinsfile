@@ -26,19 +26,14 @@ pipeline {
             }
         }
 
-        stage('Docker images preparation'){
+        stage('Prebuild'){
             steps{
                 dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/build'){
                     echo 'build image'
                     sh 'docker build -t dev_build:latest . -f Dockerfile'
                 }
-                dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
-                    echo 'test image'
-                    sh 'docker build -t dev_test:latest . -f Dockerfile'      
-                }
             }
         }
-
 
         stage('Build') {
             agent {
@@ -50,6 +45,15 @@ pipeline {
             steps {
                 echo 'Starting building'
                 sh 'cd /in/GithubAppLab03 && dotnet build --output /out'               
+            }
+        }
+
+        stage('Pretest'){
+            steps{
+                dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
+                    echo 'test image'
+                    sh 'docker build -t dev_test:latest . -f Dockerfile'      
+                }
             }
         }
 
@@ -65,6 +69,34 @@ pipeline {
                 sh 'cd /in/GithubAppLab03 && dotnet test --no-build'  
             }
         }
+
+        stage('Deploy'){
+            agent{
+                docker{
+                    image 'dev_test:latest'
+                    args '--mount source=out,target=/out'
+                }
+            }
+            steps {
+                sh '/out/GithubAppLab03'
+            }
+            script{
+                def result = sh (script: 'echo $?',returnStdout: true).trim();
+                echo result
+                if(result == "0")
+                {
+                    echo "Succesful deploy"
+                }
+                else
+                {
+                    echo "Unsuccesful deploy"
+                    currentBuild.result = 'ABORTED'
+                    error('Unsuccesful deploy…')
+                }
+            }
+        }
+
+
 
     }
 }
