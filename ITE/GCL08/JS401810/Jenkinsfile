@@ -19,7 +19,7 @@ pipeline {
 			steps {
 				echo 'Building app with npm'
 				dir("./ITE/GCL08/JS401810") {
-					sh 'docker build . -t cytoscape_build -f Docker-build'
+					sh 'docker build . -t cytoscape_build -f Dockerfile-build'
 					sh 'docker volume create output'
 					sh 'docker run --mount type=volume,src="input",dst=/app --mount type=volume,src="output",dst=/app_build cytoscape_build bash -c "cd /app/cytoscape.js && npm i;"'
 				}
