@@ -33,7 +33,8 @@ pipeline {
             }
             steps {
                 echo 'Starting building'
-                sh 'ls -al'
+
+                sh 'ls -al /.'
                 //sh 'docker run --mount type=volume, src='
                 //dir('/in/DevOpsLab03/GithubAppLab03'){
                     //sh 'dotnet build --output /out'
