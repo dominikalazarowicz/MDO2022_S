@@ -40,6 +40,7 @@ pipeline {
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
                 script {
                     def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep pluginnn.yml")
+                    echo "${commandStdout}"
                     if(commandStdout.contains("plugin.yml"))
                     {
                         echo "Deployed! Plugin should work."
