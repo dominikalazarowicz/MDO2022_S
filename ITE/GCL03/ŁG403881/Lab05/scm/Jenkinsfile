@@ -14,25 +14,29 @@ pipeline {
         }
 
         stage('Repo to volume'){
-            sh 'rm -rf app || true'
-            sh 'mkdir -p app'
-            dir('app'){
-                
-                git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
-                sh 'docker container create --name rtv_agd -v in:/in busybox'
-                sh 'docker cp ./. rtv_agd:/in'
-                sh 'docker rm rtv_agd'
+            steps{
+                sh 'rm -rf app || true'
+                sh 'mkdir -p app'
+                dir('app'){                  
+                    git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
+                    sh 'docker container create --name rtv_agd -v in:/in busybox'
+                    sh 'docker cp ./. rtv_agd:/in'
+                    sh 'docker rm rtv_agd'
+                }
             }
         }
 
         stage('Docker images preparation'){
+            steps{
                 dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/build'){
+                    echo 'build image'
                     sh 'docker build -t dev_build:latest . -f Dockerfile'
                 }
-
                 dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
+                    echo 'test image'
                     sh 'docker build -t dev_test:latest . -f Dockerfile'      
-                } 
+                }
+            }
         }
 
 
