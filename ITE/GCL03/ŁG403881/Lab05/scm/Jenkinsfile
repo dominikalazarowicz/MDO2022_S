@@ -3,24 +3,29 @@ pipeline {
 
     stages {
 
-        stage('RTV'){
+        stage('Volumes directories'){
             steps{
                 sh 'ls -al'
                 sh 'docker volume rm in || true'
                 sh 'docker volume rm out || true'
                 sh 'docker volume create in'
                 sh 'docker volume create out'
-               
+            }
+        }
 
-                sh 'mkdir -p app'
-                dir('app'){
-                    
-                    git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
-                    sh 'docker container create --name rtv_agd -v in:/in busybox'
-                    sh 'docker cp ./. rtv_agd:/in'
-                    sh 'docker rm rtv_agd'
-                }
+        stage('Repo to volume'){
+            sh 'rm -rf app || true'
+            sh 'mkdir -p app'
+            dir('app'){
+                
+                git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
+                sh 'docker container create --name rtv_agd -v in:/in busybox'
+                sh 'docker cp ./. rtv_agd:/in'
+                sh 'docker rm rtv_agd'
+            }
+        }
 
+        stage('Docker images preparation'){
                 dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/build'){
                     sh 'docker build -t dev_build:latest . -f Dockerfile'
                 }
@@ -28,8 +33,8 @@ pipeline {
                 dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
                     sh 'docker build -t dev_test:latest . -f Dockerfile'      
                 } 
-            }
         }
+
 
         stage('Build') {
             agent {
