@@ -1,5 +1,5 @@
 #na podstawie jakiego obrazu
-FROM dev-build:latest
+FROM dev_build:latest
 
 #katalog, w ktorym wykona sie prace
 #WORKDIR .
