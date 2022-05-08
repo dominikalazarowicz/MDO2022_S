@@ -1,0 +1,3 @@
+FROM squirrelly:latest
+WORKDIR /squirrelly/
+RUN npm run test
