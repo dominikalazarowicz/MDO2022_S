@@ -42,7 +42,9 @@ pipeline {
                         sh "docker cp copy:/volume_out ./artifacts "
                         sh "docker rm copy"
                         sh "ls -a"
-                        archiveArtifacts artifacts: "/artifacts/volume_out/*.jar"
+                        sh "ls -a ./artifacts"
+                        sh "ls -a ./artifacts/volume_out"
+                        archiveArtifacts artifacts: "./artifacts/volume_out/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
