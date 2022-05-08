@@ -6,10 +6,6 @@ pipeline {
         NUGET_API_KEY = credentials('api-key')
     }
 
-    parameters {
-        gitParameter name: 'BRANCH', branchFilter: 'origin/(.*)', defaultValue: 'master',  type: 'PT_BRANCH'
-    }
-
     stages {
 
         stage('RTV'){
@@ -20,7 +16,7 @@ pipeline {
                 sh 'mkdir -p app'
                 dir('app'){
                     
-                    git branch: "${params.BRANCH}", url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+                    git branch: 'main', url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                     sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
                     sh 'docker cp ./. rtv_agd:/vol-in'
                     sh 'docker rm rtv_agd'
