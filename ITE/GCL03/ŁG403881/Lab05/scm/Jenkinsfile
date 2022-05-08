@@ -1,14 +1,62 @@
 pipeline {
     agent any
     stages {
-        stage('Build') {
-            steps {
-		sh 'cd ITE/GCL03/ŁG403881/Lab05/dockerfiles/build; docker build -t build:latest . -f Dockerfile'            
-	    }
+
+        stage('Repo to volume (for) a good dockerfile'){
+            steps{
+                sh 'docker volume create vol-in'
+                sh 'docker volume create vol-out'
+               
+                sh 'mkdir -p app'
+                dir("app"){
+                    git url 'https://github.com/Niemans/DevOpsLab05.git', branch 'master'
+                    sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
+                    sh 'docker cp . rtv_agd:/vol-in'
+                    sh 'docker rm rtv_agd'
+                }
+
+                dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/build'){
+                    sh 'docker build -t dev_build:latest . -f Dockerfile'
+                }
+
+            }
         }
-	stage('Test') {
+
+        stage('Build') {
+            agent {
+                docker {
+                    image 'dev_build:latest'
+                    args '--mount src=vol-in, target=/vol-in --mount src=vol-out, target=/vol-out -u root:root'
+                }
+            }
             steps {
-                sh 'cd ITE/GCL03/ŁG403881/Lab05/dockerfiles/test ; docker build -t test:latest . -f Dockerfile'  
+                echo 'Starting building'
+                dir('/vol-in/DevOpsLab03/GithubAppLab03'){
+                    sh 'dotnet build --output /vol-out'
+                }
+                           
+            }
+        }
+
+
+        stage('before testing') {
+            steps {
+                dir('ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
+                    sh 'docker build -t dev-test:latest . -f Dockerfile'      
+                } 
+            }
+        }
+
+	    stage('Test') {
+            agent{
+                docker{
+                    image 'dev-test:latest'
+                    args '--mount src=vol-in, target=/vol-in -u root:root'
+                }
+            }
+            steps {
+                dir('/vol-in/DevOpsLab03/GithubAppLab03')
+                sh 'docker test --no-build'  
             }
         }
 
