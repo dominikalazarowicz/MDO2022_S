@@ -1,0 +1,31 @@
+pipeline {
+			
+	agent any
+
+	stages {
+		stage('Clone git repo') {
+			steps {
+				echo 'Creating volme to input'
+				sh 'docker volume create input-volume'
+				sh 'docker rm tempContainer || true'
+				sh 'docker run -v input-volume:/data --name tempContainer node'
+				sh 'cd ~/ && ls express || git clone --recurse-submodules https://github.com/expressjs/express.git'
+				sh 'docker cp ~/express tempContainer:/data'
+				sh 'docker rm tempContainer'
+			}
+		}
+	
+	stage('Build') {
+			steps {
+				echo 'Buildig express with npm'
+				dir("./") {
+				    sh 'pwd'
+				    sh 'ls'
+					sh 'docker build ${docker_build} -t  .'
+					sh 'docker volume create output-volume'
+					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express_build bash -c "cd /app/express && npm i;ls;pwd"'
+				}
+			}
+		}
+	}
+}
