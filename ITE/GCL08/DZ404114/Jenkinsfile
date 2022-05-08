@@ -18,7 +18,7 @@ pipeline {
 	stage('Build') {
 			steps {
 				echo 'Buildig express with npm'
-				dir("./") {
+				dir("./MDO2022_S/ITE/GCL08/DZ404114") {
 				    sh 'pwd'
 				    sh 'ls'
 					sh 'docker build ${docker_build} -t  .'
