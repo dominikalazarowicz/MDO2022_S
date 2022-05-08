@@ -4,3 +4,5 @@ WORKDIR node-red_app
 WORKDIR node-red_build
 
 RUN apt update
+
+RUN npm install grunt --save-dev
