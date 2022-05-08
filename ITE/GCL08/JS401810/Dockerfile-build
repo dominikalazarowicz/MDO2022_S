@@ -3,5 +3,5 @@ FROM node:alpine
 WORKDIR app
 WORKDIR app_build
 #clone repo and build
-RUN apk update && apk install -y git
+RUN apk update && apk add -y git
 
