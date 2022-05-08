@@ -18,6 +18,7 @@ pipeline {
         }
         stage("Build") {
             steps {
+                echo "build"
                 //sh "docker build -t build:latest . -f ./ITE/GCL03/DG401340/Lab05/build_dockerfile/Dockerfile"
                 //sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
             }
