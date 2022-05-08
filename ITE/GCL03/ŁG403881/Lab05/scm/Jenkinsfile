@@ -34,7 +34,8 @@ pipeline {
             steps {
                 echo 'Starting building'
                 dir('/vol-in/DevOpsLab03/GithubAppLab03'){
-                    sh 'dotnet build --output /vol-out'
+                    //sh 'dotnet build --output /vol-out'
+                    sh 'ls -l'
                 }
                            
             }
