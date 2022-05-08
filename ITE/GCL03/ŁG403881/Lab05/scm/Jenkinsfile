@@ -12,7 +12,7 @@ pipeline {
                 sh 'mkdir -p app'
                 dir('app'){
                     
-                    git branch: 'main', url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+                    git branch: 'main', url: 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v in:/in busybox'
                     sh 'docker cp ./. rtv_agd:/in'
                     sh 'docker rm rtv_agd'
