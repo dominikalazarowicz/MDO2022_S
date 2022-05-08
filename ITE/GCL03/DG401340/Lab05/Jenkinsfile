@@ -11,22 +11,21 @@ pipeline {
     stages {
         stage("Git") {
             steps {
-                //sh "docker system prune --all -f"
-                //sh "docker build -t git:latest . -f ./ITE/GCL03/DG401340/Lab05/git_dockerfile/Dockerfile"
-                //sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
-                echo "git"
+                sh "docker system prune --all -f"
+                sh "docker build -t git:latest . -f ./ITE/GCL03/DG401340/Lab05/git_dockerfile/Dockerfile"
+                sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
             }
         }
         stage("Build") {
             steps {
-                echo "build"
-                //sh "docker build -t build:latest . -f ./ITE/GCL03/DG401340/Lab05/build_dockerfile/Dockerfile"
-                //sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
+                sh "docker build -t build:latest . -f ./ITE/GCL03/DG401340/Lab05/build_dockerfile/Dockerfile"
+                sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
             }
         }
         stage("Test") {
             steps {
-                echo "tests"
+                sh "docker build -t test:latest . -f ./ITE/GCL03/DG401340/Lab05/test_dockerfile/Dockerfile"
+                sh "docker run --name test --rm --mount source=in,target=/volume_in test:latest"
             }
         }
         stage("Deploy") {
@@ -39,8 +38,7 @@ pipeline {
                 sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts"
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
                 script {
-                    def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep pluginnn.yml")
-                    echo "\$?"
+                    def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep plugin.yml")
                     if(commandStdout.contains("plugin.yml"))
                     {
                         echo "Deployed! Plugin should work."
