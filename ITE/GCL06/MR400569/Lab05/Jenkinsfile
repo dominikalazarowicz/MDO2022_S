@@ -1,0 +1,24 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                sh '''
+                    docker build -t build_ag ITE/GCL06/MR400569/Lab03/building
+                    docker run build_ag
+                '''
+            }
+        }
+
+        stage('Test') {
+            steps {
+                sh '''
+                    docker build -t test_ag --build-arg imagename=build_ag ITE/GCL06/MR400569/Lab03/testing
+                    docker run test_ag
+                '''
+            }
+        }
+    }
+}
+
