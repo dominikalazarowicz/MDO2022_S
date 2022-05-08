@@ -43,7 +43,10 @@ pipeline {
                         sh "ls -a"
                         sh "ls -a ./artifacts"
                         sh "ls -a ./artifacts/volume_out/target"
-                        archiveArtifacts artifacts: "./artifacts/volume_out/target/*.jar"
+                        sh "find ./artifacts/volume_out/target -type f ! -name '*.jar' -delete"
+                        sh "ls -a ./artifacts/volume_out/target"
+                        sh "for FILENAME in *; do mv $FILENAME ${params.version}_$FILENAME; done"
+                        archiveArtifacts artifacts: "artifacts/volume_out/target/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
