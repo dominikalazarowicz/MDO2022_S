@@ -39,13 +39,10 @@ pipeline {
                 sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts"
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
                 script {
-                    def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep pluginnnn.yml")
+                    def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep pluginnn.yml")
                     if(commandStdout.contains("plugin.yml"))
                     {
                         echo "Deployed! Plugin should work."
-                    } else {
-                        echo "Plugin doesn not include plugin.yml. It will not work! Aborting!"
-                        exit 1
                     }
                 }
             }
