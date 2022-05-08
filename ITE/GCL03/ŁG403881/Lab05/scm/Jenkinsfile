@@ -2,21 +2,15 @@ pipeline {
     agent any
 
     stages {
-
-        stage('Volumes directories'){
+        stage('Repo to volume'){
             steps{
-                sh 'ls -al'
                 sh 'docker volume rm in || true'
                 sh 'docker volume rm out || true'
                 sh 'docker volume create in'
                 sh 'docker volume create out'
-            }
-        }
-
-        stage('Repo to volume'){
-            steps{
                 sh 'rm -rf app || true'
                 sh 'mkdir -p app'
+
                 dir('app'){                  
                     git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v in:/in busybox'
@@ -45,6 +39,14 @@ pipeline {
                 echo 'Starting building'
                 sh 'cd /in/GithubAppLab03 && dotnet build --output /out'               
             }
+            post{
+                success{
+                    echo 'Built successfully'
+                }
+                unsuccessful{
+                    echo 'Failed to build'
+                }
+            }
         }
 
         stage('Pretest'){
@@ -66,6 +68,15 @@ pipeline {
                 echo 'Starting testing'
                 sh 'cd /in/GithubAppLab03 && dotnet test'  
             }
+            post{
+                success{
+                    echo 'Tested successfully'
+                }
+                unsuccessful{
+                    echo 'Failed to make tests'
+                }
+            }
+
         }
 
         stage('Deploy'){
@@ -79,14 +90,18 @@ pipeline {
                 sh '/out/GithubAppLab03'
 
                 script{
-                    if(sh (script: 'echo $?',returnStdout: true).trim() == "0"){
-                        echo "deployment success"
+                    if(sh (script: 'echo $?',returnStdout: true).trim() != "0"){
+                        currentBuild.result = 'ABORTED' 
                     }
-                    else{
-                        echo "Doployment failue"
-                        currentBuild.result = 'ABORTED'
-                        error('Doployment failue')
-                    }
+                }
+            }
+            post{
+                success{
+                    echo "deployment success"
+                }
+                unsuccessful{
+                    echo "deployment failure"
+                    error('Doployment failue')
                 }
             }
 
