@@ -5,6 +5,7 @@ pipeline {
 
         stage('RTV'){
             steps{
+                sh 'ls -al'
                 sh 'docker volume create vol-in'
                 sh 'docker volume create vol-out'
                
