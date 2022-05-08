@@ -29,6 +29,17 @@ pipeline {
         }
         stage("Deploy") {
             steps {
+                sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
+                sh "docker exec copy bash -c \"rm -rf /volume_out/target/extract && mkdir -p /volume_out/target/extract && cp -f /volume_out/target/DiscordSRV* /volume_out/target/extract && rm /volume_out/target/extract/*sources*\""
+                sh "rm -rf ./artifacts && mkdir artifacts"
+                sh "docker cp copy:/volume_out ./artifacts "
+                sh "mv ./artifacts/volume_out/target/extract/*.jar ./artifacts"
+                sh "rm -rf ./artifacts/volume_out"
+                sh "docker rm copy"
+                waitUntil {
+                    sh "docker run -d --name mc --mount type=bind,source=/artifacts,target=/plugins itzg/minecraft-server discord help"
+                }
+                sh "docker rm mc"
                 echo "Deploy"
             }
         }
@@ -36,14 +47,7 @@ pipeline {
             steps {
                 script {
                     if(params.promote) {
-                        sh "rm -rf ./artifacts && mkdir artifacts"
-                        sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out ./artifacts "
-                        sh "docker rm copy"
-                        sh "ls -a ./artifacts/volume_out/target"
-                        sh "mv ./artifacts/volume_out/target/*.jar ./artifacts"
-                        sh "rm -rf ./artifacts/volume_out"
-                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
+                        sh "mv ./artifacts/DiscordSRV* ./artifacts/DiscordSRV_${params.version}"
                         sh "ls -a ./artifacts"
                         archiveArtifacts artifacts: "artifacts/*.jar"
                     }
