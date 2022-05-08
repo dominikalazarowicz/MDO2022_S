@@ -18,7 +18,7 @@ pipeline {
 	stage('Build') {
 			steps {
 				echo 'Building node-red with npm'
-				dir("./MDO2022_S/ITE/GCL08/MW401139") {
+				dir("./ITE/GCL08/MW401139") {
 				    sh 'pwd'
 				    sh 'ls'
 					sh 'docker build . -t build-image -f docker_build'
