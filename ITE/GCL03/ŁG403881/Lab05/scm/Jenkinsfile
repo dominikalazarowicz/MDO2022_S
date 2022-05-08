@@ -16,7 +16,7 @@ pipeline {
                 sh 'mkdir -p app'
                 dir('app'){
                     
-                    sh 'git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+                    git url 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                     sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
                     sh 'docker cp ./. rtv_agd:/vol-in'
                     sh 'docker rm rtv_agd'
