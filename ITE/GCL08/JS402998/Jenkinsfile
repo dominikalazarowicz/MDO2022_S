@@ -6,24 +6,24 @@ pipeline {
 		stage('Clone git repo') {
 			steps {
 				echo 'Creating volme to input'
-				sh 'docker volume create input-volume'
-				sh 'docker rm tempContainer || true'
-				sh 'docker run -v input-volume:/data --name tempContainer node'
-				sh 'cd ~/ && ls express || git clone --recurse-submodules https://github.com/expressjs/express.git'
-				sh 'docker cp ~/express tempContainer:/data'
-				sh 'docker rm tempContainer'
+				sh 'docker volume create entry_volume'
+				sh 'docker rm help_container || true'
+				sh 'docker run -v entry_volume:/data --name help_container node'
+				sh 'cd ~/ && ls nexe || git clone --recurse-submodules https://github.com/nexe/nexe.git'
+				sh 'docker cp ~/nexe help_container:/data'
+				sh 'docker rm help_container'
 			}
 		}
 	
 	stage('Build') {
 			steps {
 				echo 'Buildig express with npm'
-				dir("./MDO2022_S/ITE/GCL08/DZ404114") {
+				dir("./MDO2022_S/ITE/GCL08/JS402998") {
 				    sh 'pwd'
 				    sh 'ls'
-					sh 'docker build ${docker_build} -t  .'
-					sh 'docker volume create output-volume'
-					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express_build bash -c "cd /app/express && npm i;ls;pwd"'
+					sh 'docker build . -t build_image -f build_dockerfile'
+					sh 'docker volume create exit_volume'
+					sh 'docker run --mount type=volume,src="entry_volume",dst=/nexe_app --mount type=volume,src="exit_volume",dst=/nexe_app_build build_image bash -c "cd /nexe_app/nexe && npm i;ls;pwd"'
 				}
 			}
 		}
