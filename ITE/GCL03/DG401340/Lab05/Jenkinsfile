@@ -40,7 +40,7 @@ pipeline {
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
                 sh "pwd"
                 sh "docker run -it --name mc --mount type=bind,source=/var/jenkins_home/workspace/DiscordSRV/artifacts,target=/plugins itzg/minecraft-server discord help"
-                sh "docker rm mc"
+                sh "docker logs --follow mc"
                 echo "Deploy"
             }
         }
