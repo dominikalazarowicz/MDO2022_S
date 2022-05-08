@@ -23,7 +23,7 @@ pipeline {
 				    sh 'ls'
 					sh 'docker build . -t express-build -f docker_build'
 					sh 'docker volume create output-volume'
-					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express-build bash -c "cd /app/express && npm i;ls;pwd"'
+					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express-build bash -c "cd /myapp/express && npm i;ls;pwd"'
 				}
 			}
 		}
