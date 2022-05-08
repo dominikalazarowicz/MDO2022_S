@@ -29,11 +29,8 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
+                sh "docker run -d --name copy --mount source=out,target=/volume_out busybox rm -rf /volume_out/target/extract && mkdir -p /volume_out/target/extract && cp -f /volume_out/target/DiscordSRV* /volume_out/target/extract && rm /volume_out/target/extract/*sources*"
                 sh "rm -rf ./artifacts && mkdir artifacts"
-                waitUntil {
-                    sh "docker exec copy bash -c \"rm -rf /volume_out/target/extract && mkdir -p /volume_out/target/extract && cp -f /volume_out/target/DiscordSRV* /volume_out/target/extract && rm /volume_out/target/extract/*sources*\""
-                }
                 sh "docker cp copy:/volume_out ./artifacts "
                 sh "mv ./artifacts/volume_out/target/extract/*.jar ./artifacts"
                 sh "rm -rf ./artifacts/volume_out"
