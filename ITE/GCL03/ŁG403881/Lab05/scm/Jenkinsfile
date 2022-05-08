@@ -14,8 +14,8 @@ pipeline {
                 sh 'docker volume create vol-out'
                
                 sh 'mkdir -p app'
-                dir("app"){
-                    git url 'https://github.com/Niemans/DevOpsLab05.git'
+                dir('app'){
+                    git branch 'master', url 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
                     sh 'docker cp . rtv_agd:/vol-in'
                     sh 'docker rm rtv_agd'
