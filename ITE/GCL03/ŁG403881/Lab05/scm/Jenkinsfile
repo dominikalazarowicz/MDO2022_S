@@ -52,8 +52,8 @@ pipeline {
                 }
             }
             steps {
-                dir('/in/GithubAppLab03')
-                sh 'docker test --no-build'  
+                echo 'Starting testing'
+                sh 'cd /in/GithubAppLab03 && docker test --no-build'  
             }
         }
 
