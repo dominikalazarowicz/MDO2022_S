@@ -28,13 +28,13 @@ pipeline {
             agent {
                 docker {
                     image 'dev_build:latest'
-                    //args '--mount src=vol-in, target=/vol-in --mount src=vol-out, target=/vol-out -u root:root'
+                    args '--mount src=vol-in, target=/vol-in --mount src=vol-out, target=/vol-out -u root:root'
                 }
             }
             steps {
                 echo 'Starting building'
                 dir('/vol-in/DevOpsLab03/GithubAppLab03'){
-                    //sh 'dotnet build --output /vol-out'
+                    sh 'dotnet build --output /vol-out'
                 }
                            
             }
