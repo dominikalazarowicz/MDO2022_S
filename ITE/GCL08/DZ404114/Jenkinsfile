@@ -21,7 +21,7 @@ pipeline {
 				dir("./MDO2022_S/ITE/GCL08/DZ404114") {
 				    sh 'pwd'
 				    sh 'ls'
-					sh 'docker build docker_build -t .'
+					sh 'docker build . -f ./docker_build -t express_build'
 					sh 'docker volume create output-volume'
 					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express_build bash -c "cd /app/express && npm i;ls;pwd"'
 				}
