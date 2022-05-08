@@ -39,9 +39,9 @@ pipeline {
                     if(params.promote) {
                         sh "rm -rf ./artifacts && mkdir artifacts"
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out/*.jar ./artifacts "
+                        sh "docker cp copy:/volume_out ./artifacts "
                         sh "docker rm copy"
-                        archiveArtifacts artifacts: "./artifacts/*.jar"
+                        archiveArtifacts artifacts: "./artifacts/volume_out/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
