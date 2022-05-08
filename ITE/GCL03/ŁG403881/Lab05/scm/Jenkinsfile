@@ -41,7 +41,7 @@ pipeline {
 
                 //sh 'docker run --mount type=volume, src='
                 dir('/in/DevOpsLab03/GithubAppLab03'){
-                    sh 'dotnet build --output /out'
+                    //sh 'dotnet build --output /out'
                     sh 'ls -l'
                 }
                            
