@@ -1,0 +1,55 @@
+Temat: Pipeline CI/CD - podstawy & testowanie.
+
+1.  Źródło prawdy zostało dodane na repo.
+
+2.  Stworzono Jenkinsfile i dodano na fork repozytorium deltachat-desktop pod adresem:
+https://github.com/DTomArt/deltachat-desktop-fork
+Zawartość Jenkinsfile na tym etapie została przedstawiona na zrzucie ekranu: 2-1-jenkinsfile-in-repo.png
+Przeprowadzono testy widoczne także na zrzutach.
+
+docker run \
+        --name jenkins-docker \
+        --rm \
+        --detach \
+        --privileged \
+        --network jenkins \
+        --network-alias docker \
+        --env DOCKER_TLS_CERTDIR=/certs \
+        --volume jenkins-docker-certs:/certs/client \
+        --volume jenkins-data:/var/jenkins_home \
+        --publish 2376:2376 \
+        docker:dind \
+        --storage-driver overlay2
+          ^ - Uruchomienie kontenera z dockerem, aby moc uzywac docker-compose w kontenerze
+
+docker run --name jenkins-blueocean-root --rm --detach \
+--network jenkins --env DOCKER_HOST=tcp://docker:2376 \
+--env DOCKER_CERT_PATH=/certs/client --env DOCKER_TLS_VERIFY=1 \
+--volume jenkins-data:/var/jenkins_home \
+--volume jenkins-docker-certs:/certs/client:ro \
+--publish 8080:8080 --publish 50000:50000 myjenkins-blueocean:2.332.1-1 \
+-u root 
+        ^ - uruchomienie kontenera jenkinsa
+
+3.Jenkinsfile został rozszerzony o nowy stage "Build", którego zawartość jest widoczna na zrzucie: 3-0-adding-building-stage.png
+Sprawdzono poprawne budowanie się projektu (3-1-building-stage-logs.png), a także pominięcie etapu testów w przypadku nieprawidłowego zbudowania (3-2-tests-wont-start-without-build.png). Powiadomienia w postaci logów są widoczne na obu zrzutach.
+
+4. Zaznaczono build trigger w ustawieniach repo w Jenkinsie (4-1-jenkins-config.png)
+Dla githooka postawiono serwer za pomocą ngrok w kontenerze dockerowym uruchamianym komendą:
+docker run --net=host -it -e NGROK_AUTHTOKEN=<secret_token> ngrok/ngrok http 8080
+(4-2-webhook-config.png)
+Sprawdzono poprawne pingowanie serwera i automatyczne uruchamianie pipeline'u (4-3-working-webhook.png).
+
+// 5. Rozszerz Jenkinsfile o nowy stage("Deploy") - dokumentacja z dostępnymi poleceniami jest tu: https://www.jenkins.io/doc/book/pipeline/jenkinsfile/.
+// 5.1 W stage("Deploy") upewnij się że:
+// - deploy jest wykonywany na dedykowany kontener dockerowy
+// - do deploya jest przekazywany artefakt stworzony w stage("Build") 
+// - użytkownik jest powiadamiany zarówno o sukcesie jak i porażce etapu wdrażania.
+
+
+
+// 6. Na cele sprawozdawcze wykaż i udokumentuj że:
+// 6.1 pipeline jest zdefiniowany w Jenkinsfile w repo
+// 6.2 pipeline jest automatycznie wyzwalany
+// 6.3 pipeline przechodzi wszystkie etapy (stage build-test-deploy)
+// 6.4 pipeline obsługuje powiadamianie o rezultatach każdego z etapów
