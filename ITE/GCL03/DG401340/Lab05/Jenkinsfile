@@ -43,9 +43,9 @@ pipeline {
                         sh "ls -a ./artifacts/volume_out/target"
                         sh "mv ./artifacts/volume_out/target/*.jar ./artifacts"
                         sh "rm -rf ./artifacts/volume_out"
-                        sh "#!/bin/bash
+                        sh """#!/bin/bash
                                 for FILENAME in artifacts/*; do mv $FILENAME ${params.version}_$FILENAME; done
-                            "
+                            """
                         sh "ls -a ./artifacts"
                         archiveArtifacts artifacts: "artifacts/volume_out/target/*.jar"
                     }
