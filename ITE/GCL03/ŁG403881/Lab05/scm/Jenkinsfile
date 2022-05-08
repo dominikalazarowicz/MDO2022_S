@@ -80,7 +80,7 @@ pipeline {
                 //sh 'echo $?'
 
                 script{
-                    if(sh (script: '$?',returnStdout: true).trim() == "0")
+                    if(sh (script: '$?').trim() == "0")
                     {
                         echo "deployment success"
                     }
