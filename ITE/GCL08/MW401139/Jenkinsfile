@@ -32,7 +32,7 @@ pipeline {
             steps {
     		    echo 'Testing bashtop'
       	        dir("./ITE/GCL08/PW401793") {
-      		        sh 'docker build . -t bashtop-test -f docker_test'
+      		        sh 'docker build . -t test-image -f docker_test'
       		        sh 'docker run -t --mount type=volume,src="input-volume",dst=/node-red_build test-image bash -c "cd /node-red_build/node-red && npm run test"'
                 }
       	    }
