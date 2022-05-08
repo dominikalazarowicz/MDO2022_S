@@ -12,7 +12,7 @@ pipeline {
 
     stages {
 
-        stage('Repo to volume (for) a good dockerfile'){
+        stage('RTV'){
             steps{
                 sh 'docker volume create vol-in'
                 sh 'docker volume create vol-out'
@@ -32,7 +32,6 @@ pipeline {
 
             }
         }
-
         stage('Build') {
             agent {
                 docker {
@@ -48,8 +47,6 @@ pipeline {
                            
             }
         }
-
-
         stage('before testing') {
             steps {
                 dir('ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
@@ -57,7 +54,6 @@ pipeline {
                 } 
             }
         }
-
 	    stage('Test') {
             agent{
                 docker{
