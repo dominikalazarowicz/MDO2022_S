@@ -38,12 +38,12 @@ pipeline {
                 echo 'Starting building'
 
                 sh 'ls -al /in'
-                sh 'cd /in/DevOpsLab03/GithubAppLab03 && ls -l'
+                //sh 'cd /in/DevOpsLab03/GithubAppLab03 && ls -l'
                 //sh 'docker run --mount type=volume, src='
-                // dir('/in/DevOpsLab03/GithubAppLab03'){
-                    //sh 'dotnet build --output /out'
+                 dir('/in/GithubAppLab03'){
+                    sh 'dotnet build --output /out'
                     
-                //}
+                }
                            
             }
         }
@@ -62,7 +62,7 @@ pipeline {
                 }
             }
             steps {
-                dir('/in/DevOpsLab03/GithubAppLab03')
+                dir('/in/GithubAppLab03')
                 sh 'docker test --no-build'  
             }
         }
