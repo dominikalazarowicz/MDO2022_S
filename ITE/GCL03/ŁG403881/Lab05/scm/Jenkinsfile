@@ -97,10 +97,10 @@ pipeline {
             }
             post{
                 success{
-                    echo "deployment success"
+                    echo "Deployment success"
                 }
                 unsuccessful{
-                    echo "deployment failure"
+                    echo "Failed to deploy"
                     error('Doployment failue')
                 }
             }
