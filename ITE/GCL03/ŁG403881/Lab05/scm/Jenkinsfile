@@ -18,6 +18,14 @@ pipeline {
                     sh 'docker rm rtv_agd'
                 }
             }
+            post{
+                success{
+                    echo 'Volumes made successfully \nRepository cloned and transferred to the volume successfully'
+                }
+                unsuccessful{
+                    echo 'Failed to make volumes or clone/transfer git repository'
+                }
+            }
         }
 
         stage('Prebuild'){
