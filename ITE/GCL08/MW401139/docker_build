@@ -3,4 +3,4 @@ FROM node:alpine
 WORKDIR node-red_app
 WORKDIR node-red_build
 
-RUN apk update && apk install -y git
+RUN apk update && apk install git
