@@ -23,7 +23,7 @@ pipeline {
 				    sh 'ls'
 					sh 'docker build . -t build-image -f docker_build'
 					sh 'docker volume create output-volume'
-					sh 'docker run --mount type=volume,src="input-volume",dst=/node-red_app --mount type=volume,src="output-volume",dst=/node-red_build build-image bash -c "cd /node-red && npm i;ls;pwd"'
+					sh 'docker run --mount type=volume,src="input-volume",dst=/node-red_app --mount type=volume,src="output-volume",dst=/node-red_build build-image bash -c "cd /node-red_app/node-red && npm i;ls;pwd"'
 				}
 			}
 		}
