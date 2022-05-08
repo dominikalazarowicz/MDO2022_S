@@ -79,7 +79,7 @@ pipeline {
                 sh '/out/GithubAppLab03'
 
                 script{
-                    if(sh (script: 'echo $?').trim() == "0"){
+                    if(sh (script: 'echo $?',returnStdout: true).trim() == "0"){
                         echo "deployment success"
                     }
                     else{
