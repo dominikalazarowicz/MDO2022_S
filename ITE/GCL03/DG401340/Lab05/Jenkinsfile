@@ -1,0 +1,54 @@
+pipeline {
+    agent any
+    parameters {
+        booleanParam(name: "promote",
+            defaultValue: false,
+            description: "Promote to new version, when successful?")
+        string(name: "version",
+            defaultValue: "",
+            description: "Type in verion number:")
+    }
+    stages {
+        stage("Git") {
+            steps {
+                sh "docker system prune --all -f"
+                sh "docker build -t git:latest . -f ./ITE/GCL03/DG401340/Lab05/git_dockerfile/Dockerfile"
+                sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
+            }
+        }
+        stage("Build") {
+            steps {
+                sh "docker build -t build:latest . -f ./ITE/GCL03/DG401340/Lab05/build_dockerfile/Dockerfile"
+                sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
+            }
+        }
+        stage("Test") {
+            steps {
+                sh "docker build -t test:latest . -f ./ITE/GCL03/DG401340/Lab05/test_dockerfile/Dockerfile"
+                sh "docker run --name test --rm --mount source=in,target=/volume_in test:latest"
+            }
+        }
+        stage("Deploy") {
+            steps {
+                echo "Deploy"
+            }
+        }
+        stage("Publish") {
+            steps {
+                script {
+                    if(params.promote) {
+                        sh "rm -rf ./artifacts && mkdir artifacts"
+                        sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
+                        sh "docker cp copy:/volume_out ./artifacts "
+                        sh "docker rm copy"
+                        sh "ls -a"
+                        archiveArtifacts artifacts: "/artifacts/volume_out/*.jar"
+                    }
+                    else {
+                        echo "Everything was successful, but not promoting to new version!"
+                    }
+                }
+            }
+        }
+    }
+}
