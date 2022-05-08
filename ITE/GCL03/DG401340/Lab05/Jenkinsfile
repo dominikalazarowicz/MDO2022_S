@@ -40,12 +40,13 @@ pipeline {
                         sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
                         sh "docker cp copy:/volume_out ./artifacts "
                         sh "docker rm copy"
-                        sh "ls -a"
+                        sh "ls -a ./artifacts/volume_out/target"
+                        sh "mv ./artifacts/volume_out/target/*.jar ./artifacts"
+                        sh "rm -rf ./artifacts/volume_out"
                         sh "ls -a ./artifacts"
-                        sh "ls -a ./artifacts/volume_out/target"
-                        sh "find ./artifacts/volume_out/target -type f ! -name '*.jar' -delete"
-                        sh "ls -a ./artifacts/volume_out/target"
-                        sh "for FILENAME in *; do mv $FILENAME ${params.version}_$FILENAME; done"
+                        sh '''#!/bin/bash
+                                for FILENAME in ./artifacts*; do mv $FILENAME ${params.version}_$FILENAME; done
+                           '''
                         archiveArtifacts artifacts: "artifacts/volume_out/target/*.jar"
                     }
                     else {
