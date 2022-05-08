@@ -1,9 +1,6 @@
 #na podstawie jakiego obrazu
 FROM dev_build:latest
 
-#katalog, w ktorym wykona sie prace
-#WORKDIR .
-
 #test echo
 RUN echo '🥚 jajo 🥚'
 

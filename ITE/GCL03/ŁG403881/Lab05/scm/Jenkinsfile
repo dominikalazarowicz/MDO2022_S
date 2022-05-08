@@ -26,7 +26,7 @@ pipeline {
                 }
 
                 dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
-                    sh 'docker build -t dev-test:latest . -f Dockerfile'      
+                    sh 'docker build -t dev_test:latest . -f Dockerfile'      
                 } 
             }
         }
@@ -47,8 +47,8 @@ pipeline {
 	    stage('Test') {
             agent{
                 docker{
-                    image 'dev-test:latest'
-                    args '--mount src=in, target=/in -u root:root'
+                    image 'dev_test:latest'
+                    args '--mount source=in,target=/in -u root:root'
                 }
             }
             steps {
