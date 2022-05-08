@@ -9,7 +9,7 @@ pipeline {
                
                 sh 'mkdir -p app'
                 dir("app"){
-                    git branch 'master',
+                    git branch 'master'
                     url 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
                     sh 'docker cp . rtv_agd:/vol-in'
