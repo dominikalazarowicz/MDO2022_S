@@ -38,7 +38,7 @@ pipeline {
                 sh "rm -rf ./artifacts/extract && mkdir artifacts/extract"
                 sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts"
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
-                sh "pwd"
+                sh "docker rm mc"
                 sh "docker run -d --name mc --mount type=bind,source=/var/jenkins_home/workspace/DiscordSRV/artifacts,target=/plugins -e EULA=TRUE itzg/minecraft-server discord help"
                 sh "docker logs --follow mc"
                 echo "Deploy"
