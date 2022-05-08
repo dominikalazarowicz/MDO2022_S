@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    environment {
+        DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+        NUGET_API_KEY = credentials('api-key')
+    }
+
     stages {
 
         stage('Repo to volume (for) a good dockerfile'){
@@ -9,8 +15,7 @@ pipeline {
                
                 sh 'mkdir -p app'
                 dir("app"){
-                    git branch 'master'
-                    url 'https://github.com/Niemans/DevOpsLab05.git'
+                    git url 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
                     sh 'docker cp . rtv_agd:/vol-in'
                     sh 'docker rm rtv_agd'
