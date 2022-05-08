@@ -1,0 +1,6 @@
+FROM node:alpine
+
+WORKDIR node-red
+WORKDIR node-red_build
+
+RUN apk update && apk install -y git
