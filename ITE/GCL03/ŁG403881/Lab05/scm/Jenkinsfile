@@ -10,11 +10,10 @@ pipeline {
                 sh 'docker volume create out'
                
 
-                //sh 'rm -rf app || true'
                 sh 'mkdir -p app'
                 dir('app'){
                     
-                    git branch: 'main', url: 'https://github.com/Niemans/DevOpsLab05.git'
+                    git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v in:/in busybox'
                     sh 'docker cp ./. rtv_agd:/in'
                     sh 'docker rm rtv_agd'
