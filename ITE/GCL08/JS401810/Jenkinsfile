@@ -1,0 +1,29 @@
+pipeline {
+			
+	agent any
+
+	stages {
+		stage('Cloning repo with project js app') {
+			steps {
+				echo 'Creating volme to input'
+				sh 'docker volume create input'
+				sh 'docker rm tmp || true'
+				sh 'docker run -v input:/data --name tmp busybox'
+				sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
+				sh 'docker cp ~/cytoscape.js tmp:/data'
+				sh 'docker rm tmp'
+			}
+		}
+	}
+	
+	stage('Build') {
+			steps {
+				echo 'Building app with npm'
+				dir("./ITE/GCL08/JS401810") {
+					sh 'docker build -t cytoscape_build .'
+					sh 'docker volume create output'
+					sh 'docker run --mount type=volume,src="input",dst=/app --mount type=volume,src="output",dst=/app_build cytoscape_build bash -c "cd /app/cytoscape.js && npm i;"'
+				}
+			}
+		}
+}
