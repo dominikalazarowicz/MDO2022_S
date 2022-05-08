@@ -35,7 +35,7 @@ pipeline {
                 sh "docker cp copy:/volume_out ./artifacts "
                 sh "docker rm copy"
                 sh "rm -rf ./artifacts/extract && mkdir artifacts/extract"
-                sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && mv ./artifacts/extract/. ./artifacts"
+                sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp ./artifacts/extract/. ./artifacts"
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
                 sh "ls -a ./artifacts"
                 echo "Deploy"
