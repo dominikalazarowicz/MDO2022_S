@@ -38,13 +38,13 @@ pipeline {
                 echo 'Starting building'
 
                 sh 'ls -al /in'
-                //sh 'cd /in/DevOpsLab03/GithubAppLab03 && ls -l'
+                sh 'cd /in/GithubAppLab03 && ls -l'
+                sh 'cd /in/GithubAppLab03 && dotnet build --output /out'
                 //sh 'docker run --mount type=volume, src='
-                 dir('/in/GithubAppLab03'){
-                    sh 'ls -al'
-                    sh 'dotnet build --output /out'
-                    
-                }
+                // dir('/in/GithubAppLab03'){
+                //     sh 'ls -al'
+                //     sh 'dotnet build --output /out'
+                // }
                            
             }
         }
