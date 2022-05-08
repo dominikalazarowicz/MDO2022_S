@@ -14,7 +14,6 @@ pipeline {
                 sh 'mkdir -p app'
                 dir('app'){
                     
-                    sh 'docker rm rtv_agd || true'
                     git branch: 'main', url: 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v in:/in busybox'
                     sh 'docker cp ./. rtv_agd:/in'
