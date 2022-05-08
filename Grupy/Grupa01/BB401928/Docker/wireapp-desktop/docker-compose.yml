@@ -2,7 +2,7 @@ version: "3.9"
 services:
   b_agent:
     build:
-      context: "./docker/build_agent"
+      context: "build_agent"
       dockerfile: "Dockerfile"
     working_dir: /app
     volumes:
@@ -10,7 +10,7 @@ services:
 
   t_agent:
     build:
-      context: "./docker/test_agent"
+      context: "test_agent"
       dockerfile: "Dockerfile"
     working_dir: /app
     volumes:
