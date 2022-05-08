@@ -38,8 +38,15 @@ pipeline {
                 sh "rm -rf ./artifacts/extract && mkdir artifacts/extract"
                 sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts"
                 sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
-                sh "jar tf ./artifacts/\$(ls ./artifacts) | grep plugin.yml"
-                echo "Deploy"
+                def commandStdout = sh("jar tf ./artifacts/\$(ls ./artifacts) | grep plugin.yml")
+                if(commandStdout.contains("plugin.yml"))
+                {
+                    echo "Deployed! Plugin should work."
+                } else {
+                    echo "Plugin doesn not include plugin.yml. It will not work! Aborting!"
+                    exit 1
+                }
+                
             }
         }
         stage("Publish") {
@@ -51,7 +58,7 @@ pipeline {
                         archiveArtifacts artifacts: "artifacts/*.jar"
                     }
                     else {
-                        echo "Everything was successful, but not promoting to new version!"
+                        echo "Everything was successful, but not promoting to new version! (The promote check was not selected)"
                     }
                 }
             }
