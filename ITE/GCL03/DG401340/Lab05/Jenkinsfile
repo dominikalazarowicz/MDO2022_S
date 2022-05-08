@@ -43,9 +43,9 @@ pipeline {
                         sh "ls -a ./artifacts/volume_out/target"
                         sh "mv ./artifacts/volume_out/target/*.jar ./artifacts"
                         sh "rm -rf ./artifacts/volume_out"
-                        sh "find ./artifacts -type f -name '*' -printf \"echo mv '%h/%f' '%h/${params.version}_%f\n'\" | sh"
+                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f\n'\" | sh"
                         sh "ls -a ./artifacts"
-                        archiveArtifacts artifacts: "artifacts/volume_out/target/*.jar"
+                        archiveArtifacts artifacts: "artifacts/*.jar"
                     }
                     else {
                         echo "Everything was successful, but not promoting to new version!"
