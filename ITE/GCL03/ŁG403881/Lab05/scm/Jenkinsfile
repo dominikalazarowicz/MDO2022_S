@@ -77,7 +77,7 @@ pipeline {
             }
             steps {
                 sh '/out/GithubAppLab03'
-                sh 'echo $?'
+                //sh 'echo $?'
 
                 script{
                     def result = sh (script: 'echo $?',returnStdout: true).trim();
