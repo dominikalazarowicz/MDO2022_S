@@ -7,6 +7,7 @@ pipeline {
             steps{
                 sh 'ls -al'
                 sh 'docker volume rm in || true'
+                sh 'docker volume rm out || true'
                 sh 'docker volume create in'
                 sh 'docker volume create out'
                
@@ -39,10 +40,10 @@ pipeline {
                 sh 'ls -al /in'
 
                 //sh 'docker run --mount type=volume, src='
-                //dir('/in'){ ///DevOpsLab03/GithubAppLab03
-                    //sh 'dotnet build --output /out'
-                    //sh 'ls -l'
-                //}
+                dir('/in/DevOpsLab03/GithubAppLab03'){
+                    sh 'dotnet build --output /out'
+                    sh 'ls -l'
+                }
                            
             }
         }
