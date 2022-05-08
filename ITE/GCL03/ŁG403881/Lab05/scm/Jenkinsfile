@@ -6,15 +6,15 @@ pipeline {
         stage('RTV'){
             steps{
                 sh 'ls -al'
-                sh 'docker volume create vol-in'
-                sh 'docker volume create vol-out'
+                sh 'docker volume create in'
+                sh 'docker volume create out'
                
                 sh 'mkdir -p app'
                 dir('app'){
                     
                     git branch: 'main', url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
-                    sh 'docker container create --name rtv_agd -v vol-in:/vol-in busybox'
-                    sh 'docker cp ./. rtv_agd:/vol-in'
+                    sh 'docker container create --name rtv_agd -v in:/in busybox'
+                    sh 'docker cp ./. rtv_agd:/in'
                     sh 'docker rm rtv_agd'
                 }
 
@@ -28,14 +28,14 @@ pipeline {
             agent {
                 docker {
                     image 'dev_build:latest'
-                    args '--mount source="vol-in",target=/vol-in --mount source="vol-out",target=/vol-out -u root:root'
+                    args '--mount source=in,target=/in --mount source=out,target=/out -u root:root'
                 }
             }
             steps {
                 echo 'Starting building'
                 //sh 'docker run --mount type=volume, src='
                 dir('/vol-in/DevOpsLab03/GithubAppLab03'){
-                    //sh 'dotnet build --output /vol-out'
+                    //sh 'dotnet build --output /out'
                     sh 'ls -l'
                 }
                            
