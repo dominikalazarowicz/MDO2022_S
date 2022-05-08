@@ -10,7 +10,7 @@ pipeline {
                 sh 'docker volume create out'
                
 
-                sh 'rm -rf app || true'
+                //sh 'rm -rf app || true'
                 sh 'mkdir -p app'
                 dir('app'){
                     
@@ -21,7 +21,7 @@ pipeline {
                     sh 'docker rm rtv_agd'
 
                     sh 'ls .'
-                    sh 'ls GithubTestApp'
+                    sh 'ls GithubAppLab03'
                     sh 'pwd'
                 }
 
