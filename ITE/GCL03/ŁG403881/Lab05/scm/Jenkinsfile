@@ -33,11 +33,12 @@ pipeline {
             }
             steps {
                 echo 'Starting building'
+                sh 'ls -al'
                 //sh 'docker run --mount type=volume, src='
-                dir('/vol-in/DevOpsLab03/GithubAppLab03'){
+                //dir('/in/DevOpsLab03/GithubAppLab03'){
                     //sh 'dotnet build --output /out'
-                    sh 'ls -l'
-                }
+                    //sh 'ls -l'
+                //}
                            
             }
         }
@@ -52,11 +53,11 @@ pipeline {
             agent{
                 docker{
                     image 'dev-test:latest'
-                    args '--mount src=vol-in, target=/vol-in -u root:root'
+                    args '--mount src=in, target=/in -u root:root'
                 }
             }
             steps {
-                dir('/vol-in/DevOpsLab03/GithubAppLab03')
+                dir('/in/DevOpsLab03/GithubAppLab03')
                 sh 'docker test --no-build'  
             }
         }
