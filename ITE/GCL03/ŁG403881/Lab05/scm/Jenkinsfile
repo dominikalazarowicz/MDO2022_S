@@ -36,10 +36,10 @@ pipeline {
 
                 sh 'ls -al /.'
                 //sh 'docker run --mount type=volume, src='
-                //dir('/in/DevOpsLab03/GithubAppLab03'){
+                dir('/in/DevOpsLab03/GithubAppLab03'){
                     //sh 'dotnet build --output /out'
-                    //sh 'ls -l'
-                //}
+                    sh 'ls -l'
+                }
                            
             }
         }
