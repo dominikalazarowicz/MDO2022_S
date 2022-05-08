@@ -88,7 +88,6 @@ pipeline {
             }
             steps {
                 sh '/out/GithubAppLab03'
-
                 script{
                     if(sh (script: 'echo $?',returnStdout: true).trim() != "0"){
                         currentBuild.result = 'ABORTED' 
@@ -104,10 +103,6 @@ pipeline {
                     error('Doployment failue')
                 }
             }
-
         }
-
-
-
     }
 }
