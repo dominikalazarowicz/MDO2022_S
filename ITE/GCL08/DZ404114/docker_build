@@ -1,0 +1,6 @@
+FROM node:alpine
+
+WORKDIR myapp
+WORKDIR myapp_build
+
+RUN apk update && apk install -y git
