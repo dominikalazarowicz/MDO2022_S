@@ -77,21 +77,24 @@ pipeline {
             }
             steps {
                 sh '/out/GithubAppLab03'
+                sh 'echo $?'
+
+                script{
+                    def result = sh (script: 'echo $?',returnStdout: true).trim();
+                    echo result
+                    if(result == "0")
+                    {
+                        echo "Succesful deploy"
+                    }
+                    else
+                    {
+                        echo "Unsuccesful deploy"
+                        currentBuild.result = 'ABORTED'
+                        error('Unsuccesful deploy…')
+                    }
+                }
             }
-            // script{
-            //     def result = sh (script: 'echo $?',returnStdout: true).trim();
-            //     echo result
-            //     if(result == "0")
-            //     {
-            //         echo "Succesful deploy"
-            //     }
-            //     else
-            //     {
-            //         echo "Unsuccesful deploy"
-            //         currentBuild.result = 'ABORTED'
-            //         error('Unsuccesful deploy…')
-            //     }
-            // }
+
         }
 
 
