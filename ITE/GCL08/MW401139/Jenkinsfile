@@ -7,23 +7,23 @@ pipeline {
 			steps {
 				echo 'Creating volme to input'
 				sh 'docker volume create input-volume'
-				sh 'docker rm tempContainer || true'
-				sh 'docker run -v input-volume:/data --name tempContainer node'
-				sh 'cd ~/ && ls express || git clone --recurse-submodules https://github.com/node-red/node-red'
-				sh 'docker cp ~/express tempContainer:/data'
-				sh 'docker rm tempContainer'
+				sh 'docker rm temp-container || true'
+				sh 'docker run -v input-volume:/data --name temp-container node'
+				sh 'cd ~/ && ls node-red || git clone --recurse-submodules https://github.com/node-red/node-red.git'
+				sh 'docker cp ~/node-red temp-container:/data'
+				sh 'docker rm temp-container'
 			}
 		}
 	
 	stage('Build') {
 			steps {
-				echo 'Buildig express with npm'
+				echo 'Building node-red with npm'
 				dir("./MDO2022_S/ITE/GCL08/MW401139") {
 				    sh 'pwd'
 				    sh 'ls'
-					sh 'docker build ${docker_build} -t  .'
+					sh 'docker build . -t build-image -f docker_build'
 					sh 'docker volume create output-volume'
-					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express_build bash -c "cd /app/express && npm i;ls;pwd"'
+					sh 'docker run --mount type=volume,src="input-volume",dst=/node-red_app --mount type=volume,src="output-volume",dst=/node-red_build build-image bash -c "cd /node-red && npm i;ls;pwd"'
 				}
 			}
 		}
