@@ -53,7 +53,7 @@ pipeline {
             }
             steps {
                 echo 'Starting testing'
-                sh 'cd /in/GithubAppLab03 && docker test --no-build'  
+                sh 'cd /in/GithubAppLab03 && dotnet test --no-build'  
             }
         }
 
