@@ -28,7 +28,7 @@ pipeline {
             agent {
                 docker {
                     image 'dev_build:latest'
-                    args '--mount src=vol-in, target=/vol-in --mount src=vol-out, target=/vol-out -u root:root'
+                    args '--mount source=vol-in,target=/vol-in --mount source=vol-out,target=/vol-out -u root:root'
                 }
             }
             steps {
