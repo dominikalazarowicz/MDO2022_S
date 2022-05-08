@@ -1,5 +1,3 @@
 FROM build-image:latest
 
 WORKDIR node-red_build
-
-RUN npm install grunt-cli 
