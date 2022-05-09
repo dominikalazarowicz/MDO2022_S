@@ -1,4 +1,4 @@
-pipeline {
+e {
     agent any
     stages {
 	stage('Build') {
@@ -21,9 +21,7 @@ pipeline {
         }
 	stage('Deploy') {
             steps {
-		#sh 'docker rm --force deploy_node:latest || true'
 		sh 'docker run --name deploy_node:latest build_node'
-                #sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/ ; docker build --no-cache -t test_node:latest . -f ./test.dockerfile'
             }
         }
     }
