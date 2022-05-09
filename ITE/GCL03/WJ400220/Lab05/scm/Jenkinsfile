@@ -23,7 +23,7 @@ pipeline {
             steps {
                 sh 'docker rm -f deploy_node || true'
 		sh 'docker run -dit --name deploy_node --mount type=volume,src="volume_out",dst=/dest node'
-		sh 'docker container exec deploy_node sh -c "ls -l"'
+		sh 'docker container exec deploy_node sh -c "ls -l && cd dev && ls -l && cd ../etc && ls -l"'
 		sh 'docker container exec deploy_node sh -c "npm run validate"'
             }
         }
