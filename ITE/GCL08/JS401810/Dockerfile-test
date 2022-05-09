@@ -1,0 +1,8 @@
+#previous image name
+#FROM cytoscape:latest
+
+#RUN cd cytoscape.js && npm test
+
+FROM node:alpine
+
+RUN apk update && apk add bash
