@@ -15,7 +15,7 @@ pipeline {
 			}
 		}
 	
-	stage('Build') {
+		stage('Build') {
 			steps {
 				echo 'Building app with npm'
 				dir("./ITE/GCL08/JS401810") {
@@ -24,5 +24,14 @@ pipeline {
 					sh 'docker run --mount type=volume,src="input",dst=/app --mount type=volume,src="output",dst=/app_build cytoscape_build bash -c "cd /app/cytoscape.js && npm i;"'
 				}
 			}
-	}	}
+		}
+		stage('Test') {
+  			steps {
+    				echo 'Testing app with its tests'
+      				dir("./ITE/GCL08/JS401810"){
+      					sh 'docker build . -t cytoscape_test -f Dockerfile-test'
+      					sh 'docker run -t --mount type=volume,src="input",dst=/app_build cytoscape_test bash -c "cd /app_build/cytoscape.js && npm test;"'
+      				}
+    			}
+		}
 }
