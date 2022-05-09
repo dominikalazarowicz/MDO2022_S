@@ -4,10 +4,13 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+                    sh 'docker volume prune -f'
                     git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                     sh 'git checkout WJ400220'
                     sh 'git pull origin'
                     sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/ ; docker build --no-cache -t build_node:latest . -f ./build.dockerfile'
+                    sh 'docker volume create volume_out'
+                    sh 'docker run --mount type=volume,src="volume_out",dst=/dist build_node:latest bash -c "ls -l"'
                 }
            }
         }
@@ -16,5 +19,11 @@ pipeline {
                 sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/ ; docker build --no-cache -t test_node:latest . -f ./test.dockerfile'
             }
         }
+        stage('Deploy') {
+            steps {
+                sh 'docker run --name deploy_node:latest build_node'
+            }
+        }
     }
-}0
+}
+
