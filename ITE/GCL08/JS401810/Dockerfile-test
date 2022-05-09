@@ -5,4 +5,5 @@
 
 FROM cytoscape_build:latest
 
+RUN run-s test:js test:modules
 RUN apk update && apk add bash
