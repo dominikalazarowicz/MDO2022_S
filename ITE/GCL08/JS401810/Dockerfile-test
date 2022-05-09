@@ -5,4 +5,4 @@
 
 FROM cytoscape_build:latest
 
-RUN apt update && apt add bash
+RUN apk update && apk add bash
