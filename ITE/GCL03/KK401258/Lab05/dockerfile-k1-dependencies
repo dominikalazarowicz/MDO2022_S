@@ -3,6 +3,7 @@ FROM node:16.15.0
 
 WORKDIR volume_in
 CMD ["sh", "-c", "rm -rf /volume_in/* && git clone https://github.com/ahfarmer/calculator.git"]
+RUN ls
 WORKDIR calculator
-CMD ["sh", "ls"]
+RUN ls
 RUN npm install
