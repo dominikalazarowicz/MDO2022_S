@@ -3,6 +3,6 @@
 
 #RUN cd cytoscape.js && npm test
 
-FROM node:alpine
+FROM cytoscape_build:latest
 
 RUN apk update && apk add bash
