@@ -30,7 +30,7 @@ pipeline {
     				echo 'Testing app with its tests'
       				dir("./ITE/GCL08/JS401810"){
       					sh 'docker build . -t cytoscape_test -f Dockerfile-test'
-      					sh 'docker run -t --mount type=volume,src="input",dst=/app_build cytoscape_test bash -c "cd /app_build/cytoscape.js && npm test;"'
+      					sh 'docker run -t --mount type=volume,src="input",dst=/app_build cytoscape_test bash -c "cd /app_build/cytoscape.js && npm install -g npm@8.9.0 && npm test;"'
       				}
     			}
 		}
