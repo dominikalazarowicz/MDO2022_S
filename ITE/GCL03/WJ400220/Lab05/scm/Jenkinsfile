@@ -21,7 +21,9 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'docker run --name deploy_node build_node'
+                sh 'docker rm -f deploy_node || true'
+		sh 'docker run -dit --name deploy_node --mount type=volume,src="volume_out",dst=/dest node'
+		
             }
         }
     }
