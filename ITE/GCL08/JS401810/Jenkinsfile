@@ -43,5 +43,16 @@ pipeline {
 				sh 'docker rm -f cytoscape_deploy'
 			}
 		}
+		stage('Publish') {
+			steps {
+				echo 'Publishing express'
+				sh 'whoami'
+				sh 'rm -rf /var/jenkins_home/workspace/artifacts && mkdir /var/jenkins_home/workspace/artifacts'
+				// sh 'docker container rm publish || true'
+				// sh 'docker run --name express-publish --mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" node  bash -c "chmod -R 777 /usr/local/myapp && cp -R /usr/local/myapp/. /usr/local/copy"'
+		  //      sh 'docker rm -f express-publish'
+		  //      sh 'ls /var/jenkins_home/workspace/artifacts'
+			}
+		}	
 	}
 }
