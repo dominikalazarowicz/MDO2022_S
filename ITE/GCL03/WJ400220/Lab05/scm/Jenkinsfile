@@ -31,7 +31,6 @@ pipeline {
 	     steps {
 		echo 'publishing...'
 		echo '${params.version}'
-		echo ${params.version}
 	     }
 	}
     }
