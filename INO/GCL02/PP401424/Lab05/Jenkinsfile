@@ -29,11 +29,11 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'DEPLOY'
-                sh 'docker run --volume /var/jenkins_home/workspace/rurka/INO/GCL02/PP401424/Lab05:/finalBuild builder mv -n build /finalBuild'
+                sh 'docker run --volume /var/jenkins_home/workspace/rurka1/INO/GCL02/PP401424/Lab05:/finalBuild builder mv -n build /finalBuild'
                 dir('INO/GCL02/PP401424/Lab05') {
                     sh 'docker build . -f dock3.dockerfile -t deploy'
                 }
-                sh 'docker run --volume /var/jenkins_home/workspace/rurka/INO/GCL02/PP401424/Lab05/build:/build -d -p 3000:80 deploy'
+                sh 'docker run --volume /var/jenkins_home/workspace/rurka1/INO/GCL02/PP401424/Lab05/build:/build -d -p 3000:80 deploy'
                 sh 'docker stop $(docker ps -a -q)'
             }
         }
@@ -44,7 +44,7 @@ pipeline {
                 dir('INO/GCL02/PP401424/Lab05') {
                     sh 'docker build . -f dock4.dockerfile -t publisher'
                 }
-                sh "docker run --volume /var/jenkins_home/workspace/rurka/INO/GCL02/PP401424/Lab05:/finalArchive publisher mv archive.tar.xz /finalArchive"
+                sh "docker run --volume /var/jenkins_home/workspace/rurka1/INO/GCL02/PP401424/Lab05:/finalArchive publisher mv archive.tar.xz /finalArchive"
             }
         }
     }
