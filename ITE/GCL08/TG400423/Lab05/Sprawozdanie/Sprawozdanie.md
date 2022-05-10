@@ -366,7 +366,7 @@ dodano następujący kod:
 </Project>
 ```
 
-Jest to opis paczki która ma pyć utworzona. 
+Jest to opis paczki która ma być utworzona. 
 Pole Version będzie nadpisane przez polecenie dotnet pack.
 
 
