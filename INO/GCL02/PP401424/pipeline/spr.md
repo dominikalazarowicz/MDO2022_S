@@ -82,7 +82,7 @@ Fragment `Dockerfila` odpowiedzialnego za krok `Tests`:
 
 Do kroku `deploy` potrzebne będą nam zbuildowane pliki z buildera. W tym celu uruchamiam obraz `builder` z podłączonym woluminem, na który kopiowany jest folder `build`. Ścieżka tego woluminu znajduje się wewnątrz jenkinsa i prowadzi do jego `workspace`, gdzie znajduje się folder naszego pipelinu `rurka1` oraz sklonowane repo. 
 
-Następnie tworzymy obraz `deploy`, który będzie hostował nasze zbuildowane pliki. Moim wyborem był obraz oparty o `nginx:stable-alpine` ze wzglądu na łatwość konfiguracji. Do jego poprawnego działania wystarczy skopiować folder `build`, który uprzednio wyciągnęliśmy z `buildera`, do `.
+Następnie tworzymy obraz `deploy`, który będzie hostował nasze zbuildowane pliki. Moim wyborem był obraz oparty o `nginx:stable-alpine` ze wzglądu na łatwość konfiguracji. Do jego poprawnego działania wystarczy skopiować folder `build`, który uprzednio wyciągnęliśmy z `buildera`, do `/usr/share/nginx/html`.
 
 Po stworzeniu obrazu odpalamy obraz `deploy` podając mu ścieżkę do folderu build. Ponadto ustawiamy przekierowanie portu z 80, na którym domyślnie działa `nginx` na port 3000, dzięki czemu możemy wejść na naszą hostowaną stronę poprzez `localhost`.
 
