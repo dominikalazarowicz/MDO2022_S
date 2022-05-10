@@ -5,12 +5,13 @@ pipeline {
 	stages {
 		stage('Cloning repo with project js app') {
 			steps {
-				echo 'Creating volme to input'
+				echo 'Creating repo to input volume'
 				sh 'docker volume create input'
 				sh 'docker rm tmp || true'
 				sh 'docker run -v input:/data --name tmp busybox'
 				sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
 				sh 'docker cp ~/cytoscape.js tmp:/data'
+				//sh 'docker run --mount "type=volume,src=input-volume,dst=/myapp" --name tempContainer node bash -c "cd ~/ && ls express || git clone https://github.com/expressjs/express.git;cp -R express ~/myapp"'
 				sh 'docker rm tmp'
 			}
 		}
@@ -34,25 +35,6 @@ pipeline {
       				}
     			}
 		}
-		stage('Deploy') {
-			steps {
-				echo 'Deploy stage - cytoscape.js'
-				sh 'docker rm -f cytoscape_deploy || true'
-				sh 'docker run -d --name cytoscape_deploy --mount type=volume,src="output",dst=/app node bash -c "cd /app/cytoscape.js && npm run"'
-				sh 'sleep 5; exit $(docker inspect cytoscape_deploy --format="{{.State.ExitCode}}")'
-				sh 'docker rm -f cytoscape_deploy'
-			}
-		}
-		stage('Publish') {
-			steps {
-				echo 'Publishing express'
-				sh 'whoami'
-				sh 'rm -rf /var/jenkins_home/workspace/artifacts && mkdir /var/jenkins_home/workspace/artifacts'
-				sh 'docker container rm cytoscape_publish || true'
-				sh 'docker run --name cytoscape_publish --mount "type=volume,src=output,dst=/usr/local/app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" node  bash -c "chmod -R 777 /usr/local/app && cp -R /usr/local/app/. /usr/local/copy"'
-		       		sh 'docker rm -f cytoscape_publish'
-		  	      	sh 'ls /var/jenkins_home/workspace/artifacts'
-			}
-		}	
+			
 	}
 }
