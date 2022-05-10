@@ -31,6 +31,9 @@ pipeline {
 	     when {
 		expression {return params.PROMOTE}
 	     }
+	     steps {
+		echo 'publishing...'
+	     }
 	}
     }
 }
