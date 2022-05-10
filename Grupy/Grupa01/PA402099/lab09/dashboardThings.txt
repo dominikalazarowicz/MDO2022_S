@@ -1,7 +1,0 @@
-Z minikube dashboard można wykonać następujące rzeczy:
-- Wdrażanie skonteneryzowanych aplikacji na klastry Kubernetesa
-- Rozwiązywanie błędów związanych ze skonteryzowanymi aplikacjami
-- Zarządzanie zasobami klastrów
-- Wgląd na podsumowanie działania aplikacji z klastrów
-- Tworzenie lub modyfikacja poszzcególnych zasobów Kubernetesa takich jak wdrażanie, joby czy DaemonSets
-- Kompleksowe zarządzanie aplikacjami działającymi w klastrach 
