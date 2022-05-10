@@ -10,7 +10,6 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'BUILD'
-                git branch: 'PP401424', url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                 dir('INO/GCL02/PP401424/Lab05') {
                     sh 'docker build . -f dock1.dockerfile -t builder'
                 }
