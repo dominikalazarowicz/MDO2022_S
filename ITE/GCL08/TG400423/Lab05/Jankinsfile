@@ -1,0 +1,157 @@
+pipeline {
+    agent any
+    environment {
+        DOTNET_CLI_HOME = "/tmp/DOTNET_CLI_HOME"
+        NUGET_API_KEY = credentials('api-key')
+    }
+        
+    parameters {
+        string(name: 'Version', defaultValue: '1.0.2', description: 'version')
+        string(name: 'Dockerfiles_path', defaultValue: 'ITE/GCL08/TG400423/Lab05/Dockerfiles', description: 'dockerfiles path (repo)')
+        string(name: 'Project_branch', defaultValue: 'master', description: 'branch with project to build')
+        string(name: 'Promote', defaultValue: 'No', description: 'If you want to promote write: Promote')
+    }
+    
+    stages {
+        stage('Setup_Build') {
+            steps {
+                
+                sh 'docker volume create in'
+                sh 'docker volume create out'
+                sh 'docker volume ls'
+               
+                sh 'mkdir -p App'
+                dir("App")
+                {
+                    git branch: "${params.Project_branch}",
+                    url: 'https://github.com/XxTomixX/GithubTestApp.git'
+                    
+                    sh 'docker container create --name copy -v in:/in busybox'
+                    sh 'docker cp ./. copy:/in'
+                    sh 'docker rm copy'
+                
+                    sh 'ls .'
+                    sh 'ls GithubTestApp'
+                    sh 'pwd'
+                }
+                
+                sh 'mkdir -p Dockerfiles'
+                dir("Dockerfiles")
+                {
+                    git branch: 'TG400423',
+                    url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+
+                    sh "docker build -t build_app . -f ${params.Dockerfiles_path}/Dockerfile_Build"
+                    sh "cd ${params.Dockerfiles_path} && ls -l"
+                    sh 'ls .'
+                }
+
+            }
+        }
+       
+        stage('Build') {
+            agent {
+                docker {
+                    image 'build_app:latest'
+                    args '--mount source=in,target=/in --mount source=out,target=/out -u root:root'
+                }
+            }
+            steps {
+                sh 'dotnet --info'
+                sh 'ls /in/GithubTestApp'
+                sh 'pwd /in/GithubTestApp'
+                sh 'cd /in/GithubTestApp && dotnet build --output /out'
+            }
+            
+      
+        }
+        
+        stage('Setup_Test') {
+            steps {
+                dir("Dockerfiles")
+                {
+                    sh "docker build -t test . -f ${params.Dockerfiles_path}/Dockerfile_Test"
+                }
+            }
+        }
+        stage('Test') {
+            agent {
+                docker {
+                    image 'test:latest'
+                    args '--mount source=in,target=/in -u root:root'
+                }
+            }
+            steps {
+                sh 'cd /in/GithubTestApp && dotnet test --no-build'
+            }
+
+        }
+        
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'test:latest'
+                    args '--mount source=out,target=/out'
+                }
+            }
+            steps {
+              
+                sh 'ls -l' 
+                sh 'cd /out && ls -l'
+
+                timeout(time: 5, unit: 'SECONDS')
+                {
+                    sh 'cd /out && ./GithubTestApp'
+                }
+                sh 'echo $?'
+                
+            script {
+                def result = sh (script: 'echo $?',returnStdout: true).trim();
+                echo result
+                if(result == "0")
+                {
+                    echo "Succesful deploy"
+                }
+                else
+                {
+                    echo "Unsuccesful deploy"
+                    currentBuild.result = 'ABORTED'
+                    error('Unsuccesful deploy…')
+                }
+            }
+               
+           
+                          
+              
+            }
+        }
+       
+        stage('Publish') {
+            
+            when {
+                expression {
+                    return params.Promote == "Promote";
+                }
+            }
+            agent {
+                docker {
+                    image 'test:latest'
+                    args '--mount source=in,target=/in --mount source=out,target=/out -u root:root'
+                }
+            }
+            steps {
+                sh 'cd /out && ls -l'
+                sh 'cd /in && ls -l'
+                sh 'cd /in/TestowaBiblioteka && ls -l'
+
+                sh "cd /in/TestowaBiblioteka && dotnet pack -p:PackageVersion=${params.Version} --no-build -o /out /p:OutputPath=/out"
+                sh 'cd /out && ls -l'
+       
+                sh "cd /out && dotnet nuget push Math_Lib.${params.Version}.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json"
+            }
+        }
+        
+       
+        
+    }
+}
