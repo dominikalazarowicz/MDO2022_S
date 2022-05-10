@@ -38,7 +38,7 @@ pipeline {
 			steps {
 				echo 'Deploy stage - cytoscape.js'
 				sh 'docker rm -f cytoscape_deploy || true'
-				sh 'docker run -d --name cytoscape_deploy --mount "type=volume,src=output,dst=app" node bash -c "cd /app/cytoscape.js && npm run"'
+				sh 'docker run -d --name cytoscape_deploy --mount type=volume,src="output",dst=/app node bash -c "cd /app/cytoscape.js && npm run"'
 				//sh 'sleep 5; exit $(docker inspect deploy --format="{{.State.ExitCode}}")'
 				//sh 'docker rm -f deploy'
 			}
