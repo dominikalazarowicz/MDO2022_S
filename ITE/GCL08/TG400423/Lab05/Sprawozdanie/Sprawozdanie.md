@@ -347,6 +347,28 @@ Wynik.
 
 ![Alt text](./4.jpg)
 
+# Plik .csproj
+
+Aby paczka została prawidłowo utworzona do pliku TestowaBiblioteka.csproj 
+dodano następujący kod:
+
+```
+<Project Sdk="Microsoft.NET.Sdk">
+
+ <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <PackageId>Math_Lib</PackageId>
+    <Version>1.0.0</Version>
+    <Authors>Tomasz Gąsior</Authors>
+    <Company>Firma</Company>
+  </PropertyGroup>
+
+</Project>
+```
+
+Jest to opis paczki która ma pyć utworzona. 
+Pole Version będzie nadpisane przez polecenie dotnet pack.
+
 
 # Diagramy
  # Diagram aktywności 
