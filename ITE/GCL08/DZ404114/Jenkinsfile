@@ -19,11 +19,19 @@ pipeline {
 			steps {
 				echo 'Buildig express with npm'
 				dir("./ITE/GCL08/DZ404114") {
-				    sh 'pwd'
-				    sh 'ls'
 					sh 'docker build . -t express-build -f docker_build'
 					sh 'docker volume create output-volume'
-					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express-build bash -c "cd /myapp/express && npm i;ls;pwd"'
+					sh 'docker run --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build express-build bash -c "cd /myapp/express && npm i;cd ..;cp -R express /myapp_build"'
+				}
+			}
+		}
+	}
+	stage('Test') {
+			steps {
+				echo 'Testing express with npm'
+				dir("./ITE/GCL08/DZ404114") {
+					sh 'docker build . -t express-test -f docker_test'
+					sh 'docker run --mount type=volume,src="output-volume",dst=/myapp_test express-test bash -c "cd /myapp_test/express && npm test"'
 				}
 			}
 		}
