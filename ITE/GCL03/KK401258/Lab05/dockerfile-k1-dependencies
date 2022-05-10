@@ -3,4 +3,4 @@ FROM node:16.15.0
 
 WORKDIR volume_in
 CMD ["sh", "-c", "rm -rf /volume_in/* && git clone https://github.com/ahfarmer/calculator.git"]
-CMD ["sh", "-c", "cd -f /volume_in/calculator && npm instal && ls ./volume_in"]
+CMD ["sh", "-c", "cd /volume_in/calculator && npm instal && ls ./volume_in"]
