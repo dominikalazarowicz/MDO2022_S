@@ -27,6 +27,11 @@ pipeline {
 		sh 'docker container exec deploy_node sh -c "cd dest/testing-node-apps/dist && ls -l && npm run validate"'
             }
         }
+	stage('Publish') {
+	     when {
+		expression {return params.PROMOTE}
+	     }
+	}
     }
 }
 
