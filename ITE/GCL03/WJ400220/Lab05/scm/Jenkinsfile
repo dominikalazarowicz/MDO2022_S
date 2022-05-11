@@ -34,10 +34,12 @@ pipeline {
             }
         }
 	stage('Publish') {
+	     when {
+		expression {return params.PROMOTE}
+	     }
 	     steps {
 		echo 'publishing...'
 		echo '${params.version}'
-		echo params.PROMOTE
 		echo params.version
 	     }
 	}
