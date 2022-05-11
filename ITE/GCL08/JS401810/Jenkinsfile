@@ -8,14 +8,7 @@ pipeline {
 	agent any
 
 	stages {
-		
-		stage('Clean up'){
-			agent any
-			steps{
-				cleanWs()
-			}
-		}
-		
+
 		stage('Cloning repo with node js app from github') {
 			steps {
 				echo 'Cloning repo to volume input'
