@@ -37,6 +37,7 @@ pipeline {
 	     steps {
 		echo 'publishing...'
 		echo '${params.version}'
+		echo params.PROMOTE
 		echo params.version
 	     }
 	}
