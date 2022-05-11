@@ -51,6 +51,9 @@ pipeline {
 			}
 		
 		stage('Prepare publish'){
+			when {
+                		expression {return params.PROMOTE}
+           			}
            		steps {
                			echo 'Preparing publish'
                 		sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
@@ -58,9 +61,12 @@ pipeline {
        			 }
         
 		stage('Publish') {
+			when {
+                		expression {return params.PROMOTE}
+           			}
 		  	  agent {
               			  docker {
-                   			image 'node:alpine'
+                   			image 'node:latest'
                     			args '--rm --mount "type=volume,src=output,dst=/usr/local/app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
                 			}
           			}
