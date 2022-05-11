@@ -1,0 +1,17 @@
+1. Instalacja Minkube
+    Obrazki: 
+        Zad2_1_InstalacjaMinikube, Zad2_2_MinikubeStart
+
+    Komendy:
+        curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+        sudo install minikube-linux-amd64 /usr/local/bin/minikube
+        minikube start
+
+2. Instalacja kubectl
+    Obrazki:
+        Zad2_3_InstalacjaKubectl
+
+    Komenda:
+        minikube kubectl -- get po -A
+
+
