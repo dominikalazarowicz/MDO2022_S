@@ -29,7 +29,7 @@
   * Przeprowadź instalację wybranego oprogramowania
 
 #### Zakres rozszerzony
-* Wyprowadź własne repozytorium
+* Wyprowadź własne repozytorium (W przypadku systemd-nspawn, lokalne repozytorium instalacyjne systemu)
 
 ### nspawn
 * Zainstaluj kontener systemd na maszynie docelowej przy użyciu repozytorium via Ansible
