@@ -51,16 +51,27 @@ pipeline {
 				sh 'docker rm -f cytoscape_deploy'
 				}
 			}
-		//stage('Publish') {
-			//steps {
-			//	echo 'Publishing express'
-			//	sh 'whoami'
-			//	sh 'rm -rf /var/jenkins_home/workspace/artifacts && mkdir /var/jenkins_home/workspace/artifacts'
-			//	sh 'docker container rm cytoscape_publish || true'
-			//	sh 'docker run --name cytoscape_publish --mount "type=volume,src=output,dst=/usr/local/app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" node  bash -c "chmod -R 777 /usr/local/app && cp -R /usr/local/app/. /usr/local/copy"'
-		       	//	sh 'docker rm -f cytoscape_publish'
-		  	   //   	sh 'ls /var/jenkins_home/workspace/artifacts'
-			//}
-		//}	
+		
+		stage('Prepare publish'){
+            steps {
+                echo 'Preparing publish'
+                sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
+            }
+        }
+        
+		stage('Publish') {
+		    agent {
+                docker {
+                    image 'node:alpine'
+                    args '--rm --mount "type=volume,src=output,dst=/usr/local/app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+                }
+            }
+			steps {
+			    sh 'rm -f /usr/local/copy/* || true'
+			    sh "cd /usr/local/app/cytoscape.js && npm version ${params.VERSION} && npm pack"
+			    sh "mv /usr/local/app/cytoscape.js/cytoscape-${params.VERSION}.tgz /usr/local/copy"
+                
+			}
+		}	
 	}
 }
