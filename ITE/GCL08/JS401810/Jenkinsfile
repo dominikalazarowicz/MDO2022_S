@@ -8,6 +8,14 @@ pipeline {
 	agent any
 
 	stages {
+		
+		stage('Clean up'){
+			agent any
+			steps{
+				cleanWs()
+			}
+		}
+		
 		stage('Cloning repo with node js app from github') {
 			steps {
 				echo 'Cloning repo to volume input'
@@ -21,7 +29,6 @@ pipeline {
 		stage('Build') {
 			 steps {
 				echo 'Building app with npm'
-				cleanWs()
 				dir("./ITE/GCL08/JS401810") {
 					sh 'docker build . -t cytoscape_build -f Dockerfile-build'
 					sh 'docker volume create output'
