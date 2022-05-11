@@ -14,6 +14,7 @@ pipeline {
 				sh 'docker volume create input'
 				sh 'docker rm tmp || true'
 				//sh 'docker run -v input:/data --name tmp busybox'
+				sh 'ls'
 				sh 'docker run --mount "type=volume,src=input,dst=/app" --name tmp node bash -c "cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git;cp -R cytoscape.js /app"'
 				sh 'pwd'
 				//sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
@@ -43,6 +44,18 @@ pipeline {
       					}
     				}
 			}
+		
+		post {
+        // Clean after build
+        always {
+            cleanWs(cleanWhenNotBuilt: false,
+                    deleteDirs: true,
+                    disableDeferredWipeout: true,
+                    notFailBuild: true,
+                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
+                               [pattern: '.propsfile', type: 'EXCLUDE']])
+        }
+    }
 
 		stage('Deploy') {
 			  steps {
