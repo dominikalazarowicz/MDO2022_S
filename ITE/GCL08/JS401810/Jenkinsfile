@@ -26,7 +26,7 @@ pipeline {
 		stage('Build') {
 			 steps {
 				echo 'Building app with npm'
-				cleanWs()
+				//cleanWs()
 				dir("./ITE/GCL08/JS401810") {
 					sh 'docker build . -t cytoscape_build -f Dockerfile-build'
 					sh 'docker volume create output'
