@@ -3,7 +3,7 @@
 | Tomasz | Gąsior   | 10.05.2022 |
 
 # Przygotowanie systamu pod uruchomienie 
-1. Instalacja systemu\
+Instalacja systemu\
 ![Alt text](./1.jpg)
 
 Partycjonowanie 
