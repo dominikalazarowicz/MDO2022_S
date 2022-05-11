@@ -45,27 +45,25 @@ pipeline {
 				echo 'Deploying app and checking if works'
 				sh 'docker rm -f cytoscape_deploy || true'
 				sh 'docker run -d --name cytoscape_deploy --mount type=volume,src="output",dst=/app node bash -c "cd /app/cytoscape.js && npm run"'
-				sh 'docker container logs -f cytoscape_deploy'
 				sh 'sleep 5; exit $(docker inspect cytoscape_deploy --format="{{.State.ExitCode}}")'
-				//sh 'docker ps -a'
 				sh 'docker rm -f cytoscape_deploy'
 				}
 			}
 		
 		stage('Prepare publish'){
-            steps {
-                echo 'Preparing publish'
-                sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
-            }
-        }
+           		steps {
+               			echo 'Preparing publish'
+                		sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
+          			}
+       			 }
         
 		stage('Publish') {
-		    agent {
-                docker {
-                    image 'node:alpine'
-                    args '--rm --mount "type=volume,src=output,dst=/usr/local/app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
-                }
-            }
+		  	  agent {
+              			  docker {
+                   			image 'node:alpine'
+                    			args '--rm --mount "type=volume,src=output,dst=/usr/local/app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+                			}
+          			}
 			steps {
 			    sh 'rm -f /usr/local/copy/* || true'
 			    sh "cd /usr/local/app/cytoscape.js && npm version ${params.VERSION} && npm pack"
