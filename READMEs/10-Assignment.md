@@ -25,7 +25,7 @@
 
 ### Repozytoria
 * Stwórz playbook
-  * Doinstaluj wymagane repozytoria na maszynie docelowej
+  * Doinstaluj wymagane repozytoria na maszynie docelowej (np. ```rpmfusion```)
   * Przeprowadź instalację wybranego oprogramowania
 
 #### Zakres rozszerzony
