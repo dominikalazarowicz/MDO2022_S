@@ -11,3 +11,4 @@ Lista funkcjonalnosci dostepnych z Minikube dashboard:
     >przegladanie informacji o aplikacjach uruchomionych na klastrze Kubernetesowym
     >tworzenie i modyfikowanie indywidualnych zasobow Kubernetesowych
 
+kubectl run komunikator --image=namuennov/commm --port=9999 --labels app=komunikator --restart=OnFailure - uruchomienie kontenera dockerowego z obrazu commm na klastrze ; flaga --restart okresla polityke restartu kontenera (tutaj: restart dopiero po bledzie)
