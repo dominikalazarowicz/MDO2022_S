@@ -1,4 +1,9 @@
 pipeline {
+	
+	parameters {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+    }
 			
 	agent any
 
@@ -8,10 +13,12 @@ pipeline {
 				echo 'Creating repo to input volume'
 				sh 'docker volume create input'
 				sh 'docker rm tmp || true'
-				sh 'docker run -v input:/data --name tmp busybox'
-				sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
-				sh 'docker cp ~/cytoscape.js tmp:/data'
-				//sh 'docker run --mount "type=volume,src=input-volume,dst=/myapp" --name tempContainer node bash -c "cd ~/ && ls express || git clone https://github.com/expressjs/express.git;cp -R express ~/myapp"'
+				//sh 'docker run -v input:/data --name tmp busybox'
+				sh 'docker run --mount "type=volume,src=input,dst=/app" --name tmp busybox bash -c "cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git;cp -R cytoscape.js ~/app"'
+				sh 'docker ps'
+				sh 'ls'
+				//sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
+				//sh 'docker cp ~/cytoscape.js tmp:/data'
 				sh 'docker rm tmp'
 			}
 		}
