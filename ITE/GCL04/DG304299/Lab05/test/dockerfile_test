@@ -1,0 +1,4 @@
+FROM nodered_build:latest
+
+WORKDIR node-red
+RUN npm test
