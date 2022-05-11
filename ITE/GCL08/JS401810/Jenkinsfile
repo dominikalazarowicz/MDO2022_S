@@ -14,7 +14,6 @@ pipeline {
 				sh 'docker volume create input'
 				sh 'docker rm tmp || true'
 				//sh 'docker run -v input:/data --name tmp busybox'
-				sh 'ls'
 				sh 'docker run --mount "type=volume,src=input,dst=/app" --name tmp node bash -c "cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git;cp -R cytoscape.js /app"'
 				sh 'pwd'
 				//sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
@@ -26,14 +25,13 @@ pipeline {
 		stage('Build') {
 			 steps {
 				echo 'Building app with npm'
-				//cleanWs()
 				dir("./ITE/GCL08/JS401810") {
 					sh 'docker build . -t cytoscape_build -f Dockerfile-build'
 					sh 'docker volume create output'
 					sh 'docker run --mount type=volume,src="input",dst=/app --mount type=volume,src="output",dst=/app_build cytoscape_build bash -c "cd /app/cytoscape.js && npm i;cd ..;cp -R cytoscape.js /app_build"'
 					}
-			 }
-		}
+				}
+			}
 
 		stage('Test') {
   			steps {
@@ -43,7 +41,7 @@ pipeline {
       					sh 'docker run -t --mount type=volume,src="output",dst=/app_test cytoscape_test bash -c "cd /app_test/cytoscape.js && npm test"'
       					}
     				}
-			}     
+			}
 
 		stage('Deploy') {
 			  steps {
@@ -69,4 +67,3 @@ pipeline {
 		//}	
 	}
 }
-
