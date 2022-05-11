@@ -3,7 +3,6 @@ pipeline {
 	string(name: 'VERSION', defaultValue: '1.0.0', description: '')
 	booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
     }
-    tools {agent: "nodejs-16"}
     agent any
     stages {
         stage('Build') {
