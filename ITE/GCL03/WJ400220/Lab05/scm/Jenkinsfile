@@ -4,6 +4,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
+		    sh 'docker rm -f build_node || true'
                     sh 'docker volume prune -f'
                     git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                     sh 'git checkout WJ400220'
@@ -16,6 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+		sh 'docker rm -f test_node || true'
                 sh 'cd ITE/GCL03/WJ400220/Lab05/dockerfiles/ ; docker build --no-cache -t test_node:latest . -f ./test.dockerfile'
             }
         }
