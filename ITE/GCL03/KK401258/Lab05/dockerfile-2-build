@@ -1,0 +1,4 @@
+# syntax=docker/dockerfile:1 
+FROM k1-build
+
+RUN npm run-script build
