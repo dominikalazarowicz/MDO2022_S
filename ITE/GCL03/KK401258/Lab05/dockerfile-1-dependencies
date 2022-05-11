@@ -1,5 +1,8 @@
 # syntax=docker/dockerfile:1
 FROM node:16.15.0
+echo 'k1'
 RUN git clone https://github.com/actionsdemos/calculator.git
+echo 'k2'
 WORKDIR calculator
+echo 'k3'
 RUN npm install
