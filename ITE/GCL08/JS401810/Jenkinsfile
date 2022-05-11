@@ -32,18 +32,7 @@ pipeline {
 					sh 'docker volume create output'
 					sh 'docker run --mount type=volume,src="input",dst=/app --mount type=volume,src="output",dst=/app_build cytoscape_build bash -c "cd /app/cytoscape.js && npm i;cd ..;cp -R cytoscape.js /app_build"'
 					}
-				}
-			
-				   always {
-            cleanWs(cleanWhenNotBuilt: false,
-                    deleteDirs: true,
-                    disableDeferredWipeout: true,
-                    notFailBuild: true,
-                    patterns: [[pattern: '.gitignore', type: 'INCLUDE'],
-                               [pattern: '.propsfile', type: 'EXCLUDE']])
-        }
-    
-			}
+			 }
 
 		stage('Test') {
   			steps {
