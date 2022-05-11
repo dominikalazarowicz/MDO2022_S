@@ -1,0 +1,4 @@
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64 - pobranie Minikube
+sudo install minikube-linux-amd64 /usr/local/bin/minikube - zainstalowanie Minikube
+minikube start - uruchomienie Minikube
+minikube kubectl -- get po -A - pobranie Kubectl
