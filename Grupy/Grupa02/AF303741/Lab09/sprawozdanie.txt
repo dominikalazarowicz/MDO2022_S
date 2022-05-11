@@ -8,10 +8,25 @@
         minikube start
 
 2. Instalacja kubectl
-    Obrazki:
+    Obrazek:
         Zad2_3_InstalacjaKubectl
 
     Komenda:
         minikube kubectl -- get po -A
 
+3. Otworzenie Minikube Dashboard
+    Obrazek:
+        Zad3_MinikubeDashboard
 
+    Komenda:
+        minikube dashboard
+
+
+4. Lista rzeczy, ktore mozna zrobic z Minikube Dashboard
+    - Tworzenie i uruchamianie skonteneryzowanych apliakcji
+    - Przegladanie obiektow Kubernate
+    - Przegladanie zurzycia zasobow danej apliakcji
+    - Udostepnianie serwisow
+    - Przechowywanie zasobow aplikacji i przegladanie ich
+    - Zarzadzanie konfiguracja uruchomionej applikacji
+    - Przegladanie log'ow aplikacji
