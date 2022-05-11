@@ -3,54 +3,58 @@ pipeline {
 	parameters {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
-    }
+    	}
 			
 	agent any
 
 	stages {
-		stage('Cloning repo with project js app') {
+		stage('Cloning repo with node js app from github') {
 			steps {
-				echo 'Creating repo to input volume'
+				echo 'Cloning repo to volume input'
 				sh 'docker volume create input'
 				sh 'docker rm tmp || true'
 				//sh 'docker run -v input:/data --name tmp busybox'
 				sh 'docker run --mount "type=volume,src=input,dst=/app" --name tmp node bash -c "cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git;cp -R cytoscape.js /app"'
-				sh 'docker ps'
-				sh 'ls'
+				sh 'docker ps -a'
+				sh 'pwd'
 				//sh 'cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git'
 				//sh 'docker cp ~/cytoscape.js tmp:/data'
 				sh 'docker rm tmp'
+				}
 			}
-		}
 	
 		stage('Build') {
-			steps {
+			 steps {
 				echo 'Building app with npm'
 				dir("./ITE/GCL08/JS401810") {
 					sh 'docker build . -t cytoscape_build -f Dockerfile-build'
 					sh 'docker volume create output'
 					sh 'docker run --mount type=volume,src="input",dst=/app --mount type=volume,src="output",dst=/app_build cytoscape_build bash -c "cd /app/cytoscape.js && npm i;cd ..;cp -R cytoscape.js /app_build"'
+					}
 				}
 			}
-		}
+
 		stage('Test') {
   			steps {
     				echo 'Testing app with its tests'
       				dir("./ITE/GCL08/JS401810"){
       					sh 'docker build . -t cytoscape_test -f Dockerfile-test'
       					sh 'docker run -t --mount type=volume,src="output",dst=/app_test cytoscape_test bash -c "cd /app_test/cytoscape.js && npm test"'
-      				}
-    			}
-		}
+      					}
+    				}
+			}
+
 		stage('Deploy') {
-			steps {
-				echo 'Deploy stage - cytoscape.js'
+			  steps {
+				echo 'Deploying app and checking if works'
 				sh 'docker rm -f cytoscape_deploy || true'
 				sh 'docker run -d --name cytoscape_deploy --mount type=volume,src="output",dst=/app node bash -c "cd /app/cytoscape.js && npm run"'
 				sh 'sleep 5; exit $(docker inspect cytoscape_deploy --format="{{.State.ExitCode}}")'
+				sh 'docker ps'
+				sh 'docker container logs -f cytoscape_deploy'
 				sh 'docker rm -f cytoscape_deploy'
+				}
 			}
-		}
 		//stage('Publish') {
 			//steps {
 			//	echo 'Publishing express'
