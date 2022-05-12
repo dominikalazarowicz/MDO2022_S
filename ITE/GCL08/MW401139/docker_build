@@ -1,6 +1,6 @@
 FROM node:latest
 
-WORKDIR app
-WORKDIR app_build
+WORKDIR node-red_app
+WORKDIR node-red_build
 
 RUN apt update

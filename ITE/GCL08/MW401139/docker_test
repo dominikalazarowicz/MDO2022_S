@@ -1,5 +1,5 @@
 FROM build-image:latest
 
-WORKDIR app_test
+WORKDIR node-red_build
 
 RUN npm install grunt --save-dev && npm install
