@@ -14,7 +14,7 @@ pipeline {
 				echo 'Cloning express'
 				sh 'docker volume create input-volume'
 				sh 'docker rm tempContainer || true'
-				sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" busybox bash -c "cd ~/ && ls express || git clone https://github.com/expressjs/express.git;cp -R express /myapp; ls /myapp"'
+				sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/ && ls express || git clone https://github.com/expressjs/express.git;cp -R express /myapp; ls /myapp"'
 			}
 		}
 	
