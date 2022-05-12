@@ -5,7 +5,9 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'building node-red'
+				dir("./ITE/GCL08/MW401139") {
                     sh 'docker build . -f docker_build -t node-red_build'
+				}
                 
             }
         }
@@ -13,8 +15,9 @@ pipeline {
         stage('Tests') {
             steps {
                 echo 'testing node-red'
+				dir("./ITE/GCL08/MW401139") {
                     sh 'docker build . -f docker_test -t node-red_test'
-                
+				}
             }
         }
         
