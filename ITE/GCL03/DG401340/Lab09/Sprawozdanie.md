@@ -94,9 +94,34 @@ wget --user-agent="Mozilla" http://192.168.100.4/1.0.1_DiscordSRV-Build-1.25.1-3
 
 %end
 ```  
-Cały plik konfiguracyjny można znaleźć na repozytorium:  
-https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DG401340/ITE/GCL03/DG401340/Lab09/anaconda-ks.cfg
   
 ## 3. Infrastructure as a code
-* Umieść plik odpowiedzi w repozytorium
-* Połącz plik odpowiedzi z ISO instalacyjnym
+* Umieść plik odpowiedzi w repozytorium  
+
+Plik odpowiedzi został umieszczony w repozytorium za pomocą gita (zainstalowanie, clone repozytorium, wprowadzenie zmian i push).  
+Cały plik konfiguracyjny można znaleźć na repozytorium:  
+https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DG401340/ITE/GCL03/DG401340/Lab09/anaconda-ks.cfg
+
+* Skonfigurowanie nowej maszyny na podstawie pliku odpowiedzi  
+
+Należy utworzyć nową maszynę wirtualną, skonfigurować sieć w taki sam sposób jak poprzednie dwie maszyny (podpiąć do sieci MyNetwork) i następnie uruchomić ją z obrazem instalacyjnym fedory. W pierwszym oknie, które nam wyskoczy klikamy przycisk Tab, aby włączyć zaawansowaną konfigurację i wpisujemy następujące polecenie:  
+```
+vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/DG401340/ITE/GCL03/DG401340/Lab09/anaconda-ks.cfg
+```  
+![](./screenshots/advanced_conf.png)  
+Po kliknięciu entera system się instaluje z odpowiedziami zawartymi w anaconda-ks.cfg. Pomyślna instalacja wygląda następująco:  
+![](./screenshots/success.png)  
+Po instalacji należy kliknąć enter, wyłączyć maszynę, usunąć płytę instalacyjną .iso i ponownie uruchomić maszynę. Na poniższym zrzucie ekranu można zobaczyć, że plik odpowiedzi zadziałał poprawnie, ponieważ artefakt został pobrany z serwera http:  
+![](./screenshots/success_wget_after_ks.png)  
+
+* Połącz plik odpowiedzi z ISO instalacyjnym  
+
+Wrzuciłem plik .iso oraz plik odpowiedzi na mój domyślny system linux i tam utworzyłem swoje iso. Na samym początku musiałem utworzyć katalog, w którym wypakuje istniejące iso `sudo mkdir /mnt/iso`, następnie należy zamontować iso do wcześniej utworzonego katalogu `sudo mount /home/daniel/Desktop/FedoraIso/Fedora-Server-netinst-x86_64-36_Beta-1.4.iso /mnt/iso`, kolejnym krokiem jest utworzene katalogu, w ktorym mamy możliwość edycji `sudo mkdir /home/daniel/Desktop/MyIso`, potem kopiujemy pliki iso do przed chwilą utworzonego katalogu `sudo cp -pRf /mnt/iso/ /home/daniel/Desktop/MyIso/` i kopiujemy także plik odpowiedzi `sudo cp /home/daniel/Desktop/DevOps/MDO2022_S/ITE/GCL03/DG401340/Lab09/anaconda-ks.cfg /home/daniel/Desktop/MyIso/iso/`, jednym z ostatnich kroków jest edytowanie pliku isolinux.cfg co możemy zrobić poleceniem `sudo nano /home/daniel/Desktop/MyIso/iso/isolinux/isolinux.cfg`.  
+![](./screenshots/extract_iso.png)  
+![](./screenshots/nano_and_cp.png)  
+W pliku isolinux.cf trzeba edytować linikę w sekcji label linux, a dokładnie linijkę initrd. Sekcja ta powinna wyglądać następująco:  
+![](./screenshots/edit_isolinux.png)  
+Przed utworzeniem obrazu musimy doinstalować pakiet cdrkit, który umożliwi nam utworzenie iso: `sudo pacman -S cdrkit`   
+Ostatnim krokiem jest utworzenie obrazu, co wykonamy poleceniem `sudo genisoimage -U -r -v -T -J -joliet-long -V "RHEL-6.9" -volset "RHEL-6.9" -A "RHEL-6.9" -b isolinux/isolinux.bin -c isolinux/boot.cat -no-emul-boot -boot-load-size 4 -boot-info-table -eltorito-alt-boot -eltorito-boot images/efiboot.img -no-emul-boot -o ../My_fedora.iso .`  
+Pomyślne połączenie pliku odpowiedzi z ISO instalacyjnym prezentuje poniższy zrzut ekranu:  
+![](./screenshots/iso_success.png)  
