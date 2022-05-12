@@ -34,7 +34,7 @@ pipeline {
 				echo 'Testing express with npm'
 				dir("${params.Dockerfiles}") {
 					sh 'docker build . -t express-test -f docker_test'
-					sh 'docker run --rm --name --mount "type=volume,src=input-volume,dst=/myapp_test" express-test bash -c "cd /myapp_test/express && npm test"'
+					sh 'docker run --rm --mount "type=volume,src=input-volume,dst=/myapp_test" express-test bash -c "cd /myapp_test/express && npm test"'
 				}
 			}
 		}
