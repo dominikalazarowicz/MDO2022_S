@@ -61,9 +61,9 @@ pipeline {
             }
 			steps {
 			    sh "npm version ${params.Version} && npm pack"
-			    dir('/var/jenkins_home/workspace/artifacts'){
-			        archiveArtifacts artifacts: "node-red-${params.Version}.tgz"
-			    }
+			    // dir('/var/jenkins_home/workspace/artifacts'){
+			    //     archiveArtifacts artifacts: "node-red-${params.Version}.tgz"
+			    // }
 			   
 			}
 		}
