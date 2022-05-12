@@ -1,6 +1,6 @@
 | Imię i nazwisko | Grupa dziekańska | Data wykonania | Grupa zajęciowa |
 | ----------- | ----------- | ----------- | ----------- |
-| Adam Głąb | 03 | 15.05.2022r | 08 |
+| Adam Głąb | 03 | 11.05.2022r | 08 |
 
 # Pipeline - projekt
 
