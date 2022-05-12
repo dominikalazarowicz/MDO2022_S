@@ -44,7 +44,7 @@ pipeline {
 			steps {
 				echo 'Deploying express'
 				sh 'docker rm -f express-deploy || true'
-				sh 'docker run -d --name express-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" node bash -c "cd /usr/local/myapp/express && npm run"'
+				sh 'docker run -d --name express-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" express_alpine bash -c "cd /usr/local/myapp/express && npm run"'
 				sh 'sleep 5; exit $(docker inspect express-deploy --format="{{.State.ExitCode}}")'
 				sh 'docker rm -f express-deploy'
 			}
