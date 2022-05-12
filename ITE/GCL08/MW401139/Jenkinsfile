@@ -54,6 +54,20 @@ pipeline {
             }
         }
 
+         stage('Publish'){
+            when {
+                expression {return params.Promote}
+		    }
+            steps {
+                echo 'Publish'
+               dir("${params.Build_files}") {
+                    sh 'docker build . -f docker_publish -t node-red_publish'
+                    sh 'docker start node-red_publish bin/bash'
+                    sh 'docker exec -it node-red_publish ls'
+				}
+            }
+        }
+
     //    stage('Publish') {
 	// 	    when {
     //             expression {return params.Promote}
