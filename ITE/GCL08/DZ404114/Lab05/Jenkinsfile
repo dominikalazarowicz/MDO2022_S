@@ -22,7 +22,7 @@ pipeline {
 			steps {
 				echo 'Buildig express with npm'
 				dir("${params.Dockerfiles}") {
-					sh 'docker build . -t express_build -f docker_build'
+					sh 'docker build . -t express_aplpine -f Dockerfile'
 					sh 'docker volume create output-volume'
 					sh 'docker rm express-build || true'
 					sh 'docker run --rm -- name express-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express_build bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
