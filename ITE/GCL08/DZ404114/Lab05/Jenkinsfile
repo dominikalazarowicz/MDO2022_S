@@ -55,7 +55,7 @@ pipeline {
 		    }
             steps {
                 echo 'Preparing publish'
-                sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
+                sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
             }
         }
         
