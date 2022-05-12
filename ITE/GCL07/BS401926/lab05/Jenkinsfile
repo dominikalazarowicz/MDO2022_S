@@ -37,7 +37,7 @@ pipeline {
     				echo 'Nexe test'
       				dir("./ITE/GCL07/BS401926/lab05"){
       					sh 'docker build . -t nexe_test -f docker-test'
-      					sh 'docker run -t --mount type=volume,src="out_vol",dst=/nexe_app_test nexe_app_test bash -c "cd /nexe_app_test/nexe.js && npm test"'
+      					sh 'docker run -t --mount type=volume,src="out_vol",dst=/nexe_app_test nexe_test bash -c "cd /nexe_app_test/nexe.js && npm test"'
       					}
     				}
 			}
