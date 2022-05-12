@@ -3,11 +3,12 @@ pipeline {
     parameters {
         string(name: 'BRANCH', defaultValue: 'dev', description: '')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
         }
   	stages {
         stage("Clone"){
             steps {
-              sh 'mkdir artifacts/bin -p'
+              sh 'mkdir lz4build -p'
               sh 'docker container prune -f'
               sh 'docker volume prune -f'
               sh 'docker volume  create --name repo_vol'
@@ -19,8 +20,7 @@ pipeline {
         stage("Build") {
             steps {
                 sh 'docker build -t build . -f ITE/GCL04/MP401341/Lab05/DockerfileBuild'
-                sh 'docker run --name build_container -v repo_vol:/lz4 -v build_vol:/build -v ${PWD}/artifacts/bin:/public build'
-                archiveArtifacts 'artifacts/**/*'
+                sh 'docker run --name build_container -v repo_vol:/lz4 -v build_vol:/build -v ${PWD}:/public build'
             }
         }
         stage("Test") {
@@ -39,25 +39,32 @@ pipeline {
             }
         }
         stage("Publish") {
+           when {
+                  environment name: 'PROMOTE', value: "true"
+            }
             steps {
-            sh 'echo WIP'
+                
+                archiveArtifacts "lz4.tar.gz"
             }
         }
   	}
      post {
       always {
         catchError {
-          sh 'docker container logs build_container > artifacts/build_logs.txt'
+          sh 'docker container logs build_container > build_logs.txt'
+            } 
+        catchError {
+          sh 'docker stop $(docker ps -q) || true'
             } 
         catchError {
           script{
             if (env.RUN_TESTS == true){
-                sh 'docker container logs test_container > artifacts/test_logs.txt'
+                sh 'docker container logs test_container > test_logs.txt'
             }
             }
           } 
-        archiveArtifacts 'artifacts/*_logs.txt'
-        sh 'rm -rf artifacts'
+        archiveArtifacts '*_logs.txt'
+        sh 'rm -rf *_logs.txt'
       }
       }
       
