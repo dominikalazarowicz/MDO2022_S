@@ -32,9 +32,9 @@ pipeline {
                 echo 'running node-red'
                 sh 'docker rm -f docker_deploy || true'
 				dir("${params.Build_files}") {
-                    sh 'docker run --name docker_deploy node-red_build npm run'
+                    sh 'docker run --name docker_deploy node-red_build npm start'
                     sh 'sleep 5'
-                    sh 'exit $(docker inspect docker_deploy --format="{{.State.ExitCode}}")'
+                    sh 'docker stop docker_deploy'
                     sh 'docker rm -f docker_deploy'
 				}
             }
