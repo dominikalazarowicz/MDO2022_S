@@ -1,0 +1,3 @@
+FROM app_build:latest
+
+RUN gradle test
