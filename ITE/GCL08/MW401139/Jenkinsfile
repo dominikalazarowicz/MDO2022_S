@@ -1,41 +1,45 @@
 pipeline {
+	
+	parameters {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+    	}
 			
 	agent any
 
 	stages {
-		stage('Clone git repo') {
+
+		stage('Clone') {
 			steps {
-				echo 'Creating volme to input'
+				echo 'cloning node-red to volume input'
 				sh 'docker volume create input-volume'
-				sh 'docker rm temp-container || true'
-				sh 'docker run -v input-volume:/data --name temp-container node'
-				sh 'cd ~/ && ls node-red || git clone --recurse-submodules https://github.com/node-red/node-red.git'
-				sh 'docker cp ~/node-red temp-container:/data'
-				sh 'docker rm temp-container'
-			}
-		}
-	
-	stage('Build') {
-			steps {
-				echo 'Building node-red with npm'
-				dir("./ITE/GCL08/MW401139") {
-				    sh 'pwd'
-				    sh 'ls'
-					sh 'docker build . -t build-image -f docker_build'
-					sh 'docker volume create output-volume'
-					sh 'docker run --mount type=volume,src="input-volume",dst=/node-red_app --mount type=volume,src="output-volume",dst=/node-red_build build-image bash -c "cd /node-red_app/node-red && npm i;ls;pwd"'
+				sh 'docker rm temp || true'
+				sh 'docker run --mount "type=volume,src=input-volume,dst=/app" --name temp node bash -c "cd ~/ && ls node-red || git clone --recurse-submodules https://github.com/node-red/node-red.git;cp -R node-red /app; ls /node-red"'
+				sh 'docker rm temp'
 				}
 			}
-		}
+	
+		stage('Build') {
+			 steps {
+				echo 'building node-red'
+				dir("./ITE/GCL08/MW401139") {
+					sh 'docker build . -t node-red_build -f docker_build'
+					sh 'docker volume create output-volume'
+					sh 'docker run --mount type=volume,src="input-volume",dst=/app --mount type=volume,src="output-volume",dst=/app_build node-red_build bash -c "cd /app/node-red && npm i;cd ..;cp -R node-red /app_build"'
+					}
+				}
+			}
 
-    stage('Test') {
-            steps {
-    		    echo 'Testing bashtop'
-      	        dir("./ITE/GCL08/MW401139") {
-      		        sh 'docker build . -t test-image -f docker_test'
-      		        sh 'docker run -t --mount type=volume,src="input-volume",dst=/node-red_build test-image bash -c "cd /node-red_build/node-red && npm run test"'
-                }
-      	    }
-        }
+		stage('Test') {
+  			steps {
+    				echo 'testing node-red'
+      				dir("./ITE/GCL08/MW401139"){
+      					sh 'docker build . -t node-red_test -f docker_test'
+      					sh 'docker run -t --mount type=volume,src="output-volume",dst=/app_test node-red_test bash -c "cd /app_test/node-red && npm test"'
+      					}
+    				}
+			}
+
+		
 	}
 }
