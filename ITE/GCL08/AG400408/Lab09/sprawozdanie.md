@@ -33,6 +33,29 @@ Na Fedorze "bazowej" pobrano `wget` poprzez `dnf -y install wget` i następnie �
 
 ![zrzut](./screen/z1_8.png)
 
+## 2 - Instalacja nienadzorowana
 
+Wyciągnięty wcześniej plik `anaconda-ks.cfg` zmodyfikowano tak, aby uwzględniał istotne pakiety i ściąganie artefaktu z serwera. Ponadto, zmieniono typ instalacji na `text` i dodano linki do repozytorium Fedory.
+
+Link do pliku [anaconda-ks.cfg](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AG400408/ITE/GCL08/AG400408/Lab09/anaconda-ks.cfg)
+
+```
+# Repo
+url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
+repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=x86_64
+```
+```
+%packages
+@^minimal-environment
+wget
+
+%end
+```
+```
+%post
+wget --user-agent="Mozilla" http://10.0.2.15/irssi/irssi-0.0.0.tar.gz
+
+%end
+```
 
 
