@@ -7,10 +7,6 @@ pipeline {
         string(name: 'Build_files', defaultValue: './ITE/GCL08/MW401139', description: 'build files path')
     }
 
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('MW401139')
-    }
-
     stages {
         stage('Build') {
             steps {
@@ -32,17 +28,17 @@ pipeline {
         }
         
          
-        stage('Deploy') {
-            steps {
-                echo 'deploying node-red'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh '''
-                docker images
-                docker tag node-red_build:latest mihaf70/mode-red-devops-deploy
-                docker push mihaf70/mode-red-devops-deploy
-                '''
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'deploying node-red'
+        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //         sh '''
+        //         docker images
+        //         docker tag node-red_build:latest mihaf70/mode-red-devops-deploy
+        //         docker push mihaf70/mode-red-devops-deploy
+        //         '''
+        //     }
+        // }
 
         stage('Prepare'){
             when {
