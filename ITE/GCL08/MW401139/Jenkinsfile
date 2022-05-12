@@ -30,6 +30,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'running node-red'
+                sh 'docker rm -f docker_deploy || true'
 				dir("${params.Build_files}") {
                     sh 'docker run --name docker_deploy node-red_build npm run'
                     sh 'sleep 5'
