@@ -1,5 +1,4 @@
 #FROM nexe:latest
-
 #RUN  cd nexe && npm test
 
 FROM node:alpine
