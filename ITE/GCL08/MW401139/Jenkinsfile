@@ -56,7 +56,7 @@ pipeline {
 		    }
 		    agent {
                 docker {
-                    image 'node-red_build:latest',
+                    image 'node-red_build:latest'
                 }
             }
 			steps {
