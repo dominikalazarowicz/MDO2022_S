@@ -31,7 +31,7 @@ pipeline {
             steps {
                 echo 'running node-red'
 				dir("${params.Build_files}") {
-                    sh 'docker run --name docker_deploy node-red_build npm start'
+                    sh 'docker run --name docker_deploy node-red_build npm run'
                     sh 'sleep 5'
                     sh 'exit $(docker inspect docker_deploy --format="{{.State.ExitCode}}")'
                     sh 'docker rm -f docker_deploy'
