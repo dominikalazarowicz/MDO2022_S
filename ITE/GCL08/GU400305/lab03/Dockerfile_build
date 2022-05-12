@@ -6,5 +6,7 @@ RUN git clone https://github.com/urbanczykg/strapi.git
 WORKDIR strapi 
 RUN npm install
 RUN yarn setup
+WORKDIR examples
+WORKDIR getstarted
 RUN yarn build
 
