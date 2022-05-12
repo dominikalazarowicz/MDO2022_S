@@ -32,8 +32,7 @@ pipeline {
                 echo 'runnning node-red'
 				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_deploy -t node-red_deploy'
-                    sh 'docker exec -it node-red_deploy sleep 5'
-                    sh 'docker stop $(docker ps -a -q)'
+                    sh 'docker rm -f node-red_deploy '
 				}
             }
         }
