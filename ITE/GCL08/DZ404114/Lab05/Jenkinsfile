@@ -44,7 +44,7 @@ pipeline {
 			steps {
 				echo 'Deploying express'
 				sh 'docker rm -f express-deploy || true'
-				sh 'docker run -d --name express-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" express_alpine bash -c "cd /usr/local/myapp/express && npm run"'
+				sh 'docker run --name express-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" express_alpine bash -c "cd /usr/local/myapp/express && npm run"'
 				sh 'sleep 5; exit $(docker inspect express-deploy --format="{{.State.ExitCode}}")'
 				sh 'docker rm -f express-deploy'
 			}
@@ -81,11 +81,11 @@ pipeline {
 		}
 	}
 	post {
-        success {
-            echo 'Pipeline succsess'
-        }
-        failure {
-            echo 'Pipeline fail'
-        }
-    }
+        	success {
+            		echo 'Pipeline succsess'
+        	}
+        	failure {
+            		echo 'Pipeline fail'
+        	}
+    	}
 }
