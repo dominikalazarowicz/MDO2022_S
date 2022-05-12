@@ -13,14 +13,14 @@
 ![scr5](./screenshots/Screenshot_5.png)  
 ![scr6](./screenshots/Screenshot_6.png)  
 
-### Sprawdzenie polaczenia i dzialania ansible    
+### Sprawdzenie połączenia i działania ansible    
 ![scr7](./screenshots/Screenshot_7.png)  
 
-### Utworzenie playbooka instalujacego program bashtop
+### Utworzenie playbooka instalującego program bashtop
 ![scr9](./screenshots/Screenshot_9.png)
 
 ### Odpalenie playbooka
 ![scr10](./screenshots/Screenshot_10.png) 
   
-### Sprawdzenie czy program dziala na serwerze
+### Sprawdzenie czy program działa na serwerze
 ![scr11](./screenshots/Screenshot_11.png)  
