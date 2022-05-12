@@ -38,7 +38,7 @@ Na Fedorze "bazowej" pobrano `wget` poprzez `dnf -y install wget` i następnie �
 
 ## 2 - Instalacja nienadzorowana
 
-Wyciągnięty wcześniej plik `anaconda-ks.cfg` zmodyfikowano tak, aby uwzględniał istotne pakiety i ściąganie artefaktu z serwera. Ponadto, dodano linki do repozytorium Fedory.
+Wyciągnięty wcześniej plik `anaconda-ks.cfg` zmodyfikowano tak, aby uwzględniał istotne pakiety i ściąganie artefaktu z serwera. Ponadto, dodano linki do repozytorium Fedory oraz włączono tryb tekstowy, zastępując `graphical` -> `text`.
 
 Link do pliku [anaconda-ks.cfg](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AG400408/ITE/GCL08/AG400408/Lab09/anaconda-ks.cfg)
 
@@ -64,7 +64,7 @@ wget --user-agent="Mozilla" http://10.0.2.15/irssi/irssi-0.0.0.tar.gz
 ```
 ## 3 - Infrastructure as Code
 
-Postawiono nową maszynę z Fedorą, podpiętą do wewnętrznej sieci NAT (aby mogła pobrać dane z Fedory "serwerowej").
+Postawiono nową maszynę z Fedorą ("Fedora ISO"), podpiętą do wewnętrznej sieci NAT (aby mogła pobrać dane z Fedory "serwerowej").
 
 Zamiast wykonywać standardowy proces instalacji, w konsoli na ekranie powitalnym wpisano:
 
@@ -72,3 +72,12 @@ Zamiast wykonywać standardowy proces instalacji, w konsoli na ekranie powitalny
 vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/AG400408/ITE/GCL08/AG400408/Lab09/anaconda-ks.cfg
 ```
 
+(podczas instalacji włączono tryb graficzny w celu "prostszego" debugowania)
+
+![zrzut](./screen/z3_1.png)
+
+Zainstalowano pomyślnie. Maszyna została wyłączona i następnie wyjęto plik `.iso` w konfiguracji maszyny wirtualnej i uruchomiono ją ponownie.
+
+![zrzut](./screen/z3_2.png)
+
+Użytkownik, pakiety i pliki uwzględnione w pliku `anaconda-ks.cfg` zostały pomyślnie skonfigurowane i zainstalowane w maszynie.
