@@ -7,10 +7,6 @@ pipeline {
         string(name: 'Build_files', defaultValue: './ITE/GCL08/MW401139', description: 'build files path')
     }
 
-     environment {
-        DOCKERHUB_CREDENTIALS = credentials('MW401139')
-    }
-
     stages {
         stage('Build') {
             steps {
