@@ -27,16 +27,16 @@ pipeline {
             }
         }
         
-        stage('Deploy') {
+         stage('Deploy') {
             steps {
                 echo 'runnning node-red'
 				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_deploy -t node-red_deploy'
 				}
             }
-        } 
+        }
 
-stage('Prepare publish'){
+        stage('Prepare'){
             when {
                 expression {return params.Promote}
 		    }
@@ -45,19 +45,24 @@ stage('Prepare publish'){
                 sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
             }
         }
-        
-		stage('Publish') {
+
+        stage('Publish') {
 		    when {
                 expression {return params.Promote}
 		    }
 		    agent {
                 docker {
-                    image 'node-red_build:latest'
+                    image 'node:alpine'
+                    args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
                 }
             }
 			steps {
-			    sh 'ls'
-			   
+			    sh 'rm -rf /usr/local/copy/* || true'
+			    sh "cd /usr/local/myapp/express && npm version ${params.Version} && npm pack"
+			    sh "mv /usr/local/myapp/express/express-${params.Version}.tgz /usr/local/copy"
+			    dir('/var/jenkins_home/workspace/artifacts'){
+			        archiveArtifacts artifacts: "express-${params.Version}.tgz"
+			    }
 			}
 		}
 	}
@@ -71,10 +76,5 @@ stage('Prepare publish'){
 
 
 
-
-
-
-
-        }
     }
 }
