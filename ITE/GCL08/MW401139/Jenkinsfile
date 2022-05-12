@@ -23,6 +23,7 @@ pipeline {
                 echo 'testing node-red'
 				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_test -t node-red_test'
+                    sh 'docker exec -it node-red_test echo "TESTTESTESTE"'
 				}
             }
         }
@@ -40,41 +41,41 @@ pipeline {
         //     }
         // }
 
-        stage('Prepare'){
-            when {
-                expression {return params.Promote}
-		    }
-            steps {
-                echo 'Preparing publish'
-                sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
-            }
-        }
+    //     stage('Prepare'){
+    //         when {
+    //             expression {return params.Promote}
+	// 	    }
+    //         steps {
+    //             echo 'Preparing publish'
+    //             sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
+    //         }
+    //     }
 
-        stage('Publish') {
-		    when {
-                expression {return params.Promote}
-		    }
-		    agent {
-                docker {
-                    image 'node-red_build:latest'
-                }
-            }
-			steps {
-			    sh "npm version ${params.Version} && npm pack"
-			    // dir('/var/jenkins_home/workspace/artifacts'){
-			    //     archiveArtifacts artifacts: "node-red-${params.Version}.tgz"
-			    // }
+    //     stage('Publish') {
+	// 	    when {
+    //             expression {return params.Promote}
+	// 	    }
+	// 	    agent {
+    //             docker {
+    //                 image 'node-red_build:latest'
+    //             }
+    //         }
+	// 		steps {
+	// 		    sh "docker exec"
+	// 		    // dir('/var/jenkins_home/workspace/artifacts'){
+	// 		    //     archiveArtifacts artifacts: "node-red-${params.Version}.tgz"
+	// 		    // }
 			   
-			}
-		}
-	}
-	post {
-        	success {
-            		echo 'Pipeline succsess'
-        	}
-        	failure {
-            		echo 'Pipeline fail'
-        	}
+	// 		}
+	// 	}
+	// }
+	// post {
+    //     	success {
+    //         		echo 'Pipeline succsess'
+    //     	}
+    //     	failure {
+    //         		echo 'Pipeline fail'
+    //     	}
 
 
 
