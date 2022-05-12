@@ -22,10 +22,10 @@ pipeline {
 			steps {
 				echo 'Buildig express with npm'
 				dir("${params.Dockerfiles}") {
-					sh 'docker build . -t express_aplpine -f Dockerfile'
+					sh 'docker build . -t express_alpine -f Dockerfile'
 					sh 'docker volume create output-volume'
 					sh 'docker rm express-build || true'
-					sh 'docker run --rm -- name express-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express_aplpine bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
+					sh 'docker run --rm -- name express-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express_alpine bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
 				}
 			}
 		}
@@ -35,7 +35,7 @@ pipeline {
 				echo 'Testing express with npm'
 				dir("${params.Dockerfiles}") {
 					sh 'docker rm express-test || true'
-					sh 'docker run --rm --name express-test --mount "type=volume,src=input-volume,dst=/myapp_test" express_aplpine bash -c "cd /myapp_test/express && npm test"'
+					sh 'docker run --rm --name express-test --mount "type=volume,src=input-volume,dst=/myapp_test" express_alpine bash -c "cd /myapp_test/express && npm test"'
 				}
 			}
 		}
