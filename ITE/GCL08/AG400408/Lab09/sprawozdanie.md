@@ -19,10 +19,12 @@ Plik został wyciągnięty z maszyny wirtualnej za pomocą programu `WinSCP`. W 
 
 Po wstępnym skonfigurowaniu systemu postawiono drugą maszyne wirtualną Fedory o identycznych parametrach. Ta maszyna posłużyła za serwer, w którym umieszczono artefakt powstały w ramach projektu Pipeline (plik `.tar` zawierający [irssi](https://github.com/irssi/irssi)).
 
-Na Fedorze "serwerowej" pobrano `httpd` poprzez `dnf -y install httpd` i uruchomiono serwis.
+Na Fedorze "serwerowej" pobrano `httpd` poprzez `dnf -y install httpd` i uruchomiono serwis `systemctl enable httpd --now`.
 
 Ponadto, dokonano pewnych operacji w celu wyłączenia firewalla:
-* 
+* firewall-cmd --permanent --zone=public --add=http
+* firewall-cmd --permanent --zone=public --add=https
+* firewall-cmd --reload
 
 Podobnie jak w przypadku pierwszej maszyny, na Fedorę "serwerową" załadowano plik `.tar` poprzez WinSCP.
 
