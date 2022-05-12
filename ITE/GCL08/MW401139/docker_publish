@@ -2,5 +2,4 @@ FROM node-red_build:latest
 
 WORKDIR /node-red/
 
-RUN mkdir /usr/local/node-red-publish
-RUN mv * /usr/local/node-red-publish
+RUN npm version 1.0.0 && npm pack
