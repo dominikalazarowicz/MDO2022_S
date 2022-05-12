@@ -57,13 +57,10 @@ pipeline {
 		    agent {
                 docker {
                     image 'node-red_build:latest'
-                    args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
                 }
             }
 			steps {
-			    sh 'rm -rf /usr/local/copy/* || true'
-			    sh "cd /usr/local/myapp/node-red && npm version ${params.Version} && npm pack"
-			    sh "mv /usr/local/myapp/node-red/node-red-${params.Version}.tgz /usr/local/copy"
+			    sh "npm version ${params.Version} && npm pack"
 			    dir('/var/jenkins_home/workspace/artifacts'){
 			        archiveArtifacts artifacts: "node-red-${params.Version}.tgz"
 			    }
