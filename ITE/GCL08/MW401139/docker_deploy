@@ -2,5 +2,4 @@ FROM node-red_build:latest
 
 WORKDIR /node-red/
 
-RUN docker ps
 RUN npm start 
