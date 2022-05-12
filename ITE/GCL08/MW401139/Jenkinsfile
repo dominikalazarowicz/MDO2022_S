@@ -32,27 +32,27 @@ pipeline {
         }
         
          
-        stage('Deploy') {
-            steps {
-                echo 'deploying node-red'
-                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh '''
-                docker images
-                docker tag node-red_build: mihalatestf70/node-red-devops-deploy
-                docker push mihaf70/node-red-devops-deploy
-                '''
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'deploying node-red'
+        //         sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        //         sh '''
+        //         docker images
+        //         docker tag node-red_build: mihalatestf70/node-red-devops-deploy
+        //         docker push mihaf70/node-red-devops-deploy
+        //         '''
+        //     }
+        // }
 
-        stage('Prepare'){
-            when {
-                expression {return params.Promote}
-		    }
-            steps {
-                echo 'Preparing publish'
-                sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
-            }
-        }
+        // stage('Prepare'){
+        //     when {
+        //         expression {return params.Promote}
+		//     }
+        //     steps {
+        //         echo 'Preparing publish'
+        //         sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
+        //     }
+        // }
 
          stage('Publish'){
             when {
