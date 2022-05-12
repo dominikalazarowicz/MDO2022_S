@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('MW401139')
+    }
+ 
      parameters {
         string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
         booleanParam(name: 'Promote', defaultValue: true, description: 'Promote statement')
@@ -27,13 +31,16 @@ pipeline {
             }
         }
         
-         stage('Deploy') {
+         
+        stage('Deploy') {
             steps {
-                echo 'runnning node-red'
-				dir("${params.Build_files}") {
-                    sh 'docker build . -f docker_deploy -t node-red_deploy'
-                    sh 'sleep 5; exit $(docker inspect node-red_deploy --format="{{.State.ExitCode}}")'
-				}
+                echo 'deploying node-red'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh '''
+                docker images
+                docker tag node-red_build:latest mihaf70/mode-red-devops-deploy
+                docker push mihaf70/mode-red-devops-deploy
+                '''
             }
         }
 
