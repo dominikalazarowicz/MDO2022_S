@@ -60,7 +60,11 @@ pipeline {
                     sh 'docker build . -f docker_publish -t node-red_publish'
 				}
                 sh "docker run --volume /var/jenkins_home/workspace/node-red-pipeline/finalArchive node-red_publish mv archive.tar.xz /finalArchive"
-                 dir('/var/jenkins_home/workspace/node-red-pipeline'){
+                 dir('/var/jenkins_home/workspace/node-red-pipeline/finalArchive'){
+                    sh 'ls'
+			        archiveArtifacts artifacts: "archive.tar.xz.tgz"
+			    }
+                 dir('/var/jenkins_home/workspace/node-red-pipeline/finalArchive@tmp'){
                     sh 'ls'
 			        archiveArtifacts artifacts: "archive.tar.xz.tgz"
 			    }
