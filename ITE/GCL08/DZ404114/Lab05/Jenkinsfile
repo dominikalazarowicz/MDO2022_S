@@ -11,7 +11,7 @@ pipeline {
 	stages {
 		stage('Clone') {
 			steps {
-				echo 'Cloning express to volume'
+				echo 'Cloning express'
 				sh 'docker volume create input-volume'
 				sh 'docker rm tempContainer || true'
 				sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/ && ls express || git clone https://github.com/expressjs/express.git;cp -R express /myapp; ls /myapp"'
@@ -22,9 +22,10 @@ pipeline {
 			steps {
 				echo 'Buildig express with npm'
 				dir("${params.Dockerfiles}") {
-					sh 'docker build . -t express-build -f docker_build'
+					sh 'docker build . -t express_build -f docker_build'
 					sh 'docker volume create output-volume'
-					sh 'docker run --rm --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express-build bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
+					sh 'docker rm express-build || true'
+					sh 'docker run --rm -- name express-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express_build bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
 				}
 			}
 		}
@@ -33,8 +34,9 @@ pipeline {
 			steps {
 				echo 'Testing express with npm'
 				dir("${params.Dockerfiles}") {
-					sh 'docker build . -t express-test -f docker_test'
-					sh 'docker run --rm --mount "type=volume,src=input-volume,dst=/myapp_test" express-test bash -c "cd /myapp_test/express && npm test"'
+					sh 'docker build . -t express_test -f docker_test'
+					sh 'docker rm express-test || true'
+					sh 'docker run --rm --name express-test --mount "type=volume,src=input-volume,dst=/myapp_test" express_test bash -c "cd /myapp_test/express && npm test"'
 				}
 			}
 		}
