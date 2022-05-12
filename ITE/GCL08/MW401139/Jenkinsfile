@@ -58,6 +58,7 @@ pipeline {
                 echo 'Publish'
                dir("${params.Build_files}") {
                     sh 'docker build . -f docker_publish -t node-red_publish'
+                    sh 'docker ps -a'
                     sh 'docker start node-red_publish'
                     sh 'docker exec -it node-red_publish ls'
 				}
