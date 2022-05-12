@@ -56,11 +56,14 @@ pipeline {
 		    }
 		    agent {
                 docker {
-                    image 'node-red_build:latest'
+                    image 'node-red_build:latest',
                 }
             }
 			steps {
-			    sh "ls"
+			    sh "npm version ${params.Version} && npm pack"
+                dir('/var/jenkins_home/workspace/artifacts'){
+			        archiveArtifacts artifacts: "node-red-${params.Version}.tgz"
+			    }
 			   
 			}
 		}
