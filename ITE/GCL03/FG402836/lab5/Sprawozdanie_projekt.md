@@ -72,7 +72,7 @@ docker run \
 ### 2. Tworzenie nowego pipeline
 Po zalogowaniu na Jenkinsa należy wybrać: Nowy Projekt -> Pipeline oraz nadać nazwę.
 </br>Pojawi się następujące okno:
-![](o1.jpg)
+![](o1.JPG)
 ### 3. Podłączanie repozytorium uczelnianego, na którym znajdują się potrzebne do zainstalowania zależności oraz testowania Dockerfile
 Pipeline ma ustaloną konwencję jego tworzenia - dzieli się go na części nazywane Stage'ami
 ```
@@ -139,7 +139,7 @@ stage('Cleanup') {
         }
 ```
 W tym kroku usuwam obrazy nieużywanych już kontenerów oraz eksportuje logi z kontenerów, które wcześniej zapisałem do plików `.log`, do artefaktów.
-</br>![](o9.jpg)
+</br>![](o9.JPG)
 ### 7. Promowanie do artefektu oraz na DockerHuba.
 W tym kroku, wiedząc, że aplikacja działa poprawnie, tworzę artefakt możliwy do pobrania oraz dodatkowo wysyłam obraz kontenera na DockerHuba.
 </br>Najpierw jednak, potrzebne jest dodanie parametrów budowania Pipeline'a.
@@ -154,7 +154,7 @@ parameters {
     }
 ```
 Po uruchomieniu skryptu, otrzymuję następujące okno do podania parametrów
-</br>![](o4.jpg)
+</br>![](o4.JPG)
 </br>Parametry utworzone wcześniej, wykorzystuję w stage'u publikowania:
 ```
 stage('Publish') {
@@ -188,19 +188,19 @@ Na początek tworzę folder o nazwie podanej jako parametr (`np 1.0.0`). Następ
 </br>Mając ciągle działający kontener, loguję się do swojego konta na DockerHubie, otagowuje kontener, którego obraz potem wysyłam na repozytorium na DockerHubie.
 </br>Usuwam niepotrzebny juz kontener i pakuję folder z przekopiowaną zawartością. Na koniec tworzę artefakt o nazwie < nazwa-programu >-< wersja >.tar.gz.
 </br>Powyższe zadania wykonują się jedynie wtedy, gdy wcześniej zaznaczyłem parametr `promote`.
-</br>![](o6.jpg)
-</br>![](o5.jpg)
+</br>![](o6.JPG)
+</br>![](o5.JPG)
 </br>Powyższe zrzuty pokazują, że skrypt zadziałał poprawnie i udało się wypromować i artefakt, i obraz kontenera na DockerHuba.
 </br>Aby zalogować się z poziomu Jenkinsa do DockerHuba, należy dodać swoje konto na DockerHubie do listy uwierzytelniającej (Credentials).
-</br>![](o7.jpg)
-</br>![](o8.jpg)
+</br>![](o7.JPG)
+</br>![](o8.JPG)
 </br>Uwaga: W tym kroku nie wykorzystuję komendy `npm pack` do spakowania aplikacji, ponieważ wykonując ten krok, w paczce znajdował się jedynie jeden, niewielki plik `.json`, dlatego, znajdując inny (pewnie mniej optymalny, a na pewno dłuższy) sposób, który zadział poprawnie, zdecydowałem się na jego pozostawienie.
 </br>Uwaga: W trakcie tworzenia skryptu może pojawić się błąd:
-</br>![](o2.jpg)
+</br>![](o2.JPG)
 </br>Pojawia się on, gdy w niektórych poleceniach w skrypcie w stage'u Publish, gdy zamiast `cudzysłowów` wykorzystywałem `średniki`. Zamiana na `cudzysłowy` pozwalała naprawić problem. Co dziwniejsze, błąd ten nie pojawiał się co każde wywołanie komendy shellowej.
-</br>![](dunno.jpg)
+</br>![](dunno.JPG)
 ### 8. Diagramy
 Diagram aktywności:
-</br>![](activity_diagram.jpg)
+</br>![](activity_diagram.JPG)
 </br>Diagram wdrożenia:
-</br>![](deployment_diagram.jpg)
+</br>![](deployment_diagram.JPG)
