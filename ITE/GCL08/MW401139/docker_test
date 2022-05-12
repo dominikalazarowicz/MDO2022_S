@@ -1,5 +1,5 @@
-FROM build-image:latest
+FROM node-red_build:latest
 
-WORKDIR node-red_build
+WORKDIR /node-red/
 
-RUN npm install grunt --save-dev && npm install
+RUN npm run test

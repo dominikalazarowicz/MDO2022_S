@@ -1,6 +1,4 @@
 FROM node:latest
-
-WORKDIR node-red_app
-WORKDIR node-red_build
-
-RUN apt update
+RUN git clone https://github.com/node-red/node-red.git
+WORKDIR /node-red/
+RUN npm i && npm run build
