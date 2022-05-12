@@ -21,6 +21,9 @@ Po wstępnym skonfigurowaniu systemu postawiono drugą maszyne wirtualną Fedory
 
 Na Fedorze "serwerowej" pobrano `httpd` poprzez `dnf -y install httpd` i uruchomiono serwis.
 
+Ponadto, dokonano pewnych operacji w celu wyłączenia firewalla:
+* 
+
 Podobnie jak w przypadku pierwszej maszyny, na Fedorę "serwerową" załadowano plik `.tar` poprzez WinSCP.
 
 Plik następnie umieszczono w `/var/www/html/irssi`.
@@ -35,7 +38,7 @@ Na Fedorze "bazowej" pobrano `wget` poprzez `dnf -y install wget` i następnie �
 
 ## 2 - Instalacja nienadzorowana
 
-Wyciągnięty wcześniej plik `anaconda-ks.cfg` zmodyfikowano tak, aby uwzględniał istotne pakiety i ściąganie artefaktu z serwera. Ponadto, zmieniono typ instalacji na `text` i dodano linki do repozytorium Fedory.
+Wyciągnięty wcześniej plik `anaconda-ks.cfg` zmodyfikowano tak, aby uwzględniał istotne pakiety i ściąganie artefaktu z serwera. Ponadto, dodano linki do repozytorium Fedory.
 
 Link do pliku [anaconda-ks.cfg](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AG400408/ITE/GCL08/AG400408/Lab09/anaconda-ks.cfg)
 
@@ -48,6 +51,8 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 %packages
 @^minimal-environment
 wget
+utf8proc
+ncurses
 
 %end
 ```
@@ -57,5 +62,13 @@ wget --user-agent="Mozilla" http://10.0.2.15/irssi/irssi-0.0.0.tar.gz
 
 %end
 ```
+## 3 - Infrastructure as Code
 
+Postawiono nową maszynę z Fedorą, podpiętą do wewnętrznej sieci NAT (aby mogła pobrać dane z Fedory "serwerowej").
+
+Zamiast wykonywać standardowy proces instalacji, w konsoli na ekranie powitalnym wpisano:
+
+```
+vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/AG400408/ITE/GCL08/AG400408/Lab09/anaconda-ks.cfg
+```
 
