@@ -1,14 +1,14 @@
 pipeline {
     agent any
 
-    environment {
-        DOCKERHUB_CREDENTIALS = credentials('MW401139')
-    }
- 
      parameters {
         string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
         booleanParam(name: 'Promote', defaultValue: true, description: 'Promote statement')
         string(name: 'Build_files', defaultValue: './ITE/GCL08/MW401139', description: 'build files path')
+    }
+
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('MW401139')
     }
 
     stages {
