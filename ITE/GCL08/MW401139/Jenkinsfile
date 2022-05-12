@@ -1,11 +1,17 @@
 pipeline {
     agent any
 
+     parameters {
+        string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
+        booleanParam(name: 'Promote', defaultValue: true, description: 'Promote statement')
+        string(name: 'Build_files', defaultValue: './ITE/GCL08/MW401139', description: 'build files path')
+    }
+
     stages {
         stage('Build') {
             steps {
                 echo 'building node-red'
-				dir("./ITE/GCL08/MW401139") {
+				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_build -t node-red_build'
 				}
                 
@@ -15,7 +21,7 @@ pipeline {
         stage('Tests') {
             steps {
                 echo 'testing node-red'
-				dir("./ITE/GCL08/MW401139") {
+				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_test -t node-red_test'
 				}
             }
@@ -24,10 +30,50 @@ pipeline {
          stage('Deploy') {
             steps {
                 echo 'runnning node-red'
-				dir("./ITE/GCL08/MW401139") {
+				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_deploy -t node-red_deploy'
 				}
             }
+
+stage('Prepare publish'){
+            when {
+                expression {return params.Promote}
+		    }
+            steps {
+                echo 'Preparing publish'
+                sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
+            }
+        }
+        
+		stage('Publish') {
+		    when {
+                expression {return params.Promote}
+		    }
+		    agent {
+                docker {
+                    image 'node-red_build:latest'
+                }
+            }
+			steps {
+			    sh 'ls'
+			   
+			}
+		}
+	}
+	post {
+        	success {
+            		echo 'Pipeline succsess'
+        	}
+        	failure {
+            		echo 'Pipeline fail'
+        	}
+
+
+
+
+
+
+
         }
     }
 }
