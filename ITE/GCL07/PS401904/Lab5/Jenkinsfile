@@ -1,0 +1,53 @@
+pipeline {
+			
+	agent any
+
+    parameters {
+        string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
+        booleanParam(name: 'Promote', defaultValue: true, description: 'Promote statement')
+        string(name: 'Dockerfiles', defaultValue: './ITE/GCL07/PS401904/Lab05', description: 'Dockerfiles path')
+    }
+    
+	stages {
+		stage('Clone') {
+			steps {
+				echo 'Cloning repo'
+				sh 'docker volume create input-volume'
+				sh 'docker rm cloneContainer || true'
+				sh 'docker run --rm --name cloneContainer --mount "type=volume,src=input-volume,dst=/app" node bash -c "cd ~/ && ls express || git clone https://github.com/expressjs/express.git;cp -R express /app; ls /app"'
+			}
+		}
+	
+	    stage('Build') {
+			steps {
+				echo 'Building project'
+				dir("${params.Dockerfiles}") {
+					sh 'docker build . -t express_alpine -f Dockerfile'
+					sh 'docker volume create output-volume'
+					sh 'docker rm buildContainer || true'
+					sh 'docker run --rm --name buildContainer --mount "type=volume,src=input-volume,dst=/app" --mount "type=volume,src=output-volume,dst=/app_build" express_alpine bash -c "cd /app/express && npm install; cp -R /app/express /app_build"'
+				}
+			}
+		}
+
+	    stage('Test') {
+			steps {
+				echo 'Testing project'
+				dir("${params.Dockerfiles}") {
+					sh 'docker rm testContainer || true'
+					sh 'docker run --rm --name testContainer --mount "type=volume,src=input-volume,dst=/app_test" express_alpine bash -c "cd /app_test/express && npm test"'
+				}
+			}
+		}
+        
+		stage('Deploy') {
+			steps {
+				echo 'Deploying project'
+				sh 'docker rm -f deployContainer || true'
+				sh 'docker run --name deployContainer --mount "type=volume,src=output-volume,dst=/usr/local/app" express_alpine bash -c "cd /usr/local/app/express && npm run"'
+				sh 'sleep 5; exit $(docker inspect deployContainer --format="{{.State.ExitCode}}")'
+				sh 'docker rm -f deployContainer'
+			}
+		}
+	}
+}
