@@ -25,7 +25,7 @@ pipeline {
 					sh 'docker build . -t express_alpine -f Dockerfile'
 					sh 'docker volume create output-volume'
 					sh 'docker rm express-build || true'
-					sh 'docker run --rm -- name express-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express_alpine bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
+					sh 'docker run --rm --name express-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" express_alpine bash -c "cd /myapp/express && npm install; cp -R /myapp/express /myapp_build"'
 				}
 			}
 		}
