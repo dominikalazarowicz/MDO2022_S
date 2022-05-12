@@ -27,13 +27,14 @@ pipeline {
             }
         }
         
-         stage('Deploy') {
+        stage('Deploy') {
             steps {
                 echo 'runnning node-red'
 				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_deploy -t node-red_deploy'
 				}
             }
+        } 
 
 stage('Prepare publish'){
             when {
