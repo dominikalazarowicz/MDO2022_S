@@ -58,6 +58,7 @@ pipeline {
 			   dir("${params.Build_files}") {
                     sh 'docker build . -f docker_test -t node-red_test'
 				}
+                sh "ls /usr/local/node-red-publish"
                 sh "cd /usr/local/node-red-publish &&  npm version ${params.Version} && npm pack"
                 sh "ls"
 			    dir('/var/jenkins_home/workspace/artifacts'){
