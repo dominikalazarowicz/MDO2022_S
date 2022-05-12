@@ -3,4 +3,3 @@ FROM node-red_build:latest
 WORKDIR /node-red/
 
 RUN npm run test
-RUN ls
