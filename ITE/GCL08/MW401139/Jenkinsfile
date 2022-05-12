@@ -23,7 +23,6 @@ pipeline {
                 echo 'testing node-red'
 				dir("${params.Build_files}") {
                     sh 'docker build . -f docker_test -t node-red_test'
-                    sh 'docker exec -it node-red_test echo "TESTTESTESTE"'
 				}
             }
         }
