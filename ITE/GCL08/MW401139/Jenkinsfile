@@ -21,5 +21,13 @@ pipeline {
             }
         }
         
+         stage('Deploy') {
+            steps {
+                echo 'runnning node-red'
+				dir("./ITE/GCL08/MW401139") {
+                    sh 'docker build . -f docker_deploy -t node-red_deploy'
+				}
+            }
+        }
     }
 }
