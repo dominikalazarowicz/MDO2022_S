@@ -36,10 +36,8 @@ pipeline {
             steps {
                 echo 'deploying node-red'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh '''
-                docker tag node-red_build:latest mihaf70/node-red-devops-deploy
-                docker push mihaf70/node-red-devops-deploy
-                '''
+                sh "docker tag node-red_build:${params.Version} mihaf70/node-red-devops-deploy"
+                sh 'docker push mihaf70/node-red-devops-deploy'
             }
         }
 
@@ -54,7 +52,6 @@ pipeline {
 				}
                 sh "docker run --volume /var/jenkins_home/workspace/node-red-pipeline:/finalArchive node-red_publish mv archive.tar.xz /finalArchive"
                  dir('/var/jenkins_home/workspace/node-red-pipeline'){
-                    sh 'ls'
                     sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
 			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
 			    }
