@@ -6,6 +6,10 @@ pipeline {
         string(name: 'Build_files', defaultValue: './ITE/GCL08/MW401139', description: 'build files path')
     }
 
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('MW401139')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -29,13 +33,13 @@ pipeline {
          
         stage('Deploy') {
             steps {
-                echo 'running node-red'
-                sh 'docker rm -f docker_deploy || true'
-				dir("${params.Build_files}") {
-                    sh 'docker run --name docker_deploy node-red_build npm start'
-                    sh 'sleep 5'
-                    sh 'docker rm -f docker_deploy'
-				}
+                // echo 'running node-red'
+                // sh 'docker rm -f docker_deploy || true'
+				// dir("${params.Build_files}") {
+                //     sh 'docker run --name docker_deploy node-red_build npm start'
+                //     sh 'sleep 5'
+                //     sh 'docker rm -f docker_deploy'
+				// }
             }
         }
 
