@@ -1,3 +1,0 @@
-FROM petclinic:latest
-
-RUN cd spring-petclinic && ./mvnw test
