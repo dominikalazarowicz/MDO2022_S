@@ -8,10 +8,10 @@ RUN npm install
 RUN yarn setup
 WORKDIR examples
 WORKDIR getstarted
-RUN yarn develop
+RUN yarn develop &
 WORKDIR packages
 WORKDIR core
 WORKDIR admin
-RUN yarn develop
+RUN yarn develop &
 RUN yarn build
 
