@@ -4,6 +4,6 @@
 FROM node:alpine
 
 WORKDIR nexe_app_test
-WORKDIR nexe_test
+WORKDIR nexe
 
 RUN apk update && apk add bash
