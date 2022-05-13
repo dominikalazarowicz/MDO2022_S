@@ -2,6 +2,7 @@ pipeline {
 	agent any
     parameters {
         string(name: 'BRANCH', defaultValue: 'dev', description: '')
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: '')
         booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
         }
@@ -43,8 +44,8 @@ pipeline {
                   environment name: 'PROMOTE', value: "true"
             }
             steps {
-                
-                archiveArtifacts "lz4.tar.gz"
+                sh "mv lz4.tar.gz lz4_${VERSION}.tar.gz"
+                archiveArtifacts "lz4_${VERSION}.tar.gz"
             }
         }
   	}
