@@ -36,7 +36,7 @@ pipeline {
             steps {
                 echo 'deploying node-red'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh "docker tag node-red_build:${params.Version} mihaf70/node-red-devops-deploy"
+                sh 'docker tag node-red_build:latest mihaf70/node-red-devops-deploy'
                 sh 'docker push mihaf70/node-red-devops-deploy'
             }
         }
