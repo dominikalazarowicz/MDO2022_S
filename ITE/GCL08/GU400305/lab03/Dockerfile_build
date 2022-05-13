@@ -7,7 +7,5 @@ WORKDIR strapi
 RUN npm install
 RUN yarn setup
 RUN yarn build
-WORKDIR examples
-WORKDIR getstarted
-RUN yarn build
+
 
