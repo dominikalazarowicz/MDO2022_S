@@ -42,8 +42,8 @@ pipeline {
 		stage('Deploy') {
 			steps {
 				echo 'Deploying'
-				sh 'docker run --name tmp_container--mount "type=volume,src=out_vol,dst=/usr/local/nexe_app" nexe_deploy bash -c "cd /usr/local/nexe_app/nexe && npm run"'
-				sh 'exit $(docker inspect tmp_container--format="{{.State.ExitCode}}")'
+				sh 'docker run --name tmp_container --mount "type=volume,src=out_vol,dst=/usr/local/nexe_app" nexe_deploy bash -c "cd /usr/local/nexe_app/nexe && npm run"'
+				sh 'exit $(docker inspect tmp_container --format="{{.State.ExitCode}}")'
 				sh 'docker rm -f tmp_container'
 			}
 		}	
