@@ -33,9 +33,11 @@ pipeline {
 		}
             steps {
 		sh 'cd /build && ls -l'
-		timeout(time: 5, unit: 'SECONDS')
+		timeout(time: 1, unit: 'SECONDS')
                 {
                     sh 'cd /build && ./BasicNumberGuesser'
+                    sh 'DeployTester'
+                    sh '3'
                 }
 
                 //sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
