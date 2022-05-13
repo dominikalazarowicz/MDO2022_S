@@ -24,8 +24,6 @@ pipeline {
 			steps {
 				echo 'Building nexe with npm'
 				dir('./ITE/GCL07/BS401926/lab05') {
-				    sh 'pwd'
-				    sh 'ls'
 					sh 'docker build . -t nexe_build -f docker-build'
 					sh 'docker volume create out_vol'
 					sh 'docker run --mount type=volume,src="in_vol",dst=/nexe_app --mount type=volume,src="out_vol",dst=/nexe_app_build nexe_build bash -c "cd /nexe_app/nexe && npm i; cp -R /nexe_app/nexe /nexe_app_build"'
@@ -41,6 +39,13 @@ pipeline {
       					}
     				}
 			}
-	
+		stage('Deploy') {
+			steps {
+				echo 'Deploying'
+				sh 'docker run --name tmp_container--mount "type=volume,src=out_vol,dst=/usr/local/nexe_app" nexe_deploy bash -c "cd /usr/local/nexe_app/nexe && npm run"'
+				sh 'exit $(docker inspect tmp_container--format="{{.State.ExitCode}}")'
+				sh 'docker rm -f tmp_container'
+			}
+		}	
 	}
 }
