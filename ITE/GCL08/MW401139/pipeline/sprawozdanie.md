@@ -50,7 +50,7 @@
 
 ### DEPLOY
 
-#### W kroku deploy wysyłam obraz do swojego dockerhuna: mihaf70/node-red-devops-deploy
+#### W kroku deploy wysyłam obraz do swojego dockerhuba: mihaf70/node-red-devops-deploy
 
 ![Deploy](./deploy.png)
 
