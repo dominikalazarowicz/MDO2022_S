@@ -9,7 +9,7 @@ pipeline {
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
 		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
-		sh 'docker run --rm --name dotnet_build --mount source=build,target=/build build_base:latest'            
+		sh 'docker run --rm -d --name dotnet_build --mount source=build,target=/build build_base:latest'            
 	}
         }
 	stage('Test') {
@@ -27,7 +27,7 @@ pipeline {
 	stage('deploy') {
             steps {
 		//sh 'docker rm dotnet_deploy'
-                sh 'docker run --rm -i --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest bash'
+                sh 'docker run --rm -i -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest bash'
 		sh 'docker exec -d dotnet_deploy ls'
 		//sh 'cd ITE/GCL03/DK403865/Lab06/Deploy ; docker build --no-cache --progress string -t dotnet_deploy:latest .'
             }
