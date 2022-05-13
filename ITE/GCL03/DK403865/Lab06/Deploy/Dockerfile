@@ -4,4 +4,4 @@ RUN echo 'Dockerfile running 🍉'
 WORKDIR /build
 RUN pwd
 ENTRYPOINT ["dotnet", "BasicNumberGuesser.dll"]
-RUN ls
+RUN ls ; dotnet run
