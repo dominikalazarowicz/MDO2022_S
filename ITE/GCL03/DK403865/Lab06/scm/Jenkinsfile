@@ -32,10 +32,10 @@ pipeline {
 			}
 		}
             steps {
-		sh 'cd /build && ls -l'
+		sh 'cd /build_artifacts && ls -l'
 		timeout(time: 1, unit: 'SECONDS')
                 {
-                    sh 'cd /build && ./BasicNumberGuesser && DeployTester && 3'
+                    sh 'cd /build_artifacts && ./BasicNumberGuesser && DeployTester && 3'
                     sh 'DeployTester'
                     sh '3'
                 }
