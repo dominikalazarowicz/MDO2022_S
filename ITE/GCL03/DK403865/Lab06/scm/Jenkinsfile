@@ -27,7 +27,7 @@ pipeline {
 	stage('deploy') {
             steps {
 		sh 'docker rm dotnet_deploy'
-                sh 'docker run --rm --name dotnet_deploy --mount soucre=build,target=/build dotnet_deps:latest'
+                sh 'docker run --rm --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
 		sh 'pwd'
             }
         }
