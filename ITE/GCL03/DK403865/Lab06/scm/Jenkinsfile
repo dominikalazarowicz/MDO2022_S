@@ -25,13 +25,18 @@ pipeline {
 	}
         }
 	stage('deploy') {
+		agent{
+			docker{
+				image 'dotnet_deps:latest'
+				args '--mount source=build,target=/build -u root:root'
+			}
+		}
             steps {
-		sh 'docker stop dotnet_deploy'
-                sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
+		sh 'cd /build && ls -l'
+                //sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
 		//sh 'docker exec -d dotnet_deploy bash ls'
-		sh 'docker exec -d dotnet_deploy bash "cd build ; dotnet run"'
-
-		sh 'docker logs -f --tail 50 dotnet_deploy'
+		//sh 'docker exec -d dotnet_deploy bash "cd build ; dotnet run"'
+		//sh 'docker logs -f --tail 50 dotnet_deploy'
 		//sh 'cd ITE/GCL03/DK403865/Lab06/Deploy ; docker build --no-cache --progress string -t dotnet_deploy:latest .'
             }
         }
