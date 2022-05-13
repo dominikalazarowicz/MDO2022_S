@@ -33,4 +33,10 @@ kubectl rollout status deployment/komunikator-deployment
 - kubectl rollout history deployment/komunikator-deployment
 - kubectl rollout undo deployment/nginx-deployment
 
+7*. Napisz prosty skrypt w wybranym przez siebie języku (może być bash), który:
+- przyjmuje jako argument nazwę obrazu do deploymentu
+- tworzy plik z deploymentem
+- zleca jego wykonanie klastrowi Kubernetes
+- jeżeli w ciągu 60s klaster nie wykona poprawnie deploymentu, przywraca poprzednią wersję deploymentu
+
 Uwaga: zgłoś zadanie na MS Teams.
