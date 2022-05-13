@@ -1,4 +1,4 @@
-FROM dotnet_deps:latest
+FROM mcr.microsoft.com/dotnet/runtime:3.1
 VOLUME /build
 RUN echo 'Dockerfile running 🍉'
 
