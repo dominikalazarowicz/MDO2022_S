@@ -28,7 +28,7 @@ pipeline {
 				    sh 'ls'
 					sh 'docker build . -t nexe_build -f docker-build'
 					sh 'docker volume create out_vol'
-					sh 'docker run --mount type=volume,src="in_vol",dst=/nexe_app --mount type=volume,src="out_vol",dst=/nexe_app_build nexe_build bash -c "cd /nexe_app/nexe && npm i; cp -R nexe_app/nexe /nexe_build"'
+					sh 'docker run --mount type=volume,src="in_vol",dst=/nexe_app --mount type=volume,src="out_vol",dst=/nexe_app_build nexe_build bash -c "cd /nexe_app/nexe && npm i; cp -R nexe_app_build/nexe /nexe_build"'
 				}
 			}
 		}
