@@ -4,7 +4,6 @@ pipeline {
     stages {
 	stage('Build') {
             steps {
-		sh 'docker stop dotnet_build'
 		sh 'docker volume create build'
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
