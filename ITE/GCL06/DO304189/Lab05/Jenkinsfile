@@ -54,14 +54,10 @@ pipeline
             steps
             {
                 sh 'docker rm -f nodered_publish || true'
-                sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
-                sh 'docker run -d --rm --name publish_node --mount type=volume,src="node_vol_out",dst=/node_app --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy node bash -c "ls -al && chmod -R 777 /node_app && cp -r /node_app/. /usr/local/copy"'
-                sh 'ls -al'
-                sh 'cd .. && ls -al'
-                sh 'cd /var/jenkins_home/workspace/artifacts && ls -al && cd root && ls -al'
-                sh 'pwd'
-                sh 'tar -zcf node-red_${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts .'
-                archiveArtifacts artifacts: "node-red_${params.VERSION}.tar.gz"
+                sh 'mkdir /var/jenkins_home/workspace/artifacts'
+                sh 'docker run -d --name nodered_publish --mount type=volume,src="node_vol-out",dst=/usr/local/node_app --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy node bash -c "chmod -R 777 /usr/local/node_app && cp -R /usr/local/node_app/. /usr/local/copy"'
+                sh "tar -zcvf bashtop-${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/artifacts ."
+                archiveArtifacts artifacts: "node-red_${params.VERSION}.tar.xz"
                 sh 'docker rm -f nodered_build || true'
                 sh 'docker rm -f nodered_test || true'
                 sh 'docker rm -f nodered_deploy || true'
