@@ -29,7 +29,9 @@ pipeline {
 		sh 'docker stop dotnet_deploy'
                 sh 'docker run --rm -i -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest bash'
 		sh 'docker exec -d dotnet_deploy ls'
-		sh 'docker container logs dotnet_deploy'
+		sh 'docker exec -d dotnet_deploy ls'
+
+		sh 'docker logs dotnet_deploy'
 		//sh 'cd ITE/GCL03/DK403865/Lab06/Deploy ; docker build --no-cache --progress string -t dotnet_deploy:latest .'
             }
         }
