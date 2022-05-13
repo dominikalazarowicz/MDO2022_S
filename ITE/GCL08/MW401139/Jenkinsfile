@@ -31,17 +31,17 @@ pipeline {
         }
         
          
-        stage('Deploy') {
-            steps {
-                // echo 'running node-red'
-                // sh 'docker rm -f docker_deploy || true'
-				// dir("${params.Build_files}") {
-                //     sh 'docker run --name docker_deploy node-red_build npm start'
-                //     sh 'sleep 5'
-                //     sh 'docker rm -f docker_deploy'
-				// }
-            }
-        }
+        // stage('Deploy') {
+        //     steps {
+        //         // echo 'running node-red'
+        //         // sh 'docker rm -f docker_deploy || true'
+		// 		// dir("${params.Build_files}") {
+        //         //     sh 'docker run --name docker_deploy node-red_build npm start'
+        //         //     sh 'sleep 5'
+        //         //     sh 'docker rm -f docker_deploy'
+		// 		// }
+        //     }
+        // }
 
          stage('Publish'){
             when {
