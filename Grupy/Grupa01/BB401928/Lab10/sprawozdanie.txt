@@ -1,0 +1,6 @@
+Sprawozdanie
+====
+
+
+1. minikube start; minikube dashboard
+uruchomienie minikube oraz dashboard
