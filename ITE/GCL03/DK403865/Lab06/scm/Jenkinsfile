@@ -9,7 +9,7 @@ pipeline {
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
 		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
-		sh 'docker run --rm --name dotnet_build --mount source=build,target=/build'            
+		sh 'docker run --rm --name dotnet_build --mount source=build,target=/build build_base:latest'            
 	}
         }
 	stage('Test') {
