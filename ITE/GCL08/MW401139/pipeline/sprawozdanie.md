@@ -50,15 +50,15 @@
 
 ### DEPLOY
 
-#### W kroku test tworzę kontener na bazie na bazie kontenera budującego (w moim przypadku node-red_build) oraz uruchamiam w nim komendę npm run test która przeprowadza testy.
+#### W kroku deploy wysyłam obraz do swojego dockerhuna: mihaf70/node-red-devops-deploy
 
-![Test](./test.png)
+![Deploy](./deploy.png)
 
 <br/>
 
 ### PUBLISH
 
-#### W kroku test tworzę kontener na bazie na bazie kontenera budującego (w moim przypadku node-red_build) oraz pakuje katalog node-red do pliku archive.tar.xz. Następnie, przy uzyciu woluminu, w ściezce /var/jenkins_home/workspace/node-red-pipeline dopisuje do nazwy pliku wersję oraz archiwuizuje plik aby był widoczny na Jenkinsie.
+#### W kroku publish tworzę kontener na bazie na bazie kontenera budującego (w moim przypadku node-red_build) oraz pakuje katalog node-red do pliku archive.tar.xz. Następnie, przy uzyciu woluminu, w ściezce /var/jenkins_home/workspace/node-red-pipeline dopisuje do nazwy pliku wersję oraz archiwuizuje plik aby był widoczny na Jenkinsie.
 
 ![Publish](./publish.png)
 
