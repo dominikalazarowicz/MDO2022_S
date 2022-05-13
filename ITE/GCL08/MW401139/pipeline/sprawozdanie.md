@@ -8,6 +8,8 @@
 
 ![Containers](./containers.png)
 
+<br/>
+
 ### Pliki Dockerfiles potrzebne do zbudowania kontenerów:
 
 ![Dockerfile_b](./dockerfile_build.png)
