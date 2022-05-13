@@ -1,21 +1,21 @@
-apiVersion: app/v1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: komunikator-deployment
-    labels:
-        app: komunikator
+  name: komunikator-deployment
+  labels:
+    app: komunikator
 spec:
-    replicas: 4
-    selector:
-        matchLabels:
-            app: komunikator
-        template:
-            metadata:
-                labels:
-                    app: komunikator
-            spec:
-                containers:
-                    - name: suvres/wireapp_app
-                      image: suvres/wireapp_app:latest
-                      ports:
-                        - containerPort: 8080
+  replicas: 4
+  selector:
+    matchLabels:
+      app: komunikator
+  template:
+    metadata:
+      labels:
+        app: komunikator
+    spec:
+      containers:
+      - name: komunikator
+        image: suvres/wireapp_app:latest
+        ports:
+        - containerPort: 8080
