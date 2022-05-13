@@ -41,7 +41,7 @@ pipeline
                 sh 'docker rm -f nodered_deploy || true'
                 sh 'docker run -dit --name nodered_deploy --mount type=volume,src="node_vol_out",dst=/node_app node'
                 sh 'docker container exec nodered_deploy sh -c "ls -l"'
-                sh 'docker container exec nodered_deploy sh -c "cd node_app/node-red && ls -l && npm run validate"'
+                sh 'docker container exec nodered_deploy sh -c "cd node_app/node-red && ls -l && npm validate"'
             }
         }
 
