@@ -1,14 +1,18 @@
-version: "3.3"
+version: "3.9"
 services:
-    buildsection:
-        image: build-agent:latest
-        build:
-            context: .
-            dockerfile: ./build-agent/Dockerfile
-    testsection:
-        image: test-agent:latest
-        build:
-            context: .
-            dockerfile: ./test-agent/Dockerfile
-        depends_on:
-            - buildsection
+  b_agent:
+    build:
+      context: "./build-agent"
+      dockerfile: "Dockerfile"
+    working_dir: /app
+    volumes:
+      - ./.docker:/app
+    
+  t_agent:
+    build:
+      context: "./test-agent"
+      dockerfile: "Dockerfile"
+    working_dir: /app
+    volumes:
+      - ./.docker:/app
+      - ./test_agent:/test
