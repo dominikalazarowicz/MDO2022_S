@@ -54,14 +54,8 @@ pipeline {
 				}
                 sh "docker run --volume /var/jenkins_home/workspace/node-red-pipeline:/finalArchive node-red_publish"
                  dir('/var/jenkins_home/workspace/node-red-pipeline'){
-                    sh 'cd finalArchive && ls'
-                    sh 'cd .. && tar cfJ archive.tar.xz node-red'
-                    sh 'cd .. && mv archive.tar.xz node-red'
-                    sh "npm version ${params.Version}"
-                    sh 'npm pack'
-                    sh 'ls'
-                    // sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
-			        // archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
+                    sh "mv archive-1.0.0.tar.xz archive-${params.Version}.tar.xz"
+			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
 			    }
             }
         }
