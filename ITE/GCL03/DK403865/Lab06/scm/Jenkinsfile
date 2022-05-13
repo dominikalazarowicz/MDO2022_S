@@ -24,7 +24,7 @@ pipeline {
 		sh 'cd ITE/GCL03/DK403865/Lab06/DotnetDeps ; docker build -t dotnet_deps:latest .'            
 	}
         }
-	stage('deploy') {
+	stage('Deploy') {
 		agent{
 			docker{
 				image 'dotnet_deps:latest'
@@ -33,7 +33,10 @@ pipeline {
 		}
             steps {
 		sh 'cd /build && ls -l'
-		sh 'cd /build && ./BasicNumberGuesser'
+		timeout(time: 5, unit: 'SECONDS')
+                {
+                    sh 'cd/build && ./BasicNumberGuesser'
+                }
 
                 //sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
 		//sh 'docker exec -d dotnet_deploy bash ls'
