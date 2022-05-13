@@ -4,4 +4,4 @@ RUN echo 'Dockerfile running 🍉'
 
 RUN git clone https://github.com/Klatix/NumberGuesserOOP.git
 WORKDIR NumberGuesserOOP/BasicNumberGuesser
-RUN dotnet build
+RUN dotnet build --output .
