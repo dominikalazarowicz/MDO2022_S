@@ -33,6 +33,8 @@ pipeline {
 		}
             steps {
 		sh 'cd /build && ls -l'
+		sh 'cd /build && dotnet run'
+
                 //sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
 		//sh 'docker exec -d dotnet_deploy bash ls'
 		//sh 'docker exec -d dotnet_deploy bash "cd build ; dotnet run"'
