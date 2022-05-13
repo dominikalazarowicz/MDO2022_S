@@ -4,5 +4,5 @@ RUN echo 'Dockerfile running 🍉'
 
 RUN pwd
 RUN ls -a
-RUN cd build ; dotnet run
+RUN cd build ; ls; dotnet run
 RUN ls -a
