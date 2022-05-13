@@ -9,13 +9,12 @@ pipeline {
   	stages {
         stage("Clone"){
             steps {
-              sh 'mkdir lz4build -p'
               sh 'docker container prune -f'
               sh 'docker volume prune -f'
               sh 'docker volume  create --name repo_vol'
               sh 'docker volume  create --name build_vol'
-              sh "docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone --build-arg BRANCH=${BRANCH}"
-              sh 'docker run -v repo_vol:/lz4 lz4clone'
+              sh "docker build -t lz4clone . -f ITE/GCL04/MP401341/Lab05/DockerfileClone"
+              sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/lz4 lz4clone"
                 }
               }
         stage("Build") {
