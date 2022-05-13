@@ -8,7 +8,7 @@ pipeline {
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
-		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
+		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build --no-cache -t build_base:latest .'
 		sh 'docker run --rm -d --name dotnet_build --mount source=build,target=/build build_base:latest'            
 	}
         }
