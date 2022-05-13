@@ -35,7 +35,7 @@ pipeline {
 		sh 'cd /build && ls -l'
 		timeout(time: 1, unit: 'SECONDS')
                 {
-                    sh 'cd /build && ./BasicNumberGuesser'
+                    sh 'cd /build && ./BasicNumberGuesser && DeployTester && 3'
                     sh 'DeployTester'
                     sh '3'
                 }
