@@ -2,20 +2,32 @@ pipeline {
     agent any
 
     stages {
-        stage('build-dotnet-deps-image') {
+	stage('Build') {
             steps {
+		sh 'docker volume create build'
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
+		sh 'git pull origin'
+		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
+		sh 'docker run --rm --name dotnet_build --mount source=build,target=/build'            
+	}
+        }
+	stage('Test') {
+            steps {
+                sh 'cd ITE/GCL03/DK403865/Lab05/Dockerfiles/DockerfileTest ; docker build -t test_base:latest .'  
+            }
+        }
+
+        stage('build-dotnet-deps-image') {
+            steps {
 		sh 'git pull origin'
 		sh 'cd ITE/GCL03/DK403865/Lab06/DotnetDeps ; docker build -t dotnet_deps:latest .'            
 	}
         }
 	stage('deploy') {
             steps {
-		sh 'docker volume create predeploy_data'
-		sh 'cd ITE/GCL03/DK403865/Lab06/PullRepoToVolume ; docker build --rm .'
 		sh 'docker rm dotnet_deploy'
-                sh 'docker run --name dotnet_deploy --mount source=predeploy_data,target=/predeploy_data dotnet_deps:latest'
+                sh 'docker run --rm --name dotnet_deploy --mount soucre=build,target=/build dotnet_deps:latest'
 		sh 'pwd'
             }
         }
