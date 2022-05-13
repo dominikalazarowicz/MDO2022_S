@@ -31,7 +31,7 @@ pipeline {
 		//sh 'docker exec -d dotnet_deploy bash ls'
 		sh 'docker exec -d dotnet_deploy bash "cd build ; dotnet run"'
 
-		sh 'docker logs dotnet_deploy'
+		sh 'docker logs -f --tail 50 dotnet_deploy'
 		//sh 'cd ITE/GCL03/DK403865/Lab06/Deploy ; docker build --no-cache --progress string -t dotnet_deploy:latest .'
             }
         }
