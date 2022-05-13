@@ -27,9 +27,9 @@ pipeline {
 	stage('deploy') {
             steps {
 		sh 'docker stop dotnet_deploy'
-                sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest bash'
-		sh 'docker exec -d dotnet_deploy ls'
-		sh 'docker exec -d dotnet_deploy "cd build ; dotnet run"'
+                sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
+		sh 'docker exec -d dotnet_deploy bash ls'
+		//sh 'docker exec -d dotnet_deploy cd build ; dotnet run'
 
 		sh 'docker logs dotnet_deploy'
 		//sh 'cd ITE/GCL03/DK403865/Lab06/Deploy ; docker build --no-cache --progress string -t dotnet_deploy:latest .'
