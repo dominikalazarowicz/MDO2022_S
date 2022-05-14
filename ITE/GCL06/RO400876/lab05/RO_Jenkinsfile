@@ -7,7 +7,18 @@ pipeline
 		{
 			steps
 			{
-				sh 'docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build'
+				sh '''
+				echo "Budowanie projektu..."
+				docker rm -f RO_Dockerfile_Build
+				docker volume prune -f
+				docker volume  create --name volume_input
+				docker volume  create --name volume_output
+				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
+                    		docker run --mount type=volume,src="volume_output",dst=/RO_project RO_Dockerfile_Build:latest bash -c 
+                    		cd .. 
+                    		cp -r /cytoscape.js /RO_project"
+				'''
+				
 			}
 		}
 		
@@ -15,7 +26,11 @@ pipeline
 		{
 			steps
 			{
-			sh 'docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Test -t ro_test'
+				sh '''
+				echo "Testowanie projektu..."
+				docker rm -f RO_Dockerfile_Test
+				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Test -t ro_test
+				'''
 			}
 		}
 	}
