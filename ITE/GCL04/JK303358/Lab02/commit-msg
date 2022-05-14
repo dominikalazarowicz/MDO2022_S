@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 title=$(echo `head $1` | awk '{print $1;}')
 message=$(echo `head $1` | awk '{print $2;}')

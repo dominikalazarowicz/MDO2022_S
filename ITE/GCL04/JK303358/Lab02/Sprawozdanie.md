@@ -2,7 +2,35 @@
 1. Przygotuj git hook, który rozwiąże najczęstsze problemy z commitami
 * hook sprawdzający, czy tytuł commita nazywa się ```<inicjały><numer indeksu>```
 * hook sprawdzający, czy w treści commita pada numer labu, właściwy dla zadania
+
+	Hook commit-msg:
+
+	![hook](Pictures/lab2hook2.png?raw=true)
+
+	Dzialanie:
+	
+	![hook](Pictures/lab2hook.png?raw=true)
+
 2. Umieść hook w sprawozdaniu w taki sposób, aby dało się go przejrzeć
+
+	```
+	#!/bin/bash
+
+	title=$(echo `head $1` | awk '{print $1;}')
+	message=$(echo `head $1` | awk '{print $2;}')
+
+	if ! [ $title == "JK303358" ]; then 	
+		echo "Wrong title."							
+		exit 1;								
+	fi
+
+	if ! [[ $message =~ .*"2".* ]]; then 	
+		echo "Message doesnt contain lab number."							
+		exit 1;								
+	fi
+	echo "Commit message OK!"
+	```	
+
 3. Rozpocznij przygotowanie środowiska Dockerowego
     * zapewnij dostęp do maszyny wirtualnej przez zdalny terminal (nie "przez okienko")
 
