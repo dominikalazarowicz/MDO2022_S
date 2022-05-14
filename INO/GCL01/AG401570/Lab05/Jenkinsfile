@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+
+    parameters {
+        string(name: 'Name')
+        string(name: 'Version')
+    }
+
+    stages{
+        stage('Build') {
+            steps {
+                echo 'BUILD'
+                dir('INO/GCL01/WD400194/Lab05') {
+                    sh 'docker build . -f dockerfile1.dockerfile -t builder'
+                }
+            }
+        }
+        stage('Tests') {
+            steps {
+                echo 'TESTS'
+                dir('INO/GCL01/WD400194/Lab05') {
+                    sh 'docker build . -f dockerfile2.dockerfile -t tester'
+                }
+            }
+        }
+    }
+
+}
+
