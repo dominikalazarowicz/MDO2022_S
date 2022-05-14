@@ -1,4 +1,4 @@
-FROM grrd2000/dependencies:latest
+FROM grrd2000/2048_dependencies:latest
 
 RUN git clone https://github.com/mevdschee/2048.c.git
 
