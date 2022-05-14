@@ -28,8 +28,14 @@ pipeline
 			{
 				sh '''
 				echo "Testowanie projektu..."
+				
 				docker rm -f RO_Dockerfile_Test
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Test -t ro_test
+
+
+				docker run --name test_container --rm --mount source=ro_test,target=/volume_input ro_test:latest
+
+				
 				echo "Testowanie zakończone"
 				'''
 			}
