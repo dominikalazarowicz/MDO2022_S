@@ -30,7 +30,7 @@ pipeline
             {
               sh 'docker rm -f kacper_test || true'
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
-              sh "docker run --name kn_test --rm --mount source=kacper_test,target=/kacper_in "
+              sh "docker run --name kn_test --rm --mount source=kacper_test,target=/kacper_in kacper_test:latest"
               
             }
         }
