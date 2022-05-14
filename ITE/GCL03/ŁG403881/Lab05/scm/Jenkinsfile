@@ -141,7 +141,8 @@ pipeline {
 
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cp -R /out/publish/* ${WORKSPACE}/publish/"
-                sh 'ls -R ${WORKSPACE}/publish/'
+                sh 'rm -rf ${WORKSPACE}/publish/*.pdb'
+                sh 'rm -rf ${WORKSPACE}/publish/publisz/*.pdb'
 
                 archiveArtifacts 'publish/*'
             }
