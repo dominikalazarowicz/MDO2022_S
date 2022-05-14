@@ -1,7 +1,7 @@
 FROM python:3.8.10
 
 RUN apt update
-RUN git clone https://github.com/opentracing/basictracer-python.git
+RUN git clone https://github.com/michaElOs769/devops.git
 
 WORKDIR "/basictracer-python"
 RUN python3 -m venv /opt/env
