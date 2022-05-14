@@ -143,8 +143,9 @@ pipeline {
 
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
-                sh "mv /out/publish/GithubAppLab03.exe ${params.FileName}-${params.Version}.exe"
+                sh "mv /out/publish/GithubAppLab03.exe /out/publish/${params.FileName}-${params.Version}.exe"
 
+                sh 'ls /.'
                 sh 'ls /out/publish'
 
                 
