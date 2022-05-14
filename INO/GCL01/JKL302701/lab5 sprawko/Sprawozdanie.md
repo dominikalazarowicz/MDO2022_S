@@ -68,6 +68,8 @@ Tu pojawiły się pierwsze problemy przy instalacji dependencji:
 
 Rozwiązaniem okazało się sforoswanie instalacji poprzez dodanie flagi `-f` lecz jest to rozwiązanie nie zalecane przez profesjonalistów.
 
+**W krokach deploy i publish przerzucam pliki z tego kontenera, dlatego nie podłączam woluminu**
+
 ```
 stage('Build') {
             steps {
