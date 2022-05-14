@@ -9,9 +9,7 @@
 ![Docker_test](img/dockertest.png)
 
 ![Docker_publish](img/dockerpub.png)
-
 <br/>
-
 ### Skonfigurowany pipeline na Jenkins:
 
 ![Jenkins1](img/jenkins1.png)
@@ -47,7 +45,7 @@
 
 ![Publish](img/publish.png)
 
-###Pipeline
+### Pipeline
 
 ### W Jenkinsie widac utworzony plik tar z wersja wybrana przy jego uruchomieniu
 
