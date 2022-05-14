@@ -47,8 +47,9 @@ pipeline {
             steps {
                 echo 'Publish'
                 dir("${params.Build_files}") {
-                    sh 'docker build . -f DockerPublish -t basictracer_publish'
                     sh 'ls -a'
+                    sh 'docker build . -f DockerPublish -t basictracer_publish'
+                    
 				}
                
             }
