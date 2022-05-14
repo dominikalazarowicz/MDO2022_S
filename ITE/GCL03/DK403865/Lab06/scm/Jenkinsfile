@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
 		sh 'ls -l'
-		sh 'cd /build_artifacts && ls -l && mkdir artifacts && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'
+		sh 'cd /build_artifacts && ls -l && mkdir artifacts && rm -r NumberGuesserOOP && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'
 
 		//sh 'docker volume create build_artifacts'
 		//git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
