@@ -3,7 +3,9 @@ from ubuntu
 RUN apt-get update
 RUN apt-get --yes install git
 RUN apt-get --yes install make
+RUN apt-get --yes install build-essential
 RUN apt-get --yes install python3
+RUN apt-get --yes install python3-dev
 RUN apt-get --yes install python3-venv
 RUN apt-get --yes install python3-wheel
 RUN apt-get --yes install curl
