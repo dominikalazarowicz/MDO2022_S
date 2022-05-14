@@ -1,9 +1,12 @@
 pipeline
 {
- parameters
-    {
-        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
-        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+ parameters {
+        booleanParam(name: "promote",
+            defaultValue: false,
+            description: "Promote to new version, when successful?")
+        string(name: "version",
+            defaultValue: "",
+            description: "Type in verion number:")
     }
 	agent any
 	stages
