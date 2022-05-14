@@ -51,6 +51,12 @@ pipeline {
 			when {
 				expression {return params.Promote}
 			}
+	    agent {
+                docker {
+                    image 'node:alpine'
+                    args '--rm --mount "type=volume,src=out_vol,dst=/usr/local/nexe_app" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+                }
+            }
 			steps {
 				echo 'Publishing'
 				sh 'mkdir /var/jenkins_home/workspace/artifacts'
