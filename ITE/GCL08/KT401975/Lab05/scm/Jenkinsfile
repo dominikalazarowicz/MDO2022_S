@@ -8,7 +8,7 @@ pipeline {
 				  sh 'ls'
 				  sh 'pwd'
 				  sh 'git fetch'
-                  sh 'git checkout KT401975'
+                  sh 'git checkout --track origin/<BRANCH-NAME>'
 				  sh 'git pull origin'
 				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/build ; docker build -t builder:latest .'
               }
