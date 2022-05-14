@@ -9,7 +9,7 @@ pipeline {
                   sh 'git checkout origin/KT401975'
 				  sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
 				  
-				  sh 'git pull origin'
+				//  sh 'git pull'
 				  sh 'ls'
 				  sh 'pwd'
 				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/buildfile ; docker build -t builder:latest .'
