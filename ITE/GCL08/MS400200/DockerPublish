@@ -1,2 +1,3 @@
 FROM basictracer_build:latest
-RUN ls
+RUN cd && tar cfJ archive.tar.xz basictracer.egg-info
+RUN cd && mv archive.tar.xz basictracer.egg-info
