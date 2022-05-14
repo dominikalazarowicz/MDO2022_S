@@ -43,6 +43,8 @@ Komenda `sudo docker ps` wyświetla nam czynne kontenery:
 
 Wszystkie pliki `Dockerfile` oraz plik `Jenkinsfile` zawierający instrukcje pipeline'u zostały umieszczone w repozytorium na gałęzi `JKL302701`. 
 
+![screen1](./git.PNG)
+
 Następnie konfiguruję SCM ustawiając URL repozytorium, odpowiedni branch w tym repozytorium oraz ścieżkę do naszego Jenkinsfile'a
 
 ![screen2](./s2.PNG)
@@ -50,6 +52,7 @@ Następnie konfiguruję SCM ustawiając URL repozytorium, odpowiedni branch w ty
 
 
 - **BUILD**
+
 W celu stworzenia obrazu `builder` klonuję repozytorium z moim projektem .
 W sklonowanym repo pod ścieżką `INO/GCL01/JKL302701/lab05` znajduje się plik `df1.dockerfile`, który tworzy nam wspomniany wcześniej obraz `builder`. 
 ```
