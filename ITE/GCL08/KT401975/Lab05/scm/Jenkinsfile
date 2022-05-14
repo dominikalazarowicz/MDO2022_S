@@ -6,8 +6,6 @@ pipeline {
               
             	  git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                   sh 'git checkout KT401975'
-				  git 'config --global user.email "73136393+kawelos@users.noreply.github.com"'
-				  sh 'git config --global user.name "kawelos"'
 				  sh 'git pull'
 				  sh 'ls'
 				  sh 'pwd'
