@@ -39,7 +39,7 @@ pipeline
             steps
             {
                 sh 'docker rm -f kacper_deploy || true'
-                sh 'docker run -dit --name kacper_deploy --mount type=volume,src="kacper_out",dst=/kacper_in node'
+                sh 'docker run -dit --name kacper_deploy --mount type=volume,src="kacper_out",dst=/kn_proj node'
                 sh 'docker container exec kacper_deploy sh -c "ls -l"'
                 sh 'exit $(docker inspect kacper_deploy --format="{{.State.ExitCode}}")'
             }
