@@ -18,7 +18,6 @@ pipeline
 				docker volume prune -f
 				docker volume  create --name volume_input
 				docker volume  create --name volume_output
-				docker volume ls
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
                     		docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output"  	      
                     		echo "Budowanie zakończone"
@@ -69,7 +68,8 @@ pipeline
             {
                 sh '''
                 echo "Publikowanie projektu..."
-                rm -rf /var/jenkins_home/workspace/ro_artifacts && mkdir /var/jenkins_home/workspace/ro_artifacts
+                
+                mkdir /var/jenkins_home/workspace/ro_artifacts
                 docker rm -f publish_container
                 docker run -d --name publish_container --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"
                 tar -zcvf cytoscape.js_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts .
