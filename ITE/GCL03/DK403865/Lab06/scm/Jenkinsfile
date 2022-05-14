@@ -9,7 +9,6 @@ pipeline {
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
 		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
-		//sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
 	}
 	}
 	stage('Build') {
@@ -21,14 +20,7 @@ pipeline {
             }
             steps {
 		sh 'ls -l'
-		sh 'cd /build_artifacts && ls -l && rm -r NumberGuesserOOP && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'
-
-		//sh 'docker volume create build_artifacts'
-		//git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
-		//sh 'git checkout DK403865'
-		//sh 'git pull origin'
-		//sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
-		//sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
+		sh 'cd /build_artifacts && ls -l && rm -r NumberGuesserOOP && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'         
 	}
         }
 	stage('Test') {
@@ -63,12 +55,21 @@ pipeline {
                 {
                     sh 'cd /build_artifacts/artifacts && ls -l && ./BasicNumberGuesser'
                 }
-
-                //sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
-		//sh 'docker exec -d dotnet_deploy bash ls'
-		//sh 'docker exec -d dotnet_deploy bash "cd build ; dotnet run"'
-		//sh 'docker logs -f --tail 50 dotnet_deploy'
-		//sh 'cd ITE/GCL03/DK403865/Lab06/Deploy ; docker build --no-cache --progress string -t dotnet_deploy:latest .'
+            }
+        }
+	stage('Publish') {
+		agent{
+			docker{
+				image 'dotnet_deps:latest'
+				args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
+			}
+		}
+            steps {
+		sh 'cd /build_artifacts/artifacts && ls -l'
+		timeout(time: 1, unit: 'SECONDS')
+                {
+                    sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish --configuration Release --self-contained true --no-build -p:PublishSingleFile=true --output ../../publish/'
+                }
             }
         }
 
