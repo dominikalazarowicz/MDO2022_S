@@ -60,13 +60,5 @@ pipeline {
 			}
 		}
 	}
-	post {
-        	success {
-            		echo 'Pipeline succsess'
-        	}
-        	failure {
-            		echo 'Pipeline fail'
-        	}
-    	}
 }
-}
+
