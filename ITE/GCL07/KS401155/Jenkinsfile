@@ -46,9 +46,8 @@ pipeline {
 				dir("${params.Build_files}") {
                     sh 'docker build . -f dockerpublish -t fintoc-python-publish'
 				}
-                sh "docker run --volume /var/jenkins_home/workspace/fintoc-python-publish:/finalArchive fintoc-python-publish mv archive.tar.xz /finalArchive"
+                sh "docker run --volume /var/jenkins_home/workspace/fintoc-python-publish:/finalArchive fintoc-python-publish mv archive-${params.Version}.tar.xz /finalArchive"
                  dir('/var/jenkins_home/workspace/fintoc-python-publish'){
-                    sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
 			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
 			    }
             }
