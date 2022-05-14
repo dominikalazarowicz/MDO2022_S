@@ -1,3 +1,3 @@
 FROM fintoc-python-build:latest
 
-RUN poetry run poetry publish
+RUN poetry run poetry publish --build
