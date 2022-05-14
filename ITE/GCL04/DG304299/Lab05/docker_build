@@ -4,4 +4,4 @@ WORKDIR /app/Guess-Word-Game
 
 #CMD ["sh","-c","gradle build"]
 
-CMD "ls app"
+CMD ls 
