@@ -50,6 +50,8 @@ pipeline {
                  dir('/var/jenkins_home/workspace/fintoc-python-publish'){
                     echo "current pwd"
                     sh "pwd"
+                    sh "whoami"
+                    sh "id -g"
                     sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
 			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
 			    }
