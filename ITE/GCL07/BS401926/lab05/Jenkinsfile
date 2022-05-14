@@ -4,7 +4,7 @@ pipeline {
 	
     parameters {
         string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
-        booleanParam(name: 'Promote', defaultValue: true, description: 'Promote statement')
+        booleanParam(name: 'Promote', defaultValue: true, description: '')
         string(name: 'Dockerfiles', defaultValue: './ITE/GCL07/BS401926/lab05', description: 'Dockerfiles path')
     }
     
@@ -46,6 +46,27 @@ pipeline {
 				sh 'exit $(docker inspect tmp_container --format="{{.State.ExitCode}}")'
 				sh 'docker rm -f tmp_container'
 			}
-		}	
+		}
+		stage('Publish') {
+			when {
+				expression {return params.Promote}
+			}
+			steps {
+				echo 'Publishing'
+				sh "cd /usr/local/nexe_app/nexe && npm version ${params.Version} && npm pack"
+			    sh "mv /usr/local/nexe_app/nexe/nexe-${params.Version}.tgz /usr/local/copy"
+			    dir('/var/jenkins_home/workspace/artifacts'){
+			        archiveArtifacts artifacts: "express-${params.Version}.tgz"
+			}
+		}
 	}
+	post {
+        	success {
+            		echo 'Pipeline succsess'
+        	}
+        	failure {
+            		echo 'Pipeline fail'
+        	}
+    	}
 }
+
