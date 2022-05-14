@@ -51,25 +51,19 @@ pipeline {
 		}
             steps {
 		sh 'cd /build_artifacts/artifacts && ls -l'
-		timeout(time: 1, unit: 'SECONDS')
-                {
                     sh 'cd /build_artifacts/artifacts && ls -l && ./BasicNumberGuesser'
-                }
             }
         }
 	stage('Publish') {
 		agent{
 			docker{
-				image 'dotnet_deps:latest'
+				image 'build_base:latest'
 				args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
 			}
 		}
             steps {
 		sh 'cd /build_artifacts/artifacts && ls -l'
-		timeout(time: 1, unit: 'SECONDS')
-                {
                     sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish --configuration Release --self-contained true --no-build -p:PublishSingleFile=true --output ../../publish/'
-                }
             }
         }
 
