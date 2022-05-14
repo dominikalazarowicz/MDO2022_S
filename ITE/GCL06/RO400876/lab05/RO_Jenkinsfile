@@ -47,7 +47,7 @@ pipeline
             {
                 sh '''
                 docker rm -f deploy_container
-                docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/volume_input node
+                docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/ro_project node
                 docker container exec deploy_container sh -c "ls -l"
                 exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
             	 '''
