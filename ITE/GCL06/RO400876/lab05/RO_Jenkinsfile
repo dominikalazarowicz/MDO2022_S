@@ -13,8 +13,9 @@ pipeline
 				docker volume prune -f
 				docker volume  create --name volume_input
 				docker volume  create --name volume_output
+				docker volume ls
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
-                    		docker run --mount type=volume,src="volume_output",dst=/ro_project ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /ro_project"
+                    		docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input cp -r /volume_input /volume_output"  	      
                     		echo "Budowanie zakończone"
 				'''
 				
@@ -33,5 +34,16 @@ pipeline
 				'''
 			}
 		}
+		
+		 stage('Deploy')
+        {
+            steps
+            {
+                sh 'docker rm -f nodered_deploy || true'
+                sh 'docker run -dit --name nodered_deploy --mount type=volume,src="node_vol_out",dst=/node_app node'
+                sh 'docker container exec nodered_deploy sh -c "ls -l"'
+                sh 'exit $(docker inspect nodered_deploy --format="{{.State.ExitCode}}")'
+            }
+        }
 	}
 }
