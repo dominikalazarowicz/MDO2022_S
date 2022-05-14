@@ -133,7 +133,7 @@ pipeline {
             steps{
                 sh 'rm -rf /out/publish || true'
                 sh 'mkdir /out/publish'
-                
+
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
@@ -141,6 +141,7 @@ pipeline {
 
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cp -R /out/publish/* ${WORKSPACE}/publish/"
+                sh 'ls -R ${WORKSPACE}/publish/'
 
                 archiveArtifacts 'publish/*'
             }
