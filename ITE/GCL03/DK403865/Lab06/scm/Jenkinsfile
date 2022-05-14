@@ -11,7 +11,7 @@ pipeline {
 		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
 		//sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
 	}
-
+	}
 	stage('Build') {
             agent {
                 docker {
