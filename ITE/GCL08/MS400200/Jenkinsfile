@@ -47,14 +47,15 @@ pipeline {
             steps {
                 echo 'Publish'
                 dir("${params.Build_files}") {
-                    sh 'docker build . -f DockerPublish -t basictracer_publish'
+                    //sh 'docker build . -f DockerPublish -t basictracer_publish'
+                    sh "ls"
 				}
-                sh "ls"
-                sh "docker run --volume /var/jenkins_home/workspace/basictracer-pipeline:/finalArchive basictracer_publish mv archive.tar.xz /finalArchive"
-                 dir('/var/jenkins_home/workspace/basictracer-pipeline'){
-                    sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
-			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
-			    }
+                //sh "ls"
+                // sh "docker run --volume /var/jenkins_home/workspace/basictracer-pipeline:/finalArchive basictracer_publish mv archive.tar.xz /finalArchive"
+                //  dir('/var/jenkins_home/workspace/basictracer-pipeline'){
+                //     sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
+			    //     archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
+			    // }
             }
         }
     }
