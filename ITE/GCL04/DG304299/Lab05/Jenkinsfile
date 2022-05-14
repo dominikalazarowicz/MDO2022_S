@@ -23,7 +23,7 @@ pipeline
             steps 
             {
                sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
+               sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out app_build:latest"
             }
         }
 
