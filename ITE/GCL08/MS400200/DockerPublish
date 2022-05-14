@@ -1,3 +1,3 @@
-FROM DockerBuild:latest
-RUN cd .. && tar cfJ archive.tar.xz node-red
-RUN cd .. && mv archive.tar.xz node-red
+FROM basictracer_build:latest
+RUN cd .. && tar cfJ archive.tar.xz basictracer-python
+RUN cd .. && mv archive.tar.xz basictracer-python
