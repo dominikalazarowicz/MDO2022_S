@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        booleanParam(name: 'Promote', default: false, description: 'Promoting and publishing')
+        booleanParam(name: 'Promote', defaultValue: false, description: 'Promoting and publishing')
     }
 
     stages {
