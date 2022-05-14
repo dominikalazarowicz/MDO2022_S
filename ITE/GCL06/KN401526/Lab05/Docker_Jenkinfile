@@ -21,7 +21,7 @@ pipeline
                sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
                sh 'docker run --name kacper_volumes_container -v kacper_in:/kacper_in -v kacper_out:/kacper_out node:latest bash"'
-               sh 'sudo -i -c "cd /var/lib/docker/volumes/kacper_in/_data && git clone https://github.com/knosarzewski/mongo-express.git && cp kacper_in/mongo-express/ mongo-express -r && npm install && npm run build &&  cp -r mongo-express /kacper_out/"'
+               sh 'sudo -i -c "cd kacper_in && git clone https://github.com/knosarzewski/mongo-express.git && cp kacper_in/mongo-express/ mongo-express -r && npm install && npm run build &&  cp -r mongo-express /kacper_out/"'
               
                        
               
