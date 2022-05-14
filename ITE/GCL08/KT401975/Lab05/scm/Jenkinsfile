@@ -1,13 +1,13 @@
 pipeline {
 	agent any
 	stages {
-      	stage('Setup') {
+      	stage('Build') {
          	 steps {
               
             	  git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                   sh 'git checkout KT401975'
 				  sh 'git pull origin'
-				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/build ; docker build -t builder:latest .'
+				  sh 'cd tree/KT401975/GCL08/KT401975/Lab05/dockerfiles/build ; docker build -t builder:latest .'
               }
 		}
      }
