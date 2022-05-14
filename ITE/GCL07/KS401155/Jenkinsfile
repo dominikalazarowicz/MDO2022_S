@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('KS401155')
+        dockerhub = credentials('dockerhub')
     }
 
     stages {
