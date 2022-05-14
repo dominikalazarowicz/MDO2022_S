@@ -57,7 +57,7 @@ pipeline {
 	stage('Publish') {
 		agent{
 			docker{
-				image 'mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime'
+				image 'mcr.microsoft.com/dotnet/core/aspnet:3.0'
 				args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
 			}
 		}
