@@ -29,7 +29,7 @@ pipeline {
         
         stage('Tests') {
             steps {
-                echo 'testing node-red'
+                echo 'testing basictracer'
 				dir("${params.Build_files}") {
                     sh 'docker build . -f DockerTest -t basictracer_test'
 				}
