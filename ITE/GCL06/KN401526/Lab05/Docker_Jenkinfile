@@ -15,6 +15,7 @@ pipeline
             steps 
             {
                sh 'docker rm -f kacper_build || true'
+               sh 'docker rm -f kacper_volumes_container || true'
                sh 'docker volume prune -f'
                sh 'docker volume create kacper_in'
                sh 'docker volume create kacper_out'
