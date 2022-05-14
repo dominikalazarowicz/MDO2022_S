@@ -39,6 +39,15 @@ pipeline {
                 sh 'docker push ksochacki0/fintoc-python-deploy'
             }
         }
+
+        stage('Publish') {
+            steps {
+                echo 'publsihing fintoc-python'
+				dir("${params.Build_files}") {
+                    sh 'docker build . -f dockerpublish -t fintoc-python-publish'
+				}
+            }
+        }
         }
         
 	post {
