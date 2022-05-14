@@ -1,15 +1,13 @@
 pipeline {
-
+	agent any
 	stages {
       	stage('Setup') {
          	 steps {
               
-            	  sh 'docker volume create build'
-             
-            	  git 'https://github.com/barisates/dotnet-core-xunit-example'
+            	  git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                   sh 'git checkout KT401975'
 				  sh 'git pull origin'
-				//  sh 'cd ITE/GCL08/KT401975/Lab05/scm/Jenkinsfile'
+				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/build ; docker build -t builder:latest .'
               }
 		}
      }
