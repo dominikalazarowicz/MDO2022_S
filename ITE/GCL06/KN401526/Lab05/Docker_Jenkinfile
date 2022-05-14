@@ -19,6 +19,7 @@ pipeline
                sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
                sh 'docker run --mount type=volume,src="kacper_out",dst=/kn_proj kacper_build:latest bash -c "ls -l && cd .. && ls -l "'
+               sh 'ls'
                sh 'cp -r /mongo-express /kn_proj'
            
               
