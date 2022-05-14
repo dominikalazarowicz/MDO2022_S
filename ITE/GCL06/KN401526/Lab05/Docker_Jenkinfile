@@ -20,7 +20,7 @@ pipeline
               sh 'docker volume create kacper_in'
               sh 'docker volume create kacper_out'
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
-  	      sh 'docker run --mount type=volume,src="kacper_in",dst=/kacper_in kacper_build:latest bash -c "cd .. && cp -r /mongo-express /kacper_in && cp -r /mongo-express /kacper_out "'
+  	      sh 'docker run --mount type=volume,src="kacper_build",dst=/kacper_in kacper_build:latest bash -c "cd .. && cp -r /mongo-express /kacper_in && cp -r /kacper_in /kacper_out "'
             
             }
         }
@@ -31,6 +31,7 @@ pipeline
             {
               sh 'docker rm -f kacper_test || true'
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
+              
             }
         }
         
