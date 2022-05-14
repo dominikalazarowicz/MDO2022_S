@@ -1,5 +1,5 @@
 FROM node:lts-bullseye
-RUN git clone https://github.com/cytoscape/cytoscape.js.git
+RUN git clone https://github.com/RafalOlech00/cytoscape.js.git
 WORKDIR cytoscape.js
 RUN npm install
 RUN npm run build
