@@ -2,6 +2,26 @@ pipeline {
     agent any
 
     stages {
+        stage('Repository') {
+            steps {
+                agent {
+                    docker{
+                        image 'ubuntu:latest'
+                        
+                        sh 'docker volume create vol-in'
+                        sh 'docker volume create vol-out'
+                        sh 'docker run -it --name cloneRepository --mount source=vol-in,destination=/inputV ubuntu:latest'
+                        sh 'apt-get -y update'
+                        sh 'apt-get -y install git'
+                        sh 'cd inputV'
+                        sh 'git clone https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+                        sh 'exit'
+                        
+                    }
+                }
+                    
+            }
+        }
         stage('Build') {
             steps {
                 echo 'Building..'
