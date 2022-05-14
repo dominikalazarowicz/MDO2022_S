@@ -10,6 +10,7 @@ pipeline {
     stages {
         stage('Repo to volume'){
             steps{
+                sh "ls -R ${WORKSPACE}/publish"
                 sh 'docker volume rm in || true'
                 sh 'docker volume rm out || true'
                 sh 'docker volume create in'
@@ -143,19 +144,17 @@ pipeline {
 
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                sh "mv /out/publish/GithubAppLab03.exe ${params.FileName}-${params.Version}.exe"
 
-                script {
-                    zip ZipFile:"${params.FileName}-${params.Version}.zip",dir:"/out/publish/",file:"GithubAppLab03.exe"
-                }
-                //sh "cd /out/publish/ && zip ${params.FileName}-${params.Version}.zip *.exe"
                 sh 'ls /out/publish'
 
+                
                 sh "rm ${WORKSPACE}/publish/${params.FileName}* || true"
                 sh "rm ${WORKSPACE}/publish/publish/${params.FileName}* || true"
 
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cp -R /out/publish/*.xz ${WORKSPACE}/publish/"
-                sh "cp -R /out/publish/*.zip ${WORKSPACE}/publish/"
+                sh "cp -R /out/publish/*.exe ${WORKSPACE}/publish/"
 
                 sh "ls -R ${WORKSPACE}/publish"
                 //archiveArtifacts 'publish/*'
