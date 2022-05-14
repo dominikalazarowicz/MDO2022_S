@@ -69,8 +69,7 @@ pipeline {
     }
     post {
         always {
-		sh 'ls build_artifacts/publish'
-            archiveArtifacts artifacts: 'build_artifacts/publish/**', fingerprint: true
+            archiveArtifacts artifacts: 'build_artifacts/publish/*.*', fingerprint: true
         }
     }
 }
