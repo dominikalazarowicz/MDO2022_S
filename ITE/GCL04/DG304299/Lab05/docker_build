@@ -1,3 +1,5 @@
 FROM gradle:latest AS build
 
-CMD ["sh", "-c", "gradle -f /volume_in/Guess-Word-Game/build.gradle clean package && cp -r /volume_in/Guess-Word-Game/target ./volume_out && ls ./volume_out"]
+WORKDIR /app/Guess-Word-Game
+
+CMD ["gradle","build"]

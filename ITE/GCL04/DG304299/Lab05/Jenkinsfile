@@ -12,8 +12,12 @@ pipeline
             {
                sh 'docker container prune -f'
                sh 'docker volume prune -f' 
-               sh 'docker build -t app_clone:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_clone'
-               sh "docker run --name clone --rm --mount source=in,target=/volume_in bitnami/git:latest"               
+               sh "docker volume create clone"
+               sh "docker run --mount source=clone,target=/app --name clone ubuntu"
+               sh "rm -rf Guess-Word-Game"
+               sh "git clone https://github.com/LondonJim/Guess-Word-Game.git"
+               sh "docker cp ./Guess-Word-Game clone:/app"
+               sh "docker rm -f clone"            
             }
         }
 
@@ -32,7 +36,7 @@ pipeline
             steps 
             {
                
-              sh 'docker build -t app_test: latest . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
+              sh 'docker build -t app_test:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
               sh "docker run --name test --rm --mount source=in,target=/volume_in app_test:latest"
             }
         }
