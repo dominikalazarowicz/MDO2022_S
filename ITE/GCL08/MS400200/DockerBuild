@@ -7,4 +7,4 @@ WORKDIR "/basictracer-python"
 RUN python3 -m venv /opt/env
 RUN . /opt/env/bin/activate
 RUN python3 -m venv make bootstrap
-RUN ls -a
+RUN ls ..
