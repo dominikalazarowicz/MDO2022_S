@@ -21,7 +21,7 @@ pipeline
                sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
                sh 'docker run --name kacper_volumes_container --rm -v kacper_in:/kacper_in -v kacper_out:/kacper_out node:latest bash '
-               sh ' sudo -i -c "cd /var/lib/docker/volumes/kacper_in/_data "'
+               sh 'cd /var/lib/docker/volumes/kacper_in/_data'
                
                
                
