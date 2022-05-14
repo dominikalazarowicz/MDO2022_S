@@ -11,7 +11,7 @@ pipeline{
             steps {
                 echo 'BUILD'
                 dir('INO/GCL01/AG401570/Lab05') {
-                    sh 'docker build . -f dockerfile1.dockerfile -t builder'
+                    sh 'docker build . -f dockerFile1 -t builder'
                 }
             }
         }
@@ -19,7 +19,7 @@ pipeline{
             steps {
                 echo 'TESTS'
                 dir('INO/GCL01/AG401570/Lab05') {
-                    sh 'docker build . -f dockerfile2.dockerfile -t tester'
+                    sh 'docker build . -f dockerFile2 -t tester'
                 }
             }
         }
