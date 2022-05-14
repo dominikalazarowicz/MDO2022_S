@@ -131,9 +131,12 @@ pipeline {
                 }
             }
             steps{
+                sh 'rm -rf /out/publish || true'
                 sh 'mkdir /out/publish'
+                sh 'ls /out/publish/'
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                sh 'ls /out/publish/'
                 sh "cp -R /out/publish/*.exe ${WORKSPACE}/publish && rm -rf /out/publish/*"
 
                 sh 'ls /out/publish/'
