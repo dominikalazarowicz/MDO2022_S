@@ -7,7 +7,7 @@ pipeline {
             	  git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 				  
                   sh 'git checkout KT401975'
-				  sh 'git pull KT401975'
+				  sh 'git pull'
 				//  sh 'git pull'
 				  sh 'ls'
 				  sh 'pwd'
