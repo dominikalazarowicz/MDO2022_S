@@ -134,7 +134,7 @@ pipeline {
                 sh 'mkdir /out/publish'
                 sh 'ls /in/GithubAppLab03'
                 sh 'cd /in/GithubAppLab03 && dotnet publish -c Release --output /out/publish'
-                sh 'ls /in/GithubAppLab03'
+                sh 'ls /out/publish'
             }
         }
     }
