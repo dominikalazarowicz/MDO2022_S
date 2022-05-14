@@ -53,6 +53,7 @@ pipeline {
 			}
 			steps {
 				echo 'Publishing'
+				sh 'mkdir /var/jenkins_home/workspace/artifacts'
 				sh "cd /usr/local/nexe_app/nexe && npm version ${params.Version} && npm pack"
 			    sh "mv /usr/local/nexe_app/nexe/nexe-${params.Version}.tgz /usr/local/copy"
 			    dir('/var/jenkins_home/workspace/artifacts'){
