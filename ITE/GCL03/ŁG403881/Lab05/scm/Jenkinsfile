@@ -132,9 +132,9 @@ pipeline {
             }
             steps{
                 sh 'ls /.'
-                sh 'ls /in/GithubAppLab03'
+                sh 'ls /out'
                 //sh 'cd /in/GithubAppLab03 && dotnet build' 
-                sh 'cd /out && dotnet publish -c Release -r linux-x64 --self-contained true p:UseAppHost=true'
+                sh 'cd /out && dotnet publish -c Release -r win-x64 --self-contained true p:UseAppHost=true --output .'
                 sh 'ls /in/GithubAppLab03'
             }
         }
