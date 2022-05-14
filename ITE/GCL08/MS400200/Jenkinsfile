@@ -10,7 +10,7 @@ pipeline {
     }
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('MS400200')
+        DOCKERHUB_CREDENTIALS = credentials('dockerenjoyer456')
     }
 
     stages {
@@ -37,8 +37,8 @@ pipeline {
             steps {
                 echo 'deploying basictracer'
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker tag basictracer_build:latest michaELOs769/basictracer-devops-deploy'
-                sh 'docker push michaELOs769/basictracer-devops-deploy'
+                sh 'docker tag basictracer_build:latest dockerenjoyer456/basictracer-devops-deploy'
+                sh 'docker push dockerenjoyer456/basictracer-devops-deploy'
             }
         }
     }
