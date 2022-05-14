@@ -17,7 +17,7 @@ pipeline {
                 dir('INO/GCL02/GS403353/JenkinsProject') {
                     sh 'docker build . -f Test.dockerfile -t tester'
                 }
-                'TESTS COMPLETED'
+                echo 'TESTS COMPLETED'
             }
         }
     }
