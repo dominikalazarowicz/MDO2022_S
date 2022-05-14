@@ -22,7 +22,7 @@ pipeline {
             steps {
                 echo 'testing fintoc-python'
 				dir("${params.Build_files}") {
-                    sh 'docker build . -f dockertest -t fintoc-python-testtest'
+                    sh 'docker build . -f dockertest -t fintoc-python-test'
 				}
             }
         }
