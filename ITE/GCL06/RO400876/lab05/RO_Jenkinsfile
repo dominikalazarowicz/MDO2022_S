@@ -8,18 +8,37 @@ pipeline
 	agent any
 	stages
 	{
+	
+	stage('Prepare')
+		{
+			steps
+			{
+				sh '''
+				echo "Przygotowanie projektu..."
+				
+				docker rm -f ro_build || true
+				docker volume prune -f
+				docker volume  create --name volume_input
+				docker volume  create --name volume_output
+				 
+                    		 	      
+                    		echo "Przygotowanie zakończone"
+				'''
+				
+			}
+		}
+	
 		stage('Build')
 		{
 			steps
 			{
 				sh '''
 				echo "Budowanie projektu..."
-				docker rm -f ro_build
-				docker volume prune -f
-				docker volume  create --name volume_input
-				docker volume  create --name volume_output
+				
+				
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
-                    		docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output"  	      
+                    		docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
+                    		 	      
                     		echo "Budowanie zakończone"
 				'''
 				
@@ -33,7 +52,7 @@ pipeline
 				sh '''
 				echo "Testowanie projektu..."
 				
-				docker rm -f RO_Dockerfile_Test
+				docker rm -f RO_Dockerfile_Test || true
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Test -t ro_test
 				docker run --name test_container --rm --mount source=ro_test,target=/volume_input ro_test:latest
 				
@@ -49,10 +68,11 @@ pipeline
                 sh '''
                 echo "Wdrażanie projektu..."
                 
-                docker rm -f deploy_container
+                docker rm -f deploy_container || true
                 docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/ro_project node
                 docker container exec deploy_container sh -c "ls -l"
                 exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
+                
                 echo "Wdrażanie zakończone"
             	 '''
             }
@@ -66,6 +86,7 @@ pipeline
             }
             steps
             {
+            	 echo "Publikowanie projektu..."
             	 
                 sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts8'
                 
@@ -75,12 +96,30 @@ pipeline
                 sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts8,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && chmod -R 777 /var/jenkins_home/workspace/ro_artifacts8 && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
                 sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts8 ."
                 archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
-                sh 'docker rm -f ro_build || true'
-                sh 'docker rm -f ro_test || true'
-                sh 'docker rm -f deploy_container || true'
-                sh 'docker rm -f ro_publish || true'
+                
+                echo "Publikowanie zakończone"
+                
             }
         }
+        
+        stage('Clean')
+		{
+			steps
+			{
+				sh '''
+				echo "Czyszczenie projektu..."
+				
+				sh 'docker rm -f ro_build || true'
+                		sh 'docker rm -f ro_test || true'
+                		sh 'docker rm -f deploy_container || true'
+                		sh 'docker rm -f ro_publish || true
+				
+				echo "Czyszczenie zakończone"
+				'''
+			}
+		}
+        
+        
 	}
 	
 	post {
