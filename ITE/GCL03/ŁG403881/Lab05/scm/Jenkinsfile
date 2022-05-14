@@ -132,11 +132,10 @@ pipeline {
             }
             steps{
                 sh 'mkdir /out/publish'
-                sh 'ls /out/publish'
-                sh 'ls /in/GithubAppLab03'
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
-                sh 'ls /out/publish'
+                sh "cp -R /out/publish ${WORKSPACE}/publish"
+                archiveArtifacts 'publish/*'
             }
         }
     }
