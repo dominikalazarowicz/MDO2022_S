@@ -1,4 +1,4 @@
-FROM tag1:latest
+FROM builder:latest
 
 WORKDIR /2048.c/
 

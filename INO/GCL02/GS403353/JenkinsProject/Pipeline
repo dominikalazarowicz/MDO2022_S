@@ -1,0 +1,24 @@
+pipeline {  
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'BUILD'
+                dir('INO/GCL02/GS403353/JenkinsProject') {
+                    sh 'docker build . -f Build.dockerfile -t builder'
+                }
+                echo 'BUILD COMPLETED'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                echo 'TEST'
+                dir('INO/GCL02/GS403353/JenkinsProject') {
+                    sh 'docker build . -f Test.dockerfile -t tester'
+                }
+                'TESTS COMPLETED'
+            }
+        }
+    }
+}
