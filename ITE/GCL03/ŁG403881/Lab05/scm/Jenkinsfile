@@ -140,24 +140,17 @@ pipeline {
                    -r linux-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cd /out/publish/ && tar -czvf ${params.FileName}-${params.Version}.tar.xz /out/publish/*"
-                sh 'ls /out/publish'
 
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
                 sh "mv /out/publish/GithubAppLab03.exe /out/publish/${params.FileName}-${params.Version}.exe"
 
-                sh 'ls /.'
-                sh 'ls /out/publish'
-
-                
                 sh "rm ${WORKSPACE}/publish/${params.FileName}* || true"
                 sh "rm ${WORKSPACE}/publish/publish/${params.FileName}* || true"
 
-                sh 'rm -rf /out/publish/*.pdb'
                 sh "cp -R /out/publish/*.xz ${WORKSPACE}/publish/"
                 sh "cp -R /out/publish/*.exe ${WORKSPACE}/publish/"
 
-                sh "ls -R ${WORKSPACE}/publish"
                 archiveArtifacts 'publish/*'
             }
             post{
