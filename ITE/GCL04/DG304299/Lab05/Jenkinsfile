@@ -13,8 +13,7 @@ pipeline
                sh 'docker container prune -f'
                sh 'docker volume prune -f' 
                sh 'docker build -t app_clone:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_clone'
-               sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
-               
+               sh "docker run --name clone --rm --mount source=in,target=/volume_in bitnami/git:latest"               
             }
         }
 
