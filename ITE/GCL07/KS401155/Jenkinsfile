@@ -7,6 +7,10 @@ pipeline {
         string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
     }
 
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('ksochacki00')
+    }
+
     stages {
         stage('Build') {
             steps {
