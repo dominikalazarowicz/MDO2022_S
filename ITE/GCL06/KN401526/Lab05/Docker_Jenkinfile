@@ -1,13 +1,32 @@
 pipeline 
 {
+    parameters
+    {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+    }
+
     agent any
+    
     stages
      {
         stage('Build') 
         {
             steps 
             {
+               sh 'docker rm -f kacper_build || true'
+               sh 'docker rm -f kacper_volumes_container || true'
+               sh 'docker volume prune -f'
+               sh 'docker volume create kacper_in'
+               sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
+   
+              sh 'docker run --mount type=volume,src="kacper_out",dst=/kn_proj kacper_build:latest bash -c "cd .. && cp -r /mongo-express /kn_proj "'
+                      
+               
+               
+               
+               
                
             }
         }
@@ -16,9 +35,13 @@ pipeline
         {
             steps 
             {
-               
+              sh 'docker rm -f kacper_test || true'
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
             }
         }
+        
+       
+        
+        
       }
 }
