@@ -8,7 +8,7 @@ pipeline {
                   sh 'git checkout KT401975'
 				  sh 'ls'
 				  sh 'pwd'
-				  sh 'cd ./ITE/GCL08/KT401975/Lab05'
+				  sh 'cd ./ITE/GCL08/KT401975/Lab05/dockerfiles'
 				  //sh 'docker build -t builder:latest .'
               }
 		}
