@@ -64,7 +64,8 @@ pipeline {
             steps {
 		sh 'cd /build_artifacts/artifacts'
                     sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../../publish/'
-			archiveArtifacts artifacts: '*', fingerprint: true
+		   sh "cp -R /build_artifacts/artifacts ${WORKSPACE}/publish"
+  			 archiveArtifacts 'publish/*'
             }
         }
     }
