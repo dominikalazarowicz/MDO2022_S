@@ -73,13 +73,15 @@ pipeline
                 docker rm -f publish_container
                 docker run -d --name publish_container --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"
                 tar -zcvf cytoscape.js_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/artifacts .
+                 '''
                 archiveArtifacts artifacts: "cytoscape.js_${params.VERSION}.tar.xz"
+                sh'''
                 docker rm -f ro_build
                 docker rm -f ro_test
                 docker rm -f deploy_container
                 docker rm -f publish_container
                 echo "Publikowanie zakończone"
-                '''
+               '''
                 
             }
         }
