@@ -2,14 +2,31 @@ pipeline {
     agent any
 
     stages {
-	stage('Build') {
+	stage('Pre-Build') {
             steps {
 		sh 'docker volume create build_artifacts'
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
 		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
-		sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
+		//sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
+	}
+
+	stage('Build') {
+            agent {
+                docker {
+                    image 'build_base:latest'
+                    args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
+                }
+            }
+            steps {
+		sh 'cd /build_artifacts && ls -l'
+		//sh 'docker volume create build_artifacts'
+		//git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+		//sh 'git checkout DK403865'
+		//sh 'git pull origin'
+		//sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
+		//sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
 	}
         }
 	stage('Test') {
