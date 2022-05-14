@@ -57,8 +57,16 @@ pipeline {
 			    sh "mv /usr/local/nexe_app/nexe/nexe-${params.Version}.tgz /usr/local/copy"
 			    dir('/var/jenkins_home/workspace/artifacts'){
 			        archiveArtifacts artifacts: "express-${params.Version}.tgz"
+				}
 			}
 		}
 	}
+	post {
+        	success {
+            		echo 'Pipeline succsess'
+        	}
+        	failure {
+            		echo 'Pipeline fail'
+        	}
+    	}
 }
-
