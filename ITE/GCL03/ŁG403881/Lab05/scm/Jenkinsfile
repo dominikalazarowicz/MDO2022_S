@@ -159,6 +159,14 @@ pipeline {
                 sh "ls -R ${WORKSPACE}/publish"
                 archiveArtifacts 'publish/*'
             }
+            post{
+                success{
+                    echo "Publishment success"
+                }
+                unsuccessful{
+                    echo "Failed to publish"
+                }
+            }
         }
     }
 }
