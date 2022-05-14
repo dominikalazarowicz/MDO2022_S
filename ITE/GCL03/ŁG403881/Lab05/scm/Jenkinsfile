@@ -136,13 +136,17 @@ pipeline {
                 sh 'rm -rf /out/publish || true'
                 sh 'mkdir /out/publish'
 
-                sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
-                   -r linux-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                sh 'cd /in/GithubAppLab03 && \
+                   dotnet publish GithubAppLab03.csproj -c Release \
+                   -r linux-x64 -p:PublishSingleFile=true -p:UseAppHost=true \
+                   --self-contained true --output /out/publish'
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cd /out/publish/ && tar -czvf ${params.FileName}-${params.Version}.tar.xz /out/publish/*"
 
-                sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
-                   -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                sh 'cd /in/GithubAppLab03 && \
+                   dotnet publish GithubAppLab03.csproj -c Release \
+                   -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true \
+                   --self-contained true --output /out/publish'
                 sh "mv /out/publish/GithubAppLab03.exe /out/publish/${params.FileName}-${params.Version}.exe"
 
                 sh "rm ${WORKSPACE}/publish/${params.FileName}* || true"
