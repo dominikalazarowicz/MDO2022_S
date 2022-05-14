@@ -14,9 +14,8 @@ pipeline
 				docker volume  create --name volume_input
 				docker volume  create --name volume_output
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
-                    		docker run --mount type=volume,src="volume_output",dst=/ro_project ro_build:latest bash 
-                    		cd ..  
-                    		cp -r /cytoscape/ro_project
+                    		docker run --mount type=volume,src="volume_output",dst=/ro_project ro_build:latest bash -c "cd .. &&  cp -r /cytoscape /ro_project"
+                    		echo "Budowanie zakończone"
 				'''
 				
 			}
@@ -30,6 +29,7 @@ pipeline
 				echo "Testowanie projektu..."
 				docker rm -f RO_Dockerfile_Test
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Test -t ro_test
+				echo "Testowanie zakończone"
 				'''
 			}
 		}
