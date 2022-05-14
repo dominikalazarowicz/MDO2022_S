@@ -20,7 +20,7 @@ pipeline {
             }
             steps {
 		sh 'ls -l'
-		sh 'cd /build_artifacts && ls -l && rm -r NumberGuesserOOP && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'         
+		sh 'cd /build_artifacts && rm -r NumberGuesserOOP && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'         
 	}
         }
 	stage('Test') {
@@ -50,8 +50,8 @@ pipeline {
 			}
 		}
             steps {
-		sh 'cd /build_artifacts/artifacts && ls -l'
-                    sh 'cd /build_artifacts/artifacts && ls -l && ./BasicNumberGuesser'
+		sh 'cd /build_artifacts/artifacts'
+                    sh 'cd /build_artifacts/artifacts && ./BasicNumberGuesser'
             }
         }
 	stage('Publish') {
@@ -62,7 +62,7 @@ pipeline {
 			}
 		}
             steps {
-		sh 'cd /build_artifacts/artifacts && ls -l'
+		sh 'cd /build_artifacts/artifacts'
                     sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../../publish/'
             }
         }
