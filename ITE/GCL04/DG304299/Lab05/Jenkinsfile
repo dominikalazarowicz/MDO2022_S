@@ -12,7 +12,7 @@ pipeline
             {
                sh 'docker container prune -f'
                sh 'docker volume prune -f' 
-               sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_clone'
+               sh 'docker build -t app_clone:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_clone'
                sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
                
             }
@@ -23,13 +23,8 @@ pipeline
         {
             steps 
             {
-               sh 'docker container prune -f'
-               sh 'docker volume prune -f' 
-               sh 'docker volume  create --name input_vol'
-               sh 'docker volume  create --name out_vol'
                sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh 'docker run -v input_vol:/Guess-Word-Game app_build'
-               
+               sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
             }
         }
 
