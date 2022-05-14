@@ -15,16 +15,16 @@ pipeline
             steps 
             {
                sh 'docker rm -f kacper_build || true'
-              
+               sh 'docker rm -f kacper_volumes_container || true'
                sh 'docker volume prune -f'
-             
+               sh 'docker volume create kacper_in'
                sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
-              sh 'docker run --mount type=volume,src="kacper_out",dst=/kn_proj kacper_build:latest bash -c "ls -l && cd .. && ls -l && cp -r /mongo-express /kn_proj "'
-                      
-
-                       
-              
+               sh 'docker run --name kacper_volumes_container --rm -v kacper_in:/kacper_in -v kacper_out:/kacper_out node:latest bash -c "cp -r /kacper_build /kacper_in "'
+               
+               
+               
+               
                
             }
         }
