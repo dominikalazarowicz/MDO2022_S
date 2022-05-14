@@ -1,4 +1,4 @@
 FROM basictracer_build:latest
-RUN ls -a
+RUN ls -a bootstrap
 RUN  cd .. && tar cfJ archive.tar.xz basictracer_egg
 RUN  cd .. && mv archive.tar.xz basictracer_egg
