@@ -8,10 +8,6 @@ gcc \
 pkg-config \
 git 
 
-RUN git clone https://github.com/VirusTotal/yara.git
+WORKDIR yara
 
-WORKDIR yara/
-
-RUN ./bootstrap.sh \
-&& ./configure \
-&& make
+CMD sh -c "ls -la && ./bootstrap.sh && ./configure && make"
