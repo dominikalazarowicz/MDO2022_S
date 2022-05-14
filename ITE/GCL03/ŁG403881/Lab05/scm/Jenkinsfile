@@ -135,12 +135,20 @@ pipeline {
                 sh 'mkdir /out/publish'
 
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
-                   -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
-                sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r linux-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                sh 'rm -rf /out/publish/*.pdb'
+                sh 'tar -czvf /out/publish/*'
+
+                sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
+                   -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                zip zipFile: 'GithubAppLab03.zip', dir: '/out/publish/*.txt'
+
+                sh 'rm ${WORKSPACE}/publish/GithubAppLab03*'
+                sh 'rm ${WORKSPACE}/publish/publish/GithubAppLab03*'
 
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cp -R /out/publish/* ${WORKSPACE}/publish/"
+
 
                 archiveArtifacts 'publish/*'
             }
