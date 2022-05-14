@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    parameters {
+        booleanParam(name: 'Promote', default: false, description: 'Promoting and publishing')
+    }
+
     stages {
         stage('Repo to volume'){
             steps{
@@ -110,6 +114,23 @@ pipeline {
                     echo "Failed to deploy"
                     error('Doployment failue')
                 }
+            }
+        }
+
+        stage('Publish'){
+            when{
+                expression{
+                    return params.Promote == true; 
+                }
+            }
+            agent{
+                docker{
+                    image 'dev_test:latest'
+                    args '--mount source=in,target=/in -u root:root'
+                }
+            }
+            steps{
+                sh 'cd /in/GithubAppLab03 && dotnet publish --self-contained'
             }
         }
     }
