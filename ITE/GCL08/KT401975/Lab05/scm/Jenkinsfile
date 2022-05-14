@@ -7,8 +7,8 @@ pipeline {
             	  git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 				  sh 'ls'
 				  sh 'pwd'
-				  git remote update
-				  sh 'git fetch'
+				  sh 'git remote update'
+				  sh 'git fetch -all'
 				  sh 'git branch'
                   sh 'git checkout /KT401975'
 				  sh 'git pull origin'
