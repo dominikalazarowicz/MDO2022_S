@@ -9,6 +9,7 @@ pipeline {
 				  sh 'pwd'
 				  sh 'git fetch --all'
                   sh 'git checkout -b KT401975 origin/KT401975'
+				  sh 'pwd'
 				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/build ; docker build -t builder:latest .'
               }
 		}
