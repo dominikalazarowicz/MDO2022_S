@@ -1,7 +1,6 @@
 FROM gradle:latest AS build
 
-#WORKDIR /app/Guess-Word-Game
+WORKDIR /app/Guess-Word-Game
 
-#CMD ["sh","-c","gradle build"]
+CMD ["sh","-c","gradle build"]
 
-CMD ls 
