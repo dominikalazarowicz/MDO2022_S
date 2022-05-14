@@ -3,4 +3,5 @@ RUN echo "Dockerfile running"
 
 RUN git clone https://github.com/barisates/dotnet-core-xunit-example
 WORKDIR dotnet-core-xunit-example-master
-RUN ls ; dotnet build
+RUN ls 
+RUN dotnet build
