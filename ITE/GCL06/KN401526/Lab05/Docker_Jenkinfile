@@ -56,7 +56,7 @@ pipeline
                 sh 'docker rm -f kacper_publish || true'
                 sh 'docker run -d --name kacper_publish --mount type=volume,src="kacper_out",dst=/usr/local/kn_proj --mount type=bind,source=/var/jenkins_home/workspace/kacper_artifacts,target=/usr/local/kn_copy node bash -c "chmod -R 777 /usr/local/kn_proj && cp -R /usr/local/kn_proj/. /usr/local/kn_copy"'
                 sh "tar -zcvf mongo-express_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/kacper_artifacts ."
-                archiveArtifacts kacper_artifacts: "mongo-express_${params.VERSION}.tar.xz"
+                archiveArtifacts artifacts: "mongo-express_${params.VERSION}.tar.xz"
                 sh 'docker rm -f kacper_build || true'
                 sh 'docker rm -f kacper_test || true'
                 sh 'docker rm -f kacper_deploy || true'
