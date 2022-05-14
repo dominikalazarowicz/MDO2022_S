@@ -133,7 +133,7 @@ pipeline {
             steps{
                 sh 'mkdir /out/publish'
                 sh 'ls /in/GithubAppLab03'
-                sh 'cd /in/GithubAppLab03 && dotnet publish -c Release --output /out/publish'
+                sh 'cd /in/GithubAppLab03 && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --self-contained true --output /out/publish'
                 sh 'ls /out/publish'
             }
         }
