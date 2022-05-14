@@ -5,23 +5,23 @@ pipeline
 
 	stages 
 	{
-		stage('Clone') 
-        {
+	stage('Clone') 
+        	{
             steps 
-            {
+            		{
               echo 'Clone'
               
-        }
-
+        		}
+		}
 
         stage('Build') 
-        {
+        	{
             steps 
-            {
+            		{
            	echo 'build'
                
-            }
-        }
+            		}
+        	}
 		
 	}
 }
