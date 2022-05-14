@@ -131,9 +131,9 @@ pipeline {
                 }
             }
             steps{
-                sh 'ls /.'
+                sh 'mkdit /out/publish'
                 sh 'ls /in/GithubAppLab03'
-                sh 'cd /in/GithubAppLab03 && dotnet publish ./GithubAppLab03.csproj -c Release -r win-x64 p:UseAppHost=true --self-contained true --output .'
+                sh 'cd /in/GithubAppLab03 && dotnet publish -c Release -r win-x64 p:UseAppHost=true --self-contained true --output /out/publish'
                 sh 'ls /in/GithubAppLab03'
             }
         }
