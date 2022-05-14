@@ -66,7 +66,7 @@ pipeline
             }
             steps
             {
-                sh 'rm /var/jenkins_home/workspace/ro_artifacts7'
+                sh 'rm -f /var/jenkins_home/workspace/ro_artifacts7 || true'
                 sh 'mkdir /var/jenkins_home/workspace/ro_artifacts7'
                 sh 'docker rm -f ro_publish || true'
                 sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts7,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
