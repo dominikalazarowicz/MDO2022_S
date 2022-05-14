@@ -7,9 +7,10 @@ pipeline {
             	  git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 				  sh 'ls'
 				  sh 'pwd'
+				  git remote update
 				  sh 'git fetch'
 				  sh 'git branch'
-                  sh 'git checkout KT401975'
+                  sh 'git checkout /KT401975'
 				  sh 'git pull origin'
 				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/build ; docker build -t builder:latest .'
               }
