@@ -1,4 +1,3 @@
 FROM basictracer_build:latest
-RUN ls -al make
-RUN  cd .. && tar cfJ archive.tar.xz basictracer_egg
-RUN  cd .. && mv archive.tar.xz basictracer_egg
+RUN ls ..
+RUN ls ..
