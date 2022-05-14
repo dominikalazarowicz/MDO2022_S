@@ -2,6 +2,7 @@ pipeline {
     agent any
 
     parameters {
+        string(name: 'Version', defaultValue: '1.0.0', description: 'Pipeline Version') 
         booleanParam(name: 'Promote', defaultValue: false, description: 'Promoting and publishing')
     }
 
@@ -130,7 +131,9 @@ pipeline {
                 }
             }
             steps{
+                sh 'ls'
                 sh 'cd /in/GithubAppLab03 && dotnet publish --self-contained'
+                sh 'ls'
             }
         }
     }
