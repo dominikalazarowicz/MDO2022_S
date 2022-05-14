@@ -9,7 +9,7 @@ pipeline {
 				//  sh 'git pull'
 				  sh 'ls'
 				  sh 'pwd'
-				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles ; ls'
+				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles ; cd build'
 				  //docker build -t builder:latest .'
               }
 		}
