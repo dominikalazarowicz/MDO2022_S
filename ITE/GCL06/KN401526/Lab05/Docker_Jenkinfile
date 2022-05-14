@@ -18,11 +18,8 @@ pipeline
                sh 'docker volume prune -f'
                sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
-               sh 'docker run --mount type=volume,src="kacper_out",dst=/kn_proj kacper_build:latest bash'
-               sh 'ls'
-               sh 'cd ..'
-               sh 'ls'
-               sh 'cp -r /mongo-express /kn_proj'
+               sh 'docker run --mount type=volume,src="kacper_out",dst=/kn_proj kacper_build:latest bash -c "cd .. && cp -r /mongo-express /kn_proj"' '
+           
               
                
             }
