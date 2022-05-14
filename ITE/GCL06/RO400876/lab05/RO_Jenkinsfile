@@ -1,12 +1,9 @@
 pipeline
 {
- parameters {
-        booleanParam(name: "promote",
-            defaultValue: false,
-            description: "Promote to new version, when successful?")
-        string(name: "version",
-            defaultValue: "",
-            description: "Type in verion number:")
+ parameters
+    {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
     }
 	agent any
 	stages
@@ -61,26 +58,27 @@ pipeline
             }
         }
         
-        stage ('Publish')
+       stage ('Publish')
         {
-           
+            when
+            {
+                expression {return params.PROMOTE}
+            }
             steps
             {
-            	script
-            	{
-            	
-                if(params.promote) {
-                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
-                        sh "ls -a ./artifacts"
-                        archiveArtifacts artifacts: "artifacts/*.jar"
-                    }
-                    else {
-                        echo "ERROR!!!!!!!!!!!!!!!!!!!!!!!!!"
-                    }   
+                sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts7'
                 
-                
+                sh 'mkdir /var/jenkins_home/workspace/ro_artifacts7'
+                sh 'docker rm -f ro_publish || true'
+                sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts7,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && chmod -R 777 /var/jenkins_home/workspace/ro_artifacts7 && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
+                sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts7 ."
+                archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
+                i++;
+                sh 'docker rm -f ro_build || true'
+                sh 'docker rm -f ro_test || true'
+                sh 'docker rm -f deploy_container || true'
+                sh 'docker rm -f ro_publish || true'
             }
-        }
         }
 	}
 }
