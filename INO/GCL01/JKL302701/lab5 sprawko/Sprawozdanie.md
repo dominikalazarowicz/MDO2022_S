@@ -105,6 +105,7 @@ stage('Tests') {
 ```
 
 - **DEPLOY**
+
 **Deploy rozumiem poprzez przeniesienie zbuildowanej aplikacji do odzielnego kontenera i jej uruchomienie.**
 Uruchamiam obraz `builder` z podłączonym woluminem, na który kopiuję folder `build`. Następnie tworzę obraz `deploy`, który będzie hostował aplikację. Obraz opeiram o `nginx:stable-alpine`, ze względu na moje lenistwo, ponieważ by program działał poprawnie wystarczy przenieść folder `build` do `usr/share/nginx/html`.
 
