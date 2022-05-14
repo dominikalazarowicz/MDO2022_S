@@ -147,8 +147,8 @@ pipeline {
                 sh "cd /out/publish/ && zip ${params.FileName}-${params.Version}.zip *.exe"
                 sh 'ls /out/publish'
 
-                sh "rm ${WORKSPACE}/publish/GithubAppLab03*"
-                sh "rm ${WORKSPACE}/publish/publish/GithubAppLab03*"
+                sh "rm ${WORKSPACE}/publish/${params.FileName}* || true"
+                sh "rm ${WORKSPACE}/publish/publish/${params.FileName}* || true"
 
                 sh 'rm -rf /out/publish/*.pdb'
                 sh "cp -R /out/publish/*.xz ${WORKSPACE}/publish/"
