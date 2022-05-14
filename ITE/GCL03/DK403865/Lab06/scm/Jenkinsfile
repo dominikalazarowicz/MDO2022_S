@@ -20,6 +20,7 @@ pipeline {
                 }
             }
             steps {
+		sh 'ls -l'
 		sh 'cd /build_artifacts && ls -l'
 		//sh 'docker volume create build_artifacts'
 		//git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
