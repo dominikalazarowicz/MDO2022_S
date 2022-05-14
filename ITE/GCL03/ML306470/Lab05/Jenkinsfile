@@ -3,15 +3,14 @@ pipeline {
 
     stages {
         stage('Repository') {
-            steps {
-                agent {
+            
+            agent {
                     docker{
                         image 'ubuntu:latest'
-                        
-                        
-                        
                     }
                 }
+            
+            steps {
                 
                 sh 'docker volume create vol-in'
                 sh 'docker volume create vol-out'
