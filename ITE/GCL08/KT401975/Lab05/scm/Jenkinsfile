@@ -10,11 +10,9 @@ pipeline {
 				  sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
 				  
 				  sh 'git pull'
-				//  sh 'git pull'
 				  sh 'ls'
 				  sh 'pwd'
-				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles ; cd build'
-				  //docker build -t builder:latest .'
+				  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/buildfile ; docker build -t builder:latest .'
               }
 		}
      }
