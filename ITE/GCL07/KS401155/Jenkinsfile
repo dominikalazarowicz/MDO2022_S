@@ -1,0 +1,39 @@
+pipeline {
+    agent any
+
+     parameters {
+        booleanParam(name: 'Test', defaultValue: true, description: 'Test statement')
+        string(name: 'Build_files', defaultValue: './ITE/GCL07/KS401155', description: 'build it here')
+        string(name: 'Version', defaultValue: '1.0.0', description: 'Version')
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'building fintoc-python'
+				dir("${params.Build_files}") {
+                    sh 'docker build . -f dockerbuild -t fintoc-python-build'
+				}
+                
+            }
+        }
+        
+        stage('Tests') {
+            steps {
+                echo 'testing fintoc-python'
+				dir("${params.Build_files}") {
+                    sh 'docker build . -f dockertest -t fintoc-python-testtest'
+				}
+            }
+        }
+        }
+        
+	post {
+        success {
+            echo 'Pipeline succsess'
+        }
+        failure {
+            echo 'Pipeline fail'
+        }
+    }
+}
