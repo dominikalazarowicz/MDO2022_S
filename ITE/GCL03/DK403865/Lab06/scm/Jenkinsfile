@@ -21,7 +21,7 @@ pipeline {
             }
             steps {
 		sh 'ls -l'
-		sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet test'
+		sh 'cd /build_artifacts && ls -l && rm -r NumberGuesserOOP && git clone https://github.com/Klatix/NumberGuesserOOP.git && cd NumberGuesserOOP/BasicNumberGuesser && dotnet build --output ../../artifacts/'
 
 		//sh 'docker volume create build_artifacts'
 		//git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
@@ -40,7 +40,7 @@ pipeline {
             }
 
             steps {
-                sh 'cd /build_artifacts ; docker build -t test_base:latest .'  
+                sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet test' 
             }
         }
 
