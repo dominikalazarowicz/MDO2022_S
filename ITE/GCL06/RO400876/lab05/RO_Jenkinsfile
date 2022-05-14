@@ -82,4 +82,15 @@ pipeline
             }
         }
 	}
+	
+	post {
+        	success {
+            		echo 'Pipeline zakończony sukcesem!'
+        	}
+        	failure {
+            		echo 'Pipeline zakończony z błędem!'
+        	}
+    	}
+	
+	
 }
