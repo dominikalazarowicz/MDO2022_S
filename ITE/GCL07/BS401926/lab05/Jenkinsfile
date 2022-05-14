@@ -63,7 +63,7 @@ pipeline {
 				sh "cd /usr/local/nexe_app/nexe && npm version ${params.Version} && npm pack"
 			    sh "mv /usr/local/nexe_app/nexe/nexe-${params.Version}.tgz /usr/local/copy"
 			    dir('/var/jenkins_home/workspace/artifacts'){
-			        archiveArtifacts artifacts: "express-${params.Version}.tgz"
+			        archiveArtifacts artifacts: "nexe-${params.Version}.tgz"
 				}
 			}
 		}
