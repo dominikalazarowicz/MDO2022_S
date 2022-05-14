@@ -46,7 +46,9 @@ pipeline {
 		    }
             steps {
                 echo 'Publish'
-                
+                dir("${params.Build_files}") {
+                    sh "ls -a"
+				}
             }
         }
     }
