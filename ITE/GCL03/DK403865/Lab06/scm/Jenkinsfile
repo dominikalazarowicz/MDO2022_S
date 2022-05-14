@@ -66,6 +66,10 @@ pipeline {
                     sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../../publish/ && ls ../../publish'
             }
         }
-
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: '/build_artifacts/publish/*', fingerprint: true
+        }
     }
 }
