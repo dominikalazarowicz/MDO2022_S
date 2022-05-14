@@ -19,7 +19,7 @@ pipeline
               sh 'docker volume create kacper_in'
               sh 'docker volume create kacper_out'
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
-  	      sh 'docker run --mount type=volume,src="kacper_build",dst=/kacper_in kacper_build:latest bash -c "cd .. && cp -r /mongo-express /kacper_in && cp -r /kacper_in /kacper_out && ls ./kacper_in"'
+  	      sh 'docker run --mount type=volume,src="kacper_build",dst=/kacper_in kacper_build:latest bash -c "cd .. && cp -r /mongo-express /kacper_in && cp -r /kacper_in /kacper_out && ls ./kacper_in && ls ./kacper_out"'
             
             }
         }
@@ -52,7 +52,8 @@ pipeline
             }
             steps
             {
-                sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts && mkdir /var/jenkins_home/workspace/kacper_artifacts'
+                sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts'
+                sh 'mkdir /var/jenkins_home/workspace/kacper_artifacts'
                 sh 'docker rm -f kacper_publish || true'
                 sh 'docker run -d --name kacper_publish --mount type=volume,src="kacper_out",dst=/usr/local/kn_proj --mount type=bind,source=/var/jenkins_home/workspace/kacper_artifacts,target=/usr/local/kn_copy node bash -c "chmod -R 777 /usr/local/kn_proj && cp -R /usr/local/kn_proj/. /usr/local/kn_copy"'
                 sh "tar -zcvf mongo-express_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/kacper_artifacts ."
