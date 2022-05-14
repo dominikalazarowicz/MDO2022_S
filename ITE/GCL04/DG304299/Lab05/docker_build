@@ -2,4 +2,4 @@ FROM gradle:latest AS build
 
 WORKDIR /app/Guess-Word-Game
 
-CMD ["gradle","build"]
+CMD ["sh","-c","gradle build"]
