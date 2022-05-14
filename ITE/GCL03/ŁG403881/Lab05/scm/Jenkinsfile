@@ -2,8 +2,9 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'Version', defaultValue: '1.0.0', description: 'Pipeline Version') 
-        string(name: 'FileName', defaultValue: 'GithubAppLab03', description: 'Naming files artifacts') 
+        string(name: 'Version', defaultValue: '1.0.0', description: 'Pipeline Version')
+        string(name: 'AppBranch', defaultValue: 'master', description: 'Branch of a project to build')
+        string(name: 'FileName', defaultValue: 'GithubAppLab03', description: 'Naming files artifacts')
         booleanParam(name: 'Promote', defaultValue: false, description: 'Promoting and publishing')
     }
 
@@ -18,7 +19,7 @@ pipeline {
                 sh 'mkdir -p app'
 
                 dir('app'){                  
-                    git branch: 'master', url: 'https://github.com/Niemans/DevOpsLab05.git'
+                    git branch: "${params.AppBranch}", url: 'https://github.com/Niemans/DevOpsLab05.git'
                     sh 'docker container create --name rtv_agd -v in:/in busybox'
                     sh 'docker cp ./. rtv_agd:/in'
                     sh 'docker rm rtv_agd'
