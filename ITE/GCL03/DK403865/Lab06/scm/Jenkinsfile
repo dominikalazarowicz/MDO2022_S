@@ -8,7 +8,7 @@ pipeline {
 		git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
 		sh 'git checkout DK403865'
 		sh 'git pull origin'
-		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build --no-cache -t build_base:latest .'
+		sh 'cd ITE/GCL03/DK403865/Lab06/Build ; docker build -t build_base:latest .'
 		sh 'docker run --rm -d --name dotnet_build --mount source=build_artifacts,target=/build_artifacts build_base:latest'            
 	}
         }
@@ -35,9 +35,7 @@ pipeline {
 		sh 'cd /build_artifacts && ls -l'
 		timeout(time: 1, unit: 'SECONDS')
                 {
-                    sh 'cd /build_artifacts && ls -l && ./BasicNumberGuesser && DeployTester && 3'
-                    sh 'DeployTester'
-                    sh '3'
+                    sh 'cd /build_artifacts && ls -l && ./BasicNumberGuesser'
                 }
 
                 //sh 'docker run --rm -i -t -d --name dotnet_deploy --mount source=build,target=/build dotnet_deps:latest'
