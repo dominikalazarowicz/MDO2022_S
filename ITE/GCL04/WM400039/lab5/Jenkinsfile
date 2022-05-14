@@ -8,7 +8,7 @@ pipeline {
 			steps {
 				dir('ITE/GCL04/WM400039/lab5')
 					{	
-						sh 'cat ${npm_creds}'
+						echo -e '${npm_creds}'| npm
 						sh 'docker build -f ./build_dockerfile -t app_build:latest .'
 						sh 'docker run app_build'
 					}
