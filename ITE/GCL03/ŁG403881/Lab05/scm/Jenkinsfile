@@ -10,7 +10,6 @@ pipeline {
     stages {
         stage('Repo to volume'){
             steps{
-                sh "ls -R ${WORKSPACE}/publish"
                 sh 'docker volume rm in || true'
                 sh 'docker volume rm out || true'
                 sh 'docker volume create in'
