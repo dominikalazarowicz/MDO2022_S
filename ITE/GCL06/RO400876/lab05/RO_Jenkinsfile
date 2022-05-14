@@ -66,11 +66,11 @@ pipeline
             }
             steps
             {
-                sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts2'
-                sh 'mkdir /var/jenkins_home/workspace/ro_artifacts2'
+                
+                sh 'mkdir /var/jenkins_home/workspace/ro_artifacts5'
                 sh 'docker rm -f ro_publish || true'
-                sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts2,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
-                sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts2 ."
+                sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts5,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
+                sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts5 ."
                 archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
                 sh 'docker rm -f ro_build || true'
                 sh 'docker rm -f ro_test || true'
