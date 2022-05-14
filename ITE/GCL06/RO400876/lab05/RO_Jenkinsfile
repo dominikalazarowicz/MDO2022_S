@@ -66,14 +66,11 @@ pipeline
             }
             steps
             {
-                sh '''
-                echo "Publikowanie projektu..."
-                
-                mkdir /var/jenkins_home/workspace/ro_artifacts
-                docker rm -f publish_container
-                docker run -d --name publish_container --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"
-                tar -zcvf cytoscape.js_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts .
-                 '''
+                sh 'echo "Publikowanie projektu..."'
+                sh 'mkdir /var/jenkins_home/workspace/ro_artifacts'
+                sh 'docker rm -f publish_container'
+                sh 'docker run -d --name publish_container --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
+                sh 'tar -zcvf cytoscape.js_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts .'
                 archiveArtifacts artifacts: "cytoscape.js_${params.VERSION}.tar.xz"
                 sh 'docker rm -f ro_build'
                 sh 'docker rm -f ro_test'
