@@ -45,10 +45,13 @@ pipeline
         {
             steps
             {
-                sh 'docker rm -f nodered_deploy || true'
-                sh 'docker run -dit --name nodered_deploy --mount type=volume,src="node_vol_out",dst=/node_app node'
-                sh 'docker container exec nodered_deploy sh -c "ls -l"'
-                sh 'exit $(docker inspect nodered_deploy --format="{{.State.ExitCode}}")'
+                sh '''
+                
+                '''
+                docker rm -f deploy_container
+                docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=volume_input node
+                docker container exec deploy_container sh -c "ls -l"
+                exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
             }
         }
 	}
