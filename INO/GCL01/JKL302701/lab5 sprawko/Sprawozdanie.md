@@ -132,6 +132,8 @@ stage('Deploy') {
 
 
 - **Publish**
+
+
 **Publish rozumiem przez dostarczenie do klienta zbudowanej i przetestowanej aplikacji w formie archiwum, najlepiej z informacją o wersji programu.**
 
 Niestety nie wiedziałem jak dodać wersję programu. Próbowałem parametrami ale się nie udało.
@@ -165,18 +167,22 @@ Sklonowanie przedmiotowego repo do Jenkinsa:
 ![eloo](./a1.PNG)
 
 **Build**
+
 ![eloo](./b1.PNG)
 ![eloo](./b2.PNG)
 ![eloo](./b3.PNG)
 
 **Test**
+
 ![eloo](./c1.PNG)
 ![eloo](./c2.PNG)
 ![eloo](./c3.PNG)
 
 **Deploy**
+
 ![eloo](./d1.PNG)
 ![eloo](./d2.PNG)
 
 **Publish**
+
 ![eloo](./e1.PNG)
