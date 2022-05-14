@@ -16,10 +16,11 @@ pipeline
             {
                sh 'docker rm -f kacper_build || true'
                sh 'docker volume prune -f'
+               sh 'docker create kacper_volumes_container'
                sh 'docker volume create kacper_in'
                sh 'docker volume create kacper_out'
                sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile1 -t kacper_build'
-               sh 'docker run kacper_volumes_container -v kacper_in:/kacper_in -v kacper_out:/kacper_out node:latest bash -c '
+               sh 'docker run -it --name kacper_volumes_container -v kacper_in:/kacper_in -v kacper_out:/kacper_out node:latest bash -c '
                sh 'ls'
                        
               
