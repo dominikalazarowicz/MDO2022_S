@@ -134,8 +134,12 @@ pipeline {
                 sh 'mkdir /out/publish'
                 sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
                    -r win-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
-                //zip zipFile: ''
-                sh "cp -R /out/publish ${WORKSPACE}/publish"
+                sh "cp -R /out/publish/*.exe ${WORKSPACE}/publish && rm -rf /out/publish/*"
+
+                sh 'cd /in/GithubAppLab03 && dotnet publish GithubAppLab03.csproj -c Release \
+                   -r linux-x64 -p:PublishSingleFile=true -p:UseAppHost=true --self-contained true --output /out/publish'
+                sh "cp -R /out/publish ${WORKSPACE}/publish && rm -rf /out/publish/*"
+
                 archiveArtifacts 'publish/*'
             }
         }
