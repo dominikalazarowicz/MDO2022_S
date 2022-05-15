@@ -41,15 +41,17 @@ Po ukończeniu konfiguracji pipline ukaże się poniższy ekran startowy utworzo
 
 ### 3. Zawartość pipline'u.
 
-### * Parameters:
+* Parameters:
 
-`
+Pipline przyjmuje dwa parametry `PROMOTE` oraz `VERSION`. Parametr `VERSION` oznacza wersję wydawanego programu. W tym przypadku parametr określający wersję ustawiony jest na 1.0.0 lecz przy każdym uruchomieniu pipline'u istnieje możliwość zmiany wersji. Drugi parametr czyli `PROMOTE` decyduje czy sekcja Publish się wykona. Jeżeli wszystkie poprzednie etapy pipelin'u przejdą poprawnie i PROMOTE jest zaznaczone, sekcja Publish buduje publikowalny artefakt, o numerze wersji z parametru `VERSION`.
+
+```
 parameters
     {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
     }
-    `
+```
 
 
 
