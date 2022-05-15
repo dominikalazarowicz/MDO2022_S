@@ -24,4 +24,19 @@ Jeżeli posiadamy działające kontenery, kolejnym krokiem jest zalogowanie się
 
 ![img](tworzenie_projektu.PNG)
 
+Po utworzeniu projektu należy skonfigurować pipeline w sposób pokazany poniżej.
+
+![img](konfiguracja_pipeline1.PNG)
+
+Zostało dodane repozytorium wraz z branchem, z którego będą uruchamiane dockerfile.
+
+![img](konfiguracja_pipeline22.PNG)
+
+![img](konfiguracja_pipeline3.PNG)
+
+Po ukończeniu konfiguracji pipline ukaże się poniższy ekran startowy utworzonego projektu.
+
+
+
+
 
