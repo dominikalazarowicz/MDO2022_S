@@ -274,10 +274,15 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
-    Powyzszy fragment kodu odpowiada za wyswietlenie wiadomosci czy Pipline zakonczyl sie succesem czy porazka
+    Powyzszy fragment kodu odpowiada za wyswietlenie wiadomosci o udanym zakonczeniu Pipline zakonczyl sie succesem czy porazka
 
     11. Przykladowe uruchmienie
 
+    ![img](uruchomienie.PNG)
+
+    Opis:
+
+    Powyzszy zrzut ekranu przedstawia przykladowe uruchomienie napisanego Piplina jak widac na powyzszym zrzucie wszystkie etapy zakonczyly sie sukcesem i mozn zaobserwowoac stworzenie sie starowanego pliku z artefaktami
 
    
 
