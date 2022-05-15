@@ -159,7 +159,7 @@ odpowiadający za wylogowanie z Docker Hub.
 ![](activityDraw.png)
 
 
-## Cały pipeline
+## Cały Jenkinsfile
 
 ```
 pipeline {
