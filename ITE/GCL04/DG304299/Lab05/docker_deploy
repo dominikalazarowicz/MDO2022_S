@@ -2,6 +2,6 @@ FROM openjdk:11
 
 WORKDIR Guess-Word-Game
 
-COPY ./build/libs/guess.jar ./"
+COPY ./build/libs/guess.jar ./
 
 CMD ["java", "-jar", "guess.jar"]
