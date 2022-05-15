@@ -34,7 +34,7 @@ pipeline
             steps 
             {
                sh 'docker build -t build . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh 'docker run --name build_container -v repo_vol:/Guess-Word-Game -v build_vol:/build -v'
+               sh 'docker run --name build_container -v repo_vol:/Guess-Word-Game -v build_vol:/build'
             }
         }
 
@@ -67,6 +67,8 @@ pipeline
 
                     }
 
+                sh "docker rmi deploy_1"
+
                 sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
                 sh 'docker run --name deploy_container_final -v build_vol:/build deploy_final'
 
@@ -85,13 +87,30 @@ pipeline
                script {
                     if(params.PROMOTE)
                      {
-                         sh "ls -a ./artifact"
+                         
+                         sh "mv ./artifact/guess.jar" guess${VERSION}.jar
                          archiveArtifacts artifacts: "artifact/*.jar"
+
+                         sh "ls -a ./artifact"
                     }
                     else {
                         echo "Success, but not promoting to new version! (check button)"
                     }
                 }
+            }
+        }
+
+          stage("Clean") 
+        {
+           
+            steps
+            {
+                sh "docker rmi clone"
+                sh "docker rmi build"
+                sh "docker rmi test"
+                sh "docker rmi deploy_final"
+                sh 'docker volume prune -f'
+                
             }
         }
 
