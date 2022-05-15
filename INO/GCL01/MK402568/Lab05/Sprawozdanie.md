@@ -73,6 +73,8 @@ Jenkins pozwala nam na rozproszoną kompilacje poprzez delegacje do odpowiednich
 
 - Sekcja post, ma ona na celu powiadomić w moim przypadku użytkownika o powodzeniu lub niepowodzeniu przebiegu pipelin'a. 
 
+![](./screenshots/s38_post.png)
+
 # Pliki dockerfile
 
 W katalogu głównym repozytorium umieszczone został 4 dockerfil'e. Kolejno dockerfileBuild, dockerfileTest, dockerfileDeploy oraz dockerfilePublish. Pliki dodatkowo umieszczone zostały na repozytorium przedmiotowym. 
