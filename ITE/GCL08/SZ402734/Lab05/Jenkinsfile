@@ -9,7 +9,7 @@ pipeline{
     }
 
 	stages {
-		stage('Clone') {
+		stage('Clone and build') {
 			steps {
 				echo 'Create input volume'
 				sh 'docker volume create TMP_IN_V'
@@ -17,7 +17,22 @@ pipeline{
 
                 echo 'Docker run, node clone '
 				sh 'docker run --rm --name TMP_C --mount "type=volume,src=TMP_IN_V,dst=/App" node bash -c "cd ~/ && ls  TypeScript || git clone https://github.com/microsoft/TypeScript;cp -R  TypeScript /App; ls /App"'
-			}
+                echo 'Docker run done '
+
+            
+				echo 'TypeScript build by using npm'
+				dir("${params.Dockerfiles}") {
+					sh 'docker build . -t TypeScript_Node -f Dockerfile'
+					sh 'docker volume create TMP_OUT_V'
+					sh 'docker rm TypeScriptBuild || true'
+					sh 'docker run --rm --name TypeScriptBuild --mount "type=volume,src=TMP_IN_V,dst=/App" --mount "type=volume,src=TMP_OUT_V,dst=/App_Build" TypeScript_Node bash -c "cd /App/TypeScript && npm install; cp -R /App/TypeScript /App_Build"'
+				}
+            
+
+            
+            
+            
+            }
 		}
 
 
