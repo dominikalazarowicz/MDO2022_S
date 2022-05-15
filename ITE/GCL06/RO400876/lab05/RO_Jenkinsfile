@@ -68,7 +68,7 @@ pipeline
                 
                 		docker rm -f deploy_container || true
                 		docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/ro_project node
-                		docker container exec deploy_container sh -c "ls -l"
+                		
 
                 
                 		echo "Wdrażanie zakończone"
