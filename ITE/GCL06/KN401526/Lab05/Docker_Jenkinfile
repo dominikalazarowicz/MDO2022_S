@@ -64,10 +64,13 @@ pipeline
         
         stage ('Clean')
         {
+        	steps
+        	{
         	sh 'docker rm -f kacper_build || true'
                 sh 'docker rm -f kacper_test || true'
                 sh 'docker rm -f kacper_deploy || true'
                 sh 'docker rm -f kacper_publish || true'
+                }
         }
         
       }
