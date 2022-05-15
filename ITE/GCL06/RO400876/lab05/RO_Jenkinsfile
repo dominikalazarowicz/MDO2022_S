@@ -68,7 +68,7 @@ pipeline
                 
                 		docker rm -f deploy_container || true
                 		docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/ro_project node
-                		
+                		exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
 
                 
                 		echo "Wdrażanie zakończone"
