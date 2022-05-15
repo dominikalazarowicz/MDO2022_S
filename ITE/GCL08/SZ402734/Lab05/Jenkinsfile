@@ -1,7 +1,7 @@
 pipeline{
     agent any
 
-    informations {
+    parameters {
         string(name: 'Dockerfiles', defaultValue: './ITE/GCL08/SZ402734/Lab05', description: 'Path of Dockerfile in git: ')
         string(name: 'Version', defaultValue: '0.0.1', description: 'Version of the pip: ')
         booleanParam(name: 'Promote', defaultValue: true, description: 'Statement: ')
