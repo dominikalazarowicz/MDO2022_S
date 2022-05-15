@@ -91,8 +91,8 @@ pipeline
             		}
             		steps
             		{
-            	 		sh 'tput setaf 4
-				echo "Publishing project..."'
+            	 		sh 'tput setaf 4'
+				sh 'echo "Publishing project..."'
             	 
                 			sh 'rm -rf /var/jenkins_home/workspace/mk_artifacts'
                 			sh 'mkdir /var/jenkins_home/workspace/mk_artifacts'
@@ -102,8 +102,8 @@ pipeline
                 			sh "tar -zcvf vuetestingseries${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts ."
                 			archiveArtifacts artifacts: "vuetestingseries${params.VERSION}.tar.xz"
                 
-                			sh 'tput setaf 2
-				echo "Publishing finished!"'
+                			sh 'tput setaf 2'
+				sh 'echo "Publishing finished!"'
                 
             		}
         		}
