@@ -63,5 +63,13 @@ pipeline
             }
         }
 
+        stage('Publish') 
+        {
+            steps 
+            {
+              
+            }
+        }
+
     }
 }
