@@ -1,4 +1,0 @@
-FROM buildirssi:latest
-
-WORKDIR build
-RUN meson test
