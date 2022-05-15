@@ -1,3 +1,3 @@
 FROM openjdk:11
 
-CMD jar tf ../build/guess.jar
+CMD ["jar tf ../build/guess.jar && java -jar ../build/guess.jar"]

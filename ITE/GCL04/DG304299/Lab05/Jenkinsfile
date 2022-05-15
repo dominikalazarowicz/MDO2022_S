@@ -43,7 +43,19 @@ pipeline
             steps 
             {
                sh 'docker build -t deploy . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
-               sh 'docker run --name deploy_container -v build_vol:/build deploy'
+               
+                    script
+                    {
+                            try 
+                            {
+                                sh 'docker run --name deploy_container -v build_vol:/build deploy'
+                            } 
+                            catch (Exception e) 
+                            {
+                                echo 'Exception occurred: ' + e.toString()
+                                sh 'Handle the exception!'
+                            }
+                    }
             }
         }
 
