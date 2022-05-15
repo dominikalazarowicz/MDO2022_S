@@ -35,7 +35,7 @@ pipeline
 				sh '''
 				echo "Budowanie projektu..."
 				
-				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
+				docker build . -f ./ITE/GCL06/RO40076/lab05/RO_Dockerfile_Build -t ro_build
                     		docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
                     		 	      
                     		echo "Budowanie zakończone"
@@ -85,12 +85,12 @@ pipeline
             		{
             	 		echo "Publikowanie projektu..."
             	 
-                		sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts'
-                		sh 'mkdir /var/jenkins_home/workspace/ro_artifacts'
-                		sh 'chmod -R 777 /var/jenkins_home/workspace/ro_artifacts'
+                		sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts8'
+                		sh 'mkdir /var/jenkins_home/workspace/ro_artifacts8'
+                		sh 'chmod -R 777 /var/jenkins_home/workspace/ro_artifacts8'
                 		sh 'docker rm -f ro_publish || true'
-                		sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && chmod -R 777 /var/jenkins_home/workspace/ro_artifacts && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
-                		sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts ."
+                		sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts8,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && chmod -R 777 /var/jenkins_home/workspace/ro_artifacts8 && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
+                		sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts8 ."
                 		archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
                 
                 		echo "Publikowanie zakończone"
