@@ -53,9 +53,6 @@ pipeline
             steps 
             {
 
-                sh "rm -rf artifact && mkdir artifacts"
-                sh "docker cp copy:/volume_out artifact "
-
                sh 'docker build -t deploy_1 . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
               
                     script
@@ -73,6 +70,10 @@ pipeline
 
                 sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
                 sh 'docker run --name deploy_container_final -v build_vol:/build deploy_final'
+
+                sh "rm -rf artifact && mkdir artifacts"
+                sh "docker cp build_vol:/build ./artifact "
+
                 sh 'docker ps -a'
             }
         }
