@@ -19,7 +19,7 @@ pipeline {
 			    }
 			}
          	 steps {
-				  sh 'cd /vol && git clone https://github.com/barisates/dotnet-core-xunit-example && cd dotnet-core-xunit-example && dotnet build --output ../../artifacts/'        
+				  sh 'cd /vol && rm -r dotnet-core-xunit-example && git clone https://github.com/barisates/dotnet-core-xunit-example && cd dotnet-core-xunit-example && dotnet build --output ../../artifacts/'        
              }
 		}
    		stage('Test') {
