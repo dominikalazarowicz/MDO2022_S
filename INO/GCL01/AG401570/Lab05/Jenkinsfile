@@ -10,7 +10,7 @@ pipeline{
         stage('Build') {
             steps {
                 echo 'BUILD'
-                dir('INO/GCL01/AG401570/Lab05') {
+                dir('INO/GCL01/WD400194/Lab05') {
                     sh 'docker build . -f dockerFile1 -t builder'
                 }
             }
@@ -18,12 +18,22 @@ pipeline{
         stage('Tests') {
             steps {
                 echo 'TESTS'
-                dir('INO/GCL01/AG401570/Lab05') {
+                dir('INO/GCL01/WD400194/Lab05') {
                     sh 'docker build . -f dockerFile2 -t tester'
                 }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'DEPLOY'
+                sh 'docker run --volume /var/jenkins_home/workspace/Rurociag/INO/GCL01/AG401570/Lab05:/v builder mv -n pcalc /v'
+                dir('INO/GCL01/AG401570/Lab05') {
+                    sh 'docker build . -f dockerFile3 -t deploy'
+                }
+                sh 'docker run --volume /var/jenkins_home/workspace/Rurociag/INO/GCL01/AG401570/Lab05/:/vout -d -p 3000:80 deploy'
+                sh 'docker stop $(docker ps -a -q)'
             }
         }
     }
 
 }
-
