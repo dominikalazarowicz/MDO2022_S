@@ -101,9 +101,9 @@ pipeline{
                 {
                     sh 'rm -rf /usr/local/copy/* || true'
                     sh "cd /usr/local/App/TypeScript && npm version ${params.Version} && npm pack"
-                    sh "mv /usr/local/App/TypeScript/TypeScript-${params.Version}.tgz /usr/local/copy"
+                    sh "mv /usr/local/App/TypeScript/typescript-${params.Version}.tgz /usr/local/copy"
                     dir('/var/jenkins_home/workspace/artifacts'){
-                        archiveArtifacts artifacts: "TypeScript-${params.Version}.tgz"
+                        archiveArtifacts artifacts: "typescript-${params.Version}.tgz"
                     }
                 }
             }
