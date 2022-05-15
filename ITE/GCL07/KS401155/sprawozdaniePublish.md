@@ -3,6 +3,9 @@
 ## Pipieline
 <br/>
 
+### Kontener Jenkins i dind skonfigurowane wedlug instrukcji
+![Kontenery](img/dind.png)
+
 ### Pliki dockerfile uzyte w pipeline
 ![Docker_build](img/dockerbuild.png)
 
@@ -35,13 +38,13 @@
 
 ### Deploy
 
-### Wyslanie obrazu do dockerhuba: ksochacki0
+### Wyslanie obrazu do dockerhuba: ksochacki0. Aby bylo to mozliwe nalezalo dodac credentials w jenkins ->Dashboard->Manage Jenkins -> Manage Credentials -> Global i dodac swoje login i haslo
 
 ![Deploy](img/deploy.png)
 
 ### Publish
 
-### Tworze kontener na bazie kontenera budujacego. Builduje tym razem przy uzyciu innej opcji z narzedzia poetry oraz pakuje katalog do archive.tar.xz. Nastepnie dopisuje wersje i archiwizuje plik, aby moc go pobrac z Jenkinsa.
+### Tworze kontener na bazie kontenera budujacego. Builduje tym razem przy uzyciu innej opcji z narzedzia poetry oraz pakuje katalog do archive.tar.xz. Nastepnie dopisuje wersje i archiwizuje plik, aby moc go pobrac z Jenkinsa. Aby zmiana nazwy byla mozliwa nalezalo dac uprawienia uzytkownikowi jenkins z grupy 1000 do folderu, w ktorym znajduje sie archive.tar.xz
 
 ![Publish](img/publish.png)
 
