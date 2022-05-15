@@ -30,7 +30,7 @@ pipeline {
 			    }
 			}
 		    steps {
-		 		sh 'cd vol/dotnet-core-xunit-example ; dotnet test'
+		 		sh 'cd /vol/dotnet-core-xunit-example && dotnet test'
 		 	}
 		}
      }
