@@ -9,7 +9,7 @@ pipeline{
     }
 
     stages {
-        stage('Clone and build') {
+            stage('Clone and build') {
         steps {
             echo 'Create input volume'
             sh 'docker volume create input-volume'
