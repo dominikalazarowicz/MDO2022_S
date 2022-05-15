@@ -43,7 +43,7 @@ pipeline {
 		sh 'docker run -d --rm --name publish_node --mount type=volume,src="volume_out",dst=/node_app/files --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy node bash -c "ls -al && chmod -R 777 /node_app && cp -r /node_app/. /usr/local/copy"'
 		sh 'ls -al'
 		sh 'cd ../artifacts/files/testing-node-apps && ls -al'
-		sh 'cd /var/jenkins_home/workspace/artifacts && && ls -al && cd files && ls -al && cd testing-node-apps && ls -al'
+		sh 'cd /var/jenkins_home/workspace/artifacts/files/testing-node-apps && ls -al'
 		sh 'pwd'
 		sh 'tar -zcf testing-node-apps_${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts//files/testing-node-apps .'
 		archiveArtifacts artifacts: "testing-node-apps_${params.VERSION}.tar.gz"
