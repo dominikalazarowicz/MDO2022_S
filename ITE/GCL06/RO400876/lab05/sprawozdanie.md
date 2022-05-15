@@ -228,4 +228,28 @@ stage ('Publish')
 
 
 
-* Publish:
+* Clean:
+
+Krok `Clean`
+
+```
+stage('Clean')
+		{
+			steps
+			{
+				sh '''
+				echo "Czyszczenie projektu..."
+				
+				docker rm -f ro_build || true
+                docker rm -f ro_test || true
+                docker rm -f deploy_container || true
+                docker rm -f ro_publish || true
+				
+				echo "Czyszczenie zakończone"
+				'''
+			}
+		}
+        
+        
+	}
+```

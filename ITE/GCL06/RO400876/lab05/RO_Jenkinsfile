@@ -108,13 +108,12 @@ pipeline
 				docker rm -f ro_build || true
                 		docker rm -f ro_test || true
                 		docker rm -f deploy_container || true
-                		sh docker rm -f ro_publish || true
+                		docker rm -f ro_publish || true
 				
 				echo "Czyszczenie zakończone"
 				'''
 			}
 		}
-        
         
 	}
 	
