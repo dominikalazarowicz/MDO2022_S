@@ -237,8 +237,8 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Pierwsza rzecza jaka zostaje sprawdzona w powyzszym kodzie jest wartosc parametru PROMOTE jesi on true to zostaja wykonane polecenia znajdujace sie obrzarze steps gdzie zostaje tworzony artefakt jesli wartosc PROMOTE bedzie wynosila false to artefakty nie utworza sie
-    w obszarze steps zostaje stworzony folder ktory bedzie zawieral artefakty po czym zostaje uruchomiony kontener kacper_publish z podpietym voluminem wyjsciowym po czym artefakty zostaja zapakowane do pliku taz.xz z nadana wwrsja z parametru VERSION 
+    Pierwsza rzecza jaka zostaje sprawdzona w powyzszym kodzie jest wartosc parametru PROMOTE jesli wynosi on true to zostaja wykonane polecenia znajdujace sie obrzarze steps gdzie zostaje tworzony artefakt jesli wartosc PROMOTE bedzie wynosila false to artefakty nie utworza sie
+    w obszarze steps zostaje stworzony folder w ktorym beda zapisywane artefakty. Artefakty zostaja zapakowane do pliku taz.xz z nadana wersja z parametru VERSION 
 
     9. Cleaning Memory
     ```
