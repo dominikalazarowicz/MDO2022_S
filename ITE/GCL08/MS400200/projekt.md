@@ -29,3 +29,79 @@ FROM basictracer_build:latest
 RUN ls
 RUN python3 -m venv make test
 ```
+
+DockerPublish
+```
+```
+
+Skonfigurowano pipeline na Jenkins:
+
+![2](2.png)
+![3](3.png)
+
+Plik Jenkinsfile jest pobierany z brancha repozytorium przedmiotu.
+
+
+### Stage Build
+```
+stage('Build') {
+            steps {
+                echo 'building basictracer'
+				dir("${params.Build_files}") {
+                    sh 'docker build . -f DockerBuild -t basictracer_build'
+				}
+                
+            }
+        }
+```
+Budowany jest kontener za pomoca pliku DockerBuild gdzie klonowane jest repozytorium z kodem oraz inicjowane jest srodowisko Python.
+
+### Stage Test
+```
+stage('Tests') {
+            steps {
+                echo 'testing basictracer'
+				dir("${params.Build_files}") {
+                    sh 'docker build . -f DockerTest -t basictracer_test'
+				}
+            }
+        }
+```
+Tworzony jest kontener na bazie najnowszej wersji kontenera budujacego (basictracer_build:latest), nastepnie komenda ```make test``` uruchamia testy w Dockerfile.
+
+### Stage Deploy
+```
+stage('Deploy') {
+            steps {
+                echo 'deploying basictracer'
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker tag basictracer_build:latest dockerenjoyer456/basictracer-devops-deploy'
+                sh 'docker push dockerenjoyer456/basictracer-devops-deploy'
+            }
+        }
+```
+W tym momencie pobierane sa dane uwierzytelniajace mojego konta na Dockerhub ktore trzeba bylo wprowadzic do Jenkinsa. Obraz deploy jest wysylany do mojego Dockerhuba.
+
+### Stage Publish
+W tym miejscu folder z plikami .egg powinien byc pakowany
+![4](4.png)
+
+Niestety jednak, przy uruchomieniu stage:
+```
+stage('Publish'){
+            when {
+                expression {return params.Promote}
+		    }
+            steps {
+                echo 'Publish'
+                dir("${params.Build_files}") {
+                    sh 'ls -a'
+                    sh 'docker build . -f DockerPublish -t basictracer_publish'
+                    
+				}
+               
+            }
+        }
+```
+
+

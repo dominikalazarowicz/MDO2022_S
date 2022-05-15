@@ -1,2 +1,3 @@
 FROM basictracer_build:latest
-RUN ls ../basictracer-python
+RUN ls ..
+
