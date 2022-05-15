@@ -46,7 +46,7 @@ pipeline {
 		sh 'ls -al'
 		sh 'docker ps'
 		sh 'cd ../artifacts/files/testing-node-apps && ls -al'
-		sh 'cd /var/jenkins_home/workspace/artifacts/files/testing-node-apps && ls -al'
+		sh 'cd /var/jenkins_home/workspace/artifacts/files/testing-node-apps && ls -al && mv testing-node-apps-1.0.0.tgz testing-node-apps-${params.VERSION}.tgz && ls -al'
 		sh 'pwd'
 		sh "ls -al && cd ../artifacts/files/ && ls -al && cd testing-node-apps && ls -al && cp testing-node-apps-${params.VERSION}.tgz /var/jenkins_home/workspace/pipeline1"
 		sh 'ls -al'
