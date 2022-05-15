@@ -24,8 +24,8 @@ pipeline
             steps 
             		{
            	
-                sh 'docker build -t build . -f ./ITE/GCL06/AP304152/Lab05/docker_build'
-               sh 'docker run --name build_container -v repo_vol:/Cytoscape -v build_vol:/build build'
+                //sh 'docker build -t build . -f ./ITE/GCL06/AP304152/Lab05/docker_build'
+               //sh 'docker run --name build_container -v repo_vol:/Cytoscape -v build_vol:/build build'
             		}
         	}
 		
