@@ -9,7 +9,7 @@
 
 Celem projektu było utworzenie jenkinsowego pipeline'a, w celu przeprowadzenia automatyzacji kroków build, test, deploy oraz publish wybranego oprogramowania.
 
-Wybrane repozytorium https://github.com/DiscordSRV/DiscordSRV
+Wybrane repozytorium: https://github.com/LondonJim/Guess-Word-Game.git
 
 Projekt jest oparty o Javę (Gradle)
 
