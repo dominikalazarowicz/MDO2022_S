@@ -1,5 +1,3 @@
 FROM openjdk:11
 
-WORKDIR Guess-Word-Game
-
 CMD java -jar build/guess.jar
