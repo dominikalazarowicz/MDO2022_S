@@ -137,7 +137,7 @@ W sekcji `steps`:
  - pierwsza porcja odpowiedzialna jest za usunięcie i stworzenie ponowne woluminów "in" i "out".
  - druga odpowiedzialna jest za stworzenie pustego katalogu "app"
  - trzecia najpierw zmienia katalog roboczy na "app" dzięki sekcji `dir('app')`. 
-    - Klonowane jest tam repozytorium z projektem dzięki komendzie "git". Podawana jest gałąź i url projektu. Gdyby projekt ten był prywatny, trzebaby było podać jeszcze "credentialsid". 
+    - Klonowane jest tam repozytorium z projektem dzięki komendzie "git". Podawana jest gałąź (zawarta w parametrze) i url projektu. Gdyby projekt ten był prywatny, trzebaby było podać jeszcze "credentialsid". 
     - Tworzony jest kontener busybox połączony z voluminem "in".
     - Kontener ten kopiuje zawartość aktualnego katalogu i wkleja do katalogu woluminu "in".
     - po zakończonej pracy kontener zostaje usunięty.
