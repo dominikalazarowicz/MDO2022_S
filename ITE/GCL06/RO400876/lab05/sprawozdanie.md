@@ -39,6 +39,18 @@ Po ukończeniu konfiguracji pipline ukaże się poniższy ekran startowy utworzo
 ![img](jenkins_start.PNG)
 
 
+### 3. Zawartość pipline'u.
+
+### * Parameters:
+
+`
+parameters
+    {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+    }
+    `
+
 
 
 
