@@ -43,14 +43,45 @@ Po ukończeniu konfiguracji pipline ukaże się poniższy ekran startowy utworzo
 
 * Parameters:
 
-Pipline przyjmuje dwa parametry `PROMOTE` oraz `VERSION`. Parametr `VERSION` oznacza wersję wydawanego programu. W tym przypadku parametr określający wersję ustawiony jest na 1.0.0 lecz przy każdym uruchomieniu pipline'u istnieje możliwość zmiany wersji. Drugi parametr czyli `PROMOTE` decyduje czy sekcja Publish się wykona. Jeżeli wszystkie poprzednie etapy pipelin'u przejdą poprawnie i PROMOTE jest zaznaczone, sekcja Publish buduje publikowalny artefakt, o numerze wersji z parametru `VERSION`.
+Pipline przyjmuje dwa parametry `PROMOTE` oraz `VERSION`, które są określone w sekcji `parameters`. Parametr `VERSION` oznacza wersję wydawanego programu. W tym przypadku parametr określający wersję domyślnie ustawiony jest na 1.0.0 lecz przy każdym uruchomieniu pipline'u istnieje możliwość zmiany wersji. Drugi parametr czyli `PROMOTE` decyduje czy sekcja Publish się wykona. Jeżeli wszystkie poprzednie etapy pipelin'u przejdą poprawnie i PROMOTE jest zaznaczone, sekcja Publish buduje publikowalny artefakt, o numerze wersji z parametru `VERSION`.
+
+Sekcja `agent` konfiguruje, na których węzłach można uruchomić potok. Określenie `agent any` oznacza, że ​​Jenkins uruchomi zadanie na dowolnym z dostępnych węzłów.
 
 ```
 parameters
     {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
-    }
+     }
+    
+	agent any
+```
+
+
+
+
+* Prepare:
+
+Krok `Prepare` został utworzony w celu uporzodkowania skryptu aby był bardziej przejrzysty. W sekcji tej następuje ogólne przygotowanie projektu, w którym znajduję się utworzenie woluminów wejściowego o nazwie `volume_input` oraz wyjściowego o nazwie `volume_output`. W kroku tym usuwany jest także kontener o nazwie `ro_build`, który powstaje przy budowaniu projektu w kroku nastęþnym. Kontener ten usuwany jest jeżeli istnieje ma to szczególne znaczenie jeśli projekt uruchamiany jest kilkukrotnie. Za pomocą komendy `docker volume prune -f` usuwane są także wszystkie aktualnie nie używane woluminy.
+
+
+```
+stage('Prepare')
+		{
+			steps
+			{
+				sh '''
+				echo "Przygotowanie projektu..."
+				
+				docker rm -f ro_build || true
+				docker volume prune -f
+				docker volume  create --name volume_input
+				docker volume  create --name volume_output
+				 	      
+                echo "Przygotowanie zakończone"
+				'''	
+			}
+		}
 ```
 
 
