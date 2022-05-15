@@ -6,7 +6,7 @@ pipeline {
 				sh 'docker volume create vol'
           	  	git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                 sh 'git checkout origin/KT401975'
-				//sh 'git pull'
+				sh 'git pull'
 			 	sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
 				sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/buildfile ; docker build -t builder:latest .'
 			}
@@ -14,7 +14,7 @@ pipeline {
       	stage('Build') {
 			agent {
 			                docker {
-			                    image 'build_base:latest'
+			                    image 'builder:latest'
 			                    args '--mount source=vol,target=/vol -u root:root'
 			                }
 			            }
