@@ -43,7 +43,14 @@ pipeline {
 	    }
 	}
 	stage('publish') {
+	    when {
+		expression {
+		    return params.promote == $true;
+		}
+	    }
 	    steps {
+		sh 'cp installationInfo fe-text'
+		echo params.version
 		archiveArtifacts artifacts: 'fe-text/irssi'
 	    }
 	}
