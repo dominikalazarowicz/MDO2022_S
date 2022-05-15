@@ -1,5 +1,6 @@
 pipeline{
-    agent any
+
+        agent any
 
     parameters {
         string(name: 'Dockerfiles', defaultValue: './ITE/GCL08/SZ402734/Lab05', description: 'Path of Dockerfile in git: ')
@@ -7,7 +8,22 @@ pipeline{
         booleanParam(name: 'Promote', defaultValue: true, description: 'Statement: ')
     }
 
+	stages {
+		stage('Clone') {
+			steps {
+				echo 'Create input volume'
+				sh 'docker volume create TMP_IN_V'
+				sh 'docker rm TMP_C || true'
 
+                echo 'Docker run, node clone '
+				sh 'docker run --rm --name TMP_C --mount "type=volume,src=TMP_IN_V,dst=/App" node bash -c "cd ~/ && ls  TypeScript || git clone https://github.com/microsoft/TypeScript;cp -R  TypeScript /App; ls /App"'
+			}
+		}
+
+
+
+
+    }
 
 
 
