@@ -7,7 +7,7 @@ Projektem, do którego pisałem pipeline był nodejs.org. Jak sama nazwa mówi j
    ### https://github.com/nodejs/nodejs.org
 2. Po zrobieniu forka repozytorium, powinniśmy miec już projekt w naszym repozytroium. Dzięki temu możemy w dowolny sposób edytować ten projekt.
 3. Aby zintegrować jenkinsa z naszym nowym repozytorium, należ dodać do projektu **jenkinsfile**. W moim przypadku, stworzyłem folder jenkins, a w nim plik jenkinsfile:
-## ![Alt text](1-jenkinsfile.png?raw=true)
+# ![Alt text](1-jenkinsfile.PNG?raw=true)
 4. W następnym kroku przechodzimy już do samego Jenkinsa. Po zalogowaniu powinniśmy utworzyć nowy projekt i wybrac opcję **pipeline**:
 ## ![Alt text](2-nowy-pipeline-jenkins.png?raw=true)
 5. Nastpęnie przechodzimy do konfiguracji. W tym korku musimy zdefiniować, z jakiego repozytorium będziemy korzystać oraz z którego z dostępnych gałęzi. W moim przypadku było to:
