@@ -10,7 +10,7 @@ pipeline
     
     stages
      {
-     	stage('Preparing and Remove')
+     	stage('Preparing and Build Cleaning')
      	{
      	  steps
      	  {
@@ -20,6 +20,7 @@ pipeline
             sh 'docker volume prune -f'
      	  }
      	}
+     	
         stage('Build') 
         {
             steps 
