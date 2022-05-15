@@ -35,11 +35,6 @@ pipeline {
                 sh "rm -rf /input/*"
                 sh "cd /input && git clone https://github.com/ThomasJaspers/java-junit-sample.git"
             }
-            // post{
-            //     always{
-            //         sh "docker volume ls"
-            //     }
-            // }
         }
         stage('Build') {
             agent{
@@ -55,13 +50,6 @@ pipeline {
                 sh "cd /input/java-junit-sample && mvn clean package -DskipTests"
                 sh "cp -r /input/java-junit-sample /output"
             }
-            // post{
-            //     failure{
-            //         sh "docker volume rm input"
-            //         sh "docker volume rm output"
-            //     }
-            // }
-
         }
         stage('Test') {
             agent{
@@ -74,15 +62,12 @@ pipeline {
                 }
             }
             steps {
-                sh "ls /output"
                 sh "cd /output/java-junit-sample && mvn surefire:test"
                 sh 'cp -r /output/java-junit-sample/target/*.jar /deploy'
                 sh "cp /output/java-junit-sample/target/surefire-reports/*.xml ./tests"
             }
             post{
                 always{
-                        sh "pwd"
-                        sh "ls"
                         junit testResults: "tests/*.xml"
                 }
             }
@@ -97,9 +82,7 @@ pipeline {
                 }
             }
             steps{
-                sh "ls /deploy"
                 sh "cd /deploy && nohup java -jar *.jar &"
-                sh "pwd"
                 sh "cp /deploy/*.jar ./publish"
                 
             }
@@ -111,8 +94,6 @@ pipeline {
         }
         stage("Artifact"){
             steps{
-                sh "ls -la"
-                sh "ls publish"
                 archiveArtifacts artifacts:"publish/*.jar", 
                                  fingerprint: true 
                 sh 'cat publish/*.jar | sha512sum > publish/checksum.txt'
