@@ -56,6 +56,8 @@ W tym przypadku zostały stworzone takie stage'e:
 
 W przypadku wątpliwości dotyczącej składni Jenkinsfile'a: [link](https://www.jenkins.io/doc/book/pipeline/syntax/#agent)
 
+W przypadku potrzeby wykorzystania innych argumentów przy publikowaniu: [link](https://docs.microsoft.com/pl-pl/dotnet/core/tools/dotnet-publish)
+
 ## Przygotowania
 
 całość Projektu w Jenkinsfile'u wykonywana jest w `pipeline{(...)}`.
@@ -299,7 +301,7 @@ W sekcji `post`:
   - zostaje wypisana adekwatna wiadomość.
   - w przypadku wykonania się `currentBuild.result = 'ABORTED'` wykona się sekcja `unsuccessful`.
 
-## 8. Publish
+### 8. Publish
 ```
 stage('Publish'){
     when{
@@ -350,12 +352,15 @@ stage('Publish'){
 ```
 Sekcja "**when**" sprawdza, czy każdy warunek wewnątrz jest prawdą. W przypadku znalezienia fałszu, dany stage się nie wykona.
 
+Zmienna `${WORKSPACE}` jest jedną z podstawowych zmiennych Jenkinsa i wyznacza ona absolutną ścieżkę do katalogu "workspace".  
+
+
 W sekcji `when`:
-  - sprawdzany jest, czy paramets "Promote" jest prawdą. Jeśli nie, publish nie następuje.
+  - sprawdzany jest, czy paramets "Promote" jest prawdą. Jeśli nie, publish nie następuje, gdyż tego właśnie sobie życzy urzytkownik.
 
 W sekcji `steps`:
   - w pierwszej części usuwany i tworzony jest nowy katalog w woluminie "out", do którego przesyłane będą pliki do publikacji.
-  - w drugiej części przechodzimy do katalogu z głównym plikiem projektu i publikujemy do za pomocą komendy `dotnet publish`:
+  - w drugiej części w katalogu z głównym plikiem projektu następuje stworzenie pliku do publikacji za pomocą komendy `dotnet publish` dla środowiska "linux x64":
     - zaznaczony plik projektu do publikacji,
     - `-c` definiuje konfiguracje buildu przy publikowaniu. Została wybrana konfiguracje "Release", gdyż będzie to wersja wypuszczana dla innych.
     - `-r` publikuje aplikację dla danego "runtime". Wybrany został "linux-x64"
@@ -364,6 +369,69 @@ W sekcji `steps`:
       - `PublishSingleFile` - pakuje aplikacje do pojedynczego pliku (specyficznego dla danej platformy). Wcześniej ustalona została platforma, więc można było to wykorzystać.
       - `UseAppHost` - jest to w tym przypadku niezbędny parametr, by można było dodać "--self-contained",
     - `--output` - przesyłą plik z programem do podanego katalogu
-  - przy takim tworzeniu publisha stworzone zostały 2 pliki - wykonywalny dla linuxa (bez typu) oraz plik .pdb (Protein Data Bank).
+    - przy takim tworzeniu publisha stworzony został plik wykonywalny dla linuxa (bez typu)
+  - dodatkowo tworzony jest plik .pdb (Program database), który przechowuje informacje debugowania programu. Nie ma potrzeby publikowania go, więc został usunięty.
+  - plik wykonuwanly programu zastał zapakowany do pliku tar.xz o nazwie zbudoowanej z parametrów określonych przez urzytkownika: "\<nazwa>-\<wersja>.tar.xz"
+  - w trzeciej części najpierw sworzony jest plik do publikacji tyle że dla środowiska "windows x64":
+    - `-r` wybrane zostało "win-64x",
+    - został stworzony plik z o typie ".exe".
+  - dodatkowo został stworzony plik .pdb, jednakże teraz już wszystkie pliki się wyróżniają końcówkami, więc nie ma potrzeby usuwania pliku.
+  - za pomocą komendy "mv" została zmieniona nazwa pliku na "\<nazwa>-\<wersja>.exe"
+  - w czwartej części zostają usunięte wszystki pliki w katalogu ${WORKSPACE}/publish, które zaczynają się od "NameFile"  - jednego z parametrów. Jest to na wszelki wypadek, by nie publikować artefaktów wielu plików .tar.xz i wielu plików .exe, lecz tylko najnowszą wersję.
+  - W piątej części, po wyczyszczeniu katalogów nowe pliki do publikacji zostają tam przeniesione.
+  - w ostatniej części zostaje wykoanan komenda Jenkinsa, która archiwizuje artefakty, by te były widoczne w projekcie.
+
+W sekcji `post`:
+  - zostaje wypisana adekwatna wiadomość.
+
+# Wyniki
+
+## Jenkinsfile
+
+W przypadku powodzenia budowania Projektu i ustawienia danych parametrów w taki sposób:
+
+![foto](./Screenshot_2.png)
+
+Wynik powinien wyglądać następująco:
+
+![foto](./Screenshot_3.png)
+
+Gdzie miejsce z możliwością pobrania artefaktó zostały zakreślone na czerwono (możliwe, że będzie trzeba odświerzyć stronę).
+
+Przy zmienie parametru "Promote" na "false", wynik powinien wyglądać tak:
+
+![foto](./Screenshot_4.png)
+
+## wypróbowanie pliku ".exe":
+
+1. Pobranie pliku ".exe" poprzez kliknięcie na ten plik w liście artefaktów.
+2. Przejście do folderu "Downloads" w wierszu poleceń.
+3. Odpalenie programu:
+
+![foto](./Screenshot_5.png)
+
+Dokłanie taka sama wiadomość została wypisana w stage'u "Deploy":
+
+![foto](./Screenshot_6.png)
+
+# Uwagi
+
+1. W przypadku działania na Ubuntu 20.04.3 może zajść błąd "error during connect: Get "LINK": dial tcp: lookup docker: Temporary failure in name resolution".
+    - Nie znam przyczyny tego błędu ani jego rozwiązania. Przy zmianie maszyny z tego Ubuntu na Fedorę, błąd się już więcej nie pokazał.
+2. W przypadku niedziałania linijki nr 23: `git branch: "${params.AppBranch}", url: 'https://github.com/Niemans/DevOpsLab05.git'`
+    - Możliwe jest to, że trzeba doinstalować plugin do Jenkinsa.
 
 
+
+
+
+
+# Diagramy
+
+## Diagram aktywności:
+
+![foto](./DiagramAktywnosci.png)
+
+## Diagram wdrożenia
+
+![foto](./DiagramWdrozenia.png)
