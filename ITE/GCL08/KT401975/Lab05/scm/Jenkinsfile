@@ -4,8 +4,8 @@ pipeline {
 		stage("Start") {
 			steps {
 				sh 'docker volume create vol'
-				sh 'git checkout origin/KT401975'
           	  	git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+				sh 'git checkout origin/KT401975'
 				sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
 				sh 'git pull'
 				sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/buildfile ; docker build -t builder:latest .'
