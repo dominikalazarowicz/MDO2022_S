@@ -43,7 +43,7 @@ pipeline
             steps 
             {
                sh 'docker build -t deploy . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
-               sh 'docker run --name deploy_container -v repo_vol:/Guess-Word-Game deploy'
+               sh 'docker run --name deploy_container -v build_vol:/Gbuild deploy'
             }
         }
 
