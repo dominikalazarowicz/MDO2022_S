@@ -1,7 +1,5 @@
 FROM project-build:latest
 
-WORKDIR /server
-
 EXPOSE 9090
 
-CMD ["/devops-golang-project"]
+CMD ["./devops-golang-project"]
