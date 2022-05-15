@@ -75,7 +75,11 @@ pipeline{
                     sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
                 }
 
+                
+            }
 
+            stage('Publish')
+            {
                 when 
                 {
                     expression {return params.Promote}
@@ -102,9 +106,6 @@ pipeline{
                         archiveArtifacts artifacts: "TypeScript-${params.Version}.tgz"
                     }
                 }
-
-
-                
             }
             
 
