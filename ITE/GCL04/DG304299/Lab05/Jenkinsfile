@@ -100,21 +100,5 @@ pipeline
             }
         }
 
-          stage("Clean") 
-        {
-           
-            steps
-            {
-                sh "docker rmi clone"
-                sh "docker rmi build"
-                sh "docker rmi test"
-                sh "docker rmi deploy_1"
-                sh "docker rmi deploy_final"
-                sh 'docker volume prune -f'
-                
-            }
-        }
-
-
     }
 }
