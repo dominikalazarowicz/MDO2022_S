@@ -40,7 +40,7 @@ pipeline{
                     echo 'Gulp tests TypeScript'
                     dir("${params.Dockerfiles}"){
                         sh 'docker rm typescript-tests || true'
-                        sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_node bash -c "cd /app_tests/TypeScript && gulp runtests-parallel"'
+                        sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_node bash -c "cd /app_tests/TypeScript && gulp runtests --tests= "/tests/cases/compiler" "'
                     }
                     echo 'Gulp tests Done'
 
