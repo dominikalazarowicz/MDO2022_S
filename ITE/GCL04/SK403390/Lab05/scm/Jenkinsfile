@@ -45,7 +45,7 @@ pipeline {
 	stage('publish') {
 	    when {
 		expression {
-		    return params.promote == $true;
+		    return params.promote == true;
 		}
 	    }
 	    steps {
