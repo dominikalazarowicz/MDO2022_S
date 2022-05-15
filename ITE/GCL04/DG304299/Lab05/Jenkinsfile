@@ -3,6 +3,16 @@
 pipeline 
 {
     agent any
+
+     parameters 
+     {
+    
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
+
+    }
+
+
     stages
      {
 
@@ -60,6 +70,30 @@ pipeline
                 sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
                 sh 'docker run --name deploy_container_final -v build_vol:/build deploy_final'
                 sh 'docker ps -a'
+            }
+        }
+
+        stage("Publish") 
+        {
+           when 
+           {
+                environment name: 'PROMOTE', value: "true"
+
+           }
+            steps
+
+            {
+               script {
+                    if(params.promote)
+                     {
+                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
+                        sh "ls -a ./artifacts"
+                        archiveArtifacts artifacts: "artifacts/*.jar"
+                    }
+                    else {
+                        echo "Everything was successful, but not promoting to new version! (The promote check was not selected)"
+                    }
+                }
             }
         }
 
