@@ -20,4 +20,4 @@ git checkout Grupa02
 git checkout -b Grupa02-MK299627_Lab02
 w celu przelaczenia sie na mastera, a nastepnie na branch grupowy, z ktorego utworzylem nowego brancha. 
 
- 
+test 
