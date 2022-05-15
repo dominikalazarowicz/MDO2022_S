@@ -32,8 +32,8 @@ klonuje repozytorium, checkoutuje się na odpowiednią gałąź użytkownika, or
 
 Dockerfile dla obrazu build_base:
 
-`FROM mcr.microsoft.com/dotnet/sdk:3.1
-RUN echo 'Dockerfile running đźŤ‰'`
+	`FROM mcr.microsoft.com/dotnet/sdk:3.1
+	RUN echo 'Dockerfile running đźŤ‰'`
 
 Jest to prosty dockerfile, który tylko definiuje środowisko. Dla builda (w projekcie dotnetowym) używany będzie obraz dotnet sdk, ponieważ zawiera dependencje do budowania aplikacji.
 
@@ -83,13 +83,13 @@ Wykorzystanie woluminu tutaj jest istotne, gdyż nie chcemu kilkukrotnie bezsens
 	}`
 
 Dockerfile DotnetDeps:
-`FROM mcr.microsoft.com/dotnet/runtime:3.1
-
-ENV \
-    # Configure web servers to bind to port 80 when present
-    ASPNETCORE_URLS=http://+:80 \
-    # Enable detection of running in a container
-    DOTNET_RUNNING_IN_CONTAINER=true`
+	`FROM mcr.microsoft.com/dotnet/runtime:3.1
+	
+	ENV \
+	    # Configure web servers to bind to port 80 when present
+	    ASPNETCORE_URLS=http://+:80 \
+	    # Enable detection of running in a container
+	    DOTNET_RUNNING_IN_CONTAINER=true`
 
 Jest to Dockerfile zalecany przez microsoft, bierze on obraz zawierający runtime oraz ustawia zmienne środowiskowe, które w niektórych przypadkach mogą się przydać, lecz tutaj bez ustawienia ich projekt zadziałałby tak samo.
 
@@ -125,6 +125,7 @@ Dlatego aby deploy miał sens, musimy użyć woluminu, na którym są już zbudo
 
 Sam Deploy uruchomi aplikację (jeśli uruchomienie dobiegnie końca, to aplikacja zwróci dobry kod wyjścia, a pipeline pójdzie dalej.)
 Jak widać, aplikacja normalnie uruchamia się wewnątrz pipeline'a i program dobiega końca. Co jest dowodem na to, że aplikacja działa normalnie poza środowiskiem buildowym:
+
 ![](images/deployed_app.png)
 
 Aplikacja się zakończyła, i można zauważyć, że pipeline przełącza się na następny stage - Publish.
@@ -134,35 +135,38 @@ Aplikacja się zakończyła, i można zauważyć, że pipeline przełącza się 
 Publish okazał się najbardziej problematycznym krokiem, ponieważ napotkano pierwsze błędy i problemy których nie udało się rozwiązać pomimo wielu prób.
 
 Obecne działanie stage'a:
-	`stage('Publish') {
+
+	stage('Publish') {
 		agent{
 			docker{
 				image 'mcr.microsoft.com/dotnet/sdk:3.1'
 				args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
 			}
 		}
-            steps {
-		sh 'cd /build_artifacts/artifacts'
-                    sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../../publish/'
-		   sh "cp -R /build_artifacts/artifacts ${WORKSPACE}/publish"
-  			 archiveArtifacts 'publish/*'
-            }
-        }`
+		steps {
+			sh 'cd /build_artifacts/artifacts'
+			sh 'cd /build_artifacts/NumberGuesserOOP/BasicNumberGuesser && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../../publish/'
+			sh "cp -R /build_artifacts/artifacts ${WORKSPACE}/publish"
+			archiveArtifacts 'publish/*'
+		}
+	}
 
 Stage ponownie korzysta z dockerowego agenta, tym razem jako obraz bierze zwyczajnie dotnetowe sdk, gdyż jest ono wymagane do wykonania komendy `dotnet publish`.
 Ponadto w argurmentach mountujemy wolumin zawierający pobrane repozytorium. Wewnątrz pipeline'a nawigujemy do katalogu z plikem solucji, a następnie uruchamiamy komendę dotnet publish z następującymi argumentami:
+
 -c Release - zmienia konfiguracje z Debug na Release
+
 -r win-x64 - ustala "runtime identifier", czyli środowisko które targetujemy na windowsa. 
 
 `Dlaczego użyto -r win-x64?`
 
 Pierwotny plan zakładał, aby efektem publisha był pojedynczy plik zawierający wszystkie potrzebne dependencje razem z runtimem, co pozwoliłiby na uruchomienie go na dowolnej maszynie windowsowej bez najmniejszego problemu i potrzeby instalacji runtime'u.
 Aby to uczynić, należałoby użyć dwóch ważnych opcji "--self-contained true" oraz "-p:PublishSingleFile=true", lecz tutaj pojawił się znaczny problem, którego nie udało się rozwiązać. Przy próbie użycia tych opcji Jenkins wypluwa błąd:
-![](images/full_pipeline.png)
+![](images/error.png)
 Dotnet chce aby ustawić runtime identifier, aby zrobić aplikację która jest self-contained i/lub SingleFile. Sęk w tym, że runtime identifier jest już ustawiony, a mimo to błąd się pojawia. 
 Po szukaniu odpowiedzi przez dosłowne godziny, okazało się że jest to dość częsty problem, a jedyną solucją była modyfikacja pliku .csproj wewnątrz repozytorium które chcemy zbuildować i publishować. 
 Naturalnie nie jest to dobre rozwiązanie takiego błędu, a jedynie workaround, lecz w tym przypadku nawet workaround w postaci modyfikowania repozytorium nie działał, błąd nie chciał zniknąć za nic.
-Najbliższą do rozwiązania problemu okazała się komenda której finalnie użyłem. Opcja `"-r win-x64` ma to do siebie, że gdy jej użyjemy to opcja `"--self-contained"` defaultowo ustawia się na "true", ale z jakiegoś powodu, nie wywala już błędu.
+Najbliższą do rozwiązania problemu okazała się komenda której finalnie użyłem. Opcja `"-r win-x64"` ma to do siebie, że gdy jej użyjemy to opcja `"--self-contained"` defaultowo ustawia się na "true", ale z jakiegoś powodu, nie wywala już błędu.
 Takie samo rozwiązanie niestety nie udało się z opcją `PublishSingleFile`, więc końcowo mamy aplikację która jest "self contained" ale już nie jest "Single File". Efektem tego jest katalog z zupą plików, która wygląda źle, ale działa dobrze.
 
 ### Zpublishowana aplikacja jako artefakt w jenkinsie
@@ -175,12 +179,15 @@ Aby stworzyć artefakty z publisha, używamy komendy archiveArtifacts wewnątrz 
 Jenkins nie jest w stanie bezpośrednio wyciągnąć plików do zapisania jako artefakt z wewnątrz woluminu, jesteśmy w stanie zapisać artefakty tylko z poziomu Workspace'a, dlatego musimy je wcześniej przekopiować z woluminu na workspace.
 
 Efektem tego jest mała ikonka strzałki do download'u przy danym uruchomieniu Pipeline'a.
+
 ![](images/full_pipeline.png)
 
 Możemy pobrać folder ze zpublishowaną aplikacją:
+
 ![](images/artifacts.png)
 
 I przy wejściu do pobranego katalogu, możemy zwyczajnie uruchomić plik wykonywalny aplikacji i upewnić sie, że opublikowana wersja działa:
+
 ![](images/published_app.png)
 
 ## Diagramy
