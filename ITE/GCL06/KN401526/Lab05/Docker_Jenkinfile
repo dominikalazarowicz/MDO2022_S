@@ -10,7 +10,7 @@ pipeline
     
     stages
      {
-     	Stage('Preparing Volume')
+     	stage('Preparing Volume')
      	{
      	  steps
      	  {
