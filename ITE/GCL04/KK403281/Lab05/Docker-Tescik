@@ -1,4 +1,4 @@
-FROM IrssiBudowanie:latest
+FROM irssi_budowanie:latest
 
 WORKDIR build
 
