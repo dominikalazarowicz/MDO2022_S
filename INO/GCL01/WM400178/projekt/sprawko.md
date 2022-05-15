@@ -9,9 +9,9 @@ Projektem, do którego pisałem pipeline był nodejs.org. Jak sama nazwa mówi j
 3. Aby zintegrować jenkinsa z naszym nowym repozytorium, należ dodać do projektu **jenkinsfile**. W moim przypadku, stworzyłem folder jenkins, a w nim plik jenkinsfile:
 # ![Alt text](1-jenkinsfile.PNG?raw=true)
 4. W następnym kroku przechodzimy już do samego Jenkinsa. Po zalogowaniu powinniśmy utworzyć nowy projekt i wybrac opcję **pipeline**:
-## ![Alt text](2-nowy-pipeline-jenkins.png?raw=true)
+## ![Alt text](2-nowy-pipeline-jenkins.PNG?raw=true)
 5. Nastpęnie przechodzimy do konfiguracji. W tym korku musimy zdefiniować, z jakiego repozytorium będziemy korzystać oraz z którego z dostępnych gałęzi. W moim przypadku było to:
-## ![Alt text](3-konfiguracja.png?raw=true)
+## ![Alt text](3-konfiguracja.PNG?raw=true)
 **Należy także pamiętać o zaznaczeniu odpowiedniego brancha - defaultowa wartość to master, jednak musimy wybrać gałąź main!**
 
 **Uwaga**: to nie jest jedyna możliwa opcja integracji z repozytorium. Możemy pisać skrypt bezpośrednio w Jenkinsie, używając linku do repozytorium. Wystarczy, że zmienimy wartość "Definition" na **pipeline script.**
@@ -46,7 +46,7 @@ Następnie mamy sekcję parameters i definiujemy tam nasze parametry, do któryc
 
 Aby można było sterować tym parametrem, należy przejść do konfiguracji projektu i dodać:
 
-## ![Alt text](4-app-version.png?raw=true)
+## ![Alt text](4-app-version.PNG?raw=true)
 
 9. Stage build
 
@@ -160,7 +160,7 @@ RUN tar cfJ nodejs.tar.xz build
 
 Jeśli teraz udamy się pod podaną lokalizację woluminy, możemy dostrzec naszą paczkę:
 
-## ![Alt text](5-paczka.png?raw=true)
+## ![Alt text](5-paczka.PNG?raw=true)
 
 12. Sekcja Post
 
@@ -207,17 +207,17 @@ Nasz Pipeline został w całości skonfigurowany. Możemy więc teraz go uruchom
 
 Po przejściu do menu głównego wybieramy opcję `Uruchom z parametrami`:
 
-## ![Alt text](6-build-with-parameters.png?raw=true)
+## ![Alt text](6-build-with-parameters.PNG?raw=true)
 
 A następnie wpisujemy werjsę, odpalamy nasz pipeline i czekamy na wynik:
 
-## ![Alt text](7-building.png?raw=true)
+## ![Alt text](7-building.PNG?raw=true)
 
 Jeżeli nic się nie "wykrzaczyło", to powinniśmy zobaczyć poniższy obrazek:
 
-## ![Alt text](8-done.png?raw=true)
+## ![Alt text](8-done.PNG?raw=true)
 
-## ![Alt text](9-sukcesPNG.png?raw=true)
+## ![Alt text](9-sukcesPNG.PNG?raw=true)
 
 Cały proces przebiegł bardzo szybko, jednak dzieje się to dlatego, że kontenery używają pamięci cache. Gdybyśmy usunęli wszystkie obrazy, trwałoby to około 4-5 minut.
 
@@ -241,7 +241,7 @@ Oczywiście korzystamy z tego samego obrazu, którego używaliśmy na poprzednic
 
 
 Jeżeli dodamy port, teraz na localhost 8083, powinniśmy otrzymać ekran startowy nodejs.org:
-![Alt text](10-ekarn.png?raw=true)
+![Alt text](10-ekarn.PNG?raw=true)
 
 Widzimy, że działa tutaj podwójne przekierowanie portów:
 
