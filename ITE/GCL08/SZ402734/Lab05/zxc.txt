@@ -1,0 +1,11 @@
+        stage('Test'){
+
+            steps{
+                echo 'Gulp tests'
+                dir("${params.Dockerfiles}"){
+                    sh 'docker rm typescript-tests || true'
+                    sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_alpine bash -c "cd /app_tests/TypeScript && gulp runtests-parallel"'
+                }
+            }
+
+        }
