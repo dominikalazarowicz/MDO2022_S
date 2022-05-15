@@ -4,5 +4,5 @@ WORKDIR /app/Guess-Word-Game
 
 #RUN gradle build
 
-RUN ls app/Guess-Word-Game
+RUN ls 
 
