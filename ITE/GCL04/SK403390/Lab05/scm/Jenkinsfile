@@ -54,7 +54,7 @@ pipeline {
 	    steps {
 		sh 'cp installationInfo fe-text'
 		echo params.version
-		sh 'tar -zcf irssi_v${params.version}.tar.gz fe-text/irssi'
+		sh "tar -zcf irssi_v${params.version}.tar.gz fe-text"
 		archiveArtifacts artifacts: "irssi_v${params.version}.tar.gz"
 	    }
 	}
