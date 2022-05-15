@@ -121,7 +121,8 @@ stage('Prepare')
 
 * Build:
 
-Krok `Build` odpowiada za zbudowanie projektu za pomocą dockerfilu o nazwie `RO_Dockerfile_Build`.
+Krok `Build` odpowiada za zbudowanie projektu za pomocą dockerfilu o nazwie `RO_Dockerfile_Build`. W kontenerze `ro_build` budowany jest projekt, do którego link znajduję się w dockerfilu pod ścieżką `ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build`. Następnie zostaje uruchomiony kontener wynikowy o nazwie `ro_build` z podpiętym woluminem wejściowym o nazwie `volume_input`. Zbudowany projekt kopiowany jest do woluminów wejściowego `volume_input` oraz do wyjściowego `volume_output`. Na samym końcu wyświetlane są zawartości woluminów w celu sprawdzenia czy kopiowanie przeszło pomyślnie.  
+
 
 ```
 stage('Build')
