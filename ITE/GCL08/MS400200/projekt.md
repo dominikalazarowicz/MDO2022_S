@@ -89,28 +89,33 @@ W tym miejscu folder z plikami .egg powinien byc pakowany i nastepnie archiwizow
 Niestety jednak, przy uruchomieniu stage:
 ```
 stage('Publish'){
-            when {
-                expression {return params.Promote}
-		    }
-            steps {
-                echo 'Publish'
-                dir("${params.Build_files}") {
-                    sh 'ls -a'
-                    sh 'docker build . -f DockerPublish -t basictracer_publish'
-				}
-                sh "docker run --volume /var/jenkins_home/workspace/node-red-pipeline:/finalArchive node-red_publish mv archive.tar.xz /finalArchive"
-                 dir('/var/jenkins_home/workspace/node-red-pipeline'){
-                    sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
-			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
-			    }
-               
-            }
+    when {
+        expression {return params.Promote}
+    }
+    steps {
+        echo 'Publish'
+        dir("${params.Build_files}") {
+            sh 'ls -a'
+            sh 'docker build . -f DockerPublish -t basictracer_publish'
+            
         }
+        sh "docker run --volume /var/jenkins_home/workspace/basictracer:/finalArchive node-red_publish mv archive.tar.xz /finalArchive"
+            dir('/var/jenkins_home/workspace/basictracer'){
+            sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
+            archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
+        }
+        
+    }
+}
 ```
 
 Oraz pliku DockerPublish
 ```
+FROM basictracer_build:latest
+RUN cd .. && tar cfJ archive.tar.xz basictracer.egg-info
+RUN cd .. && mv archive.tar.xz basictracer.egg-info
+```
 
-
+Folder basictracer_e
 
 
