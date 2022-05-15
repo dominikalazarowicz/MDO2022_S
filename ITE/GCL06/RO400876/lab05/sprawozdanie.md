@@ -24,13 +24,15 @@ Jeżeli posiadamy działające kontenery, kolejnym krokiem jest zalogowanie się
 
 ![img](tworzenie_projektu.PNG)
 
-Po utworzeniu projektu należy skonfigurować pipeline w sposób pokazany poniżej.
+Po utworzeniu projektu należy skonfigurować pipeline w sposób pokazany poniżej, a więc należy zaznaczyć pola `Do not allow concurrent builds` oraz `To zadanie jest sparametryzowane`.
 
 ![img](konfiguracja_pipeline1.PNG)
 
-Zostało dodane repozytorium wraz z branchem, z którego będą uruchamiane dockerfile.
+Następnie w opcjach zaawansowanych jako Definition należy wybrać z listy rozwijanej `Pipeline script from SCM`, następnie jako SCM należy wybrać `Git`. Następnie jako Repository URL należy dodać repozytorium w tym przypadku jest to repozytorium przedmiotu `https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S`. 
 
 ![img](konfiguracja_pipeline22.PNG)
+
+W kolejnym kroku jako Branch Specifier należy wpisać nazwę własnego brancha w moim przypadku jest to `*/RO400876`. W ostatnim polu o nazwie Script Path należy dodać ścieżkę do Jenkinsfile'a `ITE/GCL06/RO400876/lab05/RO_Jenkinsfile`.
 
 ![img](konfiguracja_pipeline3.PNG)
 
@@ -146,7 +148,7 @@ stage('Build')
 
 * Test:
 
-Krok `Test` odpowiada za testowanie programu. Na Tworzony jest kontener `ro-test`, w którym za pomocą wcześniej opisanego dockerfile'a `RO_Dockerfile_Test` uruchamiane są testy znajdujące się w repozytorium programu. 
+Krok `Test` odpowiada za testowanie programu. Na początku usuwany jest kontener `ro_test` jeżeli istnieje. Jest to szczególnie ważne jeżeli projekt uruchamiany jest więcej niż jeden raz. Tworzony jest kontener `ro-test`, w którym za pomocą wcześniej opisanego dockerfile'a `RO_Dockerfile_Test` uruchamiane są testy znajdujące się w repozytorium programu. Następnie uruchamiany jest kontener o nazwie `test_container` z podpiętym woluminem wejściowym `volume_input`. 
 
 ```
 stage('Test')
@@ -166,4 +168,28 @@ stage('Test')
 		}
 ```
 
+
+
+
+* Deploy:
+
+
+
+```
+stage('Deploy')
+        {
+            steps
+            {
+                sh '''
+                echo "Wdrażanie projektu..."
+                
+                docker rm -f deploy_container || true
+                docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/ro_project node
+                exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
+                
+                echo "Wdrażanie zakończone"
+            	'''
+            }
+        }
+```
 
