@@ -91,7 +91,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
-    W powyzszym fragmencie zostaly pokazane parametry jak i ustawnie `agent` na `any` co umozliwia uruchomie zadania na dowolnym wezle aktualnie dostepnym. Wykonywany Pipline zostal obarczony dwama parametrami `VERSION` okreslajaca wersje programu jak i `PROMOTE` ktora okreslala czy publish sie wykona tym jak i zapisywala artefakty
+    W powyzszym fragmencie zostaly pokazane parametry jak i ustawnie `agent` na `any` co umozliwia uruchomie zadania na dowolnym wezle aktualnie dostepnym. Wykonywany Pipline zostal obarczony dwama parametrami `VERSION` okreslajaca wersje programu jak i `PROMOTE` ktora okreslala czy publish sie wykona
 
     2. Preparing and Cleaning
     ```
@@ -128,7 +128,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     Opis:
 
     Wykonujac ten krok na poczatku zostanie wykonane sklonowanie i zbudowanie programu uzywajac wyzej opisanego `Dockerfile1` ktore zostanie wykonane w kontenerze `kacper_build`
-    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera `kacper_build` ze zbudowanym programem nastepnie z kontenra wejsciowego jego zawartosc zostaje skopiowana na volumin wyjsciowy na koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
+    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera `kacper_build` ze zbudowanym programem po czym z kontenra wejsciowego zawartosc zostaje skopiowana na volumin wyjsciowy na koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
 
     4. Cleaning Test
 
@@ -144,7 +144,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontenera na ktorym sa uruchomiane testy dla repozytorium
+    Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontener na ktorym sa uruchomiane testy dla repozytorium mongo-express
    
     5. Test
 
@@ -163,7 +163,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Powyzszy krok odpowiada za przeprowadzenie testow gdzie na poczatku zostaje one przeprowadzone na podstwaie wczesniej opisanego `Dockerfile2` w ktorym zostaja zawarte polecenia potrzebne do uruchomienia testow zostaka one uruchomione na kontenerze `kacper_test` gdzie jako bazowy zostaje uzyty kontener `kacper_build` nastepnie zostaje uruchomiony kontener testowy `kn_test` z podpietym voluminem `kacper_in`
+    Powyzszy krok odpowiada za przeprowadzenie testow poczatkowo zostaje one przeprowadzone uzywajac wczesniej opisanego `Dockerfile2` w ktorym zostaja zawarte polecenia potrzebne do uruchomienia testow, zostaja one uruchomione na kontenerze `kacper_test` gdzie jako bazowy zostaje uzyty kontener `kacper_build` nastepnie zostaje uruchomiony kontener testowy `kn_test` z podpietym voluminem `kacper_in`
 
     6. Deploy Cleaning
 
@@ -197,8 +197,8 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
-    W powyzszym fragmencie kodu zostaje utworzony kontener kacper_deploy sluzacy do przeprowadzenia wdrozenia z podpietym voluminem wyjsciowym w ktorym znajduje sie skopiowane z voluinu wejsciowego repozytorium 
-    nastepnie zostaje sprawdzony exit code ktory jesli wykonal sie poprawnie kolejne kroki sa wykonywane w pozniejszym etapie kontener zostaje usuwany
+    W powyzszym fragmencie kodu zostaje utworzony kontener `kacper_deploy` sluzacy do przeprowadzenia wdrozenia z podpietym voluminem wyjsciowym w ktorym znajduje sie skopiowane z voluinu wejsciowego repozytorium 
+    nastepnie zostaje sprawdzony exit code ktory jesli wykonal sie poprawnie, kolejne kroki sa wykonywane w pozniejszym etapie kontener zostaje usuwany
 
     7. Publish Cleaning
     ```
