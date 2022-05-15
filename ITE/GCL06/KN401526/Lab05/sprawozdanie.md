@@ -182,8 +182,21 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     6. Deploy
 
-  
+    ```
+      stage('Deploy')
+        {
+            steps
+            {
+                
+                sh 'docker run -dit --name kacper_deploy --mount type=volume,src="kacper_out",dst=/kn_proj node'
+                sh 'exit $(docker inspect kacper_deploy --format="{{.State.ExitCode}}")'
+            }
+        }
+        
+    ```
+    Opis:
 
+    
    
 
 
