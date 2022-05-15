@@ -271,4 +271,17 @@ post
             echo 'Pipeline zakończony z błędem!'
         }
 }
-```        
+``` 
+
+
+
+
+### 5. Uruchomienie projektu.
+
+Aby przetestować działanie projektu należy uruchomić projekt za pomocą `Uruchom z parametrami`, następnie pojawi się okienko z domyślnymi wartościami parametrów. Domyślnie parametr `VERSION` ustawiony jest na 1.0.0, a parametr `PROMOTE` jest zanznaczony, natomiast przy każdym uruchomieniu projektu jesteśmy zmieniać wartości parametrów. 
+
+![img](parametry.PNG)
+
+Po ustawieniu wartości parametrów i wciśnięciu przycisku `Buduj` ukaże się status każdego kroku w pipeline. W tym przypadku każdy z etapów projektu został podświetlony kolorem zielonym, a więc można stwierdzić, że projekt działa poprawnie. Dla przetestowania projekt został uruchomiony kilkukrotnie. Na samej górze istnieje ikona spakowanej nowej wersji programu `cytoscape_1.0.0.tar.xz`, która powstała poprzez uruchomienie projektu i jest gotowa do pobrania.
+
+![img](uruchomienie1.PNG)
