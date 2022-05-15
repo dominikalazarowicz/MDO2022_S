@@ -44,8 +44,7 @@ pipeline {
 	}
 	stage('publish') {
 	    steps {
-		sh 'cp installationInfo fe-text'
-		sh 'tar -czvf irssi_v${env.BUILD_NUMBER}.tar.gz fe-text/'
+		sh 'tar -c - f irssi_v${env.BUILD_NUMBER}.tar.gz installationInfo fe-text/irssi'
 		archiveArtifacts artifacts: 'irssi_v{env.BUILD_NUMBER}.tar.gz'
 	    }
 	}
