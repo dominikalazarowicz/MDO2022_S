@@ -10,4 +10,4 @@ git
 
 WORKDIR yara
 
-CMD sh -c "ls -la && ./bootstrap.sh && ./configure && make"
+CMD sh -c "./bootstrap.sh && ./configure && make && cd .. && cp -r yara/. public"
