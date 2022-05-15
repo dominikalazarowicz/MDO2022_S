@@ -30,7 +30,7 @@ pipeline{
                 dir('INO/GCL01/AG401570/Lab05') {
                     sh 'docker build . -f dockerFile3 -t deploy'
                 }
-                sh 'docker run --volume /var/jenkins_home/workspace/Rurociag/INO/GCL01/AG401570/Lab05/pcalc:/pcalc -d -p 3000:80 deploy'
+                sh 'docker run --volume /var/jenkins_home/workspace/Rurociag/INO/GCL01/AG401570/Lab05:/pcalc -d -p 3000:80 deploy'
                 sh 'docker stop $(docker ps -a -q)'
             }
         }
