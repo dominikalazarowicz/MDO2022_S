@@ -2,6 +2,10 @@ pipeline {
 
 	agent any
 	
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('kalch1')
+	}
+	
 	stages {
 		stage('Build') {
 			steps {
