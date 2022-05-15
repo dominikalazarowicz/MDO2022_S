@@ -34,7 +34,7 @@ pipeline
 				sh '''
 				echo "Building project..."
 				
-				docker build . -f ./ITE/GCL04/MK401058/lab05/DockerfileBuild -t mk_build
+				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileBuild -t mk_build
                     		docker run --mount type=volume,src="mk_build",dst=/volume_input mk_build:latest bash -c "cd .. &&  cp -r /vue-testins-series /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
                     		 	    
 				echo "Building finished!"
@@ -51,7 +51,7 @@ pipeline
 				echo "Testing project..."
 				
 				docker rm -f DockerfileTest || true
-				docker build . -f ./ITE/GCL04/MK401058/lab05/DockerfileTest -t mk_test
+				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileTest -t mk_test
 				docker run --name test_container --rm --mount source= mk_test,target=/volume_input mk_test:latest
 				
 				echo "Testing finished!"
