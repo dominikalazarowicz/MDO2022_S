@@ -33,8 +33,8 @@ pipeline
        		{
             steps 
             		{
-               sh 'docker build -t test . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
-               sh 'docker run --name test_container -v repo_vol:/Guess-Word-Game test'
+               sh 'docker build -t test . -f ./ITE/GCL06/AP304152/Lab05/docker_test'
+               sh 'docker run --name test_container -v repo_vol:/Cytoscape test'
             		}
         	}
 		
