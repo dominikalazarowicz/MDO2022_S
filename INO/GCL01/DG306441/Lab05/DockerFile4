@@ -1,0 +1,3 @@
+FROM build:latest
+
+RUN tar cfJ publish.tar.xz build
