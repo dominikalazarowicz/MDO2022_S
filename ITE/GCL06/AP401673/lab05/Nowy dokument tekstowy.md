@@ -1,5 +1,4 @@
 
-
 # Sprawozdanie projekt
 
 ## Cel
@@ -19,13 +18,14 @@ Podczas tworzeniu pipeline'u zaobserwowano pewne problemy podczas korzystania z 
 1. Konfiguracja Jenkinsa
  Pierwszym wykonanym krokiem było odpowiednie skonfigurowanie  Jenkinsa. 
  W ustawieniach Zarządzaj Jenkinsem > Konfiguruj ustawienia bezpieczeństwa zaznaczono dostęp do odczytu dla osób niezalogowanych aby mogły pobrać utworzono artefakt
-ss
+![](Screenshot_1.png)
 Utworzono projekt i podpięto go do naszego repozytorium tak aby Jenkins pracował na Jenkisfile umieszczonym w osobistym branchu. W tym celu w definicji wybrano Pipeline script from SCM, w SCM wybrano Git. Dalej podano link do naszego repozytorium, jako branch ustawiono na własny oraz na końcu podano ścieżkę do Jenkinsfile.
-ss
 
+![](Screenshot_2.png)
+![](Screenshot_3.png)
 2. Parametry 
 Dla działanie pipeline'u ustawiono parę parametrów. Ustawiono parametr Version aby móc nadawać tworzonemu artefaktowi wersje. Kolejnym parametrem jest parametr Promote gdy jest on ustawiony na true pipeline wykona krok Publish w którym utworzy nową wersje artefaktu w przeciwnym przypadku pominie ten krok. Dodatkowo ustawiono parametr branch który pozwala na klonowanie z wybranego brancha.
-ss
+![](Screenshot_4.png)
 
 3.  Klonowanie repozytorium
 Stage clone. 
@@ -124,6 +124,6 @@ Ten etap jest opcjonalny, nawet gdy wszystkie inne kroki przebiegną poprawnie. 
     }
 8. Działanie
 Zdjęcie przedstawia pomyślnie uruchomiony pipeline wraz z utworzonym artefaktem dostępnym dla osoby która nie jest zalogowana.
-ss
+![](Screenshot_5.png)
 9.  Diagram aktywności
-ss
+![](diagram%20akwtywno%C5%9Bci.png) 
