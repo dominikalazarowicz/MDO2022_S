@@ -1,3 +1,3 @@
-FROM app_build:latest as test
+FROM build
 
-CMD ["sh", "-c", "gradle -f /volume_in/Guess-Word-Game/build.gradle test"]
+CMD gradle test

@@ -10,14 +10,12 @@ pipeline
         {
             steps 
             {
-               sh 'docker container prune -f'
-               sh 'docker volume prune -f' 
-               sh "docker volume create clone"
-               sh "docker run --mount source=clone,target=/app --name clone ubuntu"
-               sh "rm -rf Guess-Word-Game"
-               sh "git clone https://github.com/LondonJim/Guess-Word-Game.git"
-               sh "docker cp ./Guess-Word-Game clone:/app"
-               sh "docker rm -f clone"            
+              sh 'docker container prune -f'
+              sh 'docker volume prune -f'
+              sh 'docker volume  create --name repo_vol'
+              sh 'docker volume  create --name build_vol'
+              sh "docker build -t clone . -f ITE/GCL04/MP401341/Lab05/docker_clone"
+              sh "docker run -v repo_vol:/Guess-Word-Game clone"           
             }
         }
 
@@ -26,10 +24,17 @@ pipeline
         {
             steps 
             {
-               sh "docker rm -f builder"
-               sh "docker volume create build"
-               sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh "docker run --rm --mount source=clone,target=/app --mount source=build,target=/app/Guess-Word-Game/build --name build app_build:latest"
+               sh 'docker build -t build . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
+               sh 'docker run --name build_container -v repo_vol:/Guess-Word-Game -v build_vol:/build -v ${PWD}:/public build'
+            }
+        }
+
+         stage('Test') 
+        {
+            steps 
+            {
+               sh 'docker build -t test . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
+               sh 'docker run --name test_container -v repo_vol:/Guess-Word-Game test'
             }
         }
 

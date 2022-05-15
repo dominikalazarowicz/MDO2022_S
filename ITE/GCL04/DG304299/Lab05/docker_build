@@ -1,8 +1,10 @@
-FROM gradle:latest AS build
+FROM debian:latest
 
-WORKDIR /app/Guess-Word-Game
+RUN apt update
+RUN apt install -y default-jdk gradle
 
-RUN apt install default-jdk
-CMD gradle build
+WORKDIR Guess-Word-Game
+
+CMD ["sh", "-c", "gradle build && cp ./build/libs/guess.jar /public && cp ./build/libs/guess.jar /build"]
 
 
