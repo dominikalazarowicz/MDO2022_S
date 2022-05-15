@@ -1,7 +1,6 @@
 pipeline {
 	agent any
     parameters {
-        string(name: 'BRANCH', defaultValue: 'master', description: '')
         string(name: 'VERSION', defaultValue: '0.1.0', description: '')
         booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
         }
@@ -12,7 +11,7 @@ pipeline {
               sh 'docker volume prune -f'
               sh 'docker volume  create --name repo_vol'
               sh "docker build -t clone_yara . -f ITE/GCL06/AP401673/lab05/Dockerfile_clone"
-              sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/yara clone_yara"
+              sh "docker run -v repo_vol:/yara clone_yara"
                 }
               }
         stage("Build") {
