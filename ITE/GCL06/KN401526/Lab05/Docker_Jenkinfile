@@ -62,7 +62,7 @@ pipeline
             }
         } 
         
-        stage('Clean')
+        stage ('Clean')
         {
         	sh 'docker rm -f kacper_build || true'
                 sh 'docker rm -f kacper_test || true'
