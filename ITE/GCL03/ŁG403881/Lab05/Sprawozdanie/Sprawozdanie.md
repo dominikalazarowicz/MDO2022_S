@@ -299,7 +299,7 @@ W sekcji `steps`:
 
 W sekcji `post`:
   - zostaje wypisana adekwatna wiadomość.
-  - w przypadku wykonania się `currentBuild.result = 'ABORTED'` wykona się sekcja `unsuccessful`.
+  - w przypadku wykonania się `currentBuild.result = 'ABORTED'` wykona się sekcja `unsuccessful`, która dodatkowo wysyła error.
 
 ### 8. Publish
 ```groovy
