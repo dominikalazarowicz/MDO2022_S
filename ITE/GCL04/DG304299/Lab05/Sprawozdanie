@@ -212,7 +212,7 @@ Po zbudowaniu kontener został uruchomiony z podmontowanym voluminem repozytoriu
 - Stage Publish w Jenkinsfile
 
      Jeżeli wszystkie poprzednie kroki zakończą się pomyślnie oraz zaznaczono opcję PUBLISH przy uruchamianiu pipeline'a, aplikacja jest publikowana, jeśli nie wyświetlamy komunikat W celu publikacji psołużono się Jenkinsem jako serwerem buildów.
-      
+
      W kroku Publish zmieniamy nazwę pliku tak by uwzględnić nazwę wersji oraz używamy polecenia archiveArtifacts aby zapisać archiwum jako artefakt w Jenkinsie.
 
      ```
@@ -258,12 +258,16 @@ Po zbudowaniu kontener został uruchomiony z podmontowanym voluminem repozytoriu
 
         }
     ```
-
-
     ![img](pipeline_start.png)
 
     ![img](pipeline.png)
 
+
+## 6. DIAGRAM
+
+- Diagram aktywności w formacie png:
+
+    ![img](Jenkins_Diagram.png)
 
 
      
