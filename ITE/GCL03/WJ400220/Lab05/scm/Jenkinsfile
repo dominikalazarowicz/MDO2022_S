@@ -4,6 +4,8 @@ pipeline {
 	booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
     }
     agent any
+    tools {nodejs "nodejs-16"}
+
     stages {
         stage('Build') {
             steps {
