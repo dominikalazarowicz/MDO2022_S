@@ -45,8 +45,8 @@ pipeline {
 		sh 'cd ../artifacts/files/testing-node-apps && ls -al'
 		sh 'cd /var/jenkins_home/workspace/artifacts/files/testing-node-apps && ls -al'
 		sh 'pwd'
-		sh 'tar -zcf testing-node-apps_${params.VERSION}.tar.gz -C /var/jenkins_home/workspace/artifacts//files/testing-node-apps .'
-		archiveArtifacts artifacts: "testing-node-apps_${params.VERSION}.tar.gz"
+		sh 'ls -al && tar -czvf testing-node-apps-${params.VERSION}.tar.gz ${params.VERSION}/'
+		archiveArtifacts artifacts: "testing-node-apps-${params.VERSION}.tar.gz"
 		sh 'docker rm -f build_node || true'
                 sh 'docker rm -f test_node || true'
                 sh 'docker rm -f deploy_node || true'
