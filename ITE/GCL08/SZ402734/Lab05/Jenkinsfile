@@ -1,21 +1,16 @@
-pipeline
-{
+pipeline{
 
     agent any
 
-    parameters 
-    {
+    parameters {
         string(name: 'Dockerfiles', defaultValue: './ITE/GCL08/SZ402734/Lab05', description: 'Path of Dockerfile in git: ')
         string(name: 'Version', defaultValue: '0.0.1', description: 'Version of the pip: ')
         booleanParam(name: 'Promote', defaultValue: true, description: 'Statement: ')
     }
 
-    stages 
-    {
-        stage('Clone and build') 
-        {
-            steps 
-            {
+    stages {
+        stage('Clone and build') {
+            steps {
                 echo 'Create input volume'
                 sh 'docker volume create input-volume'
                 sh 'docker rm tmp-c || true'
@@ -26,8 +21,7 @@ pipeline
 
 
                 echo 'TypeScript-Website build by using npm'
-                dir("${params.Dockerfiles}") 
-                {
+                dir("${params.Dockerfiles}") {
                     sh 'docker build . -t typescript_node -f Dockerfile'
                     sh 'docker volume create TMP_OUT_V'
                     sh 'docker rm TypeScriptBuild || true'
@@ -40,14 +34,11 @@ pipeline
 
             }
 
-            stage('Test')
-            {
+            stage('Test'){
 
-                steps
-                {
+                steps{
                     echo 'Yarn tests'
-                    dir("${params.Dockerfiles}")
-                    {
+                    dir("${params.Dockerfiles}"){
                         sh 'docker rm typescript-tests || true'
                         sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_alpine bash -c "cd /app_tests/TypeScript && yarn test"'
                     }

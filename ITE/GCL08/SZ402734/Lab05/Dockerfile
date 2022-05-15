@@ -1,5 +1,5 @@
 FROM node:alpine
 
-WORKDIR app_tests
+WORKDIR myapp_test
 
 RUN apk update && apk add bash && apk add nodejs
