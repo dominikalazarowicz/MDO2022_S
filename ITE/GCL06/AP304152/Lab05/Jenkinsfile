@@ -9,10 +9,13 @@ pipeline
         	{
             steps 
             		{
-               		sh 'docker container prune -f'
-               		sh 'docker volume prune -f' 
-               		sh 'docker build -t app_build:latest . -f ./ITE/GCL06/AP304152/Lab05/docker_clone'
-               		sh "docker run --name clone --rm --mount source=in,target=/volume_in "
+               		
+				
+			sh "docker system prune --all -f"
+             		 sh 'docker volume  create --name repo_vol'
+             		 sh 'docker volume  create --name build_vol'
+             		 sh "docker build -t clone . -f ./ITE/GCL06/AP304152/Lab05/docker_clone"
+             		 sh "docker run -v repo_vol:/Cytoscape clone"           
         		}
 		}
 
