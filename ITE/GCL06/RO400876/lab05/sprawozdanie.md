@@ -36,6 +36,8 @@ Zostało dodane repozytorium wraz z branchem, z którego będą uruchamiane dock
 
 Po ukończeniu konfiguracji pipline ukaże się poniższy ekran startowy utworzonego projektu.
 
+![img](jenkins_start.PNG)
+
 
 
 
