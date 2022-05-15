@@ -23,8 +23,18 @@ pipeline
         	{
             steps 
             		{
-           	echo 'build'
-               
+           	
+                sh 'docker build -t build . -f ./ITE/GCL06/AP304152/Lab05/docker_build'
+               sh 'docker run --name build_container -v repo_vol:/Cytoscape -v build_vol:/build build'
+            		}
+        	}
+		
+	stage('Test') 
+       		{
+            steps 
+            		{
+               sh 'docker build -t test . -f ./ITE/GCL04/DG304299/Lab05/docker_test'
+               sh 'docker run --name test_container -v repo_vol:/Guess-Word-Game test'
             		}
         	}
 		
