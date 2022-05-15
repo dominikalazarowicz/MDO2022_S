@@ -127,7 +127,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     Opis:
 
     Wykonujac ten krok na poczatku zostanie wykonane sklonowanie i zbudowanie programu uzywajac wyzej opisanego Dockerfile1 ktore zostanie wykonane w kontenerze kacper_build
-    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera kacper_build ze zbudowanym programem nastepnie z kontenra wejsciowego jego zawartosc zostaje skopiowana na volumin wyjsciowy n koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
+    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera kacper_build ze zbudowanym programem nastepnie z kontenra wejsciowego jego zawartosc zostaje skopiowana na volumin wyjsciowy na koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
 
     3. Cleaning Test
 
@@ -196,7 +196,31 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
+    W powyzszym fragmencie kodu zostaje utworzony kontener kacper_deploy sluzacy do przeprowadzenia wdrozenia z podpietym voluminem wyjsciowym w ktorym znajduje sie skopiowane z voluinu wejsciowego repozytorium 
+    nastepnie zostaje sprawdzony exit code ktory jesli wykonal sie poprawnie w pozniejszym etapie kontener zostaje usuwany
+
+    7. Publish Cleaning
+    ```
+     stage('Publish Cleaning')
+        {
+         steps
+         {
+          sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts'
+         }
+        }
+    ```
+
+    Opis:
+
+    Powyzszy fragment kodu odpowiada za usuwaniecie folderu zawierajacego artefakty
+
+    8. Publish
+    ```
     
+    ```
+
+
+
    
 
 
