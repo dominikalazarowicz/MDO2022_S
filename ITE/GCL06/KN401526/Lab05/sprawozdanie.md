@@ -14,6 +14,7 @@ W celu wykonania projektu zostaly stworzone dwa Dockerfile.
   1. Przygotowanie kontenerow
 
  ![img](kontenery.PNG)
+
 Opis:
 
 Zostaly przygotowane dwa kontenery kontener zawierajacy Jenkins o nazwie jenkins-blueocean a takze kontener wykonawczy z obrazem DIND kn_docker.
@@ -90,7 +91,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
-    W powyzszym fragmencie zostaly pokazane parametry jak i ustawnie agenta na `any` co umozliwia uruchomie zadania na dowolnym wezle aktualnie dostepnym. Wykonywany Pipline zostal obarczony dwama parametrami `VERSION` okreslajaca wersje programu jak i `PROMOTE` ktora okreslala czy publish sie wykona tym jak i zapisywala artefakty
+    W powyzszym fragmencie zostaly pokazane parametry jak i ustawnie `agent` na `any` co umozliwia uruchomie zadania na dowolnym wezle aktualnie dostepnym. Wykonywany Pipline zostal obarczony dwama parametrami `VERSION` okreslajaca wersje programu jak i `PROMOTE` ktora okreslala czy publish sie wykona tym jak i zapisywala artefakty
 
     2. Preparing and Cleaning
     ```
@@ -143,7 +144,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontenra na ktorym sa uruchomiane test dla repozytorium
+    Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontenera na ktorym sa uruchomiane testy dla repozytorium
    
     5. Test
 
@@ -243,7 +244,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     tworzony artefakt jesli wartosc `PROMOTE` bedzie wynosila false to 
     artefakty nie utworza sie w obszarze zostaje stworzony 
     folder w ktorym beda zapisywane 
-    artefakty gdzie zostaja mu nadane uprawnienia 777 dajac wszystkim uzytkownikom wszystkie uprawnienia nastepnie zosyaje stworzony kontener `kacper_publish` z podpietym voluminem wyjsciowym `kacper_out`. Artefakty zostaja zapakowane do pliku `tar.xz` z 
+    artefakty gdzie zostaja mu nadane uprawnienia 777 dajac wszystkim uzytkownikom wszystkie uprawnienia nastepnie zostaje stworzony kontener `kacper_publish` z podpietym voluminem wyjsciowym `kacper_out`. Artefakty zostaja zapakowane do pliku `tar.xz` z 
     nadana wersja z parametru `VERSION` 
 
     9. Cleaning Memory
@@ -264,7 +265,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Powyzszy fragment kodu przedstawia usuwanie powstalych kontenerow podczas wykonywania poszczegolnych krokow Pipline
 
-    10. Czynnosc po stages 
+    10. Succes or Error 
     ```
       post
       {
@@ -280,7 +281,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
-    Powyzszy fragment kodu odpowiada za wyswietlenie wiadomosci o udanym zakonczeniu Pipline zakonczyl sie succesem czy porazka
+    Powyzszy fragment kodu odpowiada za wyswietlenie wiadomosci o udanym zakonczeniu Pipline lub ERROR jesli wystapil blad
 
     11. Przykladowe uruchmienie
 
@@ -288,7 +289,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Uruchomiajac Piplina mozna wybrac wersje domyslnie ten parametr jest ustawiony na wersje 1.0.0
+    Uruchomiajac Pipline mozna wybrac wersje, domyslnie ten parametr jest ustawiony na wersje 1.0.0
     
     ![img](uruchomienie.PNG)
 
