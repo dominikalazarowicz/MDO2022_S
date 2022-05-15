@@ -11,7 +11,7 @@ Celem projektu było utworzenie pipeline'u za pomocą serwera Jenkins. Zadaniem 
 
 ### 1. Przygotowanie kontenerów.
 
-Przed rozpoczęciem pracy z Jenkinsem należy przygotować kontenery, potrzebne do wykonania projektu. Potrzebne są dwa kontenery: kontener z Jenkinsem, który został utworzony pod nazwą jenkins-blueocean oraz kontener z obrazem DIND o nazwie jenkins_Dockerfile.
+Przed rozpoczęciem pracy z Jenkinsem należy przygotować kontenery, potrzebne do wykonania projektu. Potrzebne są dwa kontenery: kontener z Jenkinsem, który został utworzony pod nazwą jenkins-blueocean oraz kontener z obrazem DIND o nazwie jenkins_Container.
 Szczegółowa instrukcja jak uruchomić wyżej wspomniane dockerowe kontenery znajduję na moim githubie w sprawozdaniu do lab04 znajdującym się pod linkiem: https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/RO400876/ITE/GCL06/RO400876/lab04/sprawozdanie.md
 
 Aby sprawdzić czy uruchomienie kontenerów przebiegło pomyślnie należy skorzystać z komendy `sudo docker ps`, za pomocą której można zobaczyć aktualnie działające kontenery. 
@@ -230,7 +230,7 @@ stage ('Publish')
 
 * Clean:
 
-Krok `Clean`
+Krok `Clean` został utworzony w celu uporządkowania skryptu aby był bardziej przejrzysty. W sekcji tej następuje ogólne czyszczenie projektu po zakończonej najważniejszej pracy. Znajdują się tutaj polecenia do usuwania kolejnych kontenerów: `ro_build`, `ro_test`, `deploy_container` oraz `ro_publish`. Zabieg ten zapobiega nadpisywaniu się danych. 
 
 ```
 stage('Clean')
@@ -253,3 +253,22 @@ stage('Clean')
         
 	}
 ```
+
+
+
+
+Na samym końcu pipline'u znajduję się fragment skryptu odpowiedzialny za wypisanie wiadomości `Pipeline zakończony sukcesem!` jeżeli wszystkie wcześniejsze kroki przejdą pomyślnie lub `Pipeline zakończony z błędem!` jeżeli którykolwiek krok zakończył się niepowodzeniem. 
+
+```
+post 
+{
+    success 
+        {
+            echo 'Pipeline zakończony sukcesem!'
+        }
+    failure 
+        {
+            echo 'Pipeline zakończony z błędem!'
+        }
+}
+```        
