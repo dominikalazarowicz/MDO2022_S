@@ -90,7 +90,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```
     Opis:
 
-    W powyzszym fragmencie zostaly pokazane parametry jak i ustawnie agenta na any co umozliwia uruchomie zadania na dowolnym wezle aktualnie dostepnym. Wykonywany Pipline zostal obarczony dwama parametrami VERSION okreslajaca wersje programu jak i PROMOTE ktora okreslala czy publish sie wykona tym jak i zapisywala artefakty
+    W powyzszym fragmencie zostaly pokazane parametry jak i ustawnie agenta na `any` co umozliwia uruchomie zadania na dowolnym wezle aktualnie dostepnym. Wykonywany Pipline zostal obarczony dwama parametrami `VERSION` okreslajaca wersje programu jak i `PROMOTE` ktora okreslala czy publish sie wykona tym jak i zapisywala artefakty
 
     2. Preparing and Cleaning
     ```
@@ -126,10 +126,10 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Wykonujac ten krok na poczatku zostanie wykonane sklonowanie i zbudowanie programu uzywajac wyzej opisanego Dockerfile1 ktore zostanie wykonane w kontenerze kacper_build
-    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera kacper_build ze zbudowanym programem nastepnie z kontenra wejsciowego jego zawartosc zostaje skopiowana na volumin wyjsciowy na koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
+    Wykonujac ten krok na poczatku zostanie wykonane sklonowanie i zbudowanie programu uzywajac wyzej opisanego `Dockerfile1` ktore zostanie wykonane w kontenerze `kacper_build`
+    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera `kacper_build` ze zbudowanym programem nastepnie z kontenra wejsciowego jego zawartosc zostaje skopiowana na volumin wyjsciowy na koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
 
-    3. Cleaning Test
+    4. Cleaning Test
 
     ```
      stage('Test Cleaning')
@@ -145,7 +145,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontenra na ktorym sa uruchomiane test dla repozytorium
    
-    4. Test
+    5. Test
 
     ```
      stage('Test') 
@@ -162,9 +162,9 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Powyzszy krok odpowiada za przeprowadzenie testow gdzie na poczatku zostaje one przeprowadzone na podstwaie wczesniej opisanego Dockerfile2 w ktorym zostaja zawarte polecenia potrzebne do uruchomienia testow zostaka one uruchomione na kontenerze kacper_test gdzie jako bazowy zostaje uzyty kontener kacper_build nastepnie zostaje uruchomiony kontener testowy kn_test z podpietym voluminem kacper_in
+    Powyzszy krok odpowiada za przeprowadzenie testow gdzie na poczatku zostaje one przeprowadzone na podstwaie wczesniej opisanego `Dockerfile2` w ktorym zostaja zawarte polecenia potrzebne do uruchomienia testow zostaka one uruchomione na kontenerze `kacper_test` gdzie jako bazowy zostaje uzyty kontener `kacper_build` nastepnie zostaje uruchomiony kontener testowy `kn_test` z podpietym voluminem `kacper_in`
 
-    5. Deploy Cleaning
+    6. Deploy Cleaning
 
     ```
       stage('Deploy Cleaning')
@@ -238,13 +238,13 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     Opis:
 
     Pierwsza rzecza jaka zostaje sprawdzona w powyzszym kodzie 
-    jest wartosc parametru PROMOTE jesli wynosi on true to zostaja
+    jest wartosc parametru `PROMOTE` jesli wynosi on true to zostaja
     wykonane polecenia znajdujace sie obrzarze steps gdzie zostaje 
-    tworzony artefakt jesli wartosc PROMOTE bedzie wynosila false to 
+    tworzony artefakt jesli wartosc `PROMOTE` bedzie wynosila false to 
     artefakty nie utworza sie w obszarze zostaje stworzony 
     folder w ktorym beda zapisywane 
-    artefakty gdzie zostaja mu nadane uprawnienia 777 dajac wszystkim uzytkownikom wszystkie uprawnienia nastepnie zosyaje stworzony kontener kacper_publish z podpietym voluminem wyjsciowym kacper_out. Artefakty zostaja zapakowane do pliku tar.xz z 
-    nadana wersja z parametru VERSION 
+    artefakty gdzie zostaja mu nadane uprawnienia 777 dajac wszystkim uzytkownikom wszystkie uprawnienia nastepnie zosyaje stworzony kontener `kacper_publish` z podpietym voluminem wyjsciowym `kacper_out`. Artefakty zostaja zapakowane do pliku `tar.xz` z 
+    nadana wersja z parametru `VERSION` 
 
     9. Cleaning Memory
     ```
@@ -262,7 +262,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Powyzszy fragment kodu przedstawia usuwanie powstalych kontenerow podczas wykonywania poszczegolnych krokow Piplina
+    Powyzszy fragment kodu przedstawia usuwanie powstalych kontenerow podczas wykonywania poszczegolnych krokow Pipline
 
     10. Czynnosc po stages 
     ```
@@ -284,17 +284,29 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     11. Przykladowe uruchmienie
 
+    ![img](wersja.PNG)
+
+    Opis:
+
+    Uruchomiajac Piplina mozna wybrac wersje domyslnie ten parametr jest ustawiony na wersje 1.0.0
+    
     ![img](uruchomienie.PNG)
 
     Opis:
 
     Powyzszy zrzut ekranu przedstawia przykladowe uruchomienie napisanego Piplina jak widac na powyzszym zrzucie wszystkie etapy zakonczyly sie sukcesem i mozn zaobserwowoac stworzenie sie starowanego pliku z artefaktami
-
+    parametr `Promote` w kazdym uruchomieniu zostaje domyslne zaznaczone
+    
     12. Diagram
 
       ![img](diagram.PNG)
 
 
+    Opis:
+
+    Diagram zostal stworzony w aplikacji `Draw.io` 
+    
+    `https://app.diagrams.net/`
     
 
 
