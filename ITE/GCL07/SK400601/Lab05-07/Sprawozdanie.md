@@ -338,4 +338,4 @@ W celu utworzenia pipeline'u jako źródło należy wybrać githuba i podać tą
 
 ## **Diagramy:**
 
-Diagramy zostały stworzenie w lucidchart i wyeksportowane do formatu visio, dlatego diagramy w formacie visio trochę się rozjeżdżają (zwłaszcza diagram wdrożeń), więc proponuje korzystać z diagramów w formacie png.
+Diagramy zostały stworzone w lucidchart i wyeksportowane do formatu visio, dlatego diagramy w formacie visio trochę się rozjeżdżają (zwłaszcza diagram wdrożeń), więc proponuje korzystać z diagramów w formacie png.
