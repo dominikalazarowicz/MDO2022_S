@@ -15,28 +15,28 @@
 5. W reopozytorium umieściłem folder który zawiera pliki źródłowe naszej aplikacji, Dockerfile i Jenkinsfile.
 6. Przygotowuje pipeline:
    1. Dockerdep
-    ![img](./sc_dev_ops_5/5.PNG)
+    ![img](./sc_dev_ops_5/5.png)
    Posłuży do pobrania dependencji aplikacji.
    2. Dockerbuild
-    ![img](./sc_dev_ops_5/6.PNG)
+    ![img](./sc_dev_ops_5/6.png)
    Bazuje na poprzednio zbudowanym obrazie, buduje aplikacje z kodów źródłowych i dependecji. Jeśli wszystko przejdzie poprawnie, zostanie zapisany artefakt.
    3. Dockertest
-    ![img](./sc_dev_ops_5/8.PNG)
+    ![img](./sc_dev_ops_5/8.png)
    Uruchamia testy
    4. Dockerpublish
-    ![img](./sc_dev_ops_5/9.PNG)
+    ![img](./sc_dev_ops_5/9.png)
    Budowany na czystym openjdk-alpine aby sprawdzic czy aplikacja uruchomi sie na pliku .jar.
       1. Dodajemy bash
       2. Kopiujemy plik .jar do obrazu
       3. Ustawiamy entrypoint
 7. Tworzenie pipeline:
-![img](./sc_dev_ops_5/10.PNG)
+![img](./sc_dev_ops_5/10.png)
    Opis stage'ów:
    1. Buduje obraz z dependencjami
    2. Buduje obraz budujący wewnętrzną aplikacje. Po tym tworzy katalog 'shared_volume'. Podczas uruchomienia kontenera zbudowany plik .jar kopiowany jest do tego katalogu.
    3. Buduje obraz w którym uruchamiane są testy.
    4. Deploy - tworzony jest obraz bazujący na Dockerpublish.
    5. Zapisanie artefaktu w przypadku sukcesu.
-![img](./sc_dev_ops_5/4.PNG)
+![img](./sc_dev_ops_5/4.png)
    
 
