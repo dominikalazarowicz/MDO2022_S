@@ -4,8 +4,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'docker build -t buildirssi . -f ITE/GCL04/KK403281/Lab05/Docker-BLDR'
-		sh 'docker run --name Kontenerek -dit --rm buildirssi'
+                sh 'docker build -t IrssiBudowanie . -f ITE/GCL04/KK403281/Lab05/Docker-BLDR'
+		sh 'docker run --name Kontenerek -dit --rm IrssiBudowanie'
 		sh 'rm irssi || true'
 		sh 'docker cp Kontenerek:irssi/build/src/fe-text/irssi .'
 		sh 'docker kill Kontenerek'
@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'docker build -t testirssi . -f ITE/GCL04/KK403281/Lab05/Docker-Tescik'
-		sh 'docker run testirssi'
+                sh 'docker build -t IrssiTescik . -f ITE/GCL04/KK403281/Lab05/Docker-Tescik'
+		sh 'docker run IrssiTescik'
             }
         }
 	stage('deploy'){
