@@ -79,7 +79,7 @@ pipeline
             steps
             {
                script {
-                    if(params.promote)
+                    if(params.PROMOTE)
                      {
                         sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
                         sh "ls -a ./artifacts"
