@@ -52,11 +52,11 @@ pipeline
                             } 
                             catch (Exception e) 
                             {
-                                //echo 'Exception occurred: ' + "Graphic enviroment is needed to run this app"
+                                echo 'Exception occurred: ' + "Graphic enviroment is needed to run this app"
                             }
+                            
+                              sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
                     }
-
-                
 
                 sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
                 sh 'docker run --name deploy_container_final -v build_vol:/build deploy_final'
