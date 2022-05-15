@@ -6,5 +6,5 @@ RUN apt install -y default-jdk gradle
 WORKDIR Guess-Word-Game
 
 CMD ["sh", "-c", "gradle build && cp ./build/libs/guess.jar /public && cp ./build/libs/guess.jar /build"]
-
+# CMD ["sh", "-c", "gradle build]
 

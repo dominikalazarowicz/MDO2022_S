@@ -1,3 +1,7 @@
-FROM build:latest
+FROM openjdk:11
 
-RUN java -jar ./build/libs/guess.jar
+WORKDIR Guess-Word-Game
+
+COPY ./build/libs/guess.jar ./"
+
+CMD ["java", "-jar", "guess.jar"]
