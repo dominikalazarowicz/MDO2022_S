@@ -39,7 +39,7 @@ pipeline {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
 			}
 		}
-		stage('Deploy') {
+		stage('Publish') {
 			steps {
 				sh '''
 				docker tag app:latest kalch1/kl299629:1.0
@@ -48,13 +48,18 @@ pipeline {
 			}
 			post {
 				success {
-					mail to: 'kalach@student.agh.edu.pl', subject: "Success of deploy", body: "Success of deploy: ${BUILD_URL}"
+					mail to: 'kalach@student.agh.edu.pl', subject: "Success of publish", body: "Success of publish: ${BUILD_URL}"
 				}
 				failure {
-					mail to: 'kalach@student.agh.edu.pl', subject: "Failure of deploy", body: "Failure of : ${BUILD_URL}"
+					mail to: 'kalach@student.agh.edu.pl', subject: "Failure of publish", body: "Failure of publish: ${BUILD_URL}"
 				}
 			}
 
+		}
+	}
+	post {
+		always {
+			sh 'docker logout'
 		}
 	}
 }
