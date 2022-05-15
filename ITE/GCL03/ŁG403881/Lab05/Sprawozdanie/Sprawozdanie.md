@@ -63,7 +63,7 @@ W przypadku potrzeby wykorzystania innych argumentów przy publikowaniu: [link](
 całość Projektu w Jenkinsfile'u wykonywana jest w `pipeline{(...)}`.
 
 Przed wykonaniem jakiegokolwiek stage'u, ustawiono agenta oraz stworzono parametry: 
-```
+```groovy
 agent any
 parameters {
     string(name: 'Version', defaultValue: '1.0.0', description: 'Project Version')
@@ -105,7 +105,7 @@ Wszystko pod wykonanie się w tym etapie zostało już przygotowane w przygotowa
 
 ### 2. Repo to volumes
 
-```
+```groovy
 stage('Repo to volume'){
     steps{
         sh 'docker volume rm in || true'
@@ -146,7 +146,7 @@ W sekcji `post`:
   - zostaje wypisana stosowna wiadomość w zależności od powodzenia tego etapu.
 
 ### 3. Prebuild
-```
+```groovy
 stage('Prebuild'){
     steps{
         dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/build'){
@@ -170,7 +170,7 @@ RUN echo '🍆 bakłażan 🍆'
 Obrazem startowym jest obraz stworzony przez Microsoft do wykorzystywania .NET SDK (wersji 3.1, gdyż na tej wercji stworzony jest projekt). Więcej informacji na temat tego obrazu można znaleźć tu: [link](https://hub.docker.com/_/microsoft-dotnet-sdk).
 
 ### 4. Build
-```
+```groovy
 stage('Build') {
   agent {
       docker {
@@ -204,7 +204,7 @@ W sekcji `post`:
   - wypisanie stosownej informacji.
 
 ### 5. PreTest
-```
+```groovy
 stage('Pretest'){
     steps{
         dir('./ITE/GCL03/ŁG403881/Lab05/dockerfiles/test'){
@@ -225,7 +225,7 @@ RUN echo '🥚 jajo 🥚'
 Podstawą tego obrazu jest poprzednio stworzony "dev_build".
 
 ### 6. Test
-```
+```groovy
 stage('Test') {
     agent{
         docker{
@@ -260,7 +260,7 @@ W sekcji `post`:
   - wypisanie adekwatnej wiadomości.
 
 ### 7. Deploy
-```
+```groovy
 stage('Deploy'){
     agent{
         docker{
@@ -302,7 +302,7 @@ W sekcji `post`:
   - w przypadku wykonania się `currentBuild.result = 'ABORTED'` wykona się sekcja `unsuccessful`.
 
 ### 8. Publish
-```
+```groovy
 stage('Publish'){
     when{
         expression{
@@ -420,11 +420,6 @@ Dokłanie taka sama wiadomość została wypisana w stage'u "Deploy":
     - Nie znam przyczyny tego błędu ani jego rozwiązania. Przy zmianie maszyny z tego Ubuntu na Fedorę, błąd się już więcej nie pokazał.
 2. W przypadku niedziałania linijki nr 23: `git branch: "${params.AppBranch}", url: 'https://github.com/Niemans/DevOpsLab05.git'`
     - Możliwe jest to, że trzeba doinstalować plugin do Jenkinsa.
-
-
-
-
-
 
 # Diagramy
 
