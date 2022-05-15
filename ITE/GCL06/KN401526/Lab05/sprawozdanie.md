@@ -201,23 +201,43 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     7. Publish Cleaning
     ```
-     stage('Publish Cleaning')
+    stage('Publish Cleaning')
         {
          steps
          {
           sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts'
+          sh 'docker rm -f kacper_publish || true'
          }
         }
     ```
 
     Opis:
 
-    Powyzszy fragment kodu odpowiada za usuwaniecie folderu zawierajacego artefakty
+    Powyzszy fragment kodu odpowiada za usuwaniecie folderu zawierajacego artefakty jak i jesli istnieje zostaje usuniety kontener wykorzystany do kroku publish
 
     8. Publish
     ```
-    
+        stage ('Publish')
+        {
+            when
+            {
+                expression {return params.PROMOTE}
+            }
+            steps
+            {
+                
+                sh 'mkdir /var/jenkins_home/workspace/kacper_artifacts'
+                sh 'docker run -d --name kacper_publish --mount type=volume,src="kacper_out",dst=/usr/local/kn_proj --mount type=bind,source=/var/jenkins_home/workspace/kacper_artifacts,target=/usr/local/kn_copy node bash -c "chmod -R 777 /usr/local/kn_proj && cp -R /usr/local/kn_proj/. /usr/local/kn_copy"'
+                sh "tar -zcvf mongo-express_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/kacper_artifacts ."
+                archiveArtifacts artifacts: "mongo-express_${params.VERSION}.tar.xz"
+                
+            }
+        } 
     ```
+
+    Opis:
+
+    
 
 
 
