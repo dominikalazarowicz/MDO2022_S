@@ -208,4 +208,8 @@ Do wykonania projektu utworzono cztery Dockerfile na bazie obrazu Debian. Budowa
 
 - Diagram Aktywności
 
+    ![img](./diagramy/diagram_aktywnosci.png)
+
 - Diagram Wdrożenia
+
+    ![img](./diagramy/diagram_wdrozenia.png)
