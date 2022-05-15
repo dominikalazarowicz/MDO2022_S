@@ -10,7 +10,7 @@ pipeline
     
     stages
      {
-     	stage('Preparing Volume')
+     	stage('Preparing and Remove')
      	{
      	  steps
      	  {
@@ -30,28 +30,44 @@ pipeline
             
             }
         }
+        
+        stage(Test Cleaning)
+        {
+        sh 'docker rm -f kacper_test || true'
+        }
 
          stage('Test') 
         {
             steps 
             {
-              sh 'docker rm -f kacper_test || true'
+              
               sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
               sh "docker run --name kn_test --rm --mount source=kacper_test,target=/kacper_in kacper_test:latest"
               
             }
         }
+        stage(Deploy Cleaning)
+        {
+        sh 'docker rm -f kacper_deploy || true'
+        }
+
          stage('Deploy')
         {
             steps
             {
-                sh 'docker rm -f kacper_deploy || true'
+                
                 sh 'docker run -dit --name kacper_deploy --mount type=volume,src="kacper_out",dst=/kn_proj node'
                 sh 'docker container exec kacper_deploy sh -c "ls -l"'
                 sh 'exit $(docker inspect kacper_deploy --format="{{.State.ExitCode}}")'
             }
         }
-            stage ('Publish')
+        
+        stage(Publish Cleaning)
+        {
+        sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts'
+        }
+        
+        stage ('Publish')
         {
             when
             {
@@ -59,7 +75,7 @@ pipeline
             }
             steps
             {
-                sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts'
+                
                 sh 'mkdir /var/jenkins_home/workspace/kacper_artifacts'
                 sh 'docker rm -f kacper_publish || true'
                 sh 'docker run -d --name kacper_publish --mount type=volume,src="kacper_out",dst=/usr/local/kn_proj --mount type=bind,source=/var/jenkins_home/workspace/kacper_artifacts,target=/usr/local/kn_copy node bash -c "chmod -R 777 /usr/local/kn_proj && cp -R /usr/local/kn_proj/. /usr/local/kn_copy"'
