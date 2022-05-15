@@ -286,6 +286,8 @@ Pomyślny przebieg zadań w Pipeline
 # Diagramy
 
 Diagram aktywności przedstawia przebieg zadań realizowanych w ramach pipeline.  
+Diagram aktywności w formacie .drawio znajduje się pod ścieżką ITE/GCL07/DS402563/Lab05/activity_diagram.drawio
+na branchu DS402563 w repozytorium przedmiotu.
 
 ![title](screenshots/activity_diagram.png)
 
