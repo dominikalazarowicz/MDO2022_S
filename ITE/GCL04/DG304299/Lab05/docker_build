@@ -2,7 +2,6 @@ FROM gradle:latest AS build
 
 WORKDIR /app/Guess-Word-Game
 
-#RUN gradle build
+CMD gradle build
 
-CMD ls 
 
