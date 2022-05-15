@@ -198,9 +198,30 @@ stage('Deploy')
 
 * Publish:
 
-Krok `Publish` odpowiada za opulikowanie programu. 
+Krok `Publish` odpowiada za opulikowanie programu. W tej sekcji na początku sprawdzane jest czy parametr `PROMOTE` ustawiony jest na true. Warunek ten bierze pod uwagę chęci użytkownika, ponieważ użytkownik niekoniecznie przy każdej kompilacji będzie chciał wydawać nową wersję programu. Dlatego jeżeli przy uruchamianiu projektu użytkownik zaznaczy `PROMOTE`, po skompilowaniu zostanie wydana nowa wersja. Natomiast jeżeli użytkownik nie zaznaczy tego parametru nie zostanie opulikowana nowa wersja. To właśnie sprawdzane jest w początkowym warunku. Następnie tworzony jest folder o nazwie `ro_artifacts`  
 
 ```
-
+stage ('Publish')
+        	{
+            	when
+            	{
+                	expression {return params.PROMOTE}
+            	}
+            	steps
+            	{
+            	 	echo "Publikowanie projektu..."
+            	 
+                	sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts'
+                	sh 'mkdir /var/jenkins_home/workspace/ro_artifacts'
+                	sh 'chmod -R 777 /var/jenkins_home/workspace/ro_artifacts'
+                	sh 'docker rm -f ro_publish || true'
+                	sh 'docker run -d --name ro_publish --mount type=volume,src="volume_output",dst=/usr/local/ro_project --mount type=bind,source=/var/jenkins_home/workspace/ro_artifacts,target=/usr/local/ro_copy node bash -c "chmod -R 777 /usr/local/ro_project && chmod -R 777 /var/jenkins_home/workspace/ro_artifacts && cp -R /usr/local/ro_project/. /usr/local/ro_copy"'
+                	sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/ro_artifacts ."
+                	archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
+                
+                	echo "Publikowanie zakończone"
+                
+            	}
+        	}
 ```
 
