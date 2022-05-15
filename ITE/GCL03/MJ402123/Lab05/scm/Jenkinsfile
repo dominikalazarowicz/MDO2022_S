@@ -50,7 +50,7 @@ pipeline {
 			sh 'cp irssi Irssi_Pliki'
 			sh 'cp Readme Irssi_Pliki'
 			sh "tar -zcf Irssi_${params.version}.tar.gz Irssi_Pliki"
-			archiveArtifacts artifacts: "Irssi${params.version}.tar.gz"
+			archiveArtifacts artifacts: "Irssi_${params.version}.tar.gz"
 		}
 	}
     }
