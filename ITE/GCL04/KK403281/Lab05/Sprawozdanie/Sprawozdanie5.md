@@ -59,6 +59,8 @@ Screeny wybranych ustawień:
 
 <h3>Build</h3>
 
+Cel: Zbudowanie aplikacji.
+
 W trakcie tego stage'a budowana jest aplikacja irssi na podstawie kodu z githuba.
 
 Na podstawie Docker-BLDR tworzony jest obraz o nazwie irssi_budowanie.
@@ -101,7 +103,7 @@ stage('Build') {
 
 <h3>Test</h3>
 
-W trakcie tego etapu uruchamiane są testy.
+Cel: Uruchomienie testów.
 
 Kod stage Test:
 ```
@@ -127,6 +129,8 @@ RUN meson test
 
 <h3>Deploy</h3>
 
+Cel:Uruchomienie wcześniej zbudowanej aplikacji na nowym kontenerze.
+
 Kod stage Deploy:
 ```
 stage('deploy'){
@@ -149,6 +153,8 @@ Sprawdzenie wersji programu pozwala nam na zweryfikowanie czy irrsi zostało zai
 Po zakończeniu tego etapu stworzony kontener zostaje zniszczony.
 
 <h3>Publish</h3>
+
+Cel: Udostępnienie gotowej wersji aplikacji.
 
 Kod stage Publish:
 ```
