@@ -54,8 +54,7 @@ pipeline
                             {
                                 echo 'Exception occurred: ' + "Graphic enviroment is needed to run this app"
                             }
-                            
-                              sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
+
                     }
 
                 sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
@@ -63,13 +62,6 @@ pipeline
             }
         }
 
-        stage('Publish') 
-        {
-            steps 
-            {
-              
-            }
-        }
 
     }
 }
