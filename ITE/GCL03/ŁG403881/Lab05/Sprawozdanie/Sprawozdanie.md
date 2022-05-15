@@ -36,7 +36,7 @@ W tym przypadku zostały stworzone takie stage'e:
 ## Przygotowania wstępne
 1. Trzeba mieć zainstalowanego dockera.
 
-2. By zainstalować Jenkinsa, by ten działał, należy wykonać wszystkie punkty ze sprawozdania z lab04, z części nr 3 "Instalacja Jankins". W przypadku ponownego uruchamiania Jenkinsa, należy wykonać tylko komendy "docker run" z tej samej części.
+2. By zainstalować Jenkinsa, by ten działał, należy wykonać wszystkie punkty ze sprawozdania z lab04, z części nr 3 "Instalacja Jankins". W przypadku ponownego uruchamiania Jenkinsa, należy wykonać tylko komendy "docker run" z tej samej części. [link](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/%C5%81G403881/ITE/GCL03/%C5%81G403881/Lab04/Sprawozdanie.md)
 
 3. Wybierając nowy projekt należy wybrać "pipeline".
 
