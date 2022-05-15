@@ -40,7 +40,7 @@ pipeline{
                     echo 'Gulp tests TypeScript'
                     dir("${params.Dockerfiles}"){
                         sh 'docker rm typescript-tests || true'
-                        sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_node bash -c "cd /app_tests/TypeScript && gulp runtests --tests= "/tests/cases/compiler" "'
+                        sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_node bash -c "cd /app_tests/TypeScript && gulp runtests --runner="compiler" "'
                     }
                     echo 'Gulp tests Done'
 
@@ -62,9 +62,57 @@ pipeline{
                 }
 		    }
 
+            stage('Prepare publish')
+            {
+                when 
+                {
+                    expression {return params.Promote}
+                }
+                steps 
+                {
+                    echo 'Publish'
+                    sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
+                }
 
 
-            
+                when 
+                {
+                    expression {return params.Promote}
+                }
+
+
+
+                
+            }
+
+
+
+            stage('Publish') 
+            {
+                when 
+                {
+                    expression {return params.Promote}
+                }
+
+                agent 
+                {
+                    docker 
+                    {
+                        image 'node:alpine'
+                        args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+                    }
+                }
+
+                steps 
+                {
+                    sh 'rm -rf /usr/local/copy/* || true'
+                    sh "cd /usr/local/myapp/express && npm version ${params.Version} && npm pack"
+                    sh "mv /usr/local/myapp/express/express-${params.Version}.tgz /usr/local/copy"
+                    dir('/var/jenkins_home/workspace/artifacts'){
+                        archiveArtifacts artifacts: "express-${params.Version}.tgz"
+                    }
+                }
+		    }       
 
 
 
