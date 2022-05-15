@@ -40,7 +40,6 @@ pipeline
                     		 	      
                     		echo "Budowanie zakończone"
 				'''
-				
 			}
 		}
 		

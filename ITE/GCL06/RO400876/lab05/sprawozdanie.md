@@ -39,7 +39,27 @@ Po ukończeniu konfiguracji pipline ukaże się poniższy ekran startowy utworzo
 ![img](jenkins_start.PNG)
 
 
-### 3. Zawartość pipline'u.
+
+### 3. Potrzebne dockerfile'e.
+
+Aby przejść do pisania pipline'u wymagane jest umieszczenie trzech plików dockerfile'owych na repozytorium i w branchu dodanym podczas konfiguracji pipline'u.
+
+![img](git_dockerfile.PNG)
+
+Pierwszy z nich jest to dockerfile o nazwie `RO_Dockerfile_Build`odpowiedzialny za budowanie projektu. Znajdują się w nim komendy odpowiedzialne za sklonowanie repozytorium z wybranym projektem, następnie doinstalowanie potrzebnych zależności, a na samym końcu znajduje się polecenie rozpoczynające proces budowania projektu.
+ 
+Zawartość `RO_Dockerfile_Build`:
+```
+FROM node:lts-bullseye
+RUN git clone https://github.com/RafalOlech00/cytoscape.js.git
+WORKDIR cytoscape.js
+RUN npm install
+RUN npm run build
+```
+
+
+
+### 4. Zawartość pipline'u.
 
 * Parameters:
 
@@ -62,7 +82,7 @@ parameters
 
 * Prepare:
 
-Krok `Prepare` został utworzony w celu uporzodkowania skryptu aby był bardziej przejrzysty. W sekcji tej następuje ogólne przygotowanie projektu, w którym znajduję się utworzenie woluminów wejściowego o nazwie `volume_input` oraz wyjściowego o nazwie `volume_output`. W kroku tym usuwany jest także kontener o nazwie `ro_build`, który powstaje przy budowaniu projektu w kroku nastęþnym. Kontener ten usuwany jest jeżeli istnieje ma to szczególne znaczenie jeśli projekt uruchamiany jest kilkukrotnie. Za pomocą komendy `docker volume prune -f` usuwane są także wszystkie aktualnie nie używane woluminy.
+Krok `Prepare` został utworzony w celu uporządkowania skryptu aby był bardziej przejrzysty. W sekcji tej następuje ogólne przygotowanie projektu, w którym znajduję się utworzenie woluminów wejściowego o nazwie `volume_input` oraz wyjściowego o nazwie `volume_output`. W kroku tym usuwany jest także kontener o nazwie `ro_build`, który powstaje przy budowaniu projektu w kroku następnym. Kontener ten usuwany jest jeżeli istnieje, a ma to szczególne znaczenie jeśli projekt uruchamiany jest kilkukrotnie. Za pomocą komendy `docker volume prune -f` usuwane są także wszystkie aktualnie nie używane woluminy.
 
 
 ```
@@ -80,6 +100,30 @@ stage('Prepare')
 				 	      
                 echo "Przygotowanie zakończone"
 				'''	
+			}
+		}
+```
+
+
+
+
+* Build:
+
+Krok `Build` odpowiada za zbudowanie projektu za pomocą dockerfilu o nazwie `RO_Dockerfile_Build`.
+
+```
+stage('Build')
+		{
+			steps
+			{
+				sh '''
+				echo "Budowanie projektu..."
+				
+				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
+                docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
+                    		 	      
+                echo "Budowanie zakończone"
+				'''
 			}
 		}
 ```
