@@ -37,14 +37,30 @@ pipeline{
             {
                 steps
                 {
-                    echo 'Gulp tests'
+                    echo 'Gulp tests TypeScript'
                     dir("${params.Dockerfiles}"){
                         sh 'docker rm typescript-tests || true'
                         sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_node bash -c "cd /app_tests/TypeScript && gulp runtests-parallel"'
                     }
+                    echo 'Gulp tests Done'
+
                 }
 
             }
+
+            stage('Deploy Stage') 
+            {
+                steps 
+                {
+                    echo 'Deploy Stage TypeScript'
+                    sh 'docker rm -f typescript-deploy || true'
+                    sh 'docker run --name typescript-deploy --mount "type=volume,src=output-volume,dst=/usr/local/App" typescript_node bash -c "cd /usr/local/App/TypeScript && node built/local/tsc.js hello.ts"'
+                    sh 'sleep 5; exit $(docker inspect typescript-deploy --format="{{.State.ExitCode}}")'
+                    sh 'docker rm -f typescript-deploy'
+                    echo 'Deploy Stage TypeScript Done'
+
+                }
+		    }
 
 
 
