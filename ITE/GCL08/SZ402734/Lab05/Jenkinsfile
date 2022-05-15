@@ -1,31 +1,37 @@
-pipeline{
+pipeline
+{
 
     agent any
 
-    parameters {
+    parameters 
+    {
         string(name: 'Dockerfiles', defaultValue: './ITE/GCL08/SZ402734/Lab05', description: 'Path of Dockerfile in git: ')
         string(name: 'Version', defaultValue: '0.0.1', description: 'Version of the pip: ')
         booleanParam(name: 'Promote', defaultValue: true, description: 'Statement: ')
     }
 
-    stages {
-        stage('Clone and build') {
-        steps {
-            echo 'Create input volume'
-            sh 'docker volume create input-volume'
-            sh 'docker rm tmp-c || true'
+    stages 
+    {
+        stage('Clone and build') 
+        {
+            steps 
+            {
+                echo 'Create input volume'
+                sh 'docker volume create input-volume'
+                sh 'docker rm tmp-c || true'
 
-            echo 'Docker run, node clone '
-            sh 'docker run --rm --name tmp-c --mount "type=volume,src=input-volume,dst=/App" node bash -c "cd ~/ && ls  TypeScript-Website || git clone https://github.com/microsoft/TypeScript-Website;cp -R  TypeScript-Website /App; ls /App"'
-            echo 'Docker run done '
+                echo 'Docker run, node clone '
+                sh 'docker run --rm --name tmp-c --mount "type=volume,src=input-volume,dst=/App" node bash -c "cd ~/ && ls  TypeScript-Website || git clone https://github.com/microsoft/TypeScript-Website;cp -R  TypeScript-Website /App; ls /App"'
+                echo 'Docker run done '
 
 
-            echo 'TypeScript-Website build by using npm'
-            dir("${params.Dockerfiles}") {
-                sh 'docker build . -t typescript_node -f Dockerfile'
-                sh 'docker volume create TMP_OUT_V'
-                sh 'docker rm TypeScriptBuild || true'
-                sh 'docker run --rm --name TypeScriptBuild --mount "type=volume,src=input-volume,dst=/App" --mount "type=volume,src=TMP_OUT_V,dst=/App_Build" typescript_node bash -c "cd /App/TypeScript-Website && npm install --global yarn && yarn install; cp -R /App/TypeScript-Website /App_Build"'
+                echo 'TypeScript-Website build by using npm'
+                dir("${params.Dockerfiles}") 
+                {
+                    sh 'docker build . -t typescript_node -f Dockerfile'
+                    sh 'docker volume create TMP_OUT_V'
+                    sh 'docker rm TypeScriptBuild || true'
+                    sh 'docker run --rm --name TypeScriptBuild --mount "type=volume,src=input-volume,dst=/App" --mount "type=volume,src=TMP_OUT_V,dst=/App_Build" typescript_node bash -c "cd /App/TypeScript-Website && npm install --global yarn && yarn install; cp -R /App/TypeScript-Website /App_Build"'
                 }
 
 
@@ -34,17 +40,20 @@ pipeline{
 
             }
 
-        stage('Test'){
+            stage('Test')
+            {
 
-            steps{
-                echo 'Gulp tests'
-                dir("${params.Dockerfiles}"){
-                    sh 'docker rm typescript-tests || true'
-                    sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_alpine bash -c "cd /app_tests/TypeScript && yarn test"'
+                steps
+                {
+                    echo 'Yarn tests'
+                    dir("${params.Dockerfiles}")
+                    {
+                        sh 'docker rm typescript-tests || true'
+                        sh 'docker run --rm --name typescript-tests --mount "type=volume,src=input-volume,dst=/app_tests" typescript_alpine bash -c "cd /app_tests/TypeScript && yarn test"'
+                    }
                 }
-            }
 
-        }
+            }
 
         }
 
