@@ -12,7 +12,6 @@ RUN yarn develop &
 WORKDIR packages
 WORKDIR core
 WORKDIR admin
-RUN yarn develop &
 RUN yarn build
 
 
