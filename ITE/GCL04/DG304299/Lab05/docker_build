@@ -2,5 +2,5 @@ FROM gradle:latest AS build
 
 WORKDIR /app/Guess-Word-Game
 
-CMD gradle build -b build.gradle
+RUN gradle build
 
