@@ -17,10 +17,10 @@ pipeline {
 				  sh 'ls -l'      
              }
 		}
-      	stage('Test') {
-         	 steps {
-			//  sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/testfile; docker build -t tester:latest .'
-			 }
-		}
+   		//    	stage('Test') {
+		//          	 steps {
+		// 		 sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/testfile; docker build -t tester:latest .'
+		// 	 }
+		// }
      }
 }
