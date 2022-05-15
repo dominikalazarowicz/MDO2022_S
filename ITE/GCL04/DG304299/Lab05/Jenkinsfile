@@ -29,7 +29,7 @@ pipeline
                sh "docker rm -f builder"
                sh "docker volume create build"
                sh 'docker build -t app_build:latest . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh "docker run --name builder --rm --mount source=clone,target=/app --mount source=build,target=/app/Guess-Word-Game app_build:latest"
+               sh "docker run --rm --mount source=clone,target=/app --mount source=build,target=/app/Guess-Word-Game/build --name builder builder"
             }
         }
 
