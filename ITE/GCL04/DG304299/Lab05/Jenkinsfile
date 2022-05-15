@@ -20,8 +20,7 @@ pipeline
         {
             steps 
             {
-              sh 'docker container prune -f'
-              sh 'docker volume prune -f'
+              sh "docker system prune --all -f"
               sh 'docker volume  create --name repo_vol'
               sh 'docker volume  create --name build_vol'
               sh "docker build -t clone . -f ./ITE/GCL04/DG304299/Lab05/docker_clone"
@@ -35,7 +34,7 @@ pipeline
             steps 
             {
                sh 'docker build -t build . -f ./ITE/GCL04/DG304299/Lab05/docker_build'
-               sh 'docker run --name build_container -v repo_vol:/Guess-Word-Game -v build_vol:/build -v ${PWD}:/public build'
+               sh 'docker run --name build_container -v repo_vol:/Guess-Word-Game -v build_vol:/build -v'
             }
         }
 
