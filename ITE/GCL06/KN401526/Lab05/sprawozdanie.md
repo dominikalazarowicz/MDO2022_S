@@ -125,8 +125,69 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     ```  
 
     Opis:
-    
-        
+
+    Wykonujac ten krok na poczatku zostanie wykonane sklonowanie i zbudowanie programu uzywajac wyzej opisanego Dockerfile1 ktore zostanie wykonane w kontenerze kacper_build
+    nastepnie zostanie on uruchomiony z podpientym voluminem wejsciowym kacper_in na ktory zostaje skopiowana zawartosc kontenera kacper_build ze zbudowanym programem nastepnie z kontenra wejsciowego jego zawartosc zostaje skopiowana na volumin wyjsciowy n koniec zostaja wyswietlone zawartosci obu voluminow w celu sprawzenia czy kopiowanie przebieglo pomyslnie
+
+    3. Cleaning Test
+
+    ```
+     stage('Test Cleaning')
+        {
+        steps
+         {
+          sh 'docker rm -f kacper_test || true'
+         }
+        }
+    ```
+
+    Opis:
+
+    Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontenra na ktorym sa uruchomiane test dla repozytorium
+   
+    4. Test
+
+    ```
+     stage('Test') 
+        {
+            steps 
+            {
+              
+              sh 'docker build . -f ./ITE/GCL06/KN401526/Lab05/Dockerfile2 -t kacper_test'
+              sh "docker run --name kn_test --rm --mount source=kacper_test,target=/kacper_in kacper_test:latest"
+              
+            }
+        }
+    ```
+
+    Opis:
+
+    Powyzszy krok odpowiada za przeprowadzenie testow gdzie na poczatku zostaje one przeprowadzone na podstwaie wczesniej opisanego Dockerfile2 w ktorym zostaja zawarte polecenia potrzebne do uruchomienia testow zostaka one uruchomione na kontenerze kacper_test gdzie jako bazowy zostaje uzyty kontener kacper_build nastepnie zostaje uruchomiony kontener testowy kn_test z podpietym voluminem kacper_in
+
+    5. Deploy Cleaning
+
+    ```
+      stage('Deploy Cleaning')
+        {
+        steps
+         {
+          sh 'docker rm -f kacper_deploy || true'
+         }
+        }
+    ```
+
+    Opis:
+
+    Powyzszy fragment kodu odpowiada za usuwanie jesli istnieje kontenra na ktorym jest przeprowadzony deploy
+
+    6. Deploy
+
+  
+
+   
+
+
+
     
 
 
