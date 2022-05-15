@@ -20,8 +20,7 @@ pipeline
 				docker volume prune -f
 				docker volume  create --name volume_input
 				docker volume  create --name volume_output
-				 
-                    		 	      
+				 	      
                     		echo "Przygotowanie zakończone"
 				'''
 				
@@ -34,7 +33,6 @@ pipeline
 			{
 				sh '''
 				echo "Budowanie projektu..."
-				
 				
 				docker build . -f ./ITE/GCL06/RO400876/lab05/RO_Dockerfile_Build -t ro_build
                     		docker run --mount type=volume,src="ro_build",dst=/volume_input ro_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
@@ -89,7 +87,6 @@ pipeline
             	 echo "Publikowanie projektu..."
             	 
                 sh 'rm -rf /var/jenkins_home/workspace/ro_artifacts8'
-                
                 sh 'mkdir /var/jenkins_home/workspace/ro_artifacts8'
                 sh 'chmod -R 777 /var/jenkins_home/workspace/ro_artifacts8'
                 sh 'docker rm -f ro_publish || true'
