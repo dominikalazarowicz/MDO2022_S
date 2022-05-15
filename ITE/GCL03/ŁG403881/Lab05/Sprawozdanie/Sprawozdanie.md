@@ -222,7 +222,7 @@ FROM dev_build:latest
 #sprawdzenie, czy dockerfile zadziałał
 RUN echo '🥚 jajo 🥚'
 ```
-Podstawą tego obrazu jest poprzednio stworzony "dev_build".
+Podstawą tego obrazu jest poprzednio stworzony "dev_build". W ten sposób jestem pewny zachowania wszystkiego, co się stało na tym obrazie. Możliwe jednak, że możnaby wykorzystać obraz microsoftu do tego samego i wynik byłby ten sam.
 
 ### 6. Test
 ```groovy
@@ -289,7 +289,7 @@ stage('Deploy'){
 }
 ```
 W sekcji `agent`:
-  - agent zmienia się na dockera, a środowisko wykonujące zostało zamienione na kontener obrazu "dev_test".
+  - agent zmienia się na dockera, a środowisko wykonujące zostało zamienione na kontener obrazu "dev_test". Nie ma potrzeby tworzyć nowego obrazu, a trzeba się dostać do woluminu "out", więc wykorzystany zostaje ten obraz.
   - podpięty został wolumin "out", gdyż to w nim znajdują się pliki zbudowanego projektu.
 
 W sekcji `steps`:
