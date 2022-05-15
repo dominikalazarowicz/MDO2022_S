@@ -52,6 +52,10 @@ pipeline
         {
             steps 
             {
+
+                sh "rm -rf artifact && mkdir artifacts"
+                sh "docker cp copy:/volume_out artifact "
+
                sh 'docker build -t deploy_1 . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
               
                     script
@@ -81,12 +85,12 @@ pipeline
                script {
                     if(params.PROMOTE)
                      {
-                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
+                         sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
                         sh "ls -a ./artifacts"
                         archiveArtifacts artifacts: "artifacts/*.jar"
                     }
                     else {
-                        echo "Everything was successful, but not promoting to new version! (The promote check was not selected)"
+                        echo "Success, but not promoting to new version! (check button)"
                     }
                 }
             }
