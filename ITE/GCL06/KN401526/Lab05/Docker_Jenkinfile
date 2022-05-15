@@ -31,7 +31,7 @@ pipeline
             }
         }
         
-        stage(Test Cleaning)
+        stage('Test Cleaning')
         {
         sh 'docker rm -f kacper_test || true'
         }
@@ -46,7 +46,7 @@ pipeline
               
             }
         }
-        stage(Deploy Cleaning)
+        stage('Deploy Cleaning')
         {
         sh 'docker rm -f kacper_deploy || true'
         }
@@ -62,7 +62,7 @@ pipeline
             }
         }
         
-        stage(Publish Cleaning)
+        stage('Publish Cleaning')
         {
         sh 'rm -rf /var/jenkins_home/workspace/kacper_artifacts'
         }
