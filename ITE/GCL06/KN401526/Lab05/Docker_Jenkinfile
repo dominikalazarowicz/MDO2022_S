@@ -63,7 +63,7 @@ pipeline
             steps
             {
                 
-                sh 'docker run -dit --name kacper_deploy --mount type=volume,src="kacper_out",dst=/kn_proj node'
+                sh 'docker run -dit --name kacper_deploy --mount type=volume,src="kacper_out",dst=/kacper_in node'
                 sh 'exit $(docker inspect kacper_deploy --format="{{.State.ExitCode}}")'
             }
         }
@@ -87,7 +87,7 @@ pipeline
             {
                 
                 sh 'mkdir /var/jenkins_home/workspace/kacper_artifacts'
-                sh 'docker run -d --name kacper_publish --mount type=volume,src="kacper_out",dst=/usr/local/kn_proj --mount type=bind,source=/var/jenkins_home/workspace/kacper_artifacts,target=/usr/local/kn_copy node bash -c "chmod -R 777 /usr/local/kn_proj && cp -R /usr/local/kn_proj/. /usr/local/kn_copy"'
+                sh 'docker run -d --name kacper_publish --mount type=volume,src="kacper_out",dst=/usr/local/kacper_in --mount type=bind,source=/var/jenkins_home/workspace/kacper_artifacts,target=/usr/local/kn_copy node bash -c "chmod -R 777 /usr/local/kacper_in && cp -R /usr/local/kacper_in/. /usr/local/kn_copy"'
                 sh "tar -zcvf mongo-express_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/kacper_artifacts ."
                 archiveArtifacts artifacts: "mongo-express_${params.VERSION}.tar.xz"
                 

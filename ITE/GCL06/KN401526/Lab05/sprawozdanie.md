@@ -11,7 +11,7 @@ W celu wykonania projektu zostaly stworzone dwa Dockerfile.
 
 ## 3. Wykonanie cwiczenia
 
- 1. Przygotowanie kontenerow
+  1. Przygotowanie kontenerow
 
  ![img](kontenery.PNG)
 Opis:
@@ -237,7 +237,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    
+
 
 
 
