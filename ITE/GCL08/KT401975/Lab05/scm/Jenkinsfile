@@ -13,19 +13,19 @@ pipeline {
 		}
       	stage('Build') {
 			agent {
-			                docker {
-			                    image 'builder:latest .'
-			                    args '--mount source=vol,target=/vol -u root:root'
-			                }
-			            }
+			    docker {
+			   		image 'builder:latest .'
+			    	args '--mount source=vol,target=/vol -u root:root'
+			    }
+			 }
          	 steps {
 				  sh 'ls -l'      
              }
 		}
-   		//    	stage('Test') {
-		//          	 steps {
-		// 		 sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/testfile; docker build -t tester:latest .'
-		// 	 }
-		// }
+   		stage('Test') {
+		    steps {
+		 		sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/testfile; docker build -t tester:latest .'
+		 	}
+		}
      }
 }
