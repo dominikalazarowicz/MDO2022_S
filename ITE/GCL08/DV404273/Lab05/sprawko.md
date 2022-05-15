@@ -187,11 +187,11 @@ pipeline
 }
 ```
 
-    * Stage "First Clean" odpowiedzialny jest za czyszczenie workspace'a przed rozpoczęciem budowania.
-    * o Stage "Git Gud" odpowiedzialny jest za sklonowanie repozytorium zawierającego program, dockerfile'a oraz pliku control.
-    * Stage "Dockerfile Build" tworzy kontener ze środowiskiem wymaganym do zbudowania programu.
-    * Stage "Build Test" odpowiedzialny jest za testowanie działania zbudowanego programu.
-    * Stage "Publish" tworzy plik .deb, a następnie zapisuje go jako artefakt.
+* Stage "First Clean" odpowiedzialny jest za czyszczenie workspace'a przed rozpoczęciem budowania.
+* Stage "Git Gud" odpowiedzialny jest za sklonowanie repozytorium zawierającego program, dockerfile'a oraz pliku control.
+* Stage "Dockerfile Build" tworzy kontener ze środowiskiem wymaganym do zbudowania programu.
+* Stage "Build Test" odpowiedzialny jest za testowanie działania zbudowanego programu.
+* Stage "Publish" tworzy plik .deb, a następnie zapisuje go jako artefakt.
 
 ![plot](./screeny/1.png)
 
