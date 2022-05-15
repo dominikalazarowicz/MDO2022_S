@@ -83,7 +83,7 @@ stage('Deploy') {
 W tym momencie pobierane sa dane uwierzytelniajace mojego konta na Dockerhub ktore trzeba bylo wprowadzic do Jenkinsa. Obraz deploy jest wysylany do mojego Dockerhuba.
 
 ### Stage Publish
-W tym miejscu folder z plikami .egg powinien byc pakowany
+W tym miejscu folder z plikami .egg powinien byc pakowany i nastepnie archiwizowany na Jenkinsie. Przy lokalknym uruchamianiu projektu folder ten jest widoczny po zbuildowaniu poleceniem ```make bootstrap```.
 ![4](4.png)
 
 Niestety jednak, przy uruchomieniu stage:
@@ -97,11 +97,20 @@ stage('Publish'){
                 dir("${params.Build_files}") {
                     sh 'ls -a'
                     sh 'docker build . -f DockerPublish -t basictracer_publish'
-                    
 				}
+                sh "docker run --volume /var/jenkins_home/workspace/node-red-pipeline:/finalArchive node-red_publish mv archive.tar.xz /finalArchive"
+                 dir('/var/jenkins_home/workspace/node-red-pipeline'){
+                    sh "mv archive.tar.xz archive-${params.Version}.tar.xz"
+			        archiveArtifacts artifacts: "archive-${params.Version}.tar.xz"
+			    }
                
             }
         }
 ```
+
+Oraz pliku DockerPublish
+```
+
+
 
 
