@@ -88,7 +88,7 @@ pipeline
                     if(params.PROMOTE)
                      {
                          
-                         sh "mv ./artifact/guess.jar" guess${VERSION}.jar
+                         sh "mv ./artifact/guess.jar ./artifact/guess_${VERSION}.jar"
                          archiveArtifacts artifacts: "artifact/*.jar"
 
                          sh "ls -a ./artifact"
