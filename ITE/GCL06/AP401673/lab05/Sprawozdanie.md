@@ -23,8 +23,10 @@ Utworzono projekt i podpięto go do naszego repozytorium tak aby Jenkins pracowa
 
 ![](Screenshot_2.png)
 ![](Screenshot_3.png)
+
 2. Parametry 
 Dla działanie pipeline'u ustawiono parę parametrów. Ustawiono parametr Version aby móc nadawać tworzonemu artefaktowi wersje. Kolejnym parametrem jest parametr Promote gdy jest on ustawiony na true pipeline wykona krok Publish w którym utworzy nową wersje artefaktu w przeciwnym przypadku pominie ten krok. Dodatkowo ustawiono parametr branch który pozwala na klonowanie z wybranego brancha.
+
 ![](Screenshot_4.png)
 
 3.  Klonowanie repozytorium
@@ -41,6 +43,7 @@ W tym kroku najpierw usuwane są niewykorzystywane wolumin i kontenery, które m
     sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/yara clone_yara"    
 	    }    
     }
+    
  Zawartość dockerfile klonującego posiada on doinstalowanego gita aby móc pobrać repozytorium.
 
     FROM ubuntu:bionic    
@@ -124,6 +127,8 @@ Ten etap jest opcjonalny, nawet gdy wszystkie inne kroki przebiegną poprawnie. 
     }
 8. Działanie
 Zdjęcie przedstawia pomyślnie uruchomiony pipeline wraz z utworzonym artefaktem dostępnym dla osoby która nie jest zalogowana.
+
 ![](Screenshot_5.png)
 9.  Diagram aktywności
+
 ![](diagram%20akwtywno%C5%9Bci.png) 
