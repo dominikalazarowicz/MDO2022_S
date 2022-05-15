@@ -1,7 +1,4 @@
 # Projekt MDO - Daniel Klata
-
-## Sekcja ze sprawozdania nr 5 - kroki build i test
-
 ## Cel
 
 Celem projektu jest stworzenie Pipeline'a w jenkinsie, który pozwoli na ciągłą integrację i wdrażanie repozytorium. W tym przypadku wybrano repozytorium bazujące na .NetCore.
