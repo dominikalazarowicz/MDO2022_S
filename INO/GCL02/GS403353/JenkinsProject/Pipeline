@@ -20,5 +20,16 @@ pipeline {
                 echo 'TESTS COMPLETED'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'DEPLOY'
+                dir('INO/GCL02/GS403353/JenkinsProject') {
+                    sh 'docker build . -f Deploy.dockerfile -t deploy'
+                }
+                echo 'DEPLOY COMPLETED'
+            }
+        }
+
     }
 }
