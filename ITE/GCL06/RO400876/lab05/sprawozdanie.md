@@ -47,7 +47,7 @@ Aby przejść do pisania pipline'u wymagane jest umieszczenie trzech plików doc
 ![img](git_dockerfile.PNG)
 
 Pierwszy z nich jest to dockerfile o nazwie `RO_Dockerfile_Build`odpowiedzialny za budowanie projektu. Znajdują się w nim komendy odpowiedzialne za sklonowanie repozytorium z wybranym projektem, następnie doinstalowanie potrzebnych zależności, a na samym końcu znajduje się polecenie rozpoczynające proces budowania projektu.
- 
+
 Zawartość `RO_Dockerfile_Build`:
 ```
 FROM node:lts-bullseye
@@ -57,6 +57,18 @@ RUN npm install
 RUN npm run build
 ```
 
+
+Drugi z nich jest to dockerfile o nazwie `RO_Dockerfile_Test`odpowiedzialny za testowanie aplikacji. Znajduje się w nim polecenie `RUN npm test`, za pomocą której uruchamiane są testy znajdujące się w projekcie.
+
+Zawartość `RO_Dockerfile_Test`:
+```
+FROM ro_build:latest
+WORKDIR cytoscape.js
+RUN npm test
+```
+
+
+Trzeci dockerfile o nazwie `RO_Jenkinsfile` jest to dockerfile, którym znajduję się treść pipline'u i jego zawartość jest opisana w następnym punkcie.
 
 
 ### 4. Zawartość pipline'u.
