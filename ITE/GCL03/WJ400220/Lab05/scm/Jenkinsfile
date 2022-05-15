@@ -42,11 +42,11 @@ pipeline {
 	     steps {
 		sh 'docker rm -f publish_node || true'
 		sh 'find /var/jenkins_home/workspace -name "artifacts" || mkdir /var/jenkins_home/workspace/artifacts'
-		sh 'docker run --rm -d --name publish_node --mount type=volume,src="volume_out",dst=/node_app/files --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy node bash -c "ls -al && chmod -R 777 /node_app  && cd node_app/files/testing-node-apps && sudo npm pack && cd ../../.. && cp -r /node_app/. /usr/local/copy"'
+		sh 'docker run --rm -d --name publish_node --mount type=volume,src="volume_out",dst=/node_app/files --mount type=bind,source=/var/jenkins_home/workspace/artifacts,target=/usr/local/copy node bash -c "ls -al && chmod -R 777 /node_app  && cd node_app/files/testing-node-apps && sudo npm version ${params.VERSION} && sudo npm pack && cd ../../.. && cp -r /node_app/. /usr/local/copy"'
 		sh 'ls -al'
 		sh 'docker ps'
 		sh 'cd ../artifacts/files/testing-node-apps && ls -al'
-		sh 'cd /var/jenkins_home/workspace/artifacts/files/testing-node-apps && ls -al && mv testing-node-apps-1.0.0.tgz testing-node-apps-${params.VERSION}.tgz && ls -al'
+		sh 'cd /var/jenkins_home/workspace/artifacts/files/testing-node-apps && && ls -al'
 		sh 'pwd'
 		sh "ls -al && cd ../artifacts/files/ && ls -al && cd testing-node-apps && ls -al && cp testing-node-apps-${params.VERSION}.tgz /var/jenkins_home/workspace/pipeline1"
 		sh 'ls -al'
