@@ -1,0 +1,3 @@
+FROM alkowskey/devopsbuilder1:latest
+WORKDIR /in/simple-typescript-starter/
+ENTRYPOINT ["tar", "-zcvf", "/in/deploy.tar.gz", "/in/simple-typescript-starter"]
