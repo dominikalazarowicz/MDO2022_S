@@ -5,7 +5,7 @@ pipeline {
 			steps {
           	  	git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                 sh 'git checkout origin/KT401975'
-				sh 'git pull'
+				sh 'git pull .'
 			 	sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
 			}
 		}
