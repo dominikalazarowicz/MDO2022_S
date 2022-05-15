@@ -305,48 +305,10 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
-    Diagram zostal stworzony w aplikacji `Draw.io` 
+    Diagram zostal stworzony w aplikacji `Draw.io` aby otworzyc plik znajdujacy sie na githubie nalezy wejsc na ponizszy link i otworzyc plik aplikacja
     
     `https://app.diagrams.net/`
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
