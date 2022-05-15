@@ -42,20 +42,24 @@ pipeline
         {
             steps 
             {
-               sh 'docker build -t deploy . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
-               //sh 'docker run --name deploy_container -v build_vol:/build deploy'
-               
+               sh 'docker build -t deploy_1 . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy'
+              
                     script
                     {
                             try 
                             {
-                                sh 'docker run --name deploy_container -v build_vol:/build deploy'
+                                sh 'docker run --name deploy_container -v build_vol:/build deploy_1'
                             } 
                             catch (Exception e) 
                             {
-                                echo 'Exception occurred: ' + e.toString()
+                                echo 'Exception occurred: ' + "Graphic enviroment is needed to run this app"()
                             }
                     }
+
+                
+
+                sh 'docker build -t deploy_final . -f ./ITE/GCL04/DG304299/Lab05/docker_deploy_final'
+                sh 'docker run --name deploy_container_final -v build_vol:/build deploy_final'
             }
         }
 
