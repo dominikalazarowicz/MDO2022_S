@@ -8,7 +8,8 @@ pipeline{
         booleanParam(name: 'Promote', defaultValue: true, description: 'Statement: ')
     }
 
-    stages{
+    stages
+    {
             stage('Clone and build') 
             {
                 steps 
@@ -82,37 +83,34 @@ pipeline{
 
 
 
-                
-            }
-
-
-
-            stage('Publish') 
-            {
-                when 
-                {
-                    expression {return params.Promote}
-                }
-
                 agent 
                 {
                     docker 
                     {
                         image 'node:alpine'
-                        args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+                        args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/App" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
                     }
                 }
+
 
                 steps 
                 {
                     sh 'rm -rf /usr/local/copy/* || true'
-                    sh "cd /usr/local/myapp/express && npm version ${params.Version} && npm pack"
-                    sh "mv /usr/local/myapp/express/express-${params.Version}.tgz /usr/local/copy"
+                    sh "cd /usr/local/App/TypeScript && npm version ${params.Version} && npm pack"
+                    sh "mv /usr/local/App/TypeScript/TypeScript-${params.Version}.tgz /usr/local/copy"
                     dir('/var/jenkins_home/workspace/artifacts'){
-                        archiveArtifacts artifacts: "express-${params.Version}.tgz"
+                        archiveArtifacts artifacts: "TypeScript-${params.Version}.tgz"
                     }
                 }
-		    }       
+
+
+                
+            }
+            
+
+
+
+   
 
 
 
