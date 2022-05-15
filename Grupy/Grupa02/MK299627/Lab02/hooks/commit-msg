@@ -1,8 +1,0 @@
-#!/bin/bash
-keyword='MK299627*'
-msg="Your commit message has to start with MK299627"
-if ! grep -iqE "keyword" "$1"; then
-	echo "$msg"
-	exit 1
-fi
-echo "Your commit message is correct"
