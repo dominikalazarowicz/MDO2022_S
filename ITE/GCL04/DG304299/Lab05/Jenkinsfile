@@ -75,13 +75,8 @@ pipeline
 
         stage("Publish") 
         {
-           when 
-           {
-                environment name: 'PROMOTE', value: "true"
-
-           }
+           
             steps
-
             {
                script {
                     if(params.promote)
