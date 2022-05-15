@@ -72,7 +72,7 @@ pipeline
                 sh 'docker run --name deploy_container_final -v build_vol:/build deploy_final'
 
                 sh "rm -rf artifact && mkdir artifact"
-                sh "docker cp build_vol:/build ./artifact "
+                sh "docker cp deploy_container:/artifact/guess.jar "
 
                 sh 'docker ps -a'
             }
@@ -86,9 +86,7 @@ pipeline
                script {
                     if(params.PROMOTE)
                      {
-                         sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
-                        sh "ls -a ./artifacts"
-                        archiveArtifacts artifacts: "artifacts/*.jar"
+                         sh 'ls'
                     }
                     else {
                         echo "Success, but not promoting to new version! (check button)"
