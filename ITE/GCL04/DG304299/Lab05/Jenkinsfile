@@ -89,7 +89,7 @@ pipeline
                      {
                          
                          sh "mv ./artifact/guess.jar ./artifact/guess_${VERSION}.jar"
-                         archiveArtifacts artifacts: "artifact/*.jar"
+                         archiveArtifacts artifacts: "artifact/guess_${VERSION}.jar"
 
                          sh "ls -a ./artifact"
                     }
