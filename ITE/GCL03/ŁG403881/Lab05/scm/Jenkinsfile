@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     parameters {
-        string(name: 'Version', defaultValue: '1.0.0', description: 'Pipeline Version')
+        string(name: 'Version', defaultValue: '1.0.0', description: 'Project Version')
         string(name: 'AppBranch', defaultValue: 'master', description: 'Branch of a project to build')
         string(name: 'FileName', defaultValue: 'GithubAppLab03', description: 'Naming files artifacts')
         booleanParam(name: 'Promote', defaultValue: false, description: 'Promoting and publishing')
@@ -15,6 +15,7 @@ pipeline {
                 sh 'docker volume rm out || true'
                 sh 'docker volume create in'
                 sh 'docker volume create out'
+
                 sh 'rm -rf app || true'
                 sh 'mkdir -p app'
 
@@ -51,7 +52,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Starting building'
+                echo 'Starting Building'
                 sh 'cd /in/GithubAppLab03 && dotnet build --output /out'               
             }
             post{
@@ -80,7 +81,7 @@ pipeline {
                 }
             }
             steps {
-                echo 'Starting testing'
+                echo 'Starting Testing'
                 sh 'cd /in/GithubAppLab03 && dotnet test'  
             }
             post{
@@ -102,6 +103,7 @@ pipeline {
                 }
             }
             steps {
+                echo 'Starting Deploying'
                 sh '/out/GithubAppLab03'
                 script{
                     if(sh (script: 'echo $?',returnStdout: true).trim() != "0"){
@@ -133,6 +135,7 @@ pipeline {
                 }
             }
             steps{
+                echo 'Starting Publishing'
                 sh 'rm -rf /out/publish || true'
                 sh 'mkdir /out/publish'
 
@@ -140,7 +143,6 @@ pipeline {
                    dotnet publish GithubAppLab03.csproj -c Release \
                    -r linux-x64 -p:PublishSingleFile=true -p:UseAppHost=true \
                    --self-contained true --output /out/publish'
-                sh 'rm -rf /out/publish/*.pdb'
                 sh "cd /out/publish/ && tar -czvf ${params.FileName}-${params.Version}.tar.xz /out/publish/*"
 
                 sh 'cd /in/GithubAppLab03 && \
