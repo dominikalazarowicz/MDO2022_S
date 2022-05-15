@@ -42,7 +42,7 @@ pipeline {
 		sh 'echo "Zainstaluj przed uruchomieniem: libglib2.0  libutf8proc-dev" > ReadmePls'
 		sh 'cp irssi IrssiFiles'
 		sh 'cp ReadmePls IrssiFiles'
-		sh "tar -zcf irsi${params.version}.tar.gz IrssiFiles'
+		sh "tar -zcf irsi${params.version}.tar.gz IrssiFiles"
 		archiveArtifacts artifacts: "irsi${params.version}.tar.gz"
 	    }
 	}
