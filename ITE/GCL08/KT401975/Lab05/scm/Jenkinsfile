@@ -20,7 +20,7 @@ pipeline {
 			            }
 
          	 steps {
-				  sh 'ls -l'      
+				  sh 'cd /vol && git clone https://github.com/barisates/dotnet-core-xunit-example && cd dotnet-core-xunit-example && dotnet build --output ../../artifacts/'        
              }
 		}
    		stage('Test') {
