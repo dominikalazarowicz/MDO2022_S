@@ -88,7 +88,6 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploy'
-                sh "docker rm -f irssi_deploy"
                 sh "docker build -t file4:latest . -f /var/jenkins_home/file4"
                 sh "docker run -t -d -e TERM=xterm --name irssi_deploy -v volume_out:/volume_out file4:latest"
                 sh "docker exec irssi_deploy irssi"
@@ -108,9 +107,9 @@ pipeline {
         }
     }
 }
+
 ```
-W deployu musiałem na samym początku dodać usuwanie kontenera gdyż przy drugim i kolejnym odpaleniu, wyrzucało błąd  
-![](rm_deploy.png)  
+
 Aby inne uruchomienia działały bez problemu, zatrzymuje je i usuwam na koniec, gdy spełnią swą powinność.  
 Jak widać wszystko dobrze działa, co pokazuje nam, piękny zielony kolor  
 ![](dziala.png)  
