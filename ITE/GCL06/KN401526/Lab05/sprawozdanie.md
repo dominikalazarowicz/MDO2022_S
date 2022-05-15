@@ -284,8 +284,9 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Powyzszy zrzut ekranu przedstawia przykladowe uruchomienie napisanego Piplina jak widac na powyzszym zrzucie wszystkie etapy zakonczyly sie sukcesem i mozn zaobserwowoac stworzenie sie starowanego pliku z artefaktami
 
-   
+    12. Diagram
 
+      ![img](diagram.PNG)
 
 
     
