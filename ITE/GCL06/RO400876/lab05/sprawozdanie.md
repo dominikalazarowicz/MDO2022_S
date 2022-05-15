@@ -70,7 +70,7 @@ RUN npm test
 ```
 
 
-Trzeci dockerfile o nazwie `RO_Jenkinsfile` jest to dockerfile, którym znajduję się treść pipline'u i jego zawartość jest opisana w następnym punkcie.
+Trzeci dockerfile o nazwie `RO_Jenkinsfile` jest to dockerfile, w którym znajduję się treść pipline'u i jego zawartość jest opisana w następnym punkcie.
 
 
 ### 4. Zawartość pipline'u.
