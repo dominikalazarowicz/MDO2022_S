@@ -36,9 +36,9 @@ Projekt jest oparty o Javę (Gradle)
 
 - Stage Clone w Jenkinsfile
 
-    Na wstępie usuwamy nieppotrzebne kontenery i woluminy, Następnie tworzy wolumeny repo_vol (tam zostanie sklonowane repozytorium), oraz build_vol(tam zostanie sklonowany build).
+    Na wstępie usuwamy niepotrzebne kontenery i woluminy. Następnie tworzymy wolumeny repo_vol (tam zostanie sklonowane repozytorium), oraz build_vol(tam zostanie sklonowany build).
 Uruchamiamy Dockerfile klonujący repozytorium, o nazwie "clone".
-Po zbudowaniu kontener został uruchomiony z podmontowanym voluminem repozytorium repo_vol
+Po zbudowaniu kontener zostaje uruchomiony z podmontowanym voluminem repozytorium repo_vol
    
     ```
       stage('Clone') 
@@ -260,7 +260,7 @@ Po zbudowaniu kontener został uruchomiony z podmontowanym voluminem repozytoriu
     ```
     ![img](pipeline_start.png)
 
-    ![img](pipeline.png)
+    ![img](pipeline2.png)
 
 
 ## 6. DIAGRAM
