@@ -197,7 +197,7 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
     Opis:
 
     W powyzszym fragmencie kodu zostaje utworzony kontener kacper_deploy sluzacy do przeprowadzenia wdrozenia z podpietym voluminem wyjsciowym w ktorym znajduje sie skopiowane z voluinu wejsciowego repozytorium 
-    nastepnie zostaje sprawdzony exit code ktory jesli wykonal sie poprawnie w pozniejszym etapie kontener zostaje usuwany
+    nastepnie zostaje sprawdzony exit code ktory jesli wykonal sie poprawnie kolejne kroki sa wykonywane w pozniejszym etapie kontener zostaje usuwany
 
     7. Publish Cleaning
     ```
@@ -237,8 +237,46 @@ Powyzszy Dockerfile odpowiada za przeprowadzenie testow znajdujacych sie w repoz
 
     Opis:
 
+    Pierwsza rzecza jaka zostaje sprawdzona w powyzszym kodzie jest wartosc parametru PROMOTE jesi on true to zostaja wykonane polecenia znajdujace sie obrzarze steps gdzie zostaje tworzony artefakt jesli wartosc PROMOTE bedzie wynosila false to artefakty nie utworza sie
+    w obszarze steps zostaje stworzony folder ktory bedzie zawieral artefakty po czym zostaje uruchomiony kontener kacper_publish z podpietym voluminem wyjsciowym po czym artefakty zostaja zapakowane do pliku taz.xz z nadana wwrsja z parametru VERSION 
 
+    9. Cleaning Memory
+    ```
+       stage ('Clearing Memory')
+        {
+        	steps
+        	{
+        	    sh 'docker rm -f kacper_build || true'
+                sh 'docker rm -f kacper_test || true'
+                sh 'docker rm -f kacper_deploy || true'
+                sh 'docker rm -f kacper_publish || true'
+                }
+        }
+    ```
 
+    Opis:
+
+    Powyzszy fragment kodu przedstawia usuwanie powstalych kontenerow podczas wykonywania poszczegolnych krokow Piplina
+
+    10. Czynnosc po stages 
+    ```
+      post
+      {
+   	   success
+          {
+   		echo 'You successfully ended Pipline'
+   	      }
+   	   failure
+   	   {
+   		echo 'ERROR'
+   	   }
+   } 
+    ```
+    Opis:
+
+    Powyzszy fragment kodu odpowiada za wyswietlenie wiadomosci czy Pipline zakonczyl sie succesem czy porazka
+
+    11. Przykladowe uruchmienie
 
 
    
