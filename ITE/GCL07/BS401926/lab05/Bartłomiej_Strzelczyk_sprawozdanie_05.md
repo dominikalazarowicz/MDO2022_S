@@ -47,7 +47,6 @@ W etapie Deploy uruchamiana jest aplikacja w celu sprawdzenia jej działania prz
 
 W etapie Publish jest tworzony jest katalog artifacts w kontenerze i publikowany program. W tym celu podpinany jest nowy agent a podstawie obrazu node:alpine z uprawnieniami root'a oraz usuwane są wszystkie pliki z katalogu artifacts. Następnie ustawiana jest wersja programu i używane polecenie npm pack do kompresji aplikacji. Na sam koniec jest archiwizowany artefakt.
 Parametry Version i Promote odpowiadają kolejno za nadanie numeru wersji aplikacji i sprawdzenie, czy etap zostanie wykonany.
-Na sam koniec użytkownik jest informowany o powodzeniu lub niepowodzeniu pipeline'a.
 
 ## Budowa pipeline'a
 
