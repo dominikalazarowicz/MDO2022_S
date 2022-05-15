@@ -1,0 +1,3 @@
+FROM mk_build:latest
+WORKDIR /vue-testing-series/
+RUN npm test

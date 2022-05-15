@@ -1,0 +1,130 @@
+pipeline
+{
+ parameters
+    {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+    }
+	agent any
+	stages
+	{
+	
+	stage('Prepare')
+		{
+			steps
+			{
+				sh '''
+				tput setaf 4; echo "Preparing to build..."
+				
+				docker rm -f mk_build || true
+				docker volume prune -f
+				docker volume  create --name volume_input
+				docker volume  create --name volume_output
+				 	      
+                    		tput setaf 2; echo "Preparing finished!"
+				'''
+				
+			}
+		}
+	
+		stage('Build')
+		{
+			steps
+			{
+				sh '''
+				tput setaf 4; echo "Building project..."
+				
+				docker build . -f ./ITE/GCL04/MK401058/lab05/DockerfileBuild -t mk_build
+                    		docker run --mount type=volume,src="mk_build",dst=/volume_input mk_build:latest bash -c "cd .. &&  cp -r /vue-testins-series /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
+                    		 	      
+                    		tput setaf 2; echo "Building finished!"
+				'''
+				
+			}
+		}
+		
+		stage('Test')
+		{
+			steps
+			{
+				sh '''
+				tput setaf 4; echo "Testing project..."
+				
+				docker rm -f DockerfileTest || true
+				docker build . -f ./ITE/GCL04/MK401058/lab05/DockerfileTest -t mk_test
+				docker run --name test_container --rm --mount source= mk_test,target=/volume_input mk_test:latest
+				
+				tput setaf 2; echo "Testing finished!"
+				'''
+			}
+		}
+		
+		stage('Deploy')
+        		{
+            		steps
+            		{
+                			sh '''
+                			tput setaf 4; echo "Deploying project..."
+                
+                			docker rm -f deploy_container || true
+                			docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/mk_project node
+                			exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
+                
+                			tput setaf 2; echo "Deploying finished!"
+            	 		'''
+            		}
+        		}
+        
+       		stage ('Publish')
+        		{
+            		when
+            		{
+                			expression {return params.PROMOTE}
+            		}
+            		steps
+            		{
+            	 		sh 'tput setaf 4; echo "Publishing project..."'
+            	 
+                			sh 'rm -rf /var/jenkins_home/workspace/mk_artifacts'
+                			sh 'mkdir /var/jenkins_home/workspace/mk_artifacts'
+                			sh 'chmod -R 777 /var/jenkins_home/workspace/mk_artifacts'
+                			sh 'docker rm -f ro_publish || true'
+                			sh 'docker run -d --name mk_publish --mount type=volume,src="volume_output",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
+                			sh "tar -zcvf vuetestingseries${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts ."
+                			archiveArtifacts artifacts: "vuetestingseries${params.VERSION}.tar.xz"
+                
+                			sh 'tput setaf 2; echo "Publishing finished!"'
+                
+            		}
+        		}
+        
+        		stage('Clean')
+		{
+			steps
+			{
+				sh '''
+				tput setaf 4; echo "Cleaning project..."
+				
+				docker rm -f ro_build || true
+                			docker rm -f ro_test || true
+                			docker rm -f deploy_container || true
+                			docker rm -f ro_publish || true
+				
+				tput setaf 2; echo "Cleaning finished!"
+				'''
+			}
+		}
+        
+	}
+	
+	post {
+        		success {
+            		tput setaf 2; echo 'Pipeline completed successfully!'
+        		}
+        		failure {
+            		tput setaf 1; echo 'Pipeline completed with errors!'
+        		}
+    	}
+	
+	
+}
