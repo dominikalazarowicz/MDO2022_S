@@ -12,11 +12,11 @@ pipeline{
 		stage('Clone and build') {
 			steps {
 				echo 'Create input volume'
-				sh 'docker volume create TMP_IN_V'
-				sh 'docker rm TMP_C || true'
+				sh 'docker volume create input-volume'
+				sh 'docker rm tmp-c || true'
 
                 echo 'Docker run, node clone '
-				sh 'docker run --rm --name TMP_C --mount "type=volume,src=TMP_IN_V,dst=/App" node bash -c "cd ~/ && ls  TypeScript || git clone https://github.com/microsoft/TypeScript;cp -R  TypeScript /App; ls /App"'
+				sh 'docker run --rm --name tmp-c --mount "type=volume,src=input-volume,dst=/App" node bash -c "cd ~/ && ls  TypeScript || git clone https://github.com/microsoft/TypeScript;cp -R  TypeScript /App; ls /App"'
                 echo 'Docker run done '
 
             
@@ -25,7 +25,7 @@ pipeline{
 					sh 'docker build . -t TypeScript_Node -f Dockerfile'
 					sh 'docker volume create TMP_OUT_V'
 					sh 'docker rm TypeScriptBuild || true'
-					sh 'docker run --rm --name TypeScriptBuild --mount "type=volume,src=TMP_IN_V,dst=/App" --mount "type=volume,src=TMP_OUT_V,dst=/App_Build" TypeScript_Node bash -c "cd /App/TypeScript && npm install; cp -R /App/TypeScript /App_Build"'
+					sh 'docker run --rm --name TypeScriptBuild --mount "type=volume,src=input-volume,dst=/App" --mount "type=volume,src=TMP_OUT_V,dst=/App_Build" TypeScript_Node bash -c "cd /App/TypeScript && npm install; cp -R /App/TypeScript /App_Build"'
 				}
             
 
