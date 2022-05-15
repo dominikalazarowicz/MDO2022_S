@@ -21,5 +21,15 @@ pipeline {
                 }
             }
         }
+	stage('Deploy') {
+            steps {
+                sh 'docker run --volume /var/jenkins_home/workspace/NewPipeline/INO/GCL01/DG306441/Lab05:/v1 build mv pcalc /v1'
+                dir('INO/GCL01/DG306441/Lab05') {
+                    sh 'docker build . -f DockerFile3 -t deploy'
+                }
+                sh 'docker run --volume /var/jenkins_home/workspace/NewPipeline/INO/GCL01/DG306441/Lab05:/v2 -d -p 3000:80 deploy'
+                sh 'docker stop $(docker ps -a -q)'
+            }
+        }
     }
 }
