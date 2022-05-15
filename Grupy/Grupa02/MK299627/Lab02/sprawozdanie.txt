@@ -34,4 +34,12 @@ if ! [[ $msg == $keyword ]]; then
 fi
 echo "Your commit message is correct."
 
-
+5. Ostatnim krokiem bylo bylo dolaczenie swoich zmian, za pomoca:
+	git checkout Grupa02
+przelaczylem sie na brancha grupowego, a nastepnie wykonalem merge z moim branchem komenda:
+	git merge Grupa02-MK299627_Lab02
+ktory nastepnie zostal usuniety:
+	git branch -D Grupa02-MK299627_Lab02
+Na zakonczenie wykonalem pulla, commita, po czym dodalem swoje zmiany:
+	git push --set-upstream origin Grupa02
+I wykonalem pull requesta.
