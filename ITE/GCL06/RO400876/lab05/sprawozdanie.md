@@ -173,8 +173,7 @@ stage('Test')
 
 * Deploy:
 
-
-
+Krok `Deploy` odpowiada za wdrożenie projektu. W sekcji tej na początku usuwany jest kontener `deploy_container` o ile istnieje, jest to szczególnie ważne przy wielokrotnym uruchomieniu projektu. Następnie uruchamiany jest kontener przeznaczony do wdrożenia o nazwie `deploy_container` z podpiętym woluminem wyjściowym `volume_output`. Polecenie exit sprawdza status operacji, jeżeli wszystkie kroki przejdą pomyślnie pipline kontynuuje swoją pracę, natomiast jeżeli pojawi się błąd praca pipline'a zostaje zatrzymana. 
 ```
 stage('Deploy')
         {
