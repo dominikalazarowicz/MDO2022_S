@@ -29,6 +29,28 @@ pipeline {
 					mail to: 'kalach@student.agh.edu.pl', subject: "Failure of test", body: "Failure of test: ${BUILD_URL}"
 				}
 			}
-         }
+         	}
+         	stage('Login') {
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+		stage('Deploy') {
+			steps {
+				sh '''
+				docker tag app:latest kalch1/kl299629:1.0
+				docker push kalch1/kl299629:1.0
+				'''
+			}
+			post {
+				success {
+					mail to: 'kalach@student.agh.edu.pl', subject: "Success of deploy", body: "Success of deploy: ${BUILD_URL}"
+				}
+				failure {
+					mail to: 'kalach@student.agh.edu.pl', subject: "Failure of deploy", body: "Failure of : ${BUILD_URL}"
+				}
+			}
+
+		}
 	}
 }
