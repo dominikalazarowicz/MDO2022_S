@@ -5,7 +5,7 @@
 
 1. Przygotowanie środowiska do realizacji zadania.
 
-Zadanie zostaje przeprowadzone na VM utworzonej dzięki skorzystaniu z oprogramowania Oracle Virtual Box, konkretnie jest to obraz Ubuntu wersja 20. Ponadto część z operacji takich jak kopiowanie tworzenie plików wykonywałem na stacji roboczej z systemem Win.10. Na poczet projektu utworzyłem nową maszyne, ponieważ stara nie wyrabiała jeśli chodzi o pamięć. Tak więc przed przystąpieniem do realizacji zadania należy sobie zapewnić (o ile korzysta się z VM) conajmniej 20gb wolnego miejsca, ponieważ tworzone kontenery bardzo szybko pochłaniają miejsce.
+Zadanie zostaje przeprowadzone na VM utworzonej dzięki skorzystaniu z oprogramowania Oracle Virtual Box, konkretnie jest to obraz Ubuntu wersja 20. Ponadto część z operacji takich jak kopiowanie tworzenie plików wykonywałem na stacji roboczej z systemem Win.10. Na poczet projektu utworzyłem nową maszyne, ponieważ stara nie wyrabiała jeśli chodzi o pamięć. Tak więc przed przystąpieniem do realizacji zadania należy sobie zapewnić (o ile korzysta się z VM) conajmniej 20gb (według moich obliczeń) wolnego miejsca, ponieważ miejsce jest pochłaniane w dość zabójczym tempie.
 
 2. Podstawa do realizacji pipeline, czyli Kontener Jenkins oraz DIND.
 
@@ -25,7 +25,7 @@ Kontener DIND uruchamiamy jako demona, dajemy mu wszystkie uprawnienia, przypisu
 
 ![](./screenshots/s2_DIND.png)
 
-Kontener Jenkins, zbudowany ówcześnie obraz uruchamiamiy z publikacją na port 8080. Dzięki czemu po wyszykaniu adresu ```localhost:8080```w naszej przeglądarce naszym oczom powinien ukazać się interfejs Jenkinsa.
+Kontener Jenkins, zbudowany ówcześnie obraz uruchamiamy z publikacją na port 8080. Dzięki czemu po wyszykaniu adresu ```localhost:8080```w naszej przeglądarce naszym oczom powinien ukazać się interfejs Jenkinsa.
 
 ![](./screenshots/s1_Jenkins.png)
 
@@ -33,11 +33,13 @@ Potwierdzenie utworzenia obu kontenerów umożliwi nam polecenie ```docker ps```
 
 ![](./screenshots/s3_PS.png)
 
-Jeśli chcemy uzyskać domyślne hasło do świeżo utworzonej instancji Jenkinsa w pierwszej kolejności za pomocą komendy ```docker exec -it < ID kontenera > /bin/bash``` a kolejno odczytujemy plik zawierający hasło ```cat /var/jenkins_home/secrets/initialAdminPassword```.
+Jeśli chcemy uzyskać domyślne hasło do świeżo utworzonej instancji Jenkinsa w pierwszej kolejności za pomocą komendy ```docker exec -it < ID kontenera > /bin/bash``` a kolejno odczytujemy plik zawierający hasło ```cat /var/jenkins_home/secrets/initialAdminPassword```. Oczywiście ma to zastosowanie przy domyślnej konfiguracji konta Jenkinsowego.
 
 3. Przygotowanie Pipelin'u.
 
 # Definiowanie pipelina.
+
+Tworzony przeze mnie pipeline będzie rurociągiem deklaratywnym, jest on idealnym wyborem dla prostych rurociągów. Nie jest on jednak tak elastyczny, ponieważ ogranicza to co jest dostępne dla użytkownika (struktura jest bardziej rygorystyczna). Skryptowy natomiast pozwala użytkownikowi na dużo więcej. Jedyne ograniczenia to te narzucone przez Groovy. Nadaje się on więc bardziej do złożonego rurociągu nastawionego na imperatywny model programowania.
 
 W pierwszej kolejności należy dokonać forka repozytorium na którym pracujemy, w moim przypadku kontynuuje prace z *nodejs.org*. Fork pozwala nam na utworzenie kopi repozytorium i eksperymentowania na nim nie wpływając na oryginalny projekt. Oczywiście to czy fork będzie możliwy zależne jest od dostawcy oprogramowania.
 
@@ -49,6 +51,8 @@ Zforkowane repo klonuje na stacje roboczą aby móc dodawać na nie pliki, konkr
 
 Plik jenkinsfile umieściłem w folderze jenkinsDir w katalogu głównym sklonowanego repozytorium. Jego zawartość prezentuje się następująco:
 
+Jenkins pozwala nam na rozproszoną kompilacje poprzez delegacje do odpowiednich "węzłów agentów". Powodem takiego rozwiązania jest zapewnienie możliwości tworzenia kilku projektów przy pomocy jednej instancji Jenkinsa. W moim przypadku nie ma znakowania agentów (Linux, Windows), pipeline zostanie uruchomiony na dowolnym dostępnym węźle.
+
 - Parametres, w sekcji tej umieściłem dwa parametry: programName oraz version. Są one podawane na wejściu, mają w dalszym kroku służyć do nazwania pliku artefaktu .tar. Ponadto wypisuje je w stage'u publisha. Aby potwierdzić poprawność ich zdefiniowania.
 
 ![](./screenshots/s21_parametres.png)
@@ -59,15 +63,15 @@ Plik jenkinsfile umieściłem w folderze jenkinsDir w katalogu głównym sklonow
 
 ![](./screenshots/s23_testJenkins.png)
 
-- Deploy, tutaj pojawił się problem z voluminami konkretnie z osiągnięciem destynacji buildera na voluminie wyjściowym. Ciągły błąd ``` no such file in  directory``` sprawił, że odwiesiłem peleryne i zrezygnowałem z voluminów w przypadku deploya. Największym kłopotem było wycofanie się do ścieżki podrzędnej. Tak więc odwołałem się do obrazu buildera, tworzymy więc obraz *deploy* hostujący nasze pliki. Wybór serwera WWW hostującego padł na ```nginx'a```. Łatwa konfiguracja nie powinna sprawić nikomu problemu, jej rozwinięcie podczas opisu pliku dockerfileDeploy. Uruchomienie kontenera standardowo korzystamy z dyrektywy run, jednak następuje tutaj przekierowanie na port 3000 (domyślnie 80). Umożliwi to podgląd hostowanej strony. Na samym końcu wyłączamy kontener, gdyż w przeciwnym wypadku mogło by to doprowadzić do nieskończonego oczekiwania na jego zakończenie.
+- Deploy, tutaj pojawił się problem z voluminami konkretnie z osiągnięciem destynacji buildera na voluminie wyjściowym. Ciągły błąd ``` no such file in  directory``` sprawił, że wywiesiłem bardzo białą flage i zrezygnowałem z voluminów w przypadku deploya. Największym kłopotem było wycofanie się do ścieżki podrzędnej. Tak więc odwołałem się do obrazu buildera, tworzymy więc obraz *deploy* hostujący nasze pliki. Wybór serwera WWW hostującego padł na ```nginx'a```. Łatwa konfiguracja nie powinna sprawić nikomu problemu, jej rozwinięcie podczas opisu pliku dockerfileDeploy. Uruchomienie kontenera standardowo korzystamy z dyrektywy run, jednak następuje tutaj przekierowanie na port 3000 (domyślnie 80). Umożliwi to podgląd hostowanej strony. Na samym końcu wyłączamy kontener, gdyż w przeciwnym wypadku mogło by to doprowadzić do nieskończonego oczekiwania na jego zakończenie.
 
 ![](./screenshots/s24_deployJenkins.png)
 
-- Publish, po poprawnie przeprowadzonych procesach: build, test oraaz deploy przeszedłem do etapu publish. Tak więc zakładamy, że nasz build powinien zostać jako nowe wydanie programu. Budujemy więc artefakt, w moim przypadku jest to plik *TAR.XZ*. Kolejny raz korzystam z pliku dockerfile, następnie utworzony artefakt "wypycham" do voluminu. Na końcu korzystam z podanych na wejściu parametrów informując o nazwie programu oraz wersji. 
+- Publish, po poprawnie przeprowadzonych procesach: build, test oraz deploy przeszedłem do etapu publish. Tak więc zakładamy, że nasz build powinien zostać jako nowe wydanie programu. Budujemy więc artefakt, w moim przypadku jest to plik *TAR.XZ*. Kolejny raz korzystam z pliku dockerfile, następnie utworzony artefakt "wypycham" do voluminu. Na końcu korzystam z podanych na wejściu parametrów informując o nazwie programu oraz wersji. Tak więc plan minimum na artefakt zostaje osiągniety.
 
 ![](./screenshots/s25_publishJenkins.png)
 
-- Sekcja post, ma ona na celu powiadomiść użytkownika o powodzeniu lub niepowodzeniu przebiegu pipelin'a.
+- Sekcja post, ma ona na celu powiadomić w moim przypadku użytkownika o powodzeniu lub niepowodzeniu przebiegu pipelin'a. 
 
 # Pliki dockerfile
 
@@ -75,7 +79,7 @@ W katalogu głównym repozytorium umieszczone został 4 dockerfil'e. Kolejno doc
 
 - dockerfileBuild
 
-Kolejno korzystamy z obrazu bazowego *node:last*, następnie klonuje zforkowane repozytorium, poprzez komende ```git clone``` < ścieżka do mojego githuba z repo >. Przechodzimy do folderu roboczego, następnie instalujemy wymagane dependecje co jest bardzo ważne w kontekście poprawnego zbudowania programu. W moim przypadku ogranicza się to npm'a, także nie jest to problematyczne. W ostatnim etapie uruchamiamy builda.
+Kolejno korzystamy z obrazu bazowego *node:last*, następnie klonuje zforkowane repozytorium, poprzez komende ```git clone``` < ścieżka do mojego githuba z repo >. Przechodzimy do folderu roboczego, następnie instalujemy wymagane dependecje co jest bardzo ważne w kontekście poprawnego zbudowania programu. W moim przypadku ogranicza się to do npm'a, także nie jest to problematyczne. W ostatnim etapie uruchamiamy builda.
 
 ![](./screenshots/s26_dockerfileBuild.png)
 
@@ -87,19 +91,19 @@ Dockerfile ten bazuje na zbudowanym uprzednio kontenerze *builder*,  następnie 
 
 -dockerfileDeploy
 
-Tak jak zostało to wspomniane powyżej praca z voluminami nie należała do najprostszych, tak więc postanowiłem bazować na obrazie builder'a, kopiuje z folderu build odpowiednie pliki do hostującego serwera WWW. Tak więc wyciągam z buildera co warto tutaj zaznaczyć wyłącznie pliki z folderu *en*, gdyż hostowanie reszty uważam za zbędne. Ponadto kopiuje pliki odpowiadające za obsługe frontu html/css.
+Tak jak zostało to wspomniane powyżej praca z voluminami nie należała do najprostszych, tak więc postanowiłem bazować na obrazie builder'a, kopiuje z folderu build odpowiednie pliki do hostującego folderu z nginx'em. Tak więc wyciągam z buildera co warto tutaj zaznaczyć wyłącznie pliki z folderu *en*, gdyż hostowanie reszty uważam za zbędne. Ponadto kopiuje pliki odpowiadające za obsługe frontu html/css.
 
 ![](./screenshots/s28_dockerfileDeploy.png)
 
 -dockerfilePublish
 
-W ostatnim etapie odwołuje się do kontenera builder, a następnie tworzen paczke tar będącą artefaktem. 
+W ostatnim etapie odwołuje się do kontenera builder, a następnie tworze paczkę tar będącą artefaktem. 
 
 ![](./screenshots/s29_dockerfilePublish.png)
 
 # Konfiguracja JenkinsBlueocean
 
-Przehcodzimy do UI Jenkinsa, w pierwszej kolejności tworzymy nowy projekt.
+Przechodzimy do UI Jenkinsa, w pierwszej kolejności tworzymy nowy projekt.
 
 ![](./screenshots/s30_blueOcean.png)
 
@@ -162,6 +166,9 @@ Uruchomienie Pipelinu, podajemy początkowe parametry.
 
 ![](./screenshots/s19_Publish.png)
 
+------WITH STAGE------------------
+
+![](./screenshots/s35_staged.png)
 
 ---------LOG CONFIRM------------------
 
@@ -169,9 +176,20 @@ Uruchomienie Pipelinu, podajemy początkowe parametry.
 
 Krótkie wnioski do powyższych wyników, 17 test nie powiódł się gdyż nie zgadzała się nazwa artefaktu, jednak poprzednie stage'e się powiodły jak widać trwały zauważalny czas, szczególnie budowanie i testowanie. Widzimy jednak, że uruchomienie pipelinu po raz kolejny na tej samej sesji znacznie skraca swój czas, część plików zapisuje się w pamięci cache co znacząco skraca proces.
 
-# Wnioski 
+Na potwierdzenie utworzenia artefaktu załączam screena z wnętrza kontenera Jenkinsa, w folderze volumes znajdują się build (pozostałość po próbach pracy z voluminami) oraz dwa artefakty (mają one taką samą zawartość, jedynie inne nazwy).
 
-Tworzenie pipelinu dla osoby będącej w temacie jedynie powierzchownie jest dość trudne, nie umniejsza jednak to w żaden sposób korzyścią jakie niesie ze sobą pipeline. Automatyzacja, uprządkowanie czy uniwersalność wykonywanych akcji prowadzi do tak powrzechnego zastosowania tego rozwiązania. W projekcie nie udało się skorzystać z voluminów za wyjątkiem publikacji artefaktu. 
+![](./screenshots/s36_volumes.png)
+
+Ponadto dzięki przekierowaniu portu jesteśmy w stanie po odwołaniu do ```localhost:8083``` ui startowew nodejs.org. Potwierdza to zarówno załączony zrzut ekranu z wyniku odwołania się do wspomnianego adresu jak i przekierowania portów wewnątrz kontenera jenkins jak i na zewnątrz.
+
+![](./screenshots/s37_hosted.png)
+
+![](./screenshots/s38_portForwarding.png)
+
+
+# Wnioski i podsumowanie
+
+Tworzenie pipelinu dla osoby będącej w temacie jedynie powierzchownie jest dość trudne, nie umniejsza jednak to w żaden sposób korzyścią jakie niesie ze sobą pipeline. Automatyzacja, uporządkowanie czy uniwersalność wykonywanych akcji prowadzi do tak powrzechnego zastosowania tego rozwiązania. Sam w sobie Jenkins ułatwia pracę integracyjną i daje nam sporo możliwości. W projekcie nie udało się skorzystać z voluminów za wyjątkiem publikacji artefaktu. Ponadto, poległem podczas definiowania nazwy artefaktu za pomocą wejściowych parametrów. Jednak podstawowe funkcjonalności pipelinu zostały zapewnione.
 
 
 
