@@ -6,7 +6,8 @@ grupa lab 4
 
 <h2>Cel</h2>
 
-    Celem projektu jest utworzenie pipeline'a pozwalającego na zbudowanie wybranego programu ( w moim przypadku irssi) uruchomienie na nim testów, deploy'a i publish'a.
+    Celem projektu jest utworzenie pipeline'a pozwalającego na zbudowanie wybranego programu ( w moim przypadku irssi) 
+    uruchomienie na nim testów, deploy'a i publish'a.
 
 <h2>Streszczenie przeprowadzonego projektu</h2>
 
