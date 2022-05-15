@@ -12,14 +12,15 @@ Projekt oparty jest o Maven'a.
 Pipeline Jenkins'a składa się z kilku faz (stages), które odpowiadają czynnościom
 na drodze budowania i potencjalnie udostępniania oprogramowania.
 
-Pipeline zdefiniowano za pomocą Jenkinsfile, który znajduje się w plikach na osobistym branch'u (DS402563)
+Pipeline zdefiniowano za pomocą Jenkinsfile, który znajduje się w plikach na osobistym branchu (DS402563)
 w repozytorium przedmiotu.  
 Jenkinsfile zawiera kilka parametrów, które pozwalają
 na dostosowanie pracy pipeline'a. Większość etapów wykonywana jest przy pomocy kontenerów Docker'a.
-Potrzeba do tego Dockerfiles, które również znajdują się w plikach na osobistym branch'u w repozytorium przedmiotu.
+Potrzeba do tego Dockerfiles, które również znajdują się w plikach na osobistym branchu w repozytorium przedmiotu.
 
-Rezultatem pracy pipeline może być (jeżeli zdecydowano się w ogóle publikować) udostępnienie nowego wydania oprogramowania w formie obrazu dostępnego  
-na Docker Hub. W repozytorium Docker Hub znajduje się szereg wydań pod postacią tagów odpowiadających wersjom oprogramowania.
+Rezultatem pracy pipeline'a może być (jeżeli zdecydowano się w ogóle publikować) udostępnienie nowego wydania oprogramowania w formie obrazu dostępnego na Docker Hub.
+Kolejne wydania, w postaci tagów, można znaleźć w niniejszym repozytorium:  
+https://hub.docker.com/repository/docker/dawrr756hj23/algo
 
 Poniżej opisano kolejne kroki, z których składa się cały pipeline.
 
@@ -120,8 +121,6 @@ Dockerfile kontenera wdrażającego.
 FROM openjdk:11
 
 WORKDIR /app
-
-COPY algorithms-1.0.jar .
 
 CMD ["java", "-jar", "algorithms-1.0.jar"]
 
@@ -254,7 +253,6 @@ pipeline {
                 }
             }
             steps {
-                sh "pwd"
                 sh "docker build -t ${REPOSITORY}:${VERSION} ITE/GCL07/DS402563/Lab05/publish"
                 sh "docker push ${REPOSITORY}:${VERSION}"
             }
@@ -275,7 +273,7 @@ pipeline {
 
 # Tworzenie pipeline w GUI Jenkins'a
 
-Kreator tworzenie Pipeline
+Kreator tworzenia Pipeline
 ![title](screenshots/create1.png)
 
 Uruchamianie Pipeline z wyborem wartości parametrów.
@@ -283,3 +281,11 @@ Uruchamianie Pipeline z wyborem wartości parametrów.
 
 Pomyślny przebieg zadań w Pipeline
 ![title](screenshots/history.png)
+
+
+# Diagramy
+
+Diagram aktywności przedstawia przebieg zadań realizowanych w ramach pipeline.  
+
+![title](screenshots/activity_diagram.png)
+
