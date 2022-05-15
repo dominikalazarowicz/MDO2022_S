@@ -75,8 +75,6 @@ pipeline
                 sh "rm -rf artifact && mkdir artifact"
                 sh 'docker cp deploy_container:./build/guess.jar artifact' 
 
-                sh "docker rmi deploy_1"
-
                 sh 'docker ps -a'
             }
         }
@@ -110,6 +108,7 @@ pipeline
                 sh "docker rmi clone"
                 sh "docker rmi build"
                 sh "docker rmi test"
+                sh "docker rmi deploy_1"
                 sh "docker rmi deploy_final"
                 sh 'docker volume prune -f'
                 
