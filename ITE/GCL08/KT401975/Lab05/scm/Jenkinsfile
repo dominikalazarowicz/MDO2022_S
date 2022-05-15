@@ -3,9 +3,9 @@ pipeline {
 	stages {
 		stage("Start") {
 			steps {
+				sh 'set +x'
           	  	git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
                 sh 'git checkout origin/KT401975'
-				sh 'set +x'
 				sh 'git pull'
 				sh 'set -x'
 			 	sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
