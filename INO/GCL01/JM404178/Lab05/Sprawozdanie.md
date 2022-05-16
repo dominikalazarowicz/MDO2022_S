@@ -43,11 +43,16 @@
 
 ![Test](https://i.imgur.com/egtrQCS.png)
 
-* Teraz, aby moc uzyc powyzszych Dockerfile'i, musimy je przetransportowac do wnetrza Jenkinsa. Do tego sluzy komenda: 
+* Teraz, aby moc uzyc powyzszych Dockerfile'i, musimy je przetransportowac do wnetrza Jenkinsa. Do tego sluzy komenda:
+
 `docker cp "nazwa dockerfile" "nazwa kontenera":/var/jenkins_home/"ewentualna nazwa utworzonego folderu na dockerfile"`
+
 W moim przypadku sa to komendy:
+
 docker cp DOCKER-BUILDER jenkins-blueocean:/var/jenkins_home/Dockerfiles
+
 docker cp DOCKER-DEPENDENCIES jenkins-blueocean:/var/jenkins_home/Dockerfiles
+
 docker cp DOCKER-TEST jenkins-blueocean:/var/jenkins_home/Dockerfiles
 
 Teraz tworzymy nowy rurociag:
@@ -55,6 +60,7 @@ Teraz tworzymy nowy rurociag:
 ![ppl creation](https://i.imgur.com/vFNEqU5.png)
 
 W Pipeline scripcie wklejamy:
+
 ```
 pipeline {
     agent any
@@ -97,6 +103,7 @@ Jak widac, testy przechodza poprawnie.
 * Po zrobieniu sprawozdania zobaczylem, ze przydaloby sie, aby powyzsza czynnosc byla wykonywana za pomoca pipeline script from SCM, wiec zalaczam tez instrukcje jak zrobic to w drugi sposob:
 
 Na poczatku fork'ujemy sobie projekt IRSSI do nas do osobnego repo, wrzucamy do srodka WSZYSTKIE PLIKI z dockerfilami oraz jenkinsfile, ktory rowniez jest dostepny tutaj na branchu.
+
 W konfiguracji pipeline scriptu mozemy zmienic ja na Pipeline script from SCM. Potem zaznaczamy opcje GIT, przekazujemy adres naszego sforkowanego repo, brancha zostawiamy na master, poniewaz
 glowny branch IRSSI to wlasnie master, nie main (w przypadku innych repo trzebaby ta sciezke zmienic).
 
@@ -109,8 +116,10 @@ Ja swoj Jenkinsfile wrzucilem dodatkowo do folderu, ktory nazwalem jenkins, wiec
 ## Deploy oraz Publish
 
 * Tworzymy dwa nowe Dockerfile, aby moc obsluzyc funkcjonalosci:
-Deploy - uruchomienie programu w kontenerze
-Publish - utworzenie archiwum ze skompilowanym programem
+
+Deploy - uruchomienie programu w kontenerze.
+
+Publish - utworzenie archiwum ze skompilowanym programem.
 
 * W tym momencie przekopiowywujemy obydwa Dockerfile po raz kolejny na Jenkinsa za pomoca komendy `docker cp` (ten krok pomijamy, jezeli korzystamy z SCM).
 
