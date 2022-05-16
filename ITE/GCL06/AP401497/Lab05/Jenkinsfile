@@ -11,20 +11,20 @@ pipeline {
                 sh 'docker container prune -f'
                 sh 'docker volume prune -f'
                 sh 'docker volume  create --name repo_vol'
-                sh "docker build -t dethClone . -f ITE/GCL06/AP401497/Lab05/Clone/Dockerfile"
-                sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/deth dethClone"
+                sh "docker build -t dethclone . -f ITE/GCL06/AP401497/Lab05/Clone/Dockerfile"
+                sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/deth dethclone"
                     }
                 }
             stage("Build") {
                 steps {
-                    sh 'docker build -t dethBuild . -f ITE/GCL06/AP401497/Lab05/Build/Dockerfile'
-                    sh 'docker run -v repo_vol:/deth -v ${PWD}:/public dethBuild'            
+                    sh 'docker build -t dethbuild . -f ITE/GCL06/AP401497/Lab05/Build/Dockerfile'
+                    sh 'docker run -v repo_vol:/deth -v ${PWD}:/public dethbuild'            
                 }
             }
             stage("Test") {
                 steps {
-                    sh 'docker build -t dethTest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=deth_builded'
-                    sh 'docker run  -v repo_vol:/deth dethTest'
+                    sh 'docker build -t dethtest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=deth_builded'
+                    sh 'docker run  -v repo_vol:/deth dethtest'
             }
         }
     }
