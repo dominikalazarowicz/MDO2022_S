@@ -25,12 +25,13 @@ pipeline {
                 steps {
                     sh 'docker build -t dethtest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=dethbuild'
                     sh 'docker run  -v repo_vol:/deth dethtest'
+                }
             }
             stage("Deploy") {
             steps {
                 sh 'docker build -t deploydeth . -f ITE/GCL06/AP401497/Lab05/Deploy/Dockerfile'
                 sh 'docker run  -v ${PWD}:/deth  deploydeth'
-            }
+                }
             }
             stage("Publish") {
             when {
@@ -40,9 +41,8 @@ pipeline {
                     sh "tar -czvf deth_${VERSION}.tar.gz deth"
                     archiveArtifacts "deth_${VERSION}.tar.gz"
                 }
+            }
         }
-        }
-    }
 
     post {
          always{
