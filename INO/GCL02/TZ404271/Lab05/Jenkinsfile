@@ -4,8 +4,7 @@ pipeline {
         stage("Prebuild") {
             steps {
                 echo "Stage: Prebuild"
-                sh "docker volume create input-volume"
-                sh "docker volume create output-volume"
+                sh "docker build --target prebuild -t ava-prebuild:1.0 ."
             }
         }
         stage("Build") {
@@ -14,8 +13,6 @@ pipeline {
                 sh """
                 docker build 
                 --target build
-                -v input-volume:/input-volume
-                -v output-volume:/output-volume
                 -t ava-build:1.0
                 .
                 """
