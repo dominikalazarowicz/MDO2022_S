@@ -1,7 +1,7 @@
 
 # Sprawozdanie 5
 
-##Przygotowujemy pipeline
+## Przygotowujemy pipeline
 
 * Sama konfiguracja oraz zapewnienie dzialania Jenkins'a byla omawiana w Lab04, dlatego ten etap tutaj pomine.
 
@@ -106,7 +106,7 @@ Ja swoj Jenkinsfile wrzucilem dodatkowo do folderu, ktory nazwalem jenkins, wiec
 
 ![jpath](https://imgur.com/zAxf0f1)
 
-##Deploy oraz Publish
+## Deploy oraz Publish
 
 * Tworzymy dwa nowe Dockerfile, aby moc obsluzyc funkcjonalosci:
 Deploy - uruchomienie programu w kontenerze
