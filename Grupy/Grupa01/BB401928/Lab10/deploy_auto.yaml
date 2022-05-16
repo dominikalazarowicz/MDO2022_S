@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: komunikator
-        image: suvres/wireapp_app:1.4
+        image: XXXXXXXXXX
         ports:
         - containerPort: 8080
