@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('build') {
+            steps {
+                sh '''
+                    echo 'Creating \'out volume\' and \'in volume\'...'
+                    docker volume create vol_in
+                    docker volume create vol_out 
+                    echo 'Building ...'
+                    docker build -t builder -f ./Build.dockerfile .
+                    docker run --mount source=vol_out,destination=/build builder cp /mle/mle /build
+                '''
+            }
+        }
+        stage('test') {
+            steps {
+                sh '''
+                    echo 'Testing ...'
+                    docker build -t tester -f ./Test.dockerfile .
+                '''
+            }
+        }
+        stage('deploy') {
+            steps {
+                sh '''
+                    echo 'Deploying ...'
+                    docker build -t deployer -f ./Deploy.dockerfile .
+                    docker run -v vol_out:/build deployer 
+                '''
+            }
+        }
+        stage('publish') {
+            steps {
+                sh '''
+                    echo 'Publishing ...'
+                    docker build -t publisher -f ./Publish.dockerfile .
+                    docker run --mount source=vol_out,destination=/publish publisher mv /mle.deb /publish
+                '''
+            }
+        }
+    }
+}
