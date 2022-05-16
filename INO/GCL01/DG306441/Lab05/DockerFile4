@@ -1,3 +1,5 @@
 FROM build:latest
 
-RUN tar rvf publish.tar pcalc
+ARG NAME=name
+ARG VERSION=version
+RUN tar rvf $NAME_$VERSION.tar pcalc
