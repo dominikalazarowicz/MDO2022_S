@@ -18,7 +18,7 @@ cat ./deploy_auto.yaml | sed "s/XXXXXXXXXX/$text/g" > _compile/deploy.yaml
 minikube kubectl -- apply -f _compile/deploy.yaml   
 
 
-timeout=2
+timeout=60
 shift
 (
 minikube kubectl -- rollout status deployment/komunikator-deployment &
