@@ -23,12 +23,12 @@ pipeline {
         }
 	stage('Deploy') {
             steps {
-                sh 'docker run --volume /var/jenkins_home/workspace/Pipeline/INO/GCL01/DG306441/Lab05:/v1 build mv pcalc /v1'
+                sh 'docker run --volume /var/jenkins_home/workspace/NewPipeline/INO/GCL01/DG306441/Lab05:/v1 build mv pcalc /v1'
                 dir('INO/GCL01/DG306441/Lab05') {
                     sh 'docker build . -f DockerFile3 -t deploy'
                 }
                 sh '''
-                docker run -t --name deployc --volume /var/jenkins_home/workspace/Pipeline/INO/GCL01/DG306441/Lab05:/v1 deploy v1/pcalc&
+                docker run -t --name deployc --volume /var/jenkins_home/workspace/NewPipeline/INO/GCL01/DG306441/Lab05:/v1 deploy v1/pcalc&
                 '''
                 sh 'docker exec deployc ps aux' 
                 sh 'docker stop deployc'
