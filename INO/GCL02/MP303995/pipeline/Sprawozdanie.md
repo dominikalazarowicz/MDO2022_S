@@ -384,18 +384,18 @@ Dodatkowo sam Jenkins zdecydowanie ułatwia pracę w ciągłej integracji i dost
 #### Logi z pipeline
 Na samym końcu, w celu finalnego podsumowania sprawozdania i potwierdzenia wszystkich kroków przejścia każdego ze stage'a pipeline'a zamieściłem poniżej kilka 
 zrzutów ekranu logów z dashboardu Jenkinsa:
-
+<br>
 ######Logi pull-dependencies
 ![ependenciesDownload](./img/dependenciesDownload.png)
-
+<br>
 #####Logi build
 ![buildResult](./img/buildResult.png)
-
+<br>
 #####Logi test
 ![testResult](./img/testResult.png)
-
+<br>
 #####Logi deploy
 ![deployResult](./img/deployResult.png)
-
+<br>
 #####Logi publish
 ![publishResult](./img/publishResult.png)
