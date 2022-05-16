@@ -14,8 +14,6 @@ Zakładamy, że Jenkins jest prawidłowo zainstalowany i gotowy do działania. Z
 
 Uruchomienie kontenera DIND. Przypisane mu zostają sieć (Jenkins), zmienne środowiskowe (za pomocą flagi env), umożliwia utworzenie kontenera w kontenerze
 
-![DIND](DIND.png)
-
 ```bash
 sudo docker run --name jenkins-docker --rm --detach \
 --privileged --network jenkins --network-alias docker \
@@ -27,8 +25,6 @@ docker:dind --storage-driver overlay2
 ```
 
 Uruchomienie kontenera Jenkins – pozwala to na zobaczenie interfejsu Jenkinsa po wpisaniu w przeglądarce `localhost:8080`, umożliwia automatyczne przeprowadzenie procesu tworzenia oprogramowania.
-
-![Jenkins](Jenkins.png)
 
 ```bash
 sudo docker run \
