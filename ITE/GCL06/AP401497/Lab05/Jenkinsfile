@@ -23,7 +23,7 @@ pipeline {
             }
             stage("Test") {
                 steps {
-                    sh 'docker build -t dethtest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=deth_builded'
+                    sh 'docker build -t dethtest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=dethbuild'
                     sh 'docker run  -v repo_vol:/deth dethtest'
             }
         }
