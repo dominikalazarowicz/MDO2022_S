@@ -3,5 +3,3 @@ FROM ubuntu:latest
 RUN apt-get update -y
 RUN apt-get install libncurses5-dev libncursesw5-dev -y
 COPY pcalc /usr/local/bin/
-RUN /bin/sh 
-RUN pcalc
