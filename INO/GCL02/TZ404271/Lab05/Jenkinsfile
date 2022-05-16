@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    stages {
+        stage("Prebuild") {
+            steps {
+                echo "Stage: Prebuild"
+                sh "docker volume create input-volume"
+                sh "docker volume create output-volume"
+            }
+        }
+        stage("Build") {
+            steps {
+                echo "Stage: Build"
+                sh "docker build \ 
+                --target build \
+                -v input-volume:/input-volume \
+                -v output-volume:/output-volume \
+                -t ava-build:1.0
+                . "
+            }
+        }
+
+        stage("Test") {
+            steps {
+                echo "Stage: Test"
+                sh "docker build --target test -t ava-test:1.0"
+            }
+        }
+
+        stage("Deploy") {
+            steps {
+                echo "Stage: Deploy"
+            }
+        }
+
+        stage("Publish") {
+            steps {
+                echo "Stage: Publish"
+            }
+        }
+    }
+}
