@@ -1,5 +1,7 @@
 FROM node:latest
-RUN git clone https://github.com/nodejs/nodejs.org.git
+RUN git clone https://github.com/pazgitoja/nodejs.org.git
 WORKDIR /nodejs.org/
-RUN npm install -f
+RUN npm install
 RUN npm run build
+
+
