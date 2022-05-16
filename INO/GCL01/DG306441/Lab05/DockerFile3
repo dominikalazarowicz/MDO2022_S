@@ -1,3 +1,3 @@
-FROM nginx:stable-alpine
+FROM fedora:latest
 
-COPY pcalc /usr/share/nginx/html/
+COPY pcalc ./
