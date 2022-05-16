@@ -44,7 +44,7 @@ pipeline{
                 dir('INO/GCL01/AG401570/Lab05') {
                     sh 'docker build . -f dockerFile4 -t publisher'
                 }
-                sh "docker run --volume /var/jenkins_home/workspace/pipeline1/INO/GCL01/AG401570/Lab05:/v publisher mv pcalc.tar /v"
+                sh "docker run --volume /var/jenkins_home/workspace/Rurociag/INO/GCL01/AG401570/Lab05:/v publisher mv pcalc.tar /v"
             }
         }
     }
