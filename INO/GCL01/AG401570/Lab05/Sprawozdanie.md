@@ -1,5 +1,7 @@
 Anna Godek
+
 Inżynieria Obliczeniowa
+
 GCL01
 
 # Metodyki DevOps
