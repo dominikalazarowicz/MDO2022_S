@@ -35,7 +35,7 @@ pipeline
 				echo "Building project..."
 				
 				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileBuild -t mk_build
-                    		docker run --mount type=volume,src="mk_build",dst=/volume_input mk_build:latest bash -c "cd .. &&  cp -r /vue-testins-series /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
+                    		docker run --mount type=volume,src="mk_build",dst=/volume_input mk_build:latest bash -c "cd .. &&  cp -r /vue-testing-series /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
                     		 	    
 				echo "Building finished!"
 				'''
@@ -52,7 +52,7 @@ pipeline
 				
 				docker rm -f DockerfileTest || true
 				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileTest -t mk_test
-				docker run --name test_container --rm --mount source= mk_test,target=/volume_input mk_test:latest
+				docker run --name test_container --rm --mount source=mk_test,target=/volume_input mk_test:latest
 				
 				echo "Testing finished!"
 				'''
@@ -88,7 +88,7 @@ pipeline
                 			sh 'rm -rf /var/jenkins_home/workspace/mk_artifacts'
                 			sh 'mkdir /var/jenkins_home/workspace/mk_artifacts'
                 			sh 'chmod -R 777 /var/jenkins_home/workspace/mk_artifacts'
-                			sh 'docker rm -f ro_publish || true'
+                			sh 'docker rm -f mk_publish || true'
                 			sh 'docker run -d --name mk_publish --mount type=volume,src="volume_output",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
                 			sh "tar -zcvf vuetestingseries${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts ."
                 			archiveArtifacts artifacts: "vuetestingseries${params.VERSION}.tar.xz"
