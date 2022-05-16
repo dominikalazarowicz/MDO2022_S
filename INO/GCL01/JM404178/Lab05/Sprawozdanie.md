@@ -1,7 +1,7 @@
 
 # Sprawozdanie 5
 
-##Przygotowujemy pipeline
+## Przygotowujemy pipeline
 
 * Sama konfiguracja oraz zapewnienie dzialania Jenkins'a byla omawiana w Lab04, dlatego ten etap tutaj pomine.
 
@@ -33,15 +33,15 @@
   
 * Obraz z dependencjami do builda (dodalem yum update, bo wyskakiwal blad `yum install returned a non-zero code 1`).
 
-![Deps](https://imgur.com/jk8rmoL)
+![Deps](https://i.imgur.com/jk8rmoL.png)
 
 * Obraz budujacy nasz program, bazujacy na poprzednim.
 
-![Build](https://imgur.com/LXUvOP1)
+![Build](https://i.imgur.com/LXUvOP1.png)
 
 * Obraz testujacy, bazujacy na poprzednim.
 
-![Test](https://imgur.com/egtrQCS)
+![Test](https://i.imgur.com/egtrQCS.png)
 
 * Teraz, aby moc uzyc powyzszych Dockerfile'i, musimy je przetransportowac do wnetrza Jenkinsa. Do tego sluzy komenda: 
 `docker cp "nazwa dockerfile" "nazwa kontenera":/var/jenkins_home/"ewentualna nazwa utworzonego folderu na dockerfile"`
@@ -52,7 +52,7 @@ docker cp DOCKER-TEST jenkins-blueocean:/var/jenkins_home/Dockerfiles
 
 Teraz tworzymy nowy rurociag:
 
-![ppl creation](https://imgur.com/vFNEqU5)
+![ppl creation](https://i.imgur.com/vFNEqU5.png)
 
 W Pipeline scripcie wklejamy:
 ```
@@ -88,9 +88,9 @@ pipeline {
 
 W tym momencie mozemy sprawdzic poprawnosc dzialania powyzszych dockerfiles'ow, patrzac czy przechodza testy.
 
-![Pipeline](https://imgur.com/SZwWRVP)
+![Pipeline](https://i.imgur.com/SZwWRVP.png)
 
-![Konsola](https://imgur.com/jZ2qvVD)
+![Konsola](https://i.imgur.com/jZ2qvVD.png)
 
 Jak widac, testy przechodza poprawnie.
 
@@ -100,13 +100,13 @@ Na poczatku fork'ujemy sobie projekt IRSSI do nas do osobnego repo, wrzucamy do 
 W konfiguracji pipeline scriptu mozemy zmienic ja na Pipeline script from SCM. Potem zaznaczamy opcje GIT, przekazujemy adres naszego sforkowanego repo, brancha zostawiamy na master, poniewaz
 glowny branch IRSSI to wlasnie master, nie main (w przypadku innych repo trzebaby ta sciezke zmienic).
 
-![SCM](https://imgur.com/8J57JwH)
+![SCM](https://i.imgur.com/8J57JwH.png)
 
 Ja swoj Jenkinsfile wrzucilem dodatkowo do folderu, ktory nazwalem jenkins, wiec nizej sama lokacje Jenkinsfile tez trzeba sprecyzowac.
 
-![jpath](https://imgur.com/zAxf0f1)
+![jpath](https://i.imgur.com/zAxf0f1.png)
 
-##Deploy oraz Publish
+## Deploy oraz Publish
 
 * Tworzymy dwa nowe Dockerfile, aby moc obsluzyc funkcjonalosci:
 Deploy - uruchomienie programu w kontenerze
@@ -116,11 +116,11 @@ Publish - utworzenie archiwum ze skompilowanym programem
 
 docker cp DOCKER-DEPLOY jenkins-blueocean:/var/jenkins_home/Dockerfiles
 
-![Deploy](https://imgur.com/pD2jSTK)
+![Deploy](https://i.imgur.com/pD2jSTK.png)
 
 docker cp DOCKER-PUBLISH jenkins-blueocean:/var/jenkins_home/Dockerfiles
 
-![Publish](https://imgur.com/1qXMMBs)
+![Publish](https://i.imgur.com/1qXMMBs.png)
 
 * Dopisujemy funkcjonalnosci Deploy oraz Publish w Jenkinsfile:
 
@@ -149,13 +149,13 @@ docker cp DOCKER-PUBLISH jenkins-blueocean:/var/jenkins_home/Dockerfiles
 
 * Rezultat
 
-![Result](https://imgur.com/CdLUyLa)
+![Result](https://i.imgur.com/CdLUyLa.png)
 
-![Result2](https://imgur.com/rWjQqYu)
+![Result2](https://i.imgur.com/rWjQqYu.png)
 
 * SCM
 
-![SCMRES](https://imgur.com/n5fJXQ8)
+![SCMRES](https://i.imgur.com/n5fJXQ8.png)
 
 
 
