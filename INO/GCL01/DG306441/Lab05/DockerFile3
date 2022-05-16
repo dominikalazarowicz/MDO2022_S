@@ -1,3 +1,3 @@
-FROM ubuntu:latest
+FROM fedora:latest
 
 COPY pcalc /usr/local/bin/
