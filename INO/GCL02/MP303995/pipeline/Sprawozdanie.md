@@ -380,3 +380,22 @@ W wyniku przeprowadzenia wszystkich powyższych kroków, jeżeli wszystko po dro
 Finalnie mogę powiedzieć, że mój  projekt pipeline’a na pewno nie jest idealny, posiada sporo „obejść”, które musiałem zastosować, ale mimo wszystko spełnia swoją rolę w 100% - dostarcza w pełni zbudowany, przetestowany i sprawdzony artefakt wynikowy.<br>
 Ponadto realizuje wszystkie kroki zawarte w wytycznych do sprawozdania. Co więcej najbardziej istotne kwestie, w szczególności problemy cachowania repozytoriów mavena, czy obrazów dockerowych zostały rozwiązane, dzięki czemu Pipeline nie tylko działa, ale także działa w miare sprawnie i dość szybko. <br>
 Dodatkowo sam Jenkins zdecydowanie ułatwia pracę w ciągłej integracji i dostarczaniu oraz daje sporo możliwości, w szczególności w połączeniu z możliwościami wykorzystania skryptow pisanych w Groovym. 
+
+#### Logi z pipeline
+Na samym końcu, w celu finalnego podsumowania sprawozdania i potwierdzenia wszystkich kroków przejścia każdego ze stage'a pipeline'a zamieściłem poniżej kilka 
+zrzutów ekranu logów z dashboardu Jenkinsa:
+
+######Logi pull-dependencies
+![ependenciesDownload](./img/dependenciesDownload.png)
+
+#####Logi build
+![buildResult](./img/buildResult.png)
+
+#####Logi test
+![testResult](./img/testResult.png)
+
+#####Logi deploy
+![deployResult](./img/deployResult.png)
+
+#####Logi publish
+![publishResult](./img/publishResult.png)
