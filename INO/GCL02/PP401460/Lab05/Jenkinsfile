@@ -43,7 +43,7 @@ pipeline {
                     sh '''
                         echo 'Publishing ...'
                         docker build -t publisher -f ./Publish.dockerfile .
-                        docker run --mount source=vol_out,destination=/publish publisher mv /mle.deb /publish
+                        docker run --mount source=vol_out,destination=/publish publisher
                     '''
                 }
             }
