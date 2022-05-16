@@ -11,12 +11,14 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Stage: Build"
-                sh "docker build \ 
-                --target build \
-                -v input-volume:/input-volume \
-                -v output-volume:/output-volume \
+                sh """
+                docker build 
+                --target build
+                -v input-volume:/input-volume
+                -v output-volume:/output-volume
                 -t ava-build:1.0
-                . "
+                .
+                """
             }
         }
 
