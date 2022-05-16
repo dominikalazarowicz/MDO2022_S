@@ -105,6 +105,8 @@ pipeline{
                     dir('/var/jenkins_home/workspace/artifacts'){
                         archiveArtifacts artifacts: "typescript-${params.Version}.tgz"
                     }
+                    echo 'Publish Done'
+
                 }
             }
             
