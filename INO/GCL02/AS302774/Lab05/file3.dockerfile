@@ -8,7 +8,7 @@ COPY /build .
 RUN ls -la
 RUN pwd
 
-WORKDIR /build/
+WORKDIR /build
 
 RUN ls -la
 RUN pwd
