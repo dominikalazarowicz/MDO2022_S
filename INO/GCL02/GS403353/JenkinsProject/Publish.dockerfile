@@ -21,6 +21,6 @@ Type=Application
 Categories=Game;LogicGame;
 Keywords=2d;math;colour;single-player;" > 2048.c/usr/bin/2048.desktop
 
-CMD ["/bin/bash", "-c", "mv 2048 /usr/bin && mv 2048.desktop /usr/bin && dpkg-deb --build 2048"]
+CMD ["/bin/bash", "-c", "mv 2048.c/2048 /usr/bin && mv 2048.c/2048.desktop /usr/bin && dpkg-deb --build 2048"]
 
 CMD ["mv 2048.desktop /usr/share/application && mv 2048 /usr/games"]

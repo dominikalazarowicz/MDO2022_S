@@ -34,7 +34,7 @@ pipeline {
 
         stage('Publish') {
             steps {
-                echo 'PUBLISh'
+                echo 'PUBLISH'
                 dir('INO/GCL02/GS403353/JenkinsProject') {
                     sh 'docker build . -f Publish.dockerfile -t publisher'
                 }
