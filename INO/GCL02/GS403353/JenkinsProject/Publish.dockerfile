@@ -10,15 +10,15 @@ Architecture: all \n\
 Description: 2048 the game package \n\
 Depends: " > 2048.c/DEBIAN/control
 
-RUN echo "[Desktop Entry]
-Name=2048
-Comment=Add values sliding tiles until you reach 2048
-Comment[es]=Alcanza el 2048 deslizando y sumando teselas
-Exec=sh -c '/usr/games/2048;echo;echo PRESS ENTER TO EXIT;read line'
-Icon=2048
-Terminal=true
-Type=Application
-Categories=Game;LogicGame;
+RUN echo "[Desktop Entry]\n\
+Name=2048\n\
+Comment=Add values sliding tiles until you reach 2048\n\
+Comment[es]=Alcanza el 2048 deslizando y sumando teselas\n\
+Exec=sh -c '/usr/games/2048;echo;echo PRESS ENTER TO EXIT;read line'\n\
+Icon=2048\n\
+Terminal=true\n\
+Type=Application\n\
+Categories=Game;LogicGame;\n\
 Keywords=2d;math;colour;single-player;" > 2048.c/usr/bin/2048.desktop
 
 CMD ["/bin/bash", "-c", "mv 2048.c/2048 /usr/bin && mv 2048.c/2048.desktop /usr/bin && dpkg-deb --build 2048"]
