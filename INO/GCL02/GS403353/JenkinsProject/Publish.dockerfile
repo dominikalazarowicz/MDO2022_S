@@ -1,5 +1,7 @@
 FROM builder:latest
 
+RUN ls
+
 RUN mkdir -p 2048.c/DEBIAN
 RUN mkdir -p 2048.c/usr/bin
 
