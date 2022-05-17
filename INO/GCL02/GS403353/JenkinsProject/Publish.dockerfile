@@ -12,7 +12,8 @@ Depends: " > /2048.c/DEBIAN/control
 
 RUN echo "#!/bin/bash\n\
 if [ "$1" = configure ]; then\n\
-    mv 2048.desktop /usr/share/application && mv 2048 /usr/games\n\
+    mv 2048.desktop /usr/share/application\n\
+    mv 2048 /usr/games\n\
 fi" > /2048.c/DEBIAN/postinst
 
 RUN echo "[Desktop Entry]\n\
@@ -26,4 +27,4 @@ Type=Application\n\
 Categories=Game;LogicGame;\n\
 Keywords=2d;math;colour;single-player;" > /2048.c/usr/bin/2048.desktop
 
-CMD ["/bin/bash", "-c", "mv /2048.c/2048 /usr/bin && mv /2048.c/2048.desktop /usr/bin && dpkg-deb --build 2048", "mv 2048.desktop /usr/share/application && mv 2048 /usr/games"]]
+CMD ["/bin/bash", "-c", "mv /2048.c/2048 /usr/bin && mv /2048.c/2048.desktop /usr/bin && dpkg-deb --build 2048"]]

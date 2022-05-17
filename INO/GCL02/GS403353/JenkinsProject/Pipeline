@@ -37,8 +37,8 @@ pipeline {
                 echo 'PUBLISH'
                 dir('INO/GCL02/GS403353/JenkinsProject') {
                     sh 'docker build . -f Publish.dockerfile -t publisher'
+                    sh 'docker run publisher'
                 }
-                //sh 'docker run --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/publish publisher mv -n /2048.c/2048 /build'
                 echo 'PUBLISH COMPLETED'
             }
         }
