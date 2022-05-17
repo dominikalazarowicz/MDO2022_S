@@ -3,7 +3,7 @@ FROM builder:latest
 RUN mkdir -p /2048.c/DEBIAN
 RUN mkdir -p /2048.c/usr/bin
 
-RUN ls
+RUN ls 2048.c
 
 RUN echo "Package:2048\n\
 Version: 0.1 \n\
