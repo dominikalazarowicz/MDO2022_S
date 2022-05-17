@@ -3,7 +3,7 @@ FROM node
 RUN ls -la
 RUN pwd
 
-COPY /build/ .
+COPY /build .
 
 RUN ls -la
 RUN pwd
