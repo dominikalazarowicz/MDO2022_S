@@ -1,6 +1,6 @@
 FROM node
 
-COPY /build/ /
+COPY /build/ /.
 WORKDIR /build/
 RUN ls -la
 RUN node cytoscape.min.js
