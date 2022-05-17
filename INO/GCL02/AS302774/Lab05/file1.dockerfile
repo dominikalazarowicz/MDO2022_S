@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:16.15.0
 RUN git clone https://github.com/cytoscape/cytoscape.js.git
 
 WORKDIR /cytoscape.js/
