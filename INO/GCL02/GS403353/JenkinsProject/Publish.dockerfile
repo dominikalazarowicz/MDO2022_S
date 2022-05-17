@@ -17,7 +17,7 @@ RUN echo "#!/bin/bash\n\
 if [ "$1" = configure ]; then\n\
     mv 2048.desktop /usr/share/application\n\
     mv 2048 /usr/games\n\
-    echo `ls /usr/games'\n\
+    ls /usr/games\n\
 fi" > 2048_package/DEBIAN/postinst
 RUN chmod 0755 2048_package/DEBIAN/postinst
 
