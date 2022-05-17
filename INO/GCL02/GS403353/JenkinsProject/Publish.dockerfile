@@ -1,7 +1,7 @@
 FROM builder:latest
 
-RUN mkdir -p /2048.c/DEBIAN
-RUN mkdir -p /2048.c/usr/bin
+RUN mkdir -p 2048.c/DEBIAN
+RUN mkdir -p 2048.c/usr/bin
 
 RUN ls 2048.c
 
