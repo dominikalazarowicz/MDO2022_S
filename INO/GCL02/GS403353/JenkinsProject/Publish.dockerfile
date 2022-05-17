@@ -8,8 +8,7 @@ RUN echo "Package:2048\n\
 Version: 0.1 \n\
 Maintainer: grrd2000 \n\
 Architecture: all \n\
-Description: 2048 the game package \n\
-Depends: " > 2048_package/DEBIAN/control
+Description: 2048 the game package" > 2048_package/DEBIAN/control
 
 RUN echo "#!/bin/bash\n\
 if [ "$1" = configure ]; then\n\
