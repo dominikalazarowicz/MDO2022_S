@@ -32,5 +32,14 @@ pipeline {
             }
         }
 
+        stage('Publish') {
+            steps {
+                echo 'PUBLISh'
+                dir('INO/GCL02/GS403353/JenkinsProject') {
+                    sh 'docker build . -f Publish.dockerfile -t publisher'
+                }
+                echo 'PUBLISH COMPLETED'
+            }
+        }
     }
 }
