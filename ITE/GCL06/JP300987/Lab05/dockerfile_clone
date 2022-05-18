@@ -1,1 +1,3 @@
-dockerfile1
+FROM node:latest
+
+CMD git clone --branch ${BRANCH} https://github.com/deltachat/deltachat-desktop.git
