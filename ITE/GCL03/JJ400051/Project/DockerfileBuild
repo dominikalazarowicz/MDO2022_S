@@ -1,0 +1,7 @@
+FROM fedora:latest
+RUN apt-get update
+RUN apt install -y meson build-essentail git make
+RUN git clone https://github.com/irssi/irssi
+WORKDIR irssi
+RUN meson setup Build
+RUN ninja -C Build
