@@ -1,0 +1,3 @@
+FROM Builder:latest
+WORKDIR Build
+RUN meson test
