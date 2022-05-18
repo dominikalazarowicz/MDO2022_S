@@ -206,3 +206,8 @@ Otrzymany artefakt:
 ![plot](./screeny/4.png)
 
 Program został zainstalowany w założonej lokalizacji i działa poprawnie.
+
+
+# Diagram aktywności
+
+![plot](./screeny/diagram.png)
