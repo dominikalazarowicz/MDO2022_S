@@ -1,9 +1,6 @@
-FROM debian:latest
+FROM node:alpine
 
-RUN apt update
-RUN apt install -y default-jdk gradle
-
-
-WORKDIR Cytoscape
-
-CMD ["sh", "-c", "gradle build &&  cp ./build/libs/cytoscape.jar /build"]
+WORKDIR app
+WORKDIR app_build
+#clone repo and build
+RUN apk update && apk add git && apk add bash
