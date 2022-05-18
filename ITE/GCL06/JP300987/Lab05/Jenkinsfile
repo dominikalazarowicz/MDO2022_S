@@ -12,6 +12,14 @@ pipeline {
              		 sh "docker run -v repo_vol:/Deltachat clone" 
                     }
                 }
-            
+            stage('Build') 
+        	{
+            steps 
+            		{
+           	
+               sh 'docker build -t build . -f ./ITE/GCL06/JP300987/Lab05/dockerfile_build'
+               sh 'docker run --name build_container -v repo_vol:/Deltachat -v build_vol:/build build'
+            		}
+        	}
         }
 }
