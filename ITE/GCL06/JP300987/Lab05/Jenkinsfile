@@ -3,23 +3,18 @@ pipeline {
   agent any
   
   	stages {
-            stage("Clone"){
-                steps {
-             		  sh "docker system prune --all -f"
-              		 sh 'docker volume  create --name repo_vol'
-             		 sh 'docker volume  create --name build_vol'
-             		 sh "docker build -t clone . -f ./ITE/GCL06/JP300987/Lab05/dockerfile_clone"
-             		 sh "docker run -v repo_vol:/Deltachat clone" 
-                    }
-                }
-            stage('Build') 
-        	{
-            steps 
-            		{
-           	
-               sh 'docker build -t build . -f ./ITE/GCL06/JP300987/Lab05/dockerfile_build'
-               sh 'docker run --name build_container -v repo_vol:/Deltachat -v build_vol:/build build'
-            		}
-        	}
+    stage('Build')
+     	{
+     	  steps
+     	  {
+     	      sh 'docker volume create jp_in'
+            sh 'docker volume create jp_out'
+            sh 'docker rm -f jp_build || true'
+            sh 'docker volume prune -f'
+            sh 'docker build . -f ./ITE/GCL06/JP300987/Lab05/dockerfile_build -t jp_build'
+  	        sh 'docker run --mount type=volume,src="jp_build",dst=/jp_in jp_build:latest bash -c "cd .. && cp -r /deltachat-desktop /jp_in && cp -r /jp_in /jp_out && ls ./jp_in && ls ./jp_out"'
+            
+            }
         }
+       }
 }
