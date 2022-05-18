@@ -1,7 +1,4 @@
-FROM node
-RUN apt-get update
-RUN apt-get upgrade -y
+FROM node:latest
 RUN git clone https://github.com/deltachat/deltachat-desktop.git
-WORKDIR deltachat-desktop
-RUN npm install
-RUN npm run build
+WORKDIR /deltachat-desktop/
+RUN npm i && npm run build
