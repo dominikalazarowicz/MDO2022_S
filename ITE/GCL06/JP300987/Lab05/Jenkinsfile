@@ -12,7 +12,7 @@ pipeline {
             sh 'docker rm -f jp_build || true'
             sh 'docker volume prune -f'
             sh 'docker build . -f ./ITE/GCL06/JP300987/Lab05/dockerfile_build -t jp_build'
-  	        sh 'docker run --mount type=volume,src="jp_build",dst=/jp_in jp_build:latest bash -c "cd .. && cp -r /deltachat-desktop /jp_in && cp -r /jp_in /jp_out && ls ./jp_in && ls ./jp_out"'
+  	        sh 'docker run --mount type=volume,src="jp_build",dst=/jp_in jp_build:latest bash -c "cd .. && cp -r /deltachat /jp_in && cp -r /jp_in /jp_out && ls ./jp_in && ls ./jp_out"'
             
             }
         }
