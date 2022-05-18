@@ -3,6 +3,5 @@ RUN apt-get update
 
 WORKDIR deltachat-desktop
 
-WORKDIR deltachat-desktop
 RUN npm install
 RUN npm run build
