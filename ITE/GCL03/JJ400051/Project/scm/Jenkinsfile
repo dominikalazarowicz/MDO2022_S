@@ -12,15 +12,9 @@ pipeline {
             }
         }
 	stage('deploy') {
-		steps{
-
+	    steps {
 		echo 'Deploying'
-		}
-	}
-	stage('publish') {
-		steps {
-			echo 'Publishing'
-		}
+	    }
 	}
     }
 }
