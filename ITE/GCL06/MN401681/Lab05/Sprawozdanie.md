@@ -35,6 +35,7 @@ Jest to po prostu ścieżka do pliku z opsem pipeline.
 W repozytorium można znaleźć folder zawierający Jenkinsfile, Dockerfile oraz pliki potrzebne do działania aplikacji. 
 ![image](https://user-images.githubusercontent.com/75485199/169040274-00d17a39-0eab-4bce-a53a-fd3e2f191404.png)
 
+----
 
 Dockerbuild: bazuje na poprzednio zbudowanym obrazie i buduje aplikację z kodów źródłowych oraz dependencji pobranych wcześniej. Ostatnia linijka kodu odpowiada za   ustawienie ENTRYPOINT tak, aby po uruchomieniu kontenera (z podłączonym do niego wolumenem) zbudowany plik .jar został skopiowany na wolumen.
 W przypadku sukcesu naszego pipeline zostanie on zapisany jako artfekat co będzie widać na ostatnim zrzucie ekanu w sprawozdaniu.
