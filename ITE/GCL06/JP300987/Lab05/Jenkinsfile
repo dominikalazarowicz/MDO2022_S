@@ -1,32 +1,27 @@
 pipeline {
-	    parameters { 
-		        string(name: 'VERSION', defaultValue: '1.0.0', description: '') 
-		        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
-	}	
+
 	agent any
 
 	stages {
-		stage('Clone git repo') {
+		stage('Clone') {
 			steps {
-				echo 'Creating volme to input'
 				sh 'docker volume create entry_volume'
 				sh 'docker rm help_container || true'
 				sh 'docker run -v entry_volume:/data --name help_container node'
-				sh 'cd ~/ && ls nexe || git clone --recurse-submodules https://github.com/nexe/nexe.git'
-				sh 'docker cp ~/nexe help_container:/data'
+				sh 'cd ~/ && ls deltachat || git clone --recurse-submodules https://github.com/deltachat/deltachat-desktop.git'
+				sh 'docker cp ~/deltachat help_container:/data'
 				sh 'docker rm help_container'
 			}
 		}
 	
 	stage('Build') {
 			steps {
-				echo 'Buildig nexe with npm'
-				dir("./ITE/GCL08/JS402998") {
+				dir("./ITE/GCL06/JP300987") {
 				    sh 'pwd'
 				    sh 'ls'
 					sh 'docker build . -t build_image -f build_dockerfile'
 					sh 'docker volume create exit_volume'
-					sh 'docker run --mount type=volume,src="entry_volume",dst=/nexe_app --mount type=volume,src="exit_volume",dst=/nexe_app_build build_image bash -c "cd /nexe_app/nexe && npm i -g; cd ..; ls; cp -r nexe /nexe_app_build"'
+					sh 'docker run --mount type=volume,src="entry_volume",dst=/deltachat_app --mount type=volume,src="exit_volume",dst=/deltachat_app_build build_image bash -c "cd /deltachat_app/deltachat && npm i -g; cd ..; ls; cp -r deltachat /deltachat_app_build"'
 				}
 			}
 		}
