@@ -31,7 +31,7 @@ pipeline {
 		    sh 'docker container exec deployer sh -c "apt-get install -y build-essential libssl-dev"'
 		    sh "docker container exec deployer sh -c './irssi'"
 
-	    }libssl-dev
+	    }
 	}
 	stage('publish') {
 	    steps {
