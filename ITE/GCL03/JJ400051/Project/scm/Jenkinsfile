@@ -38,7 +38,7 @@ pipeline {
 		sh 'rm -r publisher'
 		sh 'mkdir publisher'
 		sh 'cp irssi publisher'
-		sh "tar -xf version${params.version}.tar.gz -c publisher"
+		sh "tar -zcf version${params.version}.tar.gz publisher"
 		archiveArtifacts artifacts: "version${params.version}.tar.gz"		
 		sh 'docker container kill publisher'
 		sh 'docker container rm publisher'
