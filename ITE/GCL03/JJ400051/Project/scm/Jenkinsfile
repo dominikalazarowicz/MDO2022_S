@@ -20,6 +20,7 @@ pipeline {
 	stage('deploy') {
 	    steps {
 		echo 'deploying'
+		    sh 'docker container rm --name deployer || true
 		    sh 'docker container create --name deployer debian'
 		    sh 'docker cp irssi deployer'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
