@@ -25,7 +25,7 @@ pipeline {
 		echo 'deploying'
 		    sh 'docker container kill deployer'		    
 		    sh 'docker container rm deployer'
-		    sh 'docker run --name deployer -di debian'
+		    sh 'docker run --name deployer -dit debian'
 		    sh 'docker cp irssi deployer:.'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
 		    sh 'docker container exec deployer sh -c "apt-get install -y glib-2.0 libghc-terminfo-dev libutf8proc-dev"'
