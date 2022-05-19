@@ -1,5 +1,5 @@
 FROM debian:latest
-RUN apt update -y
+RUN apt-get update -y
 RUN apt-get install -y meson build-essential git make
 RUN git clone https://github.com/irssi/irssi
 WORKDIR irssi
