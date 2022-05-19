@@ -20,10 +20,10 @@ pipeline {
 	stage('deploy') {
 	    steps {
 		echo 'deploying'
-		    sh 'docker container create --name Deployer fedora'
+		    sh 'docker container create --name Deployer debian'
 		    sh 'docker cd irssi Deployer'
-		    sh 'docker container exec Deployer sh -c "yum update -y"'
-		    sh 'docker continer exec Deployer sh -c "yuminstall -y build-essential"'
+		    sh 'docker container exec Deployer sh -c "apt update -y"'
+		    sh 'docker continer exec Deployer sh -c "apt-get install -y build-essential"'
 		    sh 'docker continer exec Deployer sh -c "./irssi"'
 		    
 	    }
