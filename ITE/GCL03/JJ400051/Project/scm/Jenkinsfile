@@ -33,9 +33,7 @@ pipeline {
 	    }
 	}
 	stage('publish') {
-	    steps {  	
-		sh 'docker container kill publisher'
-		sh 'docker container rm publisher'
+	    steps { 
 		echo 'publishing'
 		sh 'rm -r publisher'
 		sh 'mkdir publisher'
