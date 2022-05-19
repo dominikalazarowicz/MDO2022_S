@@ -22,7 +22,7 @@ pipeline {
 		echo 'deploying'
 		    sh 'docker container create --name Deployer debian'
 		    sh 'docker cd irssi Deployer'
-		    sh 'docker container exec Deployer sh -c "apt update -y"'
+		    sh 'docker container exec Deployer sh -c "apt-get update -y"'
 		    sh 'docker continer exec Deployer sh -c "apt-get install -y build-essential"'
 		    sh 'docker continer exec Deployer sh -c "./irssi"'
 		    
