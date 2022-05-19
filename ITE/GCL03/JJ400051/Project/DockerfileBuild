@@ -1,5 +1,5 @@
 FROM fedora:latest
-RUN apt update
+RUN apt-get update
 RUN apt-get install -y meson build-essentail git make
 RUN git clone https://github.com/irssi/irssi
 WORKDIR irssi
