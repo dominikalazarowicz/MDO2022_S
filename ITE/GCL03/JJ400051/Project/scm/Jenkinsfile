@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
 		echo 'Building'
-                sh 'docker build -t Builder . -f ITE/GCL03/JJ400051/Project/'
+                sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/'
 		sh 'docker run --name dock --rm Builder'
 		sh 'docker cp dock:irssi/build/src/fe-text/irssi.c'
 	    }
@@ -12,14 +12,14 @@ pipeline {
         stage('test') {
             steps {
                 echo 'Testing'
-		sh 'docker build -t Tester . -f ITE/GCL03/JJ400051/Project/'
+		sh 'docker build -t tester . -f ITE/GCL03/JJ400051/Project/'
 		sh 'docker run Tester'
 
             }
         }
 	stage('deploy') {
 	    steps {
-		echo 'Deploying'
+		echo 'deploying'
 		    sh 'docker container create --name Deployer fedora'
 		    sh 'docker cd irssi Deployer'
 		    sh 'docker container exec Deployer sh -c "apt update"'
@@ -30,7 +30,7 @@ pipeline {
 	}
 	stage('publish') {
 	    steps {
-		echo 'Publishing'
+		echo 'publishing'
 		sh 'mkdir Publisher'
 		sh 'cp irssi Publisher'
 		sh "tar -jcf Version${params.version}.tar.xz Dir"
