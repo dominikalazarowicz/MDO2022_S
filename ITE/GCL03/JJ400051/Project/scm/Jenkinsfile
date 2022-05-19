@@ -26,10 +26,8 @@ pipeline {
 		    sh 'docker container rm deployer'
 		    sh 'docker run --name deployer -dit debian'
 		    sh 'docker cp irssi deployer:.'
-		    
-		    sh 'docker container exec deployer sh -c "apt --fix-broken install -y"'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
-		    sh 'docker container exec deployer sh -c "apt-get install -y libc6 glib-2.0 libghc-terminfo-dev libutf8proc-dev"'
+		    sh 'docker container exec deployer sh -c "apt-get install -y libssl-dev glib-2.0 libghc-terminfo-dev libutf8proc-dev"'
 		    sh "docker container exec deployer sh -c './irssi'"
 
 	    }
