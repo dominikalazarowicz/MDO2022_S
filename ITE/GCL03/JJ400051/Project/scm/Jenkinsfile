@@ -35,13 +35,14 @@ pipeline {
 	stage('publish') {
 	    steps {
                 sh 'docker container kill publisher'
-		sh 'docker container kill publisher'
+		sh 'docker container rm publisher'
 		echo 'publishing'
 		sh 'mkdir publisher'
 		sh 'cp irssi publisher'
 		sh "tar -jcf version${params.version}.tar.xz Dir"
 		archiveArtifacts artifacts: "version${params.version}.tar.xz"		
-		
+		sh 'docker container kill publisher'
+		sh 'docker container rm publisher'
 	    }
 	}
     }
