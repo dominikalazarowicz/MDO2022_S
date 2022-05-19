@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
 		echo 'Building'
-                sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/'
+                sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
 		sh 'docker run --name dock --rm Builder'
 		sh 'docker cp dock:irssi/build/src/fe-text/irssi.c'
 	    }
@@ -12,7 +12,7 @@ pipeline {
         stage('test') {
             steps {
                 echo 'Testing'
-		sh 'docker build -t tester . -f ITE/GCL03/JJ400051/Project/'
+		sh 'docker build -t tester . -f ITE/GCL03/JJ400051/Project/DockerfileTest'
 		sh 'docker run Tester'
 
             }
