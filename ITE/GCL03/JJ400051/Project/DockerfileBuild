@@ -1,6 +1,6 @@
 FROM debian:latest
 RUN apt-get update -y
-RUN apt-get install -y meson build-essential git make cmake glib-2.0 pkg-config utf8proc tinfo ncursesw ncurses terminfo
+RUN apt-get install -y meson build-essential git make cmake glib-2.0 pkg-config utf8proc
 RUN git clone https://github.com/irssi/irssi
 WORKDIR irssi
 RUN meson setup Build
