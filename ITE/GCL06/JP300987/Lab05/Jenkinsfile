@@ -41,7 +41,7 @@ pipeline {
         stage('Publish'){
             steps{
               // sh 'mv build/chibicc.tar.gz chibicc_${VERSION}.tar.gz'//-> ERROR - TODO
-                archiveArtifacts 'chibicc.tar.gz'
+                archiveArtifacts "chibicc.tar.gz"
             }
         }
     }
