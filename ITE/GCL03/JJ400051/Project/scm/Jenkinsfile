@@ -34,7 +34,7 @@ pipeline {
 	}
 	stage('publish') {
 	    steps {
-		   
+		sh 'apt-get install bzip2  
 		echo 'publishing'
 		sh 'rm -r publisher'
 		sh 'mkdir publisher'
