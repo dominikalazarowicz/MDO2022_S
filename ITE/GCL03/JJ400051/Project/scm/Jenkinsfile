@@ -6,7 +6,7 @@ pipeline {
 		echo 'Building'
                 sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
 		sh 'docker run --name dock -d --rm builder'
-		sh 'docker cp dock:../irssi .'
+		sh 'docker ls -a dock'
 	    }
         }
         stage('test') {
