@@ -6,7 +6,7 @@ pipeline {
 		echo 'Building'
                 sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
 		sh 'docker run --name dock -d --rm builder'
-		sh 'docker cp dock:build/src/fe-text/irssi .'
+		sh 'docker cp dock:irssi/build/src/fe-text/irssi .'
 	    }
         }
         stage('test') {
@@ -22,7 +22,7 @@ pipeline {
 		echo 'deploying'
 		    sh 'docker container rm deployer'
 		    sh 'docker container create --name deployer debian'
-		    sh 'docker cp irssi deployer:.'
+		    sh 'docker cp build deployer:.'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
 		    sh 'docker continer exec deployer sh -c "apt-get install -y build-essential"'
 		    sh 'docker continer exec deployer sh -c "./irssi"'
