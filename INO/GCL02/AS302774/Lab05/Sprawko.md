@@ -62,6 +62,9 @@ Dockerfile zawiera w sobie sklonowanie repozytorium z naszym projektem, następn
 ![](./file1.png)
 
 
+![](./build.png)
+
+
 W tym kroku pojawiły się problemy, dlatego zmieniono wersję node z 18 na 16. 
 W tym celu w konsoli w Jenkinsie, za pomocą komendy `docker run nod:16.15.0`zmieniono wersję node. 
 
@@ -80,6 +83,9 @@ Test odpowieada za przeprowadzenie testów sprawdzających odpowiednie działani
 ![](./file2.png)
 
 
+![](./tests.png)
+
+
 3. **Deploy**
 Do tego kroku potrzebne było wykonanie kroku **build**, dzięki któremu otrzymaliśmy zbuildowane pliki programu. 
 
@@ -94,8 +100,17 @@ Krok **deploy** krok po kroku:
 ![](./file3.png)
 
 
+![](./deploy.png)
+
+
+
 4. **Publish**
 Ostatnim krokiem było wypromowanie nowego wydania programu. 
 Krok ten został wykonany drogą alternatywną, czyli zawrtość woluminu spakowano do pliku TAR.XZ a następnie odpalono obraz publish. 
 
 ![](./file4.png)
+
+
+![](./publish.png)
+
+
