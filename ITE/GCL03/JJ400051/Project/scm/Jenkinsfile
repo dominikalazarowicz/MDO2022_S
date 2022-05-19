@@ -5,7 +5,7 @@ pipeline {
             steps {
 		echo 'Building'
                 sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
-		sh 'docker run --name dock --rm Builder'
+		sh 'docker run --name dock --rm builder'
 		sh 'docker cp dock:irssi/build/src/fe-text/irssi.c'
 	    }
         }
@@ -13,28 +13,28 @@ pipeline {
             steps {
                 echo 'Testing'
 		sh 'docker build -t tester . -f ITE/GCL03/JJ400051/Project/DockerfileTest'
-		sh 'docker run Tester'
+		sh 'docker run tester'
 
             }
         }
 	stage('deploy') {
 	    steps {
 		echo 'deploying'
-		    sh 'docker container create --name Deployer debian'
-		    sh 'docker cd irssi Deployer'
-		    sh 'docker container exec Deployer sh -c "apt-get update -y"'
-		    sh 'docker continer exec Deployer sh -c "apt-get install -y build-essential"'
-		    sh 'docker continer exec Deployer sh -c "./irssi"'
+		    sh 'docker container create --name deployer debian'
+		    sh 'docker cd irssi deployer'
+		    sh 'docker container exec deployer sh -c "apt-get update -y"'
+		    sh 'docker continer exec deployer sh -c "apt-get install -y build-essential"'
+		    sh 'docker continer exec deployer sh -c "./irssi"'
 		    
 	    }
 	}
 	stage('publish') {
 	    steps {
 		echo 'publishing'
-		sh 'mkdir Publisher'
-		sh 'cp irssi Publisher'
-		sh "tar -jcf Version${params.version}.tar.xz Dir"
-		archiveArtifacts artifacts: "Version${params.version}.tar.xz"
+		sh 'mkdir publisher'
+		sh 'cp irssi publisher'
+		sh "tar -jcf version${params.version}.tar.xz Dir"
+		archiveArtifacts artifacts: "version${params.version}.tar.xz"
 	    }
 	}
     }
