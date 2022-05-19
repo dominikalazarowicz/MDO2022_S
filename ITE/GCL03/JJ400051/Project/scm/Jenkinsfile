@@ -7,7 +7,7 @@ pipeline {
 		    
 		
                 sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
-		sh 'docker run --name dock -di --rm builder'
+		sh 'docker run --name dock -i --rm builder'
 		sh 'docker cp dock:irssi/build/src/fe-text/irssi .'
 		sh 'docker kill dock'
 	    }
@@ -24,7 +24,7 @@ pipeline {
 	    steps {
 		echo 'deploying'
 		    sh 'docker container rm deployer'
-		    sh 'docker run --name deployer -di debian'
+		    sh 'docker run --name deployer -i debian'
 		    sh 'docker cp irssi deployer:.'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
 		    sh 'docker continer exec deployer sh -c "apt-get install -y build-essential"'
