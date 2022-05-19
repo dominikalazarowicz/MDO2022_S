@@ -28,7 +28,7 @@ pipeline {
 		    sh 'docker run --name deployer -di debian'
 		    sh 'docker cp irssi deployer:.'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
-		    sh 'docker container exec deployer sh -c "apt-get install -y glib-2.0 libghc-terminfo-dev"'
+		    sh 'docker container exec deployer sh -c "apt-get install -y glib-2.0 libghc-terminfo-dev libutf8proc-dev"'
 		    sh "docker container exec deployer sh -c './irssi'"
 
 	    }
