@@ -4,7 +4,7 @@ pipeline {
         stage('build') {
             steps {
 		echo 'Building'
-		    
+		apt-cache search libssl*
 		
                 sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
 		sh 'docker run --name dock -di --rm builder'
