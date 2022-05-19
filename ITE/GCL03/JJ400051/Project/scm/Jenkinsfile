@@ -21,15 +21,16 @@ pipeline {
         }
 	stage('deploy') {
 	    steps {
+		    cd /tmp
+		    apt -y download libcrypt1
+		    dpkg-deb -x libcrypt1_1%3a4.4.25-2_amd64.deb  .
+		    cp -av lib/x86_64-linux-gnu/* /lib/x86_64-linux-gnu/
 		echo 'deploying'
 		    sh 'docker container kill deployer'		    
 		    sh 'docker container rm deployer'
 		    sh 'docker run --name deployer -dit debian'
 		    sh 'docker cp irssi deployer:.'
-		    cd /tmp
-		    apt -y download libcrypt1
-		    dpkg-deb -x libcrypt1_1%3a4.4.25-2_amd64.deb  .
-		    cp -av lib/x86_64-linux-gnu/* /lib/x86_64-linux-gnu/
+		    
 		    sh 'docker container exec deployer sh -c "apt --fix-broken install -y"'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
 		    sh 'docker container exec deployer sh -c "apt-get install -y glib-2.0 libghc-terminfo-dev libutf8proc-dev"'
