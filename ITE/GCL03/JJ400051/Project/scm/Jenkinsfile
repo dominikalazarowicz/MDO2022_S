@@ -33,14 +33,13 @@ pipeline {
 	    }
 	}
 	stage('publish') {
-	    steps {
-		sh 'apt-get install bzip2'  
+	    steps {  
 		echo 'publishing'
 		sh 'rm -r publisher'
 		sh 'mkdir publisher'
 		sh 'cp irssi publisher'
-		sh "tar -jcf version${params.version}.tar.xz publisher"
-		archiveArtifacts artifacts: "version${params.version}.tar.xz"		
+		sh "tar -xf version${params.version}.tar.gz -c publisher"
+		archiveArtifacts artifacts: "version${params.version}.tar.gz"		
 		sh 'docker container kill publisher'
 		sh 'docker container rm publisher'
 	    }
