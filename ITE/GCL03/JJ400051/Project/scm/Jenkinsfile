@@ -36,7 +36,7 @@ pipeline {
 	    steps {
 		   
 		echo 'publishing'
-		sh 'rm publisher'
+		sh 'rm -r publisher'
 		sh 'mkdir publisher'
 		sh 'cp irssi publisher'
 		sh "tar -jcf version${params.version}.tar.xz publisher"
