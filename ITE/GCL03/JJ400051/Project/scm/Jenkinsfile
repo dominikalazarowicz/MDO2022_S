@@ -23,7 +23,7 @@ pipeline {
 	stage('deploy') {
 	    steps {
 		echo 'deploying'
-		    sh 'docker container rm deployer'
+		    sh 'docker container kill deployer'
 		    sh 'docker run --name deployer -di debian'
 		    sh 'docker cp irssi deployer:.'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
