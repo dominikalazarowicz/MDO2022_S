@@ -22,7 +22,7 @@ pipeline {
 		echo 'deploying'
 		    sh 'docker container create --name Deployer fedora'
 		    sh 'docker cd irssi Deployer'
-		    sh 'docker container exec Deployer sh -c "yum update"'
+		    sh 'docker container exec Deployer sh -c "yum update -y"'
 		    sh 'docker continer exec Deployer sh -c "yuminstall -y build-essential"'
 		    sh 'docker continer exec Deployer sh -c "./irssi"'
 		    
