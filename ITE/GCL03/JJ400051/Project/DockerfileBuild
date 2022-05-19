@@ -3,5 +3,5 @@ RUN apt-get update -y
 RUN apt-get install -y meson build-essential git make cmake glib-2.0 libghc-terminfo-dev pkg-config
 RUN git clone https://github.com/irssi/irssi
 WORKDIR irssi
-RUN meson build
+RUN meson setup build
 RUN ninja -C build
