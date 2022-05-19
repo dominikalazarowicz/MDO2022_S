@@ -1,0 +1,3 @@
+FROM build:latest
+RUN apt-get -y install file
+CMD make test
