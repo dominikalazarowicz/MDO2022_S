@@ -1,8 +1,7 @@
 # Sprawozdanie z projektu
 
-OPISAC CEL PROJEKTU I Zrobic streszczenie 
-- dodać aargumentacjee czemu co zostało użyte 
-- diagramy UML 
+Celem projektu było zapoznanie się z działaniem Jenkins Pipeline, czyli narzędziem ułatwiającym ciągłą integrację, dostarczanie i wdrażanie.  
+
 ## Skonfigurowanie Jenkins i DIND
 
 Instalacja Jenkinsa została wykonana zgodnie z  [dokumentacją](https://www.jenkins.io/doc/book/installing/docker/) na poprzednich zajęciach. 
@@ -16,6 +15,7 @@ Poniżej przedstawiam screen z potwierdzenia prawidłowego działania obu konten
 
 ## Pliki Dockerfile
 Do działania projektu było potrzebne stworzenie odpowiednich plików Dockerfile. Pliki te zostały stworzone na mojej  gałęzi AS303774 w folderze Lab05. 
+Pliki Dockerfile użyto, ponieważ dzięki nim można bardziej dostosować środowisko wykonawcze. Pipeline umożliwia budowanie i uruchamianie kontnera z pliku Dockerfile w repozytorium źródłowym.
 
 ### file1. dockerfile - build
 Pierszy plik odpowiedzialny jest za build naszego programu
@@ -41,13 +41,13 @@ Nowemu projektowi *pipeline1* zostały nadane dwaa parametry tekstowe - **Progra
 
 ![](./programName.png)
 
-Po dodaniu parametrów należało ustawić definicję pipeline na ***Pipeline script from SCM.*** 
+Po dodaniu parametrów należało ustawić definicję pipeline na ***Pipeline script from SCM*** a następnie ustawić repozytorium źródłowe. 
 
 
 ![](./jengit.png)
 
 
-Żeby Jenkins działał na naszym repozytorium i pobierał odpowiednie pliki Dockerfile i Jenkinsfile, należało podać ścieżkę do naszego repozytorium i naszego brancha. 
+Żeby Jenkins działał na naszym repozytorium i pobierał odpowiednie pliki Dockerfile i Jenkinsfile, należało podać ścieżkę do naszego repozytorium i naszego brancha. Na końcu też oczywiście została podana ścieżka do Jenkinsfile. 
 
 ![](./jenrepo.png)
 
@@ -58,7 +58,7 @@ Po dodaniu parametrów należało ustawić definicję pipeline na ***Pipeline sc
 
 Obraz **builder** tworzymy na podstawie obrazu **node**. 
 Za ten krok odpowiedzialny jest wcześniej wspomniany plik file1.dockerfile oraz część kodu w Jenkinsfile. 
-Dockerfile zawiera w sobie sklonowanie repozytorium z naszym projektem, następnie przechodząc do folderu z projektem instalowany jest npm `npm install` oraz tworzone zbuildowane pliki   - `npm run install`. 
+Dockerfile zawiera w sobie sklonowanie repozytorium z naszym projektem, następnie przechodząc do folderu z projektem instalowany jest npm `npm install` oraz tworzone zbuildowane pliki   - `npm run build`. 
 
 
 ![](./file1.png)
@@ -79,7 +79,9 @@ W tym celu w konsoli w Jenkinsie, za pomocą komendy `docker run nod:16.15.0`zmi
 
 2. **Test**
 Obraz **test** tworzony jest na podstawie obrazu **builder** z poprzedniego kroku. 
-Test odpowieada za przeprowadzenie testów sprawdzających odpowiednie działanie programu. 
+Test odpowiada za przeprowadzenie testów sprawdzających odpowiednie działanie programu. 
+W pliki Dockerfile, podajemy stworzony obraz builda, następnie przechodzimy do nasego projektu i uruchamiamy testy. 
+
 
 
 ![](./file2.png)
@@ -93,9 +95,16 @@ Do tego kroku potrzebne było wykonanie kroku **build**, dzięki któremu otrzym
 
 Krok **deploy** krok po kroku: 
 
+W Dockerfile:
+- krok ten wykonywany jest na obrazie node, więc go podajemy, 
+- kopiujemy zbuildowane pliki 
+- uruchamiamy plik wykonawczy cytoscape.min.js 
+W Jenkinsfile:
 - uruchomienie obrazu buildera z woluminem znajdującym się w Jenkinsie razem ze sklonowanym repozytorium 
 - stworzenie obrazu deploy 
-- w pliku dockerfile .....
+
+
+Widzimy, że nasz plik wykonał się poprawnie.  
 
 
 
@@ -114,5 +123,14 @@ Krok ten został wykonany drogą alternatywną, czyli zawrtość woluminu spakow
 
 
 ![](./publish.png)
+
+
+Poniżej zrzuty ekranu potwierdziające działanie pipeline'u. 
+
+
+![](./end2.png)
+
+![](./end.png)
+
 
 
