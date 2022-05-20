@@ -1,2 +1,0 @@
-from ubuntu:latest
-CMD sh -c "tar -xzf build/chibicc.tar.gz"
