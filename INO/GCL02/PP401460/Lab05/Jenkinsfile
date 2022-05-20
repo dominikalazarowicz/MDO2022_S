@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            customWorkspace 'INO/GCL02/PP401460/Lab05'
+        }
+    }
 
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0', description: 'Version number')
