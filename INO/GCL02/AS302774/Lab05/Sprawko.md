@@ -1,6 +1,8 @@
 # Sprawozdanie z projektu
 
 OPISAC CEL PROJEKTU I Zrobic streszczenie 
+- dodać aargumentacjee czemu co zostało użyte 
+- diagramy UML 
 ## Skonfigurowanie Jenkins i DIND
 
 Instalacja Jenkinsa została wykonana zgodnie z  [dokumentacją](https://www.jenkins.io/doc/book/installing/docker/) na poprzednich zajęciach. 
