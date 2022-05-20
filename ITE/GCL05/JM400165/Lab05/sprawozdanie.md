@@ -1,6 +1,6 @@
-#Projekt z laboratorió 05-08, Pipeline Jenkins - Jakub Michalik
+# Projekt z laboratorió 05-08, Pipeline Jenkins - Jakub Michalik
 
-##Logowanie do Jenkinsa
+## Logowanie do Jenkinsa
 
 1. Po uruchomieniu Virtualnej Maszyny i włączeniu Jenskinsa na serwerze localhost:8080, 
 pojawił się panel logowania do Jenkinsa
