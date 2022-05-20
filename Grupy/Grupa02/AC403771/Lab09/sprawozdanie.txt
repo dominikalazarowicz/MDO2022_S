@@ -8,9 +8,10 @@
 	tworzenie jednowęzłowych klastrów wewnątrz maszyny wirtualnej,
 	Minikube to możliwość nauki i eksperymentowania
 4. uruchomienie kontenera w kubernets:
-	kubectl run komunikator --image=annaczesak/lab9 --port=9999 --labels app=komunikator 
+	kubectl run komunikator --image=annaczesak/lab9 --port=9999 --labels app=komunikator --restart=OnFailure
 4.1. przekierowanie portów
-	kubectl port-forward pods/komunikator 9999:9999 - niepowodzenie
+	kubectl port-forward pod/komunikator 8080:9999 
+5.  Succeeded: 1
 
 	
 	
