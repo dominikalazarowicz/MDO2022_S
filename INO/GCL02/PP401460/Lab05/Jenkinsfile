@@ -1,6 +1,7 @@
 pipeline {
     agent {
         node {
+            label 'mle'
             customWorkspace 'INO/GCL02/PP401460/Lab05'
         }
     }
