@@ -21,7 +21,7 @@ pipeline {
   	stage('Build') {
 			steps {
 				echo 'Installing bashtop'
-				dir("./ITE/GCL06/JP300987") {
+				dir("./ITE/GCL06/JP300987/Lab05") {
 					sh 'docker build -t bashtop-build .'
 					sh 'docker run --mount type=volume,src="vol-in",dst=/app --mount type=volume,src="vol-out",dst=/app/build bashtop-build bash -c "cd /app/bashtop && make install; rm -r /app/build/* && cp -R /usr/local/bin/bashtop /app/build"'
 				}
@@ -30,7 +30,7 @@ pipeline {
   	stage('Test') {
   		steps {
     		echo 'Testing bashtop'
-      	dir("./ITE/GCL06/JP300987") {
+      	dir("./ITE/GCL06/JP300987/Lab05") {
       		sh 'docker build . -t bashtop-test -f Dockerfile-test'
       		sh 'docker run -t --mount type=volume,src="vol-in",dst=/app/build bashtop-test bash -c "cd /app/build/bashtop && sh test.sh"'
       	}
