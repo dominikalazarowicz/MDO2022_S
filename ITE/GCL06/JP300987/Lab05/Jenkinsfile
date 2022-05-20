@@ -1,48 +1,50 @@
 pipeline {
     agent any
-  //  parameters {
-     //   string(name: 'VERSION', defaultValue: '1.0.0', description: '')
-      //  }
-    stages {
-        stage('Git'){       
-            steps{
-                sh 'docker container prune -f'
-                sh 'docker volume prune -f' // usuwanie starych woluminow i kontenerow
-                git branch: 'JP300987', url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
-                sh 'docker volume create --name volume-build'
-                sh 'docker volume create --name volume-test'
-                sh 'docker volume create --name volume-repo'
-                sh 'docker build -t chibiccclone . -f "ITE/GCL06/JP300987/Lab05/dockerfile-clone"'
-                sh 'docker run -v volume-repo:/chibicc chibiccclone'
+
+    parameters {
+        string(name: 'Name')
+        string(name: 'Version')
+    }
+
+    stages{
+        stage('Build') {
+            steps {
+                echo 'BUILD'
+                dir('ITE/GCL06/JP300987/Lab05') {
+                    sh 'docker build . -f dockerfile1.dockerfile -t builder'
+                }
+            }
+        }
+        stage('Tests') {
+            steps {
+                echo 'TESTS'
+                dir('ITE/GCL06/JP300987/Lab05') {
+                    sh 'docker build . -f dockerfile2.dockerfile -t tester'
+                }
             }
         }
         
-        stage('Build'){
-            steps{
-                sh 'docker build -t build . -f ITE/GCL06/JP300987/Lab05/dockerfile-build'
-                sh 'docker run -v volume-repo:/chibicc -v volume-build:/build build'
+        stage('Deploy') {
+            steps {
+                echo 'DEPLOY'
+                sh 'docker run --volume /var/jenkins_home/workspace/pipeline1/ITE/GCL06/JP300987/Lab05:/final builder mv -n build /final'
+                dir('ITE/GCL06/JP300987/Lab05') {
+                    sh 'docker build . -f dockerfile3.dockerfile -t deploy'
+                }
+                sh 'docker run --volume /var/jenkins_home/workspace/pipeline1/ITE/GCL06/JP300987/Lab05/build:/build -d -p 3000:80 deploy'
+                sh 'docker stop $(docker ps -a -q)'
             }
         }
         
-        stage('Test'){
-            steps{
-                sh 'docker build -t test . -f ITE/GCL06/JP300987/Lab05/dockerfile-test'
-                sh 'docker run -v volume-repo:/chibicc -v volume-test:/test test'
-            }
-        }
-        
-        stage('Deploy'){
-            steps{
-                sh 'docker build -t deploy . -f ITE/GCL06/JP300987/Lab05/dockerfile-deploy'
-                sh 'docker run -v volume-build:/build deploy'
-            }
-        }
-        
-        stage('Publish'){
-            steps{
-              // sh 'mv ./artifact/chibicc.tar.gz chibicc_${VERSION}.tar.gz'//-> ERROR - TODO
-                archiveArtifacts artifacts: "artifact/chibicc.tar.gz"
+        stage('Publish') {
+            steps {
+                echo 'PUBLISH'
+                dir('ITE/GCL06/JP300987/Lab05') {
+                    sh 'docker build . -f dockerfile4.dockerfile -t publisher'
+                }
+                sh "docker run --volume /var/jenkins_home/workspace/pipeline1/ITE/GCL06/JP300987/Lab05:/final publisher mv archive.tar.xz /final"
             }
         }
     }
+    
 }
