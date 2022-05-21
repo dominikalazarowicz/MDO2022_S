@@ -40,18 +40,18 @@ Uruchomienie _jenkins’a_:
   --volume jenkins-docker-certs:/certs/client:ro \
   myjenkins-blueocean:2.332.3-1 
 
-![](1.png)
-![](2.png)
+![](SS/1.png)
+![](SS/2.png)
 _Zdajê sobie sprawê, ¿e komenda sudo mo¿e frustrowaæ, lecz wyszed³em z za³o¿enia, ¿e s¹ to tylko zajêcia laboratoryjne, które maj¹ tylko nauczyæ pos³ugiwaæ siê Jenkinsem i pipelinami. Podejrzewam, ¿e w normalnym przypadku konto dla pracownika DevOps by³o by tak skonfigurowane, by nie musia³ u¿ywaæ polecenia sudo – jest wiêc to coœ co raczej powinno nale¿eæ do administratora systemów._
 
 Kiedy _Jenkins_ siê uruchomi³, mo¿na siê zabraæ za przygotowanie plików do _pipeline_. £¹cznie stworzono 4 pliki – 3 pliki _dockerfile_ dla etapów _build_, _test_ oraz _deploy_.
 
 Dockerfile _builder_ odpowiada za œci¹gniêcie projektu z repozytorium na wolumin wejœciowy _input_v_ (**git clone**) a nastêpnie zbudowanie projektu (**mvn package**) i przekopiowanie go na wolumin wyjœciowy _output_v_ (**cp -r target /output_v/**). Dockerfile buduje obraz na bazie obrazu _maven_.
-![](3.png)
+![](SS/3.png)
 Dockerfile _tester_ odpowiada za przetestowanie projektu (**mvn test**), który znajduje siê na woluminie wejœciowym. Ten dockerfile buduje obraz na bazie obrazu _builder_.
-![](4.png)
+![](SS/4.png)
 Dockerfile _deploy_ odpowiada za sprawdzenie czy zbudowany plik _jar_ dzia³a w œrodowisku konsumenckim. Tak wiêc nie mo¿na budowaæ obrazu na bazie _buildera_, lecz na bazie innego – w tym przypadki _maven’a_. W celu u³atwienia zadania _Dockerfile_ zbudowano w taki sposób, by w³aœciwie uruchamia³ program i koñczy³ dzia³anie programu poprzez wpisanie 5 (_program konsolowy_).
-![](5.png)
+![](SS/5.png)
 Mo¿na powiedzieæ, ¿e pipeline jest podzielony na 4 g³ówne etapy – Build, Test, Deploy i Publish. Kroki Build, Test i Deploy zosta³y podzielone na 2 podetapy – pierwszy z nich przygotowuje odpowiedniego agenta bazuj¹cego na odpowiednim _Dockerfile_. Dodatkowo pojawia siê krok Prepare do przygotowania œrodowiska do stworzenia artefaktu. Pipeline dodatkowo przyjmuje 2 parametry:
 
  - PROMOTE – typu boolean - informuje o tym czy ma byæ budowany i publikowany artefakt – sprawdzane jest to przed etapem publish – domyœlnie na _false_.
@@ -60,12 +60,13 @@ Mo¿na powiedzieæ, ¿e pipeline jest podzielony na 4 g³ówne etapy – Build, Test, D
 
 Jest te¿ na samym koñcu _post_ – _always_ – blok instrukcji, który zawsze powinien siê wykonaæ. Wykorzystywany jest jako swego rodzaju czyœcioch.
 
-> pipeline {
+	pipeline {
     agent any
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
     }
+   
     stages {
     	stage('Prepare') {
     	    steps {
@@ -171,17 +172,18 @@ Jest te¿ na samym koñcu _post_ – _always_ – blok instrukcji, który zawsze powini
     	    sh 'chmod 777 -R publish'
     	    sh 'rm -rf publish'
     	}
-   }
-}
+      }
+    }
+
 
 Maj¹c tak przygotowane pliki wrzucone na GIT’a mo¿na zabraæ siê za samego Jenkins’a. Wiedz¹c po ostatnich zajêciach jaki adres IP ma VM oraz na jakim porcie odpalono Jenkins’a mo¿na wejœæ do niego przez przegl¹darkê. Po zalogowaniu tworzy siê Nowy Projekt wybieraj¹c przy tym Pipeline i podaj¹c nazwê projektu. W nastêpnym oknie nale¿y zwróciæ uwagê na sekcjê _Pipeline_. Skrypt musi byæ pobierany z _SCM_, a w polu _SCM_ nale¿y wybraæ okno GIT. Kolejne okna odnoœnie GITa uzupe³nia siê dosyæ prosto – link do repozytorium, nazwa brancha a tak¿e œcie¿kê do katalogu, gdzie znajduje siê pipeline.
-![](6.png)
-![](7.png)
-![](8.png)
-![](9.png)
+![](SS/6.png)
+![](SS/7.png)
+![](SS/8.png)
+![](SS/9.png)
 Tak wiêc jest ju¿ projekt zbudowany, wiêc mo¿na uruchomiæ pipeline’a klikaj¹c w opcjê _Uruchom z parametrami_ oraz uzupe³niamy pola.
-![](10.png)
-![](11.png)
+![](SS/10.png)
+![](SS/11.png)
 Ca³y pipeline, pocz¹wszy od kroku _Prepare_ a¿ po _Publish_ przebieg³ pomyœlnie i naszym oczom ukaza³ siê kalkulator z wersj¹, któr¹ wczeœniej podano – 1.5.0.
 Diagram aktywnoœci:
-![](12.png)
+![](SS/12.png)
