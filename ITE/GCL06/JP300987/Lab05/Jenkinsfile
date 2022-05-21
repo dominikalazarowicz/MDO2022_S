@@ -55,9 +55,9 @@ pipeline {
         stage('Publish') {
             steps {
                 script {
-                    if(params.promote) {
+                    if(params.PROMOTE) {
                       
-                        sh 'find ./artifacts -type f -name \'*\' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh'
+                         sh 'find ./artifacts -type f -name "*" -printf \'mv "%h/%f" "%h/${params.version}_%f"\' | sh'
                           
                         archiveArtifacts artifacts: 'artifacts/*.jar'
                     }
