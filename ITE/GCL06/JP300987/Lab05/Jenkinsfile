@@ -12,19 +12,19 @@ pipeline {
         stage("Git") {
             steps {
                 sh "docker system prune --all -f"
-                sh "docker build -t git:latest . -f ./ITE/GCL06/JP300987/Lab05/git_dockerfile/Dockerfile"
+                sh "docker build -t git:latest . -f ./ITE/GCL06/JP300987/Lab05/clone-dockerfile"
                 sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
             }
         }
         stage("Build") {
             steps {
-                sh "docker build -t build:latest . -f ./ITE/GCL06/JP300987/Lab05/build_dockerfile/Dockerfile"
+                sh "docker build -t build:latest . -f ./ITE/GCL06/JP300987/Lab05/build-dockerfile"
                 sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
             }
         }
         stage("Test") {
             steps {
-                sh "docker build -t test:latest . -f ./ITE/GCL06/JP300987/Lab05/test_dockerfile/Dockerfile"
+                sh "docker build -t test:latest . -f ./ITE/GCL06/JP300987/Lab05/test-dockerfile"
                 sh "docker run --name test --rm --mount source=in,target=/volume_in test:latest"
             }
         }
