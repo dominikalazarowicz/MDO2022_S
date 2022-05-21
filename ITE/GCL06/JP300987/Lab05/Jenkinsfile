@@ -56,10 +56,9 @@ pipeline {
             steps {
                 script {
                     if(params.promote) {
-                        sh '''
-                            find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh
-                            ls -a ./artifacts
-                        '''
+                      
+                        sh 'find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}.%f'\" | sh'
+                          
                         archiveArtifacts artifacts: 'artifacts/*.jar'
                     }
                     else {
