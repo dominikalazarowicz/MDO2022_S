@@ -1,5 +1,10 @@
 pipeline {  
     agent any
+    parameters {
+        booleanParam(name: 'PROMOTE')
+        string(name: 'VERSION')
+    }
+
     stages {
         stage('Build') {
             steps {
@@ -33,14 +38,22 @@ pipeline {
         }
 
         stage('Publish') {
-            steps {
-                echo 'PUBLISH'
-                dir('INO/GCL02/GS403353/JenkinsProject') {
-                    sh 'docker build . -f Publish.dockerfile -t publisher'
-                    sh 'docker run publisher'
+            when {
+                expression {
+                    params.PROMOTE == true
                 }
-                echo 'PUBLISH COMPLETED'
             }
+                steps {
+                    echo 'PUBLISH'
+                    dir('INO/GCL02/GS403353/JenkinsProject') {
+                        sh 'docker build . -f Publish.dockerfile -t publisher'
+                        //sh 'docker run publisher'
+                        sh 'docker run --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/archive publisher'
+                        sh "mv 2048_package.deb 2048_package${params.VERSION}.deb"
+                        sh "mv 2048_package_${params.VERSION}.deb /archive"
+                    }
+                    echo 'PUBLISH COMPLETED'
+                }
         }
     }
 }
