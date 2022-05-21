@@ -56,9 +56,9 @@ pipeline {
                         sh 'docker build . -f Publish.dockerfile -t publisher'
                         //sh 'docker run publisher'
                         sh 'ls'
-                        sh "mv 2048_package 2048_package_${params.VERSION}"
+                        //sh "mv 2048_package 2048_package_${params.VERSION}"
                         sh 'ls'
-                        sh "docker run --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/archive publisher mv 2048_package_${params.VERSION} /archive"
+                        sh 'docker run -e params.VERSION --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/archive publisher'
                     }
                     sh 'ls'
                     echo 'PUBLISH COMPLETED'
