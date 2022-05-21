@@ -31,8 +31,11 @@ pipeline {
                 echo 'DEPLOY'
                 sh 'ls'
                 sh 'docker run --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/build builder mv -n /2048.c/2048 /build'
+                sh 'ls'
                 dir('INO/GCL02/GS403353/JenkinsProject') {
+                    sh 'ls'
                     sh 'docker build . -f Deploy.dockerfile -t deploy'
+                    sh 'ls'
                 }
                 sh 'ls'
                 echo 'DEPLOY COMPLETED'
@@ -49,6 +52,7 @@ pipeline {
                     echo 'PUBLISH'
                     sh 'ls'
                     dir('INO/GCL02/GS403353/JenkinsProject') {
+                        sh 'ls'
                         sh 'docker build . -f Publish.dockerfile -t publisher'
                         //sh 'docker run publisher'
                         sh 'ls'
