@@ -48,10 +48,10 @@ pipeline {
                     dir('INO/GCL02/GS403353/JenkinsProject') {
                         sh 'docker build . -f Publish.dockerfile -t publisher'
                         //sh 'docker run publisher'
+                        sh 'ls 2048'
+                        sh "mv 2048_package 2048_package_${params.VERSION}"
                         sh 'ls'
-                        sh "mv 2048_package.deb 2048_package_${params.VERSION}.deb"
-                        sh 'ls'
-                        sh "docker run --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/archive publisher mv 2048_package_${params.VERSION}.deb /archive"
+                        sh "docker run --volume /var/jenkins_home/workspace/2048_pipeline/INO/GCL02/GS403353/JenkinsProject:/archive publisher mv 2048_package_${params.VERSION} /archive"
                     }
                     echo 'PUBLISH COMPLETED'
                 }
