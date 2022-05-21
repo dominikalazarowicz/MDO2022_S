@@ -1,5 +1,2 @@
-FROM builder:latest
-WORKDIR /nodejs.org/
-RUN ls
-RUN ls build
-RUN npm run test
+FROM build:latest AS test
+CMD ["mvn", "-f", "/volume_in/DiscordSRV/pom.xml", "test"]
