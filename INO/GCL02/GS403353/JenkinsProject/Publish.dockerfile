@@ -1,4 +1,4 @@
-FROM deploy:latest
+FROM builder:latest
 
 RUN mkdir -p 2048_package
 RUN mkdir -p 2048_package/DEBIAN
