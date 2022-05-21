@@ -1,42 +1,63 @@
 pipeline {
     agent any
-    tools{
-        nodejs "18.1.0"
+    parameters {
+        booleanParam(name: "promote",
+            defaultValue: false,
+            description: "Promote to new version, when successful?")
+        string(name: "version",
+            defaultValue: "",
+            description: "Type in verion number:")
     }
     stages {
-        stage("npm-login-cli"){
-        steps{
-        sh 'npm -v'
-        }
-        }
-        stage("build") {
+        stage("Git") {
             steps {
-                echo "building.." 
-				   sh 'docker build . -f docker1.dockerfile -t builder'
+                sh "docker system prune --all -f"
+                sh "docker build -t git:latest . -f ./ITE/GCL06/JP300987/Lab05/git_dockerfile/Dockerfile"
+                sh "docker run --name clone --rm --mount source=in,target=/volume_in git:latest"
             }
         }
-        stage('test') {
+        stage("Build") {
             steps {
-			  sh 'docker build . -f docker2.dockerfile -t tester'
-			  sh' docker run tester'
+                sh "docker build -t build:latest . -f ./ITE/GCL06/JP300987/Lab05/build_dockerfile/Dockerfile"
+                sh "docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest"
             }
         }
-         stage('deploy') {
+        stage("Test") {
             steps {
-               echo 'deploying..'
-                 sh  'docker build . -f docker3.dockerfile -t deploy'
-				 sh 'docker stop $(docker ps -a -q)'
-				 sh 'docker run  -d -p 3000:80 deploy '		                 
+                sh "docker build -t test:latest . -f ./ITE/GCL06/JP300987/Lab05/test_dockerfile/Dockerfile"
+                sh "docker run --name test --rm --mount source=in,target=/volume_in test:latest"
             }
         }
-        stage('publish') {
+        stage("Deploy") {
             steps {
-               echo "publishing.."
-			    sh 'docker build . -f docker4.dockerfile -t publish'
-				sh "docker run --volume /var/jenkins_home/workspace/volumes:/final publish mv nodejs.tar.xz /final"
-		    		archiveArtifacts 'nodejs.tar.xz'
-				echo "NODEJS.ORG VERSION ${params.version} HAS BEEN PUBLISHED" 	
-
+                sh "rm -rf ./artifacts && mkdir artifacts"
+                sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
+                sh "docker cp copy:/volume_out ./artifacts "
+                sh "docker rm copy"
+                sh "rm -rf ./artifacts/extract && mkdir artifacts/extract"
+                sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts"
+                sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
+                script {
+                    def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep plugin.yml")
+                    if(commandStdout.contains("plugin.yml"))
+                    {
+                        echo "Deployed! Plugin should work."
+                    }
+                }
+            }
+        }
+        stage("Publish") {
+            steps {
+                script {
+                    if(params.promote) {
+                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
+                        sh "ls -a ./artifacts"
+                        archiveArtifacts artifacts: "artifacts/*.jar"
+                    }
+                    else {
+                        echo "Everything was successful, but not promoting to new version! (The promote check was not selected)"
+                    }
+                }
             }
         }
     }
