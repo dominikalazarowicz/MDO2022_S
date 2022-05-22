@@ -30,7 +30,7 @@ pipeline {
             steps {
                 dir("./ITE/GCL08/MZ402779/Lab05") {
                 	sh 'docker rm mongotests || true'
-                	sh 'docker run --rm --name mongotests --mount type=volume,src"output-volume",dst=/myapp_build mongo-express bash -c "cd /myapp/mongo-express && npm test"'
+                	sh 'docker run --rm --name mongotests --mount type=volume,src="output-volume",dst=/myapp_build mongo-express bash -c "cd /myapp/mongo-express && npm test"'
                 }
             }
         }
