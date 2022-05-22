@@ -57,7 +57,7 @@ pipeline {
         }  
         agent {
         	docker {
-        		image 'node:alpine'
+        		image 'node:16-alpine'
         		args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/app" --mount "type=bind,src=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
         	}
         }      
@@ -65,9 +65,9 @@ pipeline {
                 sh 'rm -rf /usr/local/copy/* || true'
                 sh "cd /usr/local/app/vscode && npm version ${params.Version} && npm pack"
                 sh 'ls /usr/local/app/vscode'
-                sh "mv /usr/local/app/vscode/vscode-${params.Version}.tgz /usr/local/copy"
+                sh "mv /usr/local/app/vscode/code-oss-dev-${params.Version}.tgz /usr/local/copy"
                 dir('/var/jenkins_home/workspace/artifacts'){
-                	archiveArtifacts artifacts: "vscode-${params.Version}.tgz",
+                	archiveArtifacts artifacts: "code-oss-dev-${params.Version}.tgz",
                 	fingerprint: true
                 }
             }
