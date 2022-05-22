@@ -8,7 +8,4 @@ RUN apk add git
 RUN apk add bash
 
 RUN yarn --version
-<<<<<<< HEAD
 
-=======
->>>>>>> 66a725769087f1e791dfb30e6f1e11dfdae99889
