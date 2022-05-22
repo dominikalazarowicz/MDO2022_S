@@ -5,4 +5,4 @@ WORKDIR myapp_build
 
 RUN apk update
 RUN apk add git
-RUN app add bash
+RUN apk add bash
