@@ -1,11 +1,8 @@
 FROM node:alpine
 
+WORKDIR myapp
+WORKDIR myapp_build
+
 RUN apk update
 RUN apk add git
 RUN apk add bash
-
-RUN git clone https://github.com/mongo-express/mongo-express.git
-
-WORKDIR mongo-express
-
-RUN npm install
