@@ -1,0 +1,3 @@
+FROM mk_build:latest
+WORKDIR cytoscape.js
+RUN npm test
