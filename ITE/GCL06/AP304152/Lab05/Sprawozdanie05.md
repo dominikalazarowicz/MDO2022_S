@@ -29,26 +29,21 @@
 - W etapie tym kolejno przechodzimy do folderu w którym znajduję się plik. Uruchamiamy kontener z zamontowanymi woluminami wejsciowym i wyjsciowym bazując na wczesniej utworzonym dockerfile'u:
 
 ![image](https://user-images.githubusercontent.com/72975469/169714174-b5b1fe00-bc30-4cb0-b869-113307bee99b.png)
-- W 
+- Etpa test, którego efektem końcowym zakończenie z powodzeniem wszystkich testów wbudowanych w repozytorium aplikacji
 
 ![image](https://user-images.githubusercontent.com/72975469/169714213-a61f3ba5-4d1f-4b0b-a2f0-7430d7d61919.png)
-- aa
+- dockerfile testów
+
+![image](https://user-images.githubusercontent.com/72975469/169715053-f8f91697-bed6-415b-860c-0d72cd7f1e76.png)
+- Etap Deploy, którego celem jest sprawdzenie poprawności działania zbudowanego wcześniej kodu przed etapem jego publikacji
 
 ![image](https://user-images.githubusercontent.com/72975469/169714223-724965d4-12c2-4718-9949-f2de8246bcca.png)
--przygotowujemy etap publish
+- Etap przygotowania etapu Publish, którego efektem końcowym jest utworzonie katalogu w odpowiedniej ścieżce w kontenerze Jenkinsa.
 
 ![image](https://user-images.githubusercontent.com/72975469/169714232-212640da-6860-41d5-9d86-faeb203a6ba2.png)
-- Publish
+- Etap Publish czyli finalny etap przygotowań Pipeline'a. Jego celem jest wypromowanie pliku do artefaktu i  jego publikacja
 
 ![image](https://user-images.githubusercontent.com/72975469/169714245-f3270df7-cf9c-4401-9416-e32a6f0bea96.png)
-
-
-
-
-
-
-
-
 
 ## Końcowy efekt pracy:
 - Aby uruchomić pipeline'a należy wybrać parametry
