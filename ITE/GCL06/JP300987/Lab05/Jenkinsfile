@@ -38,7 +38,7 @@ pipeline {
                     rm -rf ./artifacts && mkdir artifacts
                     docker run -d --name copy --mount source=out,target=/volume_out busybox true
                     docker cp copy:/volume_out ./artifacts 
-                    docker rm copy"
+                    docker rm copy
                     rm -rf ./artifacts/extract && mkdir artifacts/extract
                     cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts
                     rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract
