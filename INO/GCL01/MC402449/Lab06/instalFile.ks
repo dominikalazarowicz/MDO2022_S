@@ -43,4 +43,14 @@ timezone Europe/Warsaw --utc
 rootpw --iscrypted $y$j9T$.5sAGbY9xF5D/DcjTx8tpwDWo$3uNhFb1S50mka8MUJSgCeOyaRYA6UytGNNVExrncLYD
 user --groups=wheel --name=macias --password=$y$j9T$fBEqSHUoW35SbMiDCQQEraQa$p33qumHiwHXTFYVGrd4VWMK0nxgvlTYAPkR11q7x.B2 --iscrypted --gecos="macias"
 
+%post
+sudo apt-get install git
+sh -c "$(curl -sSfL https://release.solana.com/v1.10.8/install)" 
+mkdir /temp
+mkdir /temp/repo
+cd /temp/repo
+wget https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/MC402449/INO/GCL01/MC402449/Lab06/helloworld.so 
+mkdir /temp/solanaSmartContract
+cp /temp/repo/helloworld.so /temp/solanaSmartContract
+%end
 
