@@ -1,3 +1,4 @@
+pipeline {
 parameters
     {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
@@ -109,7 +110,7 @@ stage('Clean')
 			}
 		}
         
-        
+	}        
 	
 post 
 {
