@@ -22,8 +22,7 @@ pipeline {
                 	sh 'docker build . -t vscode -f dockerfile-build'
                 	sh 'docker volume create output-volume'
                 	sh 'docker rm vscodebuild || true'
-                	sh 'docker run --rm --name vscodebuid --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build vscode bash -c "cd /myapp/vscode && npm run build; cp -R /myapp/vscode /myapp_build"' 
-                	sh 'docker volume inspect output-volume' 
+                	sh 'docker run --rm --name vscodebuid --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build vscode bash -c "cd /myapp/vscode && yarn; cp -R /myapp/vscode /myapp_build"'
                 	     	
                 }
             }
@@ -32,7 +31,7 @@ pipeline {
             steps {
                 dir("./ITE/GCL08/MZ402779/Lab05") {                	
                 	sh 'docker rm vscodetest || true'
-                	sh 'docker run --rm --name vscodetest --mount type=volume,src="output-volume",dst=/myapp_build vscode bash -c "cd /myapp_build/vscode && npm test"'
+                	sh 'docker run --rm --name vscodetest --mount type=volume,src="output-volume",dst=/myapp_build vscode bash -c "cd /myapp_build/vscode && ls -al"'
                 }
             }
         }
@@ -65,6 +64,7 @@ pipeline {
             steps {
                 sh 'rm -rf /usr/local/copy/* || true'
                 sh "cd /usr/local/app/vscode && npm version ${params.Version} && npm pack"
+                sh 'ls /usr/local/app/vscode'
                 sh "mv /usr/local/app/vscode/vscode-${params.Version}.tgz /usr/local/copy"
                 dir('/var/jenkins_home/workspace/artifacts'){
                 	archiveArtifacts artifacts: "vscode-${params.Version}.tgz",
