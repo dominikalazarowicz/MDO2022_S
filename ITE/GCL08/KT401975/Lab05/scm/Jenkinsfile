@@ -46,8 +46,8 @@ pipeline {
 				}
 			}
 		    steps {
+				sh 'ls'
 				sh 'cd /vol/artifacts'
-		        sh 'cd /vol/artifacts && ./dotnet-core-xunit-example'
 		    }
 		}
      }
