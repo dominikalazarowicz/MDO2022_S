@@ -31,7 +31,7 @@ pipeline {
             steps {
                 dir("./ITE/GCL08/MZ402779/Lab05") {                	
                 	sh 'docker rm vscodetest || true'
-                	sh 'docker run --rm --name vscodetest --mount type=volume,src="output-volume",dst=/myapp_build vscode bash -c "cd /myapp_build/vscode && ls -al"'
+                	sh 'docker run --rm --name vscodetest --mount type=volume,src="output-volume",dst=/myapp_build vscode bash -c "cd /myapp_build/vscode && npm test"'
                 }
             }
         }
