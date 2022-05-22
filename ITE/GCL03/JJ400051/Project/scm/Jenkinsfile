@@ -2,7 +2,7 @@ pipeline {
     agent any
 	parameters {
         booleanParam(name: "promote",
-            defaultValue: false,
+            defaultValue: false)
         string(name: "version",
             defaultValue: "",
             description: "Version...?:")
