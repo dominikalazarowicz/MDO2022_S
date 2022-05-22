@@ -9,6 +9,7 @@ pipeline {
     stages {
         stage('Clone') {
             steps {
+                echo 'CLONE'
                 sh '''
                     docker system prune --all -f
                     docker build -t git:latest . -f ./ITE/GCL06/JP300987/Lab05/clone.dockerfile
@@ -18,6 +19,7 @@ pipeline {
         }
         stage('Build') {
             steps {
+                echo 'BUILD'
                 sh '''
                     docker build -t build:latest . -f ./ITE/GCL06/JP300987/Lab05/build.dockerfile
                     docker run --name build --rm --mount source=in,target=/volume_in --mount source=out,target=/volume_out build:latest
@@ -26,6 +28,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+                echo 'TEST'
                 sh '''
                     docker build -t test:latest . -f ./ITE/GCL06/JP300987/Lab05/test.dockerfile
                     docker run --name test --rm --mount source=in,target=/volume_in test:latest
@@ -34,6 +37,7 @@ pipeline {
         }
         stage('Deploy') {
             steps {
+                echo 'DEPLOY'
                 sh '''
                     rm -rf ./artifacts && mkdir artifacts
                     docker run -d --name copy --mount source=out,target=/volume_out busybox true
@@ -54,6 +58,7 @@ pipeline {
         }
         stage('Publish') {
             steps {
+                echo 'PUBLISH'
                 script {
                     if(params.PROMOTE) {
                       
