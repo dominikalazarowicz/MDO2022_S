@@ -2,7 +2,7 @@
 
 ## Przebieg cwiczenia
 
-1. Instalacja GUI Fedory):
+1. Instalacja GUI Fedory:
    ![1](Screenshots/instalacjagui.png)
 
 2. Utworzenie dzielonego folderu
