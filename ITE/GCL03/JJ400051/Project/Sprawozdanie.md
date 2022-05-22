@@ -35,3 +35,8 @@ Artefakt z numerem wersji:
 Dowód na powodzenie wszystkich stage'y:
 
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/JJ400051/ITE/GCL03/JJ400051/Project/pipeline_success.PNG)
+
+Activity Diagram:
+
+![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/JJ400051/ITE/GCL03/JJ400051/Project/Activity_Diagram.PNG)
+
