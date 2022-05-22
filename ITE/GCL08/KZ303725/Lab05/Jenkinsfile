@@ -14,7 +14,7 @@ pipeline {
 				echo 'Cloning calculator'
 				sh 'docker volume create input-volume'
 				sh 'docker rm tempContainer || true'
-				sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/ && ls calculator || git clone https://github.com/calculatorjs/calculator.git;cp -R calculator /myapp; ls /myapp"'
+				sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/ && ls calculator || git clone https://github.com/actionsdemos/calculator;cp -R calculator /myapp; ls /myapp"'
 			}
 		}
 	
