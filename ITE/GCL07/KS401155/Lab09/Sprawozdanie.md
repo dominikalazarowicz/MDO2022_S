@@ -23,7 +23,7 @@
 
    ![6](Screenshots/dependencje.png)
    
-6. Dodanie pobierania artefaktu przez lokalnego serwera http
+6. Dodanie pobierania artefaktu z lokalnego serwera http
 
    ![7](Screenshots/archive.png)
    
