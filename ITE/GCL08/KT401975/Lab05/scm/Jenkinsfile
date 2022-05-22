@@ -38,5 +38,16 @@ pipeline {
 		 		sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/runfile ; docker build -t runner:latest .'    
 		 	}
 		}
+		stage('Deploy') {
+			agent{
+				docker{
+					image 'runner:latest'
+					args '--mount source=vol,target=/vol -u root:root'
+				}
+			}
+		    steps {
+		        sh 'cd /vol/artifacts && ./dotnet-core-xunit-example'
+		    }
+		}
      }
 }
