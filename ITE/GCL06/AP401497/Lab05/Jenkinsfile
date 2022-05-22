@@ -7,38 +7,40 @@ pipeline {
         }
   	stages {
             stage("Clone"){
-                steps {
-                sh 'docker container prune -f'
-                sh 'docker volume prune -f'
-                sh 'docker volume  create --name repo_vol'
-                sh "docker build -t dethclone . -f ITE/GCL06/AP401497/Lab05/Clone/Dockerfile"
-                sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/deth dethclone"
+            steps {
+            sh 'docker container prune -f'
+            sh 'docker volume prune -f'
+            sh 'docker volume  create --name repo_vol'
+            sh 'docker volume  create --name build_vol'
+            sh "docker build -t dethclone . -f ITE/GCL06/AP401497/Lab05/Clone/Dockerfile"
+            sh "docker run -e BRANCH=${BRANCH} -v repo_vol:/deth dethclone"
+                }
+            }
+            stage("Build") {
+            steps {
+                sh 'docker build -t dethbuild . -f ITE/GCL06/AP401497/Lab05/Build/Dockerfile'
+                sh 'docker run -v repo_vol:/deth -v ${PWD}:/public dethbuild'            
+            }
+        }
+            stage("Test") {
+            steps {
+                sh 'docker build -t dethtest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=dethbuild'
+                sh 'docker run  -v repo_vol:/deth dethtest'
+            }
+        }
+            stage("Deploy") {
+                    steps {
+                        sh 'docker build -t deploydeth . -f ITE/GCL06/AP401497/Lab05/Deploy/Dockerfile'
+                        sh 'docker run  -v repo_vol:/deth  deploydeth'
                     }
                 }
-            stage("Build") {
-                steps {
-                    sh 'docker build -t dethbuild . -f ITE/GCL06/AP401497/Lab05/Build/Dockerfile'
-                    sh 'docker run -v repo_vol:/deth -v ${PWD}:/public dethbuild'            
-                }
-            }
-            stage("Test") {
-                steps {
-                    sh 'docker build -t dethtest . -f ITE/GCL06/AP401497/Lab05/Test/Dockerfile --build-arg image=dethbuild'
-                    sh 'docker run  -v repo_vol:/deth dethtest'
-                }
-            }
-            stage("Deploy") {
-            steps {
-                sh 'docker build -t deploydeth . -f ITE/GCL06/AP401497/Lab05/Deploy/Dockerfile'
-                sh 'docker run  -v ${PWD}:/deth  deploydeth'
-                }
-            }
+
             stage("Publish") {
             when {
                     environment name: 'PROMOTE', value: "true"
                 }
                 steps {
-                    sh "tar -czvf deth_${VERSION}.tar.gz deth"
+                    sh "mv deth.tar.gz deth_${VERSION}.tar.gz"
                     archiveArtifacts "deth_${VERSION}.tar.gz"
                 }
             }
