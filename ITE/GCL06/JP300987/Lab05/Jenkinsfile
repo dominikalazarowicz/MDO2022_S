@@ -63,7 +63,7 @@ pipeline {
                     if(params.PROMOTE) {
                       
                         // sh 'find ./artifacts -type f -name "*" -printf \'mv "%h/%f" "%h/${params.version}_%f"\' | sh'
-                         sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
+                         sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.VERSION}_%f'\" | sh"
                         archiveArtifacts artifacts: 'artifacts/*.jar'
                     }
                     else {
