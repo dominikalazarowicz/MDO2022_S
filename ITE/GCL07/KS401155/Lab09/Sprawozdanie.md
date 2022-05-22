@@ -9,8 +9,8 @@
    ![2](Screenshots/udostepnieniefolderu1.png)
 
 3. Zamontowanie folderu i skopiowanie do niego pliku kickstart:
-   ![3](Screenshots/udostepnieniefolderu1.png)
-   ![4](Screenshots/udostepnieniefolderu2.png)
+   ![3](Screenshots/udostepnianiefolderu1.png)
+   ![4](Screenshots/udostepnianiefolderu2.png)
    ![5](Screenshots/udostepnionycfg.png)
 
 4. Utworzenie lokalne serwera http i umieszczenie na nim artefaktu:
