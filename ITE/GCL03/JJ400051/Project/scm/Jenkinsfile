@@ -7,7 +7,7 @@ pipeline {
 		
                 sh 'docker build -t builder . -f ITE/GCL03/JJ400051/Project/DockerfileBuild'
 		sh 'docker run --name dock -di --rm builder'
-		sh 'docker cp dock:.../irssi .'
+		sh 'docker cp dock:irssi/build/src/fe-text/irssi .'
 		sh 'docker kill dock'
 	    }
         }
