@@ -16,7 +16,38 @@
 - W celu umożliwienia dostępu do artefaktów osobom niezalogowanym należy odpowiednio zmienić ustawienia:
 
 ![image](https://user-images.githubusercontent.com/72975469/169712808-d1c6db02-cfc4-4cb8-b30d-673316dbee2d.png)
-## Opis wykonanej pracy:
+## Etapy wykonywanej pracy:
+- Parametry w jenkinsfile
+
+![image](https://user-images.githubusercontent.com/72975469/169713803-b01c1a60-cea1-452e-b077-88c63f2d451d.png)
+- Etap clone, którego efektem końcowym jest sklonowanie repozytorium z naszą aplikacją i umieszczenie go na woluminie wejściowym:
+
+![image](https://user-images.githubusercontent.com/72975469/169713900-e74a396e-3c96-45f1-b001-282ae0a903e5.png)
+-Etap build, którego efektem końcowym jest umieszczenie zbudowanej aplikacji na woluminie wyjściowym:
+
+![image](https://user-images.githubusercontent.com/72975469/169714122-1b585751-d07e-45ec-8aa3-995a145d63c1.png)
+- W etapie tym kolejno przechodzimy do folderu w którym znajduję się plik. Uruchamiamy kontener z zamontowanymi woluminami wejsciowym i wyjsciowym bazując na wczesniej utworzonym dockerfile'u:
+
+![image](https://user-images.githubusercontent.com/72975469/169714174-b5b1fe00-bc30-4cb0-b869-113307bee99b.png)
+- W 
+
+![image](https://user-images.githubusercontent.com/72975469/169714213-a61f3ba5-4d1f-4b0b-a2f0-7430d7d61919.png)
+- aa
+
+![image](https://user-images.githubusercontent.com/72975469/169714223-724965d4-12c2-4718-9949-f2de8246bcca.png)
+-przygotowujemy etap publish
+
+![image](https://user-images.githubusercontent.com/72975469/169714232-212640da-6860-41d5-9d86-faeb203a6ba2.png)
+- Publish
+
+![image](https://user-images.githubusercontent.com/72975469/169714245-f3270df7-cf9c-4401-9416-e32a6f0bea96.png)
+
+
+
+
+
+
+
 
 
 ## Końcowy efekt pracy:
