@@ -21,14 +21,14 @@ pipeline {
 	stage('deploy') {
 	    steps {
 		echo 'deploying'
-		    
+		    		    sh 'docker container rm deployer'
+
 		    sh 'docker run --name deployer -di debian'
 		    sh 'docker cp irssi deployer:.'
 		    sh 'docker container exec deployer sh -c "apt-get update -y"'
 		    sh 'docker container exec deployer sh -c "apt-get install -y libssl-dev glib-2.0 libutf8proc-dev"'
 		    sh "docker container exec deployer sh -c './irssi -v'"
 		    sh 'docker container kill deployer'		    
-		    sh 'docker container rm deployer'
 	    }
 	}
 	stage('publish') {
