@@ -1,0 +1,8 @@
+FROM node:alpine
+
+WORKDIR myapp
+WORKDIR myapp_build
+
+RUN apk update
+RUN apk add git
+RUN app add bash

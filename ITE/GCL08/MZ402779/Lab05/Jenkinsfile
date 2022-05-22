@@ -1,20 +1,78 @@
 pipeline {
     agent any 
     stages {
+    	stage('Clone') { 
+            steps {
+            	echo 'Creating input volume'
+                sh 'docker volume create input-volume'
+                sh 'docker rm tmp || true'
+                sh 'docker run -v input-volume:/data --name tmp node'
+                sh 'cd ~/ && ls mongo-express || git clone --recurse-submodules https://github.com/mongo-express/mongo-express.git'
+                sh 'docker cp ~/mongo-express tmp:/data'
+                sh 'docker rm tmp'
+            }
+        }
         stage('Build') { 
             steps {
-                echo 'aa'
+                dir("./ITE/GCL08/MZ402779/Lab05") {
+                	sh 'docker build . -t mongoExpress -f dockerfile-build'
+                	sh 'docker volume create output-volume'
+                	sh 'docker rm mongoBuild || true'
+                	sh 'docker run --rm --name mongoBuild --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp/mongo-express && npm install; cp -R /myapp/mongo-express /myapp_build"'                	
+                }
             }
         }
         stage('Test') { 
             steps {
-                echo 'bb'
+                dir("./ITE/GCL08/MZ402779/Lab05") {
+                	sh 'docker rm mongoTests || true'
+                	sh 'docker run --rm --name mongoTests --mount type=volume,src"output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp/mongo-express && npm test"'
+                }
             }
         }
         stage('Deploy') { 
             steps {
-                echo 'cc'
+                sh 'docker rm mongoDeploy || true'
+                sh 'docker run -d --name mongoDeploy --mount type=volume,src="output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp_build/mongo-express && npm run"'
+                sh 'sleep 5; exit $(docker inspect mongoDeploy --format="{{.State.ExitCode}}")'
+                sh 'docker rm -f mongoDeploy
             }
         }
+        stage('Promote'){
+        	when {
+        		expression {return params.Promote}
+        	}
+        	steps {
+        		sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
+        	}
+        }        
+        stage('Publish') { 
+        when {
+        	expression {return params.Promote}
+        }  
+        agent {
+        	docker {
+        		image 'node:alpine'
+        		args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/app" --mount "type=bind,src=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+        	}
+        }      
+            steps {
+                sh 'rm -rf /usr/local/copy/* || true'
+                sh "cd /usr/local/app/mongoexpress && npm version ${params.Version} && npm pack"
+                sh "mv /usr/local/app/mongoexpress/mongo-express-${params.Version}.tgz /usr/local/copy"
+                dir('/var/jenkins_home/workspace/artifacts'){
+                	archiveArtifacts artifacts: "mongo-express-${params.Version}.tgz",
+                	fingerprint: true
+                }
+            }
+        }
+    }
+    post {
+    	success {
+    		echo 'Pipeline executed successfully'
+    	}
+    	failure {
+    		echo 'Pipeline has encountered some errors. Check logs for more information.'
+    	}
     }
 }
