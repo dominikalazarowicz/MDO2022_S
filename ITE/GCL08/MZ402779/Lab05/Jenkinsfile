@@ -1,4 +1,8 @@
 pipeline {
+	parameters {
+		string(name: 'Version', defaultValue: '1.0.0', description: 'Program version')
+		booleanParam(name: 'Promote', defaultValue: true, description: 'Promote statement')
+	}
     agent any 
     stages {
     	stage('Clone') { 
@@ -17,25 +21,25 @@ pipeline {
                 dir("./ITE/GCL08/MZ402779/Lab05") {
                 	sh 'docker build . -t mongo-express -f dockerfile-build'
                 	sh 'docker volume create output-volume'
-                	sh 'docker rm mongoBuild || true'
-                	sh 'docker run --rm --name mongoBuild --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp/mongo-express && npm install; cp -R /myapp/mongo-express /myapp_build"'                	
+                	sh 'docker rm mongobuild || true'
+                	sh 'docker run --rm --name mongobuild --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp/mongo-express && npm install; cp -R /myapp/mongo-express /myapp_build"'                	
                 }
             }
         }
         stage('Test') { 
             steps {
                 dir("./ITE/GCL08/MZ402779/Lab05") {
-                	sh 'docker rm mongoTests || true'
-                	sh 'docker run --rm --name mongoTests --mount type=volume,src"output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp/mongo-express && npm test"'
+                	sh 'docker rm mongotests || true'
+                	sh 'docker run --rm --name mongotests --mount type=volume,src"output-volume",dst=/myapp_build mongo-express bash -c "cd /myapp/mongo-express && npm test"'
                 }
             }
         }
         stage('Deploy') { 
             steps {
-                sh 'docker rm mongoDeploy || true'
-                sh 'docker run -d --name mongoDeploy --mount type=volume,src="output-volume",dst=/myapp_build mongoExpress bash -c "cd /myapp_build/mongo-express && npm run"'
-                sh 'sleep 5; exit $(docker inspect mongoDeploy --format="{{.State.ExitCode}}")'
-                sh 'docker rm -f mongoDeploy'
+                sh 'docker rm mongodeploy || true'
+                sh 'docker run -d --name mongodeploy --mount type=volume,src="output-volume",dst=/myapp_build mongo-express bash -c "cd /myapp_build/mongo-express && npm run"'
+                sh 'sleep 5; exit $(docker inspect mongodeploy --format="{{.State.ExitCode}}")'
+                sh 'docker rm -f mongodeploy'
             }
         }
         stage('Promote'){
