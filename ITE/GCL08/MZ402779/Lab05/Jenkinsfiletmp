@@ -10,7 +10,11 @@ pipeline {
             	echo 'Creating input volume'
                 sh 'docker volume create input-volume'
                 sh 'docker rm tmp || true'
+<<<<<<< HEAD
                 sh 'docker run -v input-volume:/data --name tmp node:16-alpine'
+=======
+                sh 'docker run -v input-volume:/data --name tmp node'
+>>>>>>> 66a725769087f1e791dfb30e6f1e11dfdae99889
                 sh 'cd ~/ && ls vscode || git clone --recurse-submodules https://github.com/microsoft/vscode.git'
                 sh 'docker cp ~/vscode tmp:/data'
                 sh 'docker rm tmp'
@@ -64,6 +68,10 @@ pipeline {
             steps {
                 sh 'rm -rf /usr/local/copy/* || true'
                 sh "cd /usr/local/app/vscode && npm version ${params.Version} && npm pack"
+<<<<<<< HEAD
+=======
+                sh 'ls /usr/local/app/vscode'
+>>>>>>> 66a725769087f1e791dfb30e6f1e11dfdae99889
                 sh "mv /usr/local/app/vscode/code-oss-dev-${params.Version}.tgz /usr/local/copy"
                 dir('/var/jenkins_home/workspace/artifacts'){
                 	archiveArtifacts artifacts: "code-oss-dev-${params.Version}.tgz",
@@ -81,4 +89,7 @@ pipeline {
     	}
     }
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> 66a725769087f1e791dfb30e6f1e11dfdae99889
