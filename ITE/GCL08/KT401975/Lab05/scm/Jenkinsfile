@@ -35,7 +35,7 @@ pipeline {
 		}
    		stage('Run-time image') {
 		    steps {
-		 		sh 'ls'
+		 		sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/runfile ; docker build -t runner:latest .'    
 		 	}
 		}
      }
