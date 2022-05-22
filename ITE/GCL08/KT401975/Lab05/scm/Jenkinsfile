@@ -42,12 +42,11 @@ pipeline {
 			agent{
 				docker{
 					image 'runner:latest'
-					args '--mount source=vol,target=/vol -u root:root'
+					args '--mount source=vol,target=/vol'
 				}
 			}
 		    steps {
 				sh 'ls -a'
-				sh 'cd /vol/artifacts'
 		    }
 		}
      }
