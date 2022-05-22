@@ -59,7 +59,7 @@ docker logs test-deployment >> testoutput.log
 diff testoutput.log expected && touch success
 ```
 
-Skrypt tworzył wymagane foldery oraz pobierał plik Dockerfile, które budował oraz pliki zawierające spodziewany wynik działania programu i plik wsadowy do programu, a na końcu uruchamiał wybudowany obraz. Plik Dockerfile, z którego skorzystałem to ten sam, który został użyty podczas testowania działania artefaktu w pipeline Jenkinsa.
+Skrypt tworzył wymagane foldery oraz pobierał plik Dockerfile, którego budował, pliki zawierające spodziewany wynik działania programu i plik wsadowy do programu, a na końcu uruchamiał wybudowany obraz. Plik Dockerfile, z którego skorzystałem to ten sam, który został użyty podczas testowania działania artefaktu w pipeline Jenkinsa.
 
 Dockerfile-test-deploy
 
@@ -72,7 +72,7 @@ COPY ./jenkins/example .
 CMD gomodifytags -file example -all -add-tags json
 ```
 
-Skrypt był pobierany na VM oraz zostawał dodany do `crontab`. Przy okazji instalowany był `docker`, `wget` oraz `crontabs`. Skrypt był uruchamiany z opóźnieniem ponieważ, gdy opóźnienia nie było skrypt failował (prawdopodobnie serwis nie wystartował, bo nie mogłem uzyskać żadnych logów) przy korzystaniu z dockera.
+Skrypt był pobierany na VM oraz zostawał dodany do `crontab`. Przy okazji instalowany był `docker`, `wget` oraz `crontabs`. Skrypt był uruchamiany z opóźnieniem ponieważ, gdy opóźnienia nie było skrypt failował przy korzystaniu z dockera (prawdopodobnie serwis nie wystartował, bo nie mogłem uzyskać żadnych logów crontaba).
 
 ```
 yum install -y wget
