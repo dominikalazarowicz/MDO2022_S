@@ -52,7 +52,7 @@ pipeline {
 
         stage('Prepare publish'){
             when {
-                calculatorion {return params.Promote}
+                expression {return params.Promote}
 		    }
             steps {
                 echo 'Preparing publish'
@@ -62,7 +62,7 @@ pipeline {
         
 		stage('Publish') {
 		    when {
-                calculatorion {return params.Promote}
+                 expression {return params.Promote}
 		    }
 		    agent {
                 docker {
