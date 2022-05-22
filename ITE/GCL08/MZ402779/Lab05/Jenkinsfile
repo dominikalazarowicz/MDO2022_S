@@ -22,7 +22,7 @@ pipeline {
                 	sh 'docker build . -t mongo-express -f dockerfile-build'
                 	sh 'docker volume create output-volume'
                 	sh 'docker rm mongobuild || true'
-                	sh 'docker run --rm --name mongobuild --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build mongo-express bash -c "cd /myapp/mongo-express && npm i && npm install mongo-express && npm run start ; cp -R /myapp/mongo-express /myapp_build/mongo-express"; bash -c "cd /myapp_build/mongo-express && npm run build"  '  
+                	sh 'docker run --rm --name mongobuild --mount type=volume,src="input-volume",dst=/myapp --mount type=volume,src="output-volume",dst=/myapp_build mongo-express bash -c "cd /myapp/mongo-express && npm i && npm install mongo-express && npm run build ; cp -R /myapp/mongo-express /myapp_build/mongo-express"'  
                 	     	
                 }
             }
