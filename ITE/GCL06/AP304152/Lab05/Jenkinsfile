@@ -17,7 +17,7 @@ pipeline
 		sh 'docker volume ls'
 		sh 'docker rm temp || true'
 		sh 'docker run --mount "type=volume,src=input_vol,dst=/app" --name temp node bash -c "cd ~/ && ls cytoscape.js || git clone --recurse-submodules https://github.com/cytoscape/cytoscape.js.git;cp -R cytoscape.js /app; ls /app"'	 
-             	sh 'docker rm tmp'
+             	sh 'docker rm temp'
 		//sh "docker build -t clone . -f ./ITE/GCL06/AP304152/Lab05/docker_clone"
              	//sh "docker run -v repo_vol:/Cytoscape clone"           
         		}
