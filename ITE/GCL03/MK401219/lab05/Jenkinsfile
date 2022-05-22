@@ -77,13 +77,13 @@ stage ('Publish')
             	{
             	 	echo "Project publishing.."
             	 
-                	sh 'rm -rf /var/jenkins_home/workspace/mk_artifacts9'
-                	sh 'mkdir /var/jenkins_home/workspace/mk_artifacts9'
-                	sh 'chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9'
-                	sh 'docker rm -f mk_publish || true'
-                	sh 'docker run -d --name mk_publish --mount type=volume,src="volume_out",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts9,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9 && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
-                	sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts9 ."
-                	archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
+                	sh '''rm -rf /var/jenkins_home/workspace/mk_artifacts9'''
+                	sh '''mkdir /var/jenkins_home/workspace/mk_artifacts9'''
+                	sh '''chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9'''
+                	sh '''docker rm -f mk_publish || true'''
+                	sh '''docker run -d --name mk_publish --mount type=volume,src="volume_out",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts9,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9 && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'''
+                	sh '''"tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts9 ."
+                	archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"'''
                 
                 	echo "Publishing finished."
                 
