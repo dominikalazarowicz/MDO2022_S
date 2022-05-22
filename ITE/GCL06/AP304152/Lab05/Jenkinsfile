@@ -57,12 +57,13 @@ pipeline
                }
       	      }
 	      steps {
-		echo 'Creating and publishing artifact'
+		echo 'Create and publish'
 		sh 'rm -f /usr/local/copy/* || true'
 		sh "cd /usr/local/app/cytoscape.js && npm version ${params.VERSION} && npm pack"
 		sh "mv /usr/local/app/cytoscape.js/cytoscape-${params.VERSION}.tgz /usr/local/copy"
 		dir('/var/jenkins_home/workspace/artifacts'){
                 archiveArtifacts artifacts: "*.tgz"
+		echo 'Creatin and publishing complete"
 		     }
 		}
 			
