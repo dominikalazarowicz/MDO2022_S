@@ -46,4 +46,4 @@
 ### Przekucie wdrożenia manualnego w plik wdrożenia (wprowadzenie)
  * Zapisanie wdrożenia jako plik YML
  * Dodanie replik
- * ``kubectl apply``` na pliku
+ * ```kubectl apply``` na pliku
