@@ -1,29 +1,33 @@
-pipeline {
-parameters
+pipeline
+{
+ parameters
     {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
-     }
-    
+    }
 	agent any
-stage('Prepare')
+	stages
+	{
+	
+	stage('Prepare')
 		{
 			steps
 			{
 				sh '''
 				echo "Project preparing.."
 				
-				docker rm -f mk_build || true
+				docker rm -f ro_build || true
 				docker volume prune -f
 				docker volume  create --name volume_in
 				docker volume  create --name volume_out
-				     
-                echo "Preparing finished."
-				'''	
+				 	      
+                    		echo "Preparing finished."
+				'''
+				
 			}
 		}
-
-stage('Build')
+	
+		stage('Build')
 		{
 			steps
 			{
@@ -31,44 +35,47 @@ stage('Build')
 				echo "Project building..."
 				
 				docker build . -f ./ITE/GCL03/MK401219/lab05/Dockerfile_Build -t mk_build
-                docker run --mount type=volume,src="mk_build",dst=/volume_in mk_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_in && cp -r /volume_in /volume_out && ls ./volume_in && ls ./volume_out" 
-                         
-                echo "Building finished."
+                    		docker run --mount type=volume,src="mk_build",dst=/volume_in mk_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_in && cp -r /volume_in /volume_out && ls ./volume_in && ls ./volume_out" 
+                    		 	      
+                    		echo "Building finished."
 				'''
+				
 			}
 		}
-stage('Test')
+		
+		stage('Test')
 		{
 			steps
 			{
 				sh '''
-				echo "Project testing.."
+				echo "Project testing..."
 				
-				docker rm -f mk_test || true
+				docker rm -f Dockerfile_Test || true
 				docker build . -f ./ITE/GCL03/MK401219/lab05/Dockerfile_Test -t mk_test
-				docker run --name test_container --rm --mount source=mk_test,target=/volume_in mk_test:latest
+				docker run --name test_container --rm --mount source=ro_test,target=/volume_in mk_test:latest
 				
 				echo "Testing finished."
 				'''
 			}
 		}
-
-stage('Deploy')
+		
+		 stage('Deploy')
         {
             steps
             {
                 sh '''
-                echo "Project deploying.."
+                echo "Project deploying..."
                 
                 docker rm -f deploy_container || true
                 docker run -dit --name deploy_container --mount type=volume,src="volume_out",dst=/mk_project node
                 exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
                 
-                echo "Deploying finshed."
-            '''
+                echo "Deploying finished."
+            	 '''
             }
         }
-stage ('Publish')
+        
+       stage ('Publish')
         {
             when
             {
@@ -76,50 +83,48 @@ stage ('Publish')
             }
             steps
             {
-             echo "Project publishing.."
-             
-                sh '''
-		rm -rf /var/jenkins_home/workspace/mk_artifacts9
-                mkdir /var/jenkins_home/workspace/mk_artifacts9
-                chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9
-                docker rm -f mk_publish || true
-                docker run -d --name mk_publish --mount type=volume,src="volume_out",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts9,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9 && cp -R /usr/local/mk_project/. /usr/local/mk_copy"
-                "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts9 ."
+            	sh ''' echo "Publishing project..." '''
+            	 
+                sh 'rm -rf /var/jenkins_home/workspace/mk_artifacts9'
+                sh 'mkdir /var/jenkins_home/workspace/mk_artifacts9'
+                sh 'chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9'
+                sh 'docker rm -f mk_publish || true'
+                sh 'docker run -d --name mk_publish --mount type=volume,src="volume_out",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts9,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts9 && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
+                sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts9 ."
                 archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
-		'''
                 
-                echo "Publishing finished."
+                sh ''' echo "Publishing finished." '''
                 
             }
-     }
-
-stage('Clean')
+        }
+        
+        stage('Clean')
 		{
 			steps
 			{
 				sh '''
-				echo "Cleaning.."
+				echo "Project cleaning..."
 				
-				docker rm -f mk_build || true
-                docker rm -f mk_test || true
-                docker rm -f deploy_container || true
-                docker rm -f mk_publish || true
+				docker rm -f ro_build || true
+                		docker rm -f ro_test || true
+                		docker rm -f deploy_container || true
+                		docker rm -f ro_publish || true
 				
-				echo "Cleaning finished."
+				echo "Cleaning finished"
 				'''
 			}
 		}
         
-	}        
+	}
 	
-post 
-{
-    success 
-        {
-            echo 'PIPELINE SUCCESS'
-        }
-    failure 
-        {
-            echo 'PIPELINE FAILURE'
-        }
+	post {
+        	success {
+            		echo 'PIPELINE SUCCESS'
+        	}
+        	failure {
+            		echo 'PIPELINE FAILURE'
+        	}
+    	}
+	
+	
 }
