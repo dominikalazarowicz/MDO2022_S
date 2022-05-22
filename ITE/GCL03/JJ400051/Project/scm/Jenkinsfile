@@ -1,11 +1,8 @@
 pipeline {
     agent any
 	parameters {
-        booleanParam(name: "promote",
-            defaultValue: false)
-        string(name: "version",
-            defaultValue: "",
-            description: "Version...?:")
+        booleanParam(name: "promote", defaultValue: false)
+        string(name: "version", defaultValue: "", description: "Version...?:")
     }
     stages {
         stage('build') {
