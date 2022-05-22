@@ -1,5 +1,12 @@
 pipeline {
     agent any
+	parameters {
+        booleanParam(name: "promote",
+            defaultValue: false,
+        string(name: "version",
+            defaultValue: "",
+            description: "Version...?:")
+    }
     stages {
         stage('build') {
             steps {
@@ -33,12 +40,18 @@ pipeline {
 	}
 	stage('publish') {
 	    steps { 
-		echo 'publishing'
-		sh 'rm -r publisher'
-		sh 'mkdir publisher'
-		sh 'cp irssi publisher'
-		sh "tar -zcf version${params.version}.tar.gz publisher"
-		archiveArtifacts artifacts: "version${params.version}.tar.gz"	
+		script{
+		   if(params.promote) {
+			echo 'publishing'
+			sh 'rm -r publisher'
+			sh 'mkdir publisher'
+			sh 'cp irssi publisher'
+			sh "tar -zcf version${params.version}.tar.gz publisher"
+			archiveArtifacts artifacts: "version${params.version}.tar.gz"	
+		   }
+			else{
+				echo "Success"
+			}
 	    }
 	}
     }
