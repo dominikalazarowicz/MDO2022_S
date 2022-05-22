@@ -2,9 +2,8 @@ pipeline {
     agent any
     parameters {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
-    
+ 
         booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
-    
     }
     stages {
         stage('Clone') {
@@ -61,9 +60,7 @@ pipeline {
                 echo 'PUBLISH'
                 script {
                     if(params.PROMOTE) {
-                      
-                        // sh 'find ./artifacts -type f -name "*" -printf \'mv "%h/%f" "%h/${params.version}_%f"\' | sh'
-                         sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.VERSION}_%f'\" | sh"
+                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.VERSION}_%f'\" | sh"
                         archiveArtifacts artifacts: 'artifacts/*.jar'
                     }
                     else {
