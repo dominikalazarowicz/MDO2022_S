@@ -23,7 +23,7 @@
 - Etap clone, którego efektem końcowym jest sklonowanie repozytorium z naszą aplikacją i umieszczenie go na woluminie wejściowym:
 
 ![image](https://user-images.githubusercontent.com/72975469/169713900-e74a396e-3c96-45f1-b001-282ae0a903e5.png)
--Etap build, którego efektem końcowym jest umieszczenie zbudowanej aplikacji na woluminie wyjściowym:
+- Etap build, którego efektem końcowym jest umieszczenie zbudowanej aplikacji na woluminie wyjściowym:
 
 ![image](https://user-images.githubusercontent.com/72975469/169714122-1b585751-d07e-45ec-8aa3-995a145d63c1.png)
 - W etapie tym kolejno przechodzimy do folderu w którym znajduję się plik. Uruchamiamy kontener z zamontowanymi woluminami wejsciowym i wyjsciowym bazując na wczesniej utworzonym dockerfile'u:
