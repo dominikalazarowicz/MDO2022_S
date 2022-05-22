@@ -1,7 +1,5 @@
 #!/bin/sh
 mkdir -p /deploy/jenkins
-yum install -y docker
-yum install -y wget
 wget https://raw.githubusercontent.com/bsponge/gomodifytags/main/jenkins/example -O /deploy/jenkins/example
 wget https://raw.githubusercontent.com/bsponge/gomodifytags/main/jenkins/expected -O /deploy/expected
 wget https://raw.githubusercontent.com/bsponge/gomodifytags/main/Dockerfile-test-deploy -O /deploy/Dockerfile-test-deploy
