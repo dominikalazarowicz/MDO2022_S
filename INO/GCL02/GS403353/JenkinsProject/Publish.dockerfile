@@ -20,4 +20,4 @@ if [ "$1" = configure ]; then\n\
 fi" > 2048_package/DEBIAN/postinst
 RUN chmod 0755 2048_package/DEBIAN/postinst
 
-CMD ["/bin/bash", "-c", "dpkg-deb --build 2048_package && mv 2048_package.deb 2048_package_${VERSION}.deb && mv 2048_package_${VERSION}.deb /archive"]
+CMD ["/bin/bash", "-c", "dpkg-deb --build 2048_package && mv 2048_package 2048_package_${VERSION} && mv 2048_package_${VERSION} /archive"]
