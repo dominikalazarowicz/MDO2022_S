@@ -8,10 +8,6 @@ pipeline {
                     additionalBuildArgs "--target prebuild"
                 }
             }
-            steps {
-                echo "Stage: Prebuild"
-                sh "docker build --target prebuild -t ava-prebuild:1.0 ."
-            }
         }
         stage("Build") {
             steps {
