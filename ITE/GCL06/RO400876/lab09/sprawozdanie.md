@@ -50,6 +50,18 @@ Następnie na nowo zainstalowanym systemie została zainstalowana usługa httpd 
 ![img](pobranie_httpd.PNG)
 
 
+Następnie została rozpoczęta instalacja z pliku odpowiedzi:
+
+![img](instalacja_z_anacondy1.PNG)
+
+![img](instalacja_z_anacondy2.PNG)
+
+![img](instalacja_z_anacondy3.PNG)
+
+
+
+
+
 Uruchomienie usługi httpd poleceniem `systemctl enable httpd --now`:
 
 ![img](systemctl_enable.PNG)
@@ -117,3 +129,7 @@ mkdir cytoscape
 wget 172.20.10.14/cytoscape/cytoscape_1.0.0.tar.xz
 %end
 ```
+
+Przy instalacji trzeciej Fedory należy użyć poniższej komendy. Instalacja uruchamiana jest z pliku odpowiedzi. który został umieszczony na GitHubie:
+
+![img](komenda.PNG)
