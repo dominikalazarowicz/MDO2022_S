@@ -24,6 +24,7 @@ Wykonane czynności przedstawiają poniższe screeny:
 **Instalacja httpd - maszyna serwer**
 
 Aktualizacja pakietów:
+
 ![x](./upgrade.png)
 
 Instalacja httpd:
@@ -33,6 +34,7 @@ Uruchomienie i sprawdzenie statusu:
 ![x](./httpd_status.png)
 
 Dodanie wyjątków do firewall'a:
+
 ![x](./firewall.png)
 
 - Po wykonaniu powyższych poleceń w folderze `/var/www/html/` utworzyłem katalog `/artifacts`, który posłuży za miejsce docelowe, gdzie zostanie wrzucony artefakt. Wybrałem ten katalog, ponieważ w pliku httpd.conf był już udostępniany.
@@ -59,6 +61,7 @@ Celem tej częście jest wykonanie instalacji systemu z pliku odpowiedzi. Plik `
 - dodano informacje o repozytorium
 - dodano wymagane zależności: wget i npm
 - dodano sekcje post, odpowiedzialną za pobranie artefaktu
+<a href="./anaconda-ks.cfg">anaconda-ks.cfg</a>
 
 Utworzyłem nową maszynę i zamiast przeprowadzać standardową instalacje, wykorzystałem utworzoną "płytkę" i uruchomiłem instalacje nienadzorowaną. 
 
