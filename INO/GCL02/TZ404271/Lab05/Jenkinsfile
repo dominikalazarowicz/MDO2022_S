@@ -8,6 +8,9 @@ pipeline {
                     additionalBuildArgs "--target prebuild"
                 }
             }
+            steps {
+                echo "Stage: Prebuild"
+            }
         }
         stage("Build") {
             steps {
