@@ -5,8 +5,8 @@ pipeline {
             agent {
                 dockerfile {
                     dir "/var/jenkins_home"
-                    args "-v /input-volume:/input-volume -v /output-volume:/output-volume"
                     additionalBuildArgs "--target prebuild"
+                    args "-v /input-volume:/input-volume -v /output-volume:/output-volume"
                 }
             }
             steps {
