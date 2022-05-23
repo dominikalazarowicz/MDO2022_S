@@ -7,7 +7,7 @@ RUN mkdir -p 2048_package/usr/bin
 RUN mv 2048.desktop 2048_package/usr/bin/
 RUN mv 2048 2048_package/usr/bin/
 
-RUN echo "Package:2048\n\
+RUN echo "Package: 2048\n\
 Version: 0.1 \n\
 Maintainer: grrd2000 \n\
 Architecture: all \n\
