@@ -1,21 +1,10 @@
 pipeline {
     agent any
     stages {
-        stage("Prebuild") {
-            steps {
-                echo "Stage: Prebuild"
-                sh "docker build --target prebuild -v /input-volume:/input-volume -v output-volume:/output-volume /var/jenkins_home"
-            }
-        }
         stage("Build") {
             steps {
                 echo "Stage: Build"
-                sh """
-                docker build 
-                --target build
-                -t ava-build:1.0
-                .
-                """
+                sh "docker build --target build ."
             }
         }
 
