@@ -2,6 +2,12 @@ pipeline {
     agent any
     stages {
         stage("Prebuild") {
+            agent {
+                dockerfile {
+                    dir "/INO/GCL02/TZ404271/Lab05"
+                    additionalBuildArgs "--target prebuild"
+                }
+            }
             steps {
                 echo "Stage: Prebuild"
                 sh "docker build --target prebuild -t ava-prebuild:1.0 ."
