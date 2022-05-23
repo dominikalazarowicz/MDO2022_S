@@ -4,7 +4,7 @@ pipeline {
         stage("Build") {
             steps {
                 echo "Stage: Build"
-                sh "docker build --target build ."
+                sh "docker build --target build /var/jenkins_home"
             }
         }
 
