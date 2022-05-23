@@ -4,7 +4,7 @@ pipeline {
         stage("Prebuild") {
             agent {
                 dockerfile {
-                    dir "/Users/anon/Repos/MDO2022_S/INO/GCL02/TZ404271/Lab05"
+                    dir "Dockerfile"
                     additionalBuildArgs "--target prebuild"
                 }
             }
