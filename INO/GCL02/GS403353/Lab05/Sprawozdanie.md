@@ -1,7 +1,7 @@
 # Sprawozdanie - lab_05-lab_07, lab_09
 ## Gerard Skomin - 403353
 ___
-#### Celem projektu jest skonfigurowanie środowiska, a następnie utworzenie pełnego pipeline'a zawierającego rozdzielone kroki: Build, Test, Deploy oraz Publish. W dokumentacji projektu zawierają się wszystkie kroki od momentu zklonowania repozytorium z platformy GitHub, aż do utworzenia funkcjonalnego instalatora programu.
+#### Celem projektu jest skonfigurowanie środowiska, a następnie utworzenie pełnego pipeline'a zawierającego rozdzielone kroki: Build, Test, Deploy oraz Publish. W dokumentacji projektu zawierają się wszystkie kroki od momentu zklonowania repozytorium z platformy GitHub, aż do utworzenia funkcjonalnego instalatora programu. Konteneryzacja przebiega w Dockerze, który zapewnia wszystkie potrzebne funkcjonalności.
 ### Środowisko Jenkins & Docker-In-Docker
 Miejscami obsługującymi życie pipeline'u będą kontenery Jenkins oraz Docker-In-Docker (DIND). Konfiguracja kontenerów przebiegła zgodnie z instrukcjami dostawcy oprogramowania, korzystając z następujących komend:  
 * DIND  
@@ -64,10 +64,10 @@ W celu przeprowadzenia kroku **Build** pipeline'a potrzebne było wykonanie nast
 
 * Utworzony został własny **publiczny obraz na DockerHub'ie** oparty o powyższy plik ``Dependencies.dockerfile`` widoczny na poniższym zrzucie ekranu:  
 
-    ![](docker_hub.jpg)  
+  ![](docker_hub.jpg)  
 
 * Na następującym listingu Jenkinsfile'a widoczny jest fragment odpowiedzialny za **build**. Tworzony w nim jest obraz ``build`` po przejściu do odpowiedniego katalogu (*dir*):  
-  ```
+  ```groovy
   stages {
          stage('Build') {
              steps {
