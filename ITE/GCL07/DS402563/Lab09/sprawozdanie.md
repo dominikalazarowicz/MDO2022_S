@@ -52,3 +52,14 @@ Zmodyfikowano sekcję %packages tak, aby poza instalacją minimalnego środowisk
 5. Zastąpiono również opcję graphical opcją text po to, aby przeprowadzić instalację bez interfejsu graficznego.
 6. Zmodyfikowany plik odpowiedzi wysłano do repozytorium przedmiotowego na osobistego brancha (DS402563).
 7. Przy pomocy pliku odpowiedzi wdrożono kolejną maszynę wirtualną. W tym celu, do komendy widocznej po starcie maszyny, dodano opcję inst.ks o wartości będącej źródłem pliku wyjścia (serwery Github'a, osobisty branch w repozytorium przedmiotowym).
+
+    Postęp instalacji
+
+    ![title](screenshots/install3.png)
+    ![title](screenshots/install4.png)
+
+    Po instalacji - pobrany artefakt
+    
+    ![title](screenshots/install5.png)
+
+    Artefakt wylądował w root katalogu.
