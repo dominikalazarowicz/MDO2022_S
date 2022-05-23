@@ -4,7 +4,7 @@ pipeline {
         stage("Prebuild") {
             agent {
                 dockerfile {
-                    dir "Dockerfile"
+                    dir "/var/jenkins_home"
                     additionalBuildArgs "--target prebuild"
                 }
             }
