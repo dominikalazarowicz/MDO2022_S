@@ -11,7 +11,7 @@ pipeline {
         stage("Test") {
             steps {
                 echo "Stage: Test"
-                sh "docker build --target test -t ava-test:1.0"
+                sh "docker build --target test /var/jenkins_home"
             }
         }
 
