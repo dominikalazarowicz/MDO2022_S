@@ -61,13 +61,13 @@ W celu przeprowadzenia kroku **Build** pipeline'a potrzebne było wykonanie nast
     RUN apt install build-essential -y
     ```
   Jest to obraz oparty o ``ubuntu:latest`` doinstalowujący zależności obsługujące kompilację programu w **języku C**. Wybrano takie rozwiązanie ze względu na sprowadzenie obsługi wdrażania do minimum (biorąc na uwagę minimalizację rozmiaru, lecz również przejrzystość rozwiązania).  
-<br />
+
 * Utworzony został własny **publiczny obraz na DockerHub'ie** oparty o powyższy plik ``Dependencies.dockerfile`` widoczny na poniższym zrzucie ekranu:  
-<br />
+
     ![](docker_hub.jpg)  
-<br />
+
 * Na następującym listingu Jenkinsfile'a widoczny jest fragment odpowiedzialny za **build**. Tworzony w nim jest obraz ``build`` po przejściu do odpowiedniego katalogu (*dir*):  
-  ```groovy
+  ```
   stages {
          stage('Build') {
              steps {
@@ -144,9 +144,9 @@ Ostatnim krokiem jest ``Publish``, czyli odpowiednia dla programu publikacja. Tw
       }
   ```
 * Poniższy screen przedstawia sposób wykorzystania powyżej zaprojektowanych parametrów:  
-<br />
+
   ![](params_in_action.jpg)  
-<br />
+
 * Poniżej widnieje fragment Jenkinsfile'a obsługujący krok ``Publish``. Użyto wyrażenia ``when`` w celu wyjścia z *stage'a*, gdy parametr ``PROMOTE`` nie jest zaznaczony. Następnie, uruchamiany jest ``Publish.dockerfile``, a w kolejnej linijce w ``docker run`` przekazywany jest parametr wyrażeniem ``-e VERSION``.  
   ```groovy
   stage('Publish') {
@@ -206,15 +206,15 @@ Ostatnim krokiem jest ``Publish``, czyli odpowiednia dla programu publikacja. Tw
   ```
 ### Wyniki pipeline'a i efekt działania  
 * Pipeline po całkowitym przejściu kroków (wraz z krokiem Publish) nie napotkał żadnych problemów. Ostateczny ``Build with Parameters`` ukończył działanie w następujący sposób:  
-<br /> 
+ 
   ![](status.jpg)  
-<br />
+
 * Odpowiednie przeniesienie plików konfiguracyjnych programu ``2048`` powoduje pożądane pojawienie się ikonki w sekcji **Applications**, gdzie widnieje też program ``Pacman``.  
-<br />
+
   ![](efekt.jpg)  
-<br />
+
 * Dzięki takiemu zastosowaniu aplikacja uruchamia się w konsoli kliknięciu. W przeciwnym przypadku koniecznym było manualne uruchomienie gry w konsoli.  
-<br />
+
   ![](efekt2.jpg)  
 
 ### Podsumowanie i napotkane problemy
