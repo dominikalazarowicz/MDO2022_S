@@ -65,8 +65,6 @@ Drugi system został zainstalowany podobnie jak poprzedni.
 
   ![img](zd10.png) 
   
-  
-  ![img](ping.png) 
 
   </br>
 
@@ -99,6 +97,8 @@ Drugi system został zainstalowany podobnie jak poprzedni.
   > yum install wget -y
 
   ![img](zd15.png) 
+
+  - Pobranie pliku .jar
 
   > wget 192.168.1.21/guess.jar
 
@@ -143,6 +143,8 @@ Drugi system został zainstalowany podobnie jak poprzedni.
 
     ```
 
+- Dodatkowo zmienio instalacje z graficznej na tekstową
+
 </br>
 
 # Infrastructure as a code
@@ -152,6 +154,25 @@ Drugi system został zainstalowany podobnie jak poprzedni.
 ![img](zd7.png) 
 
 - Skonfigurowanie nowej maszyny na podstawie pliku odpowiedzi
+
+> vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/DG304299/ITE/GCL04/DG304299/Lab09/anaconda-ks.cfg
+
+
+![img](zd18.png) 
+
+Po instalacji widać że instalator pobrał artefakt
+
+![img](zd19.png) 
+
+Z faktu ż wymagane jest środowisko graficzne do uruchomienia aplikacji, zamiast ją uruchamiać podejrzano zawartość pliku .jar
+
+> dnf install zip
+> unzip -l guess.jar
+
+![img](zd20.png) 
+
+
+
 
 
 
