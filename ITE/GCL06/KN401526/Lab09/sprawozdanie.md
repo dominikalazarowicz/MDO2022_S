@@ -57,10 +57,6 @@ Uzywajac Filezilli z Fedora zostal przeslany pliku z odpowiedziami `anaconda-ks.
 Do pliku `anaconda-ks.sfg` zosatly wprowadzone ponizsze zmiany
 
 ```
-# Use graphical install
-#graphical
-text
-
 # Repo
 url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
 repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=x86_64
@@ -76,4 +72,19 @@ wget 192.168.0.188/mongo-express/mongo-express_1.0.0.tar.xz
 
 ```
 
+Przeslanie pliku `anaconda-ks.sfg` na githuba do mojego brancha
 
+![img](git.PNG)
+
+W celu przeprowadzenia instalacji trzeciej maszyny wirtualniej nalezy uzyc ponizszego polecenia ktore korzysta z wygenerowanego pliku odpowiedzi z poprzedzniej maszyny waznym jest aby podczas konfigurowania maszyny ustawic taka sama ilosc pamieci jak na maszynie z ktorej plik odpowiedzi zostal wygenerowany
+
+![img](instalacja_fedory_kolejnej.PNG)
+
+
+Rozpoczecie procesu instalacji
+
+![img](new_fedora.PNG)
+
+Po pomyslnym zainstalowaniu gdy podswietli sie przycisk `Reboot System` nalezy go nie klikac tylko wylaczyc maszyne odpiac plik .iso ktory podpinalismy na poczatku podczas tworzenia a nastepnie wlaczyc maszyne na nowo w zainstalowanej maszynie znajduje sie plik z artefaktami pobranymi poleceniem wget
+
+![img](fedora3.PNG)
