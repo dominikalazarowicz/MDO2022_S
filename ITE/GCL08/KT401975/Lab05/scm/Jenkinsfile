@@ -55,7 +55,7 @@ pipeline {
 			agent{
 				docker{
 					image 'mcr.microsoft.com/dotnet/sdk:3.1'
-					args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
+					args '--mount source=vol,target=/vol -u root:root'
 				}
 			}
 		    steps {
