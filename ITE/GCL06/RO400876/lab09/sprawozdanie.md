@@ -117,8 +117,7 @@ Modyfikacja pliku `anaconda-ks.cfg`. Poniżej znajdują się zmienione lub dodan
 
 ```
 # Use graphical install
-#graphical
-text
+graphical
 
 # Repo
 url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
@@ -130,6 +129,13 @@ wget 172.20.10.14/cytoscape/cytoscape_1.0.0.tar.xz
 %end
 ```
 
-Przy instalacji trzeciej Fedory należy użyć poniższej komendy. Instalacja uruchamiana jest z pliku odpowiedzi. który został umieszczony na GitHubie:
+Przy instalacji trzeciej Fedory należy użyć poniższej komendy. Instalacja uruchamiana jest z pliku odpowiedzi, który został umieszczony wcześniej na GitHubie:
 
 ![img](komenda.PNG)
+
+Pojawi się dokładnie taki sam interface jak przy klasycznym instalowaniu systemu i rozpocznie się instalowanie.
+
+![img](instalacja_z_pliku.PNG)
+
+
+
