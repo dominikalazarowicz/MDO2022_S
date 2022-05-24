@@ -48,7 +48,7 @@ pipeline {
 			}
 		    steps {
 				sh 'ls -a'
-				sh 'cd /vol'
+				sh 'cd /vol/artifacts'
 		    }
 		}
      }
