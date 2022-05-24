@@ -19,7 +19,7 @@ pipeline {
 			    }
 			}
          	 steps {
-				  sh 'cd /vol && rm -r dotnet-core-xunit-example && git clone https://github.com/barisates/dotnet-core-xunit-example && cd dotnet-core-xunit-example && dotnet build --output ../artifacts/'        
+				  sh 'cd /vol && rm -r dotnet-core-xunit-example || true && git clone https://github.com/barisates/dotnet-core-xunit-example && cd dotnet-core-xunit-example && dotnet build --output ../artifacts/'        
              }
 		}
    		stage('Test') {
@@ -59,7 +59,9 @@ pipeline {
 				}
 			}
 		    steps {
-				sh 'ls'
+			    sh 'cd /vol/dotnet-core-xunit-example && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../publish/'
+			   		   sh "cp -R /vol/artifacts ${WORKSPACE}/publish"
+			     			 archiveArtifacts 'publish/*'
 		    }
 		}
      }
