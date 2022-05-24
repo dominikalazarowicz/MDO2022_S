@@ -1,0 +1,53 @@
+1. Uruchomienie minikube
+minikube start
+
+2. Uruchomienie dashboard
+minikube dashboard
+
+3-4. Stworzenie pliku komunikator-deployment.yaml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: komunikator-deployment
+  labels:
+    app: komunikator
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: komunikator
+  template:
+    metadata:
+      labels:
+        app: komunikator
+    spec:
+      containers:
+      - name: komunikator
+        image: radglay/komunikator:v1
+        ports:
+        - containerPort: 8080
+
+5. zrealizowanie powyższego pliku poleceniem: 
+kubectl apply -f komunikator-deployment.yaml
+
+sprawdzenie statusu wdrażania:
+kubectl rollout status deployment/komunikator-deployment
+
+6. Wprowadzani pojedynczych zmian w pliku komunikator-deployment.yaml i zlecanie aktualizacji:
+6.1: dwukrotna liczba replik:
+spec:
+  replicas: 4 ---> replicas: 8
+
+6.2: podaj nowszą wersję obrazu z aplikacją (v1 ---> v2)
+containers:
+      - name: komunikator
+        image: radglay/komunikator:v1 --> image: radglay/komunikator:v2
+
+6.3: podaj błędną/niedziałającą wersje obrazu:
+containers:
+      - name: komunikator
+        image: radglay/komunikator:v1 --> image: NIEISTNIEJE
+
+6.4: przywróć wersję deploymentu z 6.2:
+    
