@@ -47,9 +47,16 @@ pipeline {
 				}
 			}
 		    steps {
-				sh 'ls -a'
 				sh 'cd /vol/artifacts && ls -a && ./dotnet-core-xunit && ps'
 		    }
+		}
+		stage('Publish') {
+			agent{
+				docker{
+					image 'mcr.microsoft.com/dotnet/sdk:3.1'
+					args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
+				}
+			}
 		}
      }
 }
