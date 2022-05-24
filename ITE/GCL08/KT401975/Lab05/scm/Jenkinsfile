@@ -43,12 +43,12 @@ pipeline {
 			agent{
 				docker{
 					image 'runner:latest'
-					args '--mount source=vol,target=/vol -u root:root'
+					args '--mount source=vol,target=/vol -u root:root -d --name dep'
 				}
 			}
 		    steps {
-				sh 'ls'
-				//sh 'cd /vol/artifacts && ls -a && ./dotnet-core-xunit'
+					sh 'cd /vol/artifacts && ./dotnet-core-xunit'
+					sh 'sleep 5; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
 		    }
 		}
 		stage('Publish') {
