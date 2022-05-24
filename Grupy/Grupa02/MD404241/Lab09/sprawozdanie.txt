@@ -19,7 +19,7 @@ Przegląd funkcjonalnosci dostepnych w Minikube dashboard:
 -tworzenie i modyfikowanie wirtualnych klastrow
 
 
-kubectl run komunikator --image=adriandabrowski/deltachat --port=9999 --labels app=komunikator Uruchomienie komunikatora  
+kubectl run komunikator --image=marcindadura/deltachat --port=9999 --labels app=komunikator Uruchomienie komunikatora  
 Ze wzgledu na wersje aplikacji tj desktop skorzystałem z innej apki dostępnej na dockerhub to przekierowania portów
 
 minikube kubectl -- run newkomunikator --image=secopstech/socket-io-chat:latest --port=9999 --labels app=newkomunikator inna apka     
