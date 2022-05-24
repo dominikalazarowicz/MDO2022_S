@@ -47,8 +47,7 @@ pipeline {
 				}
 			}
 		    steps {
-					sh 'cd /vol/artifacts && ./dotnet-core-xunit'
-					sh 'sleep 5; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
+					sh 'cd /vol/artifacts && ./dotnet-core-xunit && sleep 5; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
 		    }
 		}
 		stage('Publish') {
