@@ -42,9 +42,9 @@ pipeline {
 		stage('Deploy') {
 		    steps {
 				sh 'docker rm -f dep || true'
-								sh 'docker run -d --name dep --mount source=vol,target=/vol -u root:root runner:latest bash -c "cd /vol/artifacts && ./dotnet-core-xunit"'
-								sh 'sleep 5; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
-								sh 'docker rm -f dep'
+				sh 'docker run -d --name dep --mount source=vol,target=/vol -u root:root runner:latest bash -c "cd /vol/artifacts && ./dotnet-core-xunit"'
+				sh 'sleep 30; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
+				sh 'docker rm -f dep'
 		    }
 		}
 		stage('Publish') {
