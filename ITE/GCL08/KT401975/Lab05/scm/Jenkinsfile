@@ -47,7 +47,7 @@ pipeline {
 				}
 			}
 		    steps {
-				sh 'ls -a'
+				sh 'ls'
 				//sh 'cd /vol/artifacts && ls -a && ./dotnet-core-xunit'
 		    }
 		}
@@ -58,6 +58,9 @@ pipeline {
 					args '--mount source=build_artifacts,target=/build_artifacts -u root:root'
 				}
 			}
+		    steps {
+				sh 'ls'
+		    }
 		}
      }
 }
