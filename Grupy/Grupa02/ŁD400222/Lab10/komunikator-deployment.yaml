@@ -5,7 +5,7 @@ metadata:
   labels:
     app: komunikator
 spec:
-  replicas: 8
+  replicas: 4
   selector:
     matchLabels:
       app: komunikator
@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: komunikator
-        image: radglay/komunikator:v2
+        image: radglay/komunikator:v1
         ports:
         - containerPort: 8080
