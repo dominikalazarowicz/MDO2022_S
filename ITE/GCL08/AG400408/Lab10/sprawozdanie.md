@@ -1,6 +1,6 @@
 | Imię i nazwisko | Grupa dziekańska | Termin zajęć | Grupa zajęciowa |
 | ----------- | ----------- | ----------- | ----------- |
-| Adam Głąb | 03 | 23.03.2022r | 08 |
+| Adam Głąb | 03 | 12.05.2022r | 08 |
 
 # Sprawozdanie z ćwiczenia laboratoryjnego nr 10
 
