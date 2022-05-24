@@ -47,7 +47,8 @@ pipeline {
 				}
 			}
 		    steps {
-				sh 'cd /vol/artifacts && ls -a && ./dotnet-core-xunit && ps'
+				sh 'ls -a'
+				//sh 'cd /vol/artifacts && ls -a && ./dotnet-core-xunit'
 		    }
 		}
 		stage('Publish') {
