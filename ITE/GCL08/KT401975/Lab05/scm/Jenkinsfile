@@ -48,7 +48,7 @@ pipeline {
 			}
 		    steps {
 				sh 'ls -a'
-				sh 'cd /vol/artifacts && ls -a'
+				sh 'cd /vol/artifacts && ./dotnet-core-xunit'
 		    }
 		}
      }
