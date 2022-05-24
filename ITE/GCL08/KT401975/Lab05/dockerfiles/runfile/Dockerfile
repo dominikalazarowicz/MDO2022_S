@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/runtime:3.1.0
+FROM mcr.microsoft.com/dotnet/runtime:3.1
 
 ENV \
     ASPNETCORE_URLS=http://+:80 \
