@@ -137,5 +137,15 @@ Pojawi się dokładnie taki sam interface jak przy klasycznym instalowaniu syste
 
 ![img](instalacja_z_pliku.PNG)
 
+Po ukończonej instalacji należy wyłączyć wirtualną maszynę bez zapisywania, odłączyć w ustawieniach systemu płytkę iso, a następnie ponownie uruchomić system. W ten sposób system uruchomi się poprawnie z pliku odpowiedzi.
+
+![img](instalacja_z_pliku2.PNG)
+
+Aby zobaczyć czy instalacja przebiegła poprawnie można wyświetlić istniejące pliki i katalogi poleceniem `ls`. Na poniższym zdjęciu widoczny jest plik tar, który jest artefaktem, a więc instalacja przebiegła pomyślnie.
+
+![img](ls.PNG)
+
+
+
 
 
