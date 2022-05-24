@@ -50,11 +50,11 @@ Na drugiej maszynie virtualnej z servera zostaly pobrane artefakty poleceniem `w
 
  2. Instalacja nienadzorowana
 
-Uzywajac Filezilli z Fedora zostal przeslany pliku z odpowiedziami `anaconda-ks.sfg`
+Uzywajac Filezilli z Fedora zostal przeslany pliku z odpowiedziami `anaconda-ks.cfg`
 
 ![img](skopiowanie_anacondy.PNG)
 
-Do pliku `anaconda-ks.sfg` zosatly wprowadzone ponizsze zmiany
+Do pliku `anaconda-ks.cfg` zosatly wprowadzone ponizsze zmiany
 
 ```
 # Repo
@@ -72,16 +72,17 @@ wget 192.168.0.188/mongo-express/mongo-express_1.0.0.tar.xz
 
 ```
 
-Przeslanie pliku `anaconda-ks.sfg` na githuba do mojego brancha
+Przeslanie pliku `anaconda-ks.cfg` na githuba do mojego brancha
 
 ![img](git.PNG)
+
 
 W celu przeprowadzenia instalacji trzeciej maszyny wirtualniej nalezy uzyc ponizszego polecenia ktore korzysta z wygenerowanego pliku odpowiedzi z poprzedzniej maszyny waznym jest aby podczas konfigurowania maszyny ustawic taka sama ilosc pamieci jak na maszynie z ktorej plik odpowiedzi zostal wygenerowany
 
 ![img](instalacja_fedory_kolejnej.PNG)
 
 
-Rozpoczecie procesu instalacji
+Rozpoczecie procesu instalacji nowej maszyny
 
 ![img](new_fedora.PNG)
 
