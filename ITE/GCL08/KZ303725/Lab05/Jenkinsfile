@@ -60,27 +60,6 @@ pipeline {
                 sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
             }
         }
-        
-		stage('Publish') {
-		    when {
-                 expression {return params.Promote}
-		    }
-		    agent {
-                docker {
-                    image 'node:alpine'
-                    args '--rm --mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
-                }
-            }
-			steps {
-			    sh 'rm -rf /usr/local/copy/* || true'
-			    sh "cd /usr/local/myapp/calculator && npm version ${params.Version} && npm pack"
-			    sh "mv /usr/local/myapp/calculator/calculator-${params.Version}.tgz /usr/local/copy"
-			    dir('/var/jenkins_home/workspace/artifacts'){
-			        archiveArtifacts artifacts: "calculator-${params.Version}.tgz"
-			    }
-			}
-		}
-	}
 	post {
         	success {
             		echo 'Pipeline succsess'
