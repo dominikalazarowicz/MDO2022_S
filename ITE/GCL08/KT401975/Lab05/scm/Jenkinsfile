@@ -43,7 +43,7 @@ pipeline {
 		    steps {
 				sh 'docker rm -f dep || true'
 				sh 'docker run -d --name dep --mount source=vol,target=/vol -u root:root runner:latest bash -c "cd /vol/artifacts && ./dotnet-core-xunit"'
-				sh 'sleep 30; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
+				sh 'sleep 15; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
 				sh 'docker rm -f dep'
 		    }
 		}
@@ -55,7 +55,7 @@ pipeline {
 				}
 			}
 		    steps {
-			    sh 'cd /vol/dotnet-core-xunit-example && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../publish/'
+			    sh 'cd /vol/dotnet-core-xunit-example && dotnet publish -c Release -r osx.10.11-x64 -p:UseAppHost=true --output ../publish/'
 			   		   sh "cp -R /vol/artifacts ${WORKSPACE}/publish"
 			     			 archiveArtifacts 'publish/*'
 		    }
