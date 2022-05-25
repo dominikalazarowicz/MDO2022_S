@@ -62,5 +62,19 @@ pipeline {
         sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
       }
     }
+    stage('Publish') {
+		    when {
+                 expression {return params.Promote}
+		    }
+		    agent {
+                docker {
+                    image 'node:alpine'
+                    args '--mount "type=volume,src=output-volume,dst=/usr/local/myapp" --mount "type=bind,source=/var/jenkins_home/workspace/artifacts,dst=/usr/local/copy" -u root:root'
+                }
+            }
+			steps {
+			    sh 'pwd'
+			}
+		}
   }
 }
