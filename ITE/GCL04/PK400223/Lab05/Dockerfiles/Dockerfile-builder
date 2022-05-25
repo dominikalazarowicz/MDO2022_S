@@ -2,5 +2,5 @@ FROM base
 WORKDIR ./
 RUN git clone https://github.com/Kudrixon/vue-realworld-example-app.git
 WORKDIR /vue-realworld-example-app
-RUN echo "//registry.npmjs.org/:_authToken=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" >> ~/.npmrc
+RUN echo "//registry.npmjs.org/:_authToken=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" >> ~/.npmrc
 RUN npm build
