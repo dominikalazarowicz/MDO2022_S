@@ -62,7 +62,6 @@ pipeline {
         sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
       }
     }
-    }
   }
   post {
     success {
