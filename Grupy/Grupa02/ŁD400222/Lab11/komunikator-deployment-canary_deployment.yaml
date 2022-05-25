@@ -1,9 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: komunikator-deployment
+  name: komunikator-canary-deployment
   labels:
     app: komunikator
+    version: "2.0"
 spec:
   replicas: 4
   selector:
