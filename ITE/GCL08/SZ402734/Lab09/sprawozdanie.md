@@ -27,6 +27,8 @@ Włącznie ssh jest ważnym krokiem
 ### Po Instalacji
 Sprawdzam adres IP aby połączyć się poprzez WinSCP i pobrać plik anaconda-ks.cfg.
 ![Instalacji](./scr/6.png)
+![Instalacji](./scr/Winscp.png)
+![Instalacji](./scr/WinScp2.png)
 
 
 ## Serwer
