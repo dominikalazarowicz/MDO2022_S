@@ -30,3 +30,20 @@
     - Przechowywanie zasobow aplikacji i przegladanie ich
     - Zarzadzanie konfiguracja uruchomionej applikacji
     - Przegladanie log'ow aplikacji
+
+5. Uruchomienie kontynera aplikacji webowej
+    Obrazek: 
+        zad4_1, zad4_2
+    Komenda: 
+        kubectl run komunikator --image=aleksanderfilek/wireappweb:latest --port --labels app=komunikator
+
+6. Przekierowanie portu na dostep z zewnatrz
+    Obrazek:
+        zad4_3
+    Komenda:
+        kubectl port-forward pod/komunikator 7080:8080
+
+7. Uruchomienie aplikacji w przegldarce
+    Obrazek:
+        zad4_4
+    
