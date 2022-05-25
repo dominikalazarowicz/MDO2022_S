@@ -76,7 +76,7 @@ pipeline {
       }
       steps {
         sh 'rm -rf /usr/local/copy/* || true'
-        sh "cd /usr/local/myapp/calculator && npm version ${params.Version} && npm pack"
+        sh "cd /usr/local/myapp/calculator && npm version --allow-same-version ${params.Version} && npm pack"
         sh "mv /usr/local/myapp/calculator/calculator-${params.Version}.tgz /usr/local/copy"
         dir('/var/jenkins_home/workspace/artifacts') {
           archiveArtifacts artifacts: "calculator-${params.Version}.tgz"
