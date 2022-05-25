@@ -60,6 +60,7 @@ pipeline {
                 sh 'ls /var/jenkins_home/workspace/artifacts || mkdir /var/jenkins_home/workspace/artifacts'
             }
         }
+		
 	post {
         	success {
             		echo 'Pipeline succsess'
@@ -68,4 +69,5 @@ pipeline {
             		echo 'Pipeline fail'
         	}
     	}
+	}
 }
