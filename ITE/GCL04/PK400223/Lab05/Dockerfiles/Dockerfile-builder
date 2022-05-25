@@ -1,6 +1,7 @@
 FROM base
+ARG NPM_TOKEN
 WORKDIR ./
 RUN git clone https://github.com/Kudrixon/vue-realworld-example-app.git
 WORKDIR /vue-realworld-example-app
-RUN echo "//registry.npmjs.org/:_authToken=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" >> ~/.npmrc
+RUN echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" >> ~/.npmrc
 RUN npm build
