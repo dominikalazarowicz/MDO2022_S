@@ -1,0 +1,7 @@
+1. Utworznie pliku komunikator-deploymenet-recreate.yaml na bazie pliku z poprzedniego laboratorium komunikator-deploymenet.yaml. Ustawiono w nim typ strategi na Recreate.
+    Obrazek:
+        zad2
+
+2. Uruchomiono kontyner z nowego pliku konfiguracji
+    Obrazki:
+        zad3_1, zad3_2
