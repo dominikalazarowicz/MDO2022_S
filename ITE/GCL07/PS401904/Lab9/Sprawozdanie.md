@@ -7,23 +7,23 @@
 ### Przygotowanie systemu fedora
 
 ##### Stworzenie partycji.
-![Screenshot](01.png)
+![Screenshot](1.png)
 ##### Nazwanie sieci.
-![Screenshot](02.png)
+![Screenshot](2.png)
 ##### Dodanie konta roota oraz zezwolenie na logowanie przez ssh (do późniejszego łączenia w celu przesłania artefaktu przez filezille).
-![Screenshot](03.png)
+![Screenshot](3.png)
 ##### Wybranie minimalnej instalacji fedory.
-![Screenshot](04.png)
+![Screenshot](4.png)
 ##### Po poprawnej instalacji i sprawdzeniu adresu ip maszyny wirtualnej (fedory)- wyciągnięcie z niej pliku anaconda-ks.cfg łącząc się przez SSH przez filezille.
-![Screenshot](05.png)
+![Screenshot](5.png)
 ##### Ten sam proces został wykonany dla drugiej maszyny- serwera. Po instalacji serwera- zainstalowanie httpd.
-![Screenshot](06.png)
+![Screenshot](6.png)
 ##### Wyłączenie firewalla.
-![Screenshot](07.png)
+![Screenshot](7.png)
 ##### Włączenie usługi httpd i sprawdzenie czy działa.
-![Screenshot](08.png)
+![Screenshot](8.png)
 ##### Przesłanie artefaktu pobranego z jenkinsa do maszyny wirtualnej - serwera przez program filezilla.
-![Screenshot](09.png)
+![Screenshot](9.png)
 ##### Utworzenie folderu /var/www/html (ten folder jest udostępniany przez usługę httpd), nadanie mu wszystkich praw oraz skopiowanie do niego artefaktu.
 ![Screenshot](10.png)
 
