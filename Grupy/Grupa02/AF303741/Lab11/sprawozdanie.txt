@@ -5,3 +5,7 @@
 2. Uruchomiono kontyner z nowego pliku konfiguracji
     Obrazki:
         zad3_1, zad3_2
+
+3. Utworzenie pliku konfiguracji z strategia RollingUpdate "komunikator-deploymenet-rollingUpdate". Ustawienie paremetrow maxSurge na 2 i maxUnavailable na 0
+    Obrazki:
+        zad4_1, zad4_2, zad4_3
