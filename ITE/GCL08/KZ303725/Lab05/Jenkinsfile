@@ -9,13 +9,7 @@ pipeline {
     }
     
 	stages {
-		stage('First Clean')
-        {
-            agent any
-            steps{
-                cleanWs()
-            }
-        }
+	
 		stage('Clone') {
 			steps {
 				echo 'Cloning calculator'
