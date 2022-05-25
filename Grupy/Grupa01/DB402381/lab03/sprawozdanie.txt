@@ -1,0 +1,15 @@
+- git checkout -b Grupa01-PA402099_Lab03
+Utworzenie osobistego brancha
+
+
+
+Utworzenie Dockerfile:
+- FROM ubuntu:latest - użycie w obrazie istniejącego już obrazu ubuntu w najnowszej wersji
+- RUN apt-get update - aktualizacja systemu i jego zależności
+- RUN apt install -y git - zainstalowanie gita w systemie
+
+- docker build -t ubuntu-image .
+Stowrzenie obrazu przy użyciu Dockerfile znajdującego się w tym samym katalogu
+
+- docker run -it ubuntu-image
+Uruchomienie kontenera przy użyciu obrazu
