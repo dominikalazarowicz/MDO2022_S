@@ -1,0 +1,63 @@
+1. Uruchomienie klastra Kubernetes, kubectl + minikube
+minikube start
+
+Ułatwienie pracy z kubectl
+alias kubectl="tminikube kubectl --"
+
+2. Stworzenie nowego pliku komunikator-deployment-recreate.yaml
+Powinien on zawierać zmodyfikowany plik yaml z poprzednich zajęć, plik powinien wykorzystywać strategię
+wdrażania "Recreate"
+
+Recreate zamyka wszystkie stare pody przed utworzeniem nowych, strategia ta powoduje downtime.
+
+
+spec:
+  replicas: 4
+  strategy:
+    type: Recreate
+
+
+wdrożenie:
+kubectl apply -f komunikator-deployment-recreate.yaml
+
+podmiana obrazu:
+kubectl set image deployment/komunikator-deployment komunikator=radglay/komunikator:v2
+
+
+
+3. Stworzenie nowego pliku komunikator-deployment-rolling_update.yaml
+Powinien on zawierać zmodyfikowany plik yaml z poprzednich zajęć, plik powinien wykorzystywać strategię
+wdrażania "RollingUpdate"
+
+RollingUpdate jest domyślną strategią wdrażania, zamienia Pody w klastrze jeden po drugim bez downtime'u
+
+
+Dodatkowe parametry:
+
+maxSurge: liczba podów, które mogą być jednocześnie stworzone (liczba lub %)
+maxUnavailable: liczba podów, które mogą być niedostępne podczas wdrażania(liczba lub %)
+
+podmiana obrazu:
+kubectl set image deployment/komunikator-deployment komunikator=radglay/komunikator:v2
+
+
+wersja 1:
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+
+wersja 2:
+spec:
+  replicas: 4
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+
+
+wdrożenie:
+kubectl apply -f komunikator-deployment-rolling_update.yaml
+
+4.
