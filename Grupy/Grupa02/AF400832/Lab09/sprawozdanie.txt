@@ -16,7 +16,7 @@
 	- wykrywać błędy o aplikacjach
 
 4. Uruchomienie kontenera w kubernets:
-	kubectl run komunikator --image=annaczesak/lab9 --port=9999 --labels app=komunikator --restart=OnFailure
+	kubectl run komunikator --image=drinaaf/lab9 --port=9999 --labels app=komunikator --restart=OnFailure
 
 4.1. Przekierowanie portów => nieudane (error: unable to forward port because pod is not running. Current status=Succeeded)
 	kubectl port-forward pod/komunikator 8080:9999 
