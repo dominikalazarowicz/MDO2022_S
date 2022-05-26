@@ -1,7 +1,7 @@
-# Sprawozdanie projekt Pipeline
+# Project Pipeline
 ### 2022-05-26
 ---
-# Wykona³ Przemys³aw Kudriawcew
+# Przemyslaw Kudriawcew
 ### Requirements to run project
 1. Install Jenkins according to official Jenkins docker instalation guide: https://www.jenkins.io/doc/book/installing/docker/
 2. To make project more realistic I'm using agent on another server called node from now, to setup node: https://embeddedartistry.com/blog/2018/01/11/jenkins-configuring-a-linux-slave-node, node should be named "TestNode".
