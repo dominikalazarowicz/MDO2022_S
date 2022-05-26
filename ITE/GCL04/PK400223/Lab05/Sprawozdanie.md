@@ -118,7 +118,9 @@ After whole process post stage clears only running container and clears all of d
 
 If everything is allright then new version of package should be posted here: https://www.npmjs.com/package/randomdevopsprojectforzaliczeniex2xd
 
-- ![image](screens/1.PNG "pipeline")
-- ![image](screens/2.PNG "pipeline")
-- ![image](screens/3.PNG "pipeline")
+![image](screens/1.PNG "pipeline")
+![image](screens/2.PNG "pipeline")
+
+Block diagram
+![image](screens/3.PNG "pipeline")
 
