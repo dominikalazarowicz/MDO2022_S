@@ -5,6 +5,7 @@ pipeline {
         string(name: 'VERSION', defaultValue: '1.0.0', description: '')
         booleanParam(name: 'RUN_TESTS', defaultValue: true, description: '')
         booleanParam(name: 'PROMOTE', defaultValue: false, description: '')
+        booleanParam(name: 'CLOUD_DEPLOY', defaultValue: false, description: '')
         }
   	stages {
         stage("Clone"){
@@ -39,9 +40,13 @@ pipeline {
             }
         }
         stage("Cloud Deploy") {
+           when {
+                  environment name: 'CLOUD_DEPLOY', value: "true"
+            }
             steps {
-                sh 'docker build -t clod_deployment . -f ITE/GCL04/MP401341/Lab11/DockerfileCloudDeploy'
-                sh 'docker run  -v build_vol:/build  deployment'
+                sh 'docker build -t cloud_deployment ITE/GCL04/MP401341/Lab11 -f ITE/GCL04/MP401341/Lab11/DockerfileCloudDeploy'
+                sh "docker save -o lz4_${VERSION}.tar cloud_deployment"
+                archiveArtifacts "lz4_${VERSION}.tar"
             }
         }
         stage("Publish") {
