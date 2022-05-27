@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: komunikator
-        image: secopstech/socket-io-chat:latest1
+        image: secopstech/socket-io-chat:latest
         ports:
         - containerPort: 3030
