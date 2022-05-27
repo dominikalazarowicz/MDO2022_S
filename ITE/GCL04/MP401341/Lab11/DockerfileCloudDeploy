@@ -1,7 +1,7 @@
 FROM python:3.9
-MKDIR ./service
+RUN mkdir ./service
 ADD ./service/requirements.txt ./service
 RUN pip install -r ./service/requirements.txt
 COPY ./service ./service
 WORKDIR service
-CMD python3 server.py /lz4build/bin/lz4
+CMD python3 server.py /build/bin/lz4
