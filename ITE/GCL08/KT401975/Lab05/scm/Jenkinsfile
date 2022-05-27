@@ -34,7 +34,7 @@ pipeline {
 		 		sh 'cd /vol/dotnet-core-xunit-example && dotnet test'
 		 	}
 		}
-   		stage('Run-time image') {
+   		stage('Pre-deploy') {
 		    steps {
 		 		sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/runfile ; docker build -t runner:latest .'    
 		 	}
