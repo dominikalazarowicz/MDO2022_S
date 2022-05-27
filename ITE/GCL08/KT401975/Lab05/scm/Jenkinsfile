@@ -55,7 +55,7 @@ pipeline {
 				}
 			}
 		    steps {
-			    sh 'cd /vol/dotnet-core-xunit-example && dotnet publish -c Release -r osx.10.11-x64 --self-contained false -p:UseAppHost=true --output ../publish/'
+			    sh 'cd /vol/dotnet-core-xunit-example && dotnet publish -c Release -r --self-contained true -p:PublishSingleFile=true --output ../publish/'
 			   		   sh "cp -R /vol/artifacts ${WORKSPACE}/publish"
 			     			 archiveArtifacts 'publish/*'
 		    }
