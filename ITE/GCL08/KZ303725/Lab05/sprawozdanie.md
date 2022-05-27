@@ -1,22 +1,22 @@
-##Krystian Zapart
+## Krystian Zapart
 ## Budowa Pipeline
 
 ### Cel
 ### Przeprowadzenie buildu testu i publisha projektu w sposób zautomatyzowany przy pomocy Jenkinsowego pipeline’a. 
 
-####Uruchomione kontenery Jenkins & DIND
+#### Uruchomione kontenery Jenkins & DIND
 ![plot](./screenshots/ps)
 
 
-####Konfiguracja Pipelina 
+#### Konfiguracja Pipelina 
 ![plot](./screenshots/git)
 
-#####Połączenie pipielina z repozytorium z git'a
+##### Połączenie pipielina z repozytorium z git'a
 ![plot](./screenshots/branch)
-#####Podanie brancha oraz ścieżki do pilku Jenkinsfile
+##### Podanie brancha oraz ścieżki do pilku Jenkinsfile
 ![plot](./screenshots/script)
 
-###Dockerfile
+### Dockerfile
 	```
 	FROM node:alpine
 
@@ -25,9 +25,9 @@
 	RUN apk update && apk add bash
 	```
 	
-##Jenkinsfile Stages
+## Jenkinsfile Stages
 
-###'Clone'
+### 'Clone'
 Utworzenie woluminu, oczekiwanych ścieżek oraz sklonowaniu repo.
 	```
 	stage('Clone') {
@@ -40,7 +40,7 @@ Utworzenie woluminu, oczekiwanych ścieżek oraz sklonowaniu repo.
 	    }
 	```
 
-###'Build'
+### 'Build'
 Zbudowanie Dockerfile'a oraz Aplikacji za pomocą npm.
 	```
 	stage('Build') {
@@ -56,7 +56,7 @@ Zbudowanie Dockerfile'a oraz Aplikacji za pomocą npm.
 	    }
 	```
 
-###'Test'
+### 'Test'
 Odpalenie testów za pomocą npm test.
 	```
 	stage('Test') {
@@ -70,7 +70,7 @@ Odpalenie testów za pomocą npm test.
 	    }
 	```
 
-###'Deploy'
+### 'Deploy'
 Uruchomienie zbudowanej apki. 
 	```
 	stage('Deploy') {
@@ -84,7 +84,7 @@ Uruchomienie zbudowanej apki.
 	    }
 	```
 
-###'Publish'
+### 'Publish'
 Spakowanie zbudowanej i uruchomionej apku za pomocą npm pack.
 Zachodwanie atrefaktu 
 	```
@@ -97,13 +97,13 @@ Zachodwanie atrefaktu
 	        }
 	```
 
-####Jenkins Output
+#### Jenkins Output
 ![plot](./screenshots/jenkins)
 
-####Utworzone Atrefakty
+#### Utworzone Atrefakty
 ![plot](./screenshots/artefact) 
 
-####Uruchomienie Artefaktu 
+#### Uruchomienie Artefaktu 
 Calkulator jest uruchamiany na lokalnym portcie 3000
 ![plot](./screenshots/npmstart)
 
