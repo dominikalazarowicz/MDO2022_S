@@ -5,16 +5,16 @@
 ### Przeprowadzenie buildu testu i publisha projektu w sposób zautomatyzowany przy pomocy Jenkinsowego pipeline’a. 
 
 #### Uruchomione kontenery Jenkins & DIND
-![plot](./screenshots/ps)
+![plot](./screenshots/ps.png)
 
 
 #### Konfiguracja Pipelina 
-![plot](./screenshots/git)
+![plot](./screenshots/git.png)
 
 ##### Połączenie pipielina z repozytorium z git'a
-![plot](./screenshots/branch)
+![plot](./screenshots/branch.png)
 ##### Podanie brancha oraz ścieżki do pilku Jenkinsfile
-![plot](./screenshots/script)
+![plot](./screenshots/script.png)
 
 ### Dockerfile
 	```
@@ -98,15 +98,15 @@ Zachodwanie atrefaktu
 	```
 
 #### Jenkins Output
-![plot](./screenshots/jenkins)
+![plot](./screenshots/jenkins.png)
 
 #### Utworzone Atrefakty
-![plot](./screenshots/artefact) 
+![plot](./screenshots/artefact.png) 
 
 #### Uruchomienie Artefaktu 
 Calkulator jest uruchamiany na lokalnym portcie 3000
-![plot](./screenshots/npmstart)
+![plot](./screenshots/npmstart.png)
 
-![plot](./screenshots/calc)
+![plot](./screenshots/calc.png)
 
 
