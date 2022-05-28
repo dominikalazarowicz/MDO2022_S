@@ -107,6 +107,8 @@ reboot
  
  ![fota](fedoranowa3.png)
 
+po instalacji odpinamy recznie dysk instalacyjny (eject nie chcial dzialac w anacondzie) i restartujemy
+
 logujemy sie elegancko haslem `123`
 
  ![fota](logowanie.png)
