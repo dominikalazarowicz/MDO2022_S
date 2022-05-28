@@ -40,7 +40,7 @@ https://files.catbox.moe/6ovqpk.tgz
 
 a plik anaconda w repozytorium na githubie. Dodatkowo użyłem link shortenera, ponieważ link do pliku na githubie jest dosyć długi.
 
-W pliku anaconda dodałem potrzebne paczki, linki do repo, oraz zestaw instrukcji pobierających irssi oraz je instalujących.
+W pliku anaconda dodałem potrzebne paczki, linki do repo, oraz zestaw instrukcji pobierających irssi oraz je instalujących. W tym pobranie paczki z inrssi za pomocą wget, wypakowanie jej za pomocą tar i instalacja przy pomocy ninja.
 Dodatkowo ważne było aby zmienić typ interfejsu z graphical na text.
 
 
