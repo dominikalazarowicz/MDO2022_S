@@ -1,0 +1,2 @@
+spec.strategy.type - ustalenie strategii wdrazania (Recreate albo RollingUpdate)
+do zrzutu ekranu z zadania 3: jak widac, wszystkie repliki ze stara wersja zostaly naraz wylaczone, a Kubernetes zajal sie uruchamianiem replik z nowa wersja
