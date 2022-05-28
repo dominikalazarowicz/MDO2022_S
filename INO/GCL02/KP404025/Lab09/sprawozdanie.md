@@ -11,21 +11,21 @@
 ![](./screenshots/5_inst.PNG)
 ![](./screenshots/6_inst.PNG)
 
-2. Następnie zainstalowałem drugą Fedore, pełniącą rolę serwera.
+2. Następnie zainstalowałem drugą Fedore, pełniącą rolę serwera.\
 ![](./screenshots/7_vb.PNG)
 
 3. Fedora_2, będąca serwerem aby mogła pełnić założone funkcje musi zostać odpowiednio skonfigurowana. W tym celu wykonuje serie poleceń z tutoriala wykopanego z podziemi internetu (How to install Apache on Fedora server).\
-```sudo dnf install httpd```
-```sudo dnf group install "Web Server"```
-```sudo systemctl start httpd```
-```sudo systemctl enable httpd```
-```sudo firewall-cmd --add-service=http --add-service=https --permanent```
-```sudo firewall-cmd --reload```
+```sudo dnf install httpd```\
+```sudo dnf group install "Web Server"```\
+```sudo systemctl start httpd```\
+```sudo systemctl enable httpd```\
+```sudo firewall-cmd --add-service=http --add-service=https --permanent```\
+```sudo firewall-cmd --reload```\
 
 4. Kolejnym krokiem było wrzucenie artefkatu z Pipeline do serwera, w odpowiednim katalogu. Wykorzystałem do tego *FileZilla*.
 ![](./screenshots/8_serwer.PNG)
 
-5. Efekt powyższych działań :
+5. Efekt powyższych działań:\
 ![](./screenshots/9_browser.PNG)
 ![](./screenshots/10_wget.PNG)
 
