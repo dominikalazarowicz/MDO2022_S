@@ -1,6 +1,6 @@
 # Lab 9
 
-- Najpierw instaluje fedore z iso podanego na zajeciach z taką oto konfiguracja, na maszynie utworzonej z 128GB (wazne bo jak sie potem na drugiej maszynie da mniej to jest problem)
+- Najpierw instaluje fedore z iso podanego na zajeciach z taką oto konfiguracja, na maszynie utworzonej z 128GB (wazne bo jak sie potem na drugiej maszynie da mniej to jest problem a poustawialem cos z dyskami i jak jest mniej niz 128 to nie dziala oops)
 
 ![fota](fedora1.png)
 
