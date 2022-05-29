@@ -17,8 +17,8 @@ Jako że kluster był stawiany przy pomocy kubeadm'a, nie mam dostępu do dashbo
 ![kubeadm](./screenshots/Screenshot_3.png)
 
 ## Analiza posiadanego kontenera
-Moja oryginalna aplikacja (bashtop) to była zwykła aplikacja konsolowa nie wyprowadzająca żadnych portów\
-W celu realizacji zadania użyłem aplikacji [Calculator](https://github.com/actionsdemos/calculator)
+Moja oryginalna aplikacja (bashtop) to była zwykła aplikacja konsolowa nie wyprowadzająca żadnych portów.\
+W celu realizacji zadania użyłem aplikacji [Calculator](https://github.com/actionsdemos/calculator).
 
 Dockerfile obrazu aplikacji
 
