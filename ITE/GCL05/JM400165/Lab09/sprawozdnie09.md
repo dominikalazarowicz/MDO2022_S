@@ -1,5 +1,4 @@
-# Przygotowanie wdrożeń nienadzorowanych dla platform z pełnym OS - 
-# Jakub Michalik - LAB09
+# Przygotowanie wdrożeń nienadzorowanych dla platform z pełnym OS-Jakub Michalik - LAB09
 
 ## Wykonane zadania:
 
