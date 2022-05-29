@@ -45,6 +45,7 @@ user --name=anna --password=$y$j9T$t.ny23qrs7o5uCle1nxZxuCj$MjY7PjuqUKDJ4blCfqP/
 
 %post
 sudo apt-get install git
+mkdir /programmer-calculator
 mkdir /programmer-calculator/calc
 wget https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AG401570/INO/GCL01/AG401570/Lab09/pcalc -P /programmer-calculator
 cp /programmer-calculator/pcalc programmer-calculator/calc
