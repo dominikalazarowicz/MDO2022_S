@@ -23,6 +23,9 @@ Po skonfigurowaniu stage'y uzyskano konkretny Pipeline:
 
 - **```Stage Start```**
 
+Tworzymy tutaj volume przechowujący później artefakty po buildzie. Następnie klonowane jest repozytorium oraz zgodnie z zaleceniami Jenkinsa podajemy nasz email na githubie wraz z loginem - pipeline nie pozwalał mi na pracę w przeciwnym wypadku. Po przełączeniu się na odpowiednią gałąź, tworzony zostaje obraz dockerowy ```builder``` z dockerfile w folderze buildfile, definiujący odpowiednie środowisko dla naszej aplikacji.
+
+
 		`stage("Start") {
 			steps {
 				sh 'docker volume create vol'
@@ -34,12 +37,12 @@ Po skonfigurowaniu stage'y uzyskano konkretny Pipeline:
 			}
 		}`
 
-Tworzymy tutaj volume przechowujący później artefakty po buildzie. Następnie klonowane jest repozytorium oraz zgodnie z zaleceniami Jenkinsa podajemy nasz email na githubie wraz z loginem - pipeline nie pozwalał mi na pracę w przeciwnym wypadku. Po przełączeniu się na odpowiednią gałąź, tworzony zostaje obraz dockerowy ```builder``` z dockerfile w folderze buildfile, definiujący odpowiednie środowisko dla naszej aplikacji.
-
-
 
 
 - **```Stage Build```**
+
+
+Skorzystałem tutaj z agenta dockerowego, co rozwiązało występujące problemy przy integracji dockera z Jenkinsem. Agentowi podany został obraz ```builder``` stworzony w poprzednim kroku oraz parametry montujące volume ```vol```. Na wolumin zostało sklonowane repozytorium z aplikacją, która następnie została zbuildowana - otput został zachowany w folderze artifacts na woluminie, gdyż zdecydowałem się korzystać z jednego podzielonego woluminu.
 
       	`stage('Build') {
 			agent {
@@ -53,12 +56,13 @@ Tworzymy tutaj volume przechowujący później artefakty po buildzie. Następnie
              }
 		  }`
  
-Skorzystałem tutaj z agenta dockerowego, co rozwiązało występujące problemy przy integracji dockera z Jenkinsem. Agentowi podany został obraz ```builder``` stworzony w poprzednim kroku oraz parametry montujące volume ```vol```. Na wolumin zostało sklonowane repozytorium z aplikacją, która następnie została zbuildowana - otput został zachowany w folderze artifacts na woluminie, gdyż zdecydowałem się korzystać z jednego podzielonego woluminu.
-
 
 
 
 - **```Stage Test```**
+
+
+Korzystając z tego samego obrazu co wcześniej i wykorzystując ponownie agenta dockerowego, przechodzimy do woluminu i uruchamiamy testy. 
 
 		`stage('Test') {
 			agent {
@@ -74,12 +78,16 @@ Skorzystałem tutaj z agenta dockerowego, co rozwiązało występujące problemy
 		}`
 		
 
-Korzystając z tego samego obrazu co wcześniej i wykorzystując ponownie agenta dockerowego, przechodzimy do woluminu i uruchamiamy testy. 
+
 
 
 
 
 - **```Stage Pre-deploy```**
+
+
+Aby upewnić się, że nasza aplikacja będzie działała poza środowiskiem buildowym, wykorzystano nowy obraz ```runner``` stworzony przy pomocy Dockerfile zalecanego przez Microsoft. Obraz ten posiada dotnetowe dependencje pozwalające na poprawne uruchomienie aplikacji bez SDK.
+
 
 		`stage('Pre-deploy') {
 		    steps {
@@ -87,12 +95,13 @@ Korzystając z tego samego obrazu co wcześniej i wykorzystując ponownie agenta
 		 	}
 		}`
 
-Aby upewnić się, że nasza aplikacja będzie działała poza środowiskiem buildowym, wykorzystano nowy obraz ```runner``` stworzony przy pomocy Dockerfile zalecanego przez Microsoft. Obraz ten posiada dotnetowe dependencje pozwalające na poprawne uruchomienie aplikacji bez SDK.
-
 
 
 
 - **```Stage Deploy```**
+
+W stage'u Deploy chcemy uruchomić aplikację na naszym nowym obrazie. Aby to zrobić, korzystamy z woluminu zawierającego zbudowaną już aplikację, uruchamiając kontener z parametrem -d. Dzięki temu kontener będzie działał w tle, przez co działająca aplikacja nie będzie zakłócała pracy Pipeline'a. Po 15 sekundach kontener kończy pracę i jest usuwany.
+
 
 		`stage('Deploy') {
 		    steps {
@@ -103,12 +112,16 @@ Aby upewnić się, że nasza aplikacja będzie działała poza środowiskiem bui
 		    }
 		}`
 
-W stage'u Deploy chcemy uruchomić aplikację na naszym nowym obrazie. Aby to zrobić, korzystamy z woluminu zawierającego zbudowaną już aplikację, uruchamiając kontener z parametrem -d. Dzięki temu kontener będzie działał w tle, przez co działająca aplikacja nie będzie zakłócała pracy Pipeline'a. Po 15 sekundach kontener kończy pracę i jest usuwany.
-
 
 
 
 - **```Stage Publish```**
+
+
+Celem tego etapu jest spakowanie zbudowanej aplikacji do archiwum i zarchiwizowanie artefaktu. Korzystając ponownie z agenta dockerowego, wybrano obraz dotnet sdk:3.1 aby możliwe było wykonanie komendy `dotnet publish`. W argumentach podano wolumin z poprzednich etapów.
+
+Wykonując polecenie dotnet publish ustalono środowisko (w naszym przypadku Windowsowe) za pomocą -r win-x64. W efekcie końcowym uzyskano folder publish zawierający naszą aplikację. Niestety zamiast jednego pliku z wszystkimi dependencjami uzyskano mnóstwo plików z plikiem wykonywalnym. Stało się tak z powodu nieudanej próby użycia parametru -p:PublishSingleFile=true. Wygenerowany błąd informował o braku identyfikatora Runtime, co jedynie udało się obejść w pokazany sposób.
+
 
 		`stage('Publish') {
 			agent{
@@ -124,9 +137,7 @@ W stage'u Deploy chcemy uruchomić aplikację na naszym nowym obrazie. Aby to zr
 		    }
 		}`
 
-Celem tego etapu jest spakowanie zbudowanej aplikacji do archiwum i zarchiwizowanie artefaktu. Korzystając ponownie z agenta dockerowego, wybrano obraz dotnet sdk:3.1 aby możliwe było wykonanie komendy `dotnet publish`. W argumentach podano wolumin z poprzednich etapów.
 
-Wykonując polecenie dotnet publish ustalono środowisko (w naszym przypadku Windowsowe) za pomocą -r win-x64. W efekcie końcowym uzyskano folder publish zawierający naszą aplikację. Niestety zamiast jednego pliku z wszystkimi dependencjami uzyskano mnóstwo plików z plikiem wykonywalnym. Stało się tak z powodu nieudanej próby użycia parametru -p:PublishSingleFile=true. Wygenerowany błąd informował o braku identyfikatora Runtime, co jedynie udało się obejść w sposób pokazany wyżej.
 
 Wygenerowany folder z aplikacją:
 
