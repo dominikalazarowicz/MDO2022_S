@@ -37,7 +37,7 @@ timezone Europe/Warsaw --utc
 
 # Root password
 rootpw --iscrypted $y$j9T$eoMzEDNqJVYu34Bz/ni7HVNL$Detq82vgXysAI9rhHAf/BnqgnFqAOXhGrONln0zqi14
-user --name=anna --password=$y$j9T$t.ny23qrs7o5uCle1nxZxuCj$MjY7PjuqUKDJ4blCfqP/ImmlsuKO4oRbjVTq1y1TGJ7 --scrypted --gecos="Anna"
+user --name=anna --password=$y$j9T$t.ny23qrs7o5uCle1nxZxuCj$MjY7PjuqUKDJ4blCfqP/ImmlsuKO4oRbjVTq1y1TGJ7 --iscrypted --gecos="Anna"
 
 %post
 sudo apt-get install git
