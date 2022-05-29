@@ -4,16 +4,16 @@
     
 Dla potwierdzenia screen outputu z komendy `minikube status:`
 
-![Alt text](0-dziala.PNG?raw=true)
+# ![Alt text](0-dziala.PNG?raw=true)
 
 2. Wymagania sprzętowe są dosyć duże, jednak nie było problemów z instalacją,
-![Alt text](5-wymagania.PNG?raw=true)
+# ![Alt text](5-wymagania.PNG?raw=true)
 
 3. Następnie przystąpiłem do uruchomienia Kubernetes:
-![Alt text](2-Minikube-start.PNG?raw=true)
-4. Uruchomiołem dashboard za pomocą komendy `minikube dashboard:`
+# ![Alt text](2-Minikube-start.PNG?raw=true)
+4. Uruchomiłem dashboard za pomocą komendy `minikube dashboard:`
 
-![Alt text](4-dashboard.PNG?raw=true)
+# ![Alt text](4-dashboard.PNG?raw=true)
 
 Jak widać, nie mamy jeszcze odpalonych żadnych serwisów, podów, itd. Warto zaznaczyć, dashboard działa w trybie _detach_, więc terminal, w którym włączyliśmy komendę jest zajęty i musimy używać innego.
 
@@ -34,24 +34,24 @@ COPY app.js /usr/share/nginx/html
 ```
 Po stworzeniu dockerfile, musimy zbudować obraz:
 
-![Alt text](5-docker-build.PNG?raw=true)
+# ![Alt text](5-docker-build.PNG?raw=true)
 
 7. Teraz należy sprawdzić, czy nasza aplikacja działa tak, jak powinna. Uruchomiłem więc kontener na podstawie jej obrazu:
-![Alt text](6-docker-run.PNG?raw=true)
+# ![Alt text](6-docker-run.PNG?raw=true)
 
 Jak widać (lub też nie do końca), komenda zadziałała, i nasz kontener powinnien być mapowany na port 8080. Sprawdźmy to:
 
-![Alt text](7-app-localhost.PNG?raw=true)
+# ![Alt text](7-app-localhost.PNG?raw=true)
 
 8. Skoro mamy pewnośc, że nasz kontener działa lokalnie, musimy umieścić obraz naszej aplikacji na **dockerHubie**. Jest to konieczne, ponieważ aby zrobić deployment na minikube, musimy podać nazwe obrazu. Jest ona domyślnie brana z dockerHuba, także jakbym wpisał np. nazwę obrazu `--image=todo`, gdzie **todo** to mój lokalny obraz, wystąpiłby błąd (o którym wcześniej nie wiedziałem i myślałem, że minikube ogarnia lokalne obrazy).
 
 Komendy odpowiedzialne za spushowanie obrazu na dockerHuba:
 
-![Alt text](7-push-to-dockerhub.PNG?raw=true)
+# ![Alt text](7-push-to-dockerhub.PNG?raw=true)
 
 Po spushowaniu obrazu, na moim repozytorium powinien pojawić się update obrazu, wraz z najnowszym tagiem:
 
-![Alt text](100-dashboard.PNG?raw=true)
+# ![Alt text](100-dashboard.PNG?raw=true)
 
 7. Nasz obraz jest już gotowy, w takim razie możemy przejść do lokalnego wdrażania aplikacji do Minikube
 
@@ -90,11 +90,11 @@ kubectl port-forward --namespace=ingress-nginx service/ingress-nginx-controller 
 ```
 
 całość komend powinna przebiegać w taki sposób:
-![Alt text](7-tworzenie-ingerssa-i-deploymentu.PNG?raw=true)
+# ![Alt text](7-tworzenie-ingerssa-i-deploymentu.PNG?raw=true)
 
 8. Jeśli komendy nie wyrzuciły żadnego błędu, nasza aplikacja powinna być dostepna na `app.localdev.me:8080`:
 
-![Alt text](8-pod-dziala.PNG?raw=true)
+# ![Alt text](8-pod-dziala.PNG?raw=true)
 
 Od siebie dodam, że straciłem wiele czasu, na próbowaniu osiągnięcia tego samego rezultatu, ale bez używania Ingressa nginx. Próbowałem używać zwykłego przekierowania, np:
 ```
@@ -107,7 +107,7 @@ Jednak za każdym razem localhost odrzucał połączenie. Być może da się to 
 
 Jeśli wejdziemy teraz w dashboard, który odpaliliśmy na samym początku komendą `minikube dashboard`, powinniśmy mieć przed sobą podobny obraz:
 
-![Alt text](dashboard-redi.PNG?raw=true)
+# ![Alt text](dashboard-redi.PNG?raw=true)
 
 9. YML
 
@@ -153,13 +153,12 @@ spec:
     name: http
 ```
 Jak widać nie uwzględniłem w nim Ingressa - potraktowałem tę częśc sprawozdania jako swego rodzaju zaznajomienie z tematem wdrażania przez .YML.
-
-![Alt text](jaml.PNG?raw=true)
-![Alt text](apply-.PNG?raw=true)
+# ![Alt text](jaml.PNG?raw=true)
+# ![Alt text](apply-.PNG?raw=true)
 
 Nasz dashboard powinien być teraz zaktualizowany:
 
-![Alt text](dasz-2.PNG?raw=true)
+# ![Alt text](dasz-2.PNG?raw=true)
 
 ### Update na temat Ingresa
 Po dogłębnej analizie tematu, być może znalazłem powód, dla którego bez ingresa, mój kontener nie działa (localhost odrzucał połączenie). Pisząc dockerfile nie dodałem linijki `EXPOSE 3000`.
