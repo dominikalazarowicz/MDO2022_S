@@ -3,13 +3,13 @@
 ## Cel projektu:
 
 Celem projektu było utworzenie pipeline'u za pomocą serwera Jenkins. Pipeline ma na celu zbudownie, testowanie, wdrożenie oraz opublikowanie wybranego projektu.
-Użyto do tego celu programu z open sourcowego repozytorium - https://github.com/cytoscape/cytoscape.js. Technologie wykorzystane w projekcie to Jenkins, Docker, git oraz npm. 
-
+Użyto do tego celu programu z open sourcowego repozytorium - [https://github.com/dmonopoly/gtest-cmake-example]. Technologie wykorzystane w projekcie to Jenkins, Docker, git oraz cmake. 
 
 ## Utworzenie projektu:
 
+
 ### Przygotowanie kontenerów.
-Na samym początku należało przygotować kontenery niezbędne do wykonania zadania. Były to dwa kontenery - jeden kontener z Jenkinsem oraz kontener z obrazem DIND. Szczegółowa instrukcja uruchamiania tych kontenerów została opisana w sprawozdaniu z laboratorium nr 4 (od podpunktu 3).
+Na samym początku należało przygotować kontenery niezbędne do wykonania zadania. Były to dwa kontenery - jeden kontener z Jenkinsem oraz kontener z obrazem DIND. Szczegółowa instrukcja uruchamiania tych kontenerów została opisana w sprawozdaniu z laboratorium nr 4 - [https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/tree/MK401219/ITE/GCL03/MK401219/lab04] (od podpunktu 3).
 Komendą `sudo docker ps ` można sprawdzić poprawne uruchomienie kontenerów.
 
 
@@ -39,7 +39,7 @@ Przed przejściem do pisania pipeline należy umieścić pliki dockerfile w bran
 ![](4.png)
 
 
-`Dockerfile_Build`:
+`Dockerfile_Build`
 ```
 FROM ubuntu:latest
 
@@ -64,16 +64,17 @@ RUN ./project1
 ```
 Pierwszy z plików odpowiedzialny jest za budowanie projektu. Wykonywane jest w nim po kolei klonowanie projektu z repozytorium, instalowanie zależności oraz komendy `cmake` oraz `make` stricte odpowiedzialne za build programu.
 
-`Dockerfile_Test`:
+`Dockerfile_Test`
 ```
 FROM mk_build:latest
 RUN ./runUnitTests
 
 ```
+
 Plik DockerfileTest odpowiedzialny jest natomiast za uruchomienie testów znajdujących się w projekcie.
 Ostatnim pilkiem jest plik Jenkinsfile zawierający treść całego pipelinu.
 
-`Jenkinsfile`:
+`Jenkinsfile`
 
 ```
 pipeline
@@ -232,5 +233,7 @@ Na poniższym zrzucie ekranu widoczne jest prawidłowe ukończenie poszczególny
 ![](7.png)
 
 
+
 ### Diagram aktywności.
+
 ![](diagram.png)
