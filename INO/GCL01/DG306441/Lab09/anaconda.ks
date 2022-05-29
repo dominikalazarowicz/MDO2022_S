@@ -35,7 +35,7 @@ part /boot --fstype="xfs" --ondisk=sda --size=1024
 part pv.50 --fstype="lvmpv" --ondisk=sda --size=15359
 volgroup fedora_fedora --pesize=4096 pv.50
 logvol none --grow --size=2048 --thinpool --metadatasize=12 --chunksize=64 --name=pool00 --vgname=fedora_fedora
-logvol / --fstype="xfs" --grow --size=2048 --thin --poolname=pool00 --name=root -vgname=fedora_fedora
+logvol / --fstype="xfs" --grow --size=2048 --thin --poolname=pool00 --name=root --vgname=fedora_fedora
 
 # System timezone
 timezone Europe/Warsaw --utc
@@ -47,6 +47,6 @@ user --name=user --password=$y$j9T$3o6/7xWK9MXFx8D1bniDNZHL$FEqjQC1MCu9z4qfGF95S
 %post
 mkdir /download
 mkdir /build/calc
-wget https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/DG306441/INO/GCL01/DG306441/Lab09/pcalc -P /download
+wget https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/tree/DG306441/INO/GCL01/DG306441/Lab09/pcalc -P /download
 cp /download/pcalc /build/calc
 %end
