@@ -1,27 +1,27 @@
 pipeline
 {
- parameters
+ 	parameters
     {
-        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
-        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+        	string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        	booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
     }
-	agent any
-	stages
+		agent any
+		stages
 	{
 	
 	stage('Prepare')
 		{
 			steps
 			{
-				sh '''
-				tput setaf 4; echo "Preparing to build..."
+		sh '''
+		echo "Project preparing.."
 				
-				docker rm -f mk_build || true
-				docker volume prune -f
-				docker volume  create --name volume_input
-				docker volume  create --name volume_output
+			
+		docker volume prune -f
+		docker volume  create --name volume_in
+				docker volume  create --name volume_out
 				 	      
-                    		tput setaf 2; echo "Preparing finished!"
+                    		echo "Preparing finished."
 				'''
 				
 			}
@@ -116,17 +116,6 @@ pipeline
 		}
         
 	}
-        
-	}
-	
-	post {
-        		success {
-            		tput setaf 2; echo 'Pipeline completed successfully!'
-        		}
-        		failure {
-            		tput setaf 1; echo 'Pipeline completed with errors!'
-        		}
-    	}
 	
 	
 }
