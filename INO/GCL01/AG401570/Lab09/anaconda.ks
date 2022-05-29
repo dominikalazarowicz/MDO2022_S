@@ -13,6 +13,10 @@ lang en_US.UTF-8
 network --bootproto=dhcp --device=enp0s3 --ipv6=auto --activate
 network --hostname=Lab09.template
 
+# Repo
+url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
+repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=x86_64
+
 %packages
 @^minimal-environment
 
