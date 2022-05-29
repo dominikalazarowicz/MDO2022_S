@@ -51,7 +51,7 @@ pipeline
 			echo "Project testing..."
 				
 	docker rm -f Dockerfile_Test || true
-	docker build . -f ./ITE/GCL04/MK401058/Lab05/Dockerfile_Test -t mk_test
+	docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileTest -t mk_test
 	docker run --name test_container --rm --mount source=mk_test,target=/volume_in mk_test:latest
 				
 	echo "Testing finished."
