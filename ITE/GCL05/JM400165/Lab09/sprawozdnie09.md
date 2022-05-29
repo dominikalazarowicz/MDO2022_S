@@ -1,9 +1,9 @@
-#Przygotowanie wdrożeń nienadzorowanych dla platform z pełnym OS - 
-#Jakub Michalik - LAB09
+# Przygotowanie wdrożeń nienadzorowanych dla platform z pełnym OS - 
+# Jakub Michalik - LAB09
 
-##Wykonane zadania:
+## Wykonane zadania:
 
-###Przygotowanie systemu do pracy:
+### Przygotowanie systemu do pracy:
 1. Utworzono nową maszynę wirtualną, na której należało zainstalować system Fedora Server 36, podany
 przez prowadzącego zajęcia.
 
@@ -62,7 +62,7 @@ wykorzystano program FileZilla, który okazał się być bardzo pomocny.
 
 ![](./screeny/petclinic2.PNG)
 
-###Instalacja nienadzorowana
+### Instalacja nienadzorowana
 
 13. Aby zainstalować system w sposób nienadzorowany niezbędne było zdobycie pliku konfiguracyjnego 
 "anaconda-ks.cfg". W pliku tym dodano klazulę %post - %end, gdzie uzyto polecenie
