@@ -38,6 +38,8 @@ ZMIENILEM UPRAWNIENIA DO PLIKU ORAZ WTEDY PRZEKOPIOWALEM GO DO SIEBIE NA WINDOWS
 
 Nastepnie wyciagnalem archiwum z jenkinsem i zupladowalem, aby moc je pozniej pobrac w pliku anaconda. Sam plik anaconda wrzucilem na sforkowane poprzednio repo z irssi.
 
+Do anacondy dopisuje dependencje, sciagniecie i rozpakowanie archiwum z pipeline'a oraz inne rzeczy potrzebne do jej poprawnego dzialania.
+
 Przez to, ze zapomnialem dodac wersjonowania w pipelinie SCM, to plik nazywa sie null.tgz.
 
 ![nulltgz](https://i.imgur.com/11N0JTG.png)
@@ -46,7 +48,7 @@ Link do pliku w repo nie nalezy do najkrotszych, dlatego tez przepisywaniego go 
 
 ![install](https://i.imgur.com/NwNReIa.png)
 
-Tworzymy nowa Fedorke, gdzie automatycznie zainstaluje nam sie to, co chcemy. Dodajemy tylko linka do anacondy, po kliknieciu przycisku `TAB` wpisujemy inst.ks=https://cutt.ly/rJrh261.
+Tworzymy nowa Fedorke, gdzie automatycznie zainstaluje nam sie to, co chcemy. Dodajemy tylko linka do anacondy, po kliknieciu przycisku `TAB` wpisujemy `inst.ks=https://cutt.ly/rJrh261`.
 
 ![FedoraAuto](https://i.imgur.com/uUJsEKd.png)
 
