@@ -45,8 +45,9 @@ rootpw --iscrypted $y$j9T$UQjZYgJIqhhcU8c.8OFBlrrW$Jc3xkR7swOE6sFSmhLJi4pDNgVF5c
 user --name=user --password=$y$j9T$3o6/7xWK9MXFx8D1bniDNZHL$FEqjQC1MCu9z4qfGF95SRAkPX/PGX5RFrNgBTn9bJm8 --iscrypted --gecos="user"
 
 %post
-mkdir /download
+mkdir /dl
+mkdir /build
 mkdir /build/calc
-wget https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/tree/DG306441/INO/GCL01/DG306441/Lab09/pcalc -P /download
-cp /download/pcalc /build/calc
+wget https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/tree/DG306441/INO/GCL01/DG306441/Lab09/pcalc -P /dl
+cp /dl/pcalc /build/calc
 %end
