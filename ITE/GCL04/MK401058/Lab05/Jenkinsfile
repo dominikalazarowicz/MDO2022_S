@@ -34,7 +34,7 @@ pipeline
 			sh '''
 			echo "Project building..."
 				
-				docker build . -f ./ITE/GCL02/MK401058/Lab05/DockerfileBuild -t mk_build
+				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileBuild -t mk_build
                     		docker run --mount type=volume,src="mk_build",dst=/volume_in mk_build:latest bash -c "cd .. &&  cp -r build/ volume_in/ && cp -r volume_in/ volume_out/ && ls ./volume_in && ls ./volume_out" 
                     		 	      
                     		echo "Building finished."
@@ -51,7 +51,7 @@ pipeline
 			echo "Project testing..."
 				
 	docker rm -f Dockerfile_Test || true
-	docker build . -f ./ITE/GCL02/MK401058/Lab05/Dockerfile_Test -t mk_test
+	docker build . -f ./ITE/GCL04/MK401058/Lab05/Dockerfile_Test -t mk_test
 	docker run --name test_container --rm --mount source=mk_test,target=/volume_in mk_test:latest
 				
 	echo "Testing finished."
