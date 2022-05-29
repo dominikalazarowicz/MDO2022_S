@@ -14,14 +14,14 @@ pipeline
 			steps
 			{
 				sh '''
-				echo "Preparing to build..."
+				tput setaf 4; echo "Preparing to build..."
 				
 				docker rm -f mk_build || true
 				docker volume prune -f
 				docker volume  create --name volume_input
 				docker volume  create --name volume_output
 				 	      
-				echo "Preparing finished!"
+                    		tput setaf 2; echo "Preparing finished!"
 				'''
 				
 			}
@@ -31,13 +31,13 @@ pipeline
 		{
 			steps
 			{
-				sh '''
-				echo "Building project..."
+			sh '''
+			echo "Project building..."
 				
-				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileBuild -t mk_build
-                    		docker run --mount type=volume,src="mk_build",dst=/volume_input mk_build:latest bash -c "cd .. &&  cp -r /vue-testing-series /volume_input && cp -r /volume_input /volume_output && ls ./volume_input && ls ./volume_output" 
-                    		 	    
-				echo "Building finished!"
+				docker build . -f ./ITE/GCL03/MK401219/lab05/Dockerfile_Build -t mk_build
+                    		docker run --mount type=volume,src="mk_build",dst=/volume_in mk_build:latest bash -c "cd .. &&  cp -r build/ volume_in/ && cp -r volume_in/ volume_out/ && ls ./volume_in && ls ./volume_out" 
+                    		 	      
+                    		echo "Building finished."
 				'''
 				
 			}
@@ -47,82 +47,84 @@ pipeline
 		{
 			steps
 			{
-				sh '''
-				echo "Testing project..."
+			sh '''
+			echo "Project testing..."
 				
-				docker rm -f DockerfileTest || true
-				docker build . -f ./ITE/GCL04/MK401058/Lab05/DockerfileTest -t mk_test
-				docker run --name test_container --rm --mount source=mk_test,target=/volume_input mk_test:latest
+	docker rm -f Dockerfile_Test || true
+	docker build . -f ./ITE/GCL03/MK401219/lab05/Dockerfile_Test -t mk_test
+	docker run --name test_container --rm --mount source=mk_test,target=/volume_in mk_test:latest
 				
-				echo "Testing finished!"
+	echo "Testing finished."
 				'''
 			}
 		}
 		
-		stage('Deploy')
-        		{
-            		steps
-            		{
-                			sh '''
-				echo "Deploying project..."
+		 stage('Deploy')
+        {
+            steps
+            {
+                sh '''
+             echo "Project deploying..."
                 
-                			docker rm -f deploy_container || true
-                			docker run -dit --name deploy_container --mount type=volume,src="volume_output",dst=/mk_project node
-                			exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
+             docker rm -f deploy_container || true
+             docker run -dit --name deploy_container --mount type=volume,src="volume_out",dst=/mk_project node
+             exit $(docker inspect deploy_container --format="{{.State.ExitCode}}")
                 
-				echo "Deploying finished!"
-            	 		'''
-            		}
-        		}
+                echo "Deploying finished."
+            	 '''
+            }
+        }
         
-       		stage ('Publish')
-        		{
-            		when
-            		{
-                			expression {return params.PROMOTE}
-            		}
-            		steps
-            		{
-				sh 'echo "Publishing project..."'
+       stage ('Publish')
+        {
+            when
+            {
+                expression {return params.PROMOTE}
+            }
+            steps
+            {
+            	sh ''' echo "Publishing project..." '''
             	 
-                			sh 'rm -rf /var/jenkins_home/workspace/mk_artifacts'
-                			sh 'mkdir /var/jenkins_home/workspace/mk_artifacts'
-                			sh 'chmod -R 777 /var/jenkins_home/workspace/mk_artifacts'
-                			sh 'docker rm -f mk_publish || true'
-                			sh 'docker run -d --name mk_publish --mount type=volume,src="volume_output",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/mk_artifacts,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/mk_artifacts && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
-                			sh "tar -zcvf vuetestingseries${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/mk_artifacts ."
-                			archiveArtifacts artifacts: "vuetestingseries${params.VERSION}.tar.xz"
+              sh 'rm -rf /var/jenkins_home/workspace/artifacts_mk'
+              sh 'mkdir /var/jenkins_home/workspace/artifacts_mk'
+              sh 'chmod -R 777 /var/jenkins_home/workspace/artifacts_mk'
+              sh 'docker rm -f mk_publish || true'
+              sh 'docker run -d --name mk_publish --mount type=volume,src="volume_out",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/artifacts_mk,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/artifacts_mk && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
+                sh "tar -zcvf cmake_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/artifacts_mk ."
+                archiveArtifacts artifacts: "cmake_${params.VERSION}.tar.xz"
                 
-				sh 'echo "Publishing finished!"'
+              sh ''' echo "Publishing finished." '''
                 
-            		}
-        		}
+            }
+        }
         
-        		stage('Clean')
+        stage('Clean')
 		{
 			steps
 			{
-				sh '''
-				echo "Cleaning project..."
+			sh '''
+			echo "Project cleaning..."
 				
-				docker rm -f ro_build || true
-                			docker rm -f ro_test || true
-                			docker rm -f deploy_container || true
-                			docker rm -f ro_publish || true
+			docker rm -f mk_build || true
+                	docker rm -f mk_test || true
+                	docker rm -f deploy_container || true
+                	docker rm -f mk_publish || true
 				
-				echo "Cleaning finished!"
+			echo "Cleaning finished"
 				'''
 			}
 		}
         
 	}
+        
+	}
 	
 	post {
         		success {
-			echo 'Pipeline completed successfully!'
+            		tput setaf 2; echo 'Pipeline completed successfully!'
         		}
         		failure {
-			echo 'Pipeline completed with errors!'
+            		tput setaf 1; echo 'Pipeline completed with errors!'
         		}
     	}
 	
