@@ -11,6 +11,7 @@ GCL01
 Instalacje systemu Fedora przeprowadzono w VM, wykorzystano środowisko VirtualBox. Pierwszym krokiem było utworzenie nowej maszyny wirtualnej.
 
 Konfiguracja ustawień.
+
 Ustawiono polską klawiaturę.
 
 ![1](1.png)
