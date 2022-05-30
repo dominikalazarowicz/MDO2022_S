@@ -35,20 +35,70 @@ Nie używam w tym przypadku artefaktu z pipelina gdyż zgodnie z wymaganiami jes
 
 ![Docker hub](img1/00-docker-push.png)
 
-Nastepnie wykazuję że aplikacja pracuje jako kontener. Jej zawartoś wyprowadzam na porcie 5000.
+Nastepnie wykazuję że aplikacja pracuje jako kontener. Jej zawartość wyprowadzam na porcie 5000.
 
 ![Docker ps](img1/08-app-as-container.png)
    
 ### Uruchamianie oprogramowania
 
-Kolejno podejmuję próbę uruchomienia na stosie k8s. Niestety na tym etapie napotkałem na problemy które uniemożliwiły mi kontynuację zadania. Związane są one z błędem ``CrashLoopBackOff`` podczas uruchamiania obrazu. Problem ten występuje w przypadku uruchamiania każdego obrazu opartego na Node, również przy czystym node:latest, na każdej z trzech uzywanych platform. Inne obrazy nie związane z NodeJS działają poprawnie.
+Kolejno podejmuję próbę uruchomienia na stosie k8s. Niestety na tym etapie napotkałem na problemy które ~~uniemożliwiły mi kontynuację zadania~~ udało się już rozwiązać. 
 
-W związku z tym pozostała cześć zadania zostanie wykonana razem z kolejnymi etapami, po rozwiązaniu problemu.
+<details>
+  <summary>Detale byłego problemu</summary>
 
-![kubectl run](img1/09-kubectl-run.png)
+  ```
+Związane są one z błędem ``CrashLoopBackOff`` podczas uruchamiania obrazu. Problem ten występuje w przypadku uruchamiania każdego obrazu opartego na Node, również przy czystym node:latest, na każdej z trzech uzywanych platform. Inne obrazy nie związane z NodeJS działają poprawnie.```
 
 ![Problems](img1/13-problems.png)
+
+W związku z tym pozostała cześć zadania zostanie wykonana razem z kolejnymi etapami, po rozwiązaniu problemu.
+  ```
+</details>
+
+Rozwiązaniem było uruchomienie servera bezpośrednio  poprzez ```node``` z paramterami z package.json zamiast ```npm start```.
+
+Uruchomienie poda nastąpiło poniższym poleceniem, w którym specyfikuję używany obraz znadjujacy się na docker hub'ie we wskazanej wersji - ```beta```. Dodatkowo określam port i etykiety. Kolejno wyświetlam status podów poprzez cli oraz dashboard.
+
+![kubectl pods](img2/201-get-pods.png)
+
+![kubectl dashboard](img2/202-dashboard.png)
+
+Kolejno przy pomocy polecenia ``kubectl port forward`` wyprowadzam port 8080 na port lokalny 5000 i wykazuję poprawne działanie aplikacji.
+
+![kubectl port forward](img2/203-port-forwarding.png)
  
 ### Przekucie wdrożenia manualnego w plik wdrożenia (wprowadzenie)
 
-#TODO
+Rozpoczynam tworznie pliku YAML. Defniuję 3 repliki. Ustawiam obraz z wypchniętą wcześniej wersją aplikacji. Wyprowadzam port 8080.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-project
+  labels:
+    app: node-project
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: node-project
+  template:
+    metadata:
+      labels:
+        app: node-project
+    spec:
+      containers:
+      - name: node-project-container
+        image: pwilkosz99/pwilkosz-node.js.org:beta
+        ports:
+        - containerPort: 8080
+```
+
+Następnie wywołuje polecenie ```kubectl apply```
+
+![kubectl apply](img2/204-kubectl-apply.png)
+
+Po jego uruchomieniu w dashbordzie można zauważyć powstanie nowego deplotemnu. Powstaje jeden nowy replica set, zawierajacy 3 pody. Wraz z uruchomionym poporzednim pojedynczym podem łączenie uruchomione są 4 pody.
+
+![dashboard final](img2/205-dashboard-final.png)
