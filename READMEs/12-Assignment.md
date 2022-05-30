@@ -49,6 +49,7 @@
    * Recreate
    * Rolling Update
    * Canary Deployment workload
+ * Zaobserwuj i opisz różnice
  * Uzyj etykiet
  * https://kubernetes.io/docs/concepts/workloads/controllers/deployment/
  
