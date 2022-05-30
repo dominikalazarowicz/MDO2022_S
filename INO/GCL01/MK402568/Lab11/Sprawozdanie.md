@@ -105,7 +105,7 @@ Włączamy obsługe deploymentu ```kubectl get services hello-minikube1```
 
 Korzystając z kubectl'a przekierowujemy się na port 7080 ```kubectl port-forward service/hello-minikube1 7080:8080```
 
-![](/screenshots/forward.png)
+![](./screenshots/forward.png)
 
 W tym momencie po wysłaniu requesta do adresu *localhost:7080* powinniśmy otrzymać naszą "aplikacje".
 
@@ -114,7 +114,27 @@ W tym momencie po wysłaniu requesta do adresu *localhost:7080* powinniśmy otrz
 ![](./screenshots/DashboardResults.png)
 
 
+W dalszym kroku próbowałem uruchomić wybrany gotowy obraz z dockehuba, mój wybór padł na nginxa wersje stable. 
 
+W pierwszej kolejności zpullowałem obraz
+
+![](./screenshots/pull.png)
+
+Następnie uruchomiłem wybrany kontener "ubierając go w poda"
+
+![](./screenshots/run)
+
+Kontener uruchomił się pomyślnie co potwierdzam screenami zarówno z polecenia ```kubectl get pods``` jak i z dashboard'a
+
+![](./screenshots/dashboardNginx.png)
+
+![](./screenshots/kubectlRun.png)
+
+Następnie przeszedłem do przekierowania portu, niestety tutaj pojawił się problem. Problem według mnie występuje problem z mapowaniem requestu pomiędzy podem aplikacji a kontenerem z nginxem. Podjąłem próby rozwiązania tego problemu ingressem, ale nie do końca skuteczne. W tym przypadku bawiłem się z obrazem httpd, niestety jednak miałem problem prawdopodobnie z DNS'em i nie byłem w stanie zrequestować przekierowanego portu. 
+
+![](./screenshots/statusWorkload.png)
+
+Tak więc na tą chwile moje zaopatrzenie się w klaster Kubernetesa zostało spełnione, podstawowy deploy wykonany w drugiej części postaram się rozszerzyć swoje działania. 
 
 
 
