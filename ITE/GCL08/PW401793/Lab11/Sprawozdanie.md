@@ -1,7 +1,7 @@
 # Lab 11 - Paweł Waresiak
 
 ## Wstęp - Instalacja klastra Kubernetes
-Aplikację będę uruchamiał na realnym klastrze a nie w minikube.
+Aplikację będę uruchamiał na realnym klastrze, nie przy pomocy minikube.
 Jako że wszystko mam już zainstalowane pokażę wersje narzędzi.
 
 Zainstalowany kubectl
@@ -67,5 +67,5 @@ Sprawdzenie czy deployment działa
 ![check](./screenshots/Screenshot_15.png)
 
 Deployment działa i nadal można się do aplikacji dostać z przeglądarki.\
-Jedna z replik wstała z błędem ponieważ nie mam obrazu aplikacji na nodzie nr 2, ale ty chyba nie problem :)
+Jedna z replik wstała z błędem ponieważ nie mam obrazu aplikacji na nodzie nr 2, ale to chyba nie problem :)
 
