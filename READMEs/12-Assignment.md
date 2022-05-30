@@ -24,9 +24,9 @@
  * Zarejestruj nową wersję swojego obrazu (w Docker Hub lub lokalnie)
  * Upewnij się, że dostępne są dwie co najmniej wersje obrazu z wybranym programem
  * Będzie to wymagać 
-  * przejścia przez pipeline dwukrotnie, lub
-  * ręcznego zbudowania dwóch wersji, lub
-  * przepakowania wybranego obrazu samodzielnie np przez ```commit```
+   * przejścia przez pipeline dwukrotnie, lub
+   * ręcznego zbudowania dwóch wersji, lub
+   * przepakowania wybranego obrazu samodzielnie np przez ```commit```
  * Przyotuj wersję obrazu, którego uruchomienie kończy się błędem
   
 ### Zmiany w deploymencie
