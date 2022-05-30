@@ -7,6 +7,7 @@ GCL01
 # Metodyki DevOps
 
 **Przygotowanie maszyny.**
+
 Instalacje systemu Fedora przeprowadzono w VM, wykorzystano środowisko VirtualBox. Pierwszym krokiem było utworzenie nowej maszyny wirtualnej.
 
 Konfiguracja ustawień.
