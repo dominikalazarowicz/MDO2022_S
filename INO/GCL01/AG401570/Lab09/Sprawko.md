@@ -6,31 +6,42 @@ GCL01
 
 # Metodyki DevOps
 
-## Pipeline
-**Przygotowanie maszyny**
-Instalacje systemu Fedora przeprowadzono w VM, wykorzystano środowisko VirtualBox. Pierwszym krokiem było utworzenie nowej maszyny wirtualnej.  
+**Przygotowanie maszyny.**
+Instalacje systemu Fedora przeprowadzono w VM, wykorzystano środowisko VirtualBox. Pierwszym krokiem było utworzenie nowej maszyny wirtualnej.
+
 Konfiguracja ustawień.
 Ustawiono polską klawiaturę.
+
 ![1](1.png)
 
-Zmieniono ustawienia partycji. 
-![2](2.png) 
 
-Utworzono konta dla roota i użytkownika
+Zmieniono ustawienia partycji.
+
+![2](2.png)
+
+Utworzono konta dla roota i użytkownika.
+
 ![3](3.png)
 ![4](4.png)
 
+
 Wybrano minimalną wersję instalacji, następnie skonfigurowano ustawienia sieci.
+
 ![5](5.png)
 ![6](6.png)
 
-Instalacja:
+
+Instalacja.
+
 ![7](7.png)
 ![8](8.png)  
 
+
 Zalogowano się do utworzonej maszyny i skopiowano plik `anaconda-ks.cfg` na Windowsa (w celu prostszej edycji), aby później ułatwić do niego dostęp, zmodyfikowany plik został umieszczony w repozytorium.
+
 ![9](9.png)
- 
+
+
 Dodane fragmenty: 
 ```bash
 # Repo
@@ -109,7 +120,9 @@ inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/
 ![10](10.png)
 ![11](11.png) 
 
+
 **Połączenie pliku odpowiedzi z ISO.**
+
 Zamontowano pobrany obrany obraz ISO, wyodrębniono obraz ISO do katalogu roboczego, dodano plik `.ks` do `iso/` katalogu.
 ![12](12.png)
  
