@@ -35,7 +35,7 @@ pipeline
 			echo "Project building..."
 				
 				docker build . -f ./ITE/GCL03/MK401219/lab05/Dockerfile_Build -t mk_build
-                    		docker run --mount type=volume,src="mk_build",dst=/volume_in mk_build:latest bash -c "cd .. &&  cp -r /cytoscape.js /volume_in && cp -r /volume_in /volume_out && ls ./volume_in && ls ./volume_out" 
+                    		docker run --mount type=volume,src="mk_build",dst=/volume_in mk_build:latest bash -c "cd .. &&  cp -r build/ volume_in/ && cp -r volume_in/ volume_out/ && ls ./volume_in && ls ./volume_out" 
                     		 	      
                     		echo "Building finished."
 				'''
@@ -52,7 +52,7 @@ pipeline
 				
 	docker rm -f Dockerfile_Test || true
 	docker build . -f ./ITE/GCL03/MK401219/lab05/Dockerfile_Test -t mk_test
-	docker run --name test_container --rm --mount source=ro_test,target=/volume_in mk_test:latest
+	docker run --name test_container --rm --mount source=mk_test,target=/volume_in mk_test:latest
 				
 	echo "Testing finished."
 				'''
@@ -90,8 +90,8 @@ pipeline
               sh 'chmod -R 777 /var/jenkins_home/workspace/artifacts_mk'
               sh 'docker rm -f mk_publish || true'
               sh 'docker run -d --name mk_publish --mount type=volume,src="volume_out",dst=/usr/local/mk_project --mount type=bind,source=/var/jenkins_home/workspace/artifacts_mk,target=/usr/local/mk_copy node bash -c "chmod -R 777 /usr/local/mk_project && chmod -R 777 /var/jenkins_home/workspace/artifacts_mk && cp -R /usr/local/mk_project/. /usr/local/mk_copy"'
-                sh "tar -zcvf cytoscape_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/artifacts_mk ."
-                archiveArtifacts artifacts: "cytoscape_${params.VERSION}.tar.xz"
+                sh "tar -zcvf cmake_${params.VERSION}.tar.xz -C /var/jenkins_home/workspace/artifacts_mk ."
+                archiveArtifacts artifacts: "cmake_${params.VERSION}.tar.xz"
                 
               sh ''' echo "Publishing finished." '''
                 
