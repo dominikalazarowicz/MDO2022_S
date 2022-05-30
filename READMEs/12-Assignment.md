@@ -42,7 +42,7 @@
 
 ### Kontrola wdrożenia
  * Napisz skrypt weryfikujący, czy wdrożenie "zdążyło" się wdrożyć (60 sekund)
- * Ujmij skrypt w pipeline Jenkins
+ * Zakres rozszerzony: Ujmij skrypt w pipeline Jenkins (o ile minikube jest dostępny z zewnątrz)
  
 ### Strategie wdrożenia
  * Przygotuj wersje wdrożeń stosujące następujące strategie wdrożeń
