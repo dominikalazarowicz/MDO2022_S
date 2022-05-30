@@ -41,7 +41,7 @@
    * ```kubectl rollout undo```
 
 ### Kontrola wdrożenia
- * Napisz skrypt weryfikujący, czy wdrożenie "zdążyło" się wdrożyć
+ * Napisz skrypt weryfikujący, czy wdrożenie "zdążyło" się wdrożyć (60 sekund)
  * Ujmij skrypt w pipeline Jenkins
  
 ### Strategie wdrożenia
