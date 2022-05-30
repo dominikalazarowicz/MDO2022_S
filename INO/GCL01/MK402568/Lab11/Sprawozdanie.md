@@ -130,7 +130,11 @@ Kontener uruchomił się pomyślnie co potwierdzam screenami zarówno z poleceni
 
 ![](./screenshots/kubectlRun.png)
 
-Następnie przeszedłem do przekierowania portu, niestety tutaj pojawił się problem. Problem według mnie występuje problem z mapowaniem requestu pomiędzy podem aplikacji a kontenerem z nginxem. Podjąłem próby rozwiązania tego problemu ingressem, ale nie do końca skuteczne. W tym przypadku bawiłem się z obrazem httpd, niestety jednak miałem problem prawdopodobnie z DNS'em i nie byłem w stanie zrequestować przekierowanego portu. 
+Następnie przeszedłem do przekierowania portu, niestety tutaj pojawił się problem. 
+
+![](./screenshots/errorForwardingNginx.png)
+
+Problem według mnie występuje problem z mapowaniem requestu pomiędzy podem aplikacji a kontenerem z nginxem. Podjąłem próby rozwiązania tego problemu ingressem, ale nie do końca skuteczne. W tym przypadku bawiłem się z obrazem httpd, niestety jednak miałem problem prawdopodobnie z DNS'em i nie byłem w stanie zrequestować przekierowanego portu. 
 
 ![](./screenshots/statusWorkload.png)
 
