@@ -44,8 +44,17 @@ Utworzenie i uruchomienie kontenera o nazwie `mynginx1` z obrazem `nginx`. Ponie
 
 Aby wykazać, że wybrana aplikacja pracuje jako kontener, za pomocą `docker ps` wyświetlam aktualnie działające kontenery:
 
-![img](docker_ps2.PNG)
+![img](docker_ps.PNG)
 
+
+Aby przetestować czy kontener z aplikacją działa poprawnie w przeglądarce uruchamiam `localhost`. Wyświetlony został interface początkowy do nginxa:
+
+![img](welcome_to_nginx.PNG)
+
+
+Kontener uruchomiony w minikubie zostanie automatycznie ubrany w pod poleceniem ``:
+
+![img](pod_komenda.PNG)
 
 
 
