@@ -34,6 +34,8 @@ Nastepuje uruchomienie kontenera z aplikacja nginx poleceniem `docker run --name
 
 ![img](sudo_docker_ps.PNG)
 
+Sprawdzenie poprawnosci uruchomienia kontenera wpisujac w przegladrake `localhost`
+
 ![img](localhost.PNG)
 
 Zostaje uruchomiony kontener w minikubie ktory jest juz zaopatrzony w poda poleceniem `minikube kubectl run -- knnginx1 --image=nginx --port=80 --labels app=knnginx1` nazwa kontenra zostala zmieniona z kn_nginx1 na knnginx1 poniewaz podczas uruchomiana kontenera otrzymano blad nazwy
@@ -51,14 +53,19 @@ Wprowadzenie poprawnej nazwy
 
 Sprawdzono takze poprawnosc jego dzialania poleceniem `kubectl get pods`
 
-![img](knninx1.PNG)
-
 ![img](kubectl_get_pods.PNG)
+
+![img](knninx1.PNG)
 
 
 Nastepuje wyprowadzenie portow poleceniem `kubectl port-forward knnginx1 2222:80`
 
+
+![img](port-forward_t.PNG)
+
 ![img](post_forward.PNG)
+
+
 
 Zamienienie drozenia manualnego w plik wdrozenia uzywajac do tego stworzonego pliku deploy.yml
 
