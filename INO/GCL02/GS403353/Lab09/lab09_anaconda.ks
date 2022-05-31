@@ -19,6 +19,7 @@ repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?rep
 
 %packages
 @^minimal-environment
+
 %end
 
 # Run the Setup Agent on first boot
@@ -46,4 +47,6 @@ user --name=grrd --password=$y$j9T$yFMCvMPh/thMyMgeM5caSp5h$8SjrQSCDQ/MkabHGrhen
 mkdir ~/2048_the_game
 curl -o 2048 -L https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/raw/GS403353/INO/GCL02/GS403353/Lab09/2048
 mv 2048 ~/2048_the_game
+ls -l
+
 %end
