@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: socket-io-deployment
+  name: socket-io-deployment-canary
   labels:
     app: socket-io
 spec:
-  replicas: 8
+  replicas: 4
   selector:
     matchLabels:
       app: socket-io
@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: socket-io
+        version : 1.0.1
+        type: canary
     spec:
       containers:
       - name: socket-io
