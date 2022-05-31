@@ -100,7 +100,7 @@ Wprowadzenie wprowadzonych zmian poleceniem `kubectl apply-f deploy.yml`
 ![img](deploy.PNG)
 
 
-W celu sprawdzenia poprawnosc wdrozenia uzyto polecenia `kubectl get pods-o wide`
+W celu sprawdzenia poprawnosc wdrozenia uzyto polecenia `kubectl get pods -o wide`
 
 ![img](deploy_pods.PNG)
 
