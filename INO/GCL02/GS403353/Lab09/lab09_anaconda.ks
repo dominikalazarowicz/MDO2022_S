@@ -44,10 +44,10 @@ rootpw --iscrypted $y$j9T$paHUW1Pfhem3Rb0zscb.kovQ$JwjqAFnLkhd6314Ygrp.0Hi3nNSmQ
 user --name=grrd --password=$y$j9T$yFMCvMPh/thMyMgeM5caSp5h$8SjrQSCDQ/MkabHGrhenqNmshWYsLfYWIVt3Iedkp08 --iscrypted --gecos="grrd"
 
 %post
-echo "post-inst echoing"
-mkdir /root/2048_the_game
+echo "post-inst code"
+
+mkdir /root/2048game
+cd /root/2048game
 curl -o 2048 -L https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/raw/GS403353/INO/GCL02/GS403353/Lab09/2048
-mv 2048 /root/2048_the_game
-ls -l
 
 %end
