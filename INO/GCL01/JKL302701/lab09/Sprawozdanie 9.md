@@ -4,6 +4,7 @@
 ## Przygotowanie systemu pod uruchomienie
 
 1. Instalacja Systemu Fedora 36
+
 ![](./1.PNG)
 ![](./2.PNG)
 ![](./3.PNG)
@@ -36,6 +37,7 @@ Z ogromnym bólem zostaję zmuszony do skonfigurowania virtualki tak bym mógł 
 ![](./7.PNG)
 
 5. Sprawdzam czy działa 
+
 ![](./8.PNG)
 ![](./9.PNG)
 
@@ -43,16 +45,20 @@ Z ogromnym bólem zostaję zmuszony do skonfigurowania virtualki tak bym mógł 
 ## Instalacja nienadzorowana
 
 1. Edytuję plik ```anaconda-ks.cfg```. Dodaję ścieżkę do repo, dodałem odpowiednie narzędzia i pobranie artefaktu:
+
 ![](./10.PNG)
 
 2. Umieściłem plik na repozytorium:
 ```https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/JKL302701/INO/GCL01/JKL302701/lab09/anaconda-ks.cfg```
 
 3. Następnie przeszedłem do instalacji Fedory, gdzie użyłem powyższej ścieżki.
+
 ![](./11.PNG)
 
 4. Instalacja zakończona:
+
 ![](./12.PNG)
 
 5. Wyświetlam artefakt:
+
 ![](./13.PNG)
