@@ -27,7 +27,8 @@ ansible_ssh_pass=kloaka150
    ` ansible fedora -m ping`
    ![fedora](1.png)
 7. Utworzono playbook o nazwie `notebook.yaml`, z zawartością taką jak poniżej(utworzony notebook był uniwersalny dla metody bez klucza ssh oraz tej z kluczem ssh(klucz ssh wygenerowano wcześniej)): 
-   ``` ---
+``` 
+   ---
 
 - name: deploy app
   hosts: fedora
@@ -52,7 +53,8 @@ ansible_ssh_pass=kloaka150
     - name: run app
       shell:
         cmd: cmake . && make && cd bin && ./calculator.x
-        chdir: /home/lab_ansible/publish_folder00b12e9/publish_folder```
+        chdir: /home/lab_ansible/publish_folder00b12e9/publish_folder
+```
 8. Objaśnienie notebooka: Na github w nowym repozytorium dodano paczkę .zip zawierającą odpowiednie pliki (wygenerowane przez Jenkinsa). W przedostatnim kroku pobierane i wypakowywany jest program oraz w ostatnim kroku jest uruchamiany. Na poniższym screenshocie widać pomyślne przejście wyszystkich tasków. 
 
 ![fedora2](2_1.png)
