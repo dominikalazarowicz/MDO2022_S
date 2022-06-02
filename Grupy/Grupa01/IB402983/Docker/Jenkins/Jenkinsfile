@@ -1,62 +1,68 @@
+pipeline {
+	agent any
 
-  pipeline {
-    agent any
-    
-    options {
-        parallelsAlwaysFailFast()  // https://stackoverflow.com/q/54698697/4480139
-    }
-    
-    stages {
-        stage('BUILD') {
-            steps {
-                sh 'docker-compose up b_agent'
+    environment {
+                DOCKERHUB_CREDENTIALS = credentials("docker-hub-creds")
+            }
+
+	stages {
+
+        stage('Build') {
+			steps {
+                
+               dir ('Grupy/Grupa01/IB402983/Docker/Berty'){
+				    sh 'docker-compose up build_agent'
+                }
             }
             post {
-                failure {  
-                    mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl', subject: "ERROR ${env.BUILD_TAG}: BUILD", to: 'ibubula@student.agh.edu.pl'  
-                 }
+                failure {
+                    echo 'ERROR IN BUILDING'
+                }
                 success {
-                    mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl', subject: "SUCCESS ${env.BUILD_TAG}: BUILD", to: 'ibubula@student.agh.edu.pl'  
-                 }
-             }
+                    echo 'SUCCESS IN BUILDING'
+                }
+            }
         }
-        stage('TEST') {
-            steps {
-                sh 'docker-compose up t_agent'       
+
+		stage('Test') {
+			steps {
+
+                sh 'ls'
+
+                dir ('Grupy/Grupa01/IB402983/Docker/Berty'){
+				    sh 'docker-compose up test_agent'
+                }
             }
             post {
-                failure {  
-                    mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl', subject: "ERROR ${env.BUILD_TAG}: TEST", to: 'ibubula@student.agh.edu.pl'  
-                 }
+                failure {
+                    echo 'ERROR IN TESTING'
+                }
                 success {
-                    mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl', subject: "SUCCESS ${env.BUILD_TAG}: TEST", to: 'ibubula@student.agh.edu.pl'  
-                 }
-             }
+                    echo 'SUCCESS IN TESTING'
+                }
+            }
         }
-        stage('DEPLOY') {
-            steps {
-                sh 'git config http.version HTTP/1.1'
-                sh 'git config http.postBuffer 157286400'
-                sh 'git config pull.rebase false'
-                sh 'git checkout release '
-                sh 'git pull origin master'
-                sh './git-tag.sh'     
-                sh 'GIT_CURL_VERBOSE=1 git push --follow-tags'
+
+        stage('Deploy') {
+
+			steps {
+
+                
+
+                
             }
             post {
-                    failure {  
-                        mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl, subject: "ERROR ${env.BUILD_TAG}: DEPLOY", to: 'ibubula@student.agh.edu.pl'  
-                     }
-                    success {
-                        mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl', subject: "SUCCESS ${env.BUILD_TAG}: DEPLOY", to: 'ibubula@student.agh.edu.pl'  
-                     }
-                 }
+                failure {
+                    echo 'ERROR IN DEPLOYING'
+
+           
+                }
+                success {
+                    echo 'SUCCESS IN DEPLOYING'
+                }
+            }
         }
+
+    
     }
-    post {
-        always {  
-            sh 'docker-compose down -v --remove-orphans || true;'
-         }
-    }
-   
 }
