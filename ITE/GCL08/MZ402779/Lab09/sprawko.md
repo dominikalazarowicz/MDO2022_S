@@ -11,25 +11,25 @@ Wersja, która została wykorzystana podczas wykonywania tych laboratoriów to *
 
 Po pobraniu pliku obrazu tworzymy dwie maszyny wirtualne. Dla każdej maszyny zostało przydzielone 20 GB pamięci. Gdy maszyna zostanie stworzona, montujemy na niej obraz i przechodzimy do instalacji Fedory. Obydwie maszyny wirtualne zostały zainstalowane z poniższymi parametrami:
 
-**Język:**
+**Język:**  
 ![lang](./screeny/server_lang.png)
 
-**Konto roota:**
+**Konto roota:**  
 ![root](./screeny/server_root.png)
 
-**Dysk instalacyjny:**
+**Dysk instalacyjny:**  
 ![instdisc](./screeny/instalation_disc.png)
 
-**Partycja:**
+**Partycja:**  
 ![instpart](./screeny/instalation_partiitoning.png)
 
-**Sieć i nazwa komputera (nazwa została zmieniona dla drugiej maszyny):**
+**Sieć i nazwa komputera (nazwa została zmieniona dla drugiej maszyny):**  
 ![instnet](./screeny/instalation_network.png)
 
-**Źródło instalacji:**
+**Źródło instalacji:**  
 ![instsrc](./screeny/instalation_source.png)
 
-**Oprogramowanie:**
+**Oprogramowanie:**  
 ![instsoft](./screeny/instalation_minimal.png)
 
 
@@ -71,56 +71,56 @@ Po przeniesieniu wszystkich wymaganych plików przystąpiłem do konfiguracji ho
 
 Po zainstalowaniu **httpd** należy dodać wyjątki do firewalla i przeładować go. Wyjątki dodajemy za pomocą komendy `firewall-cmd --permanent --zone=public -add=nazwa_wyjątku`. Przeładujemy firewalla za pomocą `firewall-cmd --reload`.
 
-![](./screeny/firewall_http_exception.png)
-![](./screeny/firewall_https_exception.png)
-![](./screeny/firewall_reload.png)
+![firewallexc1](./screeny/firewall_http_exception.png)
+![firewallexc2](./screeny/firewall_https_exception.png)
+![firewallreload](./screeny/firewall_reload.png)
 
 
 
 
 Po skonfigurowaniu firewalla należy włączyć usługę **httpd** za pomocą komendy `systemctl enable httpd --now`. 
 
-![](./screeny/enable_httpd_status.png)
+![httpdstatus](./screeny/enable_httpd_status.png)
 
 Na sam koniec w celu transferu artefaktu utworzyłem katalog `/var/www/html/vscode` i umieściłem w nim artefakt. Lokalizacja jest ważna, gdyż katalog `/var/www/html` jest domyślnie udostępniany przez usługę httpd.
 
-![](./screeny/make_new_dir.png)
+![newdir](./screeny/make_new_dir.png)
 
 ---
 ## **Konfiguracja klienta**
 
 Konfiguracja **httpd** na serwerze została zakończona, kolejnym krokiem jest uruchomienie drugiej maszyny wirtualnej z fedorą i pobranie jej adresu ip w celu transferu artefaktu. Adres ip klienta pobieramy za pomocą `ip a`.
 
-![](./screeny/secondvm_ip.png)
+![2ndvmip](./screeny/secondvm_ip.png)
 
 Następnie należy zainstalować na wirtualce pakiet `wget` w celu pobrania pliku z hosta. Instalujemy go poprzez `dnf install wget`.
-![](./screeny/wget_install_lab.png)
-![](./screeny/wget_install_lab_pt2.png)
+![wgetinstall1](./screeny/wget_install_lab.png)
+![wgetinstall2](./screeny/wget_install_lab_pt2.png)
 
 
 Po zainstalowaniu `wget` pobieramy artefakt z hosta za pomocą komendy `wget adres_hosta/vscode/code-oss-dev-1.0.0.tgz`. W momencie transferu artefaktu napotkałem problem, który udało się rozwiązać. Podczas uruchamiania powyższej komendy dostałem informację o błędzie: **nieudane: Brak trasy do hosta**.
 
-![](./screeny/wget_artifact_fail.png)
+![wgetfail](./screeny/wget_artifact_fail.png)
 
 Aby rozwiązać ten problem należy dodać obslugę portu 80/tcp do firewalla.
-![](./screeny/firewall_port80.png)
+![port80fix](./screeny/firewall_port80.png)
 
 
 Pod spodem ponowne uruchomienie komendy `wget`, jednak tym razem udane.
-![](./screeny/wget_artifact_success.png)
+![wgetsuccess](./screeny/wget_artifact_success.png)
 
 Następnie należy pobrać wszystkie zależności do obecnego projektu. W tym celu instalujemy pakiet **npm** za pomocą komendy `dnf install npm -y`:
-![](./screeny/npm_install_pt1.png)
-![](./screeny/npm_install_pt2.png)
+![npminstall1](./screeny/npm_install_pt1.png)
+![npminstall2](./screeny/npm_install_pt2.png)
 
 Po instalacji zależności możemy zainstalować nasz program za pomocą artefaktu. Instalacja odbywa się poprzez użycie komendy `npm install code-oss-dev-1.0.0.tgz`.
-![](./screeny/pckg_fail.png)
+![artifactfail](./screeny/pckg_fail.png)
 
 Po uruchomieniu instalacji programu otrzymujemy powiadomienie o błędzie, iż nie znaleziono pakietu **yarn**. Można go zainstalować za pomocą komendy `npm install --global yarn`. Po zainstalowaniu pakietu, dodatkowo sprawdzam jego wersję.
-![](./screeny/yarn_install.png)
+![yarninstall](./screeny/yarn_install.png)
 
 Po zainstalowaniu **yarn** ponawiamy próbę instalacji programu.
-![](./screeny/yarn_failv2.png)
+![artifactfail2nd](./screeny/yarn_failv2.png)
 
 W tym momencie po instalacji **YARN** napotkałem problem, którego nie dałem rady rozwiązać. Instalacja kończyła się pomyślnie. Próbowałem jeszcze raz instalować yarn, projekt, dodawać zależności do projektu, lub podążać za podobnym problemem rozpisanym na gicie i edytować plik preinstall.js. korzystając z linku https://github.com/microsoft/vscode/issues/93119 , jednak ostatecznie problem nie został rozwiązany. Dlatego pominę część instalacji spakowanego programu i przejdę do dalszej części zadania - instalacji nienadzorowanej.
 
@@ -150,6 +150,9 @@ By tego dokonać możemy zdefiniować sekcję post. Komendy z tej sekcji wykonaj
 wget http://192.168.1.41/vscode/code-oss-dev-1.0.0.tgz
 %end
 ```
+Wszystkie zmiany zamieszczone w pliku:  
+<a href="./anaconda-ks.cfg">anaconda-ks.cfg</a>
+
 ---
 ## **Instalacja za pomocą pliku konfiguracyjnego**
 
@@ -167,49 +170,49 @@ Aby wykorzystać przygotowany przez nas plik `anaconda-ks.cfg` dopisujemy do nie
 inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/MZ402779/ITE/GCL08/MZ402779/Lab09/anaconda-ks.cfg
 ```
 Tutaj zrzut ekranu dokumentujący całą komendę użytą do instalacji:
-![](./screeny/anacondaks_install_command.png)
+![anacondainstall](./screeny/anacondaks_install_command.png)
 
 >Należy pamiętać, aby podczas instalacji serwer z którego mamy pobrać artefakt był dostępny! W przeciwnym wypadku instalacja zawiesi się na sekcji post i nie zostanie wykonana.
 
 Tutaj komunikat o poprawnym zainstalowaniu Fedory przy wykorzystaniu pliku `anaconda-ks.cfg`:
-![](./screeny/successful_instalation_anaconda.png)
+![anacondasuccess1](./screeny/successful_instalation_anaconda.png)
 
 ---
 ## **Infrastructure as code**
 
 Po instalacji maszyny wirtualnej uruchamiamy ją ponownie (i ponownie zmieniamy sposób bootowania na bootowanie z dysku). Po uruchomieniu powinno pojawić się nam okno maszyny, do której należy się zalogować:
-![](./screeny/successful_instalation_anaconda_2.png)
+![anacondalogin](./screeny/successful_instalation_anaconda_2.png)
 
 Po zalogowaniu się montujemy obraz Fedory na naszej wirtualce, w napędzie optycznym:
-![](./screeny/mount_iso.png)
+![mountiso](./screeny/mount_iso.png)
 
 Tworzymy katalog `/media/iso/` po czym montujemy w nim obraz z napędu naszej wirtualki za pomocą komendy `mount /dev/sr0 /media/iso`:
-![](./screeny/ISO.png)
+![isodir](./screeny/ISO.png)
 
 Tworzymy katalog roboczy `fedora_iso` i kopiujemy do niego obraz z katalogu `/media/iso/`.
-![](./screeny/cp_fedora_iso.png)
+![cpiso](./screeny/cp_fedora_iso.png)
 
 Kopiujemy plik `anaconda-ks.cfg` do naszego obrazu:
-![](./screeny/cp_ks_cfg.png)
+![cpcfg](./screeny/cp_ks_cfg.png)
 
 
 Następnie edytujemy plik isolinux.cfg (można użyć `nano`) aby dodać do niego linijkę `inst.ks=cdrom:/isolinux/ks.cfg`
-![](./screeny/nano_mod.png)
+![editnano](./screeny/nano_mod.png)
 
 Za pomocą komendy `dnf install genisoimage` instalujemy pakiet umożliwiający tworzenie obrazu ISO.
-![](./screeny/dnf_install_genisoimage.png)
+![genisoimage](./screeny/dnf_install_genisoimage.png)
 
 Za pomocą poniższej komendy tworzymy iso. 
-![](./screeny/make_iso_cmd.png)
+![makeiso](./screeny/make_iso_cmd.png)
 
 Należy pamiętać aby uruchomić komendę w folderze, którego podfolderem jest **isolinux**!
-![](./screeny/isolinux_ls.png)
+![lsdiriso](./screeny/isolinux_ls.png)
 
 Pod spodem rezultat komendy tworzącej plik `.iso`:
-![](./screeny/make_iso_success.png)
+![makeisosuccess](./screeny/make_iso_success.png)
 
 I jeszcze na sam koniec lokalizacja pliku `Fedora.iso`
-![](./screeny/fedora_iso_confirmation.png)
+![lsiso](./screeny/fedora_iso_confirmation.png)
 
 Po stworzeniu ISO możemy go pobrac na swój komputer, po czym zainstalować maszynę wirtualną jeszcze raz, tym razem za pomocą stworzonego ISO. W celu transferu pliku łaczymy się ponownie przez Filezillę.
 
