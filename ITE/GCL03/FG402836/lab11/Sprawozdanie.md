@@ -26,8 +26,11 @@ Uruchomiłem kontener na stosie
 ## 4. Utworzenie pliku wdrożenia
 Utworzyłem plik wdrożeniowy:
 </br>![](12.JPG)
-W którym dodaje 3 repliki.
+</br>W którym dodaje 3 repliki.
 </br>Uruchamiam oprogramowanie wykorzystując plik wdrożeniowy:
+``
+kubectl apply -f conf-nginx.yml
+``
 </br>![](13.JPG)
 </br>![](15.JPG)
 
