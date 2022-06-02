@@ -57,7 +57,9 @@ Tak jak podpowiada mi kubernetes dodaje uzytkownika do grupy docker.
 
 
 - Zmityguj problemy wynikające z wymagań sprzętowych lub odnieś się do nich (względem dokumentacji)
-Przydzielilem tylko 2 rdzenie, bo wiecej nie mam :<
+
+  Przydzielilem tylko 2 rdzenie, bo wiecej nie mam :<
+  
 ![](./s1.PNG)
 ![](./s2.PNG)
 ![](./s3.PNG)
