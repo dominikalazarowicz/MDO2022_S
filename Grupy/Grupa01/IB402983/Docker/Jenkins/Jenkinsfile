@@ -48,7 +48,7 @@ pipeline {
 			steps {
 
                 
-
+			echo 'TEST123'
                 
             }
             post {
