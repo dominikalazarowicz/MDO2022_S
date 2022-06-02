@@ -44,7 +44,7 @@ pipeline {
 			steps {
 
                 
-			echo 'TEST123'
+			  mail bcc: '', body: "${env.BUILD_URL}", from: 'ibubula@student.agh.edu.pl', subject: "ERROR ${env.BUILD_TAG}: BUILD", to: 'iza.bubula2012@gmail.com'
                 
             }
             post {
