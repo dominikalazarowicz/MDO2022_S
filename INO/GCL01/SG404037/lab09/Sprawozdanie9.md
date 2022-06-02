@@ -13,7 +13,6 @@ Przebieg laboratorium nr 9 :
   
  ![fedora4](fedora4.png)
  
-  ![fedora5](fedora5.png)
    
    2. Zalogowanie się do systemu Fedora jako root, by odnależć plik anaconda-ks.cfg :
 
