@@ -50,3 +50,5 @@ minikube service hello --url
 ![](screen/7-url.png)
 
 4. Uruchomiono deployment w przeglądarce:
+
+![](screen/8-hello-browser.png)
