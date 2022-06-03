@@ -6,7 +6,7 @@ Przygotowanie Pipeline
 
 ## Przebieg
 Stworzono kontenenery Jenkins-bluocean oraz DIND:
-![1](1.png)
+![1](pipeline/1.PNG)
 
 Niezbedne byly rowniez pliki Dockerfiles:
 
@@ -32,12 +32,15 @@ RUN python3 -m venv make test
 
 DockerPublish
 ```
+FROM basictracer_build:latest
+RUN cd .. && tar cfJ archive.tar.xz basictracer.egg-info
+RUN cd .. && mv archive.tar.xz basictracer.egg-info
 ```
 
 Skonfigurowano pipeline na Jenkins:
 
-![2](2.png)
-![3](3.png)
+![2]((pipeline/2.PNG)
+![3]((pipeline/3.PNG)
 
 Plik Jenkinsfile jest pobierany z brancha repozytorium przedmiotu.
 
@@ -83,8 +86,8 @@ stage('Deploy') {
 W tym momencie pobierane sa dane uwierzytelniajace mojego konta na Dockerhub ktore trzeba bylo wprowadzic do Jenkinsa. Obraz deploy jest wysylany do mojego Dockerhuba.
 
 ### Stage Publish
-W tym miejscu folder z plikami .egg powinien byc pakowany i nastepnie archiwizowany na Jenkinsie. Przy lokalknym uruchamianiu projektu folder ten jest widoczny po zbuildowaniu poleceniem ```make bootstrap```.
-![4](4.png)
+W tym miejscu folder z plikami .egg powinien byc pakowany i nastepnie archiwizowany na Jenkinsie. Przy lokalnym uruchamianiu projektu folder ten jest widoczny po zbuildowaniu poleceniem ```make bootstrap```.
+![4](pipeline/4.PNG)
 
 Niestety jednak, przy uruchomieniu stage:
 ```
@@ -116,6 +119,6 @@ RUN cd .. && tar cfJ archive.tar.xz basictracer.egg-info
 RUN cd .. && mv archive.tar.xz basictracer.egg-info
 ```
 
-Folder basictracer_e
+Folder basictracer_egg pozostaje niewidoczny i stage Publish nie dochodzi do skutku.
 
 
