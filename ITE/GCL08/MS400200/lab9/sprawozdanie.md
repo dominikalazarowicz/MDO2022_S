@@ -51,6 +51,10 @@ Zmodyfikowano plik '''anaconda-ks.cfg''':
 Uruchomiono instalację za pomocą komendy:
 
 `vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/MS400200/ITE/GCL08/MS400200/lab9/anaconda-ks.cfg`
+![13](13.PNG)
+![14](14.PNG)
+
+
 
 
 
