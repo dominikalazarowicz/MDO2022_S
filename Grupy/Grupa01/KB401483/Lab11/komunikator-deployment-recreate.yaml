@@ -1,13 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: komunikator-deployment
+  name: komunikator-deployment-canary
   labels:
     app: komunikator
+    version: "2.0"
 spec:
-  replicas: 8
   strategy:
-    type: Recreate
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 3
+      maxSurge: 20%
+  replicas: 8
   selector:
     matchLabels:
       app: komunikator
@@ -17,7 +21,7 @@ spec:
         app: komunikator
     spec:
       containers:
-      - name: komunikator
-        image: klabalicka/kom-lab10:1.0
-        ports:
-        - containerPort: 9999
+        - name: komunikator
+          image: klabalicka/kom-lab10:1.0
+          ports:
+            - containerPort: 80

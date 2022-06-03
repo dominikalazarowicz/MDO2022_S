@@ -46,9 +46,10 @@ oraz uruchomiono deployment za pomocą polecenia:
 
 4. Zmodyfikowano strategię "RollingUpdate" na "Canary deployment" gdzie dodano do powyższego kodu następujące linijki po czym uruchomiono deployment:
 
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 3
-      maxSurge: 20%
+    metadata:
+    name: komunikator-deployment-canary
+    labels:
+        app: komunikator
+        version: "2.0"
 
 
