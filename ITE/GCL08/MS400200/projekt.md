@@ -39,8 +39,8 @@ RUN cd .. && mv archive.tar.xz basictracer.egg-info
 
 Skonfigurowano pipeline na Jenkins:
 
-![2]((pipeline/2.PNG)
-![3]((pipeline/3.PNG)
+![2](pipeline/2.PNG)
+![3](pipeline/3.PNG)
 
 Plik Jenkinsfile jest pobierany z brancha repozytorium przedmiotu.
 
