@@ -39,3 +39,16 @@ kubectl expose deployment hello-minikube --type=NodePort --port=8080
 2. Dashboard po deploymencie:
 
 ![](screen/6-deploy.png)
+
+3. Uzyskano adres url uruchomionego deploymenta:
+
+```
+minikube service hello --url
+
+```
+
+![](screen/7-url.png)
+
+4. Uruchomiono deployment w przeglądarce:
+
+![](screen/8-hello-browser.png)
