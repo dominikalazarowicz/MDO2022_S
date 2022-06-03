@@ -84,6 +84,7 @@ stage('Deploy') {
         }
 ```
 W tym momencie pobierane sa dane uwierzytelniajace mojego konta na Dockerhub ktore trzeba bylo wprowadzic do Jenkinsa. Obraz deploy jest wysylany do mojego Dockerhuba.
+![10](pipeline/10.PNG)
 
 ### Stage Publish
 W tym miejscu folder z plikami .egg powinien byc pakowany i nastepnie archiwizowany na Jenkinsie. Przy lokalnym uruchamianiu projektu folder ten jest widoczny po zbuildowaniu poleceniem ```make bootstrap```.
@@ -120,5 +121,5 @@ RUN cd .. && mv archive.tar.xz basictracer.egg-info
 ```
 
 Folder basictracer_egg pozostaje niewidoczny i stage Publish nie dochodzi do skutku.
-
+![11](pipeline/11.PNG)
 
