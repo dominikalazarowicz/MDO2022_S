@@ -41,9 +41,11 @@ Po wielu trudach pobrane akurat z ubuntu ale jest.
 
 Do instalacji nienadzorowanej potrzeba plik anaconda-ks.cfg do której trzeba dodać potrzebne dla nas klauzule do pobrania artefaktu %post i %end
 
+Niestety każda próba kończy się nie udaną instalacją nie wazne czy graficzna czy tekstowa czy z własnego repo czy z http czy inne kombinacje
 
+![Image](./src/odpalenie.png)
 
-
+![Image](./src/Nieznaleziono.png)
 
 
 
