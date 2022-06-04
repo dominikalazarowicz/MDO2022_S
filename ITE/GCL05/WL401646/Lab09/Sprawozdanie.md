@@ -2,7 +2,7 @@
 
 Celem laboratorium było przeprowadzenie instalacji Fedory w sposób nadzorowany oraz nienadzorowany wraz z instalacją artefaktu przygotowanego przez Jenkinsa.
 
-Wszystkie pliki anaconda-ks.cfg tak jak i logi Jenkinsa znajdują się w repozytorium wraz z tym sprawozdaniem.
+Wszystkie pliki anaconda-ks.cfg tak jak i logi Jenkinsa oraz Jenkinsfile znajdują się w repozytorium wraz z tym sprawozdaniem.
 
 **Instalacja Fedory**
 
