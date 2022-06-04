@@ -46,4 +46,7 @@
 
 ![image](https://user-images.githubusercontent.com/72975469/172018625-e05168b7-f055-456c-a87c-8d29b79d1716.png)
 
-vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/JP300987/ITE/GCL06/AP304152/Lab09/anaconda-ks.cfg
+vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/AP304152/ITE/GCL06/AP304152/Lab09/anaconda-ks.cfg
+
+![image](https://user-images.githubusercontent.com/72975469/172018959-45624fe3-80bc-46b7-8d7a-dd76ebe51c02.png)
+
