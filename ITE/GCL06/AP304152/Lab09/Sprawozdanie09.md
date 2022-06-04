@@ -50,3 +50,6 @@ vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.ch
 
 ![image](https://user-images.githubusercontent.com/72975469/172018959-45624fe3-80bc-46b7-8d7a-dd76ebe51c02.png)
 
+![image](https://user-images.githubusercontent.com/72975469/172019468-5fd4ba7a-17cb-41a4-be24-b064e0df0b13.png)
+
+![image](https://user-images.githubusercontent.com/72975469/172019780-73790f35-b854-4662-a235-1e1a1f81485c.png)
