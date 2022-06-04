@@ -1,0 +1,42 @@
+  160  sudo apt install curl
+  161  sudo dpkg --configure -a
+  162  sudo apt install curl
+  163  sudo apt --fix-missing
+  164  sudo apt update --fix-missing
+  165  sudo apt install curl
+  166  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+  167  minikube start
+  168  ifconfig
+  169  kubectl
+  170  sudo snap install kubectl
+  171  sudo snap install kubectl --classic
+  172  nano .bashrc
+  173  kubectl
+  174  docker container list
+  175  minikube dashboard
+  176  minikube kubectl run -- petclinic-xd --image=wigryz/petclinic --port=8080 --labels app=petclinic-xd
+  177  kubectl -h
+  178  kubectl get pods --all-namespaces
+  179  minikube service petclinic-xd
+  180  docker container list
+  181  docker container rm jenkins-docker
+  182  docker container stop jenkins-docker
+  183  docker container stop jenkins-blueocean
+  184  kubectl port-forward petclinic-xd 9000:8080
+  185  kubectl port-forward petclinic-xd 8080:9000
+  186  kubectl port-forward petclinic-xd 8080:8080
+  187  kubectl get deploy petclinic-xd -o yaml
+  188  kubectl get deployment
+  189  kubectl get deployment -n default
+  190  kubectl create deployment petclnic-xd --image=wigryz/petclinic
+  191  kubectl get deploy petclinic-xd -o yaml
+  192  kubectl create deployment petclinic-xd --image=wigryz/petclinic
+  193  kubectl get deploy petclinic-xd -o yaml
+  194  kubectl apply petclinic-xd-deployment.yml
+  195  kubectl apply -f petclinic-xd-deployment.yml
+  196  ls
+  197  kubectl apply -f petclinic-xd-deployment.yml
+  198  kubectl port-forward petclinic-xd 8080:8080
+  199  kubectl get pods
+  200  kubectl port-forward petclinic-xd-688db9b89d-cjzvj 8080:8080
+  201  history
