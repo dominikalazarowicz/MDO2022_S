@@ -1,0 +1,74 @@
+206  minikube dashboard
+  207  nano petclinic-xd-deployment.yml
+  208  ls
+  209  touch script.sh
+  210  touch is_deployed.sh
+  211  rm script.sh
+  212  ls
+  213  timeout
+  214  sh is_deployed.sh
+  215  ps -a
+  216  top
+  217  ls
+  218  sudo rm -rf minikube-linux-amd64
+  219  ls
+  220  nano petclinic-xd-deployment.yml
+  221  cart petclinic-xd-deployment.yml
+  222  cat petclinic-xd-deployment.yml
+  223  kubectl apply petclinic-xd-deployment.yml
+  224  kubectl apply -f petclinic-xd-deployment.yml
+  225  kubectl rollout status
+  226  kubectl rollout status petclinic-x
+  227  kubectl rollout status petclinic-xd
+  228  kubectl rollout status
+  229  kubectl rollout status deployment.apps/petclinic-xd
+  230  kubectl apply -f petclinic-xd-deployment.yml
+  231  kubectl rollout status petclinic-xd
+  232  kubectl rollout status deployment.apps/petclinic-xd
+  233  kubectl rollout history
+  234  kubectl rollout history deployment.apps/petclinic-xd
+  235  kubectl rollout undo
+  236  kubectl apply -f petclinic-xd-deployment.yml
+  237  kubectl rollout status deployment.apps/petclinic-xd
+  238  kubectl apply -f petclinic-xd-deployment.yml
+  239  kubectl rollout status deployment.apps/petclinic-xd
+  240  kubectl apply -f petclinic-xd-deployment.yml
+  241  kubectl rollout status deployment.apps/petclinic-xd
+  242  kubectl apply -f petclinic-xd-deployment.yml
+  243  kubectl rollout status deployment.apps/petclinic-xd
+  244  kubectl rollout history deployment.apps/petclinic-xd
+  245  kubectl rollout history deployment.apps/petclinic-xd --revision=2
+  246  kubectl rollout undo deployment.apps/petclinic-xd --to-revision=2
+  247  kubectl rollout status deployment.apps/petclinic-xd
+  248  timeout 5 kubectl rollout status deployment.apps/petclinic-xd
+  249  where is kubectl
+  250  cat .bashrc
+  251  whereis minikube
+  252  timeout 5 /usr/local/bin/minikube rollout status deployment.apps/petclinic-xd
+  253  timeout 5 /usr/local/bin/minikube kubectl rollout status deployment.apps/petclinic-xd
+  254  echofalse
+  255  echo false
+  256  $?
+  257  echo $?
+  258  false
+  259  echo $?
+  260  timeout 5 /usr/local/bin/minikube kubectl rollout status deployment.apps/petclinic-xd
+  261  echo $?
+  262  ls
+  263  chmod +x is_deployed.sh
+  264  ./is_deployed.sh
+  265  kubectl rollout status deployment.apps/petclinic-xd
+  266  ./is_deployed.sh
+  267  ./is_deployed.sh deployment.apps/petclinic-xd
+  268  kubectl apply -f petclinic-xd-deployment.yml
+  269* ./is_deployed.sh deployment.apps/petclinic-x
+  270  kubectl apply  petclinic-xd-deployment.yml
+  271  kubectl apply -h
+  272  kubectl create deployment petclinic-xd-recreate -f petclinic-xd-deployment.yml
+  273  kubectl create deployment petclinic-xd-recreate --file petclinic-xd-deployment.yml
+  274  kubectl create deployment petclinic-xd-recreate -f petclinic-xd-deployment.yml
+  275  kubectl apply  petclinic-xd-deployment-recreate.yml
+  276  kubectl apply -f petclinic-xd-deployment-recreate.yml
+  277  kubectl apply -f petclinic-xd-deployment-rolling.yml
+  278  kubectl apply -f petclinic-xd-deployment-recreate.yml
+  279  history
