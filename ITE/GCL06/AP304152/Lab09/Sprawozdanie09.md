@@ -45,3 +45,5 @@
 ![image](https://user-images.githubusercontent.com/72975469/172018119-bbaae12f-da49-4c16-a7b0-af01a31c6070.png)
 
 ![image](https://user-images.githubusercontent.com/72975469/172018625-e05168b7-f055-456c-a87c-8d29b79d1716.png)
+
+vmlinuz initrd=initrd.img inst.stage2=hd:LABEL=Fedora-S-dvd-x86_64-36 rd.live.check quiet inst.ks=https://raw.githubusercontent.com/InzynieriaOprogramowaniaAGH/MDO2022_S/JP300987/ITE/GCL06/AP304152/Lab09/anaconda-ks.cfg
