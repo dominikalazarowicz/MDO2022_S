@@ -1,36 +1,147 @@
-# Sprawozdanie z Lab09
-### Instalacja maszyny w VirtualBoxie (server)
-![This is an image](ssy/fedora-server-installation.png)
+# Sprawozdanie z Lab11
+### Instalacja minikube'a
+![This is an image](ssy/minikube-instalacja.png)
+![This is an image](ssy/minikube-install-2.png)
 
-### sklonowaine zainstalowanego serwera jako clienta
-![This is an image](ssy/fedora-client-clone.png)
+### Uruchomienie minikube w dashboardzie
+![This is an image](ssy/minikube-dashboard.png)
+![This is an image](ssy/minikube-dashboard-browser.png)
 
-### Zahostowanie serwera http przez wbudowaną w pythona opcje, w ten sposób wystawione zostaną wszystkie pliki wewnątrz obecnego folderu
-```
-python3 -m http.server
-```
-![This is an image](ssy/server-host-files.png)
+### Uruchomienie mongo bezpośrednio z obrazu
+![This is an image](ssy/minikube-run.png)
 
-### Ustawienie NatNetwork tak, aby maszyny były we wspólnej sieci
-![This is an image](ssy/natnetwork-virtualbox.png)
+### Screen z działającego poda
+![This is an image](ssy/minikube-dashboard-run.png)
 
-### Wykazanie wzajemnej widoczności maszyn
-![This is an image](ssy/nat-network-created.png)
+### Przekierowanie portów
+![This is an image](ssy/port-forwarding.png)
 
-### Pobranie artefaktów wystawionych z wykonanego przeze mnie pipeline'a
-![This is an image](ssy/wget-artefakty.png)
+### Podłaczenie do hostowanej bazy
+![This is an image](ssy/compass-connection.png)
 
-### Plik ./kickstart, dodane przeze mnie fragmenty:
+## Część druga
+
+### Plik .yaml z configiem deploymentu
 ```
-# Repo
-url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
-repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=x86_64
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-database
+  labels:
+    app: mongo-database
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mongo-database
+  template:
+    metadata:
+      labels:
+        app: mongo-database
+    spec:
+      containers:
+      - name: mongo-database
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
 ```
-### oraz:
+### Wersja z 4 replikami
+![This is an image](ssy/replicas-4.png)
+
+### Wersja z pojedynczym podem
+![This is an image](ssy/replicas-1.png)
+
+### Wersja z zerem replik
+![This is an image](ssy/replicas-0.png)
+
+### Uruchomienie ze zmienioną wersja obrazu na latest
+![This is an image](ssy/replicas-4-latest.png)
+
+### Rollout status z poprawnie wdrożonym deploymentem
+![This is an image](ssy/rollout-status.png)
+
+### Zmieniona wersja obrazu, na taką która wywoła crash
+![This is an image](ssy/kubectl-crash.png)
+
+### Odwołanie wykonanych czynności przez rollout undo
+![This is an image](ssy/rollout-undo.png)
+
+## Kontrola wdrożenia
+### Komenda do uruchomienia skryptu:
 ```
-%post
-mkdir app
-cd app
-wget 192.168.0.104:8000/simple-starter-typescript.zip
-%end
+sleep 60 && sh ./Lab11/script.sh
 ```
+### skrypt
+```
+cmd() {
+    kubectl rollout status deployment/mongo-database
+}
+if cmd | grep -q 'successfully rolled out'; then
+  echo "Deployment is up and running"
+else
+  echo "Deployment is not running"
+fi
+```
+
+### Strategia recreate
+recreate - pody za każdym razem zostają wyłączone i tworzeone są od nowa, wszystkie jednoczesnie
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-database
+  labels:
+    app: mongo-database
+spec:
+  strategy:
+    type: Recreate
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mongo-database
+  template:
+    metadata:
+      labels:
+        app: mongo-database
+    spec:
+      containers:
+      - name: mongo-database
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+```
+
+### Strategia rolling update
+rolling update - Jednoczesnie updatowana jest n podow. W danym momencie wyłączane jest n podów, kiedy wstaną - kolejna są updateowane.
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-database
+  labels:
+    app: mongo-database
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mongo-database
+  template:
+    metadata:
+      labels:
+        app: mongo-database
+    spec:
+      containers:
+      - name: mongo-database
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+```
+
+### Strategia canary
+
+canary - Wymagane są dwa deploymenty, ze starą i nową wersją. Następnie manualnie zmieniamy wersje która działa na danym podzie.
