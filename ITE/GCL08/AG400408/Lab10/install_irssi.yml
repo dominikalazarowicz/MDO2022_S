@@ -1,0 +1,25 @@
+---
+- name: Irssi install
+  hosts: all
+  become: yes
+  become_method: sudo
+  tasks:
+   - name: Install Git
+     yum:
+      name: git
+      state: latest
+   - name: Install build tools
+     yum:
+      name:
+      - make
+      - gcc
+      - meson
+      - utf8proc
+      - ncurses
+      state: latest
+   - name: Pull irssi
+     ansible.builtin.git:
+      repo: 'https://github.com/irssi/irssi.git'
+      dest: /var/lib/irssi
+
+
