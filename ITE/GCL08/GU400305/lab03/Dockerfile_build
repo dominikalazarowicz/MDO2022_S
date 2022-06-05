@@ -1,0 +1,18 @@
+From node:latest
+
+RUN npm install -g n 
+RUN n 14.18.1
+RUN git clone https://github.com/urbanczykg/strapi.git
+WORKDIR strapi 
+RUN npm install
+RUN yarn setup
+WORKDIR examples
+WORKDIR getstarted
+RUN yarn develop &
+WORKDIR packages
+WORKDIR core
+WORKDIR admin
+RUN yarn build
+
+
+
