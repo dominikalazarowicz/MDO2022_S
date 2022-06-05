@@ -232,3 +232,78 @@ Pody:
 I efekt końcowy
 
 ![](./3logs.jpg)
+
+
+# Zajęcia 2
+
+Problem jenkinsa w kontenerze który miał mieć wpływ na środowisko produkcyjne został zniwelowany przez przeniesienie go na hosta.
+
+W tym celu skopiowałem rekursywnie pliki z woluminu kontenera jenkinsa do katalogu standardowego użytkownika  ```/var/lib/jenkins```
+
+Następnie dla użytkownika jenkins dodałem prawa do wykonywania poleceń dockera oraz przeniosłem konfigurację minikube
+
+Aby kontrolować proces wdrożenia w jenkinsie zdefiniowałem krok którego fragment niżej pokazuje:
+
+```jenkinsfile
+
+ stage('Kube deploy'){
+            agent any
+            when { tag "*" }
+            steps{
+                dir('./Panel.EmotoAgh.CI/Kube')
+                {
+                    sh 'minikube kubectl -- apply -f mykube.yaml'
+                    sh 'timeout 60 minikube kubectl -- rollout status deployment/emoto-prod'
+                }
+            }
+            post {
+                failure {
+                    sh 'minikube kubectl -- rollout undo deployment/emoto-prod'
+                }
+            }
+        }
+```
+
+Wdrożenie w moim pipeline następuje po zdefiniowaniu tagu.
+Przechodząc do kroków najpierw stosuję konfigurację.
+
+Gdy nie ma ona żadnych zmian nic nie jest robione, a gdy jest następuje aktualizacja replika setu
+
+Kolejny krok to oczekiwanie 60 sekund na wdrożenie. ```timeout``` w sekundach. W przypadku gdy mioną czas oczekiwania a proces nie zakończył działania zwraca kod ```124```
+
+```sh
+jenkins@szymonvm:~$ timeout 1 top
+jenkins@szymonvm:~$ echo $?
+124
+ ```
+
+Polecenie ``` kubectl rollout status ``` jest blokujące dopóty wdrożenie zakończy się sukcesem
+
+W przypadku gdy po 60 sekundach wdrożenie nie powiedzie się nastąpi przejście do Post failure ponieważ ```timeout``` zwrócił kod błędu.
+
+w tym bloku następuje powrót do poprzedniej wersji
+
+![](./badimg.jpg)
+
+```sh
++ minikube kubectl -- apply -f mykube.yaml
+deployment.apps/emoto-prod configured
+[Pipeline] sh
++ timeout 60 minikube kubectl -- rollout status deployment/emoto-prod
+Waiting for deployment "emoto-prod" rollout to finish: 2 out of 4 new replicas have been updated...
+[Pipeline] }
+[Pipeline] // dir
+Post stage
+[Pipeline] sh
++ minikube kubectl -- rollout undo deployment/emoto-prod
+deployment.apps/emoto-prod rolled back
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 124
+Finished: FAILURE
+```
