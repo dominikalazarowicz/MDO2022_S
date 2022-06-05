@@ -405,3 +405,143 @@ deployment "emoto-prod" successfully rolled out
 ```
 
 ![](./v3.jpg)
+
+
+## Strategie wdrożenia
+
+### Recreate
+
+
+```sh
+Waiting for deployment "emoto-prod" rollout to finish: 0 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 0 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 0 of 4 updated replicas are available...
+Waiting for deployment "emoto-prod" rollout to finish: 1 of 4 updated replicas are available...
+Waiting for deployment "emoto-prod" rollout to finish: 2 of 4 updated replicas are available...
+Waiting for deployment "emoto-prod" rollout to finish: 3 of 4 updated replicas are available...
+deployment "emoto-prod" successfully rolled out
+```
+
+![](./rc1.jpg)
+
+### Rolling Update
+
+
+
+```sh
+Waiting for deployment "emoto-prod" rollout to finish: 1 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 1 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 3 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 3 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 3 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 3 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 3 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "emoto-prod" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "emoto-prod" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "emoto-prod" rollout to finish: 3 of 4 updated replicas are available...
+deployment "emoto-prod" successfully rolled out
+```
+
+![](./ru1.jpg)
+
+
+### canary
+
+
+pipeline 
+kuby podobne
+
+
+zle
+
+![](./canaryerr.jpg)
+
+prod
+```sh
++ minikube kubectl -- apply -f mykube.yaml
+deployment.apps/emoto-prod created
+[Pipeline] sh
++ timeout 60 minikube kubectl -- rollout status deployment/emoto-prod
+Waiting for deployment "emoto-prod" rollout to finish: 0 of 4 updated replicas are available...
+Waiting for deployment "emoto-prod" rollout to finish: 1 of 4 updated replicas are available...
+Waiting for deployment "emoto-prod" rollout to finish: 2 of 4 updated replicas are available...
+Waiting for deployment "emoto-prod" rollout to finish: 3 of 4 updated replicas are available...
+deployment "emoto-prod" successfully rolled out
+```
+
+canar
+
+```sh
+
++ minikube kubectl -- apply -f mykubecanary.yaml
+deployment.apps/emoto-prod-canary created
+[Pipeline] sh
++ timeout 60 minikube kubectl -- rollout status deployment/emoto-prod-canary
+Waiting for deployment "emoto-prod-canary" rollout to finish: 0 of 4 updated replicas are available...
+[Pipeline] }
+[Pipeline] // dir
+Post stage
+[Pipeline] sh
++ minikube kubectl -- rollout undo deployment/emoto-prod-canary
+error: no rollout history found for deployment "emoto-prod-canary"
+Error when executing failure post condition:
+hudson.AbortException: script returned exit code 1
+	at org.jenkinsci.plugins.workflow.steps.durable_task.DurableTaskStep$Execution.handleExit(DurableTaskStep.java:664)
+	at org.jenkinsci.plugins.workflow.steps.durable_task.DurableTaskStep$Execution.check(DurableTaskStep.java:610)
+	at org.jenkinsci.plugins.workflow.steps.durable_task.DurableTaskStep$Execution.run(DurableTaskStep.java:554)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] End of Pipeline
+ERROR: script returned exit code 124
+Finished: FAILURE
+
+```
+
+
+
+OK
+
+![](./canaryok.jpg)
+
+```sh
++ timeout 60 minikube kubectl -- rollout status deployment/emoto-prod
+deployment "emoto-prod" successfully rolled out
+```
+
+
+```sh
++ minikube kubectl -- apply -f mykubecanary.yaml
+deployment.apps/emoto-prod-canary configured
+[Pipeline] sh
++ timeout 60 minikube kubectl -- rollout status deployment/emoto-prod-canary
+Waiting for deployment "emoto-prod-canary" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 3 out of 4 new replicas have been updated...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 1 old replicas are pending termination...
+Waiting for deployment "emoto-prod-canary" rollout to finish: 3 of 4 updated replicas are available...
+deployment "emoto-prod-canary" successfully rolled out
+```
