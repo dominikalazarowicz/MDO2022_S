@@ -1,5 +1,5 @@
 #  Piotr Wilkosz - 404121
-## Sprawozdanie 11
+## Sprawozdanie 12
 
 ### Konwersja wdrożenia ręcznego na wdrożenie deklaratywne YAML
 
