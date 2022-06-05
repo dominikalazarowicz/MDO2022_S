@@ -65,3 +65,66 @@ spec:
 
 ### Odwołanie wykonanych czynności przez rollout undo
 ![This is an image](ssy/rollout-undo.png)
+
+### Strategia recreate
+recreate - pody za każdym razem zostają wyłączone i tworzeone są od nowa, wszystkie jednoczesnie
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-database
+  labels:
+    app: mongo-database
+spec:
+  strategy:
+    type: Recreate
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mongo-database
+  template:
+    metadata:
+      labels:
+        app: mongo-database
+    spec:
+      containers:
+      - name: mongo-database
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+```
+
+### Strategia rolling update
+rolling update - Jednoczesnie updatowana jest n podow. W danym momencie wyłączane jest n podów, kiedy wstaną - kolejna są updateowane.
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-database
+  labels:
+    app: mongo-database
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 1
+  replicas: 4
+  selector:
+    matchLabels:
+      app: mongo-database
+  template:
+    metadata:
+      labels:
+        app: mongo-database
+    spec:
+      containers:
+      - name: mongo-database
+        image: mongo:latest
+        ports:
+        - containerPort: 27017
+```
+
+### Strategia rolling update
+
+canary - Wymagane są dwa deploymenty, ze starą i nową wersją. Następnie manualnie zmieniamy wersje która działa na danym podzie.
