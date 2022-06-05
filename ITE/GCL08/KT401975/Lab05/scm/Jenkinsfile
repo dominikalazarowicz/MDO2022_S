@@ -1,0 +1,64 @@
+pipeline {
+	agent any
+	stages {
+		stage("Start") {
+			steps {
+				sh 'docker volume create vol'
+          	  	git 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git'
+				sh 'git checkout origin/KT401975'
+				sh 'git config --global user.email kewin@tarnowski.biz ; git config --global user.name kawelos'
+				sh 'git pull'
+				sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/buildfile ; docker build -t builder:latest .'
+			}
+		}
+      	stage('Build') {
+			agent {
+			    docker {
+				image 'builder:latest'
+				args '--mount source=vol,target=/vol -u root:root'
+			    }
+			}
+         	 steps {
+				  sh 'cd /vol && rm -r dotnet-core-xunit-example || true && git clone https://github.com/barisates/dotnet-core-xunit-example && cd dotnet-core-xunit-example && dotnet build --output ../artifacts/'        
+             }
+		}
+   		stage('Test') {
+			agent {
+			    docker {
+				image 'builder:latest'
+				args '--mount source=vol,target=/vol -u root:root'
+			    }
+			}
+		    steps {
+				sh 'ls -a'
+		 		sh 'cd /vol/dotnet-core-xunit-example && dotnet test'
+		 	}
+		}
+   		stage('Pre-deploy') {
+		    steps {
+		 		sh 'cd ITE/GCL08/KT401975/Lab05/dockerfiles/runfile ; docker build -t runner:latest .'    
+		 	}
+		}
+		stage('Deploy') {
+		    steps {
+				sh 'docker rm -f dep || true'
+				sh 'docker run -d --name dep --mount source=vol,target=/vol -u root:root runner:latest bash -c "cd /vol/artifacts && ./dotnet-core-xunit"'
+				sh 'sleep 15; exit $(docker inspect dep --format="{{.State.ExitCode}}")'
+				sh 'docker rm -f dep'
+		    }
+		}
+		stage('Publish') {
+			agent{
+				docker{
+					image 'mcr.microsoft.com/dotnet/sdk:3.1'
+					args '--mount source=vol,target=/vol -u root:root'
+				}
+			}
+		    steps {
+			    sh 'cd /vol/dotnet-core-xunit-example && dotnet publish -c Release -r win-x64 -p:UseAppHost=true --output ../publish/'
+			   	sh "cp -R /vol/artifacts ${WORKSPACE}/publish"
+			    archiveArtifacts 'publish/*'
+		    }
+		}
+     }
+}
