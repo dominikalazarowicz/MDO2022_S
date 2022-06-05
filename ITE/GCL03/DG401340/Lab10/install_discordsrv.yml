@@ -1,0 +1,19 @@
+---
+- hosts: virtual_lin
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install git
+      yum:
+        name: git
+        state: latest
+    - name: Install tools
+      yum:
+        name: maven
+        state: latest
+    - name: Pull DiscordSRV
+      git:
+        repo: 'https://github.com/DiscordSRV/DiscordSRV'
+        dest: /home/DiscordSRV
+    - name: Build DiscordSRV
+      command: mvn -f /home/DiscordSRV/pom.xml clean package

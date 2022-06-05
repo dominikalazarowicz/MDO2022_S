@@ -1,0 +1,19 @@
+---
+- name: Systemd container
+  hosts: virtual_lin
+  become: yes
+  become_method: sudo
+  tasks:
+    - name: Install rsync
+      yum:
+        name: rsync
+        state: latest
+    - name: Copty repo
+      become: no
+      synchronize:
+        src: /var/lib/spawns/systemd_repo
+        dest: /home/daniel
+    - name: Install systemd-container
+      yum:
+        name: systemd-container
+        state: latest

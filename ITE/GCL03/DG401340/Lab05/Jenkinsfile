@@ -30,22 +30,32 @@ pipeline {
         }
         stage("Deploy") {
             steps {
-                echo "Deploy"
+                sh "rm -rf ./artifacts && mkdir artifacts"
+                sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
+                sh "docker cp copy:/volume_out ./artifacts "
+                sh "docker rm copy"
+                sh "rm -rf ./artifacts/extract && mkdir artifacts/extract"
+                sh "cp -f ./artifacts/volume_out/target/DiscordSRV*.jar ./artifacts/extract && rm -f ./artifacts/extract/*sources* && cp -R ./artifacts/extract/. ./artifacts"
+                sh "rm -rf ./artifacts/volume_out && rm -rf ./artifacts/extract"
+                script {
+                    def commandStdout = sh(returnStdout: true, script: "jar tf ./artifacts/\$(ls ./artifacts) | grep plugin.yml")
+                    if(commandStdout.contains("plugin.yml"))
+                    {
+                        echo "Deployed! Plugin should work."
+                    }
+                }
             }
         }
         stage("Publish") {
             steps {
                 script {
                     if(params.promote) {
-                        sh "rm -rf ./artifacts && mkdir artifacts"
-                        sh "docker run -d --name copy --mount source=out,target=/volume_out busybox true"
-                        sh "docker cp copy:/volume_out ./artifacts "
-                        sh "docker rm copy"
-                        sh "ls -a"
-                        archiveArtifacts artifacts: "/artifacts/volume_out/*.jar"
+                        sh "find ./artifacts -type f -name '*' -printf \"mv '%h/%f' '%h/${params.version}_%f'\" | sh"
+                        sh "ls -a ./artifacts"
+                        archiveArtifacts artifacts: "artifacts/*.jar"
                     }
                     else {
-                        echo "Everything was successful, but not promoting to new version!"
+                        echo "Everything was successful, but not promoting to new version! (The promote check was not selected)"
                     }
                 }
             }
