@@ -66,6 +66,23 @@ spec:
 ### Odwołanie wykonanych czynności przez rollout undo
 ![This is an image](ssy/rollout-undo.png)
 
+## Kontrola wdrożenia
+### Komenda do uruchomienia skryptu:
+```
+sleep 60 && sh ./Lab11/script.sh
+```
+### skrypt
+```
+cmd() {
+    kubectl rollout status deployment/mongo-database
+}
+if cmd | grep -q 'successfully rolled out'; then
+  echo "Deployment is up and running"
+else
+  echo "Deployment is not running"
+fi
+```
+
 ### Strategia recreate
 recreate - pody za każdym razem zostają wyłączone i tworzeone są od nowa, wszystkie jednoczesnie
 ```
@@ -125,6 +142,6 @@ spec:
         - containerPort: 27017
 ```
 
-### Strategia rolling update
+### Strategia canary
 
 canary - Wymagane są dwa deploymenty, ze starą i nową wersją. Następnie manualnie zmieniamy wersje która działa na danym podzie.
