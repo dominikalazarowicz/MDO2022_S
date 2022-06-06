@@ -46,8 +46,8 @@ user --name=grrd --password=$y$j9T$yFMCvMPh/thMyMgeM5caSp5h$8SjrQSCDQ/MkabHGrhen
 %post
 echo "post-inst code"
 
-mkdir /root/'2048game'
-cd /root/'2048game'
+mkdir /root/2048game
+cd /root/2048game
 curl -o 2048 -L https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/raw/GS403353/INO/GCL02/GS403353/Lab09/2048
 
 %end
