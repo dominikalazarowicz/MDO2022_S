@@ -1,0 +1,6 @@
+FROM irssi_deps_1:latest
+
+RUN git clone https://github.com/irssi/irssi.git
+WORKDIR irssi
+RUN meson setup build
+RUN ninja -C build
