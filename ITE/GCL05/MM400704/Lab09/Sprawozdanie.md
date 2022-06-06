@@ -6,7 +6,7 @@ Na samym poczatku pobrałem Fedore z linku podanego przez prowadzącego na zaję
 
 Podaczas instalcji należało dokonac wyboru w opcajch dotyczących języka instalacji, partycji dysku oraz włączyć a nastepnie utworzyć konto root.
 
-![image](   )
+![image](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/MM400704/ITE/GCL05/MM400704/Lab09/1.PNG)
 -------
 
 W kolejnym kroku umieszczono artefakty z projektu na serwerze HTTP, udostępnienie artefaktu na localhosta.
