@@ -1,4 +1,5 @@
 # Sprawozdanie Lab09
+### Wenda Izabela
 ## Przygotowanie wdrożeń nienadzorowanych dla platform z pełnym OS
 
 - Instalacja systemu Fedora na VM, utworzenie nowej maszyny wirtualnej przydzielenie 30gb dynamicznej pamieci. Ustawienie pliku .iso, z ktorego startuje obraz.
