@@ -16,3 +16,31 @@ W kolejnym kroku artefakty z projektu umieszczono na serwerze, a udostępnienie 
 Zmieniono również ustawienia sieci na NAT oraz ustawiono adres dla naszego routera
 ---
 
+
+# Insalacja nienadzorowana:
+
+Zlokalizowanie pliku o nazwie anaconda-ks.cfg
+
+----
+
+Do naszego pliku dodajemy następujące elemnty:
+
+''''
+# Repo
+url --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=fedora-$releasever&arch=x86_64
+repo --name=updates --mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=updates-released-f$releasever&arch=x86_64
+''''
+
+''''
+%post
+mkdir app
+cd app
+wget http://10.0.2.2:8080/deth_1.0.0.tar.gz
+tar -xzf deth_1.0.0.tar.gz
+%end
+```
+
+Końcowym etapem jest przeprowadzenie kolejnej instalcji, podczas której dzięki wrpwadzonym wyżej zmianom system fedora może skorzystać 
+z ustawionej instalacji ale także z poprzedniej.
+
+Wnioskiem końcowym może byc fakt że dopiero trzecia wersja systemu współpracowała, a każda wcześniesza była obfita z błady.
