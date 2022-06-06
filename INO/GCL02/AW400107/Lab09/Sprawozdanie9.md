@@ -142,4 +142,4 @@ reboot
 **4** Uzyskane pliki na Fedorze, jak widać irssi zostało poprawnie zbudowane:
 ![enter image description here](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/AW400107/INO/GCL02/AW400107/Lab09/20.PNG?raw=true)
 
-Jednym z największych błędów które sprawił mi problem było odpalenie Fedory za pomocą linku, próbowałem kilka razy (dlatego nazwy feodry na screenach się różnią m.in Fedorv2, fedorkav5) tylko występował błąd krytyczny którego nie mogłem przez długi czas ogarnąc. Jak sie okazało zwiększenie pamięci przydzielonej dla fedory pomogło zlikwidować ten błąd.
+Jednym z największych błędów które sprawił mi problem było odpalenie Fedory za pomocą linku, próbowałem kilka razy (dlatego nazwy fedory na screenach się różnią m.in Fedorv2, fedorkav5) tylko występował błąd krytyczny którego nie mogłem przez długi czas ogarnąc. Jak sie okazało zwiększenie pamięci przydzielonej dla fedory pomogło zlikwidować ten błąd.
