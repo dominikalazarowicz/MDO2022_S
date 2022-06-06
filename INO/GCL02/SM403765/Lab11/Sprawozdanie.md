@@ -411,6 +411,13 @@ deployment "emoto-prod" successfully rolled out
 
 ### Recreate
 
+Strategia recreate najpierw zatrzymuje wszystkie maszyny oraz zaczyna tworzyć kolejno nowe z nowszą wersją aplikacji.
+
+Zaletą tego podejścia jest niski narzut, liczba podów nie przekracza takiej jaka była normalnie, nie generuje to kosztów w planie dostawcy usług cloudowych.
+
+Kolejna zaleta to w przypadku migracji bazy danych nie wystąpi przypadek że starsza wersja aplikacji będzie posiadała np. model nie odzwierciedlający tabel bazodanowych powodując błąd w bibliotekach ORM-owych
+
+Problemem jest chwilowa niedostępność serwisu trwająca tyle ile trwa uruchomienie kontenera zdolnego do pracy
 
 ```sh
 Waiting for deployment "emoto-prod" rollout to finish: 0 out of 4 new replicas have been updated...
@@ -421,11 +428,17 @@ Waiting for deployment "emoto-prod" rollout to finish: 2 of 4 updated replicas a
 Waiting for deployment "emoto-prod" rollout to finish: 3 of 4 updated replicas are available...
 deployment "emoto-prod" successfully rolled out
 ```
+Zrzut pokazuje chwilę w której wszystkie pody aktualizują aplikację będąc tym samym niedostępne
 
 ![](./rc1.jpg)
 
 ### Rolling Update
 
+W tym przypadku problem niedostępności jest eliminowany, ponieważ tworzone są pody z nową wersją aplikacji, uruchamiane a potem starsze niszczone tym samym zapewniając nieprzerwany dostęp do aplikacji
+
+W tym procesie są wykorzystywane dodatkowe zasoby, dodatkowe pody aczkolwiek ich nadmiar jest ustawialny. Może to generować koszty w planie usługodawcy
+
+Tutaj pojawia się problem z migracjami. Powiedzmy request get formularza zostanie pobrany ze starej wersji aplikacji a POST zostanie przekazany do nowej mogąc spowodować błąd serwera 
 
 
 ```sh
@@ -447,22 +460,64 @@ Waiting for deployment "emoto-prod" rollout to finish: 1 old replicas are pendin
 Waiting for deployment "emoto-prod" rollout to finish: 3 of 4 updated replicas are available...
 deployment "emoto-prod" successfully rolled out
 ```
+Zrzut pokazuje chwilę w której część podów jest zwalniana aby zrobić miejsce na nowe które są tworzone z nową wersją. Ponadto w tej chwili pody starsze działają normalnie
 
 ![](./ru1.jpg)
 
 
 ### canary
 
+Strategia ta  jest ściśle powiązana z network balancerem. Jest swego rodzaju promotorem bo bycia stabilnym buildem poprzez walidację ewentualnych błędów, problemów z wersją.
 
-pipeline 
-kuby podobne
+Jednym z podejść jest przekierowanie coraz to większego ruchu na nową wersję aplikacji w przypadku braku występowania błędów.
 
+Wymaga to stworzenia dwóch wdrożeń dlatego zmodyfikowałem pipeline jenkinsa:
 
-zle
+```jenkinsfile
+        stage('Kube deploy'){
+            agent any
+            when { tag "*" }
+            steps{
+                dir('./Panel.EmotoAgh.CI/Kube')
+                {
+                    sh 'minikube kubectl -- apply -f mykube.yaml'
+                    sh 'timeout 60 minikube kubectl -- rollout status deployment/emoto-prod'
+                }
+            }
+            post {
+                failure {
+                    sh 'minikube kubectl -- rollout undo deployment/emoto-prod'
+                }
+            }
+        }
+
+        stage('Kube deploy canary'){
+            agent any
+            when { branch "dev" }
+            steps{
+                dir('./Panel.EmotoAgh.CI/Kube')
+                {
+                    sh 'minikube kubectl -- apply -f mykubecanary.yaml'
+                    sh 'timeout 60 minikube kubectl -- rollout status deployment/emoto-prod-canary'
+                }
+            }
+            post {
+                failure {
+                    sh 'minikube kubectl -- rollout undo deployment/emoto-prod-canary'
+                }
+            }
+        }
+
+```
+
+Pozostaje tylko uwzględnić logikę network balancera oraz przełączanie wersji
+
+Plik konfiguracyjny wdrożenia jest identyczny. Różni się on tylko wersją obrazu i nazwą labeli
+
+Przypadek błędnego deploya
 
 ![](./canaryerr.jpg)
 
-prod
 ```sh
 + minikube kubectl -- apply -f mykube.yaml
 deployment.apps/emoto-prod created
@@ -475,7 +530,6 @@ Waiting for deployment "emoto-prod" rollout to finish: 3 of 4 updated replicas a
 deployment "emoto-prod" successfully rolled out
 ```
 
-canar
 
 ```sh
 
@@ -515,9 +569,9 @@ Finished: FAILURE
 
 ```
 
-
-
-OK
+Przypadek poprawnego buildu
+- canary - build w konfiguracji produkcyjnej, aczkolwiek wersja kodu z branchy dev (lepszą praktyką było by z branchy RC)
+- prod - aktualny build produkcyjny z wersją stabilną
 
 ![](./canaryok.jpg)
 
@@ -544,4 +598,96 @@ Waiting for deployment "emoto-prod-canary" rollout to finish: 1 old replicas are
 Waiting for deployment "emoto-prod-canary" rollout to finish: 1 old replicas are pending termination...
 Waiting for deployment "emoto-prod-canary" rollout to finish: 3 of 4 updated replicas are available...
 deployment "emoto-prod-canary" successfully rolled out
+```
+
+
+Chiałem dodatkowo skonfigurować balancer korzystając z ``` microk8s``` na nowej maszynie z 1 OCPU oraz 6gb RAM i 45Gb ROM odzwierciedlając bardziej realne środowisko aczkolwiek po kilku godzinach nie rozwiązałem [problemu](https://github.com/canonical/microk8s/issues/48 ) 
+
+Próbując z różnymi wersjami oraz z driverami kontenerów
+
+```sh
+ubuntu@test:~$ kubectl get nodes
+NAME   STATUS   ROLES    AGE   VERSION
+test   Ready    <none>   12h   v1.13.6
+```
+
+```sh
+ubuntu@test:~$  microk8s.kubectl get all --all-namespaces
+NAMESPACE     NAME                                                  READY   STATUS              RESTARTS   AGE
+kube-system   pod/heapster-v1.5.2-568d7cf546-d7625                  0/4     Pending             0          25s
+kube-system   pod/kube-dns-5b94978656-66k6c                         0/3     ContainerCreating   0          30s
+kube-system   pod/kubernetes-dashboard-6db5688c-hsnkk               0/1     Pending             0          24s
+kube-system   pod/monitoring-influxdb-grafana-v4-794c8fc877-c9rpt   0/2     Pending             0          25s
+
+NAMESPACE     NAME                           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
+default       service/kubernetes             ClusterIP   10.152.183.1     <none>        443/TCP             12h
+kube-system   service/heapster               ClusterIP   10.152.183.4     <none>        80/TCP              25s
+kube-system   service/kube-dns               ClusterIP   10.152.183.10    <none>        53/UDP,53/TCP       30s
+kube-system   service/kubernetes-dashboard   ClusterIP   10.152.183.99    <none>        443/TCP             25s
+kube-system   service/monitoring-grafana     ClusterIP   10.152.183.100   <none>        80/TCP              25s
+kube-system   service/monitoring-influxdb    ClusterIP   10.152.183.170   <none>        8083/TCP,8086/TCP   25s
+
+NAMESPACE     NAME                                             READY   UP-TO-DATE   AVAILABLE   AGE
+kube-system   deployment.apps/heapster-v1.5.2                  0/1     1            0           25s
+kube-system   deployment.apps/kube-dns                         0/1     1            0           30s
+kube-system   deployment.apps/kubernetes-dashboard             0/1     1            0           25s
+kube-system   deployment.apps/monitoring-influxdb-grafana-v4   0/1     1            0           25s
+
+NAMESPACE     NAME                                                        DESIRED   CURRENT   READY   AGE
+kube-system   replicaset.apps/heapster-v1.5.2-568d7cf546                  1         1         0       25s
+kube-system   replicaset.apps/kube-dns-5b94978656                         1         1         0       30s
+kube-system   replicaset.apps/kubernetes-dashboard-6db5688c               1         1         0       25s
+kube-system   replicaset.apps/monitoring-influxdb-grafana-v4-794c8fc877   1         1         0       25s
+ubuntu@test:~$
+```
+
+Idać dalej nadal z problemami
+
+```sh
+ubuntu@test:~$ sudo kubeadm config images pull
+W0606 10:42:52.703260   16466 version.go:103] could not fetch a Kubernetes version from the internet: unable to fetch file. URL: "https://dl.k8s.io/release/stable-1.txt", status: 403 Forbidden
+W0606 10:42:52.703580   16466 version.go:104] falling back to the local client version: v1.24.0
+failed to pull image "k8s.gcr.io/kube-apiserver:v1.24.0": output: E0606 10:42:53.001261   16504 remote_image.go:218] "PullImage from image service failed" err="rpc error: code = Unknown desc = failed to pull and unpack image \"k8s.gcr.io/kube-apiserver:v1.24.0\": failed to resolve reference \"k8s.gcr.io/kube-apiserver:v1.24.0\": pulling from host k8s.gcr.io failed with status code [manifests v1.24.0]: 403 Forbidden" image="k8s.gcr.io/kube-apiserver:v1.24.0"
+time="2022-06-06T10:42:53Z" level=fatal msg="pulling image: rpc error: code = Unknown desc = failed to pull and unpack image \"k8s.gcr.io/kube-apiserver:v1.24.0\": failed to resolve reference \"k8s.gcr.io/kube-apiserver:v1.24.0\": pulling from host k8s.gcr.io failed with status code [manifests v1.24.0]: 403 Forbidden"
+, error: exit status 1
+To see the stack trace of this error execute with --v=5 or higher
+
+```
+
+### Co ciekawe
+
+Polecenie uruchomione na infrastrukturze Oracle OCI
+```sh
+ubuntu@test:~$ wget https://dl.k8s.io/release/stable-1.txt
+--2022-06-06 10:45:10--  https://dl.k8s.io/release/stable-1.txt
+Resolving dl.k8s.io (dl.k8s.io)... 34.107.204.206, 2600:1901:0:26f3::
+Connecting to dl.k8s.io (dl.k8s.io)|34.107.204.206|:443... connected.
+HTTP request sent, awaiting response... 403 Forbidden
+2022-06-06 10:45:10 ERROR 403: Forbidden.
+
+ubuntu@test:~$
+
+```
+
+Polecenie uruchomione na lokalnym komputerze (wsl2)
+```sh
+szymon@Szymon-Desktop:~$  wget https://dl.k8s.io/release/stable-1.txt
+--2022-06-06 12:46:58--  https://dl.k8s.io/release/stable-1.txt
+Resolving dl.k8s.io (dl.k8s.io)... 34.107.204.206, 2600:1901:0:26f3::
+Connecting to dl.k8s.io (dl.k8s.io)|34.107.204.206|:443... connected.
+HTTP request sent, awaiting response... 302 Moved Temporarily
+Location: https://storage.googleapis.com/kubernetes-release/release/stable-1.txt [following]
+--2022-06-06 12:46:59--  https://storage.googleapis.com/kubernetes-release/release/stable-1.txt
+Resolving storage.googleapis.com (storage.googleapis.com)... 172.217.16.48, 142.250.203.144, 142.250.75.16, ...
+Connecting to storage.googleapis.com (storage.googleapis.com)|172.217.16.48|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 7 [text/plain]
+Saving to: ‘stable-1.txt’
+
+stable-1.txt                  100%[=================================================>]       7  --.-KB/s    in 0s
+
+2022-06-06 12:46:59 (977 KB/s) - ‘stable-1.txt’ saved [7/7]
+
+szymon@Szymon-Desktop:~$ cat stable-1.txt
+v1.24.1
 ```
