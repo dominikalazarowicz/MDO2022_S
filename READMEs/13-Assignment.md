@@ -19,7 +19,7 @@
  
 ### Zapoznanie z platformą
  - Konto do odblokowania za pomocą studenckiego konta Microsoft:
-   https://azure.microsoft.com/en-us/free/
+   https://azure.microsoft.com/en-us/free/ (personal) lub przez Panel AGH: https://panel.agh.edu.pl/ (student)
  - Cennik do przeczytania (ze zrozumieniem!!):
    https://azure.microsoft.com/en-us/pricing/details/container-instances/ 
  - Azure Cloud Shell dla powłok Bash i PowerShell, narzędzie potrzebne do wdrożenia:
