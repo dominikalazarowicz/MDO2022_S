@@ -1,0 +1,18 @@
+# Sprawozdanie 4
+
+# Michał Mendrek, grupa nr 5 400704
+
+Na początku wykorzytsąłem udostępniony z zajęć link do pobrania Fedory, którą zainstalowałem na komputerze.
+
+Podczas instalacji wybrane zostały opcję dotyczące języka instalacji, partycje dysku oraz utworzono i włączono konto dla roota.
+
+
+
+
+
+
+W kolejnym kroku artefakty z projektu umieszczono na serwerze, a udostępnienie nastąpiło na localhostcie.
+--- 
+Zmieniono również ustawienia sieci na NAT oraz ustawiono adres dla naszego routera
+---
+
