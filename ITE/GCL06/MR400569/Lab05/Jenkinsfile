@@ -1,12 +1,30 @@
 pipeline {
     agent any
 
+    parameters {
+        string(name: 'VERSION', defaultValue: '1.0.0', description: '')
+        booleanParam(name: 'PROMOTE', defaultValue: true, description: '')
+    }
+
     stages {
+        stage('Clone') {
+            steps {
+                sh '''
+                    docker container prune -f
+                    docker volume prune -f
+                    docker volume create --name in_vol
+                    docker build -t clone_ag -f ITE/GCL06/MR400569/Lab05/clone_dockerfile .
+                    docker run -v "in_vol:/in_vol" clone_ag
+                '''
+            }
+        }
+
         stage('Build') {
             steps {
                 sh '''
-                    docker build -t build_ag ITE/GCL06/MR400569/Lab03/building
-                    docker run build_ag
+                    docker build -t deps_ag -f ITE/GCL06/MR400569/Lab05/deps_dockerfile .
+                    docker build -t build_ag -f ITE/GCL06/MR400569/Lab05/build_dockerfile .
+                    docker run -v "in_vol:/in_vol" -v "${PWD}:/out_vol" build_ag
                 '''
             }
         }
@@ -14,9 +32,31 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
-                    docker build -t test_ag --build-arg imagename=build_ag ITE/GCL06/MR400569/Lab03/testing
-                    docker run test_ag
+                    docker build -t test_ag -f ITE/GCL06/MR400569/Lab05/test_dockerfile .
+                    docker run -v "in_vol:/in_vol" test_ag
                 '''
+            }
+        }
+	
+        stage('Deploy') {
+            steps {
+                sh '''
+                    docker build -t deploy_ag -f ITE/GCL06/MR400569/Lab05/deploy_dockerfile .
+                    docker run -v "${PWD}:/in_vol" deploy_ag
+                '''
+            }
+        }
+
+        stage("Publish") {
+            when {
+                environment name: 'PROMOTE', value: "true"
+            }
+            steps {
+                sh '''
+                    gzip < ag > "ag_${VERSION}.gz"
+                    sha1sum "ag_${VERSION}.gz" > "ag_${VERSION}.gz.sha1"
+                '''
+                archiveArtifacts artifacts: "ag_${VERSION}.gz, ag_${VERSION}.gz.sha1"
             }
         }
     }
