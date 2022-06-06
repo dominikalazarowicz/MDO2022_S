@@ -13,7 +13,7 @@ W kolejnym kroku umieszczono artefakty z projektu na serwerze HTTP, udostępnien
 Należało również zmienic ustawienia sieci na NAT i ustawić adres routera.
 -------
 
-# - Instalcja nienadzorowana
+# Instalcja nienadzorowana
 
 Odszukanie pliku o nazwie anaconda-ks.cfg
 
