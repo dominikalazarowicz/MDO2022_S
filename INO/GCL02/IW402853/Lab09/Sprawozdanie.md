@@ -84,8 +84,13 @@
   reboot
 ```
 - Przeprowadzenie drugiej instalacji fedory, tym razem zautomatyzowanej. Na początku instalacji rozwinąc pełne opcje za pomocą tab i wprowadzić inst.ks=link do pliku anaconda.
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/1406c4c5f6373522531cf3151109e128a7f28eac/INO/GCL02/IW402853/Lab09/druga%20instalacja%20fedora%20inst-ks.png)
+
 -Instalacja
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/1406c4c5f6373522531cf3151109e128a7f28eac/INO/GCL02/IW402853/Lab09/zaczecie%20instaalcji.png)
+
 -IRssi
+
 ![](https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S/blob/1406c4c5f6373522531cf3151109e128a7f28eac/INO/GCL02/IW402853/Lab09/dzialajce%20irssii.png)
