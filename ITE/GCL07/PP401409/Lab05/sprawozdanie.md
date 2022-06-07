@@ -366,8 +366,9 @@ przejście do katalogu w którym znajduje się artefakt i uruchomienie komendy:
 ``` sudo dpkg –i program.deb ```
 ![](artefakt.png)
 
-##Sprawdzenie czy instalacja programu przebiegła pomyślnie:
+## Sprawdzenie czy instalacja programu przebiegła pomyślnie:
 przejście do folderu home/users/Program i uruchomeienie programu za pomocą komendy ``` ./program ```
+
 ![](wynikProgramu.png)
 
 #Diagram aktywności
