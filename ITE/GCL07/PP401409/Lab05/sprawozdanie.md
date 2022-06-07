@@ -210,7 +210,7 @@ pipeline {
             agent any
             steps
             {
-	    //echo("Testy umieszczone w tym miejscu sie wysypywaly);
+	    	    echo'Testy umieszczone w tym miejscu sie wysypywaly'
         	    //sh '(cd pr;./runTests)'
             }
         }
