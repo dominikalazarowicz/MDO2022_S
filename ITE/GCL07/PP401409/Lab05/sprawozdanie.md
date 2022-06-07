@@ -337,19 +337,42 @@ Artefakt
 ![](bledyiProblemy.png)
 
 6. Artefakt
-## Pobranie artefaktu na system 
-## Instalacja artefaktu odbywa się za pomocą komendy:
+## Pobranie artefaktu na system Fedora
+## Instalacja artefaktu na Fedorze
 
-```
-sudo dpkg –i Downloads/program.deb
-```
+W systemie Fedora nie są obsługiwane pliki .deb. Aby zainstalować artefakt należy najpierw wykonać następujące kroki:
+Instalacja alien:
+``` sudo dnf install alien```
+
+Konwertowanie pliku .deb na plik rpm
+```sudo alien --to-rpm program.deb```
+
+Konwertowanie nie przebiegło pomyślnie. Pojawił się komunikat:
+```Control file couldn't be read! at /usr/share/perl5/vendor_perl/Alien/Package/Deb.pm line 234.```
+
+## Plan B - uruchomienie artefaktu na Ubuntu 
+1. Przesłanie artefaktu na gita, w celu łatwiejszego pobrania na system docelowy.
+2. Uruchomienie kontenera z systemem Ubuntu
+``` sudo docker run -it --name ubuntuartefakt ubuntu ```
+
+instalacja gita i update aplikacji:
+``` apt-get update ```
+``` apt-get install git ```
+
+4. Pobranie artefaktu i uruchomienie komendy odpalającej
+``` git clone https://github.com/vkpam/DevOpsProgramLab03 ```
+
+przejście do katalogu w którym znajduje się artefakt i uruchomienie komendy:
+``` sudo dpkg –i program.deb ```
+![](artefakt.png)
 
 ##Sprawdzenie czy instalacja programu przebiegła pomyślnie:
-
+przejście do folderu home/users/Program i uruchomeienie programu za pomocą komendy ``` ./program ```
+![](wynikProgramu.png)
 
 #Diagram aktywności
 
 ![](diagramAktywnosci.png)
 
-#Problemy 
-Największym problemem w przypadku tego projektu była maszyna wirtualna, która wysypywała się nawet podczas zwykłego robienia screenshota lub wpisaniu komendy w terminal. 
+## Problemy 
+Największym problemem w przypadku tego projektu była maszyna wirtualna, która wysypywała się nawet podczas zwykłego robienia screenshota lub wpisaniu komendy w terminal. Kolejnym problemem było uruchomienie artefaktu na Fedorze.
