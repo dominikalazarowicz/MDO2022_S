@@ -1,4 +1,4 @@
-# Sprawozdanie Lab11 i Lab12 Damian Zyznar ITE-GCL08
+# Sprawozdanie Lab11 Damian Zyznar ITE-GCL08
 
 <br>
 
@@ -143,3 +143,139 @@ spec:
 Utworzenie Pod'a i przedstawienie działania:
 
 ![deployment](../Lab11/screenshots/deployment.png)
+
+# Sprawozdanie Lab12 Damian Zyznar ITE-GCL08
+pods_dashboard
+
+Modyfikacja utworoznego w poprzednich laboratoriach pliku Pod i zmienie ilości replik do liczby 4.
+
+```
+spec:
+  replicas: 4
+```
+
+Utworzenie pod'a
+
+![pod_create](./screenshots/pod_create.png)
+
+Zbadanie stanu wdrożenia za pomocą ```kubectl rollout```, oraz wyświetlenie podów:
+
+![pod_rollout](./screenshots/pod_rollout.png)
+
+Wyświetlenie statusu w dashboardzie:
+
+![pods_dashboard](./screenshots/pods_dashboard.png)
+
+Zmiana ilości replik na 9, utworzenie poda i sprawdzenie statusu:
+
+![kubectl_9_replicas](./screenshots/kubectl_9_replicas.png)
+
+Dashboard:
+
+![dashboard_9](./screenshots/dashboard_9.png)
+
+Zmiana ilości replik na 1, utworzenie poda i sprawdzenie statusu:
+
+![kubectl_1](./screenshots/kubectl_1.png)
+
+Dashboard:
+
+![dashboard_1](./screenshots/dashboard_1.png)
+
+Oraz 0 replik:
+
+![dashboard_0](./screenshots/dashboard_0.png)
+
+# Przygotowanie nowego obrazu
+
+W celu skorzystania z DockerHub'a zalogowano się na maszynie wirtualnej przy pomocy klucza sha.
+
+![dockerhub_login](./screenshots/dockerhub_login.png)
+
+Utworzenie obrazu i wypchnięcie go na dockerhub
+
+![docker_push](./screenshots/docker_push.png)
+
+Usunięcie kilku niezbędnych skryptów w programie, oraz utworzenie obrazu i wypchnięcie go na dockerhub.
+
+![docker_build_fail](./screenshots/docker_build_fail.png)
+
+Udowodnienie istnienia obrazów w zdalnym repozytorium:
+
+![dockerhub](./screenshots/dockerhub.png)
+
+Zmiana w pliku definicji pod.yml obrazu na ten obierany z dockerguba, oraz usunięcie linii ImagePullPolicy: Never. Teraz jeśli w repozytorium lokalnym nie będzie obrazu, to zostanie on pobrany z repozytorium z dockerhub. 
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: express
+  labels:
+    app: express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: express
+  template:
+    metadata:
+      labels:
+        app: express
+    spec:
+      containers:
+      - name: express
+        image: damczi17/express:latest
+        ports:
+        - containerPort: 3000
+```
+
+Działanie w dashboardzie:
+
+![dashboard_latest](./screenshots/dashboard_latest.png)
+
+Zmiana obrazu na błędny i działanie w dashboardzie:
+
+![dashboard_fail](./screenshots/dashboard_fail.png)
+
+Wyświetlono hisotrii poprzednich wdrożeń i wyświetenie szczegółów wdrożenia 1:
+
+![kubectl_revision](./screenshots/kubectl_revision.png)
+
+Przywrócenie 1 wdrożenia:
+
+![rollback_undo](./screenshots/rollback_undo.png)
+
+# Kontrola wdrożenia
+
+W tym kroku utworzono prosty skrypt w bashu, który sprawdza czas tworzenia się wdrożenia. Jeśli czas jest większy niż 60 sekund skrypt zwraca informacje o błędzie.
+
+```
+#!/bin/bash
+
+if [ $# -ne 2 ]; then
+	echo "This script requires exactly 2 arguments."
+	exit 1
+fi
+
+name=$1
+deployment=$2
+
+kubectl apply -f $name
+timeout 60 /usr/local/bin/minikube kubectl rollout status $deployment
+
+if [ $? -eq 0 ]; then
+	echo "Deployment was successful."
+    exit 0
+else
+	echo "Deployment failed."
+    exit 1
+fi
+```
+
+Działanie skryptu:
+
+![script](./screenshots/script.png)
+
+
+# Strategie wdrożenia
