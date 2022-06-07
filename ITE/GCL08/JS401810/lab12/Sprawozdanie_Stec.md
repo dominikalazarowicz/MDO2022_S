@@ -238,6 +238,7 @@ spec:
 spec:
   replicas: 0
 ```
+![x](./27_replicas_0.png)
 
 - zastosowanie "nowej" wersji obrazu - tej, z tagiem modified z ustawioną liczbą replik równą 1.
 ```
