@@ -35,7 +35,7 @@ Przy pierwszej próbie uruchomienia pojawił się problem, minikube się nie uru
 
 ![x](../lab11/7_minikube_wymagania.png)
 
-Jak można zauważyć nie na każdym komputerze możliwa jest instalacja minikube. W moim przypadku największy problem stanowiło 20GB wolnej przestrzeni w VM, co zmusiło mnie to powiększenia przydzielonej przestrzeni na dysku. Na kalkulatorze również nie jest możliwe uruchomienie, ponieważ w wymaganiach zawarta jest informacja o co najmniej 2 wymaganych rdzeniach w CPU. Co prawda większość nowych procesorów nie schodzi poniżej standardów 4 rdzenie - 8 wątków, lecz na starszym sprzęcie może pojawiać się ten problem. Wyamga także połączenia z środowiskiem konteneryzacji np Dockerem.
+Jak można zauważyć nie na każdym komputerze możliwa jest instalacja minikube. W moim przypadku największy problem stanowiło 20GB wolnej przestrzeni w VM, co zmusiło mnie to powiększenia przydzielonej przestrzeni na dysku. Na kalkulatorze również nie jest możliwe uruchomienie, ponieważ w wymaganiach zawarta jest informacja o co najmniej 2 wymaganych rdzeniach w CPU. Co prawda większość nowych procesorów nie schodzi poniżej standardów 4 rdzenie - 8 wątków, lecz na starszym sprzęcie może pojawiać się ten problem. Wyamga także połączenia z środowiskiem konteneryzacji np Dockerem. W moim przypadku na początku semstru, przy tworzeniu VM przydzieliłem jej 50GB pamięci, 4GB RAMu oraz 2 rdzenie, więc wymagania były spełnione.
 
 - w dalszej części zapoznałem się z 
 koncepcjami funkcji wyprowadzanych przez kubernetesa. Przykładowo `pod` stanowi najmniejszą jednostke obliczeniową, które można tworzyć i zarządzać w kubernetesie (grupa kontenerów ze współdzielonymi pamięci masowej i sieciowej).
@@ -173,4 +173,136 @@ Wykazanie działania na dashboardzie:
 
 ![x](../lab11/19_pods_dashboard.png)
 
+# **LAB12**
+# **Część 5: Konwersja wdrożenia ręcznego na wdrożenie deklaratywne YML**
+W posiadanym z poprzednich zajęć pliku `pod2.yml` zmodyfikowałem ilość replik na 4.
 
+```
+spec:
+  replicas: 4
+```
+
+Następnie rozpoczynam wdrożenie poleceniem `kubectl apply` oraz badam jego stan za pomocą polecenia `kubectl rollout status`.
+
+![x](./20_apply_rollout.png)
+
+Przedstawienie poprawności działania na daschboardzie - jak można zauważyć utworzone zostały 4 pody.
+
+![x](./21_minikube_dashboard.png)
+
+
+# **Część 6: Przygotowanie nowego obrazu**
+Na początek zalogowałem się na swoje konto na maszynie.
+
+![x](./22_dockerhub_login.png)
+
+Do wdrożenia przygotowałem dwa obrazy, które zostaną zpushowane na Dockerhuba do swojego repozytorium.
+
+Pierwszy obraz z tagiem modified, który jest zwyczajnym obrazem aplikacji, można go nazwać "latest".
+
+![x](./22_dockerhub_push1.png)
+
+Drugi obraz z tagiem failed nie zawiera kluczowych skryptów do uruchomienia aplikacji.
+
+![x](./23_image_fail.png)
+
+Próba uruchomienia lokalnie kontenera na podstawie tego obrazu, jak widać nieudana.
+
+![x](./23_container_failed.png)
+
+Wyświetlenie spushowanych obrazów na Dockerhubie:
+
+![x](./24_dockerhub_images.png)
+
+# **Część 7: Zmiany w deploymencie**
+Ta cześć polegała na aktualizowaniu pliku yml i obserwowaniu zachodzących zmian w trakcie tworzenia wdrożeń.
+
+- zmniejszenie liczbę replik do 10.
+```
+spec:
+  replicas: 10
+```
+
+![x](./25_10_replicas.png)
+
+- zmniejszenie liczbę replik do 1.
+```
+spec:
+  replicas: 1
+```
+
+![x](./26_replicas_1.png)
+
+- zmniejszenie liczbę replik do 0.
+```
+spec:
+  replicas: 0
+```
+
+- zastosowanie "nowej" wersji obrazu - tej, z tagiem modified z ustawioną liczbą replik równą 1.
+```
+spec:
+      containers:
+        - name: myapp
+          image: luyson/nodejs_app:modified
+```
+
+![x](./28_modified_img_apply.png)
+
+- zastosowanie "starej" wersji obrazu - tej, z tagiem failed z ustawioną liczbą replik równą 1.
+```
+spec:
+      containers:
+        - name: myapp
+          image: luyson/nodejs_app:failed
+```
+
+![x](./29_failed_img_apply.png)
+
+Następnie trzeba było dokonać przywrócenia poprzednich wersji wdrożeń. Tu z pomocą przychodzi polecenie `kubectl rollout history`, które umożliwia wyświetlenie historii wersji. Dodatkowo za pomocą `kubectl rollout undo` mamy możliwość powrotu do poprzedniej wersji. Powrót do wybranej wersji umożliwia dopisanie w poleceniu  `--to-revision=2`.
+
+![x](./30_rollout_history.png)
+
+![x](./30_part2.png)
+
+![x](./31_rollout_undo.png)
+
+Jedna wersja została zbudowana na podstawie obrazu utworzonego już wcześniej, w lab11 lokalnie, druga na podstawie obrazu pushniętego na Dockerhuba.
+
+# **Część 8: Kontrola wdrożenia**
+
+Nastepna część zadania polegała na utworzeniu prostego skryptu, którego zadaniem było sprawdzanie w czasie 60s czy wdrożenie zdążyło się wdrożyć.
+
+```
+#!/bin/bash
+
+if [ $# -ne 1 ]; then
+	echo "Please enter an argument!"
+	exit 1
+fi
+
+name=$1
+
+kubectl apply -f pod2.yml
+timeout 59 /usr/local/bin/minikube kubectl rollout status $name
+
+if [ $? -eq 0 ]; then
+	echo "SUCCESS =)"
+else
+	echo "FAIL =("
+fi
+```
+
+Na początek trzeba podać argument, aby możliwe było rozpoczęcie wdrożenia przy pomocy `apply`. Do odmierzania czasu oczekiwania na wykonanie się wdrożenia wykorzystuję funkcję `timeout` podając jej jako argument czas w sekundach, ścieżkę do zainstalowanego minikube oraz zbadanie stanu wdrożenia `kubectl rollout status`, co umożliwia upewnienie się czy wdrożenie zostało sfinalizowane. Powodzenie lub niepowodzenie wdrożenia sprawdzam za pomocą kontrukcji warunkowej if. 
+
+- sukces przy wdrożeniu obrazu z tagiem modified.
+
+![x](./32_script_success.png)
+
+- niepowodzenie przy wdrożeniu obrazu z tagiem failed.
+
+![x](./33_script_fail.png)
+
+# **Część 9: Strategie wdrożeniowe**
+
+CDN
