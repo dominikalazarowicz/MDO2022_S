@@ -348,6 +348,7 @@ sudo dpkg –i Downloads/program.deb
 
 
 #Diagram aktywności
+
 ![](diagramAktywnosci.png)
 
 #Problemy 
