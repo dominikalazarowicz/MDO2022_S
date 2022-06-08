@@ -11,7 +11,7 @@
 alias kubectl="minikube kubectl --"
 ```
  * Uruchom Kubernetes, pokaż działający kontener/worker
- ![image](screens/1.PNG "kubernetes")
+ - ![image](screens/1.PNG "kubernetes")
  * Zmityguj problemy wynikające z wymagań sprzętowych lub odnieś się do nich (względem dokumentacji)
  Brak problemów mam dobrego laptopa :)
  * Uruchom Dashboard, otwórz w przeglądarce, przedstaw łączność
