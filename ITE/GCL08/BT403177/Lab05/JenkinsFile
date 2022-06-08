@@ -15,7 +15,7 @@ pipeline {
         echo 'Cloning cropperjs'
         sh 'docker volume create input-volume'
         sh 'docker rm tempContainer || true'
-        sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/ mkdir cropperjs || git clone https://github.com/fengyuanchen/cropperjs ;cp -R cropperjs /myapp; ls /myapp"'
+        sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/; mkdir cropperjs || git clone https://github.com/fengyuanchen/cropperjs ;cp -R cropperjs /myapp; ls /myapp"'
       }
     }
 
