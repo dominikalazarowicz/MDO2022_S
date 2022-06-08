@@ -30,7 +30,7 @@ spec:
 ![](./screenshots/apply_rollout.png)  
 ![](./screenshots/dashboard_apply.png)  
 
-## Przygotowanie nowego obrazu
+## Przygotowanie nowego obrazu  
  * Wybranie obrazu:  
 
 Został wybrany obraz z DockerHub, ponieważ mój projekt nie wyprowadzał portów, przez co był niekompatybilny z zadaniami. Wybrany projekt to: [itzg/minecraft-server](https://hub.docker.com/r/itzg/minecraft-server), jedna wersja to latest (ta bez określonego tagu), a druga to 2022.3.0.
