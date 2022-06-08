@@ -123,12 +123,15 @@ minikube kubectl -- wait pod --for=condition=Ready -l app=$labelname
  * Przygotuj wersje wdrożeń stosujące następujące strategie wdrożeń
    * Recreate
   Usuwa kontenery przy update bez pewosci czy aplikacja bedzie dzialac moze powodowac downtime
+  
 ![image](screens/17.png "rollout")
    * Rolling Update
  Usuwa jeden reszta działa ok i kiedy wiadomo że updatowany pod jest gotowy bierze się za następny
+ 
 ![image](screens/18.png "rollout")
    * Canary Deployment workload
  Używamy 2 różnych wersji na raz w zależności od etykiety wybranej przy update najczesciej wersja stable i canary
+ 
 ![image](screens/19.png "rollout")
 
 
