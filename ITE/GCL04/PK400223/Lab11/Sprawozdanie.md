@@ -36,6 +36,7 @@ alias kubectl="minikube kubectl --"
  * Wyprowadź port celem dotarcia do eksponowanej funkcjonalności
  * ```kubectl port-forward <nazwa-wdrożenia> <LO_PORT>:<PODMAIN_CNTNR_PORT> ```
  * Przedstaw komunikację z eskponowaną funkcjonalnością
+ 
  ![image](screens/5.png "dash")
  
  ![image](screens/6.png "pong")
