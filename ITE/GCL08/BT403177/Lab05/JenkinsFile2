@@ -15,7 +15,7 @@ pipeline {
         echo 'Cloning cropperjs'
         sh 'docker volume create input-volume'
         sh 'docker rm tempContainer || true'
-        sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/; mkdir apollo-server || git clone https://github.com/apollographql/apollo-server ;cp -R apollo-server /myapp; ls /myapp"'
+        sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/; mkdir cropperjs || git clone https://github.com/fengyuanchen/cropperjs ;cp -R cropperjs /myapp; ls /myapp"'
       }
     }
 
@@ -23,10 +23,10 @@ pipeline {
       steps {
         echo 'Buildig cropperjs with npm'
         dir("${params.Dockerfiles}") {
-          sh 'docker build . -t apollo-server -f Dockerfile'
+          sh 'docker build . -t cropperjs -f Dockerfile'
           sh 'docker volume create output-volume'
-          sh 'docker rm apollo-server-build || true'
-          sh 'docker run --rm --name apollo-server-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" apollo-server bash -c "cd /myapp/apollo-server && npm install; cp -R /myapp/apollo-server /myapp_build"'
+          sh 'docker rm calculator-build || true'
+          sh 'docker run --rm --name cropperjs-build --mount "type=volume,src=input-volume,dst=/myapp" --mount "type=volume,src=output-volume,dst=/myapp_build" cropperjs bash -c "cd /myapp/cropperjs && npm install; cp -R /myapp/cropperjs /myapp_build"'
         }
       }
     }
@@ -35,8 +35,8 @@ pipeline {
       steps {
         echo 'Testing cropperjs with npm'
         dir("${params.Dockerfiles}") {
-          sh 'docker rm apollo-server-test || true'
-          sh 'docker run --rm --name apollo-server-test --mount "type=volume,src=input-volume,dst=/myapp_test" apollo-server bash -c "cd /myapp_test/apollo-server && npm test"'
+          sh 'docker rm cropperjs-test || true'
+          sh 'docker run --rm --name cropperjs-test --mount "type=volume,src=input-volume,dst=/myapp_test" cropperjs bash -c "cd /myapp_test/cropperjs && npm install && npm test"'
         }
       }
     }
@@ -44,8 +44,8 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying cropperjs'
-        sh 'docker rm -f apollo-server-deploy || true'
-        sh 'docker run --name apollo-server-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" apollo-server bash -c "cd /usr/local/myapp/apollo-server && npm run"'
+        sh 'docker rm -f cropperjs-deploy || true'
+        sh 'docker run --name cropperjs-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" cropperjs bash -c "cd /usr/local/myapp/cropperjs && npm run"'
         sh 'sleep 5; exit $(docker inspect cropperjs-deploy --format="{{.State.ExitCode}}")'
         sh 'docker rm -f cropperjs-deploy'
       }
