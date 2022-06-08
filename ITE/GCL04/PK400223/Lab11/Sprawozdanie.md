@@ -12,10 +12,12 @@ alias kubectl="minikube kubectl --"
 ```
  * Uruchom Kubernetes, pokaż działający kontener/worker
  ![image](screens/1.png "kubernetes")
+ 
  * Zmityguj problemy wynikające z wymagań sprzętowych lub odnieś się do nich (względem dokumentacji)
  Brak problemów mam dobrego laptopa :)
  * Uruchom Dashboard, otwórz w przeglądarce, przedstaw łączność
   ![image](screens/2.png "dashboard")
+  
  * Zapoznaj się z koncepcjami funkcji wyprowadzanych przez kubernetesa (pod, deployment itp)
 
 ### Uruchamianie oprogramowania
@@ -25,14 +27,17 @@ alias kubectl="minikube kubectl --"
  ```
  label został dodany celem pozniejszego uzywania go do ReplicaSetow
   ![image](screens/3.png "run pod")
+  
  * Kontener uruchomiony w minikubie zostanie automatycznie ubrany w pod.
  * ```minikube kubectl run -- <nazwa-wdrożenia> --image=<obraz-docker> --port=<wyprowadzany port> --labels app=<nazwa-wdrożenia>```
  * Przedstaw że pod działa (via Dashboard oraz kubectl)
   ![image](screens/4.png "dash")
+  
  * Wyprowadź port celem dotarcia do eksponowanej funkcjonalności
  * ```kubectl port-forward <nazwa-wdrożenia> <LO_PORT>:<PODMAIN_CNTNR_PORT> ```
  * Przedstaw komunikację z eskponowaną funkcjonalnością
  ![image](screens/5.png "dash")
+ 
  ![image](screens/6.png "pong")
 
  
