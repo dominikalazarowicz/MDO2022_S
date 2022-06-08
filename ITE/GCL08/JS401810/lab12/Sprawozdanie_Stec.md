@@ -217,7 +217,7 @@ Wyświetlenie spushowanych obrazów na Dockerhubie:
 # **Część 7: Zmiany w deploymencie**
 Ta cześć polegała na aktualizowaniu pliku yml i obserwowaniu zachodzących zmian w trakcie tworzenia wdrożeń.
 
-- zmniejszenie liczbę replik do 10.
+- zwiększenie liczbę replik do 10.
 ```
 spec:
   replicas: 10
