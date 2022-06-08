@@ -77,6 +77,7 @@ pipeline {
       steps {
         sh 'rm -rf /usr/local/copy/* || true'
         sh "cd /usr/local/myapp/apollo-server && npm version --allow-same-version ${params.Version} && npm pack"
+        sh "ls /usr/local/myapp/apollo-server"
         sh "mv /usr/local/myapp/apollo-server/apollo-server-${params.Version}.tgz /usr/local/copy"
         dir('/var/jenkins_home/workspace/artifacts') {
           archiveArtifacts artifacts: "apollo-server-${params.Version}.tgz"
