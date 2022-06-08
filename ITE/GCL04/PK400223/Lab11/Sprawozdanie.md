@@ -75,10 +75,11 @@ spec:
  * Upewnij się, że posiadasz wdrożenie z poprzednich zajęć zapisane jako plik
  Plik podany powyżej w ostatnim punkcie z poprzedniego sprawozdania
  * Wzbogać swój obraz o 4 repliki
-  ![image](screens/9.png "replicas")
+ 
+![image](screens/9.png "replicas")
  * Rozpocznij wdrożenie za pomocą ```kubectl apply```
  * Zbadaj stan za pomocą ```kubectl rollout status```
-   ![image](screens/10.png "rollout")
+![image](screens/10.png "rollout")
 
 
 ### Przygotowanie nowego obrazu
@@ -90,19 +91,19 @@ spec:
  * Aktualizuj plik YAML z wdrożeniem i przeprowadzaj je ponownie po zastosowaniu następujących zmian:
    * zwiększenie replik
    * zmniejszenie liczby replik do 1
-    ![image](screens/11.png "replicas")
-    ![image](screens/12.png "replicas")
+ ![image](screens/11.png "replicas")
+ ![image](screens/12.png "replicas")
    * zmniejszenie liczby replik do 0
-    ![image](screens/13.png "replicas")
-    ![image](screens/14.png "replicas")
+ ![image](screens/13.png "replicas")
+ ![image](screens/14.png "replicas")
    * Zastosowanie nowej wersji obrazu
    * Zastosowanie starszej wersji obrazu
  * Przywracaj poprzednie wersje wdrożeń za pomocą poleceń
    * ```kubectl rollout history```
    * ```kubectl rollout undo```
   Zmieniono z wersji 7 na 6 poprzez undo, można to zaobserwować poprzez usunięcie rewizji w historii ponieważ została zduplikowana przez wersje live
-    ![image](screens/15.png "rollout")
-    ![image](screens/16.png "rollout")
+ ![image](screens/15.png "rollout")
+ ![image](screens/16.png "rollout")
 
 ### Kontrola wdrożenia
  * Napisz skrypt weryfikujący, czy wdrożenie "zdążyło" się wdrożyć (60 sekund)
@@ -119,13 +120,13 @@ minikube kubectl -- wait pod --for=condition=Ready -l app=$labelname
  * Przygotuj wersje wdrożeń stosujące następujące strategie wdrożeń
    * Recreate
   Usuwa kontenery przy update bez pewosci czy aplikacja bedzie dzialac moze powodowac downtime
-    ![image](screens/17.png "rollout")
+![image](screens/17.png "rollout")
    * Rolling Update
  Usuwa jeden reszta działa ok i kiedy wiadomo że updatowany pod jest gotowy bierze się za następny
-    ![image](screens/18.png "rollout")
+![image](screens/18.png "rollout")
    * Canary Deployment workload
  Używamy 2 różnych wersji na raz w zależności od etykiety wybranej przy update najczesciej wersja stable i canary
-    ![image](screens/19.png "rollout")
+![image](screens/19.png "rollout")
 
 
 
