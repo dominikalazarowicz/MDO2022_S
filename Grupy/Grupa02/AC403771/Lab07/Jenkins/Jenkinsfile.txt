@@ -29,6 +29,7 @@ tools {nodejs "nodejs"}
         stage('Deploy') { 
             steps {
                 echo 'Deploying'
+		sh 'docker build -t delta-chat -f Dockerfile-deploy .'
             }
         }
     }
