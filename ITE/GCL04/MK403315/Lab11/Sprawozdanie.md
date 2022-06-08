@@ -33,7 +33,10 @@ EXPOSE 8000
 CMD [ "/go_app" ]
 ```
 
-6. `sudo docker build -t go_devops_app:1.0.1 .`
+6. Budowanie obrazu dockera
+```
+sudo docker build -t go_devops_app:1.0.1 .
+```
 7. Zbudowano i dodano image na Dockerhuba korzystając z poniższych poleceń
 
 ```
@@ -55,6 +58,66 @@ kubectl run wdrozenie --image=matikw/go_devops_app:1.0.1 --port=8000 --labels ap
 ![web dashboard](8.png)
 
 10. Nowe wdrozenie korzystając z plików
+`backend-deployment.yaml` oraz `backend-service.yaml` (w kolejności)
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: wdrozenie2
+  name: wdrozenie2
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      io.kompose.service: wdrozenie2
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (HEAD)
+      creationTimestamp: null
+      labels:
+        io.kompose.service: wdrozenie2
+    spec:
+      containers:
+        - env:
+            - name: network_mode
+              value: host
+          image: matikw/go_devops_app:1.0.1
+          name: wdrozenie2-goapp
+          ports:
+            - containerPort: 8000
+          resources: {}
+      restartPolicy: Always
+status: {}
+```
+
+```
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: wdrozenie2
+  name: wdrozenie2
+spec:
+  ports:
+    - name: "8000"
+      port: 8000
+      targetPort: 8000
+  selector:
+    io.kompose.service: wdrozenie2
+status:
+  loadBalancer: {}
+```
+
 ```
 kubectl apply  -f backend-deployment.yaml,backend-service.yaml
 ```
