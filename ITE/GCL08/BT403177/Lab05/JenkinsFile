@@ -12,7 +12,7 @@ pipeline {
 
     stage('Clone') {
       steps {
-        echo 'Cloning cropperjs'
+        echo 'Cloning apollo-server'
         sh 'docker volume create input-volume'
         sh 'docker rm tempContainer || true'
         sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/; ls apollo-server || git clone https://github.com/apollographql/apollo-server ;ls apollo-server; cp -R apollo-server /myapp; ls /myapp"'
@@ -21,7 +21,7 @@ pipeline {
 
     stage('Build') {
       steps {
-        echo 'Buildig cropperjs with npm'
+        echo 'Buildig apollo-server with npm'
         dir("${params.Dockerfiles}") {
           sh 'docker build . -t apollo-server -f Dockerfile'
           sh 'docker volume create output-volume'
@@ -33,7 +33,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        echo 'Testing cropperjs with npm'
+        echo 'Testing apollo-server with npm'
         dir("${params.Dockerfiles}") {
           sh 'docker rm apollo-server-test || true'
           sh 'docker run --rm --name apollo-server-test --mount "type=volume,src=input-volume,dst=/myapp_test" apollo-server bash -c "cd /myapp_test/apollo-server && npm install && npm test || true"'
@@ -43,11 +43,11 @@ pipeline {
 
     stage('Deploy') {
       steps {
-        echo 'Deploying cropperjs'
+        echo 'Deploying apollo-server'
         sh 'docker rm -f apollo-server-deploy || true'
         sh 'docker run --name apollo-server-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" apollo-server bash -c "cd /usr/local/myapp/apollo-server && npm run"'
         sh 'sleep 5; exit $(docker inspect cropperjs-deploy --format="{{.State.ExitCode}}")'
-        sh 'docker rm -f cropperjs-deploy'
+        sh 'docker rm -f apollo-server-deploy'
       }
     }
 
@@ -76,10 +76,10 @@ pipeline {
       }
       steps {
         sh 'rm -rf /usr/local/copy/* || true'
-        sh "cd /usr/local/myapp/calculator && npm version --allow-same-version ${params.Version} && npm pack"
-        sh "mv /usr/local/myapp/calculator/calculator-${params.Version}.tgz /usr/local/copy"
+        sh "cd /usr/local/myapp/apollo-server && npm version --allow-same-version ${params.Version} && npm pack"
+        sh "mv /usr/local/myapp/apollo-server/apollo-server-${params.Version}.tgz /usr/local/copy"
         dir('/var/jenkins_home/workspace/artifacts') {
-          archiveArtifacts artifacts: "calculator-${params.Version}.tgz"
+          archiveArtifacts artifacts: "apollo-server-${params.Version}.tgz"
         }
       }
     }
