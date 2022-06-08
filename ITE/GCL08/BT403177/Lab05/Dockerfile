@@ -2,7 +2,7 @@ FROM node:alpine
 
 WORKDIR cropper_test
 
-RUN apk update && apk add bash 
+RUN apk update && apk add bash \
     &&  apk upgrade --no-cache --available \
     &&  apk add --no-cache \ 
       --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main \
