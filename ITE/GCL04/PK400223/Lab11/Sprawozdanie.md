@@ -91,9 +91,11 @@ spec:
  * Aktualizuj plik YAML z wdrożeniem i przeprowadzaj je ponownie po zastosowaniu następujących zmian:
    * zwiększenie replik
    * zmniejszenie liczby replik do 1
+   * 
  ![image](screens/11.png "replicas")
  ![image](screens/12.png "replicas")
    * zmniejszenie liczby replik do 0
+   * 
  ![image](screens/13.png "replicas")
  ![image](screens/14.png "replicas")
    * Zastosowanie nowej wersji obrazu
@@ -102,6 +104,7 @@ spec:
    * ```kubectl rollout history```
    * ```kubectl rollout undo```
   Zmieniono z wersji 7 na 6 poprzez undo, można to zaobserwować poprzez usunięcie rewizji w historii ponieważ została zduplikowana przez wersje live
+  
  ![image](screens/15.png "rollout")
  ![image](screens/16.png "rollout")
 
