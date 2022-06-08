@@ -306,4 +306,46 @@ Na początek trzeba podać argument, aby możliwe było rozpoczęcie wdrożenia 
 
 # **Część 9: Strategie wdrożeniowe**
 
-CDN
+- pierwszą strategią wdrożenia była strategia `Recreate`.
+```
+spec:
+  replicas: 5
+  strategy:
+    type: Recreate
+```
+Strategia ta polega na tym, że wszystkie aktualnie działające instancje są ubijane i następnie wdrażana jest nowa wersja.
+
+![x](./34_recreate.png)
+
+- druga strategia `RollingUpdate`polega na stopniowym wdrażaniu podów w taki sposób, że tworzony jest dodatkowy zestaw replik z nową wersją aplikacji, a następnie zmniejszana jest liczba replik starej wersji, a zwiększana nowej do momentu osiągnięcia prawidłowej liczby replik. `maxSurge` określa ilość podów możliwą do dodania w określonym czasie, a `maxUnavailable` ilość podów niedostępnych w trakcie wdrożenia.
+
+```
+spec:
+  replicas: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 2
+      maxUnavailable: 0 
+```
+
+![x](./35_rollingUpdate.png)
+
+Pody są stopniowo ubijane, aby liczba podów nadmiarowych podów nie przekroczyła `maxSurge: 2`.
+
+- trzecia strategia `Canary` wykonywane jest przy użyciu dwóch wdrożen ze wspólnymi etykietami. Jedna replika nowej wersji jest wypuszczana obok starej i po pewnym czasie jeśli nie zostanie wykryty żaden błąd, należy zwiększyć liczbę replik nowej wersji i usunąć stare wdrożenie. 
+
+```
+ app: example
+        version: v3.0.0
+```
+
+![x](./36_canary.png)
+
+**Podsumowując:**
+
+Zasoby wdrożeniowe mają zdecydowanie łatwiejszą możliwość wdrożenia kontenerów i należą do jednych z najczęściej używanych zasobów w Kubernetesie. Wdrożenia operują replikami i pomagają w opracowywaniu strategii wdrażania poprzez manipulowanie nimi, aby osiągnąć upragniony efekt.
+
+Wdrożenia mają tak naprawdę dwa typy strategii: Recreate i RollingUpdate.
+
+RollingUpdate to strategia domyślna, w której Kubernetes tworzy nowy set replik i zaczyna go skalować w górę, jednocześnie stary skalować w dół. Natomiast Recreate skaluje od razu stary set do zera i od razu tworzy nowe repliki. 
