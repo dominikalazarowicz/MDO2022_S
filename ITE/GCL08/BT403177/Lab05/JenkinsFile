@@ -15,7 +15,7 @@ pipeline {
         echo 'Cloning cropperjs'
         sh 'docker volume create input-volume'
         sh 'docker rm tempContainer || true'
-        sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/; mkdir apollo-server || git clone https://github.com/apollographql/apollo-server ;ls apollo-server; cp -R apollo-server /myapp; ls /myapp"'
+        sh 'docker run --rm --name tempContainer --mount "type=volume,src=input-volume,dst=/myapp" node bash -c "cd ~/; rmdir apollo-server; git clone https://github.com/apollographql/apollo-server ;ls apollo-server; cp -R apollo-server /myapp; ls /myapp"'
       }
     }
 
