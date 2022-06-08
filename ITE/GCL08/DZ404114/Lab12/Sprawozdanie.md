@@ -279,3 +279,49 @@ Działanie skryptu:
 
 
 # Strategie wdrożenia
+
+- **Strategia Recreate**
+
+Ta strategia zabija stare wersje aplikacji i wdraża nowe wersje. W tej strategii najpierw zabijane są wszystkie stare wersje, gdy to nastąpi wdrażane są nowe.
+
+```
+spec:
+  strategy:
+    type: Recreate
+```
+
+![recreate](./screenshots/recreate.png)
+
+- **Strategia RollingUpdate**
+
+W strategii RollingUpdate nastepuje zakończenie działania uruchomnionych podów, a następnie ich uruchomienie. W tym przypadku nastepuje to w sposób progresywny.
+
+```maxSurge``` określa ilość podów które mogą zostać dodane w określonym czasie, 
+
+```maxUnavaliabe``` określa ilość podów które mogą być niedostępne w czasie wdrożenia
+
+```
+spec:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 0 
+```
+
+![rolling_update](./screenshots/rolling_update.png)
+
+![rolling_update2](./screenshots/rolling_update2.png)
+
+- **Strategie Canary**
+
+Strategia wdrażania canary polega na wdrażaniu nowych wersji aplikacji obok stabilnych wersji.
+
+```
+metadata:
+  labels:
+    app: express
+    version: "3.0.0"
+```
+
+![canary](./screenshots/canary.png)
