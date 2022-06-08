@@ -2,4 +2,5 @@ FROM node:alpine
 
 WORKDIR cropper_test
 
-RUN apk update && apk add bash && apk add chrome
+RUN apk update && apk add bash && apk add chromium
+
