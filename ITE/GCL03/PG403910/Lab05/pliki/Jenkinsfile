@@ -13,7 +13,6 @@ pipeline {
     stages {
         stage('Init'){
             steps {
-                sh "docker system prune --all -f"
                 git url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git', branch: 'PG403910'
                 sh 'rm -r logs'
                 sh 'mkdir logs'
