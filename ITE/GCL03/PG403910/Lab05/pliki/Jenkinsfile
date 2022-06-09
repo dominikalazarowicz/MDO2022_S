@@ -8,6 +8,9 @@ pipeline {
         string(name: "version",
             defaultValue: "1.0.0",
             description: "Podaj numer wersji")
+        string(name: "hasło",
+            defaultValue: "123",
+            description: "Podaj hasło")
     }
 
     stages {
