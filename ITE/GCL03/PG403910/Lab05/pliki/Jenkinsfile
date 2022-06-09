@@ -17,8 +17,8 @@ pipeline {
                 sh 'mkdir -p app'
 
                 dir('app'){                  
-                    git url: 'https://github.com/Lissy93/quick-example-of-testing-in-nodejs'
-                    sh 'docker container create --name quick-example-of-testing-in-nodejs -v in:/in busybox'
+                    sh 'git clone https://github.com/Lissy93/quick-example-of-testing-in-nodejs.git'
+                    sh 'docker container create --name quick-example-of-testing-in-nodejs'
                     sh 'docker cp ./. quick-example-of-testing-in-nodejs'
                     sh 'docker rm quick-example-of-testing-in-nodejs'
                 }
