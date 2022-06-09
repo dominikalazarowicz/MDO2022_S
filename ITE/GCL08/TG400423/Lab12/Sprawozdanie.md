@@ -112,7 +112,7 @@ kubectl rollout undo deployment nginx-deployment
 ![alt text](6.jpg)
 
 Po tej operacji wirtualna maszyna przestała działać. Próby uruchomienia maszyny nie przynosiły skutku.
-Błędu podczas bootowania systemu.
+Błędy podczas bootowania systemu.
 
 10. Opis strategi wdrożenia:
 
