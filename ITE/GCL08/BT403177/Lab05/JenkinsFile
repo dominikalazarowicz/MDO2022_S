@@ -88,7 +88,7 @@ pipeline {
         sh "ls /usr/local/myapp/apollo-server"
         sh "mv /usr/local/myapp/apollo-server/apollo-server-${params.Version}.tgz /usr/local/copy"
         dir('/var/jenkins_home/workspace/artifacts') {
-          archiveArtifacts artifacts: "apollo-server-${params.Version}.tgz"
+          archiveArtifacts artifacts: "apollo-server-monorepo-${params.Version}.tgz"
         }
       }
     }
