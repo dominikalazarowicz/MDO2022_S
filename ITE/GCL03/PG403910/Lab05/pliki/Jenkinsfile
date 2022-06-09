@@ -34,7 +34,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building"
-                sh 'docker build -t docker_build:latest . -f ./ITE/GCL03/PG403910/lab5/pliki/docker_build | tee logs/build.log'
+                sh 'docker build -t docker_build:latest . -f ./ITE/GCL03/PG403910/Lab05/pliki/docker_build | tee build.log'
                 sh 'docker run --name  docker_build docker_build:latest'
             }
             post{
@@ -49,7 +49,7 @@ pipeline {
 	    stage('Test') {
                 steps {
                     echo 'Starting Testing'
-                    sh 'docker build -t docker_test:latest . -f ./ITE/GCL03/PG403910/lab5/pliki/docker_test | tee logs/test.log'
+                    sh 'docker build -t docker_test:latest . -f ./ITE/GCL03/PG403910/Lab05/pliki/docker_test | tee test.log'
                     sh 'docker run --name  docker_test docker_test:latest'
                 }
             post{
@@ -66,8 +66,8 @@ pipeline {
             steps {
                 sh ' docker rm docker_build'
                 sh 'docker rm docker_test'
-                archiveArtifacts artifacts: "logs/build.log"
-                archiveArtifacts artifacts: "logs/test.log"
+                archiveArtifacts artifacts: "build.log"
+                archiveArtifacts artifacts: "test.log"
             }
         }
 
