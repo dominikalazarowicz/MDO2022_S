@@ -443,7 +443,7 @@ Poniżej zrzut ekranu z dashboardu:
 
 ![](./17.png)
 
-W strategii RollingUpdate tworzony jest dodatkowy ReplicaSet z nową wersją deploymentu następnie ReplicaSety ze stara wersję są powoli zmniejszane a a zwiększane są te ReplicaSety z nową wersją dopóki nie osiągną odpowiedniej liczby. Wadą takiego wdrożenia może być długi czas natomiast plusem jego jest to, że jest użyteczny dla aplikacji "stateful".
+W strategii RollingUpdate tworzony jest dodatkowy ReplicaSet z nową wersją deploymentu następnie ReplicaSety ze stara wersję są powoli zmniejszane a zwiększane są te ReplicaSety z nową wersją dopóki nie osiągną odpowiedniej liczby. Wadą takiego wdrożenia może być długi czas natomiast plusem jego jest to, że jest użyteczny dla aplikacji "stateful".
 
 ### Strategia Canary
 
