@@ -32,11 +32,16 @@ pipeline {
     }
 
     stage('Test') {
+     when {
+        expression {
+          return params.Test
+        }
+      }
       steps {
         echo 'Testing apollo-server with npm'
         dir("${params.Dockerfiles}") {
           sh 'docker rm apollo-server-test || true'
-          sh 'docker run --rm --name apollo-server-test --mount "type=volume,src=input-volume,dst=/myapp_test" apollo-server bash -c "cd /myapp_test/apollo-server && npm install && npm test || true"'
+          sh 'docker run --rm --name apollo-server-test --mount "type=volume,src=input-volume,dst=/myapp_test" apollo-server bash -c "cd /myapp_test/apollo-server && npm test || true"'
         }
       }
     }
@@ -45,8 +50,8 @@ pipeline {
       steps {
         echo 'Deploying apollo-server'
         sh 'docker rm -f apollo-server-deploy || true'
-        sh 'docker run --name apollo-server-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" apollo-server bash -c "cd /usr/local/myapp/apollo-server && npm run"'
-        sh 'sleep 5; exit $(docker inspect cropperjs-deploy --format="{{.State.ExitCode}}")'
+        sh 'docker run --name apollo-server-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" apollo-server bash -c "cd /usr/local/myapp/apollo-server && npm run compile:clean"'
+        sh 'sleep 5; exit $(docker inspect apollo-server-deploy --format="{{.State.ExitCode}}")'
         sh 'docker rm -f apollo-server-deploy'
       }
     }
