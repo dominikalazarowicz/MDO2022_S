@@ -87,7 +87,7 @@
 
 ## Przekucie wdrożenia manualnego w plik wdrożenia
 
-- Plik .yaml 4 repliki
+- Plik .yml 4 repliki
 
   ![](13.png)
 
