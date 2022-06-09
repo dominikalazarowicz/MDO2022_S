@@ -45,7 +45,7 @@ pipeline {
       steps {
         echo 'Deploying apollo-server'
         sh 'docker rm -f apollo-server-deploy || true'
-        sh 'docker run --name apollo-server-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" apollo-server bash -c "cd /usr/local/myapp/apollo-server && npm run"'
+        sh 'docker run --name apollo-server-deploy --mount "type=volume,src=output-volume,dst=/usr/local/myapp" apollo-server bash -c "cd /usr/local/myapp/apollo-server && npm start"'
         sh 'sleep 5; exit $(docker inspect cropperjs-deploy --format="{{.State.ExitCode}}")'
         sh 'docker rm -f apollo-server-deploy'
       }
