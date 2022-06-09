@@ -13,13 +13,15 @@ pipeline {
     stages {
         stage('Init'){
             steps {
-                sh "docker system prune --all -f"
-                git url: 'https://github.com/InzynieriaOprogramowaniaAGH/MDO2022_S.git', branch: 'PG403910'
-                sh 'rm -r logs'
-                sh 'mkdir logs'
-                sh 'cd logs'
-                sh 'touch build.log'
-                sh 'touch test.log'
+                sh 'rm -rf app || true'
+                sh 'mkdir -p app'
+
+                dir('app'){                  
+                    git url: 'https://github.com/Lissy93/quick-example-of-testing-in-nodejs'
+                    sh 'docker container create --name quick-example-of-testing-in-nodejs -v in:/in busybox'
+                    sh 'docker cp ./. quick-example-of-testing-in-nodejs'
+                    sh 'docker rm quick-example-of-testing-in-nodejs'
+                }
             }
             post{
                 success{
