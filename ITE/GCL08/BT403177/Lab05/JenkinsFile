@@ -76,6 +76,8 @@ pipeline {
       }
       steps {
         sh  "apk add git"
+        sh  "git config --global user.email \"you@example.com\""
+        sh  "git config --global user.name \"Your Name\""
         sh 'rm -rf /usr/local/copy/* || true'
         sh "cd /usr/local/myapp/apollo-server && npm version --allow-same-version ${params.Version} && npm pack"
         sh "ls /usr/local/myapp/apollo-server"
