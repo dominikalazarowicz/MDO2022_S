@@ -6,13 +6,15 @@ import io
 
 parser = argparse.ArgumentParser()
 parser.add_argument('lz4_path',  type=str,help='Path for lz4')
+parser.add_argument('version',  type=str,help='version')
 args = parser.parse_args()
 
 app = Flask(__name__)
 app.secret_key = "secret key"
+
 @app.route('/')
 def upload_form():
-    return render_template('upload.html')
+    return render_template('upload.html',info={"version":args.version})
 
 def no_file():
     return redirect("/")
