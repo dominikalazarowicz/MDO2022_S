@@ -4,6 +4,7 @@ metadata:
   name: node-red-deploy
   labels:
     app: node-red
+    version: "0.0.5"
 spec:
   replicas: 4
   selector:

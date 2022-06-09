@@ -5,6 +5,8 @@ metadata:
   labels:
     app: node-red
 spec:
+  strategy:
+    type: Recreate
   replicas: 4
   selector:
     matchLabels:
@@ -16,6 +18,6 @@ spec:
     spec:
       containers:
         - name: node-red
-          image: mihaf70/node-red-new:err
+          image: mihaf70/node-red-new:new
           ports:
             - containerPort: 1880
