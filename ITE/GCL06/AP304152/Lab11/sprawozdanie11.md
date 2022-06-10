@@ -87,7 +87,8 @@ Sprawdzenie poprawności działania po wpisaniu w przeglądarce:
 Stworzenie pliku wdrożenia wraz z replikami i zapisanie go jako 
 - `d.yml`
 
-![image](https://user-images.githubusercontent.com/72975469/173073740-76cacb38-89d7-4fa8-b286-d14535545a7a.png)
+![image](https://user-images.githubusercontent.com/72975469/173074083-530db151-4acc-4554-9bea-4c3947828a50.png)
+
 
 
 Zaaplikowanie pliku za pomocą polecenia:
