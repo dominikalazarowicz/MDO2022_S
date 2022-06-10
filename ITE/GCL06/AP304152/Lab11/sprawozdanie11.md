@@ -87,7 +87,8 @@ Sprawdzenie poprawności działania po wpisaniu w przeglądarce:
 Stworzenie pliku wdrożenia wraz z replikami i zapisanie go jako 
 - `d.yml`
 
-![image](https://user-images.githubusercontent.com/72975469/172622505-32965769-1c02-4d9b-b64c-c1264c70b403.png)
+![image](https://user-images.githubusercontent.com/72975469/173073740-76cacb38-89d7-4fa8-b286-d14535545a7a.png)
+
 
 Zaaplikowanie pliku za pomocą polecenia:
 - `kubectl apply -f d.yml`
@@ -108,7 +109,7 @@ Sprawdzenie poprawności w dashboard:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: jp-nginx-deployment
+  name: AP-nginx-deployment
   labels:
     app: nginx
 spec:
