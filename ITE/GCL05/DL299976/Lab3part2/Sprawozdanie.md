@@ -10,21 +10,22 @@ Spełnia wszystkie wymagania postawione w zadaniu. Zostało ono zgodnie z instru
 
 Zostały również zainstalowane dodatkowe zależności. Niestety podczas instalacji wystąpił błąd, który udało się rozwiązać (wersja nodejs zainstalowana na maszynie była za niska)
 
-.
+![1](./img/1.png)
 
 Projekt został zbudowany poprawnie za pomocą poleceń
 
  `npm start`  i  `npm run serve`
-
-.
+ 
+![3](./img/3.png)
 
 Zbudowany projekt prawidłowo otwarty w przeglądarce `localhost:8080/en
 
-.
+![4](./img/4.png)
 
 Zostały uruchomione testy (`npm test`)- wszystkie zakończone sukcesem
 
-.
+
+![5](./img/5.png)
 
 #### **Stworzenie plików Dockerfile**
 
@@ -58,5 +59,6 @@ W drugim przypadku wybierany jest obraz stworzonego wcześniej obrazu, zmieniana
 Komenda docker build odpowiedzialna jest za uruchomienie plików. Dodatkowo flaga`-f` została użyta w celu wyboru dockerfile, a `-t` wybrane w celu nadania nazwy końcowej. 
 
 
-
 Oba skrypty działają prawidłowo. W celu potwierdzenia używam komendy `docker images`, która wyświetla powstałe obrazy oraz informacje o nich.
+
+![6](./img/6.png)
