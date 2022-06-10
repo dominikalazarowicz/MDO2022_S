@@ -27,3 +27,13 @@ Trzecia nieudana próba:
 Czwarta nieudana próba:
 - `minikube start --driver=docker --container-runtime=containerd`
 
+Po tylu nieudanych próbach odinstalowałem minikube w następujących krokach:
+- `minikube stop`
+- `minikube delete`
+- `rm -r ~/.minikube`
+- `sudo rm /usr/local/bin/minikube`
+- `systemctl stop '*kubelet*.mount'`
+- `sudo rm -rf /etc/kubernetes/` 
+- `docker system prune -af --volumes`
+
+Następnie przeprowadzono ponownie wszystkie kroki z laboratorium 11
