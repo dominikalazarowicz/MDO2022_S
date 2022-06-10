@@ -37,3 +37,12 @@ Po tylu nieudanych próbach odinstalowałem minikube w następujących krokach:
 - `docker system prune -af --volumes`
 
 Następnie przeprowadzono ponownie wszystkie kroki z laboratorium 11
+
+![image](https://user-images.githubusercontent.com/72975469/173101278-cc2c55fd-0457-435b-991c-c612dd1bf9f4.png)
+
+![image](https://user-images.githubusercontent.com/72975469/173101506-0799c304-426d-4a3d-8980-3bc0056e63e3.png)
+
+![image](https://user-images.githubusercontent.com/72975469/173101630-17973f83-e406-43ce-b2e2-056fd6492b5d.png)
+
+![image](https://user-images.githubusercontent.com/72975469/173101977-7ed5c6f8-f88a-4844-992d-ccc247d3dbab.png)
+
